@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client">
+
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="shortTextTabConfig">
+		<ui:attributes text="Default" />
+	</ui:with>
+
+	<container:SimpleContainer>
+		<tabs:TabPanel ui:field="tabPanel">
+			<tabs:child config="{shortTextTabConfig}">
+				<container:CenterLayoutContainer>
+					<g:Image url="images/AdempiereLogo.png" />
+				</container:CenterLayoutContainer>
+			</tabs:child>
+		</tabs:TabPanel>
+	</container:SimpleContainer>
+</ui:UiBinder> 

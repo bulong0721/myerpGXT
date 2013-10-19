@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	<named-query name="queryWindowById">
+		<query>SELECT w FROM AdWindow w WHERE w.adWindowId = :adWindowId</query>
+	</named-query>
+	<named-query name="queryTabsByWindowId">
+		<query>SELECT t FROM AdTab t WHERE t.adWindowId = :adWindowId</query>
+	</named-query>
+	<named-query name="queryFieldsByTabId">
+		<query>SELECT f FROM AdField f WHERE f.adTabId = :adTabId</query>
+	</named-query>
+	<named-query name="queryTabvsByWindowId">
+		<query>SELECT t FROM AdTabV t WHERE t.adWindowId = :adWindowId</query>
+	</named-query>
+	<named-query name="queryFieldvsByTabId">
+		<query>SELECT f FROM AdFieldV f WHERE f.adTabId = :adTabId ORDER BY f.seqno</query>
+	</named-query>
+	<named-query name="queryMainMenuNodes">
+		<query>SELECT m FROM AdTreenodemm m JOIN FETCH m.adMenu</query>
+	</named-query>
+	<named-query name="queryRefList">
+		<query>SELECT NEW com.deppon.foss.shared.LookupValue(r.name, r.value) FROM AdRefList r WHERE r.adReference.adReferenceId = :adReferenceId</query>
+	</named-query>	
+	<named-query name="queryRefTable">
+		<query>SELECT NEW com.deppon.foss.shared.adempiere.RefTableCriteria(r.adTable.tablename, r.keyColumn.columnname, r.displayColumn.columnname, r.isvaluedisplayed, r.orderbyclause, r.whereclause) FROM AdRefTable r WHERE r.adReference.adReferenceId = :adReferenceId</query>
+	</named-query>
+</entity-mappings>

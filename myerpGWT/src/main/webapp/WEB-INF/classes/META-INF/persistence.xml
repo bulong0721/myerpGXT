@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="gwtApp02" transaction-type="RESOURCE_LOCAL">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<mapping-file>META-INF/adempiere.xml</mapping-file>
+		<class>com.deppon.foss.shared.adempiere.AdColumn</class>
+		<class>com.deppon.foss.shared.adempiere.AdField</class>
+		<class>com.deppon.foss.shared.adempiere.AdFieldgroup</class>
+		<class>com.deppon.foss.shared.adempiere.AdForm</class>
+		<class>com.deppon.foss.shared.adempiere.AdMenu</class>
+		<class>com.deppon.foss.shared.adempiere.AdProcess</class>
+		<class>com.deppon.foss.shared.adempiere.AdTab</class>
+		<class>com.deppon.foss.shared.adempiere.AdTable</class>
+		<class>com.deppon.foss.shared.adempiere.AdWindow</class>
+		<class>com.deppon.foss.shared.adempiere.AdFieldV</class>
+		<class>com.deppon.foss.shared.adempiere.AdTabV</class>
+		<class>com.deppon.foss.shared.adempiere.AdUserRolesV</class>
+		<class>com.deppon.foss.shared.adempiere.AdTreenodemm</class>
+		<class>com.deppon.foss.shared.adempiere.AdTreenodemmPK</class>
+		<class>com.deppon.foss.shared.adempiere.AdIssue</class>
+		<class>com.deppon.foss.shared.business.COrder</class>
+		<class>com.deppon.foss.shared.business.COrderline</class>
+		<class>com.deppon.foss.shared.business.COrdertax</class>
+		<class>com.deppon.foss.shared.business.COrdertaxPK</class>
+		<class>com.deppon.foss.shared.adempiere.AdRefList</class>
+		<class>com.deppon.foss.shared.adempiere.AdRefTable</class>
+		<class>com.deppon.foss.shared.adempiere.AdReference</class>
+		<class>com.deppon.foss.shared.adempiere.AdUser</class>
+		<class>com.deppon.foss.shared.adempiere.AdOrg</class>
+		<class>com.deppon.foss.shared.business.CDoctype</class>
+		<class>com.deppon.foss.shared.business.CElementvalue</class>
+		<class>com.deppon.foss.shared.business.CCharge</class>
+		<class>com.deppon.foss.shared.business.CBpartner</class>
+		<class>com.deppon.foss.shared.business.CBpartnerLocation</class>
+		<class>com.deppon.foss.shared.business.MWarehouse</class>
+		<class>com.deppon.foss.shared.business.MRma</class>
+		<class>com.deppon.foss.shared.business.MRmaline</class>
+		<class>com.deppon.foss.shared.business.MRmatype</class>
+		<class>com.deppon.foss.shared.adempiere.AdClient</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/adempiere" />
+			<property name="javax.persistence.jdbc.user" value="adempiere" />
+			<property name="javax.persistence.jdbc.password" value="adempiere" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<!-- <property name="openjpa.RuntimeUnenhancedClasses" value="supported" /> -->
+			<!-- <property name="openjpa.MaxFetchDepth" value="1"/> -->
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,24 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar"
+	xmlns:widget="urn:import:com.deppon.foss.client.widget" xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form" xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+	
+    <ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins4">
+		<ui:attributes top="2" right="4" bottom="2" left="4" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="topMaginData">
+		<ui:attributes height="-1" margins="{margins4}" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="mainMaginData">
+		<ui:attributes width="1" height="1" margins="{margins4}" />
+	</ui:with>
+	<container:VerticalLayoutContainer>
+		<container:child layoutData="{topMaginData}">
+		    <widget:CReportToolBar ui:field="toolBar" />
+		</container:child>
+		<container:child layoutData="{mainMaginData}">
+		    <g:Frame ui:field="window" url="http://www.tutorialspoint.com/gwt/gwt_tutorial.pdf" />
+		</container:child>
+	</container:VerticalLayoutContainer>
+
+</ui:UiBinder> 

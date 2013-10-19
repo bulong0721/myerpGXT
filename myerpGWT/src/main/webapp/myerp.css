@@ -1,0 +1,127 @@
+/** Add css rules here for your application. */
+/** Example rules used by the template application (remove for your app) */
+h1 {
+	font-size: 2em;
+	font-weight: bold;
+	color: #777777;
+	margin: 40px 0px 70px;
+	text-align: center;
+}
+
+.sendButton {
+	display: block;
+	font-size: 16pt;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+	width: 400px;
+}
+
+.dialogVPanel {
+	margin: 5px;
+}
+
+.serverResponseLabelError {
+	color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+	margin: 15px 6px 6px;
+}
+
+.buttonItem {
+	color: white;
+}
+
+.resizableTextAreaItem {
+	resize: none;
+}
+
+.toolBarButton {
+	padding: 2px;
+	border: 1px solid #D0DEF0;
+}
+
+.toolBarButtonOver,.toolBarButtonFocusedOver,.toolBarButtonFocused {
+	padding: 2px;
+	border-left: 1px solid #808080;
+	border-top: 1px solid #808080;
+	border-right: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.toolBarButtonDown,.toolBarButtonFocusedDown {
+	padding: 2px;
+	border-left: 1px solid #666666;
+	border-top: 1px solid #666666;
+	border-right: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.toolBarButtonDisabled {
+	padding: 2px;
+	opacity: 0.5;
+	border: 1px solid #D0DEF0;
+}
+
+.Cancel-icon {
+	background-image: url( images/icons/Cancel16.png ) !important;
+	background-repeat: no-repeat;
+}
+
+.Ok-icon {
+	background-image: url( images/icons/Ok16.png ) !important;
+	background-repeat: no-repeat;
+}
+
+.Help-icon {
+	background-image: url( images/icons/Help16.png ) !important;
+	background-repeat: no-repeat;
+}
+
+.okButton {
+	padding: 1px;
+	margin: 1px;
+	background-image: url( images/icons/Ok16.png ) !important;
+}
+
+.iconButton {
+	border: 1px solid #D0DEF0;
+	padding: 0px 1px 0px 1px !important;
+	margin: 1px !important;
+	cursor: pointer;
+}
+
+.iconButtonOver {
+	border-right: 1px solid #808080;
+	border-bottom: 1px solid #808080;
+	border-left: 1px solid white;
+	border-top: 1px solid white;
+	padding: 0px 1px 0px 1px !important;
+	margin: 1px !important;
+	cursor: pointer;
+}
+
+.iconButtonDisabled {
+	opacity: 0.5;
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray;
+	border: 1px solid #D0DEF0;
+	padding: 0px 1px 0px 1px !important;
+	margin: 1px !important;
+	cursor: pointer;
+}
+
+.formField {
+	margin: 2px 4px 2px 4px !important;
+}
+
+.fieldGroup {
+	margin: 2px 0px 2px 0px !important;
+}

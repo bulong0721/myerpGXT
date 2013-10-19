@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<gxt:Window ui:field="window" pixelSize="450, 60" modal="true" blinkModal="true" headingText="How long back in History?">
+		<gxt:button>
+			<button:TextButton ui:field="dayButton" text="Day" />
+		</gxt:button>
+		<gxt:button>
+			<button:TextButton ui:field="weekButton" text="Week" />
+		</gxt:button>
+		<gxt:button>
+			<button:TextButton ui:field="monthButton" text="Month" />
+		</gxt:button>
+		<gxt:button>
+			<button:TextButton ui:field="yearButton" text="Year" />
+		</gxt:button>
+		<gxt:button>
+			<button:TextButton ui:field="allButton" text="All" />
+		</gxt:button>
+	</gxt:Window>
+</ui:UiBinder> 
