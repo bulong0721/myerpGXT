@@ -3,8 +3,8 @@ package com.deppon.foss.client.component;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.deppon.foss.client.model.AdFieldModel;
 import com.deppon.foss.client.model.AdModelData;
+import com.deppon.foss.client.model.IAdFormField;
 import com.deppon.foss.client.util.StringUtil;
 import com.deppon.foss.shared.adempiere.DisplayType;
 import com.google.gwt.editor.client.CompositeEditor;
@@ -22,16 +22,29 @@ import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class AdModelEditor implements CompositeEditor<AdModelData, Object, Field<Object>>, IsWidget {
-	private AdTabEditStrategy					tabStrategy;
+	private AdFormEditStrategy					tabStrategy;
 	private EditorChain<Object, Field<Object>>	chain;
 	private List<AdFieldEditStrategy>			fieldList;
 	private AdModelData							model;
+	private double								layoutWidth	= 0.49d;
 
 	@UiConstructor
-	public AdModelEditor(AdTabEditStrategy tabStrategy) {
+	public AdModelEditor(AdFormEditStrategy tabStrategy) {
 		super();
 		this.tabStrategy = tabStrategy;
 		this.fieldList = new ArrayList<AdFieldEditStrategy>();
+	}
+
+	public AdModelEditor() {
+
+	}
+
+	public double getLayoutWidth() {
+		return layoutWidth;
+	}
+
+	public void setLayoutWidth(double layoutWidth) {
+		this.layoutWidth = layoutWidth;
 	}
 
 	@Override
@@ -40,7 +53,7 @@ public class AdModelEditor implements CompositeEditor<AdModelData, Object, Field
 		CssFloatLayoutContainer groupContainer = null;
 		String oldFieldGroup = null;
 		for (AdFieldEditStrategy fieldStrategy : tabStrategy.getFieldStrategies()) {
-			AdFieldModel field = fieldStrategy.getField();
+			IAdFormField field = fieldStrategy.getField();
 			String fieldGroup = field.getFieldgroup();
 			if (!StringUtil.isNullOrEmpty(fieldGroup)) {
 				if (!fieldGroup.equals(oldFieldGroup)) {
@@ -67,7 +80,7 @@ public class AdModelEditor implements CompositeEditor<AdModelData, Object, Field
 		if (widget instanceof Field) {
 			fieldList.add(fieldStrategy);
 		}
-		CssFloatData layoutData = new CssFloatData(0.49);
+		CssFloatData layoutData = new CssFloatData(layoutWidth);
 		container.add(fieldLabel, layoutData);
 	}
 
@@ -105,7 +118,7 @@ public class AdModelEditor implements CompositeEditor<AdModelData, Object, Field
 		for (AdFieldEditStrategy fieldStrategy : fieldList) {
 			Converter converter = fieldStrategy.getConverter();
 			Field formEditor = fieldStrategy.getFormEditor();
-			DisplayType fieldType  = fieldStrategy.getField().getFieldType();
+			DisplayType fieldType = fieldStrategy.getField().getFieldType();
 			Object value = model.getValue(formEditor.getName(), fieldType);
 			if (null != converter) {
 				value = converter.convertModelValue(value);

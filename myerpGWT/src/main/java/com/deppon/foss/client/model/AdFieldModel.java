@@ -8,7 +8,7 @@ import com.deppon.foss.client.util.StringUtil;
 import com.deppon.foss.shared.adempiere.AdFieldV;
 import com.deppon.foss.shared.adempiere.DisplayType;
 
-public class AdFieldModel implements Serializable {
+public class AdFieldModel implements Serializable, IAdFormField {
 	private static final long	serialVersionUID	= 1L;
 	private Long				adProcessId;
 	private Integer				adReferenceId;
@@ -100,6 +100,12 @@ public class AdFieldModel implements Serializable {
 		this.adProcessId = adProcessId;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getAdReferenceId()
+	 */
+	@Override
 	public Integer getAdReferenceId() {
 		return adReferenceId;
 	}
@@ -108,6 +114,12 @@ public class AdFieldModel implements Serializable {
 		this.adReferenceId = adReferenceId;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getAdReferenceValueId()
+	 */
+	@Override
 	public Long getAdReferenceValueId() {
 		return adReferenceValueId;
 	}
@@ -124,6 +136,12 @@ public class AdFieldModel implements Serializable {
 		this.callout = callout;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getColumnname()
+	 */
+	@Override
 	public String getColumnname() {
 		return columnname;
 	}
@@ -132,6 +150,12 @@ public class AdFieldModel implements Serializable {
 		this.columnname = columnname;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getDefaultvalue()
+	 */
+	@Override
 	public String getDefaultvalue() {
 		return defaultvalue;
 	}
@@ -140,6 +164,12 @@ public class AdFieldModel implements Serializable {
 		this.defaultvalue = defaultvalue;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getFieldgroup()
+	 */
+	@Override
 	public String getFieldgroup() {
 		return fieldgroup;
 	}
@@ -164,6 +194,12 @@ public class AdFieldModel implements Serializable {
 		this.fieldlength = fieldlength;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getIsdisplayed()
+	 */
+	@Override
 	public Boolean getIsdisplayed() {
 		return isdisplayed;
 	}
@@ -236,6 +272,12 @@ public class AdFieldModel implements Serializable {
 		this.issameline = issameline;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getName()
+	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -244,6 +286,12 @@ public class AdFieldModel implements Serializable {
 		this.name = name;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getReadonlylogic()
+	 */
+	@Override
 	public String getReadonlylogic() {
 		return readonlylogic;
 	}
@@ -252,6 +300,12 @@ public class AdFieldModel implements Serializable {
 		this.readonlylogic = readonlylogic;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getSeqno()
+	 */
+	@Override
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -284,6 +338,12 @@ public class AdFieldModel implements Serializable {
 		this.validationcode = validationcode;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getValuemax()
+	 */
+	@Override
 	public String getValuemax() {
 		return valuemax;
 	}
@@ -292,6 +352,12 @@ public class AdFieldModel implements Serializable {
 		this.valuemax = valuemax;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getValuemin()
+	 */
+	@Override
 	public String getValuemin() {
 		return valuemin;
 	}
@@ -300,6 +366,12 @@ public class AdFieldModel implements Serializable {
 		this.valuemin = valuemin;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.deppon.foss.client.model.IAdParameter#getVformat()
+	 */
+	@Override
 	public String getVformat() {
 		return vformat;
 	}

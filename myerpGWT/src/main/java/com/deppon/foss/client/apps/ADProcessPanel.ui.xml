@@ -1,8 +1,64 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+<ui:UiBinder xmlns:app="urn:import:com.deppon.foss.client.apps" xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:component="urn:import:com.deppon.foss.client.component" xmlns:widget="urn:import:com.deppon.foss.client.widget">
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins4">
+		<ui:attributes top="4" right="4" bottom="4" left="4" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="marginsCenter">
+		<ui:attributes top="4" right="4" bottom="4" left="4" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="topLayout">
+		<ui:attributes width="1" height="65" margins="{margins4}" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="centerLayout">
+		<ui:attributes width="1" height="1" margins="{marginsCenter}" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="buttomLayout">
+		<ui:attributes width="1" margins="{margins4}" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="titleMargins">
+		<ui:attributes top="4" right="4" bottom="4" left="4" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="descMargins">
+		<ui:attributes top="8" right="40" bottom="4" left="25" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="titleLayout">
+		<ui:attributes width="1" margins="{titleMargins}" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="descLayout">
+		<ui:attributes width="1" margins="{descMargins}" />
+	</ui:with>
+	<ui:with field="themeStyles" type="com.sencha.gxt.core.client.resources.ThemeStyles.Styles" />
 	<ui:style>
-		
+		.nameLabel {
+			font: 12px tahoma, arial, verdana, sans-serif;
+			font-weight:bold;
+		}
+		.descLabel {
+			font: 12px tahoma, arial, verdana, sans-serif;
+		}
 	</ui:style>
-	<g:HTMLPanel>
-	</g:HTMLPanel>
+	<container:CardLayoutContainer ui:field="layoutContainer">
+		<container:VerticalLayoutContainer>
+			<container:child layoutData="{topLayout}">
+				<container:VerticalLayoutContainer styleName="{themeStyles.border}">
+					<container:child layoutData="{titleLayout}">
+						<g:Label ui:field="nameLabel" styleName="{style.nameLabel}" />
+					</container:child>
+					<container:child layoutData="{descLayout}">
+						<g:Label ui:field="descLabel" styleName="{style.descLabel}" />
+					</container:child>
+				</container:VerticalLayoutContainer>
+			</container:child>
+			<container:child layoutData="{centerLayout}">
+				<container:SimpleContainer styleName="{themeStyles.border}">
+					<component:AdModelEditor ui:field="prarmEditor" />
+				</container:SimpleContainer>
+			</container:child>
+			<container:child layoutData="{buttomLayout}">
+				<widget:ConfirmToolBar ui:field="toolBar" />
+			</container:child>
+		</container:VerticalLayoutContainer>
+		<app:ADReportViewer ui:field="reportViewer" />
+	</container:CardLayoutContainer>
 </ui:UiBinder> 

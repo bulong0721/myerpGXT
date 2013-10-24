@@ -1,16 +1,23 @@
 package com.deppon.foss.client.presenter;
 
 import com.deppon.foss.client.MyerpEventBus;
+import com.deppon.foss.client.apps.ADProcessPanel;
 import com.deppon.foss.client.apps.ADReportViewer;
 import com.deppon.foss.client.apps.ADWindowPanel;
+import com.deppon.foss.client.component.AsyncSuccessCallback;
 import com.deppon.foss.client.model.AdMenuModel;
+import com.deppon.foss.client.model.AdProcessModel;
 import com.deppon.foss.client.model.MenuAction;
 import com.deppon.foss.client.presenter.interfaces.IContentView;
 import com.deppon.foss.client.presenter.interfaces.IContentView.IContentPresenter;
 import com.deppon.foss.client.resources.Images;
 import com.deppon.foss.client.resources.ResourcesFactory;
+import com.deppon.foss.client.service.AdempiereService;
+import com.deppon.foss.client.service.AdempiereServiceAsync;
 import com.deppon.foss.client.view.ContentView;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.mvp4g.client.annotation.Presenter;
 import com.mvp4g.client.presenter.BasePresenter;
@@ -19,6 +26,7 @@ import com.sencha.gxt.widget.core.client.TabPanel;
 
 @Presenter(view = ContentView.class)
 public class ContentPresenter extends BasePresenter<IContentView, MyerpEventBus> implements IContentPresenter {
+	private AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
 
 	public void onShowPage(AdMenuModel node) {
 		MenuAction action = MenuAction.fromString(node.getAction());
@@ -26,6 +34,8 @@ public class ContentPresenter extends BasePresenter<IContentView, MyerpEventBus>
 			createWindow(node.getName(), node.getAdWindowId());
 		} else if (action.isReport()) {
 			createReport(node.getName(), node.getAdProcessId());
+		} else if (action.isProcess()) {
+			createPorcess(node.getName(), node.getAdProcessId());
 		}
 	}
 
@@ -43,8 +53,22 @@ public class ContentPresenter extends BasePresenter<IContentView, MyerpEventBus>
 	}
 
 	@Override
-	public void createPorcess(String name, Long iProcessId) {
-
+	public void createPorcess(final String name, long iProcessId) {
+		if (isAlreadyOpen(name)) {
+			return;
+		}
+		AsyncCallback<AdProcessModel> callback = new AsyncSuccessCallback<AdProcessModel>("createPorcess") {
+			@Override
+			public void onSuccess(AdProcessModel result) {
+				TabPanel tabPanel = getView().getTabSet();
+				ADProcessPanel panel = new ADProcessPanel(result);
+				TabItemConfig config = new TabItemConfig(name, true);
+				config.setIcon(getIcon(MenuAction.Process));
+				tabPanel.add(panel, config);
+				tabPanel.setActiveWidget(panel);
+			}
+		};
+		adempiereService.getADProcessModel(iProcessId, callback);
 	}
 
 	@Override

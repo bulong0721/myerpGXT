@@ -5,6 +5,7 @@ import java.util.List;
 import com.deppon.foss.client.model.AdJSONData;
 import com.deppon.foss.client.model.AdLoadConfig;
 import com.deppon.foss.client.model.AdMenuModel;
+import com.deppon.foss.client.model.AdProcessModel;
 import com.deppon.foss.client.model.AdWindowModel;
 import com.deppon.foss.shared.AdModelKey;
 import com.deppon.foss.shared.LookupValue;
@@ -21,6 +22,8 @@ public interface AdempiereService extends RemoteService {
 	List<LookupValue> getOptions(String columnName, int type, Long adRefId);
 
 	AdWindowModel getADWindowModel(long windowId);
+
+	AdProcessModel getADProcessModel(long processId);
 
 	AdJSONData getWindowTabData(AdLoadConfig loadCfg);
 

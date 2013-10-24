@@ -16,6 +16,7 @@ import com.deppon.foss.client.model.AdFieldModel;
 import com.deppon.foss.client.model.AdJSONData;
 import com.deppon.foss.client.model.AdLoadConfig;
 import com.deppon.foss.client.model.AdMenuModel;
+import com.deppon.foss.client.model.AdProcessModel;
 import com.deppon.foss.client.model.AdTabModel;
 import com.deppon.foss.client.model.AdWindowModel;
 import com.deppon.foss.client.service.AdempiereService;
@@ -24,6 +25,7 @@ import com.deppon.foss.shared.AdModelKey;
 import com.deppon.foss.shared.LookupValue;
 import com.deppon.foss.shared.adempiere.ADUserContext;
 import com.deppon.foss.shared.adempiere.AdFieldV;
+import com.deppon.foss.shared.adempiere.AdProcess;
 import com.deppon.foss.shared.adempiere.AdTab;
 import com.deppon.foss.shared.adempiere.AdTabV;
 import com.deppon.foss.shared.adempiere.AdTreenodemm;
@@ -213,5 +215,19 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 
 	<T> List<T> wrapper(List<T> jpaList) {
 		return new ArrayList<T>(jpaList);
+	}
+
+	@Override
+	public AdProcessModel getADProcessModel(long processId) {
+		AdProcessModel processModel = null;
+		try {
+			EntityManager em = getEntityManager();
+			TypedQuery<AdProcess> query = em.createNamedQuery("queryProcessWithParamsByProcessId", AdProcess.class);
+			query.setParameter("adProcessId", processId);
+			processModel = new AdProcessModel(query.getSingleResult());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return processModel;
 	}
 }

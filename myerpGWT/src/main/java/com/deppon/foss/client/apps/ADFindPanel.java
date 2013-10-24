@@ -6,11 +6,11 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.Window;
 
-public class FindPanel implements IsWidget {
+public class ADFindPanel implements IsWidget {
 
 	private static FindPanelUiBinder	uiBinder	= GWT.create(FindPanelUiBinder.class);
 
-	interface FindPanelUiBinder extends UiBinder<Widget, FindPanel> {
+	interface FindPanelUiBinder extends UiBinder<Widget, ADFindPanel> {
 	}
 
 	private Widget	widget	= null;

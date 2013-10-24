@@ -41,7 +41,7 @@ public class AdTabModel implements Serializable {
 		readonlylogic = tabEntity.getReadonlylogic();
 		tablename = tabEntity.getTablename();
 	}
-	
+
 	public static List<AdTabModel> from(List<AdTabV> tabList) {
 		int size = null == tabList ? 0 : tabList.size();
 		List<AdTabModel> resultList = new ArrayList<AdTabModel>(size);

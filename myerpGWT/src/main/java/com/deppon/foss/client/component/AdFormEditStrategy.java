@@ -3,9 +3,8 @@ package com.deppon.foss.client.component;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.deppon.foss.client.model.AdFieldModel;
 import com.deppon.foss.client.model.AdModelData;
-import com.deppon.foss.client.model.AdTabModel;
+import com.deppon.foss.client.model.IAdFormField;
 import com.sencha.gxt.data.shared.Converter;
 import com.sencha.gxt.widget.core.client.form.Field;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -14,20 +13,20 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 
-public class AdTabEditStrategy {
-	private AdTabModel					tabModel;
-	private List<AdFieldEditStrategy>	fieldStrategies;
+public class AdFormEditStrategy {
+	private List<? extends IAdFormField>	fieldList;
+	private List<AdFieldEditStrategy>		fieldStrategies;
 
-	public AdTabEditStrategy(AdTabModel tabModel) {
+	public AdFormEditStrategy(List<? extends IAdFormField> fieldList) {
 		super();
-		this.tabModel = tabModel;
+		this.fieldList = fieldList;
 		this.init();
 	}
 
 	private void init() {
-		int size = tabModel.getFieldList().size();
+		int size = fieldList.size();
 		fieldStrategies = new ArrayList<AdFieldEditStrategy>(size);
-		for (AdFieldModel field : tabModel.getFieldList()) {
+		for (IAdFormField field : fieldList) {
 			if (field.getIsdisplayed() || field.getIskey()) {
 				AdFieldEditStrategy fieldStrategy = new AdFieldEditStrategy(field);
 				fieldStrategies.add(fieldStrategy);

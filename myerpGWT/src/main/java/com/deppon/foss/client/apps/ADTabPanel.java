@@ -5,7 +5,7 @@ import java.util.List;
 import com.deppon.foss.client.component.AdModelDriver;
 import com.deppon.foss.client.component.AdModelEditor;
 import com.deppon.foss.client.component.AdModelReader;
-import com.deppon.foss.client.component.AdTabEditStrategy;
+import com.deppon.foss.client.component.AdFormEditStrategy;
 import com.deppon.foss.client.model.AdJSONData;
 import com.deppon.foss.client.model.AdLoadConfig;
 import com.deppon.foss.client.model.AdModelData;
@@ -64,7 +64,7 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 	private Widget												widget;
 	private ColumnModel<AdModelData>							cm;
 	private ListStore<AdModelData>								store;
-	private AdTabEditStrategy									tabStrategy;
+	private AdFormEditStrategy									tabStrategy;
 	private GridEditing<AdModelData>							gridEditing;
 	private AdModelDriver										adModelDriver;
 	private AdModelKeyProvider									keyProvider;
@@ -78,7 +78,7 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 	CardLayoutContainer											layoutContainer;
 
 	public ADTabPanel(AdWindowModel windowModel, AdTabModel tabModel, CWindowToolBar toolBar) {
-		this.tabStrategy = new AdTabEditStrategy(tabModel);
+		this.tabStrategy = new AdFormEditStrategy(tabModel.getFieldList());
 		this.windowModel = windowModel;
 		this.tabModel = tabModel;
 		this.toolBar = toolBar;

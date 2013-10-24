@@ -23,11 +23,19 @@ public class ADReportViewer implements IsWidget, ReportToolListener {
 	Frame			window;
 
 	private Widget	widget	= null;
-	private Long	iProcessId;
+	private Long	processId;
+	
+	public ADReportViewer() {
+		
+	}
 
 	public ADReportViewer(Long iProcessId) {
 		super();
-		this.iProcessId = iProcessId;
+		this.processId = iProcessId;
+	}
+
+	public Long getProcessId() {
+		return processId;
 	}
 
 	@Override

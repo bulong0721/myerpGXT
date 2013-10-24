@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.deppon.foss.client.model.AdFieldModel;
 import com.deppon.foss.client.model.AdModelData;
 import com.deppon.foss.client.model.AdModelData.AdModelValueProvider;
+import com.deppon.foss.client.model.IAdFormField;
 import com.deppon.foss.client.service.AdempiereService;
 import com.deppon.foss.client.service.AdempiereServiceAsync;
 import com.deppon.foss.client.util.CommonUtil;
@@ -41,7 +41,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class AdFieldEditStrategy {
-	private AdFieldModel					field;
+	private IAdFormField					field;
 	private ColumnConfig<AdModelData, ?>	columnCfg;
 	private Cell<?>							columnCell;
 	private Field<?>						gridEditor;
@@ -51,7 +51,7 @@ public class AdFieldEditStrategy {
 	private Converter						converter;
 	private DisplayType						fieldType;
 
-	public AdFieldEditStrategy(AdFieldModel field) {
+	public AdFieldEditStrategy(IAdFormField field) {
 		this.field = field;
 		this.init();
 	}
@@ -241,7 +241,7 @@ public class AdFieldEditStrategy {
 		}
 	}
 
-	public AdFieldModel getField() {
+	public IAdFormField getField() {
 		return field;
 	}
 

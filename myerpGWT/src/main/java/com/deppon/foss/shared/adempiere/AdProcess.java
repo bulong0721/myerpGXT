@@ -1,21 +1,21 @@
 package com.deppon.foss.shared.adempiere;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.deppon.foss.shared.AdEntityBase;
-
 /**
- * The persistent class for the ad_process database table.
+ * The persistent class for the AD_PROCESS database table.
  * 
  */
 @Entity
-@Table(name = "ad_process")
-public class AdProcess extends AdEntityBase implements Serializable {
+@Table(name = "AD_PROCESS")
+public class AdProcess extends com.deppon.foss.shared.AdEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				adProcessId;
 	private String				accesslevel;
@@ -47,6 +47,7 @@ public class AdProcess extends AdEntityBase implements Serializable {
 	private Long				updatedby;
 	private String				value;
 	private String				workflowvalue;
+	private List<AdProcessPara>	adProcessParas;
 
 	public AdProcess() {
 	}
@@ -171,6 +172,7 @@ public class AdProcess extends AdEntityBase implements Serializable {
 		this.entitytype = entitytype;
 	}
 
+	@Column(name = "\"HELP\"")
 	public String getHelp() {
 		return this.help;
 	}
@@ -285,6 +287,7 @@ public class AdProcess extends AdEntityBase implements Serializable {
 		this.updatedby = updatedby;
 	}
 
+	@Column(name = "\"VALUE\"")
 	public String getValue() {
 		return this.value;
 	}
@@ -299,6 +302,30 @@ public class AdProcess extends AdEntityBase implements Serializable {
 
 	public void setWorkflowvalue(String workflowvalue) {
 		this.workflowvalue = workflowvalue;
+	}
+
+	// bi-directional many-to-one association to AdProcessPara
+	@OneToMany(mappedBy = "adProcess")
+	public List<AdProcessPara> getAdProcessParas() {
+		return this.adProcessParas;
+	}
+
+	public void setAdProcessParas(List<AdProcessPara> adProcessParas) {
+		this.adProcessParas = adProcessParas;
+	}
+
+	public AdProcessPara addAdProcessPara(AdProcessPara adProcessPara) {
+		getAdProcessParas().add(adProcessPara);
+		adProcessPara.setAdProcess(this);
+
+		return adProcessPara;
+	}
+
+	public AdProcessPara removeAdProcessPara(AdProcessPara adProcessPara) {
+		getAdProcessParas().remove(adProcessPara);
+		adProcessPara.setAdProcess(null);
+
+		return adProcessPara;
 	}
 
 }

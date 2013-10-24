@@ -39,6 +39,7 @@
 		<class>com.deppon.foss.shared.business.MRmaline</class>
 		<class>com.deppon.foss.shared.business.MRmatype</class>
 		<class>com.deppon.foss.shared.adempiere.AdClient</class>
+		<class>com.deppon.foss.shared.adempiere.AdProcessPara</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/adempiere" />
 			<property name="javax.persistence.jdbc.user" value="adempiere" />

@@ -54,7 +54,7 @@ public class AdModelData implements Serializable {
 
 		public AdModelKeyProvider(AdTabModel tabModel) {
 			keyFields = new ArrayList<String>();
-			for (AdFieldModel field : tabModel.getFieldList()) {
+			for (IAdFormField field : tabModel.getFieldList()) {
 				if (field.getIskey()) {
 					fieldType = field.getFieldType();
 					String propertyName = StringUtil.toCamelStyle(field.getColumnname());
