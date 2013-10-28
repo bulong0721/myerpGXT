@@ -10,6 +10,16 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.adempiere.model.common.AdModelKey;
+import org.adempiere.model.common.LookupValue;
+import org.adempiere.model.core.ADUserContext;
+import org.adempiere.model.core.AdFieldV;
+import org.adempiere.model.core.AdProcess;
+import org.adempiere.model.core.AdTab;
+import org.adempiere.model.core.AdTabV;
+import org.adempiere.model.core.AdTreenodemm;
+import org.adempiere.model.core.DisplayType;
+import org.adempiere.model.core.RefTableCriteria;
 import org.adempiere.web.client.model.AdFieldModel;
 import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
@@ -19,16 +29,6 @@ import org.adempiere.web.client.model.AdTabModel;
 import org.adempiere.web.client.model.AdWindowModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.util.StringUtil;
-import org.adempiere.web.shared.AdModelKey;
-import org.adempiere.web.shared.LookupValue;
-import org.adempiere.web.shared.adempiere.ADUserContext;
-import org.adempiere.web.shared.adempiere.AdFieldV;
-import org.adempiere.web.shared.adempiere.AdProcess;
-import org.adempiere.web.shared.adempiere.AdTab;
-import org.adempiere.web.shared.adempiere.AdTabV;
-import org.adempiere.web.shared.adempiere.AdTreenodemm;
-import org.adempiere.web.shared.adempiere.DisplayType;
-import org.adempiere.web.shared.adempiere.RefTableCriteria;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -137,9 +137,9 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	public static String getEntityClass(String tableName) {
 		StringBuffer buffer = new StringBuffer();
 		if (tableName.toUpperCase().startsWith("AD_")) {
-			buffer.append("org.adempiere.web.shared.adempiere.");
+			buffer.append("org.adempiere.model.core.");
 		} else {
-			buffer.append("org.adempiere.web.shared.business.");
+			buffer.append("org.adempiere.model.business.");
 		}
 		buffer.append(StringUtil.convertToPascal(tableName));
 		return buffer.toString();

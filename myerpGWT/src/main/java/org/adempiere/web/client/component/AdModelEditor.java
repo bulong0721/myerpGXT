@@ -3,10 +3,10 @@ package org.adempiere.web.client.component;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adempiere.model.core.DisplayType;
 import org.adempiere.web.client.model.AdModelData;
 import org.adempiere.web.client.model.IAdFormField;
 import org.adempiere.web.client.util.StringUtil;
-import org.adempiere.web.shared.adempiere.DisplayType;
 
 import com.google.gwt.editor.client.CompositeEditor;
 import com.google.gwt.editor.client.EditorDelegate;

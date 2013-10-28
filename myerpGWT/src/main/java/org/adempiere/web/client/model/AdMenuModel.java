@@ -2,9 +2,9 @@ package org.adempiere.web.client.model;
 
 import java.io.Serializable;
 
+import org.adempiere.model.core.AdTreenodemm;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
-import org.adempiere.web.shared.adempiere.AdTreenodemm;
 
 import com.google.gwt.resources.client.ImageResource;
 import com.sencha.gxt.core.client.ValueProvider;

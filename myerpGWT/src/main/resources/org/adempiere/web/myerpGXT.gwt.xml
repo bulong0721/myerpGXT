@@ -8,6 +8,7 @@
 	<inherits name="com.sencha.gxt.ui.GXT" />
 	<inherits name="com.sencha.gxt.theme.gray.Gray" />
 	<inherits name="com.mvp4g.Mvp4gModule" />
+	<inherits name="org.adempiere.model.Model" />
 	<entry-point class='com.mvp4g.client.Mvp4gEntryPoint' />
 	<source path="client" />
 	<source path="shared" />

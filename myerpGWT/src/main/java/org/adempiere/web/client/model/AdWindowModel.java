@@ -3,7 +3,7 @@ package org.adempiere.web.client.model;
 import java.io.Serializable;
 import java.util.List;
 
-import org.adempiere.web.shared.adempiere.AdWindow;
+import org.adempiere.model.core.AdWindow;
 
 
 public class AdWindowModel implements Serializable {

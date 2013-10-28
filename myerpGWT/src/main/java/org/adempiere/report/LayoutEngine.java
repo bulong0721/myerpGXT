@@ -13,10 +13,10 @@ import javax.print.Doc;
 import javax.print.DocFlavor;
 import javax.print.attribute.DocAttributeSet;
 
-import org.adempiere.web.shared.adempiere.AdPrintcolor;
-import org.adempiere.web.shared.adempiere.AdPrintfont;
-import org.adempiere.web.shared.adempiere.AdPrintformat;
-import org.adempiere.web.shared.adempiere.AdPrintpaper;
+import org.adempiere.model.core.AdPrintcolor;
+import org.adempiere.model.core.AdPrintfont;
+import org.adempiere.model.core.AdPrintformat;
+import org.adempiere.model.core.AdPrintpaper;
 
 
 public class LayoutEngine implements Pageable, Printable, Doc {

@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adempiere.model.core.AdTabV;
 import org.adempiere.web.client.util.StringUtil;
-import org.adempiere.web.shared.adempiere.AdTabV;
 
 
 public class AdTabModel implements Serializable {

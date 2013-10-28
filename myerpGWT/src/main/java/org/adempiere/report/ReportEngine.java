@@ -7,7 +7,8 @@ import java.io.Writer;
 import javax.print.event.PrintServiceAttributeEvent;
 import javax.print.event.PrintServiceAttributeListener;
 
-import org.adempiere.web.shared.adempiere.AdPrintformat;
+import org.adempiere.model.core.AdPrintformat;
+import org.adempiere.pdf.Document;
 
 
 public class ReportEngine implements PrintServiceAttributeListener {

@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adempiere.model.core.AdFieldV;
+import org.adempiere.model.core.DisplayType;
 import org.adempiere.web.client.util.StringUtil;
-import org.adempiere.web.shared.adempiere.AdFieldV;
-import org.adempiere.web.shared.adempiere.DisplayType;
 
 
 public class AdFieldModel implements Serializable, IAdFormField {

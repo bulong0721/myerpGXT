@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.web.shared.adempiere.AdProcessPara;
-import org.adempiere.web.shared.adempiere.DisplayType;
+import org.adempiere.model.core.AdProcessPara;
+import org.adempiere.model.core.DisplayType;
 
 
 public class AdProcessParameter implements Serializable, IAdFormField {

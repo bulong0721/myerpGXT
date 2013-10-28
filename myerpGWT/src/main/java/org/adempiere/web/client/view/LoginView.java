@@ -1,5 +1,6 @@
 package org.adempiere.web.client.view;
 
+import org.adempiere.model.common.LookupValue;
 import org.adempiere.web.client.MyerpEventBus;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.presenter.interfaces.ILoginView;
@@ -9,7 +10,6 @@ import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.util.CommonUtil;
 import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.ConfirmToolBar;
-import org.adempiere.web.shared.LookupValue;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

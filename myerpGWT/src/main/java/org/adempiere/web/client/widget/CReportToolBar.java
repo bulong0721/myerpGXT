@@ -3,10 +3,10 @@ package org.adempiere.web.client.widget;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adempiere.model.common.LookupValue;
 import org.adempiere.web.client.event.ReportToolListener;
 import org.adempiere.web.client.util.CommonUtil;
 import org.adempiere.web.client.util.WidgetUtil;
-import org.adempiere.web.shared.LookupValue;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

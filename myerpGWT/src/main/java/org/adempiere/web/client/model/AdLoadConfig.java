@@ -1,6 +1,6 @@
 package org.adempiere.web.client.model;
 
-import org.adempiere.web.shared.AdModelKey;
+import org.adempiere.model.common.AdModelKey;
 
 import com.sencha.gxt.data.shared.loader.PagingLoadConfigBean;
 

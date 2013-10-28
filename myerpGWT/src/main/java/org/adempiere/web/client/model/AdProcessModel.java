@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adempiere.model.core.AdProcess;
 import org.adempiere.web.client.util.StringUtil;
-import org.adempiere.web.shared.adempiere.AdProcess;
 
 
 public class AdProcessModel implements Serializable {

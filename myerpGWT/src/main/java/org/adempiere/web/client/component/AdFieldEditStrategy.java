@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.adempiere.model.common.LookupValue;
+import org.adempiere.model.core.DisplayType;
 import org.adempiere.web.client.model.AdModelData;
 import org.adempiere.web.client.model.AdModelData.AdModelValueProvider;
 import org.adempiere.web.client.model.IAdFormField;
@@ -12,8 +14,6 @@ import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
 import org.adempiere.web.client.util.StringUtil;
-import org.adempiere.web.shared.LookupValue;
-import org.adempiere.web.shared.adempiere.DisplayType;
 
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.Cell;

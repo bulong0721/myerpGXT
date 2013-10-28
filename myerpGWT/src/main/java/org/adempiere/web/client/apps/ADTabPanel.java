@@ -2,6 +2,7 @@ package org.adempiere.web.client.apps;
 
 import java.util.List;
 
+import org.adempiere.model.common.AdModelKey;
 import org.adempiere.web.client.component.AdFormEditStrategy;
 import org.adempiere.web.client.component.AdModelDriver;
 import org.adempiere.web.client.component.AdModelEditor;
@@ -20,7 +21,6 @@ import org.adempiere.web.client.widget.CWindowToolBar.TabStatus;
 import org.adempiere.web.client.widget.HWindow;
 import org.adempiere.web.client.widget.HWindow.History;
 import org.adempiere.web.client.widget.HWindow.HistoryLoader;
-import org.adempiere.web.shared.AdModelKey;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
