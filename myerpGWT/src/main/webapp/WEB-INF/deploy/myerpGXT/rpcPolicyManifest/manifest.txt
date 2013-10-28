@@ -1,3 +1,3 @@
 # Module myerpGXT
 # RPC service class, partial path of RPC policy file
-com.deppon.foss.client.service.AdempiereService, F735515C90E42F3EAF35A4BFD156331D.gwt.rpc
+org.adempiere.web.client.service.AdempiereService, 16B8A4AA1E25901EDE3A1F350BA78EE2.gwt.rpc

@@ -11,7 +11,7 @@
 	<!--
 		<servlet>
 		<servlet-name>jpaDataSourceServlet</servlet-name>
-		<servlet-class>com.deppon.foss.server.JpaRPCServiceImpl
+		<servlet-class>org.adempiere.web.server.JpaRPCServiceImpl
 		</servlet-class>
 		</servlet>
 		<servlet-mapping>
@@ -21,7 +21,7 @@
 	-->
 	<servlet>
 		<servlet-name>adempiereServlet</servlet-name>
-		<servlet-class>com.deppon.foss.server.AdempiereServiceImpl
+		<servlet-class>org.adempiere.web.server.AdempiereServiceImpl
 		</servlet-class>
 	</servlet>
 	<servlet-mapping>

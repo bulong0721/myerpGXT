@@ -20,10 +20,10 @@
 		<query>SELECT m FROM AdTreenodemm m JOIN FETCH m.adMenu</query>
 	</named-query>
 	<named-query name="queryRefList">
-		<query>SELECT NEW com.deppon.foss.shared.LookupValue(r.name, r.value) FROM AdRefList r WHERE r.adReference.adReferenceId = :adReferenceId</query>
+		<query>SELECT NEW org.adempiere.web.shared.LookupValue(r.name, r.value) FROM AdRefList r WHERE r.adReference.adReferenceId = :adReferenceId</query>
 	</named-query>
 	<named-query name="queryRefTable">
-		<query>SELECT NEW com.deppon.foss.shared.adempiere.RefTableCriteria(r.adTable.tablename, r.keyColumn.columnname, r.displayColumn.columnname, r.isvaluedisplayed, r.orderbyclause, r.whereclause) FROM AdRefTable r WHERE r.adReference.adReferenceId = :adReferenceId</query>
+		<query>SELECT NEW org.adempiere.web.shared.adempiere.RefTableCriteria(r.adTable.tablename, r.keyColumn.columnname, r.displayColumn.columnname, r.isvaluedisplayed, r.orderbyclause, r.whereclause) FROM AdRefTable r WHERE r.adReference.adReferenceId = :adReferenceId</query>
 	</named-query>
 	<named-query name="queryProcessWithParamsByProcessId">
 		<query>SELECT p FROM AdProcess p JOIN FETCH p.adProcessParas WHERE p.adProcessId = :adProcessId</query>

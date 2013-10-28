@@ -1,2 +1,0 @@
-serviceClass: com.deppon.foss.client.service.AdempiereService
-path: F735515C90E42F3EAF35A4BFD156331D.gwt.rpc

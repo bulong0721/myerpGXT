@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module>
-  <!-- Inherit our applications main module.                      -->
-  <inherits name='com.deppon.foss.myerp' />
-
-  <!-- Specify the path to any remote services.                   -->
-  <servlet path="/myerp/greet" class="com.deppon.foss.server.GreetingServiceImpl" />
-
-</module>
