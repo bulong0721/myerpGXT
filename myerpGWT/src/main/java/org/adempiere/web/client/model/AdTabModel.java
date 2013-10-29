@@ -1,12 +1,7 @@
 package org.adempiere.web.client.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
-import org.adempiere.model.core.AdTabV;
-import org.adempiere.web.client.util.StringUtil;
-
 
 public class AdTabModel implements Serializable {
 	private static final long	serialVersionUID	= 1L;
@@ -24,35 +19,6 @@ public class AdTabModel implements Serializable {
 	private String				name;
 	private String				readonlylogic;
 	private String				tablename;
-
-	public AdTabModel() {
-	}
-
-	public AdTabModel(AdTabV tabEntity) {
-		adTabId = tabEntity.getAdTabId();
-		adColumnId = tabEntity.getAdColumnId();
-		adTableId = tabEntity.getAdTableId();
-		parentColumnId = tabEntity.getParentColumnId();
-		seqno = tabEntity.getSeqno();
-		tablevel = tabEntity.getTablevel();
-		isinfotab = StringUtil.isYes(tabEntity.getIsinfotab());
-		isreadonly = StringUtil.isYes(tabEntity.getIsreadonly());
-		issinglerow = StringUtil.isYes(tabEntity.getIssinglerow());
-		name = tabEntity.getName();
-		readonlylogic = tabEntity.getReadonlylogic();
-		tablename = tabEntity.getTablename();
-	}
-
-	public static List<AdTabModel> from(List<AdTabV> tabList) {
-		int size = null == tabList ? 0 : tabList.size();
-		List<AdTabModel> resultList = new ArrayList<AdTabModel>(size);
-		if (null != tabList) {
-			for (AdTabV tabEntity : tabList) {
-				resultList.add(new AdTabModel(tabEntity));
-			}
-		}
-		return resultList;
-	}
 
 	public List<AdFieldModel> getFieldList() {
 		return fieldList;

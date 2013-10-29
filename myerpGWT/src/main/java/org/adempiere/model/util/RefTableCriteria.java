@@ -1,4 +1,4 @@
-package org.adempiere.model.core;
+package org.adempiere.model.util;
 
 import java.io.Serializable;
 

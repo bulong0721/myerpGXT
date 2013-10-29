@@ -23,7 +23,7 @@
 		<query>SELECT NEW org.adempiere.model.common.LookupValue(r.name, r.value) FROM AdRefList r WHERE r.adReference.adReferenceId = :adReferenceId</query>
 	</named-query>
 	<named-query name="queryRefTable">
-		<query>SELECT NEW org.adempiere.model.core.RefTableCriteria(r.adTable.tablename, r.keyColumn.columnname, r.displayColumn.columnname, r.isvaluedisplayed, r.orderbyclause, r.whereclause) FROM AdRefTable r WHERE r.adReference.adReferenceId = :adReferenceId</query>
+		<query>SELECT NEW org.adempiere.model.util.RefTableCriteria(r.adTable.tablename, r.keyColumn.columnname, r.displayColumn.columnname, r.isvaluedisplayed, r.orderbyclause, r.whereclause) FROM AdRefTable r WHERE r.adReference.adReferenceId = :adReferenceId</query>
 	</named-query>
 	<named-query name="queryProcessWithParamsByProcessId">
 		<query>SELECT p FROM AdProcess p JOIN FETCH p.adProcessParas WHERE p.adProcessId = :adProcessId</query>

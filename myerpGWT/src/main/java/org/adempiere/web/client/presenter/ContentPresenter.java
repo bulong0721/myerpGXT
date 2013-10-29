@@ -1,5 +1,6 @@
 package org.adempiere.web.client.presenter;
 
+import org.adempiere.model.common.MenuAction;
 import org.adempiere.web.client.MyerpEventBus;
 import org.adempiere.web.client.apps.ADProcessPanel;
 import org.adempiere.web.client.apps.ADReportViewer;
@@ -7,7 +8,6 @@ import org.adempiere.web.client.apps.ADWindowPanel;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.model.AdMenuModel;
 import org.adempiere.web.client.model.AdProcessModel;
-import org.adempiere.web.client.model.MenuAction;
 import org.adempiere.web.client.presenter.interfaces.IContentView;
 import org.adempiere.web.client.presenter.interfaces.IContentView.IContentPresenter;
 import org.adempiere.web.client.resources.Images;

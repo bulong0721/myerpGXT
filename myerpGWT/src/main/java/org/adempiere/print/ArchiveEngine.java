@@ -1,4 +1,4 @@
-package org.adempiere.report;
+package org.adempiere.print;
 
 public class ArchiveEngine {
 

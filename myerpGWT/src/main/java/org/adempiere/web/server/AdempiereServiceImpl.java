@@ -10,16 +10,16 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.adempiere.model.common.ADUserContext;
 import org.adempiere.model.common.AdModelKey;
+import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.common.LookupValue;
-import org.adempiere.model.core.ADUserContext;
 import org.adempiere.model.core.AdFieldV;
 import org.adempiere.model.core.AdProcess;
-import org.adempiere.model.core.AdTab;
 import org.adempiere.model.core.AdTabV;
 import org.adempiere.model.core.AdTreenodemm;
-import org.adempiere.model.core.DisplayType;
-import org.adempiere.model.core.RefTableCriteria;
+import org.adempiere.model.util.DTOUtil;
+import org.adempiere.model.util.RefTableCriteria;
 import org.adempiere.web.client.model.AdFieldModel;
 import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
@@ -44,7 +44,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			List<AdTreenodemm> menuList = query.getResultList();
 			List<AdMenuModel> resultList = new ArrayList<AdMenuModel>(menuList.size());
 			for (AdTreenodemm nodeMM : menuList) {
-				resultList.add(new AdMenuModel(nodeMM));
+				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
 			return resultList;
 		} catch (Exception e) {
@@ -64,11 +64,11 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		return true;
 	}
 
-	@Override
-	public Boolean addNewData(AdTab tabModel) {
-		// TODO Auto-generated method stub
-		return true;
-	}
+	// @Override
+	// public Boolean addNewData(AdTab tabModel) {
+	// // TODO Auto-generated method stub
+	// return true;
+	// }
 
 	@Override
 	public ADUserContext getADUserContext() {
@@ -90,12 +90,12 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			windowModel.setAdWindowId(windowId);
 			TypedQuery<AdTabV> tabQuery = em.createNamedQuery("queryTabvsByWindowId", AdTabV.class);
 			tabQuery.setParameter("adWindowId", windowId);
-			List<AdTabModel> tabList = AdTabModel.from(tabQuery.getResultList());
+			List<AdTabModel> tabList = DTOUtil.toTabModels(tabQuery.getResultList());
 			windowModel.setTabList(tabList);
 			for (AdTabModel tabModel : tabList) {
 				TypedQuery<AdFieldV> fieldQuery = em.createNamedQuery("queryFieldvsByTabId", AdFieldV.class);
 				fieldQuery.setParameter("adTabId", tabModel.getAdTabId());
-				List<AdFieldModel> fieldList = AdFieldModel.from(fieldQuery.getResultList());
+				List<AdFieldModel> fieldList = DTOUtil.toFieldModels(fieldQuery.getResultList());
 				tabModel.setFieldList(fieldList);
 			}
 		} catch (Exception e) {
@@ -225,7 +225,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			EntityManager em = getEntityManager();
 			TypedQuery<AdProcess> query = em.createNamedQuery("queryProcessWithParamsByProcessId", AdProcess.class);
 			query.setParameter("adProcessId", processId);
-			processModel = new AdProcessModel(query.getSingleResult());
+			processModel = DTOUtil.toProcessModel(query.getSingleResult());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

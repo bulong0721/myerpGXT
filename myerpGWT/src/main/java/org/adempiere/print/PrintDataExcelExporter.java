@@ -1,14 +1,14 @@
-package org.adempiere.report;
+package org.adempiere.print;
 
 import java.sql.Timestamp;
 import java.util.Date;
 
 import org.adempiere.common.Language;
 import org.adempiere.impexp.AbstractExcelExporter;
+import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.core.AdPrintformat;
 import org.adempiere.model.core.AdPrintformatitem;
 import org.adempiere.model.core.AdPrintpaper;
-import org.adempiere.model.core.DisplayType;
 import org.adempiere.web.client.util.StringUtil;
 import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
 import org.apache.poi.hssf.usermodel.HSSFSheet;

@@ -2,7 +2,6 @@ package org.adempiere.web.client.model;
 
 import java.io.Serializable;
 
-import org.adempiere.model.core.AdTreenodemm;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 
@@ -43,26 +42,6 @@ public class AdMenuModel implements Serializable {
 	public static final String	ACTION_Form			= "X";
 	/** Workbench = B */
 	public static final String	ACTION_Workbench	= "B";
-
-	public AdMenuModel() {
-	}
-
-	public AdMenuModel(AdTreenodemm menuNode) {
-		this.isactive = menuNode.getIsactive();
-		this.adMenuId = menuNode.getId().getNodeId();
-		this.parentId = menuNode.getParentId();
-		this.seqno = menuNode.getSeqno();
-		if (null != menuNode.getAdMenu()) {
-			this.name = menuNode.getAdMenu().getName();
-			this.adFormId = menuNode.getAdMenu().getAdFormId();
-			this.adProcessId = menuNode.getAdMenu().getAdProcessId();
-			this.adTaskId = menuNode.getAdMenu().getAdTaskId();
-			this.adWindowId = menuNode.getAdMenu().getAdWindowId();
-			this.adWorkbenchId = menuNode.getAdMenu().getAdWorkbenchId();
-			this.adWorkflowId = menuNode.getAdMenu().getAdWorkflowId();
-			this.action = menuNode.getAdMenu().getAction();
-		}
-	}
 
 	public String getName() {
 		return name;

@@ -1,7 +1,7 @@
-package org.adempiere.report;
+package org.adempiere.print;
 
 import org.adempiere.common.Language;
-import org.adempiere.model.core.DisplayType;
+import org.adempiere.model.common.DisplayType;
 
 public class PrintDataElement {
 

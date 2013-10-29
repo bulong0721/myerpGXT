@@ -1,4 +1,4 @@
-package org.adempiere.model.core;
+package org.adempiere.model.common;
 
 import java.util.HashMap;
 import java.util.Map;

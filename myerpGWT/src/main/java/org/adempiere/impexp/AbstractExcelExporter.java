@@ -10,7 +10,7 @@ import java.text.NumberFormat;
 import java.util.HashMap;
 
 import org.adempiere.common.Language;
-import org.adempiere.model.core.DisplayType;
+import org.adempiere.model.common.DisplayType;
 import org.adempiere.web.client.util.StringUtil;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;

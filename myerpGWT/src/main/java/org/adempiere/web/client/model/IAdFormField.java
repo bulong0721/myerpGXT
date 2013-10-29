@@ -1,6 +1,6 @@
 package org.adempiere.web.client.model;
 
-import org.adempiere.model.core.DisplayType;
+import org.adempiere.model.common.DisplayType;
 
 public interface IAdFormField {
 

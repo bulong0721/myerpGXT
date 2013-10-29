@@ -2,10 +2,9 @@ package org.adempiere.web.client.service;
 
 import java.util.List;
 
+import org.adempiere.model.common.ADUserContext;
 import org.adempiere.model.common.AdModelKey;
 import org.adempiere.model.common.LookupValue;
-import org.adempiere.model.core.ADUserContext;
-import org.adempiere.model.core.AdTab;
 import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
 import org.adempiere.web.client.model.AdMenuModel;
@@ -32,7 +31,7 @@ public interface AdempiereService extends RemoteService {
 
 	Boolean selectData(List<AdModelKey> keyList, String tableName);
 
-	Boolean addNewData(AdTab tabModel);
+//	Boolean addNewData(AdTab tabModel);
 
 	ADUserContext getADUserContext();
 

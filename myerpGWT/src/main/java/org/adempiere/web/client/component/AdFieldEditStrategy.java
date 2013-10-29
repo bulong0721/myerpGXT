@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.common.LookupValue;
-import org.adempiere.model.core.DisplayType;
 import org.adempiere.web.client.model.AdModelData;
 import org.adempiere.web.client.model.AdModelData.AdModelValueProvider;
 import org.adempiere.web.client.model.IAdFormField;

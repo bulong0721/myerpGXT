@@ -1,12 +1,8 @@
 package org.adempiere.web.client.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.adempiere.model.core.AdProcessPara;
-import org.adempiere.model.core.DisplayType;
-
+import org.adempiere.model.common.DisplayType;
 
 public class AdProcessParameter implements Serializable, IAdFormField {
 	private static final long	serialVersionUID	= 1L;
@@ -28,41 +24,6 @@ public class AdProcessParameter implements Serializable, IAdFormField {
 	private String				valuemax;
 	private String				valuemin;
 	private String				vformat;
-
-	public AdProcessParameter() {
-
-	}
-
-	public AdProcessParameter(AdProcessPara entity) {
-		adProcessParaId = entity.getAdProcessParaId();
-		adReferenceId = entity.getAdReferenceId();
-		adReferenceValueId = entity.getAdReferenceValueId();
-		adValRuleId = entity.getAdValRuleId();
-		columnname = entity.getColumnname();
-		defaultvalue = entity.getDefaultvalue();
-		displaylogic = entity.getDisplaylogic();
-		fieldlength = entity.getFieldlength();
-		isactive = entity.getIsactive();
-		iscentrallymaintained = entity.getIscentrallymaintained();
-		ismandatory = entity.getIsmandatory();
-		name = entity.getName();
-		readonlylogic = entity.getReadonlylogic();
-		seqno = entity.getSeqno();
-		valuemax = entity.getValuemax();
-		valuemin = entity.getValuemin();
-		vformat = entity.getVformat();
-	}
-
-	public static List<AdProcessParameter> from(List<AdProcessPara> list) {
-		int size = null == list ? 0 : list.size();
-		List<AdProcessParameter> resultList = new ArrayList<AdProcessParameter>(size);
-		if (null != list) {
-			for (AdProcessPara entity : list) {
-				resultList.add(new AdProcessParameter(entity));
-			}
-		}
-		return resultList;
-	}
 
 	public long getAdProcessParaId() {
 		return adProcessParaId;

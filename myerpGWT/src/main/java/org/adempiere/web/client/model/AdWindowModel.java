@@ -3,9 +3,6 @@ package org.adempiere.web.client.model;
 import java.io.Serializable;
 import java.util.List;
 
-import org.adempiere.model.core.AdWindow;
-
-
 public class AdWindowModel implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private List<AdTabModel>	tabList;
@@ -14,12 +11,6 @@ public class AdWindowModel implements Serializable {
 	private String				name;
 	private String				processing;
 	private String				windowtype;
-
-	public AdWindowModel() {
-	}
-
-	public AdWindowModel(AdWindow entity) {
-	}
 
 	public List<AdTabModel> getTabList() {
 		return tabList;

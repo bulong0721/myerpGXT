@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.model.common.AdModelKey;
-import org.adempiere.model.core.DisplayType;
+import org.adempiere.model.common.DisplayType;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.StringUtil;
 

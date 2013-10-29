@@ -1,13 +1,8 @@
 package org.adempiere.web.client.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.adempiere.model.core.AdFieldV;
-import org.adempiere.model.core.DisplayType;
-import org.adempiere.web.client.util.StringUtil;
-
+import org.adempiere.model.common.DisplayType;
 
 public class AdFieldModel implements Serializable, IAdFormField {
 	private static final long	serialVersionUID	= 1L;
@@ -38,59 +33,18 @@ public class AdFieldModel implements Serializable, IAdFormField {
 	private String				valuemax;
 	private String				valuemin;
 	private String				vformat;
-
 	private Long				adFieldId;
 
 	public Long getAdFieldId() {
 		return adFieldId;
 	}
 
-	public AdFieldModel() {
-	}
-
-	public AdFieldModel(AdFieldV fieldEntity) {
-		adFieldId = fieldEntity.getAdFieldId();
-		adProcessId = fieldEntity.getAdProcessId();
-		adReferenceId = fieldEntity.getAdReferenceId();
-		adReferenceValueId = fieldEntity.getAdReferenceValueId();
-		callout = fieldEntity.getCallout();
-		columnname = fieldEntity.getColumnname();
-		defaultvalue = fieldEntity.getDefaultvalue();
-		fieldgroup = fieldEntity.getFieldgroup();
-		fieldgrouptype = fieldEntity.getFieldgrouptype();
-		fieldlength = fieldEntity.getFieldlength();
-		isdisplayed = StringUtil.isYes(fieldEntity.getIsdisplayed());
-		isencryptedcolumn = StringUtil.isYes(fieldEntity.getIsencryptedcolumn());
-		isencryptedfield = StringUtil.isYes(fieldEntity.getIsencryptedfield());
-		isfieldonly = StringUtil.isYes(fieldEntity.getIsfieldonly());
-		iskey = StringUtil.isYes(fieldEntity.getIskey());
-		ismandatory = StringUtil.isYes(fieldEntity.getIsmandatory());
-		isparent = StringUtil.isYes(fieldEntity.getIsparent());
-		isreadonly = StringUtil.isYes(fieldEntity.getIsreadonly());
-		name = fieldEntity.getName();
-		readonlylogic = fieldEntity.getReadonlylogic();
-		seqno = fieldEntity.getSeqno();
-		sortno = fieldEntity.getSortno();
-		tablename = fieldEntity.getTablename();
-		validationcode = fieldEntity.getValidationcode();
-		valuemax = fieldEntity.getValuemax();
-		valuemin = fieldEntity.getValuemin();
-		vformat = fieldEntity.getVformat();
+	public void setAdFieldId(Long adFieldId) {
+		this.adFieldId = adFieldId;
 	}
 
 	public DisplayType getFieldType() {
 		return DisplayType.fromInteger(adReferenceId);
-	}
-
-	public static List<AdFieldModel> from(List<AdFieldV> fieldList) {
-		int size = null == fieldList ? 0 : fieldList.size();
-		List<AdFieldModel> resultList = new ArrayList<AdFieldModel>(size);
-		if (null != fieldList) {
-			for (AdFieldV fieldEntity : fieldList) {
-				resultList.add(new AdFieldModel(fieldEntity));
-			}
-		}
-		return resultList;
 	}
 
 	public Long getAdProcessId() {

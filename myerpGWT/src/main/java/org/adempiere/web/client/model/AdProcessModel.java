@@ -1,12 +1,7 @@
 package org.adempiere.web.client.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
-import org.adempiere.model.core.AdProcess;
-import org.adempiere.web.client.util.StringUtil;
-
 
 public class AdProcessModel implements Serializable {
 	private static final long			serialVersionUID	= 1L;
@@ -28,44 +23,6 @@ public class AdProcessModel implements Serializable {
 	private String						value;
 	private String						workflowvalue;
 	private List<AdProcessParameter>	paramList;
-
-	public AdProcessModel() {
-
-	}
-
-	public AdProcessModel(AdProcess entity) {
-		adProcessId = entity.getAdProcessId();
-		adFormId = entity.getAdFormId();
-		adPrintformatId = entity.getAdPrintformatId();
-		adReportviewId = entity.getAdReportviewId();
-		adWorkflowId = entity.getAdWorkflowId();
-		classname = entity.getClassname();
-		copyfromprocess = entity.getCopyfromprocess();
-		isactive = StringUtil.isYes(entity.getIsactive());
-		isdirectprint = StringUtil.isYes(entity.getIsdirectprint());
-		isreport = StringUtil.isYes(entity.getIsreport());
-		isserverprocess = StringUtil.isYes(entity.getIsserverprocess());
-		jasperreport = entity.getJasperreport();
-		name = entity.getName();
-		description = entity.getDescription();
-		procedurename = entity.getProcedurename();
-		value = entity.getValue();
-		workflowvalue = entity.getWorkflowvalue();
-		if (null != entity.getAdProcessParas()) {
-			paramList = AdProcessParameter.from(entity.getAdProcessParas());
-		}
-	}
-
-	public static List<AdProcessModel> from(List<AdProcess> list) {
-		int size = null == list ? 0 : list.size();
-		List<AdProcessModel> resultList = new ArrayList<AdProcessModel>(size);
-		if (null != list) {
-			for (AdProcess entity : list) {
-				resultList.add(new AdProcessModel(entity));
-			}
-		}
-		return resultList;
-	}
 
 	public long getAdProcessId() {
 		return adProcessId;

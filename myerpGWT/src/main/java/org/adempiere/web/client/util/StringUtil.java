@@ -92,4 +92,29 @@ public class StringUtil {
 		return sb.toString();
 	}
 
+	public static String removeCRLF(String in) {
+		char[] inArray = in.toCharArray();
+		StringBuffer out = new StringBuffer(inArray.length);
+		for (int i = 0; i < inArray.length; i++) {
+			char c = inArray[i];
+			if (c == '\n' || c == '\r')
+				;
+			else
+				out.append(c);
+		}
+		return out.toString();
+	}
+
+	public static int getCount(String string, char countChar) {
+		if (string == null || string.length() == 0)
+			return 0;
+		int counter = 0;
+		char[] array = string.toCharArray();
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == countChar)
+				counter++;
+		}
+		return counter;
+	} // getCount
+
 }
