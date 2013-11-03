@@ -1,4 +1,4 @@
-package org.adempiere.model.util;
+package org.adempiere.model.common;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.Properties;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-public class MQuery implements Serializable {
+public class QueryCondition implements Serializable {
 
 	/**
 	 * Get Zoom Column Name. Converts Synonyms like SalesRep_ID to AD_User_ID
@@ -65,8 +65,8 @@ public class MQuery implements Serializable {
 	 * @param value value
 	 * @return quary
 	 */
-	public static MQuery getEqualQuery(String columnName, Object value) {
-		MQuery query = new MQuery();
+	public static QueryCondition getEqualQuery(String columnName, Object value) {
+		QueryCondition query = new QueryCondition();
 		query.addRestriction(columnName, EQUAL, value);
 		query.setRecordCount(1); // guess
 		return query;
@@ -79,8 +79,8 @@ public class MQuery implements Serializable {
 	 * @param value value
 	 * @return query
 	 */
-	public static MQuery getEqualQuery(String columnName, int value) {
-		MQuery query = new MQuery();
+	public static QueryCondition getEqualQuery(String columnName, int value) {
+		QueryCondition query = new QueryCondition();
 		if (columnName.endsWith("_ID"))
 			query.setTableName(columnName.substring(0, columnName.length() - 3));
 		query.addRestriction(columnName, EQUAL, new Integer(value));
@@ -95,8 +95,8 @@ public class MQuery implements Serializable {
 	 * @param newRecord new Record Indicator (2=3)
 	 * @return query
 	 */
-	public static MQuery getNoRecordQuery(String tableName, boolean newRecord) {
-		MQuery query = new MQuery(tableName);
+	public static QueryCondition getNoRecordQuery(String tableName, boolean newRecord) {
+		QueryCondition query = new QueryCondition(tableName);
 		if (newRecord)
 			query.addRestriction(NEWRECORD);
 		else
@@ -108,34 +108,32 @@ public class MQuery implements Serializable {
 	/**************************************************************************
 	 * Constructor w/o table name
 	 */
-	public MQuery() {
-	} // MQuery
+	public QueryCondition() {
+	} // QueryCondition
 
 	/**
 	 * Constructor
 	 * 
 	 * @param TableName Table Name
 	 */
-	public MQuery(String TableName) {
+	public QueryCondition(String TableName) {
 		m_TableName = TableName;
-	} // MQuery
+	} // QueryCondition
 
 	/**
 	 * Constructor get TableNAme from Table
 	 * 
 	 * @param AD_Table_ID Table_ID
 	 */
-	public MQuery(int AD_Table_ID) { // Use Client Context as r/o
+	public QueryCondition(int AD_Table_ID) { // Use Client Context as r/o
 		// m_TableName = MTable.getTableName(Env.getCtx(), AD_Table_ID);
-	} // MQuery
+	} // QueryCondition
 
 	/** Serialization Info **/
 	private static final long		serialVersionUID	= 4883859385509199306L;
 
 	/** Table Name */
 	private String					m_TableName			= "";
-	/** PInstance */
-	private int						m_AD_PInstance_ID	= 0;
 	/** List of Restrictions */
 	private ArrayList<Restriction>	m_list				= new ArrayList<Restriction>();
 	/** Record Count */
@@ -570,20 +568,12 @@ public class MQuery implements Serializable {
 	 * 
 	 * @return Query
 	 */
-	public MQuery deepCopy() {
-		MQuery newQuery = new MQuery(m_TableName);
+	public QueryCondition deepCopy() {
+		QueryCondition newQuery = new QueryCondition(m_TableName);
 		for (int i = 0; i < m_list.size(); i++)
 			newQuery.addRestriction((Restriction) m_list.get(i));
 		return newQuery;
 	} // clone
-
-	/**
-	 * @return AD_PInstance_ID; this value is set if you created this query by
-	 *         using {@link #get(Properties, int, String)}
-	 */
-	public int getAD_PInstance_ID() {
-		return m_AD_PInstance_ID;
-	}
 
 	/**
 	 * 
@@ -632,7 +622,7 @@ public class MQuery implements Serializable {
 	public Object getZoomValue() {
 		return m_zoomValue;
 	}
-} // MQuery
+} // QueryCondition
 
 /*****************************************************************************
  * Query Restriction
@@ -699,7 +689,7 @@ class Restriction implements Serializable {
 	 */
 	Restriction(String columnName, Object code, Object code_to, String infoName, String infoDisplay,
 			String infoDisplay_to, boolean andCondition, int depth) {
-		this(columnName, MQuery.BETWEEN, code, infoName, infoDisplay, andCondition, depth);
+		this(columnName, QueryCondition.BETWEEN, code, infoName, infoDisplay, andCondition, depth);
 
 		// Code_to
 		Code_to = code_to;
@@ -768,9 +758,9 @@ class Restriction implements Serializable {
 	 */
 	public String getInfoOperator() {
 		// TODO
-		// for (int i = 0; i < MQuery.OPERATORS.length; i++) {
-		// if (MQuery.OPERATORS[i].getValue().equals(Operator))
-		// return MQuery.OPERATORS[i].getName();
+		// for (int i = 0; i < QueryCondition.OPERATORS.length; i++) {
+		// if (QueryCondition.OPERATORS[i].getValue().equals(Operator))
+		// return QueryCondition.OPERATORS[i].getName();
 		// }
 		return Operator;
 	} // getInfoOperator

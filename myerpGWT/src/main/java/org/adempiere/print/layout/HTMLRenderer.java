@@ -86,7 +86,7 @@ public class HTMLRenderer extends View {
 	/**
 	 * Get Width
 	 * 
-	 * @return width
+	 * @return p_width
 	 */
 	public float getWidth() {
 		return getPreferredSpan(javax.swing.text.View.X_AXIS);
@@ -95,7 +95,7 @@ public class HTMLRenderer extends View {
 	/**
 	 * Get Height
 	 * 
-	 * @return height
+	 * @return p_height
 	 */
 	public float getHeight() {
 		return getPreferredSpan(javax.swing.text.View.Y_AXIS);
@@ -104,7 +104,7 @@ public class HTMLRenderer extends View {
 	/**
 	 * Get Height for one line
 	 * 
-	 * @return height
+	 * @return p_height
 	 */
 	public float getHeightOneLine() {
 		return 30f; // HARDCODED
@@ -113,8 +113,8 @@ public class HTMLRenderer extends View {
 	/**
 	 * Set Allocation (actual print size)
 	 * 
-	 * @param width actual print width
-	 * @param height actual print height
+	 * @param p_width actual print p_width
+	 * @param p_height actual print p_height
 	 */
 	public void setAllocation(int width, int height) {
 		setAllocation(new Rectangle(width, height));
@@ -162,7 +162,7 @@ public class HTMLRenderer extends View {
 	 */
 	public float getPreferredSpan(int axis) {
 		if (axis == X_AXIS) {
-			// width currently laid out to
+			// p_width currently laid out to
 			return m_width;
 		}
 		return m_view.getPreferredSpan(axis);
@@ -342,8 +342,8 @@ public class HTMLRenderer extends View {
 	/**
 	 * Sets the view size.
 	 * 
-	 * @param width the width
-	 * @param height the height
+	 * @param p_width the p_width
+	 * @param p_height the p_height
 	 */
 	public void setSize(float width, float height) {
 		this.m_width = (int) width;

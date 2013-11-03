@@ -39,8 +39,8 @@ public class BoxElement extends PrintElement {
 	 * @return true if calculated
 	 */
 	protected boolean calculateSize() {
-		width = 0;
-		height = 0;
+		p_width = 0;
+		p_height = 0;
 		if (m_item == null)
 			return true;
 		return true;

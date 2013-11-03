@@ -30,4 +30,24 @@ public class PrintData implements Serializable {
 		return false;
 	}
 
+	public int getLineLevelNo() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public boolean isPageBreak() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Object getNode(Integer adColumnId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public PrintDataElement getPKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

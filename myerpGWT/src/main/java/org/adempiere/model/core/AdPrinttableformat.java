@@ -1,6 +1,11 @@
 package org.adempiere.model.core;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Paint;
+import java.awt.Stroke;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,45 +21,46 @@ import org.adempiere.model.common.AdEntityBase;
 @Entity
 @Table(name = "ad_printtableformat")
 public class AdPrinttableformat extends AdEntityBase implements Serializable {
-	private static final long	serialVersionUID	= 1L;
-	private long				adPrinttableformatId;
-	private Long				adClientId;
-	private Long				adImageId;
-	private Long				adOrgId;
-	private String				created;
-	private Long				createdby;
-	private String				description;
-	private String				footercenter;
-	private String				footerleft;
-	private String				footerright;
-	private Long				functPrintfontId;
-	private Long				functbgPrintcolorId;
-	private Long				functfgPrintcolorId;
-	private Long				hdrPrintfontId;
-	private Long				hdrlinePrintcolorId;
-	private Long				hdrstroke;
-	private String				hdrstroketype;
-	private Long				hdrtextbgPrintcolorId;
-	private Long				hdrtextfgPrintcolorId;
-	private String				headercenter;
-	private String				headerleft;
-	private String				headerright;
-	private String				imageisattached;
-	private String				imageurl;
-	private String				isactive;
-	private String				isdefault;
-	private String				ismultilineheader;
-	private String				ispaintboundarylines;
-	private String				ispaintheaderlines;
-	private String				ispainthlines;
-	private String				ispaintvlines;
-	private String				isprintfunctionsymbols;
-	private Long				linePrintcolorId;
-	private Long				linestroke;
-	private String				linestroketype;
-	private String				name;
-	private String				updated;
-	private Long				updatedby;
+	private static final long		serialVersionUID	= 1L;
+	private static final BigDecimal	ZERO				= new BigDecimal(0);
+	private long					adPrinttableformatId;
+	private Long					adClientId;
+	private Long					adImageId;
+	private Long					adOrgId;
+	private String					created;
+	private Long					createdby;
+	private String					description;
+	private String					footercenter;
+	private String					footerleft;
+	private String					footerright;
+	private Long					functPrintfontId;
+	private Long					functbgPrintcolorId;
+	private Long					functfgPrintcolorId;
+	private Long					hdrPrintfontId;
+	private Long					hdrlinePrintcolorId;
+	private Long					hdrstroke;
+	private String					hdrstroketype;
+	private Long					hdrtextbgPrintcolorId;
+	private Long					hdrtextfgPrintcolorId;
+	private String					headercenter;
+	private String					headerleft;
+	private String					headerright;
+	private String					imageisattached;
+	private String					imageurl;
+	private String					isactive;
+	private String					isdefault;
+	private String					ismultilineheader;
+	private String					ispaintboundarylines;
+	private String					ispaintheaderlines;
+	private String					ispainthlines;
+	private String					ispaintvlines;
+	private String					isprintfunctionsymbols;
+	private Long					linePrintcolorId;
+	private BigDecimal				linestroke;
+	private String					linestroketype;
+	private String					name;
+	private String					updated;
+	private Long					updatedby;
 
 	public AdPrinttableformat() {
 	}
@@ -336,11 +342,11 @@ public class AdPrinttableformat extends AdEntityBase implements Serializable {
 		this.linePrintcolorId = linePrintcolorId;
 	}
 
-	public Long getLinestroke() {
+	public BigDecimal getLinestroke() {
 		return this.linestroke;
 	}
 
-	public void setLinestroke(Long linestroke) {
+	public void setLinestroke(BigDecimal linestroke) {
 		this.linestroke = linestroke;
 	}
 
@@ -374,6 +380,98 @@ public class AdPrinttableformat extends AdEntityBase implements Serializable {
 
 	public void setUpdatedby(Long updatedby) {
 		this.updatedby = updatedby;
+	}
+
+	public Font getParameter_Font() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Font getPageHeader_Font() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Paint getPageHeaderFG_Color() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Paint getParameter_Color() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public BigDecimal getVLineStroke() {
+		BigDecimal retValue = this.getLinestroke();
+		if (retValue == null || ZERO.compareTo(retValue) <= 0)
+			retValue = new BigDecimal(1.0);
+		return retValue;
+	} // getVLineStroke
+
+	public Paint getVLine_Color() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Stroke getVLine_Stroke() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Paint getHeaderLine_Color() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Stroke getHeader_Stroke() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Stroke getHLine_Stroke() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Color getFunctFG_Color() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Paint getHLine_Color() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Color getHeaderBG_Color() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Color getHeaderFG_Color() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Font getHeader_Font() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Font getFunct_Font() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Color getFunctBG_Color() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setStandard_Font(Font font) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

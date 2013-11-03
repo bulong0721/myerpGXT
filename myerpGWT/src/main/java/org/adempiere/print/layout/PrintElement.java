@@ -13,11 +13,11 @@ import org.adempiere.model.core.AdPrintformatitem;
 
 public abstract class PrintElement implements ImageObserver {
 	public static final Color	LINK_COLOR		= Color.blue;
-	protected float				width			= 0f;
-	protected float				height			= 0f;
-	protected boolean			sizeCalculated	= false;
-	protected float				maxWidth		= 0f;
-	protected float				maxHeight		= 0f;
+	protected float				p_width			= 0f;
+	protected float				p_height			= 0f;
+	protected boolean			p_sizeCalculated	= false;
+	protected float				p_maxWidth		= 0f;
+	protected float				p_maxHeight		= 0f;
 	protected String			fieldAlignmentType;
 	protected Point2D.Double	pageLocation	= null;
 	private boolean				imageNotLoaded	= true;
@@ -40,9 +40,9 @@ public abstract class PrintElement implements ImageObserver {
 	}
 
 	public float getWidth() {
-		if (!sizeCalculated)
-			sizeCalculated = calculateSize();
-		return width;
+		if (!p_sizeCalculated)
+			p_sizeCalculated = calculateSize();
+		return p_width;
 	} // getWidth
 
 	/**
@@ -51,9 +51,9 @@ public abstract class PrintElement implements ImageObserver {
 	 * @return Height
 	 */
 	public float getHeight() {
-		if (!sizeCalculated)
-			sizeCalculated = calculateSize();
-		return height;
+		if (!p_sizeCalculated)
+			p_sizeCalculated = calculateSize();
+		return p_height;
 	} // getHeight
 
 	/**
@@ -67,16 +67,16 @@ public abstract class PrintElement implements ImageObserver {
 	} // getHeight
 
 	public void setMaxHeight(float maxHeight) {
-		this.maxHeight = maxHeight;
+		this.p_maxHeight = maxHeight;
 	} // setMaxHeight
 
 	/**
 	 * Set Maximum Width
 	 * 
-	 * @param maxWidth maximum width (0) is no limit
+	 * @param p_maxWidth maximum p_width (0) is no limit
 	 */
 	public void setMaxWidth(float maxWidth) {
-		this.maxWidth = maxWidth;
+		this.p_maxWidth = maxWidth;
 	} // setMaxWidth
 
 	/**
@@ -139,20 +139,20 @@ public abstract class PrintElement implements ImageObserver {
 		if (isHeightOneLine)
 			maxHeight = -1f;
 		else if (maxHeight > 0f)
-			this.maxHeight = maxHeight;
-		this.maxWidth = maxWidth;
+			this.p_maxHeight = maxHeight;
+		this.p_maxWidth = maxWidth;
 		//
 		fieldAlignmentType = FieldAlignmentType;
 		if (fieldAlignmentType == null || fieldAlignmentType.equals(AdPrintformatitem.FIELDALIGNMENTTYPE_Default))
 			fieldAlignmentType = AdPrintformatitem.FIELDALIGNMENTTYPE_LeadingLeft;
 		//
-		sizeCalculated = calculateSize();
+		p_sizeCalculated = calculateSize();
 	}
 
 	public Rectangle getBounds() {
 		if (pageLocation == null)
-			return new Rectangle(0, 0, (int) width, (int) height);
-		return new Rectangle((int) pageLocation.x, (int) pageLocation.y, (int) width, (int) height);
+			return new Rectangle(0, 0, (int) p_width, (int) p_height);
+		return new Rectangle((int) pageLocation.x, (int) pageLocation.y, (int) p_width, (int) p_height);
 	}
 
 	public void translate(Properties ctx) {
@@ -186,8 +186,8 @@ public abstract class PrintElement implements ImageObserver {
 		String cn = getClass().getName();
 		StringBuffer sb = new StringBuffer();
 		sb.append(cn.substring(cn.lastIndexOf('.') + 1)).append("[");
-		sb.append("Bounds=").append(getBounds()).append(",Height=").append(height).append("(").append(maxHeight)
-				.append("),Width=").append(width).append("(").append(maxHeight).append("),PageLocation=")
+		sb.append("Bounds=").append(getBounds()).append(",Height=").append(p_height).append("(").append(p_maxHeight)
+				.append("),Width=").append(p_width).append("(").append(p_maxHeight).append("),PageLocation=")
 				.append(pageLocation);
 		sb.append("]");
 		return sb.toString();

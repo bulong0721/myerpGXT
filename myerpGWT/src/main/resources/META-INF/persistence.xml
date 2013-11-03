@@ -47,6 +47,8 @@
 		<class>org.adempiere.model.core.AdPrintpaper</class>
 		<class>org.adempiere.model.core.AdElement</class>
 		<class>org.adempiere.model.core.AdPrinttableformat</class>
+		<class>org.adempiere.model.core.AdAttachment</class>
+		<class>org.adempiere.model.core.AdImage</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/adempiere" />
 			<property name="javax.persistence.jdbc.user" value="adempiere" />

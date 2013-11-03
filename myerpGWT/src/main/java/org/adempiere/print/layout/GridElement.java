@@ -92,7 +92,7 @@ public class GridElement extends PrintElement {
 	private void setData(int row, int col, TextLayout layout, AttributedCharacterIterator iter) {
 		if (layout == null)
 			return;
-		if (sizeCalculated)
+		if (p_sizeCalculated)
 			throw new IllegalStateException("Size already calculated");
 		if (row < 0 || row >= m_rows)
 			throw new ArrayIndexOutOfBoundsException("Row Index=" + row + " Rows=" + m_rows);
@@ -127,20 +127,20 @@ public class GridElement extends PrintElement {
 	 * @return true if calculated
 	 */
 	protected boolean calculateSize() {
-		height = 0;
+		p_height = 0;
 		for (int r = 0; r < m_rows; r++) {
-			height += m_rowHeight[r];
+			p_height += m_rowHeight[r];
 			if (m_rowHeight[r] > 0)
-				height += m_rowGap;
+				p_height += m_rowGap;
 		}
-		height -= m_rowGap; // remove last
-		width = 0;
+		p_height -= m_rowGap; // remove last
+		p_width = 0;
 		for (int c = 0; c < m_cols; c++) {
-			width += m_colWidth[c];
+			p_width += m_colWidth[c];
 			if (m_colWidth[c] > 0)
-				width += m_colGap;
+				p_width += m_colGap;
 		}
-		width -= m_colGap; // remove last
+		p_width -= m_colGap; // remove last
 		return true;
 	} // calculateSize
 

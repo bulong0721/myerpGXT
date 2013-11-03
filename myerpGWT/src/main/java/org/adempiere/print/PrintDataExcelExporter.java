@@ -34,7 +34,7 @@ public class PrintDataExcelExporter extends AbstractExcelExporter {
 			printData.setRowIndex(row);
 		//
 		AdPrintformatitem item = printFormat.getItem(col);
-		Long columnId = item.getAdColumnId();
+		Integer columnId = item.getAdColumnId();
 		Object obj = null;
 		if (columnId > 0)
 			obj = printData.getNode(columnId);

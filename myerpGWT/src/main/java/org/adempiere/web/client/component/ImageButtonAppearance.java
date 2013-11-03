@@ -10,7 +10,7 @@ import com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance;
 public class ImageButtonAppearance implements IconButtonAppearance {
 
 	public interface Template extends XTemplates {
-		@XTemplate(value = "<img src=\"{url}\" width=\"22\" />")
+		@XTemplate(value = "<img src=\"{url}\" p_width=\"22\" />")
 		SafeHtml render(String url);
 	}
 

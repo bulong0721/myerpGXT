@@ -1,5 +1,6 @@
 package org.adempiere.model.core;
 
+import java.awt.Color;
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -122,6 +123,11 @@ public class AdPrintcolor extends AdEntityBase implements Serializable {
 
 	public void setUpdatedby(Long updatedby) {
 		this.updatedby = updatedby;
+	}
+
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

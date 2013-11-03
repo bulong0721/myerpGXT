@@ -1,5 +1,6 @@
 package org.adempiere.model.core;
 
+import java.awt.Font;
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -134,6 +135,12 @@ public class AdPrintfont extends AdEntityBase implements Serializable {
 
 	public void setUpdatedby(Long updatedby) {
 		this.updatedby = updatedby;
+	}
+
+
+	public Font getFont() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

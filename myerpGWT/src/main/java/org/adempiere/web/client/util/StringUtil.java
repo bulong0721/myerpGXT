@@ -117,4 +117,9 @@ public class StringUtil {
 		return counter;
 	} // getCount
 
+	public static boolean is8Bit(String headerString) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

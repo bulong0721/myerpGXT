@@ -178,7 +178,7 @@ public class StringElement extends PrintElement {
 			float xPen = xPos;
 
 			// No Limit
-			if (maxWidth == 0f) {
+			if (p_maxWidth == 0f) {
 				if (tabPos == -1) {
 					layout = new TextLayout(iter, g2D.getFontRenderContext());
 					yPen = yPos + layout.getAscent();
@@ -218,20 +218,20 @@ public class StringElement extends PrintElement {
 				LineBreakMeasurer measurer = new LineBreakMeasurer(iter, g2D.getFontRenderContext());
 				while (measurer.getPosition() < iter.getEndIndex()) {
 					if (tabPos == -1) {
-						layout = measurer.nextLayout(maxWidth);
+						layout = measurer.nextLayout(p_maxWidth);
 						if (measurer.getPosition() < iter.getEndIndex())
 							fastDraw = false;
 					} else // tab
 					{
 						fastDraw = false;
-						layout = measurer.nextLayout(maxWidth, tabPos, false);
+						layout = measurer.nextLayout(p_maxWidth, tabPos, false);
 					}
 					// Line Height
 					float lineHeight = layout.getAscent() + layout.getDescent() + layout.getLeading();
-					if (maxHeight == -1f && i == 0) // one line only
-						maxHeight = lineHeight;
+					if (p_maxHeight == -1f && i == 0) // one line only
+						p_maxHeight = lineHeight;
 					// If we have hight left over
-					if (maxHeight == 0f || (height + lineHeight) <= maxHeight) {
+					if (p_maxHeight == 0f || (height + lineHeight) <= p_maxHeight) {
 						yPen = (float) location.y + height + layout.getAscent();
 						// Tab in Text
 						if (tabPos != -1) {
@@ -244,12 +244,12 @@ public class StringElement extends PrintElement {
 								.isLeftToRight())
 								|| (AdPrintformatitem.FIELDALIGNMENTTYPE_LeadingLeft.equals(fieldAlignmentType) && !layout
 										.isLeftToRight()))
-							xPen += maxWidth - layout.getAdvance();
+							xPen += p_maxWidth - layout.getAdvance();
 						else if (AdPrintformatitem.FIELDALIGNMENTTYPE_Center.equals(fieldAlignmentType))
-							xPen += (maxWidth - layout.getAdvance()) / 2;
+							xPen += (p_maxWidth - layout.getAdvance()) / 2;
 						else if (AdPrintformatitem.FIELDALIGNMENTTYPE_Block.equals(fieldAlignmentType)
 								&& measurer.getPosition() < iter.getEndIndex()) {
-							layout = layout.getJustifiedLayout(maxWidth);
+							layout = layout.getJustifiedLayout(p_maxWidth);
 							fastDraw = false;
 						}
 						if (fastDraw) {
@@ -264,7 +264,7 @@ public class StringElement extends PrintElement {
 						height += lineHeight;
 					}
 				}
-				width = maxWidth;
+				width = p_maxWidth;
 			} // size limits
 		} // for all strings
 		if (this.check != null) {
@@ -284,16 +284,16 @@ public class StringElement extends PrintElement {
 
 	@Override
 	protected boolean calculateSize() {
-		if (sizeCalculated)
+		if (p_sizeCalculated)
 			return true;
 		//
 		FontRenderContext frc = new FontRenderContext(null, true, true);
 		TextLayout layout = null;
-		height = 0f;
-		width = 0f;
+		p_height = 0f;
+		p_width = 0f;
 
 		// No Limit
-		if (maxWidth == 0f && maxHeight == 0f) {
+		if (p_maxWidth == 0f && p_maxHeight == 0f) {
 			for (int i = 0; i < this.stringPaper.length; i++) {
 				AttributedCharacterIterator iter = this.stringPaper[i].getIterator();
 				if (iter.getBeginIndex() == iter.getEndIndex())
@@ -308,32 +308,32 @@ public class StringElement extends PrintElement {
 
 				if (tabPos == -1) {
 					layout = new TextLayout(iter, frc);
-					height += layout.getAscent() + layout.getDescent() + layout.getLeading();
-					if (width < layout.getAdvance())
-						width = layout.getAdvance();
+					p_height += layout.getAscent() + layout.getDescent() + layout.getLeading();
+					if (p_width < layout.getAdvance())
+						p_width = layout.getAdvance();
 				} else // with tab
 				{
 					LineBreakMeasurer measurer = new LineBreakMeasurer(iter, frc);
 					layout = measurer.nextLayout(9999, tabPos, false);
-					height += layout.getAscent() + layout.getDescent() + layout.getLeading();
+					p_height += layout.getAscent() + layout.getDescent() + layout.getLeading();
 					float width = getTabPos(0, layout.getAdvance());
 					layout = measurer.nextLayout(9999, iter.getEndIndex(), true);
 					width += layout.getAdvance();
-					if (this.width < width)
-						this.width = width;
+					if (this.p_width < width)
+						this.p_width = width;
 				}
 			} // for all strings
 
 			// Add CheckBox Size
 			if (this.check != null) {
-				width += LayoutEngine.IMAGE_SIZE.width;
-				if (height < LayoutEngine.IMAGE_SIZE.height)
-					height = LayoutEngine.IMAGE_SIZE.height;
+				p_width += LayoutEngine.IMAGE_SIZE.width;
+				if (p_height < LayoutEngine.IMAGE_SIZE.height)
+					p_height = LayoutEngine.IMAGE_SIZE.height;
 			}
 		}
 		// Size Limits
 		else {
-			width = maxWidth;
+			p_width = p_maxWidth;
 			for (int i = 0; i < this.stringPaper.length; i++) {
 				AttributedCharacterIterator iter = this.stringPaper[i].getIterator();
 				if (iter.getBeginIndex() == iter.getEndIndex())
@@ -341,30 +341,30 @@ public class StringElement extends PrintElement {
 				LineBreakMeasurer measurer = new LineBreakMeasurer(iter, frc);
 				while (measurer.getPosition() < iter.getEndIndex()) {
 					// no need to expand tab space for limited space
-					layout = measurer.nextLayout(maxWidth);
+					layout = measurer.nextLayout(p_maxWidth);
 					float lineHeight = layout.getAscent() + layout.getDescent() + layout.getLeading();
-					if (maxHeight == -1f && i == 0) // one line only
-						maxHeight = lineHeight;
-					if (maxHeight == 0f || (height + lineHeight) <= maxHeight)
-						height += lineHeight;
+					if (p_maxHeight == -1f && i == 0) // one line only
+						p_maxHeight = lineHeight;
+					if (p_maxHeight == 0f || (p_height + lineHeight) <= p_maxHeight)
+						p_height += lineHeight;
 				}
 			} // for all strings
 
 			// Add CheckBox Size
 			if (this.check != null) {
-				if (height < LayoutEngine.IMAGE_SIZE.height)
-					height = LayoutEngine.IMAGE_SIZE.height;
+				if (p_height < LayoutEngine.IMAGE_SIZE.height)
+					p_height = LayoutEngine.IMAGE_SIZE.height;
 			}
 		}
 //		// Enlarge Size when aligned and max size is given
 //		if (fieldAlignmentType != null) {
 //			boolean changed = false;
-//			if (height < maxHeight) {
-//				height = maxHeight;
+//			if (p_height < p_maxHeight) {
+//				p_height = p_maxHeight;
 //				changed = true;
 //			}
-//			if (width < maxWidth) {
-//				width = maxWidth;
+//			if (p_width < p_maxWidth) {
+//				p_width = p_maxWidth;
 //				changed = true;
 //			}
 //		}

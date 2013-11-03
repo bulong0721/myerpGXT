@@ -20,96 +20,96 @@ import org.adempiere.model.common.AdEntityBase;
 @Table(name = "ad_printformatitem")
 public class AdPrintformatitem extends AdEntityBase implements Serializable {
 	/** FieldAlignmentType AD_Reference_ID=253 */
-	public static final int FIELDALIGNMENTTYPE_AD_Reference_ID=253;
+	public static final int		FIELDALIGNMENTTYPE_AD_Reference_ID			= 253;
 	/** Default = D */
-	public static final String FIELDALIGNMENTTYPE_Default = "D";
+	public static final String	FIELDALIGNMENTTYPE_Default					= "D";
 	/** Leading (left) = L */
-	public static final String FIELDALIGNMENTTYPE_LeadingLeft = "L";
+	public static final String	FIELDALIGNMENTTYPE_LeadingLeft				= "L";
 	/** Trailing (right) = T */
-	public static final String FIELDALIGNMENTTYPE_TrailingRight = "T";
+	public static final String	FIELDALIGNMENTTYPE_TrailingRight			= "T";
 	/** Block = B */
-	public static final String FIELDALIGNMENTTYPE_Block = "B";
+	public static final String	FIELDALIGNMENTTYPE_Block					= "B";
 	/** Center = C */
-	public static final String FIELDALIGNMENTTYPE_Center = "C";
+	public static final String	FIELDALIGNMENTTYPE_Center					= "C";
 	/** BarcodeType AD_Reference_ID=377 */
-	public static final int BARCODETYPE_AD_Reference_ID=377;
+	public static final int		BARCODETYPE_AD_Reference_ID					= 377;
 	/** Codabar 2 of 7 linear = 2o9 */
-	public static final String BARCODETYPE_Codabar2Of7Linear = "2o9";
-	/** Code 39  3 of 9 linear w/o Checksum = 3o9 */
-	public static final String BARCODETYPE_Code393Of9LinearWOChecksum = "3o9";
+	public static final String	BARCODETYPE_Codabar2Of7Linear				= "2o9";
+	/** Code 39 3 of 9 linear w/o Checksum = 3o9 */
+	public static final String	BARCODETYPE_Code393Of9LinearWOChecksum		= "3o9";
 	/** Codeabar linear = COD */
-	public static final String BARCODETYPE_CodeabarLinear = "COD";
+	public static final String	BARCODETYPE_CodeabarLinear					= "COD";
 	/** Code 128 dynamically switching = C28 */
-	public static final String BARCODETYPE_Code128DynamicallySwitching = "C28";
+	public static final String	BARCODETYPE_Code128DynamicallySwitching		= "C28";
 	/** Code 128 A character set = 28A */
-	public static final String BARCODETYPE_Code128ACharacterSet = "28A";
+	public static final String	BARCODETYPE_Code128ACharacterSet			= "28A";
 	/** Code 128 B character set = 28B */
-	public static final String BARCODETYPE_Code128BCharacterSet = "28B";
+	public static final String	BARCODETYPE_Code128BCharacterSet			= "28B";
 	/** Code 128 C character set = 28C */
-	public static final String BARCODETYPE_Code128CCharacterSet = "28C";
+	public static final String	BARCODETYPE_Code128CCharacterSet			= "28C";
 	/** Code 39 linear with Checksum = C39 */
-	public static final String BARCODETYPE_Code39LinearWithChecksum = "C39";
+	public static final String	BARCODETYPE_Code39LinearWithChecksum		= "C39";
 	/** EAN 128 = E28 */
-	public static final String BARCODETYPE_EAN128 = "E28";
+	public static final String	BARCODETYPE_EAN128							= "E28";
 	/** Global Trade Item No GTIN UCC/EAN 128 = GTN */
-	public static final String BARCODETYPE_GlobalTradeItemNoGTINUCCEAN128 = "GTN";
+	public static final String	BARCODETYPE_GlobalTradeItemNoGTINUCCEAN128	= "GTN";
 	/** Codabar Monarch linear = MON */
-	public static final String BARCODETYPE_CodabarMonarchLinear = "MON";
+	public static final String	BARCODETYPE_CodabarMonarchLinear			= "MON";
 	/** Codabar NW-7 linear = NW7 */
-	public static final String BARCODETYPE_CodabarNW_7Linear = "NW7";
+	public static final String	BARCODETYPE_CodabarNW_7Linear				= "NW7";
 	/** PDF417 two dimensional = 417 */
-	public static final String BARCODETYPE_PDF417TwoDimensional = "417";
+	public static final String	BARCODETYPE_PDF417TwoDimensional			= "417";
 	/** SCC-14 shipping code UCC/EAN 128 = C14 */
-	public static final String BARCODETYPE_SCC_14ShippingCodeUCCEAN128 = "C14";
+	public static final String	BARCODETYPE_SCC_14ShippingCodeUCCEAN128		= "C14";
 	/** Shipment ID number UCC/EAN 128 = SID */
-	public static final String BARCODETYPE_ShipmentIDNumberUCCEAN128 = "SID";
+	public static final String	BARCODETYPE_ShipmentIDNumberUCCEAN128		= "SID";
 	/** UCC 128 = U28 */
-	public static final String BARCODETYPE_UCC128 = "U28";
+	public static final String	BARCODETYPE_UCC128							= "U28";
 	/** Code 39 USD3 with Checksum = US3 */
-	public static final String BARCODETYPE_Code39USD3WithChecksum = "US3";
+	public static final String	BARCODETYPE_Code39USD3WithChecksum			= "US3";
 	/** Codabar USD-4 linear = US4 */
-	public static final String BARCODETYPE_CodabarUSD_4Linear = "US4";
+	public static final String	BARCODETYPE_CodabarUSD_4Linear				= "US4";
 	/** US Postal Service UCC/EAN 128 = USP */
-	public static final String BARCODETYPE_USPostalServiceUCCEAN128 = "USP";
+	public static final String	BARCODETYPE_USPostalServiceUCCEAN128		= "USP";
 	/** SSCC-18 number UCC/EAN 128 = C18 */
-	public static final String BARCODETYPE_SSCC_18NumberUCCEAN128 = "C18";
+	public static final String	BARCODETYPE_SSCC_18NumberUCCEAN128			= "C18";
 	/** Code 39 USD3 w/o Checksum = us3 */
-	public static final String BARCODETYPE_Code39USD3WOChecksum = "us3";
-	/** Code 39  3 of 9 linear with Checksum = 3O9 */
-	public static final String BARCODETYPE_Code393Of9LinearWithChecksum = "3O9";
+	public static final String	BARCODETYPE_Code39USD3WOChecksum			= "us3";
+	/** Code 39 3 of 9 linear with Checksum = 3O9 */
+	public static final String	BARCODETYPE_Code393Of9LinearWithChecksum	= "3O9";
 	/** Code 39 linear w/o Checksum = c39 */
-	public static final String BARCODETYPE_Code39LinearWOChecksum = "c39";
+	public static final String	BARCODETYPE_Code39LinearWOChecksum			= "c39";
 	/** EAN 13 = E13 */
-	public static final String BARCODETYPE_EAN13 = "E13";
+	public static final String	BARCODETYPE_EAN13							= "E13";
 	/** ShapeType AD_Reference_ID=333 */
-	public static final int SHAPETYPE_AD_Reference_ID=333;
+	public static final int		SHAPETYPE_AD_Reference_ID					= 333;
 	/** 3D Rectangle = 3 */
-	public static final String SHAPETYPE_3DRectangle = "3";
+	public static final String	SHAPETYPE_3DRectangle						= "3";
 	/** Oval = O */
-	public static final String SHAPETYPE_Oval = "O";
+	public static final String	SHAPETYPE_Oval								= "O";
 	/** Round Rectangle = R */
-	public static final String SHAPETYPE_RoundRectangle = "R";
+	public static final String	SHAPETYPE_RoundRectangle					= "R";
 	/** Normal Rectangle = N */
-	public static final String SHAPETYPE_NormalRectangle = "N";
+	public static final String	SHAPETYPE_NormalRectangle					= "N";
 	/** PrintFormatType AD_Reference_ID=255 */
-	public static final int PRINTFORMATTYPE_AD_Reference_ID=255;
+	public static final int		PRINTFORMATTYPE_AD_Reference_ID				= 255;
 	/** Field = F */
-	public static final String PRINTFORMATTYPE_Field = "F";
+	public static final String	PRINTFORMATTYPE_Field						= "F";
 	/** Text = T */
-	public static final String PRINTFORMATTYPE_Text = "T";
+	public static final String	PRINTFORMATTYPE_Text						= "T";
 	/** Print Format = P */
-	public static final String PRINTFORMATTYPE_PrintFormat = "P";
+	public static final String	PRINTFORMATTYPE_PrintFormat					= "P";
 	/** Image = I */
-	public static final String PRINTFORMATTYPE_Image = "I";
+	public static final String	PRINTFORMATTYPE_Image						= "I";
 	/** Rectangle = R */
-	public static final String PRINTFORMATTYPE_Rectangle = "R";
+	public static final String	PRINTFORMATTYPE_Rectangle					= "R";
 	/** Line = L */
-	public static final String PRINTFORMATTYPE_Line = "L";
-	
-	private static final long	serialVersionUID	= 1L;
+	public static final String	PRINTFORMATTYPE_Line						= "L";
+
+	private static final long	serialVersionUID							= 1L;
 	private long				adPrintformatitemId;
 	private Long				adClientId;
-	private Long				adColumnId;
+	private Integer				adColumnId;
 	private Long				adOrgId;
 	private Long				adPrintcolorId;
 	private Long				adPrintfontId;
@@ -117,7 +117,7 @@ public class AdPrintformatitem extends AdEntityBase implements Serializable {
 	private Long				adPrintgraphId;
 	private Integer				arcdiameter;
 	private String				barcodetype;
-	private Long				belowcolumn;
+	private Integer				belowcolumn;
 	private String				created;
 	private Long				createdby;
 	private String				fieldalignmenttype;
@@ -192,11 +192,11 @@ public class AdPrintformatitem extends AdEntityBase implements Serializable {
 	}
 
 	@Column(name = "AD_COLUMN_ID")
-	public Long getAdColumnId() {
+	public Integer getAdColumnId() {
 		return this.adColumnId;
 	}
 
-	public void setAdColumnId(Long adColumnId) {
+	public void setAdColumnId(Integer adColumnId) {
 		this.adColumnId = adColumnId;
 	}
 
@@ -261,11 +261,11 @@ public class AdPrintformatitem extends AdEntityBase implements Serializable {
 		this.barcodetype = barcodetype;
 	}
 
-	public Long getBelowcolumn() {
+	public Integer getBelowcolumn() {
 		return this.belowcolumn;
 	}
 
-	public void setBelowcolumn(Long belowcolumn) {
+	public void setBelowcolumn(Integer belowcolumn) {
 		this.belowcolumn = belowcolumn;
 	}
 
@@ -670,6 +670,21 @@ public class AdPrintformatitem extends AdEntityBase implements Serializable {
 
 	public void setAdPrintformat(AdPrintformat adPrintformat) {
 		this.adPrintformat = adPrintformat;
+	}
+
+	public boolean isTypeImage() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean isTypeText() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean isTypeField() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

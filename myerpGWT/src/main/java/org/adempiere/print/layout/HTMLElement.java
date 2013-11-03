@@ -27,27 +27,27 @@ public class HTMLElement extends PrintElement {
 	 * @return Size
 	 */
 	protected boolean calculateSize() {
-		if (this.sizeCalculated)
+		if (this.p_sizeCalculated)
 			return true;
 		//
-		this.height = m_renderer.getHeight();
-		this.width = m_renderer.getWidth();
+		this.p_height = m_renderer.getHeight();
+		this.p_width = m_renderer.getWidth();
 
 		// Limits
-		if (this.maxWidth != 0f)
-			this.width = this.maxWidth;
-		if (this.maxHeight != 0f) {
-			if (this.maxHeight == -1f) // one line only
-				this.height = m_renderer.getHeightOneLine();
+		if (this.p_maxWidth != 0f)
+			this.p_width = this.p_maxWidth;
+		if (this.p_maxHeight != 0f) {
+			if (this.p_maxHeight == -1f) // one line only
+				this.p_height = m_renderer.getHeightOneLine();
 			else
-				this.height = this.maxHeight;
+				this.p_height = this.p_maxHeight;
 		}
 		// System.out.println("HTMLElement.calculate size - Width="
 		// + this.width + "(" + this.maxWidth + ") - Height=" + this.height +
 		// "(" +
 		// this.maxHeight + ")");
 		//
-		m_renderer.setAllocation((int) this.width, (int) this.height);
+		m_renderer.setAllocation((int) this.p_width, (int) this.p_height);
 		return true;
 	} // calculateSize
 
@@ -64,7 +64,7 @@ public class HTMLElement extends PrintElement {
 	 */
 	public void paint(Graphics2D g2D, int pageNo, Point2D pageStart, Properties ctx, boolean isView) {
 		// 36.0/137.015625,
-		// Clip=java.awt.Rectangle[x=0,y=0,width=639,height=804],
+		// Clip=java.awt.Rectangle[x=0,y=0,p_width=639,p_height=804],
 		// Translate=1.0/56.0, Scale=1.0/1.0, Shear=0.0/0.0
 		// log.finest( "HTMLElement.paint", this.pageLocation.x + "/" +
 		// this.pageLocation.y
@@ -93,8 +93,8 @@ public class HTMLElement extends PrintElement {
 	 */
 	public String toString() {
 		StringBuffer sb = new StringBuffer("HTMLElement[");
-		sb.append("Bounds=").append(getBounds()).append(",Height=").append(this.height).append("(")
-				.append(this.maxHeight).append("),Width=").append(this.width).append("(").append(this.maxHeight)
+		sb.append("Bounds=").append(getBounds()).append(",Height=").append(this.p_height).append("(")
+				.append(this.p_maxHeight).append("),Width=").append(this.p_width).append("(").append(this.p_maxHeight)
 				.append("),PageLocation=").append(this.pageLocation).append(" - ");
 		sb.append("]");
 		return sb.toString();

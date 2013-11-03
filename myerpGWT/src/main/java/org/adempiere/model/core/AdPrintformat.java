@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.adempiere.common.Language;
 import org.adempiere.model.common.AdEntityBase;
 
 /**
@@ -313,6 +314,16 @@ public class AdPrintformat extends AdEntityBase implements Serializable {
 		if (null != adPrintformatitems) {
 			return adPrintformatitems.get(col);
 		}
+		return null;
+	}
+
+	public Language getLanguage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public AdPrinttableformat getTableFormat() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

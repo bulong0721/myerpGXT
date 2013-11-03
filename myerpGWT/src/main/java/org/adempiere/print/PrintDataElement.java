@@ -30,4 +30,19 @@ public class PrintDataElement {
 		return false;
 	}
 
+	public boolean isYesNo() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean isID() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String getColumnName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
