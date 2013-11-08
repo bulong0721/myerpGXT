@@ -108,26 +108,36 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		String entityClass = getEntityClass(loadCfg.getTableName());
 		System.out.println("fetchByClass1:" + entityClass);
 		String data = "";
+		long totalCount = 0;
 		try {
 			EntityManager em = getEntityManager();
 			CriteriaBuilder cb = em.getCriteriaBuilder();
 			Class<?> entityClazz = toClass(entityClass);
 			CriteriaQuery cq = cb.createQuery(entityClazz);
+			CriteriaQuery aq = cb.createQuery(Long.class);
 			Root<?> root = cq.from(entityClazz);
+			aq.from(entityClazz);
+			aq.select(cb.count(root));
 			AdModelKey parentKey = loadCfg.getParentKey();
 			if (null != parentKey) {
 				cq.where(cb.equal(root.get(parentKey.getKeyField()), parentKey.getKeyValue()));
+				aq.where(cb.equal(root.get(parentKey.getKeyField()), parentKey.getKeyValue()));
 			}
-			TypedQuery tq = em.createQuery(cq);
-			tq.setFirstResult(loadCfg.getOffset());
-			tq.setMaxResults(loadCfg.getLimit());
-			List oldList = tq.getResultList();
-			data = JSON.toJSONString(oldList, SerializerFeature.WriteClassName);
-			System.out.println(entityClass + " Json:" + data);
+			TypedQuery<Long> countQuery = em.createQuery(aq);
+			totalCount = countQuery.getSingleResult();
+			if (totalCount > 0) {
+				TypedQuery dataQuery = em.createQuery(cq);
+				dataQuery.setFirstResult(loadCfg.getOffset());
+				dataQuery.setMaxResults(loadCfg.getLimit());
+				List oldList = dataQuery.getResultList();
+				data = JSON.toJSONString(oldList, SerializerFeature.WriteClassName);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new AdJSONData(data);
+		AdJSONData jsonData = new AdJSONData(data);
+		jsonData.setTotalCount(totalCount);
+		return jsonData;
 	}
 
 	private Class<?> toClass(String className) throws ClassNotFoundException {

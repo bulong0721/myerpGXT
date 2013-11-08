@@ -1,13 +1,13 @@
 package org.adempiere.model.core;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.adempiere.model.common.AdEntityBase;
-
-
-import java.sql.Timestamp;
-import java.math.BigDecimal;
 
 
 /**
@@ -19,12 +19,12 @@ import java.math.BigDecimal;
 public class AdWindow extends AdEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adWindowId;
-	private BigDecimal adClientId;
-	private BigDecimal adColorId;
-	private BigDecimal adImageId;
-	private BigDecimal adOrgId;
-	private Timestamp created;
-	private BigDecimal createdby;
+	private Long adClientId;
+	private Long adColorId;
+	private Long adImageId;
+	private Long adOrgId;
+	private String created;
+	private Long createdby;
 	private String description;
 	private String entitytype;
 	private String help;
@@ -34,11 +34,11 @@ public class AdWindow extends AdEntityBase implements Serializable {
 	private String issotrx;
 	private String name;
 	private String processing;
-	private Timestamp updated;
-	private BigDecimal updatedby;
+	private String updated;
+	private Long updatedby;
 	private String windowtype;
-	private BigDecimal winheight;
-	private BigDecimal winwidth;
+	private Integer winheight;
+	private Integer winwidth;
 
 	public AdWindow() {
 	}
@@ -56,59 +56,59 @@ public class AdWindow extends AdEntityBase implements Serializable {
 
 
 	@Column(name="AD_CLIENT_ID")
-	public BigDecimal getAdClientId() {
+	public Long getAdClientId() {
 		return this.adClientId;
 	}
 
-	public void setAdClientId(BigDecimal adClientId) {
+	public void setAdClientId(Long adClientId) {
 		this.adClientId = adClientId;
 	}
 
 
 	@Column(name="AD_COLOR_ID")
-	public BigDecimal getAdColorId() {
+	public Long getAdColorId() {
 		return this.adColorId;
 	}
 
-	public void setAdColorId(BigDecimal adColorId) {
+	public void setAdColorId(Long adColorId) {
 		this.adColorId = adColorId;
 	}
 
 
 	@Column(name="AD_IMAGE_ID")
-	public BigDecimal getAdImageId() {
+	public Long getAdImageId() {
 		return this.adImageId;
 	}
 
-	public void setAdImageId(BigDecimal adImageId) {
+	public void setAdImageId(Long adImageId) {
 		this.adImageId = adImageId;
 	}
 
 
 	@Column(name="AD_ORG_ID")
-	public BigDecimal getAdOrgId() {
+	public Long getAdOrgId() {
 		return this.adOrgId;
 	}
 
-	public void setAdOrgId(BigDecimal adOrgId) {
+	public void setAdOrgId(Long adOrgId) {
 		this.adOrgId = adOrgId;
 	}
 
 
-	public Timestamp getCreated() {
+	public String getCreated() {
 		return this.created;
 	}
 
-	public void setCreated(Timestamp created) {
+	public void setCreated(String created) {
 		this.created = created;
 	}
 
 
-	public BigDecimal getCreatedby() {
+	public Long getCreatedby() {
 		return this.createdby;
 	}
 
-	public void setCreatedby(BigDecimal createdby) {
+	public void setCreatedby(Long createdby) {
 		this.createdby = createdby;
 	}
 
@@ -194,20 +194,20 @@ public class AdWindow extends AdEntityBase implements Serializable {
 	}
 
 
-	public Timestamp getUpdated() {
+	public String getUpdated() {
 		return this.updated;
 	}
 
-	public void setUpdated(Timestamp updated) {
+	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
 
 
-	public BigDecimal getUpdatedby() {
+	public Long getUpdatedby() {
 		return this.updatedby;
 	}
 
-	public void setUpdatedby(BigDecimal updatedby) {
+	public void setUpdatedby(Long updatedby) {
 		this.updatedby = updatedby;
 	}
 
@@ -221,20 +221,20 @@ public class AdWindow extends AdEntityBase implements Serializable {
 	}
 
 
-	public BigDecimal getWinheight() {
+	public Integer getWinheight() {
 		return this.winheight;
 	}
 
-	public void setWinheight(BigDecimal winheight) {
+	public void setWinheight(Integer winheight) {
 		this.winheight = winheight;
 	}
 
 
-	public BigDecimal getWinwidth() {
+	public Integer getWinwidth() {
 		return this.winwidth;
 	}
 
-	public void setWinwidth(BigDecimal winwidth) {
+	public void setWinwidth(Integer winwidth) {
 		this.winwidth = winwidth;
 	}
 

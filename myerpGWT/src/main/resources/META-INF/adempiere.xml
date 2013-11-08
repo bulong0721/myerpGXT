@@ -5,13 +5,13 @@
 		<query>SELECT w FROM AdWindow w WHERE w.adWindowId = :adWindowId</query>
 	</named-query>
 	<named-query name="queryTabsByWindowId">
-		<query>SELECT t FROM AdTab t WHERE t.adWindowId = :adWindowId</query>
+		<query>SELECT t FROM AdTab t WHERE t.adWindowId = :adWindowId ORDER BY t.seqno</query>
 	</named-query>
 	<named-query name="queryFieldsByTabId">
 		<query>SELECT f FROM AdField f WHERE f.adTabId = :adTabId</query>
 	</named-query>
 	<named-query name="queryTabvsByWindowId">
-		<query>SELECT t FROM AdTabV t WHERE t.adWindowId = :adWindowId</query>
+		<query>SELECT t FROM AdTabV t WHERE t.adWindowId = :adWindowId ORDER BY t.seqno</query>
 	</named-query>
 	<named-query name="queryFieldvsByTabId">
 		<query>SELECT f FROM AdFieldV f WHERE f.adTabId = :adTabId ORDER BY f.seqno</query>

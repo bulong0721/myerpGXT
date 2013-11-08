@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.web.client.model.AdJSONData;
+import org.adempiere.web.client.model.AdLoadConfig;
 import org.adempiere.web.client.model.AdModelData;
 import org.adempiere.web.client.util.JSOUtil;
 
@@ -16,6 +17,7 @@ public class AdModelReader implements DataReader<PagingLoadResult<AdModelData>, 
 
 	@Override
 	public PagingLoadResult<AdModelData> read(Object loadConfig, AdJSONData data) {
+		AdLoadConfig adLoadCfg = (AdLoadConfig) loadConfig;
 		PagingLoadResultBean<AdModelData> pagingResult = new PagingLoadResultBean<AdModelData>();
 		JavaScriptObject jsoObject = JSOUtil.eval(data.getData());
 		JavaScriptObject[] jsoArray = JSOUtil.toArray(jsoObject);
@@ -25,8 +27,8 @@ public class AdModelReader implements DataReader<PagingLoadResult<AdModelData>, 
 			modelList.add(modelData);
 		}
 		pagingResult.setData(modelList);
-		pagingResult.setTotalLength(modelList.size());
-		pagingResult.setOffset(0);
+		pagingResult.setTotalLength((int)data.getTotalCount());
+		pagingResult.setOffset(adLoadCfg.getOffset());
 		return pagingResult;
 	}
 

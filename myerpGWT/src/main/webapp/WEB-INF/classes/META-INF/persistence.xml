@@ -49,6 +49,18 @@
 		<class>org.adempiere.model.core.AdPrinttableformat</class>
 		<class>org.adempiere.model.core.AdAttachment</class>
 		<class>org.adempiere.model.core.AdImage</class>
+		<class>org.adempiere.model.core.AdWindowAccess</class>
+		<class>org.adempiere.model.core.AdWindowAccessPK</class>
+		<class>org.adempiere.model.core.AdFormAccess</class>
+		<class>org.adempiere.model.core.AdFormAccessPK</class>
+		<class>org.adempiere.model.core.AdLanguage</class>
+		<class>org.adempiere.model.core.AdOrginfo</class>
+		<class>org.adempiere.model.core.AdRole</class>
+		<class>org.adempiere.model.core.AdRule</class>
+		<class>org.adempiere.model.core.AdValRule</class>
+		<class>org.adempiere.model.core.AdColor</class>
+		<class>org.adempiere.model.core.AdColumnAccess</class>
+		<class>org.adempiere.model.core.AdColumnAccessPK</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/adempiere" />
 			<property name="javax.persistence.jdbc.user" value="adempiere" />

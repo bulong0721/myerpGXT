@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class AdJSONData implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private String				data;
-	private int					totalLength;
+	private long				totalCount;
 	private int					offset;
 
 	public AdJSONData() {
@@ -24,12 +24,12 @@ public class AdJSONData implements Serializable {
 		this.data = data;
 	}
 
-	public int getTotalLength() {
-		return totalLength;
+	public long getTotalCount() {
+		return totalCount;
 	}
 
-	public void setTotalLength(int totalLength) {
-		this.totalLength = totalLength;
+	public void setTotalCount(long totalLength) {
+		this.totalCount = totalLength;
 	}
 
 	public int getOffset() {
