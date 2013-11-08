@@ -61,6 +61,57 @@
 		<class>org.adempiere.model.core.AdColor</class>
 		<class>org.adempiere.model.core.AdColumnAccess</class>
 		<class>org.adempiere.model.core.AdColumnAccessPK</class>
+		<class>org.adempiere.model.core.AdTableAccess</class>
+		<class>org.adempiere.model.core.AdTableAccessPK</class>
+		<class>org.adempiere.model.core.AdTableScriptvalidator</class>
+		<class>org.adempiere.model.core.AdMessage</class>
+		<class>org.adempiere.model.core.AdProcessAccess</class>
+		<class>org.adempiere.model.core.AdProcessAccessPK</class>
+		<class>org.adempiere.model.core.AdRecordAccess</class>
+		<class>org.adempiere.model.core.AdRecordAccessPK</class>
+		<class>org.adempiere.model.core.AdReportview</class>
+		<class>org.adempiere.model.core.AdReportviewCol</class>
+		<class>org.adempiere.model.core.AdAttribute</class>
+		<class>org.adempiere.model.core.AdDesktop</class>
+		<class>org.adempiere.model.core.AdDesktopworkbench</class>
+		<class>org.adempiere.model.core.AdWorkbench</class>
+		<class>org.adempiere.model.core.AdWorkbenchwindow</class>
+		<class>org.adempiere.model.core.AdUserOrgaccess</class>
+		<class>org.adempiere.model.core.AdUserOrgaccessPK</class>
+		<class>org.adempiere.model.core.AdUserRole</class>
+		<class>org.adempiere.model.core.AdUserRolePK</class>
+		<class>org.adempiere.model.core.AdUserSubstitute</class>
+		<class>org.adempiere.model.core.AdUserbpaccess</class>
+		<class>org.adempiere.model.core.AdUserdefField</class>
+		<class>org.adempiere.model.core.AdUserdefTab</class>
+		<class>org.adempiere.model.core.AdUserdefWin</class>
+		<class>org.adempiere.model.core.AdUsermail</class>
+		<class>org.adempiere.model.core.AdUserquery</class>
+		<class>org.adempiere.model.core.AdInfocolumn</class>
+		<class>org.adempiere.model.core.AdInfowindow</class>
+		<class>org.adempiere.model.core.AdLabelprinter</class>
+		<class>org.adempiere.model.core.AdLabelprinterfunction</class>
+		<class>org.adempiere.model.core.AdSearchdefinition</class>
+		<class>org.adempiere.model.business.COrgassignment</class>
+		<class>org.adempiere.model.business.CLocation</class>
+		<class>org.adempiere.model.core.AdScheduler</class>
+		<class>org.adempiere.model.core.AdSchedulerPara</class>
+		<class>org.adempiere.model.core.AdSchedulerParaPK</class>
+		<class>org.adempiere.model.core.AdSchedulerlog</class>
+		<class>org.adempiere.model.core.AdSchedulerlogPK</class>
+		<class>org.adempiere.model.core.AdSchedulerrecipient</class>
+		<class>org.adempiere.model.core.AdTask</class>
+		<class>org.adempiere.model.core.AdTaskAccess</class>
+		<class>org.adempiere.model.core.AdTaskAccessPK</class>
+		<class>org.adempiere.model.core.AdTaskinstance</class>
+		<class>org.adempiere.model.core.AdTree</class>
+		<class>org.adempiere.model.core.AdError</class>
+		<class>org.adempiere.model.core.AdSystem</class>
+		<class>org.adempiere.model.core.AdSystemPK</class>
+		<class>org.adempiere.model.core.AdRegistration</class>
+		<class>org.adempiere.model.core.AdRegistrationPK</class>
+		<class>org.adempiere.model.core.AdSession</class>
+		<class>org.adempiere.model.core.AdSysconfig</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/adempiere" />
 			<property name="javax.persistence.jdbc.user" value="adempiere" />
