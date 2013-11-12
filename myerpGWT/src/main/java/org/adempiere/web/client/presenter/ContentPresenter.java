@@ -37,6 +37,8 @@ public class ContentPresenter extends BasePresenter<IContentView, MyerpEventBus>
 			createReport(node.getName(), node.getAdProcessId());
 		} else if (action.isProcess()) {
 			createPorcess(node.getName(), node.getAdProcessId());
+		} else if (action.isForm()) {
+			createForm(node.getName(), node.getAdFormId());
 		}
 	}
 
@@ -70,6 +72,11 @@ public class ContentPresenter extends BasePresenter<IContentView, MyerpEventBus>
 			}
 		};
 		adempiereService.getADProcessModel(iProcessId, callback);
+	}
+
+	public void createForm(String name, Long adFormId) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override

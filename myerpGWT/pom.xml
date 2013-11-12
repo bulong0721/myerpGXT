@@ -103,6 +103,7 @@
 							</modules>
 						</configuration>
 						<goals>
+							<goal>clean</goal>
 							<goal>compile</goal>
 							<!-- <goal>i18n</goal> -->
 							<goal>generateAsync</goal>

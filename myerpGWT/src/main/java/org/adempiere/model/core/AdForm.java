@@ -1,46 +1,44 @@
 package org.adempiere.model.core;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.adempiere.model.common.AdEntityBase;
-
-
-import java.sql.Timestamp;
-import java.math.BigDecimal;
-
 
 /**
  * The persistent class for the ad_form database table.
  * 
  */
 @Entity
-@Table(name="ad_form")
+@Table(name = "ad_form")
 public class AdForm extends AdEntityBase implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private long adFormId;
-	private String accesslevel;
-	private BigDecimal adClientId;
-	private BigDecimal adOrgId;
-	private String classname;
-	private Timestamp created;
-	private BigDecimal createdby;
-	private String description;
-	private String entitytype;
-	private String help;
-	private String isactive;
-	private String isbetafunctionality;
-	private String jspurl;
-	private String name;
-	private Timestamp updated;
-	private BigDecimal updatedby;
+	private static final long	serialVersionUID	= 1L;
+	private long				adFormId;
+	private String				accesslevel;
+	private Long				adClientId;
+	private Long				adOrgId;
+	private String				classname;
+	private String				created;
+	private Long				createdby;
+	private String				description;
+	private String				entitytype;
+	private String				help;
+	private String				isactive;
+	private String				isbetafunctionality;
+	private String				jspurl;
+	private String				name;
+	private String				updated;
+	private Long				updatedby;
 
 	public AdForm() {
 	}
 
-
 	@Id
-	@Column(name="AD_FORM_ID")
+	@Column(name = "AD_FORM_ID")
 	public long getAdFormId() {
 		return this.adFormId;
 	}
@@ -48,7 +46,6 @@ public class AdForm extends AdEntityBase implements Serializable {
 	public void setAdFormId(long adFormId) {
 		this.adFormId = adFormId;
 	}
-
 
 	public String getAccesslevel() {
 		return this.accesslevel;
@@ -58,26 +55,23 @@ public class AdForm extends AdEntityBase implements Serializable {
 		this.accesslevel = accesslevel;
 	}
 
-
-	@Column(name="AD_CLIENT_ID")
-	public BigDecimal getAdClientId() {
+	@Column(name = "AD_CLIENT_ID")
+	public Long getAdClientId() {
 		return this.adClientId;
 	}
 
-	public void setAdClientId(BigDecimal adClientId) {
+	public void setAdClientId(Long adClientId) {
 		this.adClientId = adClientId;
 	}
 
-
-	@Column(name="AD_ORG_ID")
-	public BigDecimal getAdOrgId() {
+	@Column(name = "AD_ORG_ID")
+	public Long getAdOrgId() {
 		return this.adOrgId;
 	}
 
-	public void setAdOrgId(BigDecimal adOrgId) {
+	public void setAdOrgId(Long adOrgId) {
 		this.adOrgId = adOrgId;
 	}
-
 
 	public String getClassname() {
 		return this.classname;
@@ -87,24 +81,21 @@ public class AdForm extends AdEntityBase implements Serializable {
 		this.classname = classname;
 	}
 
-
-	public Timestamp getCreated() {
+	public String getCreated() {
 		return this.created;
 	}
 
-	public void setCreated(Timestamp created) {
+	public void setCreated(String created) {
 		this.created = created;
 	}
 
-
-	public BigDecimal getCreatedby() {
+	public Long getCreatedby() {
 		return this.createdby;
 	}
 
-	public void setCreatedby(BigDecimal createdby) {
+	public void setCreatedby(Long createdby) {
 		this.createdby = createdby;
 	}
-
 
 	public String getDescription() {
 		return this.description;
@@ -114,7 +105,6 @@ public class AdForm extends AdEntityBase implements Serializable {
 		this.description = description;
 	}
 
-
 	public String getEntitytype() {
 		return this.entitytype;
 	}
@@ -122,7 +112,6 @@ public class AdForm extends AdEntityBase implements Serializable {
 	public void setEntitytype(String entitytype) {
 		this.entitytype = entitytype;
 	}
-
 
 	public String getHelp() {
 		return this.help;
@@ -132,7 +121,6 @@ public class AdForm extends AdEntityBase implements Serializable {
 		this.help = help;
 	}
 
-
 	public String getIsactive() {
 		return this.isactive;
 	}
@@ -140,7 +128,6 @@ public class AdForm extends AdEntityBase implements Serializable {
 	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
-
 
 	public String getIsbetafunctionality() {
 		return this.isbetafunctionality;
@@ -150,7 +137,6 @@ public class AdForm extends AdEntityBase implements Serializable {
 		this.isbetafunctionality = isbetafunctionality;
 	}
 
-
 	public String getJspurl() {
 		return this.jspurl;
 	}
@@ -158,7 +144,6 @@ public class AdForm extends AdEntityBase implements Serializable {
 	public void setJspurl(String jspurl) {
 		this.jspurl = jspurl;
 	}
-
 
 	public String getName() {
 		return this.name;
@@ -168,21 +153,19 @@ public class AdForm extends AdEntityBase implements Serializable {
 		this.name = name;
 	}
 
-
-	public Timestamp getUpdated() {
+	public String getUpdated() {
 		return this.updated;
 	}
 
-	public void setUpdated(Timestamp updated) {
+	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
 
-
-	public BigDecimal getUpdatedby() {
+	public Long getUpdatedby() {
 		return this.updatedby;
 	}
 
-	public void setUpdatedby(BigDecimal updatedby) {
+	public void setUpdatedby(Long updatedby) {
 		this.updatedby = updatedby;
 	}
 
