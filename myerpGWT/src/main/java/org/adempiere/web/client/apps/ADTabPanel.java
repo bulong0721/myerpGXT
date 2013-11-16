@@ -7,14 +7,18 @@ import org.adempiere.web.client.component.AdFormEditStrategy;
 import org.adempiere.web.client.component.AdModelDriver;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.component.AdModelReader;
+import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
 import org.adempiere.web.client.model.AdModelData;
 import org.adempiere.web.client.model.AdModelData.AdModelKeyProvider;
+import org.adempiere.web.client.model.AdResultWithError;
 import org.adempiere.web.client.model.AdTabModel;
 import org.adempiere.web.client.model.AdWindowModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
+import org.adempiere.web.client.util.JSOUtil;
+import org.adempiere.web.client.util.LoggingUtil;
 import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.TabStatus;
@@ -23,6 +27,7 @@ import org.adempiere.web.client.widget.HWindow.History;
 import org.adempiere.web.client.widget.HWindow.HistoryLoader;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -31,6 +36,8 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.Style.SelectionMode;
 import com.sencha.gxt.data.client.loader.RpcProxy;
 import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.data.shared.Store;
+import com.sencha.gxt.data.shared.Store.Change;
 import com.sencha.gxt.data.shared.event.StoreDataChangeEvent;
 import com.sencha.gxt.data.shared.event.StoreDataChangeEvent.StoreDataChangeHandler;
 import com.sencha.gxt.data.shared.loader.LoadHandler;
@@ -46,6 +53,7 @@ import com.sencha.gxt.widget.core.client.event.CompleteEditEvent.CompleteEditHan
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
+import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent.SelectionChangedHandler;
 import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
@@ -116,7 +124,6 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 		keyProvider = AdModelData.createKeyProvider(tabModel);
 		store = new ListStore<AdModelData>(keyProvider);
 		store.addStoreDataChangeHandler(new StoreDataChangeHandler<AdModelData>() {
-
 			@Override
 			public void onDataChange(StoreDataChangeEvent<AdModelData> event) {
 				grid.getSelectionModel().select(0, false);
@@ -131,7 +138,6 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 		grid.setLoader(loader);
 		grid.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedHandler<AdModelData>() {
-
 			@Override
 			public void onSelectionChanged(SelectionChangedEvent<AdModelData> event) {
 				// TODO Auto-generated method stub
@@ -196,7 +202,42 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 	}
 
 	public void saveOrUpdateRecord() {
-		this.store.getModifiedRecords();
+		AsyncCallback<AdResultWithError> callback = new AsyncSuccessCallback<AdResultWithError>() {
+			@Override
+			public void onSuccess(AdResultWithError result) {
+				if (result.isSuccess()) {
+					store.commitChanges();
+					toolBar.setTabState(ADTabPanel.this);
+					Info.display("adempiere", "Update Success.");
+				} else {
+					Info.display("adempiere", "Update Failed:" + result.getErrorMessage());
+				}
+			}
+		};
+		String json = getModifyRecords();
+//		LoggingUtil.info(json);
+		adempiereService.updateData(json, tabModel.getTablename(), callback);
+	}
+
+	private String getModifyRecords() {
+		JavaScriptObject array = JavaScriptObject.createArray();
+		int index = 0;
+		for (Store<AdModelData>.Record record : store.getModifiedRecords()) {
+			JSOUtil.arraySet(array, index, copyWithChange(record).getJso());
+			index ++;
+		}
+		LoggingUtil.info(array.toString()); 
+		return JSOUtil.toString(array);
+	}
+
+	private AdModelData copyWithChange(Store<AdModelData>.Record record) {
+		AdModelData copy = record.getModel().deepClone();
+		if (record.isDirty()) {
+			for (Change<AdModelData, ?> c : record.getChanges()) {
+				c.modify(copy);
+			}
+		}
+		return copy;
 	}
 
 	public void deleteRecord() {
@@ -208,15 +249,9 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 			return;
 		}
 		List<AdModelKey> keys = keyProvider.getKeys(selectedData);
-		adempiereService.deleteData(keys, tabModel.getTablename(), new AsyncCallback<Boolean>() {
+		adempiereService.deleteData(keys, tabModel.getTablename(), new AsyncSuccessCallback<AdResultWithError>() {
 			@Override
-			public void onFailure(Throwable caught) {
-				box.setMessage(caught.getMessage());
-				box.show();
-			}
-
-			@Override
-			public void onSuccess(Boolean result) {
+			public void onSuccess(AdResultWithError result) {
 				store.remove(selectedData);
 				store.commitChanges();
 				grid.getSelectionModel().select(0, false);
@@ -232,6 +267,7 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 		} else {
 			formEditing.cancelEditing();
 		}
+		store.rejectChanges();
 		toolBar.setTabState(this);
 	}
 

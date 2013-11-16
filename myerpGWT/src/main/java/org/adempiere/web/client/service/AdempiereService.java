@@ -9,6 +9,7 @@ import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
 import org.adempiere.web.client.model.AdMenuModel;
 import org.adempiere.web.client.model.AdProcessModel;
+import org.adempiere.web.client.model.AdResultWithError;
 import org.adempiere.web.client.model.AdWindowModel;
 
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -27,11 +28,13 @@ public interface AdempiereService extends RemoteService {
 
 	AdJSONData getWindowTabData(AdLoadConfig loadCfg);
 
-	Boolean deleteData(List<AdModelKey> keyList, String tableName);
+	AdResultWithError deleteData(List<AdModelKey> keyList, String tableName);
 
-	Boolean selectData(List<AdModelKey> keyList, String tableName);
+	AdResultWithError selectData(List<AdModelKey> keyList, String tableName);
 
-//	Boolean addNewData(AdTab tabModel);
+//	AdResultWithError addNewData(AdTab tabModel);
+	
+	AdResultWithError updateData(String json, String tableName);
 
 	ADUserContext getADUserContext();
 

@@ -39,6 +39,10 @@ public class AdModelData implements Serializable {
 		return JSOUtil.getAttributeAsObject(jso, path);
 	}
 
+	public JavaScriptObject getJso() {
+		return jso;
+	}
+
 	public AdModelData deepClone() {
 		JavaScriptObject newJso = JSOUtil.deepClone(jso);
 		return new AdModelData(newJso);

@@ -5,6 +5,10 @@ import com.sencha.gxt.widget.core.client.info.Info;
 
 public abstract class AsyncSuccessCallback<T> implements AsyncCallback<T> {
 	private String	operation;
+	
+	public AsyncSuccessCallback() {
+		this("adempiere");
+	}
 
 	public AsyncSuccessCallback(String operation) {
 		super();

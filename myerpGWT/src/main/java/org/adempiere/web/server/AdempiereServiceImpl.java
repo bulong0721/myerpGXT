@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -25,6 +26,7 @@ import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
 import org.adempiere.web.client.model.AdMenuModel;
 import org.adempiere.web.client.model.AdProcessModel;
+import org.adempiere.web.client.model.AdResultWithError;
 import org.adempiere.web.client.model.AdTabModel;
 import org.adempiere.web.client.model.AdWindowModel;
 import org.adempiere.web.client.service.AdempiereService;
@@ -53,15 +55,15 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public Boolean deleteData(List<AdModelKey> keyList, String tableName) {
+	public AdResultWithError deleteData(List<AdModelKey> keyList, String tableName) {
 		// TODO Auto-generated method stub
-		return true;
+		return AdResultWithError.newSuccess();
 	}
 
 	@Override
-	public Boolean selectData(List<AdModelKey> keyList, String tableName) {
+	public AdResultWithError selectData(List<AdModelKey> keyList, String tableName) {
 		// TODO Auto-generated method stub
-		return true;
+		return AdResultWithError.newSuccess();
 	}
 
 	// @Override
@@ -105,7 +107,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 
 	@Override
 	public AdJSONData getWindowTabData(AdLoadConfig loadCfg) {
-		String entityClass = getEntityClass(loadCfg.getTableName());
+		String entityClass = getEntityClassName(loadCfg.getTableName());
 		System.out.println("fetchByClass1:" + entityClass);
 		String data = "";
 		long totalCount = 0;
@@ -140,11 +142,15 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		return jsonData;
 	}
 
-	private Class<?> toClass(String className) throws ClassNotFoundException {
+	private static Class<?> toClass(String className) throws ClassNotFoundException {
 		return Class.forName(className);
 	}
 
-	public static String getEntityClass(String tableName) {
+	public static Class<?> getEntityClass(String tableName) throws ClassNotFoundException {
+		return toClass(getEntityClassName(tableName));
+	}
+
+	public static String getEntityClassName(String tableName) {
 		StringBuffer buffer = new StringBuffer();
 		if (tableName.toUpperCase().startsWith("AD_")) {
 			buffer.append("org.adempiere.model.core.");
@@ -175,7 +181,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			TypedQuery<RefTableCriteria> qurey = em.createNamedQuery("queryRefTable", RefTableCriteria.class);
 			qurey.setParameter("adReferenceId", adRefId);
 			RefTableCriteria criteria = qurey.getSingleResult();
-			String tableName = getEntityClass(criteria.getAdTable());
+			String tableName = getEntityClassName(criteria.getAdTable());
 			String keyColumn = StringUtil.convertToCamel(criteria.getKeyColumn());
 			String disColumn = StringUtil.convertToCamel(criteria.getDisplayColumn());
 			CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -199,7 +205,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			String tableName = StringUtil.trimEnd(columnName, "_ID");
 			EntityManager em = getEntityManager();
 			CriteriaBuilder cb = em.getCriteriaBuilder();
-			Class<?> entityClazz = toClass(getEntityClass(tableName));
+			Class<?> entityClazz = toClass(getEntityClassName(tableName));
 			CriteriaQuery cq = cb.createQuery(entityClazz);
 			Root<?> root = cq.from(entityClazz);
 			String keyColumn = StringUtil.toCamelStyle(columnName);
@@ -240,5 +246,30 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			e.printStackTrace();
 		}
 		return processModel;
+	}
+
+	@Override
+	public AdResultWithError updateData(String text, String tableName) {
+		EntityTransaction tx = null;
+		System.out.println(text);
+		try {
+			EntityManager em = getEntityManager();
+			Class<?> clazz = getEntityClass(tableName);
+			List<?> array = JSON.parseArray(text, clazz);
+			tx = em.getTransaction();
+			tx.begin();
+			for (Object entity : array) {
+				System.out.println(entity.getClass());
+				em.merge(entity);
+			}
+			tx.commit();
+			return AdResultWithError.newSuccess();
+		} catch (Exception e) {
+			if (null != tx) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+			return AdResultWithError.newError(e.getMessage());
+		}
 	}
 }

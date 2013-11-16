@@ -188,5 +188,21 @@ public class JSOUtil {
 		String jsonString = toString(jso);
 		return JSOUtil.eval(jsonString);
 	};
+	
+	public static native int arrayLength(JavaScriptObject array) /*-{
+    	return array.length;
+	}-*/;
+
+	public static native Object arrayGet(JavaScriptObject array, int index) /*-{
+	    return array[index];
+	}-*/;
+
+	public static native void arraySet(JavaScriptObject array, int index, Object value) /*-{
+	    array[index] = value;
+	}-*/;
+	
+	public static native void arraySet(JavaScriptObject array, int index, JavaScriptObject value) /*-{
+	    array[index] = value;
+	}-*/;
 
 }
