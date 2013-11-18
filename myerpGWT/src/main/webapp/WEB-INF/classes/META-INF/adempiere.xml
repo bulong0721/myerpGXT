@@ -28,4 +28,7 @@
 	<named-query name="queryProcessWithParamsByProcessId">
 		<query>SELECT p FROM AdProcess p JOIN FETCH p.adProcessParas WHERE p.adProcessId = :adProcessId</query>
 	</named-query>
+	<named-query name="queryFormByFormId">
+		<query>SELECT f FROM AdForm f WHERE f.adFormId = :adFormId</query>
+	</named-query>
 </entity-mappings>

@@ -1,6 +1,7 @@
 package org.adempiere.web.client.apps;
 
 import org.adempiere.web.client.component.AdTabItemConfig;
+import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.event.WindowToolListener;
 import org.adempiere.web.client.model.AdTabModel;
 import org.adempiere.web.client.model.AdWindowModel;
@@ -20,7 +21,6 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.TabPanel;
-import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
 public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener, HasContentPresenter {
@@ -74,12 +74,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 	}
 
 	private void initWindow(Long adWindowId) {
-		AsyncCallback<AdWindowModel> callback = new AsyncCallback<AdWindowModel>() {
-			@Override
-			public void onFailure(Throwable caught) {
-				Info.display("getADWindowModel", caught.getMessage());
-			}
-
+		AsyncCallback<AdWindowModel> callback = new AsyncSuccessCallback<AdWindowModel>() {
 			@Override
 			public void onSuccess(AdWindowModel windowModel) {
 				ADWindowPanel.this.windowModel = windowModel;

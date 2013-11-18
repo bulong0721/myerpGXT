@@ -16,12 +16,14 @@ import org.adempiere.model.common.AdModelKey;
 import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.common.LookupValue;
 import org.adempiere.model.core.AdFieldV;
+import org.adempiere.model.core.AdForm;
 import org.adempiere.model.core.AdProcess;
 import org.adempiere.model.core.AdTabV;
 import org.adempiere.model.core.AdTreenodemm;
 import org.adempiere.model.util.DTOUtil;
 import org.adempiere.model.util.RefTableCriteria;
 import org.adempiere.web.client.model.AdFieldModel;
+import org.adempiere.web.client.model.AdFormModel;
 import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
 import org.adempiere.web.client.model.AdMenuModel;
@@ -39,7 +41,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereService {
 
 	@Override
-	public List<AdMenuModel> getAdMenu() {
+	public List<AdMenuModel> getAdMenuModels() {
 		try {
 			EntityManager em = getEntityManager();
 			TypedQuery<AdTreenodemm> query = em.createNamedQuery("queryMainMenuNodes", AdTreenodemm.class);
@@ -271,5 +273,19 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			e.printStackTrace();
 			return AdResultWithError.newError(e.getMessage());
 		}
+	}
+
+	@Override
+	public AdFormModel getADFormModel(long formId) {
+		AdFormModel formModel = null;
+		try {
+			EntityManager em = getEntityManager();
+			TypedQuery<AdForm> query = em.createNamedQuery("queryFormByFormId", AdForm.class);
+			query.setParameter("adFormId", formId);
+			formModel = DTOUtil.toFormModel(query.getSingleResult());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return formModel;
 	}
 }

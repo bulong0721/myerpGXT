@@ -1,4 +1,4 @@
-package org.adempiere.web.client.apps;
+package org.adempiere.web.client.form;
 
 import org.adempiere.web.client.model.AdProcessModel;
 

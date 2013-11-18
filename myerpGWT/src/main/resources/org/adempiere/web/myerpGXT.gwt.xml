@@ -12,6 +12,9 @@
 	<entry-point class='com.mvp4g.client.Mvp4gEntryPoint' />
 	<source path="client" />
 	<source path="shared" />
+	<generate-with class="org.adempiere.web.client.util.ClassActivatorGenerator">
+		<when-type-assignable class="org.adempiere.web.client.util.IClassActivator" />
+	</generate-with>
 	<set-property name="user.agent" value="safari" />
 	<set-property name="compiler.useSourceMaps" value="true" />
 	<set-property name="ClientBundle.enableInlining" value="false" />

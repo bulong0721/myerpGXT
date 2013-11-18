@@ -17,6 +17,8 @@ public interface IContentView extends ReverseViewInterface<IContentView.IContent
 		public abstract void createTask(String name, Long iTaskId);
 
 		public abstract void createPorcess(String name, long iProcessId);
+		
+		public abstract void createForm(String name, long iFormId);
 
 	}
 

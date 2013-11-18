@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.model.core.AdFieldV;
+import org.adempiere.model.core.AdForm;
 import org.adempiere.model.core.AdProcess;
 import org.adempiere.model.core.AdProcessPara;
 import org.adempiere.model.core.AdTabV;
 import org.adempiere.model.core.AdTreenodemm;
 import org.adempiere.web.client.model.AdFieldModel;
+import org.adempiere.web.client.model.AdFormModel;
 import org.adempiere.web.client.model.AdMenuModel;
 import org.adempiere.web.client.model.AdProcessModel;
 import org.adempiere.web.client.model.AdProcessParameter;
@@ -170,6 +172,33 @@ public class DTOUtil {
 		if (null != tabList) {
 			for (AdTabV tabEntity : tabList) {
 				resultList.add(toTabModel(tabEntity));
+			}
+		}
+		return resultList;
+	}
+
+	public static AdFormModel toFormModel(AdForm entity) {
+		AdFormModel model = new AdFormModel();
+		model.setAdFormId(entity.getAdFormId());
+		model.setAccesslevel(entity.getAccesslevel());
+		model.setAdClientId(entity.getAdClientId());
+		model.setAdOrgId(entity.getAdOrgId());
+		model.setClassname(entity.getClassname());
+		model.setDescription(entity.getDescription());
+		model.setHelp(entity.getHelp());
+		model.setIsActive(StringUtil.isYes(entity.getIsactive()));
+		model.setIsBetafunctionality(StringUtil.isYes(entity.getIsbetafunctionality()));
+		model.setJspurl(entity.getJspurl());
+		model.setName(entity.getName());
+		return model;
+	}
+
+	public static List<AdFormModel> toFormModels(List<AdForm> formList) {
+		int size = null == formList ? 0 : formList.size();
+		List<AdFormModel> resultList = new ArrayList<AdFormModel>(size);
+		if (null != formList) {
+			for (AdForm formEntity : formList) {
+				resultList.add(toFormModel(formEntity));
 			}
 		}
 		return resultList;

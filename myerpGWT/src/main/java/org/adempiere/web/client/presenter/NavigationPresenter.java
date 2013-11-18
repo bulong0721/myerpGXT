@@ -49,7 +49,7 @@ public class NavigationPresenter extends BasePresenter<INavigationView, MyerpEve
 		RpcProxy<AdMenuModel, List<AdMenuModel>> proxy = new RpcProxy<AdMenuModel, List<AdMenuModel>>() {
 			@Override
 			public void load(AdMenuModel loadConfig, AsyncCallback<List<AdMenuModel>> callback) {
-				adempiereService.getAdMenu(callback);
+				adempiereService.getAdMenuModels(callback);
 			}
 		};
 		final TreeStore<AdMenuModel> store = view.getTreeStore();

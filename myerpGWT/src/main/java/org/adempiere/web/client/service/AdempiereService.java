@@ -5,6 +5,7 @@ import java.util.List;
 import org.adempiere.model.common.ADUserContext;
 import org.adempiere.model.common.AdModelKey;
 import org.adempiere.model.common.LookupValue;
+import org.adempiere.web.client.model.AdFormModel;
 import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
 import org.adempiere.web.client.model.AdMenuModel;
@@ -18,11 +19,13 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("adempiere")
 public interface AdempiereService extends RemoteService {
 
-	List<AdMenuModel> getAdMenu();
+	List<AdMenuModel> getAdMenuModels();
 
 	List<LookupValue> getOptions(String columnName, int type, Long adRefId);
 
 	AdWindowModel getADWindowModel(long windowId);
+	
+	AdFormModel getADFormModel(long formId);
 
 	AdProcessModel getADProcessModel(long processId);
 
