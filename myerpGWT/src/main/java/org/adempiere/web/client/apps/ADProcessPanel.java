@@ -7,8 +7,6 @@ import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.model.AdProcessModel;
 import org.adempiere.web.client.model.AdProcessParameter;
-import org.adempiere.web.client.util.LoggingUtil;
-import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.ConfirmToolBar;
 
 import com.google.gwt.core.client.GWT;
@@ -57,8 +55,7 @@ public class ADProcessPanel implements IsWidget, ConfirmToolListener {
 		if (null == widget) {
 			initWindow(processModel);
 			widget = uiBinder.createAndBindUi(this);
-			toolBar.addToolbarListener(this);
-			WidgetUtil.doLayout(widget);
+			toolBar.setToolbarListener(this);
 		}
 		return widget;
 	}
@@ -66,9 +63,10 @@ public class ADProcessPanel implements IsWidget, ConfirmToolListener {
 	private void initWindow(AdProcessModel processModel) {
 		nameLabel = new Label(processModel.getName());
 		descLabel = new Label(processModel.getDescription(), true);
-		LoggingUtil.info("" + processModel);
 		List<AdProcessParameter> fieldList = processModel.getParamList();
 		AdFormEditStrategy formStrategy = new AdFormEditStrategy(fieldList);
+		formStrategy.setDisableKey(false);
+		formStrategy.setCreateGridEditor(false);
 		prarmEditor = new AdModelEditor(formStrategy);
 		prarmEditor.setLayoutWidth(0.52d);
 		reportViewer = new ADReportViewer(processModel.getAdProcessId());

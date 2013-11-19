@@ -7,9 +7,10 @@ import java.util.Map;
 
 import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.common.LookupValue;
-import org.adempiere.web.client.model.AdModelData;
-import org.adempiere.web.client.model.AdModelData.AdModelValueProvider;
+//import org.adempiere.web.client.model.AdModelData;
+import org.adempiere.web.client.model.MapAccessable.AdModelValueProvider;
 import org.adempiere.web.client.model.IAdFormField;
+import org.adempiere.web.client.model.MapAccessable;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
@@ -43,7 +44,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class AdFieldEditStrategy {
 	private IAdFormField					field;
-	private ColumnConfig<AdModelData, ?>	columnCfg;
+	private ColumnConfig<MapAccessable, ?>	columnCfg;
 	private Cell<?>							columnCell;
 	private Field<?>						gridEditor;
 	private Field<?>						formEditor;
@@ -51,8 +52,10 @@ public class AdFieldEditStrategy {
 	private boolean							showLabel	= true;
 	private Converter						converter;
 	private DisplayType						fieldType;
+	private AdFormEditStrategy				formStrategy;
 
-	public AdFieldEditStrategy(IAdFormField field) {
+	public AdFieldEditStrategy(AdFormEditStrategy formStrategy, IAdFormField field) {
+		this.formStrategy = formStrategy;
 		this.field = field;
 		this.init();
 	}
@@ -72,8 +75,10 @@ public class AdFieldEditStrategy {
 						field.getAdReferenceValueId());
 				columnCell = new OptionCell(optionStore);
 				LabelProvider<LookupValue> labelProvider = CommonUtil.createLabelProvider();
-				gridEditor = createComboBox(labelProvider);
-				formEditor = createComboBox(labelProvider);
+				if (formStrategy.isCreateGridEditor())
+					gridEditor = createComboBox(labelProvider);
+				if (formStrategy.isCreateFormEditor())
+					formEditor = createComboBox(labelProvider);
 				converter = new Converter<Integer, LookupValue>() {
 					@Override
 					public Integer convertFieldValue(LookupValue value) {
@@ -90,18 +95,24 @@ public class AdFieldEditStrategy {
 				};
 			} else {
 				NumberPropertyEditor<Integer> propertyEditor = new IntegerPropertyEditor();
-				gridEditor = new NumberField<Integer>(propertyEditor);
-				formEditor = new NumberField<Integer>(propertyEditor);
+				if (formStrategy.isCreateGridEditor())
+					gridEditor = new NumberField<Integer>(propertyEditor);
+				if (formStrategy.isCreateFormEditor())
+					formEditor = new NumberField<Integer>(propertyEditor);
 			}
 		} else if (fieldType.isFloat()) {
 			valueProvider = new AdModelValueProvider<Double>(propertyName, fieldType);
 			NumberPropertyEditor<Double> propertyEditor = new DoublePropertyEditor();
-			gridEditor = new NumberField<Double>(propertyEditor);
-			formEditor = new NumberField<Double>(propertyEditor);
+			if (formStrategy.isCreateGridEditor())
+				gridEditor = new NumberField<Double>(propertyEditor);
+			if (formStrategy.isCreateFormEditor())
+				formEditor = new NumberField<Double>(propertyEditor);
 		} else if (fieldType.isDate()) {
 			valueProvider = new AdModelValueProvider<String>(propertyName, fieldType);
-			gridEditor = new DateField();
-			formEditor = new DateField();
+			if (formStrategy.isCreateGridEditor())
+				gridEditor = new DateField();
+			if (formStrategy.isCreateFormEditor())
+				formEditor = new DateField();
 			converter = new Converter<String, Date>() {
 				DateTimeFormat	format	= DateTimeFormat.getFormat("yyyy-MM-dd HH:mm:ss.S");
 
@@ -121,16 +132,22 @@ public class AdFieldEditStrategy {
 		} else if (fieldType.isText()) {
 			valueProvider = new AdModelValueProvider<String>(propertyName, fieldType);
 			if (field.getIsencryptedfield()) {
-				gridEditor = new PasswordField();
-				formEditor = new PasswordField();
+				if (formStrategy.isCreateGridEditor())
+					gridEditor = new PasswordField();
+				if (formStrategy.isCreateFormEditor())
+					formEditor = new PasswordField();
 			} else {
-				gridEditor = new TextField();
-				formEditor = new TextField();
+				if (formStrategy.isCreateGridEditor())
+					gridEditor = new TextField();
+				if (formStrategy.isCreateFormEditor())
+					formEditor = new TextField();
 			}
 		} else if (fieldType.isBoolean()) {
 			valueProvider = new AdModelValueProvider<String>(propertyName, fieldType);
-			gridEditor = createCheckBox(false);
-			formEditor = createCheckBox(true);
+			if (formStrategy.isCreateGridEditor())
+				gridEditor = createCheckBox(false);
+			if (formStrategy.isCreateFormEditor())
+				formEditor = createCheckBox(true);
 			converter = new Converter<String, Boolean>() {
 				@Override
 				public String convertFieldValue(Boolean value) {
@@ -145,8 +162,10 @@ public class AdFieldEditStrategy {
 			showLabel = false;
 		} else {
 			valueProvider = new AdModelValueProvider<String>(propertyName, fieldType);
-			gridEditor = new TextField();
-			formEditor = new TextField();
+			if (formStrategy.isCreateGridEditor())
+				gridEditor = new TextField();
+			if (formStrategy.isCreateFormEditor())
+				formEditor = new TextField();
 		}
 		if (null != formEditor) {
 			formEditor.setName(propertyName);
@@ -156,9 +175,11 @@ public class AdFieldEditStrategy {
 		columnCfg = new ColumnConfig(valueProvider, 100);
 		columnCfg.setHeader(field.getName());
 		columnCfg.setCell((Cell) columnCell);
-		if (field.getIskey()) {
-			gridEditor.setReadOnly(true);
-			formEditor.setReadOnly(true);
+		if (formStrategy.isDisableKey() && field.getIskey()) {
+			if (formStrategy.isCreateGridEditor())
+				gridEditor.setReadOnly(true);
+			if (formStrategy.isCreateFormEditor())
+				formEditor.setReadOnly(true);
 		}
 	}
 
@@ -246,7 +267,7 @@ public class AdFieldEditStrategy {
 		return field;
 	}
 
-	public ColumnConfig<AdModelData, ?> getColumnCfg() {
+	public ColumnConfig<MapAccessable, ?> getColumnCfg() {
 		return columnCfg;
 	}
 
@@ -262,10 +283,10 @@ public class AdFieldEditStrategy {
 		return formEditor;
 	}
 
-	public FieldLabel getFieldLabel() {
+	public FieldLabel getFieldLabel(int labelWidth) {
 		FieldLabel fieldLabel = new FieldLabel();
 		fieldLabel.setStyleName("formField", true);
-		fieldLabel.setLabelWidth(135);
+		fieldLabel.setLabelWidth(labelWidth);
 		fieldLabel.setHeight(24);
 		if (showLabel) {
 			fieldLabel.setText(field.getName());

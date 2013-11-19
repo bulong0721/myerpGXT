@@ -1,25 +1,63 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
-	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar"
-	xmlns:widget="urn:import:org.adempiere.web.client.widget" xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form" xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
-	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins4">
+	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.treegrid" xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar"
+	xmlns:component="urn:import:org.adempiere.web.client.component" xmlns:widget="urn:import:org.adempiere.web.client.widget" xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="marginsAdvance">
 		<ui:attributes top="4" right="4" bottom="4" left="4" />
 	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="marginsSimple">
+		<ui:attributes top="4" right="4" bottom="4" left="4" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="topLayout">
+		<ui:attributes width="1" margins="{marginsSimple}" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="simpleLayout">
+		<ui:attributes width="1" height="1" margins="{marginsSimple}" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="advanceLayout">
+		<ui:attributes width="1" height="1" margins="{marginsAdvance}" />
+	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="marginData">
-		<ui:attributes margins="{margins4}" />
+		<ui:attributes margins="{marginsAdvance}" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="simpleConfig">
+		<ui:attributes text="Simple" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="advanceConfig">
+		<ui:attributes text="Advanced" />
 	</ui:with>
 
-	<container:VerticalLayoutContainer>
-		<container:child layoutData="{marginData}">
-			<tabs:TabPanel borders="false" layoutData="{marginData}">
-				<tabs:child config="{marginData}">
-				</tabs:child>
-				<tabs:child config="{marginData}">
-				</tabs:child>
-			</tabs:TabPanel>
-		</container:child>
-		<container:child layoutData="{marginData}">
-			<widget:ConfirmToolBar ui:field="toolBar" />
-		</container:child>
-	</container:VerticalLayoutContainer>
+	<gxt:Window ui:field="window" pixelSize="600, 400" modal="true">
+		<container:VerticalLayoutContainer>
+			<container:child layoutData="{simpleLayout}">
+				<tabs:TabPanel borders="false" layoutData="{simpleLayout}">
+					<tabs:child config="{simpleConfig}">
+						<component:AdModelEditor ui:field="simpleEditor" />
+					</tabs:child>
+					<tabs:child config="{advanceConfig}">
+						<container:VerticalLayoutContainer>
+							<container:child layoutData="{topLayout}">
+								<toolbar:ToolBar ui:field="advToolBar" horizontalSpacing="1">
+									<form:ComboBox ui:field="cmbFields" width="135" allowBlank="true" forceSelection="true" />
+									<button:IconButton ui:field="btnAdd" toolTip="Add Expression" />
+									<button:IconButton ui:field="btnDelete" toolTip="Delete Expression" />
+									<toolbar:SeparatorToolItem />
+									<form:ComboBox ui:field="cmbProfiles" width="165" allowBlank="true" />
+									<button:IconButton ui:field="btnSave" toolTip="Save Profile" />
+								</toolbar:ToolBar>
+							</container:child>
+							<container:child layoutData="{simpleLayout}">
+								<grid:TreeGrid ui:field="grid" loadMask="true" columnReordering="true" borders="false" />
+							</container:child>
+						</container:VerticalLayoutContainer>
+					</tabs:child>
+				</tabs:TabPanel>
+			</container:child>
+			<container:child>
+				<widget:ConfirmToolBar ui:field="toolBar" />
+			</container:child>
+		</container:VerticalLayoutContainer>
+	</gxt:Window>
 </ui:UiBinder> 

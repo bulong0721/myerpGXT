@@ -3,8 +3,8 @@ package org.adempiere.web.client.component;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.web.client.model.AdModelData;
 import org.adempiere.web.client.model.IAdFormField;
+import org.adempiere.web.client.model.MapAccessable;
 
 import com.sencha.gxt.data.shared.Converter;
 import com.sencha.gxt.widget.core.client.form.Field;
@@ -17,6 +17,9 @@ import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 public class AdFormEditStrategy {
 	private List<? extends IAdFormField>	fieldList;
 	private List<AdFieldEditStrategy>		fieldStrategies;
+	private boolean							disableKey			= true;
+	private boolean							createFormEditor	= true;
+	private boolean							createGridEditor	= true;
 
 	public AdFormEditStrategy(List<? extends IAdFormField> fieldList) {
 		super();
@@ -29,29 +32,53 @@ public class AdFormEditStrategy {
 		fieldStrategies = new ArrayList<AdFieldEditStrategy>(size);
 		for (IAdFormField field : fieldList) {
 			if (field.getIsdisplayed() || field.getIskey()) {
-				AdFieldEditStrategy fieldStrategy = new AdFieldEditStrategy(field);
+				AdFieldEditStrategy fieldStrategy = new AdFieldEditStrategy(this, field);
 				fieldStrategies.add(fieldStrategy);
 			}
 		}
+	}
+
+	public boolean isDisableKey() {
+		return disableKey;
+	}
+
+	public boolean isCreateFormEditor() {
+		return createFormEditor;
+	}
+
+	public boolean isCreateGridEditor() {
+		return createGridEditor;
+	}
+
+	public void setDisableKey(boolean disableKey) {
+		this.disableKey = disableKey;
+	}
+
+	public void setCreateFormEditor(boolean createFormEditor) {
+		this.createFormEditor = createFormEditor;
+	}
+
+	public void setCreateGridEditor(boolean createGridEditor) {
+		this.createGridEditor = createGridEditor;
 	}
 
 	public List<AdFieldEditStrategy> getFieldStrategies() {
 		return fieldStrategies;
 	}
 
-	public ColumnModel<AdModelData> createColumnModel() {
-		List<ColumnConfig<AdModelData, ?>> columnList = new ArrayList<ColumnConfig<AdModelData, ?>>();
+	public ColumnModel<MapAccessable> createColumnModel() {
+		List<ColumnConfig<MapAccessable, ?>> columnList = new ArrayList<ColumnConfig<MapAccessable, ?>>();
 		for (AdFieldEditStrategy strategy : fieldStrategies) {
 			columnList.add(strategy.getColumnCfg());
 		}
-		return new ColumnModel<AdModelData>(columnList);
+		return new ColumnModel<MapAccessable>(columnList);
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public GridEditing<AdModelData> createGridEditing(Grid<AdModelData> editableGrid) {
-		GridInlineEditing<AdModelData> editing = new GridInlineEditing<AdModelData>(editableGrid);
+	public GridEditing<MapAccessable> createGridEditing(Grid<MapAccessable> editableGrid) {
+		GridInlineEditing<MapAccessable> editing = new GridInlineEditing<MapAccessable>(editableGrid);
 		for (AdFieldEditStrategy strategy : fieldStrategies) {
-			ColumnConfig<AdModelData, ?> columnConfig = strategy.getColumnCfg();
+			ColumnConfig<MapAccessable, ?> columnConfig = strategy.getColumnCfg();
 			Field editor = strategy.getGridEditor();
 			Converter converter = strategy.getConverter();
 			if (null != editor) {

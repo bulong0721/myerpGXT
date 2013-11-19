@@ -43,7 +43,7 @@ public class ConfirmToolBar implements IsWidget {
 		btnCancel = WidgetUtil.createIconButton("images/icons/Cancel24.png");
 	}
 
-	public void addToolbarListener(ConfirmToolListener listener) {
+	public void setToolbarListener(ConfirmToolListener listener) {
 		this.listener = listener;
 	}
 

@@ -211,8 +211,8 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 
 	@Override
 	public void onFind() {
-		// TODO Auto-generated method stub
-
+		ADFindPanel findPanel = new ADFindPanel(currentTab.getTabModel(), currentTab);
+		findPanel.show();
 	}
 
 	@Override

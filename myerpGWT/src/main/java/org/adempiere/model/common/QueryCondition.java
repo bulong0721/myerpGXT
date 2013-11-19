@@ -2,10 +2,10 @@ package org.adempiere.model.common;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Properties;
-
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+//import java.util.Properties;
+//
+//import javax.persistence.EntityManager;
+//import javax.persistence.TypedQuery;
 
 public class QueryCondition implements Serializable {
 
@@ -540,28 +540,28 @@ public class QueryCondition implements Serializable {
 		return r.getInfoDisplayAll();
 	} // getInfoDisplay
 
-	/**
-	 * Get Display Name
-	 * 
-	 * @param ctx context
-	 * @return display Name
-	 */
-	public String getDisplayName(Properties ctx) {
-		String keyColumn = null;
-		if (m_TableName != null)
-			keyColumn = m_TableName + "_ID";
-		else
-			keyColumn = getColumnName(0);
-		String retValue = translate(ctx, keyColumn);
-		if (retValue != null && retValue.length() > 0)
-			return retValue;
-		return m_TableName;
-	} // getDisplayName
-
-	private String translate(Properties ctx, String keyColumn) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	/**
+//	 * Get Display Name
+//	 * 
+//	 * @param ctx context
+//	 * @return display Name
+//	 */
+//	public String getDisplayName(Properties ctx) {
+//		String keyColumn = null;
+//		if (m_TableName != null)
+//			keyColumn = m_TableName + "_ID";
+//		else
+//			keyColumn = getColumnName(0);
+//		String retValue = translate(ctx, keyColumn);
+//		if (retValue != null && retValue.length() > 0)
+//			return retValue;
+//		return m_TableName;
+//	} // getDisplayName
+//
+//	private String translate(Properties ctx, String keyColumn) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	/**
 	 * Clone Query
@@ -737,10 +737,6 @@ class Restriction implements Serializable {
 	protected boolean	andCondition		= true;
 	/** And/Or condition nesting depth ( = number of open brackets at and/or) */
 	protected int		joinDepth			= 0;
-
-	public TypedQuery<?> getQuery(EntityManager em) {
-		return null;
-	}
 
 	/**
 	 * Get Info Name

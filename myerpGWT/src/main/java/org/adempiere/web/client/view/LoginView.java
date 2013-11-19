@@ -74,7 +74,7 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
 	public Widget asWidget() {
 		if (null == widget) {
 			widget = uiBinder.createAndBindUi(this);
-			toolBar.addToolbarListener(this);
+			toolBar.setToolbarListener(this);
 			WidgetUtil.doLayout(widget);
 		}
 		return widget;

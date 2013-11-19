@@ -7,7 +7,6 @@ import org.adempiere.web.client.apps.ADReportViewer;
 import org.adempiere.web.client.apps.ADWindowPanel;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.form.AbstractForm;
-import org.adempiere.web.client.form.HelloForm;
 import org.adempiere.web.client.model.AdFormModel;
 import org.adempiere.web.client.model.AdMenuModel;
 import org.adempiere.web.client.model.AdProcessModel;

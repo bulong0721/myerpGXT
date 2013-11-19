@@ -3,6 +3,8 @@ package org.adempiere.web.client.apps;
 import java.util.List;
 
 import org.adempiere.model.common.AdModelKey;
+import org.adempiere.model.common.QueryCondition;
+import org.adempiere.web.client.apps.ADFindPanel.ConditionLoader;
 import org.adempiere.web.client.component.AdFormEditStrategy;
 import org.adempiere.web.client.component.AdModelDriver;
 import org.adempiere.web.client.component.AdModelEditor;
@@ -11,10 +13,11 @@ import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
 import org.adempiere.web.client.model.AdModelData;
-import org.adempiere.web.client.model.AdModelData.AdModelKeyProvider;
+import org.adempiere.web.client.model.MapAccessable.AdModelKeyProvider;
 import org.adempiere.web.client.model.AdResultWithError;
 import org.adempiere.web.client.model.AdTabModel;
 import org.adempiere.web.client.model.AdWindowModel;
+import org.adempiere.web.client.model.MapAccessable;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.JSOUtil;
@@ -58,27 +61,27 @@ import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent.SelectionChangedHandler;
 import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
 
-public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
+public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus, ConditionLoader {
 
 	private static ADTabPanelUiBinder	uiBinder	= GWT.create(ADTabPanelUiBinder.class);
 
 	interface ADTabPanelUiBinder extends UiBinder<Widget, ADTabPanel> {
 	}
 
-	PagingLoader<AdLoadConfig, PagingLoadResult<AdModelData>>	loader				= null;
+	PagingLoader<AdLoadConfig, PagingLoadResult<MapAccessable>>	loader				= null;
 	private AdempiereServiceAsync								adempiereService	= GWT.create(AdempiereService.class);
 	private AdWindowModel										windowModel;
 	private AdTabModel											tabModel;
 	private CWindowToolBar										toolBar;
 	private Widget												widget;
-	private ColumnModel<AdModelData>							cm;
-	private ListStore<AdModelData>								store;
+	private ColumnModel<MapAccessable>							cm;
+	private ListStore<MapAccessable>							store;
 	private AdFormEditStrategy									tabStrategy;
-	private GridEditing<AdModelData>							gridEditing;
+	private GridEditing<MapAccessable>							gridEditing;
 	private AdModelDriver										adModelDriver;
 	private AdModelKeyProvider									keyProvider;
 	@UiField(provided = true)
-	Grid<AdModelData>											grid;
+	Grid<MapAccessable>											grid;
 	@UiField(provided = true)
 	PagingToolBar												pageToolBar;
 	@UiField(provided = true)
@@ -117,43 +120,43 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 			}
 		};
 		AdModelReader reader = new AdModelReader();
-		loader = new PagingLoader<AdLoadConfig, PagingLoadResult<AdModelData>>(proxy, reader);
+		loader = new PagingLoader<AdLoadConfig, PagingLoadResult<MapAccessable>>(proxy, reader);
 		loader.setRemoteSort(true);
 		pageToolBar = new PagingToolBar(50);
 		pageToolBar.bind(loader);
 		keyProvider = AdModelData.createKeyProvider(tabModel);
-		store = new ListStore<AdModelData>(keyProvider);
-		store.addStoreDataChangeHandler(new StoreDataChangeHandler<AdModelData>() {
+		store = new ListStore<MapAccessable>(keyProvider);
+		store.addStoreDataChangeHandler(new StoreDataChangeHandler<MapAccessable>() {
 			@Override
-			public void onDataChange(StoreDataChangeEvent<AdModelData> event) {
+			public void onDataChange(StoreDataChangeEvent<MapAccessable> event) {
 				grid.getSelectionModel().select(0, false);
 				grid.setLoadMask(true);
 			}
 		});
-		final LoadHandler<AdLoadConfig, PagingLoadResult<AdModelData>> loadHandler = new LoadResultListStoreBinding<AdLoadConfig, AdModelData, PagingLoadResult<AdModelData>>(
+		final LoadHandler<AdLoadConfig, PagingLoadResult<MapAccessable>> loadHandler = new LoadResultListStoreBinding<AdLoadConfig, MapAccessable, PagingLoadResult<MapAccessable>>(
 				store);
 		loader.addLoadHandler(loadHandler);
 		cm = tabStrategy.createColumnModel();
-		grid = new Grid<AdModelData>(store, cm);
+		grid = new Grid<MapAccessable>(store, cm);
 		grid.setLoader(loader);
 		grid.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-		grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedHandler<AdModelData>() {
+		grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedHandler<MapAccessable>() {
 			@Override
-			public void onSelectionChanged(SelectionChangedEvent<AdModelData> event) {
+			public void onSelectionChanged(SelectionChangedEvent<MapAccessable> event) {
 				// TODO Auto-generated method stub
 
 			}
 		});
 		gridEditing = tabStrategy.createGridEditing(grid);
-		gridEditing.addCompleteEditHandler(new CompleteEditHandler<AdModelData>() {
+		gridEditing.addCompleteEditHandler(new CompleteEditHandler<MapAccessable>() {
 			@Override
-			public void onCompleteEdit(CompleteEditEvent<AdModelData> event) {
+			public void onCompleteEdit(CompleteEditEvent<MapAccessable> event) {
 				toolBar.setTabState(ADTabPanel.this);
 			}
 		});
-		gridEditing.addCancelEditHandler(new CancelEditHandler<AdModelData>() {
+		gridEditing.addCancelEditHandler(new CancelEditHandler<MapAccessable>() {
 			@Override
-			public void onCancelEdit(CancelEditEvent<AdModelData> event) {
+			public void onCancelEdit(CancelEditEvent<MapAccessable> event) {
 				toolBar.setTabState(ADTabPanel.this);
 			}
 		});
@@ -184,10 +187,10 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 			adModelDriver.initialize(formEditing);
 		}
 		if (isGridMode()) {
-			// AdModelData data = adModelDriver.flush();
+			// MapAccessable data = adModelDriver.flush();
 			// store.update(data);
 		} else {
-			AdModelData selectedItem = grid.getSelectionModel().getSelectedItem();
+			MapAccessable selectedItem = grid.getSelectionModel().getSelectedItem();
 			adModelDriver.edit(selectedItem);
 		}
 	}
@@ -215,25 +218,25 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 			}
 		};
 		String json = getModifyRecords();
-//		LoggingUtil.info(json);
+		// LoggingUtil.info(json);
 		adempiereService.updateData(json, tabModel.getTablename(), callback);
 	}
 
 	private String getModifyRecords() {
 		JavaScriptObject array = JavaScriptObject.createArray();
 		int index = 0;
-		for (Store<AdModelData>.Record record : store.getModifiedRecords()) {
-			JSOUtil.arraySet(array, index, copyWithChange(record).getJso());
-			index ++;
+		for (Store<MapAccessable>.Record record : store.getModifiedRecords()) {
+			JSOUtil.arraySet(array, index, ((AdModelData)copyWithChange(record)).getJso());
+			index++;
 		}
-		LoggingUtil.info(array.toString()); 
+		LoggingUtil.info(array.toString());
 		return JSOUtil.toString(array);
 	}
 
-	private AdModelData copyWithChange(Store<AdModelData>.Record record) {
-		AdModelData copy = record.getModel().deepClone();
+	private MapAccessable copyWithChange(Store<MapAccessable>.Record record) {
+		MapAccessable copy = record.getModel().deepClone();
 		if (record.isDirty()) {
-			for (Change<AdModelData, ?> c : record.getChanges()) {
+			for (Change<MapAccessable, ?> c : record.getChanges()) {
 				c.modify(copy);
 			}
 		}
@@ -241,7 +244,7 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 	}
 
 	public void deleteRecord() {
-		final AdModelData selectedData = grid.getSelectionModel().getSelectedItem();
+		final MapAccessable selectedData = grid.getSelectionModel().getSelectedItem();
 		final MessageBox box = new MessageBox("Error");
 		if (null == selectedData) {
 			box.setMessage("Select the row you want to delete");
@@ -272,7 +275,7 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 	}
 
 	public void newRecord() {
-		AdModelData data = new AdModelData();
+		MapAccessable data = new AdModelData();
 		store.add(data);
 		if (!isGridMode()) {
 			adModelDriver.edit(data);
@@ -296,14 +299,14 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 	}
 
 	public void copyRecord() {
-		final AdModelData selectedData = grid.getSelectionModel().getSelectedItem();
+		final MapAccessable selectedData = grid.getSelectionModel().getSelectedItem();
 		final MessageBox box = new MessageBox("Error");
 		if (null == selectedData) {
 			box.setMessage("Select the row you want to copy");
 			box.show();
 			return;
 		}
-		AdModelData newData = selectedData.deepClone();
+		MapAccessable newData = (MapAccessable) selectedData.deepClone();
 		keyProvider.resetKeys(newData);
 		store.add(newData);
 	}
@@ -334,7 +337,7 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 
 	@Override
 	public int getCurrentIndex() {
-		AdModelData data = grid.getSelectionModel().getSelectedItem();
+		MapAccessable data = grid.getSelectionModel().getSelectedItem();
 		if (null != data) {
 			return store.indexOf(data);
 		}
@@ -343,6 +346,12 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus {
 
 	public void refreshRecord() {
 		pageToolBar.refresh();
+	}
+
+	@Override
+	public void load(QueryCondition condition) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

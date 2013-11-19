@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.model.common.DisplayType;
-import org.adempiere.web.client.model.AdModelData;
 import org.adempiere.web.client.model.IAdFormField;
+import org.adempiere.web.client.model.MapAccessable;
 import org.adempiere.web.client.util.StringUtil;
 
 import com.google.gwt.editor.client.CompositeEditor;
@@ -22,12 +22,13 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class AdModelEditor implements CompositeEditor<AdModelData, Object, Field<Object>>, IsWidget {
+public class AdModelEditor implements CompositeEditor<MapAccessable, Object, Field<Object>>, IsWidget {
 	private AdFormEditStrategy					tabStrategy;
 	private EditorChain<Object, Field<Object>>	chain;
 	private List<AdFieldEditStrategy>			fieldList;
-	private AdModelData							model;
+	private MapAccessable						model;
 	private double								layoutWidth	= 0.49d;
+	private int									labelWidth	= 135;
 
 	@UiConstructor
 	public AdModelEditor(AdFormEditStrategy tabStrategy) {
@@ -40,12 +41,12 @@ public class AdModelEditor implements CompositeEditor<AdModelData, Object, Field
 
 	}
 
-	public double getLayoutWidth() {
-		return layoutWidth;
-	}
-
 	public void setLayoutWidth(double layoutWidth) {
 		this.layoutWidth = layoutWidth;
+	}
+
+	public void setLabelWidth(int labelWidth) {
+		this.labelWidth = labelWidth;
 	}
 
 	@Override
@@ -76,7 +77,7 @@ public class AdModelEditor implements CompositeEditor<AdModelData, Object, Field
 	}
 
 	private void layoutFiled(CssFloatLayoutContainer container, AdFieldEditStrategy fieldStrategy) {
-		FieldLabel fieldLabel = fieldStrategy.getFieldLabel();
+		FieldLabel fieldLabel = fieldStrategy.getFieldLabel(labelWidth);
 		Widget widget = fieldLabel.getWidget();
 		if (widget instanceof Field) {
 			fieldList.add(fieldStrategy);
@@ -111,7 +112,7 @@ public class AdModelEditor implements CompositeEditor<AdModelData, Object, Field
 	}
 
 	@Override
-	public void setValue(AdModelData model) {
+	public void setValue(MapAccessable model) {
 		if (null == fieldList || null == model) {
 			return;
 		}
@@ -129,7 +130,7 @@ public class AdModelEditor implements CompositeEditor<AdModelData, Object, Field
 	}
 
 	@Override
-	public void setDelegate(EditorDelegate<AdModelData> delegate) {
+	public void setDelegate(EditorDelegate<MapAccessable> delegate) {
 	}
 
 	@Override

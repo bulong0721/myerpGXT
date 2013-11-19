@@ -4,6 +4,14 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
 public interface Images extends ClientBundle {
+	@Source("org/adempiere/web/client/resources/images/Function16.png")
+	ImageResource function16();
+	
+	@Source("org/adempiere/web/client/resources/images/Field16.png")
+	ImageResource field16();
+	
+	@Source("org/adempiere/web/client/resources/images/Field24.png")
+	ImageResource field24();
 
 	@Source("org/adempiere/web/client/resources/images/About16.png")
 	ImageResource about16();
