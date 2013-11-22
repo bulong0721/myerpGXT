@@ -7,10 +7,10 @@ import java.util.Map;
 
 import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.common.LookupValue;
-//import org.adempiere.web.client.model.AdModelData;
-import org.adempiere.web.client.model.MapAccessable.AdModelValueProvider;
+import org.adempiere.web.client.event.FieldButtonListener;
 import org.adempiere.web.client.model.IAdFormField;
 import org.adempiere.web.client.model.MapAccessable;
+import org.adempiere.web.client.model.MapAccessable.AdModelValueProvider;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
@@ -22,11 +22,13 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.widget.client.TextButton;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
 import com.sencha.gxt.data.shared.Converter;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
+import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.DateField;
@@ -287,7 +289,9 @@ public class AdFieldEditStrategy {
 		FieldLabel fieldLabel = new FieldLabel();
 		fieldLabel.setStyleName("formField", true);
 		fieldLabel.setLabelWidth(labelWidth);
-		fieldLabel.setHeight(24);
+		if (!field.getFieldType().isButton()) {
+			fieldLabel.setHeight(24);
+		}
 		if (showLabel) {
 			fieldLabel.setText(field.getName());
 		} else {
@@ -295,8 +299,17 @@ public class AdFieldEditStrategy {
 			fieldLabel.setLabelSeparator("");
 		}
 		fieldLabel.setWidget(formEditor);
-		if (field.getAdReferenceId() == DisplayType.Button.getValue()) {
+		if (field.getFieldType().isButton()) {
 			TextButton button = new TextButton(field.getName());
+			final FieldButtonListener listener = formStrategy.getFieldButtonListener();
+			if (null != listener) {
+				button.addSelectHandler(new SelectHandler() {
+					@Override
+					public void onSelect(SelectEvent event) {
+						listener.onActionButton(field);
+					}
+				});
+			}
 			fieldLabel.setWidget(button);
 		}
 		return fieldLabel;

@@ -170,15 +170,15 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 
 		LabelProvider<String> labelProvider = new StringLabelProvider<String>();
 		cmbFields = new SimpleComboBox<String>(labelProvider);
-		cmbFields.add("AND");
-		cmbFields.add("OR");
+		cmbFields.add("**And**");
+		cmbFields.add("**Or**");
 		for (AdFieldModel field : tabModel.getFieldList()) {
 			cmbFields.add(field.getName());
 		}
 		cmbFields.setForceSelection(true);
 		cmbFields.setTriggerAction(TriggerAction.ALL);
-		cmbFields.setEditable(true);
-		cmbFields.setValue("AND");
+		cmbFields.setEditable(false);
+		cmbFields.setValue("**And**");
 
 		labelProvider = new StringLabelProvider<String>();
 		cmbProfiles = new SimpleComboBox<String>(labelProvider);
@@ -199,7 +199,7 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		List<AdFieldModel> fieldList = new ArrayList<AdFieldModel>(5);
 		if (null != tabModel && null != tabModel.getFieldList()) {
 			for (AdFieldModel fieldModel : tabModel.getFieldList()) {
-				if (fieldModel.getIskey() || LOOKUP_FIELDS.contains(fieldModel.getName().toLowerCase())) {
+				if (fieldModel.getIsselectioncolumn() || fieldModel.getIskey() || LOOKUP_FIELDS.contains(fieldModel.getName().toLowerCase())) {
 					fieldList.add(fieldModel);
 				}
 			}

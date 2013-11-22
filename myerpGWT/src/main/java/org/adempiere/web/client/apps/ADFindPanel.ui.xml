@@ -29,7 +29,7 @@
 		<ui:attributes text="Advanced" />
 	</ui:with>
 
-	<gxt:Window ui:field="window" pixelSize="600, 400" modal="true">
+	<gxt:Window ui:field="window" pixelSize="640, 480" modal="true">
 		<container:VerticalLayoutContainer>
 			<container:child layoutData="{simpleLayout}">
 				<tabs:TabPanel borders="false" layoutData="{simpleLayout}">

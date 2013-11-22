@@ -1,7 +1,6 @@
 package org.adempiere.web.client.apps;
 
 import org.adempiere.web.client.event.ReportToolListener;
-import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.CReportToolBar;
 
 import com.google.gwt.core.client.GWT;
@@ -44,7 +43,6 @@ public class ADReportViewer implements IsWidget, ReportToolListener {
 		if (null == widget) {
 			widget = uiBinder.createAndBindUi(this);
 			toolBar.addToolbarListener(this);
-			WidgetUtil.doLayout(widget);
 		}
 		return widget;
 	}

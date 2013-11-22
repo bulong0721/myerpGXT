@@ -10,19 +10,20 @@ import org.adempiere.web.client.component.AdModelDriver;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.component.AdModelReader;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
+import org.adempiere.web.client.event.FieldButtonListener;
 import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
 import org.adempiere.web.client.model.AdModelData;
-import org.adempiere.web.client.model.MapAccessable.AdModelKeyProvider;
 import org.adempiere.web.client.model.AdResultWithError;
 import org.adempiere.web.client.model.AdTabModel;
 import org.adempiere.web.client.model.AdWindowModel;
+import org.adempiere.web.client.model.IAdFormField;
 import org.adempiere.web.client.model.MapAccessable;
+import org.adempiere.web.client.model.MapAccessable.AdModelKeyProvider;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.LoggingUtil;
-import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.TabStatus;
 import org.adempiere.web.client.widget.HWindow;
@@ -61,7 +62,7 @@ import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent.SelectionChangedHandler;
 import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
 
-public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus, ConditionLoader {
+public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader, TabStatus, ConditionLoader {
 
 	private static ADTabPanelUiBinder	uiBinder	= GWT.create(ADTabPanelUiBinder.class);
 
@@ -91,6 +92,7 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus, Condition
 
 	public ADTabPanel(AdWindowModel windowModel, AdTabModel tabModel, CWindowToolBar toolBar) {
 		this.tabStrategy = new AdFormEditStrategy(tabModel.getFieldList());
+		this.tabStrategy.setFieldButtonListener(this);
 		this.windowModel = windowModel;
 		this.tabModel = tabModel;
 		this.toolBar = toolBar;
@@ -101,7 +103,6 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus, Condition
 		if (null == widget) {
 			this.onRender();
 			widget = uiBinder.createAndBindUi(this);
-			WidgetUtil.doLayout(widget);
 			this.toolBar.setTabState(this);
 		}
 		return widget;
@@ -352,6 +353,11 @@ public class ADTabPanel implements IsWidget, HistoryLoader, TabStatus, Condition
 	public void load(QueryCondition condition) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onActionButton(IAdFormField field) {
+		Info.display("adempiere", field.getName());
 	}
 
 }

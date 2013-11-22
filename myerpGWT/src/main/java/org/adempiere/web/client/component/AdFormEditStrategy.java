@@ -3,6 +3,7 @@ package org.adempiere.web.client.component;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adempiere.web.client.event.FieldButtonListener;
 import org.adempiere.web.client.model.IAdFormField;
 import org.adempiere.web.client.model.MapAccessable;
 
@@ -20,6 +21,7 @@ public class AdFormEditStrategy {
 	private boolean							disableKey			= true;
 	private boolean							createFormEditor	= true;
 	private boolean							createGridEditor	= true;
+	private FieldButtonListener				fieldButtonListener;
 
 	public AdFormEditStrategy(List<? extends IAdFormField> fieldList) {
 		super();
@@ -64,6 +66,14 @@ public class AdFormEditStrategy {
 
 	public List<AdFieldEditStrategy> getFieldStrategies() {
 		return fieldStrategies;
+	}
+
+	public FieldButtonListener getFieldButtonListener() {
+		return fieldButtonListener;
+	}
+
+	public void setFieldButtonListener(FieldButtonListener fieldButtonListener) {
+		this.fieldButtonListener = fieldButtonListener;
 	}
 
 	public ColumnModel<MapAccessable> createColumnModel() {

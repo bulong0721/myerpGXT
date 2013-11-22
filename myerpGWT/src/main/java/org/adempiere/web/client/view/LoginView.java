@@ -8,7 +8,6 @@ import org.adempiere.web.client.presenter.interfaces.ILoginView.ILoginPresenter;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.util.CommonUtil;
-import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.ConfirmToolBar;
 
 import com.google.gwt.core.client.GWT;
@@ -75,7 +74,6 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
 		if (null == widget) {
 			widget = uiBinder.createAndBindUi(this);
 			toolBar.setToolbarListener(this);
-			WidgetUtil.doLayout(widget);
 		}
 		return widget;
 	}

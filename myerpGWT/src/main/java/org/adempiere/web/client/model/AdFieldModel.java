@@ -24,6 +24,7 @@ public class AdFieldModel implements Serializable, IAdFormField {
 	private Boolean				isparent;
 	private Boolean				isreadonly;
 	private Boolean				issameline;
+	private Boolean				isselectioncolumn;
 	private String				name;
 	private String				readonlylogic;
 	private Integer				seqno;
@@ -67,6 +68,14 @@ public class AdFieldModel implements Serializable, IAdFormField {
 
 	public void setAdReferenceId(Integer adReferenceId) {
 		this.adReferenceId = adReferenceId;
+	}
+
+	public Boolean getIsselectioncolumn() {
+		return isselectioncolumn;
+	}
+
+	public void setIsselectioncolumn(Boolean isselectioncolumn) {
+		this.isselectioncolumn = isselectioncolumn;
 	}
 
 	/*

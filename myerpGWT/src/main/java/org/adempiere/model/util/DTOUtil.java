@@ -38,6 +38,7 @@ public class DTOUtil {
 		model.setIsmandatory(StringUtil.isYes(entity.getIsmandatory()));
 		model.setIsparent(StringUtil.isYes(entity.getIsparent()));
 		model.setIsreadonly(StringUtil.isYes(entity.getIsreadonly()));
+		model.setIsselectioncolumn(StringUtil.isYes(entity.getIsselectioncolumn()));
 		model.setName(entity.getName());
 		model.setReadonlylogic(entity.getReadonlylogic());
 		model.setSeqno(entity.getSeqno());

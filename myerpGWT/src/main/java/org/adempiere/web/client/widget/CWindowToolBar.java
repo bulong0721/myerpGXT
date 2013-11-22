@@ -204,9 +204,16 @@ public class CWindowToolBar implements IsWidget {
 		this.btnUndoChange.setEnabled(ts.hasChanges());
 		this.btnSave.setEnabled(ts.hasChanges());
 
+		this.btnNew.setEnabled(!ts.hasChanges());
 		this.btnCopy.setEnabled(!ts.hasChanges());
 		this.btnDelete.setEnabled(!ts.hasChanges());
 		this.btnDeleteSelection.setEnabled(!ts.hasChanges());
+		this.btnRefresh.setEnabled(!ts.hasChanges());
+		this.btnAttachment.setEnabled(!ts.hasChanges());
+		this.btnChat.setEnabled(!ts.hasChanges());
+		this.btnHistoryRecords.setEnabled(!ts.hasChanges());
+		this.btnPrint.setEnabled(!ts.hasChanges());
+		this.btnPrintView.setEnabled(!ts.hasChanges());
 	}
 
 	public static interface WindowStatus {
