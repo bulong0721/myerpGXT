@@ -1,5 +1,6 @@
 package org.adempiere.web.client;
 
+import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.model.AdMenuModel;
 import org.adempiere.web.client.presenter.ApplicationPresenter;
 import org.adempiere.web.client.presenter.ContentPresenter;
@@ -18,7 +19,7 @@ import com.mvp4g.client.event.EventBus;
 public interface MyerpEventBus extends EventBus {
 
 	@Start
-	@Event(handlers = { RootPresenter.class }, bind = { LoginPresenter.class, RemindPresenter.class, ContentPresenter.class })
+	@Event(handlers = { RootPresenter.class }, bind = { LoginPresenter.class, RemindPresenter.class })
 	void start();
 
 	@Event(handlers = { ApplicationPresenter.class })
@@ -32,7 +33,10 @@ public interface MyerpEventBus extends EventBus {
 
 	@Event(handlers = { ContentPresenter.class })
 	void showPage(AdMenuModel model);
-	
+
+//	@Event(handlers = { ContentPresenter.class })
+//	IDesktop getDesktop();
+
 	@Event(handlers = { NavigationPresenter.class })
 	void loadMenu();
 }

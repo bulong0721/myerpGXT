@@ -8,17 +8,17 @@ public interface IContentView extends ReverseViewInterface<IContentView.IContent
 
 	public interface IContentPresenter {
 
-		public abstract void createWindow(String name, Long iWindowId);
-
-		public abstract void createReport(String name, Long iProcessId);
-
-		public abstract void createWorkflow(String name, Long iWorkflowId);
-
-		public abstract void createTask(String name, Long iTaskId);
-
-		public abstract void createPorcess(String name, long iProcessId);
-		
-		public abstract void createForm(String name, long iFormId);
+//		public abstract void createWindow(String name, Long iWindowId);
+//
+//		public abstract void createReport(String name, Long iProcessId);
+//
+//		public abstract void createWorkflow(String name, Long iWorkflowId);
+//
+//		public abstract void createTask(String name, Long iTaskId);
+//
+//		public abstract void createPorcess(String name, long iProcessId);
+//		
+//		public abstract void createForm(String name, long iFormId);
 
 	}
 

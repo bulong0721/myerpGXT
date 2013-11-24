@@ -1,15 +1,15 @@
 package org.adempiere.web.client.desktop;
 
 public interface IDesktop {
-	void createWindow(String name, Long iWindowId);
+	void openWindow(String name, long iWindowId);
 
-	void createReport(String name, Long iProcessId);
+	void openReport(String name, long iProcessId);
 
-	void createWorkflow(String name, Long iWorkflowId);
+	void openWorkflow(String name, long iWorkflowId);
 
-	void createTask(String name, Long iTaskId);
+	void openTask(String name, long iTaskId);
 
-	void createPorcess(String name, Long iProcessId);
+	void openPorcess(String name, long iProcessId);
 
-	void createForm(String name, Long iFormId);
+	void openForm(String name, long iFormId);
 }

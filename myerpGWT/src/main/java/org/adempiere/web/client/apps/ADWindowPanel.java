@@ -2,6 +2,7 @@ package org.adempiere.web.client.apps;
 
 import org.adempiere.web.client.component.AdTabItemConfig;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
+import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.event.WindowToolListener;
 import org.adempiere.web.client.model.AdTabModel;
 import org.adempiere.web.client.model.AdWindowModel;
@@ -23,7 +24,7 @@ import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
-public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener, HasContentPresenter {
+public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener {
 
 	private static ADWindowPanelUiBinder	uiBinder	= GWT.create(ADWindowPanelUiBinder.class);
 
@@ -43,6 +44,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 	private Widget					widget;
 	private AdWindowModel			windowModel;
 	private ADTabPanel				currentTab;
+	private IDesktop				desktop;
 	@UiField
 	CWindowToolBar					toolBar;
 	@UiField
@@ -173,7 +175,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 		String name = "Report:" + currentTab.getTabModel().getName();
 		if (null != contentPresenter) {
 			// TODO 使用iTabId代替iProcessId
-			contentPresenter.createReport(name, 0L);
+			desktop.openReport(name, 0L);
 		}
 	}
 
@@ -238,14 +240,8 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 
 	}
 
-	@Override
-	public IContentPresenter getContentPresenter() {
-		return contentPresenter;
-	}
-
-	@Override
-	public void setContentPresenter(IContentPresenter p) {
-		this.contentPresenter = p;
+	public void setDesktop(IDesktop desktop) {
+		this.desktop = desktop;
 	}
 
 }
