@@ -186,4 +186,9 @@ public class AdProcessParameter implements Serializable, IAdFormField {
 		return false;
 	}
 
+	@Override
+	public Boolean getIssameline() {
+		return false;
+	}
+
 }

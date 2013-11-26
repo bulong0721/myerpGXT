@@ -38,7 +38,6 @@ public class AdModelEditor implements CompositeEditor<MapAccessable, Object, Fie
 	}
 
 	public AdModelEditor() {
-
 	}
 
 	public void setLayoutWidth(double layoutWidth) {

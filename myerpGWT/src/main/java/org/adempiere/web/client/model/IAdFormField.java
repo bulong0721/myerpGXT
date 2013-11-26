@@ -34,4 +34,6 @@ public interface IAdFormField {
 
 	Boolean getIskey();
 
+	Boolean getIssameline();
+
 }

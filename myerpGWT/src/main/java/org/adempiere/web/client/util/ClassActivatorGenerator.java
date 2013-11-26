@@ -33,12 +33,14 @@ public class ClassActivatorGenerator extends Generator {
 		}
 		String generatedClassQualifiedName = targetType.getParameterizedQualifiedSourceName() + "Impl";
 		SourceWriter writer = getSourceWriter(logger, context, targetType, activatableClasses);
-		writeFields(writer);
-		writeInit(activatableClasses, writer);
-		writeNewForString(activatableClasses, writer);
-		writeForName(writer);
-		writeNewForClass(writer);
-		writer.commit(logger);
+		if (null != writer) {
+			writeFields(writer);
+			writeInit(activatableClasses, writer);
+			writeNewForString(activatableClasses, writer);
+			writeForName(writer);
+			writeNewForClass(writer);
+			writer.commit(logger);
+		}
 		return generatedClassQualifiedName;
 	}
 
@@ -47,10 +49,10 @@ public class ClassActivatorGenerator extends Generator {
 		String targetPackageName = targetType.getPackage().getName();
 		String targetClassName = targetType.getName() + "Impl";
 		PrintWriter printWriter = context.tryCreate(logger, targetPackageName, targetClassName);
-
-		if (printWriter == null)
+		logger.log(TreeLogger.INFO, "Generating writer for " + targetPackageName + "." + targetClassName, null);
+		if (printWriter == null) {
 			return null;
-
+		}
 		ClassSourceFileComposerFactory factory = new ClassSourceFileComposerFactory(targetPackageName, targetClassName);
 		factory.addImplementedInterface(targetType.getName());
 		factory.addImport("java.util.HashMap");

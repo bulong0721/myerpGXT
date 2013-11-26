@@ -228,6 +228,7 @@ public class AdFieldModel implements Serializable, IAdFormField {
 		this.isreadonly = isreadonly;
 	}
 
+	@Override
 	public Boolean getIssameline() {
 		return issameline;
 	}

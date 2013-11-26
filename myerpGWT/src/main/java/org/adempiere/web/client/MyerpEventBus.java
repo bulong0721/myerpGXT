@@ -1,6 +1,5 @@
 package org.adempiere.web.client;
 
-import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.model.AdMenuModel;
 import org.adempiere.web.client.presenter.ApplicationPresenter;
 import org.adempiere.web.client.presenter.ContentPresenter;
