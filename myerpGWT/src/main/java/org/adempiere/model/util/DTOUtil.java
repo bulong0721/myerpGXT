@@ -164,6 +164,7 @@ public class DTOUtil {
 		model.setName(entity.getName());
 		model.setReadonlylogic(entity.getReadonlylogic());
 		model.setTablename(entity.getTablename());
+		model.setHasTree(StringUtil.isYes(entity.getHastree()));
 		return model;
 	}
 

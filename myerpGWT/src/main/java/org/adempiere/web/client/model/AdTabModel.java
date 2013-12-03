@@ -16,6 +16,7 @@ public class AdTabModel implements Serializable {
 	private Boolean				isinsertrecord;
 	private Boolean				isreadonly;
 	private Boolean				issinglerow;
+	private Boolean				hasTree;
 	private String				name;
 	private String				readonlylogic;
 	private String				tablename;
@@ -26,6 +27,14 @@ public class AdTabModel implements Serializable {
 
 	public void setFieldList(List<AdFieldModel> fieldList) {
 		this.fieldList = fieldList;
+	}
+
+	public Boolean getHasTree() {
+		return hasTree;
+	}
+
+	public void setHasTree(Boolean hasTree) {
+		this.hasTree = hasTree;
 	}
 
 	public String getTablename() {

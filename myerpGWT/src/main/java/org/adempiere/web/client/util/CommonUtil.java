@@ -7,10 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.adempiere.model.common.LookupValue;
+import org.adempiere.web.client.model.IAdTreeNode;
+import org.adempiere.web.client.model.IAdTreeNode.TreeKeyProvider;
 
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.data.shared.TreeStore;
 
 public class CommonUtil {
 	
@@ -60,5 +63,11 @@ public class CommonUtil {
 
 	public static ListStore<LookupValue> createDataSource(LookupValue... items) {
 		return createDataSource(Arrays.asList(items));
+	}
+	
+	public static TreeStore<IAdTreeNode> createTreeStore() {
+		ModelKeyProvider<IAdTreeNode> keyProvider = new TreeKeyProvider();
+		TreeStore<IAdTreeNode> store = new TreeStore<IAdTreeNode>(keyProvider);
+		return store;
 	}
 }

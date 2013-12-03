@@ -6,14 +6,9 @@ import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 
 import com.google.gwt.resources.client.ImageResource;
-import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.IconProvider;
-import com.sencha.gxt.data.shared.ModelKeyProvider;
-import com.sencha.gxt.data.shared.Store;
-import com.sencha.gxt.data.shared.TreeStore;
-import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 
-public class AdMenuModel implements Serializable {
+public class AdMenuModel implements Serializable, IAdTreeNode {
 	private static final long	serialVersionUID	= 1L;
 	private String				isactive;
 	private Long				adMenuId;
@@ -43,6 +38,14 @@ public class AdMenuModel implements Serializable {
 	/** Workbench = B */
 	public static final String	ACTION_Workbench	= "B";
 
+	public static final int		TREE_ID				= 20;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.adempiere.web.client.model.IAdTreeNode#getName()
+	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -139,31 +142,19 @@ public class AdMenuModel implements Serializable {
 		this.action = action;
 	}
 
-	public static class NameFilterField extends StoreFilterField<AdMenuModel> {
-		@Override
-		protected boolean doSelect(Store<AdMenuModel> store, AdMenuModel parent, AdMenuModel item, String filter) {
-			if (null != parent && null != filter) {
-				String itemName = parent.getName().toLowerCase();
-				return itemName.contains(filter.toLowerCase());
-			}
-			if (null != item && null != filter) {
-				String itemName = item.getName().toLowerCase();
-				return itemName.contains(filter.toLowerCase());
-			}
-			return false;
-		}
+	@Override
+	public Long getID() {
+		return adMenuId;
 	}
 
-	public static TreeStore<AdMenuModel> createTreeStore() {
-		ModelKeyProvider<AdMenuModel> keyProvider = new MenuKeyProvider();
-		TreeStore<AdMenuModel> store = new TreeStore<AdMenuModel>(keyProvider);
-		return store;
-	}
-
-	public static IconProvider<AdMenuModel> createIconProvider() {
-		return new IconProvider<AdMenuModel>() {
+	public static IconProvider<IAdTreeNode> createIconProvider() {
+		return new IconProvider<IAdTreeNode>() {
 			@Override
-			public ImageResource getIcon(AdMenuModel model) {
+			public ImageResource getIcon(IAdTreeNode node) {
+				AdMenuModel model = (AdMenuModel) node;
+				if (null == model) {
+					return null;
+				}
 				Images images = ResourcesFactory.createImages();
 				if (ACTION_Form.equalsIgnoreCase(model.getAction())) {
 					return images.application16();
@@ -191,28 +182,13 @@ public class AdMenuModel implements Serializable {
 		};
 	}
 
-	static class MenuKeyProvider implements ModelKeyProvider<AdMenuModel> {
-		@Override
-		public String getKey(AdMenuModel item) {
-			return String.valueOf(item.getAdMenuId());
-		}
+	@Override
+	public boolean hasChildren() {
+		return null == getAction() || 0 == getAction().length();
 	}
 
-	public static class MenuValueProvider implements ValueProvider<AdMenuModel, String> {
-
-		@Override
-		public String getValue(AdMenuModel model) {
-			return model.getName();
-		}
-
-		@Override
-		public void setValue(AdMenuModel object, String value) {
-		}
-
-		@Override
-		public String getPath() {
-			return "name";
-		}
+	@Override
+	public Long getParentID() {
+		return parentId;
 	}
-
 }

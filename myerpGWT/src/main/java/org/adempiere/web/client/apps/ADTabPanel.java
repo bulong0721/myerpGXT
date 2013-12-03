@@ -284,19 +284,23 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	}
 
 	public void moveFirst() {
-
+		grid.getSelectionModel().select(0, false);
+		toolBar.setTabState(this);
 	}
 
 	public void moveLast() {
-
+		grid.getSelectionModel().select(store.size() - 1, false);
+		toolBar.setTabState(this);
 	}
 
 	public void moveNext() {
-
+		grid.getSelectionModel().selectNext(false);
+		toolBar.setTabState(this);
 	}
 
 	public void movePrevious() {
-
+		grid.getSelectionModel().selectPrevious(false);
+		toolBar.setTabState(this);
 	}
 
 	public void copyRecord() {

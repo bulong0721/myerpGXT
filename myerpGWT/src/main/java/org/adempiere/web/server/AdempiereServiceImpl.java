@@ -26,11 +26,11 @@ import org.adempiere.web.client.model.AdFieldModel;
 import org.adempiere.web.client.model.AdFormModel;
 import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
-import org.adempiere.web.client.model.AdMenuModel;
 import org.adempiere.web.client.model.AdProcessModel;
 import org.adempiere.web.client.model.AdResultWithError;
 import org.adempiere.web.client.model.AdTabModel;
 import org.adempiere.web.client.model.AdWindowModel;
+import org.adempiere.web.client.model.IAdTreeNode;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.util.StringUtil;
 
@@ -41,15 +41,16 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereService {
 
 	@Override
-	public List<AdMenuModel> getAdMenuModels() {
+	public List<IAdTreeNode> getAdMenuModels() {
 		try {
 			EntityManager em = getEntityManager();
 			TypedQuery<AdTreenodemm> query = em.createNamedQuery("queryMainMenuNodes", AdTreenodemm.class);
 			List<AdTreenodemm> menuList = query.getResultList();
-			List<AdMenuModel> resultList = new ArrayList<AdMenuModel>(menuList.size());
+			List<IAdTreeNode> resultList = new ArrayList<IAdTreeNode>(menuList.size());
 			for (AdTreenodemm nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
+			System.out.println("getAdMenuModels:" + resultList.size());
 			return resultList;
 		} catch (Exception e) {
 			return null;
