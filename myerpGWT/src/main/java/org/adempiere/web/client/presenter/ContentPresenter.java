@@ -1,6 +1,6 @@
 package org.adempiere.web.client.presenter;
 
-import org.adempiere.model.common.MenuAction;
+import org.adempiere.model.common.MenuActionType;
 import org.adempiere.web.client.MyerpEventBus;
 import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.desktop.TabbedDesktop;
@@ -21,7 +21,7 @@ public class ContentPresenter extends BasePresenter<IContentView, MyerpEventBus>
 	}
 
 	public void onShowPage(AdMenuModel node) {
-		MenuAction action = MenuAction.fromString(node.getAction());
+		MenuActionType action = MenuActionType.fromString(node.getAction());
 		if (null == desktop) {
 			desktop = new TabbedDesktop(getView().getTabSet());
 		}

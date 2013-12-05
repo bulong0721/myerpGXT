@@ -28,7 +28,7 @@ import javax.print.attribute.DocAttributeSet;
 
 import org.adempiere.common.KeyNamePair;
 import org.adempiere.common.ValueNamePair;
-import org.adempiere.model.common.QueryCondition;
+import org.adempiere.model.common.Expression;
 import org.adempiere.model.core.AdPrintcolor;
 import org.adempiere.model.core.AdPrintfont;
 import org.adempiere.model.core.AdPrintformat;
@@ -50,7 +50,7 @@ public class LayoutEngine implements Pageable, Printable, Doc {
 	private Page				m_currPage;
 	private List<Page>			m_pages						= new ArrayList<Page>();
 	private Properties			m_printCtx;
-	private QueryCondition		m_query;
+	private Expression			m_query;
 	private AdPrintformat		m_format;
 	private AdPrintpaper		printPaper;
 	private AdPrintcolor		printColor;
@@ -62,8 +62,8 @@ public class LayoutEngine implements Pageable, Printable, Doc {
 	private Rectangle			m_footer					= new Rectangle();
 	private int					m_tempNLPositon				= 0;
 	private float				m_maxHeightSinceNewLine[]	= new float[] { 0f, 0f, 0f };
-	private Point2D.Double[]	m_position					= new Point2D.Double[] { new Point2D.Double(0, 0),
-			new Point2D.Double(0, 0), new Point2D.Double(0, 0) };
+	private Point2D.Double[]	m_position					= new Point2D.Double[] { new Point2D.Double(0, 0), new Point2D.Double(0, 0),
+			new Point2D.Double(0, 0)						};
 	public static final int		AREA_HEADER					= 0;
 	public static final int		AREA_CONTENT				= 1;
 	public static final int		AREA_FOOTER					= 2;
@@ -158,12 +158,11 @@ public class LayoutEngine implements Pageable, Printable, Doc {
 			return "";
 		int pi = m_tableElement.getPageIndex(pageNo);
 		StringBuffer sb = new StringBuffer("(");
-		sb.append(m_tableElement.getPageYIndex(pi) + 1).append(",").append(m_tableElement.getPageYIndex(pi) + 1)
-				.append(")");
+		sb.append(m_tableElement.getPageYIndex(pi) + 1).append(",").append(m_tableElement.getPageYIndex(pi) + 1).append(")");
 		return sb.toString();
 	} // getPageInfo
 
-	public void setPrintData(PrintData data, QueryCondition query, boolean doLayout) {
+	public void setPrintData(PrintData data, Expression query, boolean doLayout) {
 		m_data = data;
 		m_query = query;
 		if (m_hasLayout && doLayout)
@@ -241,8 +240,7 @@ public class LayoutEngine implements Pageable, Printable, Doc {
 				if (StringUtil.isYes(item.getIsheightoneline()))
 					columnMaxHeight[col] = -1;
 				columnJustification[col] = item.getFieldalignmenttype();
-				if (columnJustification[col] == null
-						|| columnJustification[col].equals(AdPrintformatitem.FIELDALIGNMENTTYPE_Default))
+				if (columnJustification[col] == null || columnJustification[col].equals(AdPrintformatitem.FIELDALIGNMENTTYPE_Default))
 					columnJustification[col] = AdPrintformatitem.FIELDALIGNMENTTYPE_LeadingLeft;
 				// Column Fonts
 				if (item.getAdPrintfontId() != 0 && item.getAdPrintfontId() != format.getAdPrintfontId()) {
@@ -288,11 +286,9 @@ public class LayoutEngine implements Pageable, Printable, Doc {
 						levelNo = -levelNo;
 					Font base = printFont.getFont();
 					if (levelNo == 1)
-						rowColFont.put(new Point(row, TableElement.ALL),
-								new Font(base.getName(), Font.ITALIC, base.getSize() - levelNo));
+						rowColFont.put(new Point(row, TableElement.ALL), new Font(base.getName(), Font.ITALIC, base.getSize() - levelNo));
 					else if (levelNo == 2)
-						rowColFont.put(new Point(row, TableElement.ALL),
-								new Font(base.getName(), Font.PLAIN, base.getSize() - levelNo));
+						rowColFont.put(new Point(row, TableElement.ALL), new Font(base.getName(), Font.PLAIN, base.getSize() - levelNo));
 				}
 			}
 			// for all columns
@@ -363,10 +359,9 @@ public class LayoutEngine implements Pageable, Printable, Doc {
 		} // for all rows
 
 		//
-		TableElement table = new TableElement(columnHeader, columnMaxWidth, columnMaxHeight, columnJustification,
-				fixedWidth, functionRows, multiLineHeader, data, pk, pkColumnName, pageNoStart, firstPage, nextPages,
-				repeatedColumns, additionalLines, rowColFont, rowColColor, rowColBackground, tf, pageBreak,
-				colSuppressRepeats);
+		TableElement table = new TableElement(columnHeader, columnMaxWidth, columnMaxHeight, columnJustification, fixedWidth, functionRows,
+				multiLineHeader, data, pk, pkColumnName, pageNoStart, firstPage, nextPages, repeatedColumns, additionalLines, rowColFont,
+				rowColColor, rowColBackground, tf, pageBreak, colSuppressRepeats);
 		table.layout(0, 0, false, AdPrintformatitem.FIELDALIGNMENTTYPE_LeadingLeft);
 		if (m_tableElement == null)
 			m_tableElement = table;
@@ -379,7 +374,7 @@ public class LayoutEngine implements Pageable, Printable, Doc {
 	}
 
 	private PrintElement layoutParameter() {
-		if (m_query == null || !m_query.isActive())
+		if (m_query == null/* || !m_query.isActive()*/)
 			return null;
 		//
 		ParameterElement pe = new ParameterElement(m_query, m_printCtx, getTableFormat(m_format));

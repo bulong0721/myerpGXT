@@ -16,6 +16,7 @@ public class AdTabModel implements Serializable {
 	private Boolean				isinsertrecord;
 	private Boolean				isreadonly;
 	private Boolean				issinglerow;
+	private Boolean				isSortTab;
 	private Boolean				hasTree;
 	private String				name;
 	private String				readonlylogic;
@@ -35,6 +36,14 @@ public class AdTabModel implements Serializable {
 
 	public void setHasTree(Boolean hasTree) {
 		this.hasTree = hasTree;
+	}
+
+	public Boolean getIsSortTab() {
+		return isSortTab;
+	}
+
+	public void setIsSortTab(Boolean isSortTab) {
+		this.isSortTab = isSortTab;
 	}
 
 	public String getTablename() {

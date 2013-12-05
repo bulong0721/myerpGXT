@@ -145,18 +145,23 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 
 	@Override
 	public void onParentRecord() {
-		Widget activeWidget = tabSet.getActiveWidget();
-		int index = tabSet.getWidgetIndex(activeWidget);
-		Widget nextWidget = tabSet.getWidget(index - 1);
-		tabSet.setActiveWidget(nextWidget);
+		setActiveTab(getCurrentTabIndex() - 1);
 	}
 
 	@Override
 	public void onDetailRecord() {
+		setActiveTab(getCurrentTabIndex() + 1);
+	}
+
+	private int getCurrentTabIndex() {
 		Widget activeWidget = tabSet.getActiveWidget();
-		int index = tabSet.getWidgetIndex(activeWidget);
-		Widget nextWidget = tabSet.getWidget(index + 1);
+		return tabSet.getWidgetIndex(activeWidget);
+	}
+
+	private boolean setActiveTab(int newTabIndex) {
+		Widget nextWidget = tabSet.getWidget(newTabIndex);
 		tabSet.setActiveWidget(nextWidget);
+		return true;
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package org.adempiere.web.client.apps;
 import java.util.List;
 
 import org.adempiere.model.common.AdModelKey;
-import org.adempiere.model.common.QueryCondition;
+import org.adempiere.model.common.Expression;
 import org.adempiere.web.client.apps.ADFindPanel.ConditionLoader;
 import org.adempiere.web.client.component.AdFormEditStrategy;
 import org.adempiere.web.client.component.AdModelDriver;
@@ -13,6 +13,7 @@ import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.event.FieldButtonListener;
 import org.adempiere.web.client.model.AdJSONData;
 import org.adempiere.web.client.model.AdLoadConfig;
+import org.adempiere.web.client.model.AdMenuModel;
 import org.adempiere.web.client.model.AdModelData;
 import org.adempiere.web.client.model.AdResultWithError;
 import org.adempiere.web.client.model.AdTabModel;
@@ -24,11 +25,11 @@ import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.LoggingUtil;
+import org.adempiere.web.client.widget.CHistoryWindow;
+import org.adempiere.web.client.widget.CHistoryWindow.History;
+import org.adempiere.web.client.widget.CHistoryWindow.HistoryLoader;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.TabStatus;
-import org.adempiere.web.client.widget.HWindow;
-import org.adempiere.web.client.widget.HWindow.History;
-import org.adempiere.web.client.widget.HWindow.HistoryLoader;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
@@ -36,6 +37,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.Style.SelectionMode;
 import com.sencha.gxt.data.client.loader.RpcProxy;
@@ -89,6 +91,8 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	AdModelEditor												formEditing;
 	@UiField
 	CardLayoutContainer											layoutContainer;
+	@UiField
+	SimplePanel													treePlaceHolder;
 
 	public ADTabPanel(AdWindowModel windowModel, AdTabModel tabModel, CWindowToolBar toolBar) {
 		this.tabStrategy = new AdFormEditStrategy(tabModel.getFieldList());
@@ -102,7 +106,8 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	public Widget asWidget() {
 		if (null == widget) {
 			this.onRender();
-			widget = uiBinder.createAndBindUi(this);
+			this.widget = uiBinder.createAndBindUi(this);
+			this.createTree();
 			this.toolBar.setTabState(this);
 		}
 		return widget;
@@ -177,6 +182,15 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 		formEditing = new AdModelEditor(tabStrategy);
 	}
 
+	private void createTree() {
+		if (tabModel.getHasTree()) {
+			LoggingUtil.info("rander tree");
+			ADTreePanel treepanel = new ADTreePanel(AdMenuModel.TREE_ID);
+			treePlaceHolder.setWidget(treepanel);
+			treePlaceHolder.setWidth("200");
+		}
+	}
+
 	public void toggleMode() {
 		Widget activeWidget = layoutContainer.getActiveWidget();
 		int index = layoutContainer.getWidgetIndex(activeWidget);
@@ -197,7 +211,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	}
 
 	public void loadHistory() {
-		HWindow historyWindow = HWindow.instance(ADTabPanel.this);
+		CHistoryWindow historyWindow = CHistoryWindow.instance(ADTabPanel.this);
 		historyWindow.show();
 	}
 
@@ -227,7 +241,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 		JavaScriptObject array = JavaScriptObject.createArray();
 		int index = 0;
 		for (Store<MapAccessable>.Record record : store.getModifiedRecords()) {
-			JSOUtil.arraySet(array, index, ((AdModelData)copyWithChange(record)).getJso());
+			JSOUtil.arraySet(array, index, ((AdModelData) copyWithChange(record)).getJso());
 			index++;
 		}
 		LoggingUtil.info(array.toString());
@@ -354,7 +368,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	}
 
 	@Override
-	public void load(QueryCondition condition) {
+	public void load(Expression condition) {
 		// TODO Auto-generated method stub
 
 	}

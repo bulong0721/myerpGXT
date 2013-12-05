@@ -17,7 +17,7 @@ public class COrdertaxPK implements Serializable {
 	public COrdertaxPK() {
 	}
 
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", insertable=false, updatable=false)
 	public long getCOrderId() {
 		return this.cOrderId;
 	}
@@ -25,7 +25,7 @@ public class COrdertaxPK implements Serializable {
 		this.cOrderId = cOrderId;
 	}
 
-	@Column(name="C_TAX_ID")
+	@Column(name="C_TAX_ID", insertable=false, updatable=false)
 	public long getCTaxId() {
 		return this.cTaxId;
 	}

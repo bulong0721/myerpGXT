@@ -1,15 +1,9 @@
 package org.adempiere.model.business;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import javax.persistence.*;
 import java.sql.Timestamp;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.adempiere.model.common.AdEntityBase;
+import java.math.BigDecimal;
 
 
 /**
@@ -18,7 +12,8 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name="c_doctype")
-public class CDoctype extends AdEntityBase implements Serializable {
+@NamedQuery(name="CDoctype.findAll", query="SELECT c FROM CDoctype c")
+public class CDoctype extends org.adempiere.model.common.AdEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cDoctypeId;
 	private BigDecimal adClientId;

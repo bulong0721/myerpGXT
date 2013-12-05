@@ -66,6 +66,6 @@
 				<widget:ConfirmToolBar ui:field="toolBar" />
 			</container:child>
 		</container:VerticalLayoutContainer>
-		<app:ADReportViewer ui:field="reportViewer" />
+		<component:ADReportViewer ui:field="reportViewer" />
 	</container:CardLayoutContainer>
 </ui:UiBinder> 

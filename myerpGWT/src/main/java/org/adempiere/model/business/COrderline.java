@@ -1,85 +1,84 @@
 package org.adempiere.model.business;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import java.sql.Timestamp;
 import java.math.BigDecimal;
+import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.adempiere.model.common.AdEntityBase;
 
 /**
  * The persistent class for the c_orderline database table.
  * 
  */
 @Entity
-@Table(name = "c_orderline")
-public class COrderline extends AdEntityBase implements Serializable {
-	private static final long	serialVersionUID	= 1L;
-	private long				cOrderlineId;
-	private Long				adClientId;
-	private Long				adOrgId;
-	private Long				adOrgtrxId;
-	private Long				cActivityId;
-	private Long				cBpartnerId;
-	private Long				cBpartnerLocationId;
-	private Long				cCampaignId;
-	private Long				cChargeId;
-	private Long				cCurrencyId;
-	private Long				cOrderId;
-	private Long				cProjectId;
-	private Long				cProjectphaseId;
-	private Long				cProjecttaskId;
-	private Long				cTaxId;
-	private Long				cUomId;
-	private String				created;
-	private Long				createdby;
-	private String				datedelivered;
-	private String				dateinvoiced;
-	private String				dateordered;
-	private String				datepromised;
-	private String				description;
-	private BigDecimal			discount;
-	private BigDecimal			freightamt;
-	private String				isactive;
-	private String				isdescription;
-	private Long				line;
-	private Long				linenetamt;
-	private Long				linkOrderlineId;
-	private Long				mAttributesetinstanceId;
-	private Long				mProductId;
-	private Long				mPromotionId;
-	private Long				mShipperId;
-	private Long				mWarehouseId;
-	private Long				ppCostCollectorId;
-	private BigDecimal			priceactual;
-	private BigDecimal			pricecost;
-	private BigDecimal			priceentered;
-	private BigDecimal			pricelimit;
-	private BigDecimal			pricelist;
-	private String				processed;
-	private BigDecimal			qtydelivered;
-	private BigDecimal			qtyentered;
-	private BigDecimal			qtyinvoiced;
-	private BigDecimal			qtylostsales;
-	private BigDecimal			qtyordered;
-	private BigDecimal			qtyreserved;
-	private Long				refOrderlineId;
-	private BigDecimal			rramt;
-	private String				rrstartdate;
-	private Long				sResourceassignmentId;
-	private String				updated;
-	private Long				updatedby;
-	private Long				user1Id;
-	private Long				user2Id;
+@Table(name="c_orderline")
+@NamedQuery(name="COrderline.findAll", query="SELECT c FROM COrderline c")
+public class COrderline extends org.adempiere.model.common.AdEntityBase implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private long cOrderlineId;
+	private BigDecimal adClientId;
+	private BigDecimal adOrgId;
+	private BigDecimal adOrgtrxId;
+	private BigDecimal cActivityId;
+	private BigDecimal cBpartnerId;
+	private BigDecimal cBpartnerLocationId;
+	private BigDecimal cCampaignId;
+	private BigDecimal cChargeId;
+	private BigDecimal cCurrencyId;
+	private BigDecimal cOrderId;
+	private BigDecimal cProjectId;
+	private BigDecimal cProjectphaseId;
+	private BigDecimal cProjecttaskId;
+	private BigDecimal cTaxId;
+	private BigDecimal cUomId;
+	private Timestamp created;
+	private BigDecimal createdby;
+	private Date datedelivered;
+	private Date dateinvoiced;
+	private Date dateordered;
+	private Date datepromised;
+	private String description;
+	private BigDecimal discount;
+	private BigDecimal freightamt;
+	private String isactive;
+	private String isdescription;
+	private BigDecimal line;
+	private BigDecimal linenetamt;
+	private BigDecimal linkOrderlineId;
+	private BigDecimal mAttributesetinstanceId;
+	private BigDecimal mProductId;
+	private BigDecimal mPromotionId;
+	private BigDecimal mShipperId;
+	private BigDecimal mWarehouseId;
+	private BigDecimal ppCostCollectorId;
+	private BigDecimal priceactual;
+	private BigDecimal pricecost;
+	private BigDecimal priceentered;
+	private BigDecimal pricelimit;
+	private BigDecimal pricelist;
+	private String processed;
+	private BigDecimal qtydelivered;
+	private BigDecimal qtyentered;
+	private BigDecimal qtyinvoiced;
+	private BigDecimal qtylostsales;
+	private BigDecimal qtyordered;
+	private BigDecimal qtyreserved;
+	private BigDecimal refOrderlineId;
+	private BigDecimal rramt;
+	private Date rrstartdate;
+	private BigDecimal sResourceassignmentId;
+	private Timestamp updated;
+	private BigDecimal updatedby;
+	private BigDecimal user1Id;
+	private BigDecimal user2Id;
 
 	public COrderline() {
 	}
 
+
 	@Id
-	@Column(name = "C_ORDERLINE_ID")
+	@Column(name="C_ORDERLINE_ID")
 	public long getCOrderlineId() {
 		return this.cOrderlineId;
 	}
@@ -88,188 +87,214 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.cOrderlineId = cOrderlineId;
 	}
 
-	@Column(name = "AD_CLIENT_ID")
-	public Long getAdClientId() {
+
+	@Column(name="AD_CLIENT_ID")
+	public BigDecimal getAdClientId() {
 		return this.adClientId;
 	}
 
-	public void setAdClientId(Long adClientId) {
+	public void setAdClientId(BigDecimal adClientId) {
 		this.adClientId = adClientId;
 	}
 
-	@Column(name = "AD_ORG_ID")
-	public Long getAdOrgId() {
+
+	@Column(name="AD_ORG_ID")
+	public BigDecimal getAdOrgId() {
 		return this.adOrgId;
 	}
 
-	public void setAdOrgId(Long adOrgId) {
+	public void setAdOrgId(BigDecimal adOrgId) {
 		this.adOrgId = adOrgId;
 	}
 
-	@Column(name = "AD_ORGTRX_ID")
-	public Long getAdOrgtrxId() {
+
+	@Column(name="AD_ORGTRX_ID")
+	public BigDecimal getAdOrgtrxId() {
 		return this.adOrgtrxId;
 	}
 
-	public void setAdOrgtrxId(Long adOrgtrxId) {
+	public void setAdOrgtrxId(BigDecimal adOrgtrxId) {
 		this.adOrgtrxId = adOrgtrxId;
 	}
 
-	@Column(name = "C_ACTIVITY_ID")
-	public Long getCActivityId() {
+
+	@Column(name="C_ACTIVITY_ID")
+	public BigDecimal getCActivityId() {
 		return this.cActivityId;
 	}
 
-	public void setCActivityId(Long cActivityId) {
+	public void setCActivityId(BigDecimal cActivityId) {
 		this.cActivityId = cActivityId;
 	}
 
-	@Column(name = "C_BPARTNER_ID")
-	public Long getCBpartnerId() {
+
+	@Column(name="C_BPARTNER_ID")
+	public BigDecimal getCBpartnerId() {
 		return this.cBpartnerId;
 	}
 
-	public void setCBpartnerId(Long cBpartnerId) {
+	public void setCBpartnerId(BigDecimal cBpartnerId) {
 		this.cBpartnerId = cBpartnerId;
 	}
 
-	@Column(name = "C_BPARTNER_LOCATION_ID")
-	public Long getCBpartnerLocationId() {
+
+	@Column(name="C_BPARTNER_LOCATION_ID")
+	public BigDecimal getCBpartnerLocationId() {
 		return this.cBpartnerLocationId;
 	}
 
-	public void setCBpartnerLocationId(Long cBpartnerLocationId) {
+	public void setCBpartnerLocationId(BigDecimal cBpartnerLocationId) {
 		this.cBpartnerLocationId = cBpartnerLocationId;
 	}
 
-	@Column(name = "C_CAMPAIGN_ID")
-	public Long getCCampaignId() {
+
+	@Column(name="C_CAMPAIGN_ID")
+	public BigDecimal getCCampaignId() {
 		return this.cCampaignId;
 	}
 
-	public void setCCampaignId(Long cCampaignId) {
+	public void setCCampaignId(BigDecimal cCampaignId) {
 		this.cCampaignId = cCampaignId;
 	}
 
-	@Column(name = "C_CHARGE_ID")
-	public Long getCChargeId() {
+
+	@Column(name="C_CHARGE_ID")
+	public BigDecimal getCChargeId() {
 		return this.cChargeId;
 	}
 
-	public void setCChargeId(Long cChargeId) {
+	public void setCChargeId(BigDecimal cChargeId) {
 		this.cChargeId = cChargeId;
 	}
 
-	@Column(name = "C_CURRENCY_ID")
-	public Long getCCurrencyId() {
+
+	@Column(name="C_CURRENCY_ID")
+	public BigDecimal getCCurrencyId() {
 		return this.cCurrencyId;
 	}
 
-	public void setCCurrencyId(Long cCurrencyId) {
+	public void setCCurrencyId(BigDecimal cCurrencyId) {
 		this.cCurrencyId = cCurrencyId;
 	}
 
-	@Column(name = "C_ORDER_ID")
-	public Long getCOrderId() {
+
+	@Column(name="C_ORDER_ID")
+	public BigDecimal getCOrderId() {
 		return this.cOrderId;
 	}
 
-	public void setCOrderId(Long cOrderId) {
+	public void setCOrderId(BigDecimal cOrderId) {
 		this.cOrderId = cOrderId;
 	}
 
-	@Column(name = "C_PROJECT_ID")
-	public Long getCProjectId() {
+
+	@Column(name="C_PROJECT_ID")
+	public BigDecimal getCProjectId() {
 		return this.cProjectId;
 	}
 
-	public void setCProjectId(Long cProjectId) {
+	public void setCProjectId(BigDecimal cProjectId) {
 		this.cProjectId = cProjectId;
 	}
 
-	@Column(name = "C_PROJECTPHASE_ID")
-	public Long getCProjectphaseId() {
+
+	@Column(name="C_PROJECTPHASE_ID")
+	public BigDecimal getCProjectphaseId() {
 		return this.cProjectphaseId;
 	}
 
-	public void setCProjectphaseId(Long cProjectphaseId) {
+	public void setCProjectphaseId(BigDecimal cProjectphaseId) {
 		this.cProjectphaseId = cProjectphaseId;
 	}
 
-	@Column(name = "C_PROJECTTASK_ID")
-	public Long getCProjecttaskId() {
+
+	@Column(name="C_PROJECTTASK_ID")
+	public BigDecimal getCProjecttaskId() {
 		return this.cProjecttaskId;
 	}
 
-	public void setCProjecttaskId(Long cProjecttaskId) {
+	public void setCProjecttaskId(BigDecimal cProjecttaskId) {
 		this.cProjecttaskId = cProjecttaskId;
 	}
 
-	@Column(name = "C_TAX_ID")
-	public Long getCTaxId() {
+
+	@Column(name="C_TAX_ID")
+	public BigDecimal getCTaxId() {
 		return this.cTaxId;
 	}
 
-	public void setCTaxId(Long cTaxId) {
+	public void setCTaxId(BigDecimal cTaxId) {
 		this.cTaxId = cTaxId;
 	}
 
-	@Column(name = "C_UOM_ID")
-	public Long getCUomId() {
+
+	@Column(name="C_UOM_ID")
+	public BigDecimal getCUomId() {
 		return this.cUomId;
 	}
 
-	public void setCUomId(Long cUomId) {
+	public void setCUomId(BigDecimal cUomId) {
 		this.cUomId = cUomId;
 	}
 
-	public String getCreated() {
+
+	public Timestamp getCreated() {
 		return this.created;
 	}
 
-	public void setCreated(String created) {
+	public void setCreated(Timestamp created) {
 		this.created = created;
 	}
 
-	public Long getCreatedby() {
+
+	public BigDecimal getCreatedby() {
 		return this.createdby;
 	}
 
-	public void setCreatedby(Long createdby) {
+	public void setCreatedby(BigDecimal createdby) {
 		this.createdby = createdby;
 	}
 
-	public String getDatedelivered() {
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDatedelivered() {
 		return this.datedelivered;
 	}
 
-	public void setDatedelivered(String datedelivered) {
+	public void setDatedelivered(Date datedelivered) {
 		this.datedelivered = datedelivered;
 	}
 
-	public String getDateinvoiced() {
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDateinvoiced() {
 		return this.dateinvoiced;
 	}
 
-	public void setDateinvoiced(String dateinvoiced) {
+	public void setDateinvoiced(Date dateinvoiced) {
 		this.dateinvoiced = dateinvoiced;
 	}
 
-	public String getDateordered() {
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDateordered() {
 		return this.dateordered;
 	}
 
-	public void setDateordered(String dateordered) {
+	public void setDateordered(Date dateordered) {
 		this.dateordered = dateordered;
 	}
 
-	public String getDatepromised() {
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDatepromised() {
 		return this.datepromised;
 	}
 
-	public void setDatepromised(String datepromised) {
+	public void setDatepromised(Date datepromised) {
 		this.datepromised = datepromised;
 	}
+
 
 	public String getDescription() {
 		return this.description;
@@ -279,6 +304,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.description = description;
 	}
 
+
 	public BigDecimal getDiscount() {
 		return this.discount;
 	}
@@ -286,6 +312,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 	public void setDiscount(BigDecimal discount) {
 		this.discount = discount;
 	}
+
 
 	public BigDecimal getFreightamt() {
 		return this.freightamt;
@@ -295,6 +322,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.freightamt = freightamt;
 	}
 
+
 	public String getIsactive() {
 		return this.isactive;
 	}
@@ -302,6 +330,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
+
 
 	public String getIsdescription() {
 		return this.isdescription;
@@ -311,84 +340,94 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.isdescription = isdescription;
 	}
 
-	public Long getLine() {
+
+	public BigDecimal getLine() {
 		return this.line;
 	}
 
-	public void setLine(Long line) {
+	public void setLine(BigDecimal line) {
 		this.line = line;
 	}
 
-	public Long getLinenetamt() {
+
+	public BigDecimal getLinenetamt() {
 		return this.linenetamt;
 	}
 
-	public void setLinenetamt(Long linenetamt) {
+	public void setLinenetamt(BigDecimal linenetamt) {
 		this.linenetamt = linenetamt;
 	}
 
-	@Column(name = "LINK_ORDERLINE_ID")
-	public Long getLinkOrderlineId() {
+
+	@Column(name="LINK_ORDERLINE_ID")
+	public BigDecimal getLinkOrderlineId() {
 		return this.linkOrderlineId;
 	}
 
-	public void setLinkOrderlineId(Long linkOrderlineId) {
+	public void setLinkOrderlineId(BigDecimal linkOrderlineId) {
 		this.linkOrderlineId = linkOrderlineId;
 	}
 
-	@Column(name = "M_ATTRIBUTESETINSTANCE_ID")
-	public Long getMAttributesetinstanceId() {
+
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	public BigDecimal getMAttributesetinstanceId() {
 		return this.mAttributesetinstanceId;
 	}
 
-	public void setMAttributesetinstanceId(Long mAttributesetinstanceId) {
+	public void setMAttributesetinstanceId(BigDecimal mAttributesetinstanceId) {
 		this.mAttributesetinstanceId = mAttributesetinstanceId;
 	}
 
-	@Column(name = "M_PRODUCT_ID")
-	public Long getMProductId() {
+
+	@Column(name="M_PRODUCT_ID")
+	public BigDecimal getMProductId() {
 		return this.mProductId;
 	}
 
-	public void setMProductId(Long mProductId) {
+	public void setMProductId(BigDecimal mProductId) {
 		this.mProductId = mProductId;
 	}
 
-	@Column(name = "M_PROMOTION_ID")
-	public Long getMPromotionId() {
+
+	@Column(name="M_PROMOTION_ID")
+	public BigDecimal getMPromotionId() {
 		return this.mPromotionId;
 	}
 
-	public void setMPromotionId(Long mPromotionId) {
+	public void setMPromotionId(BigDecimal mPromotionId) {
 		this.mPromotionId = mPromotionId;
 	}
 
-	@Column(name = "M_SHIPPER_ID")
-	public Long getMShipperId() {
+
+	@Column(name="M_SHIPPER_ID")
+	public BigDecimal getMShipperId() {
 		return this.mShipperId;
 	}
 
-	public void setMShipperId(Long mShipperId) {
+	public void setMShipperId(BigDecimal mShipperId) {
 		this.mShipperId = mShipperId;
 	}
 
-	@Column(name = "M_WAREHOUSE_ID")
-	public Long getMWarehouseId() {
+
+	@Column(name="M_WAREHOUSE_ID")
+	public BigDecimal getMWarehouseId() {
 		return this.mWarehouseId;
 	}
 
-	public void setMWarehouseId(Long mWarehouseId) {
+	public void setMWarehouseId(BigDecimal mWarehouseId) {
 		this.mWarehouseId = mWarehouseId;
 	}
 
-	@Column(name = "PP_COST_COLLECTOR_ID")
-	public Long getPpCostCollectorId() {
+
+	@Column(name="PP_COST_COLLECTOR_ID")
+	public BigDecimal getPpCostCollectorId() {
 		return this.ppCostCollectorId;
 	}
 
-	public void setPpCostCollectorId(Long ppCostCollectorId) {
+	public void setPpCostCollectorId(BigDecimal ppCostCollectorId) {
 		this.ppCostCollectorId = ppCostCollectorId;
 	}
+
 
 	public BigDecimal getPriceactual() {
 		return this.priceactual;
@@ -398,6 +437,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.priceactual = priceactual;
 	}
 
+
 	public BigDecimal getPricecost() {
 		return this.pricecost;
 	}
@@ -405,6 +445,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 	public void setPricecost(BigDecimal pricecost) {
 		this.pricecost = pricecost;
 	}
+
 
 	public BigDecimal getPriceentered() {
 		return this.priceentered;
@@ -414,6 +455,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.priceentered = priceentered;
 	}
 
+
 	public BigDecimal getPricelimit() {
 		return this.pricelimit;
 	}
@@ -421,6 +463,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 	public void setPricelimit(BigDecimal pricelimit) {
 		this.pricelimit = pricelimit;
 	}
+
 
 	public BigDecimal getPricelist() {
 		return this.pricelist;
@@ -430,6 +473,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.pricelist = pricelist;
 	}
 
+
 	public String getProcessed() {
 		return this.processed;
 	}
@@ -437,6 +481,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 	public void setProcessed(String processed) {
 		this.processed = processed;
 	}
+
 
 	public BigDecimal getQtydelivered() {
 		return this.qtydelivered;
@@ -446,6 +491,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.qtydelivered = qtydelivered;
 	}
 
+
 	public BigDecimal getQtyentered() {
 		return this.qtyentered;
 	}
@@ -453,6 +499,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 	public void setQtyentered(BigDecimal qtyentered) {
 		this.qtyentered = qtyentered;
 	}
+
 
 	public BigDecimal getQtyinvoiced() {
 		return this.qtyinvoiced;
@@ -462,6 +509,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.qtyinvoiced = qtyinvoiced;
 	}
 
+
 	public BigDecimal getQtylostsales() {
 		return this.qtylostsales;
 	}
@@ -469,6 +517,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 	public void setQtylostsales(BigDecimal qtylostsales) {
 		this.qtylostsales = qtylostsales;
 	}
+
 
 	public BigDecimal getQtyordered() {
 		return this.qtyordered;
@@ -478,6 +527,7 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.qtyordered = qtyordered;
 	}
 
+
 	public BigDecimal getQtyreserved() {
 		return this.qtyreserved;
 	}
@@ -486,14 +536,16 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.qtyreserved = qtyreserved;
 	}
 
-	@Column(name = "REF_ORDERLINE_ID")
-	public Long getRefOrderlineId() {
+
+	@Column(name="REF_ORDERLINE_ID")
+	public BigDecimal getRefOrderlineId() {
 		return this.refOrderlineId;
 	}
 
-	public void setRefOrderlineId(Long refOrderlineId) {
+	public void setRefOrderlineId(BigDecimal refOrderlineId) {
 		this.refOrderlineId = refOrderlineId;
 	}
+
 
 	public BigDecimal getRramt() {
 		return this.rramt;
@@ -503,54 +555,61 @@ public class COrderline extends AdEntityBase implements Serializable {
 		this.rramt = rramt;
 	}
 
-	public String getRrstartdate() {
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getRrstartdate() {
 		return this.rrstartdate;
 	}
 
-	public void setRrstartdate(String rrstartdate) {
+	public void setRrstartdate(Date rrstartdate) {
 		this.rrstartdate = rrstartdate;
 	}
 
-	@Column(name = "S_RESOURCEASSIGNMENT_ID")
-	public Long getSResourceassignmentId() {
+
+	@Column(name="S_RESOURCEASSIGNMENT_ID")
+	public BigDecimal getSResourceassignmentId() {
 		return this.sResourceassignmentId;
 	}
 
-	public void setSResourceassignmentId(Long sResourceassignmentId) {
+	public void setSResourceassignmentId(BigDecimal sResourceassignmentId) {
 		this.sResourceassignmentId = sResourceassignmentId;
 	}
 
-	public String getUpdated() {
+
+	public Timestamp getUpdated() {
 		return this.updated;
 	}
 
-	public void setUpdated(String updated) {
+	public void setUpdated(Timestamp updated) {
 		this.updated = updated;
 	}
 
-	public Long getUpdatedby() {
+
+	public BigDecimal getUpdatedby() {
 		return this.updatedby;
 	}
 
-	public void setUpdatedby(Long updatedby) {
+	public void setUpdatedby(BigDecimal updatedby) {
 		this.updatedby = updatedby;
 	}
 
-	@Column(name = "USER1_ID")
-	public Long getUser1Id() {
+
+	@Column(name="USER1_ID")
+	public BigDecimal getUser1Id() {
 		return this.user1Id;
 	}
 
-	public void setUser1Id(Long user1Id) {
+	public void setUser1Id(BigDecimal user1Id) {
 		this.user1Id = user1Id;
 	}
 
-	@Column(name = "USER2_ID")
-	public Long getUser2Id() {
+
+	@Column(name="USER2_ID")
+	public BigDecimal getUser2Id() {
 		return this.user2Id;
 	}
 
-	public void setUser2Id(Long user2Id) {
+	public void setUser2Id(BigDecimal user2Id) {
 		this.user2Id = user2Id;
 	}
 

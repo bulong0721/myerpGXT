@@ -1,9 +1,9 @@
 package org.adempiere.web.client.desktop;
 
-import org.adempiere.model.common.MenuAction;
+import org.adempiere.model.common.MenuActionType;
 import org.adempiere.web.client.apps.ADProcessPanel;
-import org.adempiere.web.client.apps.ADReportViewer;
 import org.adempiere.web.client.apps.ADWindowPanel;
+import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.form.AbstractForm;
 import org.adempiere.web.client.model.AdFormModel;
@@ -53,7 +53,7 @@ public class TabbedDesktop implements IDesktop {
 			public void onSuccess(AdProcessModel result) {
 				ADProcessPanel panel = new ADProcessPanel(result);
 				TabItemConfig config = new TabItemConfig(name, true);
-				config.setIcon(getIcon(MenuAction.Process));
+				config.setIcon(getIcon(MenuActionType.Process));
 				tabPanel.add(panel, config);
 				tabPanel.setActiveWidget(panel);
 			}
@@ -74,7 +74,7 @@ public class TabbedDesktop implements IDesktop {
 				if (null != form) {
 					Widget widget = form.asWidget();
 					TabItemConfig config = new TabItemConfig(name, true);
-					config.setIcon(getIcon(MenuAction.Form));
+					config.setIcon(getIcon(MenuActionType.Form));
 					tabPanel.add(widget, config);
 					tabPanel.setActiveWidget(widget);
 				} else {
@@ -102,7 +102,7 @@ public class TabbedDesktop implements IDesktop {
 		}
 		ADReportViewer viewer = new ADReportViewer(iProcessId);
 		TabItemConfig config = new TabItemConfig(name, true);
-		config.setIcon(getIcon(MenuAction.Report));
+		config.setIcon(getIcon(MenuActionType.Report));
 		tabPanel.add(viewer, config);
 		tabPanel.setActiveWidget(viewer);
 	}
@@ -114,12 +114,12 @@ public class TabbedDesktop implements IDesktop {
 		}
 		ADWindowPanel windowPanel = new ADWindowPanel(iWindowId);
 		TabItemConfig config = new TabItemConfig(name, true);
-		config.setIcon(getIcon(MenuAction.Window));
+		config.setIcon(getIcon(MenuActionType.Window));
 		tabPanel.add(windowPanel, config);
 		tabPanel.setActiveWidget(windowPanel);
 	}
 
-	protected ImageResource getIcon(MenuAction action) {
+	protected ImageResource getIcon(MenuActionType action) {
 		Images images = ResourcesFactory.createImages();
 		if (action.isForm()) {
 			return images.application16();

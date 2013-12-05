@@ -1,6 +1,6 @@
 package org.adempiere.web.client.view;
 
-import org.adempiere.web.client.component.ADTreePanel;
+import org.adempiere.web.client.apps.ADTreePanel;
 import org.adempiere.web.client.model.AdMenuModel;
 import org.adempiere.web.client.presenter.interfaces.INavigationView;
 import org.adempiere.web.client.presenter.interfaces.INavigationView.INavigationPresenter;

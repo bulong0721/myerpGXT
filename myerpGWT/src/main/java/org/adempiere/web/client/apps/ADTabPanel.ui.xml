@@ -14,7 +14,10 @@
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="dataGridLayoutData">
 		<ui:attributes margins="{margins4}" width="1" height="1" />
 	</ui:with>
-	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="dataFormLayoutData">
+	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData" field="treeLayoutData">
+		<ui:attributes margins="{margins4}" width="1" height="1" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData" field="dataFormLayoutData">
 		<ui:attributes margins="{margins4}" width="1" height="1" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="pageBarLayoutData">
@@ -35,11 +38,14 @@
 		</container:VerticalLayoutContainer>
 		<container:VerticalLayoutContainer scrollMode="AUTO">
 			<container:child layoutData="{gridLayoutData}">
-				<container:VerticalLayoutContainer scrollMode="AUTO">
+				<container:HorizontalLayoutContainer scrollMode="AUTO">
+					<container:child layoutData="{treeLayoutData}">
+						<g:SimplePanel ui:field="treePlaceHolder" />
+					</container:child>
 					<container:child layoutData="{dataFormLayoutData}">
 						<component:AdModelEditor ui:field="formEditing" />
 					</container:child>
-				</container:VerticalLayoutContainer>
+				</container:HorizontalLayoutContainer>
 			</container:child>
 		</container:VerticalLayoutContainer>
 	</container:CardLayoutContainer>

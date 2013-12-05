@@ -2,6 +2,7 @@ package org.adempiere.web.client.apps;
 
 import java.util.List;
 
+import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.AdFormEditStrategy;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;

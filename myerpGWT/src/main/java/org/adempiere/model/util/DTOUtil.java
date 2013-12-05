@@ -165,6 +165,7 @@ public class DTOUtil {
 		model.setReadonlylogic(entity.getReadonlylogic());
 		model.setTablename(entity.getTablename());
 		model.setHasTree(StringUtil.isYes(entity.getHastree()));
+		model.setIsSortTab(StringUtil.isYes(entity.getIssorttab()));
 		return model;
 	}
 

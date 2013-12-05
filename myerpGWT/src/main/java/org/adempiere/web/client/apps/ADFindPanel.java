@@ -10,7 +10,6 @@ import org.adempiere.model.common.Expression.BooleanOperator;
 import org.adempiere.model.common.Expression.FieldOperator;
 import org.adempiere.model.common.Expression.Predicate;
 import org.adempiere.model.common.LookupValue;
-import org.adempiere.model.common.QueryCondition;
 import org.adempiere.web.client.component.AdFormEditStrategy;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
@@ -69,7 +68,7 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 	private static final List<String>	LOOKUP_FIELDS	= Arrays.asList("name", "description");
 	private Widget						widget			= null;
 	private AdTabModel					tabModel;
-	private QueryCondition				condition;
+	private Expression					condition;
 	private ConditionLoader				loader;
 
 	public ADFindPanel(AdTabModel tabModel, ConditionLoader loader) {
@@ -199,7 +198,8 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		List<AdFieldModel> fieldList = new ArrayList<AdFieldModel>(5);
 		if (null != tabModel && null != tabModel.getFieldList()) {
 			for (AdFieldModel fieldModel : tabModel.getFieldList()) {
-				if (fieldModel.getIsselectioncolumn() || fieldModel.getIskey() || LOOKUP_FIELDS.contains(fieldModel.getName().toLowerCase())) {
+				if (fieldModel.getIsselectioncolumn() || fieldModel.getIskey()
+						|| LOOKUP_FIELDS.contains(fieldModel.getName().toLowerCase())) {
 					fieldList.add(fieldModel);
 				}
 			}
@@ -211,12 +211,12 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		toolBar.setToolbarListener(listener);
 	}
 
-	public QueryCondition getCondition() {
+	public Expression getCondition() {
 		return condition;
 	}
 
 	public interface ConditionLoader {
-		void load(QueryCondition condition);
+		void load(Expression condition);
 	}
 
 	public void show() {

@@ -1,38 +1,36 @@
 package org.adempiere.model.business;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import java.sql.Timestamp;
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-import org.adempiere.model.common.AdEntityBase;
 
 /**
  * The persistent class for the c_ordertax database table.
  * 
  */
 @Entity
-@Table(name = "c_ordertax")
-public class COrdertax extends AdEntityBase implements Serializable {
-	private static final long	serialVersionUID	= 1L;
-	private COrdertaxPK			id;
-	private Long				adClientId;
-	private Long				adOrgId;
-	private String			created;
-	private Long				createdby;
-	private String				isactive;
-	private String				istaxincluded;
-	private String				processed;
-	private BigDecimal			taxamt;
-	private BigDecimal			taxbaseamt;
-	private String			updated;
-	private Long				updatedby;
+@Table(name="c_ordertax")
+@NamedQuery(name="COrdertax.findAll", query="SELECT c FROM COrdertax c")
+public class COrdertax extends org.adempiere.model.common.AdEntityBase implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private COrdertaxPK id;
+	private BigDecimal adClientId;
+	private BigDecimal adOrgId;
+	private Timestamp created;
+	private BigDecimal createdby;
+	private String isactive;
+	private String istaxincluded;
+	private String processed;
+	private BigDecimal taxamt;
+	private BigDecimal taxbaseamt;
+	private Timestamp updated;
+	private BigDecimal updatedby;
 
 	public COrdertax() {
 	}
+
 
 	@EmbeddedId
 	public COrdertaxPK getId() {
@@ -43,39 +41,44 @@ public class COrdertax extends AdEntityBase implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "AD_CLIENT_ID")
-	public Long getAdClientId() {
+
+	@Column(name="AD_CLIENT_ID")
+	public BigDecimal getAdClientId() {
 		return this.adClientId;
 	}
 
-	public void setAdClientId(Long adClientId) {
+	public void setAdClientId(BigDecimal adClientId) {
 		this.adClientId = adClientId;
 	}
 
-	@Column(name = "AD_ORG_ID")
-	public Long getAdOrgId() {
+
+	@Column(name="AD_ORG_ID")
+	public BigDecimal getAdOrgId() {
 		return this.adOrgId;
 	}
 
-	public void setAdOrgId(Long adOrgId) {
+	public void setAdOrgId(BigDecimal adOrgId) {
 		this.adOrgId = adOrgId;
 	}
 
-	public String getCreated() {
+
+	public Timestamp getCreated() {
 		return this.created;
 	}
 
-	public void setCreated(String created) {
+	public void setCreated(Timestamp created) {
 		this.created = created;
 	}
 
-	public Long getCreatedby() {
+
+	public BigDecimal getCreatedby() {
 		return this.createdby;
 	}
 
-	public void setCreatedby(Long createdby) {
+	public void setCreatedby(BigDecimal createdby) {
 		this.createdby = createdby;
 	}
+
 
 	public String getIsactive() {
 		return this.isactive;
@@ -85,6 +88,7 @@ public class COrdertax extends AdEntityBase implements Serializable {
 		this.isactive = isactive;
 	}
 
+
 	public String getIstaxincluded() {
 		return this.istaxincluded;
 	}
@@ -92,6 +96,7 @@ public class COrdertax extends AdEntityBase implements Serializable {
 	public void setIstaxincluded(String istaxincluded) {
 		this.istaxincluded = istaxincluded;
 	}
+
 
 	public String getProcessed() {
 		return this.processed;
@@ -101,6 +106,7 @@ public class COrdertax extends AdEntityBase implements Serializable {
 		this.processed = processed;
 	}
 
+
 	public BigDecimal getTaxamt() {
 		return this.taxamt;
 	}
@@ -108,6 +114,7 @@ public class COrdertax extends AdEntityBase implements Serializable {
 	public void setTaxamt(BigDecimal taxamt) {
 		this.taxamt = taxamt;
 	}
+
 
 	public BigDecimal getTaxbaseamt() {
 		return this.taxbaseamt;
@@ -117,19 +124,21 @@ public class COrdertax extends AdEntityBase implements Serializable {
 		this.taxbaseamt = taxbaseamt;
 	}
 
-	public String getUpdated() {
+
+	public Timestamp getUpdated() {
 		return this.updated;
 	}
 
-	public void setUpdated(String updated) {
+	public void setUpdated(Timestamp updated) {
 		this.updated = updated;
 	}
 
-	public Long getUpdatedby() {
+
+	public BigDecimal getUpdatedby() {
 		return this.updatedby;
 	}
 
-	public void setUpdatedby(Long updatedby) {
+	public void setUpdatedby(BigDecimal updatedby) {
 		this.updatedby = updatedby;
 	}
 

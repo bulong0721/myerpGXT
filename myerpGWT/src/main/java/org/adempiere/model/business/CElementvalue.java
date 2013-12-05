@@ -1,18 +1,10 @@
 package org.adempiere.model.business;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.math.BigDecimal;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.adempiere.model.common.AdEntityBase;
 
 
 /**
@@ -21,7 +13,8 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name="c_elementvalue")
-public class CElementvalue extends AdEntityBase implements Serializable {
+@NamedQuery(name="CElementvalue.findAll", query="SELECT c FROM CElementvalue c")
+public class CElementvalue extends org.adempiere.model.common.AdEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cElementvalueId;
 	private String accountsign;
