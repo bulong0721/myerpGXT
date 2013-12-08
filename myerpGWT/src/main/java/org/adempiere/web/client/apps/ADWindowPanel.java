@@ -1,6 +1,7 @@
 package org.adempiere.web.client.apps;
 
-import org.adempiere.web.client.component.AdTabItemConfig;
+import org.adempiere.web.client.component.ADTabContainer;
+import org.adempiere.web.client.component.ADTabContainer.TabItemConfig;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.event.WindowToolListener;
@@ -13,7 +14,7 @@ import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.WindowStatus;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -21,8 +22,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.Component;
-import com.sencha.gxt.widget.core.client.TabPanel;
-import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
 public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener {
 
@@ -48,9 +47,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 	@UiField
 	CWindowToolBar					toolBar;
 	@UiField
-	TabPanel						tabSet;
-	@UiField
-	ToolBar							statusBar;
+	ADTabContainer					tabSet;
 
 	@Override
 	public Widget asWidget() {
@@ -65,10 +62,8 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 	}
 
 	@UiHandler("tabSet")
-	void onSelection(SelectionEvent<Widget> event) {
-		Widget tabWidget = event.getSelectedItem();
-		AdTabItemConfig tabConfig = (AdTabItemConfig) tabSet.getConfig(tabWidget);
-		ADTabPanel tabPanel = (ADTabPanel) tabConfig.getAttachment();
+	void onSelection(ValueChangeEvent<Object> event) {
+		ADTabPanel tabPanel = (ADTabPanel) tabSet.getActiveTag();
 		windowModel.setActiveTabId(tabPanel.getTabModel().getAdTabId());
 		toolBar.setWindowState(this);
 		toolBar.setTabState(tabPanel);
@@ -80,15 +75,16 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 			@Override
 			public void onSuccess(AdWindowModel windowModel) {
 				ADWindowPanel.this.windowModel = windowModel;
+				tabSet.setMaxLevel(windowModel.getTabList().size());
 				for (AdTabModel tabModel : windowModel.getTabList()) {
 					ADTabPanel tabPanel = new ADTabPanel(windowModel, tabModel, toolBar);
-					AdTabItemConfig tabConfig = new AdTabItemConfig(tabModel.getName());
-					tabConfig.setAttachment(tabPanel);
-					tabSet.add(tabPanel, tabConfig);
+					TabItemConfig itemCfg = new TabItemConfig(tabModel.getName(), tabPanel, tabModel.getTablevel());
+					tabSet.add(tabPanel, itemCfg);
 					if (null == currentTab) {
 						currentTab = tabPanel;
 					}
 				}
+				tabSet.setActiveIndex(0);
 			}
 		};
 		adempiereService.getADWindowModel(adWindowId, callback);
@@ -109,8 +105,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 
 	@Override
 	public int getCurrentIndex() {
-		Widget activeWidget = tabSet.getActiveWidget();
-		return tabSet.getWidgetIndex(activeWidget);
+		return tabSet.getActiveIndex();
 	}
 
 	@Override
@@ -154,13 +149,11 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 	}
 
 	private int getCurrentTabIndex() {
-		Widget activeWidget = tabSet.getActiveWidget();
-		return tabSet.getWidgetIndex(activeWidget);
+		return tabSet.getActiveIndex();
 	}
 
 	private boolean setActiveTab(int newTabIndex) {
-		Widget nextWidget = tabSet.getWidget(newTabIndex);
-		tabSet.setActiveWidget(nextWidget);
+		tabSet.setActiveIndex(newTabIndex);
 		return true;
 	}
 
