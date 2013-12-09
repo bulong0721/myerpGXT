@@ -1,5 +1,6 @@
 package org.adempiere.web.client.model;
 
+import org.adempiere.model.common.ADExpression;
 import org.adempiere.model.common.AdModelKey;
 
 import com.sencha.gxt.data.shared.loader.PagingLoadConfigBean;
@@ -8,6 +9,7 @@ public class AdLoadConfig extends PagingLoadConfigBean {
 	private static final long	serialVersionUID	= 1L;
 	private String				tableName;
 	private AdModelKey			parentKey;
+	private ADExpression		expr;
 
 	public AdLoadConfig() {
 		super(0, 50);
@@ -27,6 +29,14 @@ public class AdLoadConfig extends PagingLoadConfigBean {
 
 	public void setParentKey(AdModelKey parentKey) {
 		this.parentKey = parentKey;
+	}
+
+	public ADExpression getExpr() {
+		return expr;
+	}
+
+	public void setExpr(ADExpression expr) {
+		this.expr = expr;
 	}
 
 }

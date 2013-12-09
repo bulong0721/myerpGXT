@@ -1,5 +1,7 @@
 package org.adempiere.web.client.apps;
 
+import java.util.List;
+
 import org.adempiere.web.client.component.ADTabContainer;
 import org.adempiere.web.client.component.ADTabContainer.TabItemConfig;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
@@ -62,7 +64,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 	}
 
 	@UiHandler("tabSet")
-	void onSelection(ValueChangeEvent<Object> event) {
+	void onTabSelection(ValueChangeEvent<Object> event) {
 		ADTabPanel tabPanel = (ADTabPanel) tabSet.getActiveTag();
 		windowModel.setActiveTabId(tabPanel.getTabModel().getAdTabId());
 		toolBar.setWindowState(this);
@@ -75,7 +77,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 			@Override
 			public void onSuccess(AdWindowModel windowModel) {
 				ADWindowPanel.this.windowModel = windowModel;
-				tabSet.setMaxLevel(windowModel.getTabList().size());
+				tabSet.setMaxLevel(getMaxLevel(windowModel.getTabList()));
 				for (AdTabModel tabModel : windowModel.getTabList()) {
 					ADTabPanel tabPanel = new ADTabPanel(windowModel, tabModel, toolBar);
 					TabItemConfig itemCfg = new TabItemConfig(tabModel.getName(), tabPanel, tabModel.getTablevel());
@@ -86,8 +88,33 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 				}
 				tabSet.setActiveIndex(0);
 			}
+
+			private int getMaxLevel(List<AdTabModel> tabs) {
+				int level = 0;
+				for (AdTabModel tabModel : tabs) {
+					if (tabModel.getTablevel() > level) {
+						level = tabModel.getTablevel();
+					}
+				}
+				return level;
+			}
 		};
 		adempiereService.getADWindowModel(adWindowId, callback);
+	}
+
+	public ADTabPanel getParentTab(ADTabPanel tabPanel) {
+		int index = tabSet.getIndex(Widget.asWidgetOrNull(tabPanel));
+		int level = tabPanel.getTabModel().getTablevel();
+		if (0 >= index || 0 >= level) {
+			return null;
+		}
+		for (int i = index - 1; i >= 0; i--) {
+			int rhs = windowModel.getTabList().get(index).getTablevel();
+			if (rhs == level - 1) {
+				return (ADTabPanel) tabSet.getTagByIndex(i);
+			}
+		}
+		return null;
 	}
 
 	public Long getAdWindowId() {

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adempiere.web.client.util.LoggingUtil;
+
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.Store;
@@ -17,7 +19,7 @@ public interface IAdTreeNode extends Serializable {
 	String getName();
 
 	Long getID();
-	
+
 	Long getParentID();
 
 	boolean hasChildren();
@@ -35,8 +37,10 @@ public interface IAdTreeNode extends Serializable {
 			List<IAdTreeNode> loadResult = event.getLoadResult();
 			List<IAdTreeNode> children = getChildren(parent, loadResult);
 			if (null == parent) {
+				LoggingUtil.info("xxxxxxxxxxxxxxxxxxxx");
 				store.add(children);
 			} else {
+				LoggingUtil.info("yyyyyyyyyyyyyyyyyyyy");
 				store.replaceChildren(parent, children);
 			}
 		}

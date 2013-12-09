@@ -28,7 +28,7 @@ import javax.print.attribute.DocAttributeSet;
 
 import org.adempiere.common.KeyNamePair;
 import org.adempiere.common.ValueNamePair;
-import org.adempiere.model.common.Expression;
+import org.adempiere.model.common.ADExpression;
 import org.adempiere.model.core.AdPrintcolor;
 import org.adempiere.model.core.AdPrintfont;
 import org.adempiere.model.core.AdPrintformat;
@@ -50,7 +50,7 @@ public class LayoutEngine implements Pageable, Printable, Doc {
 	private Page				m_currPage;
 	private List<Page>			m_pages						= new ArrayList<Page>();
 	private Properties			m_printCtx;
-	private Expression			m_query;
+	private ADExpression			m_query;
 	private AdPrintformat		m_format;
 	private AdPrintpaper		printPaper;
 	private AdPrintcolor		printColor;
@@ -162,7 +162,7 @@ public class LayoutEngine implements Pageable, Printable, Doc {
 		return sb.toString();
 	} // getPageInfo
 
-	public void setPrintData(PrintData data, Expression query, boolean doLayout) {
+	public void setPrintData(PrintData data, ADExpression query, boolean doLayout) {
 		m_data = data;
 		m_query = query;
 		if (m_hasLayout && doLayout)

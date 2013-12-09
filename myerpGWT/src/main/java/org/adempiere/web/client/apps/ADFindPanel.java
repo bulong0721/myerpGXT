@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.adempiere.model.common.Expression;
-import org.adempiere.model.common.Expression.BooleanOperator;
-import org.adempiere.model.common.Expression.FieldOperator;
-import org.adempiere.model.common.Expression.Predicate;
+import org.adempiere.model.common.ADExpression;
+import org.adempiere.model.common.ADExpression.BooleanOperator;
+import org.adempiere.model.common.ADExpression.FieldOperator;
+import org.adempiere.model.common.ADExpression.ADPredicate;
 import org.adempiere.model.common.LookupValue;
 import org.adempiere.web.client.component.AdFormEditStrategy;
 import org.adempiere.web.client.component.AdModelEditor;
@@ -60,7 +60,7 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 	@UiField
 	Window								window;
 	@UiField(provided = true)
-	TreeGrid<Expression>				grid;
+	TreeGrid<ADExpression>				grid;
 	@UiField(provided = true)
 	SimpleComboBox<String>				cmbFields, cmbProfiles;
 	@UiField(provided = true)
@@ -68,7 +68,7 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 	private static final List<String>	LOOKUP_FIELDS	= Arrays.asList("name", "description");
 	private Widget						widget			= null;
 	private AdTabModel					tabModel;
-	private Expression					condition;
+	private ADExpression					condition;
 	private ConditionLoader				loader;
 
 	public ADFindPanel(AdTabModel tabModel, ConditionLoader loader) {
@@ -116,39 +116,39 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		simpleEditor.setLabelWidth(85);
 		simpleEditor.setLayoutWidth(0.62d);
 
-		TreeStore<Expression> store = new TreeStore<Expression>(new XKeyProvider());
-		ColumnConfig<Expression, String> nameColumn = new ColumnConfig<Expression, String>(new XValueProvider<String>("columnName"));
+		TreeStore<ADExpression> store = new TreeStore<ADExpression>(new XKeyProvider());
+		ColumnConfig<ADExpression, String> nameColumn = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("columnName"));
 		nameColumn.setHeader("Column");
-		ColumnConfig<Expression, String> operatorColumn = new ColumnConfig<Expression, String>(new XValueProvider<String>("fieldOperator"));
+		ColumnConfig<ADExpression, String> operatorColumn = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("fieldOperator"));
 		operatorColumn.setHeader("Operator");
-		ColumnConfig<Expression, String> value1Column = new ColumnConfig<Expression, String>(new XValueProvider<String>("value2"));
+		ColumnConfig<ADExpression, String> value1Column = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("value2"));
 		value1Column.setHeader("Value1");
-		ColumnConfig<Expression, String> value2Column = new ColumnConfig<Expression, String>(new XValueProvider<String>("value2"));
+		ColumnConfig<ADExpression, String> value2Column = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("value2"));
 		value2Column.setHeader("Value2");
-		List<ColumnConfig<Expression, ?>> columns = new ArrayList<ColumnConfig<Expression, ?>>();
+		List<ColumnConfig<ADExpression, ?>> columns = new ArrayList<ColumnConfig<ADExpression, ?>>();
 		columns.add(nameColumn);
 		columns.add(operatorColumn);
 		columns.add(value1Column);
 		columns.add(value2Column);
 
-		Predicate root = new Predicate();
+		ADPredicate root = new ADPredicate();
 		root.setBooleanOperator(BooleanOperator.And);
 		store.add(root);
-		Expression child = new Expression();
+		ADExpression child = new ADExpression();
 		child.setColumnName("Name");
 		child.setFieldOperator(FieldOperator.Equal);
 		child.setValue1("123456");
 		store.add(root, child);
 
-		ColumnModel<Expression> cm = new ColumnModel<Expression>(columns);
+		ColumnModel<ADExpression> cm = new ColumnModel<ADExpression>(columns);
 		Images imgs = ResourcesFactory.createImages();
-		grid = new TreeGrid<Expression>(store, cm, nameColumn);
+		grid = new TreeGrid<ADExpression>(store, cm, nameColumn);
 		grid.getStyle().setNodeOpenIcon(imgs.mOpen());
 		grid.getStyle().setNodeCloseIcon(imgs.mClosed());
 		grid.getStyle().setLeafIcon(imgs.function16());
 		grid.getView().setAutoExpandColumn(nameColumn);
 
-		GridInlineEditing<Expression> editing = new GridInlineEditing<Expression>(grid);
+		GridInlineEditing<ADExpression> editing = new GridInlineEditing<ADExpression>(grid);
 
 		LabelProvider<String> labelProvider = new StringLabelProvider<String>();
 		SimpleComboBox<String> opComboBox = new SimpleComboBox<String>(labelProvider);
@@ -211,12 +211,12 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		toolBar.setToolbarListener(listener);
 	}
 
-	public Expression getCondition() {
+	public ADExpression getCondition() {
 		return condition;
 	}
 
 	public interface ConditionLoader {
-		void load(Expression condition);
+		void load(ADExpression condition);
 	}
 
 	public void show() {
@@ -239,15 +239,15 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		window.hide();
 	}
 
-	public static class XKeyProvider implements ModelKeyProvider<Expression> {
+	public static class XKeyProvider implements ModelKeyProvider<ADExpression> {
 		@Override
-		public String getKey(Expression ex) {
+		public String getKey(ADExpression ex) {
 			return Integer.toString(ex.hashCode());
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public static class XValueProvider<T> implements ValueProvider<Expression, T> {
+	public static class XValueProvider<T> implements ValueProvider<ADExpression, T> {
 		private String	path;
 
 		public XValueProvider(String path) {
@@ -256,7 +256,7 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		}
 
 		@Override
-		public T getValue(Expression ex) {
+		public T getValue(ADExpression ex) {
 			Object result = null;
 			if (ex.isParent() && !"columnName".equals(path)) {
 				result = "";
@@ -273,7 +273,7 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		}
 
 		@Override
-		public void setValue(Expression ex, T value) {
+		public void setValue(ADExpression ex, T value) {
 			if (ex.isParent() && !"columnName".equals(path)) {
 				return;
 			} else if ("columnName".equals(path)) {

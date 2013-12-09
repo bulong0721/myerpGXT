@@ -128,6 +128,7 @@ public class ADTabContainer extends Composite implements HasValueChangeHandlers<
 	private ToggleGroup					tabGroup	= new ToggleGroup();
 	private TabChangetHandler			handler		= new TabChangetHandler();
 	private static final int			BAR_STEP	= 15;
+	private static final int			INIT_SIZE	= 100;
 	private int							maxLevel;
 
 	public ADTabContainer() {
@@ -170,6 +171,10 @@ public class ADTabContainer extends Composite implements HasValueChangeHandlers<
 		return bodyContainer.getWidgetIndex(widget);
 	}
 
+	public int getIndex(Widget widget) {
+		return bodyContainer.getWidgetIndex(widget);
+	}
+
 	private PushButton getActiveButton() {
 		int index = getActiveIndex();
 		return (PushButton) tabContainer.getWidget(index);
@@ -179,6 +184,11 @@ public class ADTabContainer extends Composite implements HasValueChangeHandlers<
 		PushButton activeButton = getActiveButton();
 		return activeButton.getTag();
 	}
+	
+	public Object getTagByIndex(int index) {
+		PushButton button = (PushButton) tabContainer.getWidget(index);
+		return button.getTag();
+	}
 
 	public void setTabVisable(boolean visable) {
 		tabContainer.setVisible(visable);
@@ -186,9 +196,7 @@ public class ADTabContainer extends Composite implements HasValueChangeHandlers<
 
 	public void setActiveIndex(int index) {
 		PushButton button = (PushButton) tabContainer.getWidget(index);
-		// button.fireEvent(new SelectEvent());
 		button.setValue(true, true);
-		// tabGroup.setValue(button, false);
 	}
 
 	private PushButton createButton(String text, Object tag, int level) {
@@ -196,7 +204,7 @@ public class ADTabContainer extends Composite implements HasValueChangeHandlers<
 		pButton.addStyleName(panelStyle.pushButton());
 		pButton.setLayoutData(barLayoutData);
 		pButton.setText(text);
-		pButton.setWidth(80 + (maxLevel - level) * BAR_STEP);
+		pButton.setWidth(INIT_SIZE + (maxLevel - level) * BAR_STEP);
 		return pButton;
 	}
 

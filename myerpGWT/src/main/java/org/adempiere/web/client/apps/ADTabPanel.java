@@ -3,7 +3,7 @@ package org.adempiere.web.client.apps;
 import java.util.List;
 
 import org.adempiere.model.common.AdModelKey;
-import org.adempiere.model.common.Expression;
+import org.adempiere.model.common.ADExpression;
 import org.adempiere.web.client.apps.ADFindPanel.ConditionLoader;
 import org.adempiere.web.client.component.AdFormEditStrategy;
 import org.adempiere.web.client.component.AdModelDriver;
@@ -115,7 +115,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 
 	private void onRender() {
 		createGrid();
-		createForm();	
+		createForm();
 	}
 
 	private void createGrid() {
@@ -170,6 +170,14 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 
 	public AdTabModel getTabModel() {
 		return tabModel;
+	}
+
+	public AdModelKey getSelectedKey() {
+		MapAccessable item = grid.getSelectionModel().getSelectedItem();
+		if (null != item) {
+			return keyProvider.getKeys(item).get(0);
+		}
+		return null;
 	}
 
 	public boolean isGridMode() {
@@ -368,7 +376,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	}
 
 	@Override
-	public void load(Expression condition) {
+	public void load(ADExpression condition) {
 		// TODO Auto-generated method stub
 
 	}

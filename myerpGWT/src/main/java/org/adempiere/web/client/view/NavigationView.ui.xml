@@ -1,9 +1,9 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
 	xmlns:component="urn:import:org.adempiere.web.client.component" xmlns:app="urn:import:org.adempiere.web.client.apps">
-	<container:HorizontalLayoutContainer scrollMode="AUTO">
+	<container:VerticalLayoutContainer scrollMode="AUTO">
 		<container:child>
 			<app:ADTreePanel ui:field="treepanel" />
 		</container:child>
-	</container:HorizontalLayoutContainer>
+	</container:VerticalLayoutContainer>
 </ui:UiBinder> 

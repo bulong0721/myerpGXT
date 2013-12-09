@@ -1,5 +1,6 @@
 package org.adempiere.web.server;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,11 +10,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.adempiere.model.common.ADExpression.ADPredicate;
 import org.adempiere.model.common.ADUserContext;
 import org.adempiere.model.common.AdModelKey;
 import org.adempiere.model.common.DisplayType;
+import org.adempiere.model.common.ADExpression;
 import org.adempiere.model.common.LookupValue;
 import org.adempiere.model.core.AdFieldV;
 import org.adempiere.model.core.AdForm;
@@ -36,6 +41,7 @@ import org.adempiere.web.client.util.StringUtil;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.ibm.icu.math.BigDecimal;
 
 @SuppressWarnings({ "serial", "rawtypes", "unchecked" })
 public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereService {
@@ -143,6 +149,76 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		AdJSONData jsonData = new AdJSONData(data);
 		jsonData.setTotalCount(totalCount);
 		return jsonData;
+	}
+
+	Predicate buildWhere(CriteriaBuilder cb, Root<?> root, ADExpression expr) {
+		if (null == expr) {
+			return null;
+		}
+		if (expr.isParent()) {
+			ADPredicate pred = (ADPredicate) expr;
+			if (null == pred.getExpressions()) {
+				return null;
+			}
+			List<Predicate> predList = new ArrayList<Predicate>(pred.getExpressions().size());
+			for (ADExpression subExpr : pred.getExpressions()) {
+				Predicate subPred = buildWhere(cb, root, subExpr);
+				if (null != subPred) {
+					predList.add(subPred);
+				}
+			}
+			Predicate[] predArray = new Predicate[predList.size()];
+			switch (pred.getBooleanOperator()) {
+			case And:
+				return cb.and(predList.toArray(predArray));
+			case Or:
+				return cb.or(predList.toArray(predArray));
+			default:
+				break;
+			}
+		} else {
+			Expression target = root.get(expr.getColumnName());
+			switch (expr.getFieldOperator()) {
+			case IsNull:
+				return cb.isNull(target);
+			case IsNotNull:
+				return cb.isNotNull(target);
+			case Equal:
+				return cb.equal(target, expr.getValue1());
+			case NotEqual:
+				return cb.notEqual(target, expr.getValue1());
+			case Gt:
+				return cb.gt(target, toNumber(expr.getValue1()));
+			case Ge:
+				return cb.ge(target, toNumber(expr.getValue1()));
+			case Lt:
+				return cb.lt(target, toNumber(expr.getValue1()));
+			case Le:
+				return cb.le(target, toNumber(expr.getValue1()));
+			case Between:
+				return cb.between(target, toString(expr.getValue1()), toString(expr.getValue2()));
+			case NotBetween:
+				return cb.not(cb.between(target, toString(expr.getValue1()), toString(expr.getValue2())));
+			case Like:
+				return cb.like(target, toString(expr.getValue1()));
+			case NotLike:
+				return cb.notLike(target, toString(expr.getValue1()));
+			default:
+				break;
+			}
+		}
+		return null;
+	}
+
+	String toString(Serializable value) {
+		return value.toString();
+	}
+
+	Number toNumber(Serializable value) {
+		if (value instanceof Number) {
+			return (Number) value;
+		}
+		return new BigDecimal(value.toString());
 	}
 
 	private static Class<?> toClass(String className) throws ClassNotFoundException {

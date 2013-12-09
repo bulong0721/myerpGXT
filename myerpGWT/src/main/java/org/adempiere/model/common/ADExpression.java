@@ -3,7 +3,7 @@ package org.adempiere.model.common;
 import java.io.Serializable;
 import java.util.List;
 
-public class Expression implements Serializable {
+public class ADExpression implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private String				columnName;
 	private FieldOperator		fieldOperator;
@@ -46,10 +46,10 @@ public class Expression implements Serializable {
 		this.value2 = value2;
 	}
 
-	public static class Predicate extends Expression implements Serializable {
+	public static class ADPredicate extends ADExpression implements Serializable {
 		private static final long	serialVersionUID	= 1L;
 		private BooleanOperator		booleanOperator;
-		private List<Expression>	expressions;
+		private List<ADExpression>	expressions;
 
 		@Override
 		public boolean isParent() {
@@ -74,11 +74,11 @@ public class Expression implements Serializable {
 			this.booleanOperator = booleanOperator;
 		}
 
-		public List<Expression> getExpressions() {
+		public List<ADExpression> getExpressions() {
 			return expressions;
 		}
 
-		public void setExpressions(List<Expression> expressions) {
+		public void setExpressions(List<ADExpression> expressions) {
 			this.expressions = expressions;
 		}
 

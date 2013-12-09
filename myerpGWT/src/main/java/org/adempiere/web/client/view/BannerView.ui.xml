@@ -1,14 +1,39 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container">
+<ui:UiBinder xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar" xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container">
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="logoMargins">
 		<ui:attributes top="2" right="4" bottom="2" left="4" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData" field="logoLayoutData">
 		<ui:attributes margins="{logoMargins}" />
 	</ui:with>
-	<container:HorizontalLayoutContainer>
-		<container:child layoutData="{logoLayoutData}">
-			<g:Image url="images/icons/AdempiereHR.png" />
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="toolLayoutData">
+		<ui:attributes width="1" height="-1" />
+	</ui:with>
+	<container:VerticalLayoutContainer>
+		<container:child>
+			<toolbar:ToolBar layoutData="{toolLayoutData}">
+				<g:Image url="images/icons/AdempiereHR.png" />
+				<toolbar:FillToolItem />
+				<!-- <g:Grid>
+					<g:row>
+						<g:customCell>
+							<g:Anchor text="System@System.*" />
+						</g:customCell>
+					</g:row>
+					<g:row>
+						<g:customCell>
+							<g:Hyperlink>System Administrator</g:Hyperlink>
+						</g:customCell>
+						<g:customCell>
+							<toolbar:SeparatorToolItem />
+						</g:customCell>
+						<g:customCell>
+							<g:Hyperlink>Log Out</g:Hyperlink>
+						</g:customCell>
+					</g:row>
+				</g:Grid> -->
+			</toolbar:ToolBar>
 		</container:child>
-	</container:HorizontalLayoutContainer>
+	</container:VerticalLayoutContainer>
 </ui:UiBinder> 

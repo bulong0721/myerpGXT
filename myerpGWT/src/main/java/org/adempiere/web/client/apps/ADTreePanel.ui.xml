@@ -13,10 +13,10 @@
 		<ui:attributes margins="{margins4}" width="-1" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="centerLayoutData">
-		<ui:attributes margins="{margins4}" width="1" />
+		<ui:attributes margins="{margins4}" height="1" width="1" />
 	</ui:with>
 
-	<container:VerticalLayoutContainer scrollMode="AUTO">
+	<container:VerticalLayoutContainer>
 		<container:child layoutData="{topLayoutData}">
 			<form:FieldLabel text="Lookup" labelWidth="45">
 				<form:widget>
@@ -25,10 +25,14 @@
 			</form:FieldLabel>
 		</container:child>
 		<container:child layoutData="{centerLayoutData}">
-			<tree:Tree ui:field="tree" />
+			<container:VerticalLayoutContainer scrollMode="AUTO">
+				<container:child>
+					<tree:Tree ui:field="tree" />
+				</container:child>
+			</container:VerticalLayoutContainer>
 		</container:child>
 		<container:child layoutData="{topLayoutData}">
-			
+			<form:CheckBox ui:field="chkExpandAll" boxLabel="Expand All" />
 		</container:child>
 	</container:VerticalLayoutContainer>
 </ui:UiBinder>

@@ -34,11 +34,11 @@
 			<container:center layoutData="{centerData}">
 				<view:ContentView ui:field="contentView" />
 			</container:center>
-			<container:south layoutData="{southData}">
+<!-- 			<container:south layoutData="{southData}">
 				<g:SimplePanel>
 					<view:RemindView ui:field="remindView" />
 				</g:SimplePanel>
-			</container:south>
+			</container:south> -->
 		</container:BorderLayoutContainer>
 	</container:Viewport>
 </ui:UiBinder> 

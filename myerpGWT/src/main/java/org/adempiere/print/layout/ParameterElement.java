@@ -2,7 +2,7 @@ package org.adempiere.print.layout;
 
 import java.util.Properties;
 
-import org.adempiere.model.common.Expression;
+import org.adempiere.model.common.ADExpression;
 import org.adempiere.model.core.AdPrinttableformat;
 
 public class ParameterElement extends GridElement {
@@ -17,7 +17,7 @@ public class ParameterElement extends GridElement {
 	 * @param ctx context
 	 * @param tFormat Table Format
 	 */
-	public ParameterElement(Expression query, Properties ctx, AdPrinttableformat tFormat) {
+	public ParameterElement(ADExpression query, Properties ctx, AdPrinttableformat tFormat) {
 		super(0, 4);
 //		setData(0, 0, "Parameter:", tFormat.getPageHeader_Font(), tFormat.getPageHeaderFG_Color());
 //		for (int r = 0; r < query.getRestrictionCount(); r++) {

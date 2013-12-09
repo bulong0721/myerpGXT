@@ -11,8 +11,10 @@ import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
@@ -21,6 +23,7 @@ import com.sencha.gxt.data.client.loader.RpcProxy;
 import com.sencha.gxt.data.shared.IconProvider;
 import com.sencha.gxt.data.shared.TreeStore;
 import com.sencha.gxt.data.shared.loader.TreeLoader;
+import com.sencha.gxt.widget.core.client.form.CheckBox;
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 import com.sencha.gxt.widget.core.client.tree.Tree;
 
@@ -35,6 +38,8 @@ public class ADTreePanel implements IsWidget {
 	StoreFilterField<IAdTreeNode>	filter				= new IAdTreeNode.NameFilterField();
 	@UiField(provided = true)
 	Tree<IAdTreeNode, String>		tree;
+	@UiField
+	CheckBox						chkExpandAll;
 	private TreeStore<IAdTreeNode>	store;
 	private AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
 	private TreeLoader<IAdTreeNode>	loader;
@@ -53,6 +58,15 @@ public class ADTreePanel implements IsWidget {
 			this.widget = uiBinder.createAndBindUi(this);
 		}
 		return widget;
+	}
+
+	@UiHandler("chkExpandAll")
+	void onExpandValueChange(ValueChangeEvent<Boolean> event) {
+		if (event.getValue()) {
+			this.expandAll();
+		} else {
+			this.collapseAll();
+		}
 	}
 
 	private void createTree() {
@@ -80,11 +94,11 @@ public class ADTreePanel implements IsWidget {
 		tree.getStyle().setNodeCloseIcon(images.mClosed());
 		filter.bind(store);
 	}
-	
+
 	public void loadTree() {
 		this.loader.load();
 	}
-	
+
 	private IconProvider<IAdTreeNode> createIconProvider(int adTreeId) {
 		return AdMenuModel.createIconProvider();
 	}
@@ -94,10 +108,12 @@ public class ADTreePanel implements IsWidget {
 	}
 
 	public void expandAll() {
-
+		tree.expandAll();
+		chkExpandAll.setValue(true);
 	}
 
 	public void collapseAll() {
-
+		tree.collapseAll();
+		chkExpandAll.setValue(false);
 	}
 }

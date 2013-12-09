@@ -18,8 +18,8 @@ public class ApplicationView extends BaseReverseView<IApplicationPresenter> impl
 	interface ApplicationViewUiBinder extends UiBinder<Widget, ApplicationView> {
 	}
 
-	@UiField(provided = true)
-	RemindView		remindView;
+//	@UiField(provided = true)
+//	RemindView		remindView;
 	@UiField(provided = true)
 	BannerView		bannerView;
 	@UiField(provided = true)
@@ -28,11 +28,11 @@ public class ApplicationView extends BaseReverseView<IApplicationPresenter> impl
 	ContentView		contentView;
 
 	@Inject
-	public ApplicationView(BannerView bannerView, NavigationView navView, ContentView contentView, RemindView remindView) {
+	public ApplicationView(BannerView bannerView, NavigationView navView, ContentView contentView/*, RemindView remindView*/) {
 		this.bannerView = bannerView;
 		this.navView = navView;
 		this.contentView = contentView;
-		this.remindView = remindView;
+//		this.remindView = remindView;
 	}
 
 	@Override
