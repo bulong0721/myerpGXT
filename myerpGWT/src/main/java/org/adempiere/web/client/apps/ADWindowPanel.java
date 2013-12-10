@@ -72,6 +72,9 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 	@UiHandler("tabSet")
 	void onTabSelection(ValueChangeEvent<Object> event) {
 		ADTabPanel tabPanel = (ADTabPanel) tabSet.getActiveTag();
+		if (tabPanel.isParentSelectChanges()) {
+			tabPanel.loadData();
+		}
 		windowModel.setActiveTabId(tabPanel.getTabModel().getAdTabId());
 		toolBar.setWindowState(this);
 		toolBar.setTabState(tabPanel);
@@ -85,7 +88,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 				ADWindowPanel.this.windowModel = windowModel;
 				tabSet.setMaxLevel(getMaxLevel(windowModel.getTabList()));
 				for (ADTabModel tabModel : windowModel.getTabList()) {
-					ADTabPanel tabPanel = new ADTabPanel(windowModel, tabModel, toolBar);
+					ADTabPanel tabPanel = new ADTabPanel(ADWindowPanel.this, tabModel, toolBar);
 					TabItemConfig itemCfg = new TabItemConfig(tabModel.getName(), tabPanel, tabModel.getTablevel());
 					tabSet.add(tabPanel, itemCfg);
 					if (null == currentTab) {
@@ -96,7 +99,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 				if (currentTab.getTabModel().getIsHighVolume()) {
 					onFind();
 				} else {
-					currentTab.loadData(new ADLoadConfig());
+					currentTab.loadData();
 				}
 			}
 
@@ -120,7 +123,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 			return null;
 		}
 		for (int i = index - 1; i >= 0; i--) {
-			int rhs = windowModel.getTabList().get(index).getTablevel();
+			int rhs = windowModel.getTabList().get(i).getTablevel();
 			if (rhs == level - 1) {
 				return (ADTabPanel) tabSet.getTagByIndex(i);
 			}

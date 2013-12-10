@@ -20,12 +20,12 @@ public interface ADMapData {
 
 	
 
-	public static class AdModelKeyProvider implements ModelKeyProvider<ADMapData> {
+	public static class ADModelKeyProvider implements ModelKeyProvider<ADMapData> {
 		private List<String>	keyFields;
 		private Long			RecordId	= -1L;
 		private DisplayType		fieldType;
 
-		public AdModelKeyProvider(ADTabModel tabModel) {
+		public ADModelKeyProvider(ADTabModel tabModel) {
 			keyFields = new ArrayList<String>();
 			for (ADFormField field : tabModel.getFieldList()) {
 				if (field.getIskey()) {
@@ -62,11 +62,11 @@ public interface ADMapData {
 		}
 	}
 
-	public static class AdModelValueProvider<T> implements ValueProvider<ADMapData, T> {
+	public static class ADModelValueProvider<T> implements ValueProvider<ADMapData, T> {
 		private String		path;
 		private DisplayType	fieldType;
 
-		public AdModelValueProvider(String path, DisplayType fieldType) {
+		public ADModelValueProvider(String path, DisplayType fieldType) {
 			this.fieldType = fieldType;
 			this.path = path;
 		}

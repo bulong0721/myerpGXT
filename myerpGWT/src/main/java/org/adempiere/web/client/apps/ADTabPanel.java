@@ -13,12 +13,11 @@ import org.adempiere.web.client.model.ADFormField;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
 import org.adempiere.web.client.model.ADMapData;
-import org.adempiere.web.client.model.ADMapData.AdModelKeyProvider;
+import org.adempiere.web.client.model.ADMapData.ADModelKeyProvider;
 import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.model.ADModelData;
 import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADTabModel;
-import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.JSOUtil;
@@ -68,7 +67,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 
 	PagingLoader<ADLoadConfig, PagingLoadResult<ADMapData>>	loader				= null;
 	private AdempiereServiceAsync							adempiereService	= GWT.create(AdempiereService.class);
-	private ADWindowModel									windowModel;
+	private ADWindowPanel									windowPanel;
 	private ADTabModel										tabModel;
 	private CWindowToolBar									toolBar;
 	private Widget											widget;
@@ -77,7 +76,8 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 	private ADFormEditStrategy								tabStrategy;
 	private GridEditing<ADMapData>							gridEditing;
 	private ADModelDriver									adModelDriver;
-	private AdModelKeyProvider								keyProvider;
+	private ADModelKeyProvider								keyProvider;
+	private ADModelKey										parentModelKey;
 	@UiField(provided = true)
 	Grid<ADMapData>											grid;
 	@UiField(provided = true)
@@ -89,10 +89,10 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 	@UiField
 	SimplePanel												treePlaceHolder;
 
-	public ADTabPanel(ADWindowModel windowModel, ADTabModel tabModel, CWindowToolBar toolBar) {
+	public ADTabPanel(ADWindowPanel windowPanel, ADTabModel tabModel, CWindowToolBar toolBar) {
 		this.tabStrategy = new ADFormEditStrategy(tabModel.getFieldList());
 		this.tabStrategy.setFieldButtonListener(this);
-		this.windowModel = windowModel;
+		this.windowPanel = windowPanel;
 		this.tabModel = tabModel;
 		this.toolBar = toolBar;
 	}
@@ -213,10 +213,6 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 		}
 	}
 
-	public boolean isActive() {
-		return windowModel.getActiveTabId() == tabModel.getAdTabId();
-	}
-
 	public void saveOrUpdateRecord() {
 		AsyncCallback<ADResultWithError> callback = new AsyncSuccessCallback<ADResultWithError>() {
 			@Override
@@ -334,8 +330,16 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 
 	public void loadData(ADLoadConfig loadCfg) {
 		loadCfg.setTableName(tabModel.getTablename());
+		if (0 != tabModel.getTablevel() && null == loadCfg.getParentKey()) {
+			loadCfg.setParentKey(windowPanel.getParentTab(this).getSelectedKey());
+		}
+		parentModelKey = loadCfg.getParentKey();
 		loader.load(loadCfg);
 		toolBar.setTabState(this);
+	}
+
+	public ADModelKey getParentModelKey() {
+		return parentModelKey;
 	}
 
 	@Override
@@ -366,6 +370,22 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 	@Override
 	public void onActionButton(ADFormField field) {
 		Info.display("adempiere", field.getName());
+	}
+
+	public void loadData() {
+		ADLoadConfig loadCfg = new ADLoadConfig();
+		loadData(loadCfg);
+	}
+
+	public boolean isParentSelectChanges() {
+		if (0 == tabModel.getTablevel()) {
+			return false;
+		}
+		ADModelKey parentKey = windowPanel.getParentTab(this).getSelectedKey();
+		if (null == parentKey) {
+			return false;
+		}
+		return !parentKey.equals(this.parentModelKey);
 	}
 
 }

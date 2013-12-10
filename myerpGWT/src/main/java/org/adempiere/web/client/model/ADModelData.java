@@ -54,7 +54,7 @@ public class ADModelData implements Serializable, ADMapData {
 		return new ADModelData(newJso);
 	}
 
-	public static AdModelKeyProvider createKeyProvider(ADTabModel tabModel) {
-		return new AdModelKeyProvider(tabModel);
+	public static ADModelKeyProvider createKeyProvider(ADTabModel tabModel) {
+		return new ADModelKeyProvider(tabModel);
 	}
 }

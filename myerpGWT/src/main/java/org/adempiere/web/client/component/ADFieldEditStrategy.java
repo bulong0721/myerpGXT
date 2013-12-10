@@ -10,7 +10,7 @@ import org.adempiere.model.common.LookupValue;
 import org.adempiere.web.client.event.FieldButtonListener;
 import org.adempiere.web.client.model.ADFormField;
 import org.adempiere.web.client.model.ADMapData;
-import org.adempiere.web.client.model.ADMapData.AdModelValueProvider;
+import org.adempiere.web.client.model.ADMapData.ADModelValueProvider;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
@@ -68,10 +68,10 @@ public class ADFieldEditStrategy {
 
 	private void init() {
 		fieldType = field.getFieldType();
-		AdModelValueProvider<?> valueProvider = null;
+		ADModelValueProvider<?> valueProvider = null;
 		String propertyName = StringUtil.toCamelStyle(field.getColumnname());
 		if (fieldType.isID() || fieldType.isInteger()) {
-			valueProvider = new AdModelValueProvider<Integer>(propertyName, fieldType);
+			valueProvider = new ADModelValueProvider<Integer>(propertyName, fieldType);
 			if (fieldType.isLookup()) {
 				optionStore = OptionStoreManager.getOptionStore(field.getColumnname(), field.getAdReferenceId(),
 						field.getAdReferenceValueId());
@@ -103,14 +103,14 @@ public class ADFieldEditStrategy {
 					formEditor = new NumberField<Integer>(propertyEditor);
 			}
 		} else if (fieldType.isFloat()) {
-			valueProvider = new AdModelValueProvider<Double>(propertyName, fieldType);
+			valueProvider = new ADModelValueProvider<Double>(propertyName, fieldType);
 			NumberPropertyEditor<Double> propertyEditor = new DoublePropertyEditor();
 			if (formStrategy.isCreateGridEditor())
 				gridEditor = new NumberField<Double>(propertyEditor);
 			if (formStrategy.isCreateFormEditor())
 				formEditor = new NumberField<Double>(propertyEditor);
 		} else if (fieldType.isDate()) {
-			valueProvider = new AdModelValueProvider<String>(propertyName, fieldType);
+			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
 			if (formStrategy.isCreateGridEditor())
 				gridEditor = new DateField();
 			if (formStrategy.isCreateFormEditor())
@@ -129,10 +129,10 @@ public class ADFieldEditStrategy {
 				}
 			};
 		} else if (fieldType.isButton()) {
-			valueProvider = new AdModelValueProvider<String>(propertyName, fieldType);
+			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
 			showLabel = false;
 		} else if (fieldType.isText()) {
-			valueProvider = new AdModelValueProvider<String>(propertyName, fieldType);
+			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
 			if (field.getIsencryptedfield()) {
 				if (formStrategy.isCreateGridEditor())
 					gridEditor = new PasswordField();
@@ -145,7 +145,7 @@ public class ADFieldEditStrategy {
 					formEditor = new TextField();
 			}
 		} else if (fieldType.isBoolean()) {
-			valueProvider = new AdModelValueProvider<String>(propertyName, fieldType);
+			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
 			if (formStrategy.isCreateGridEditor())
 				gridEditor = createCheckBox(false);
 			if (formStrategy.isCreateFormEditor())
@@ -163,7 +163,7 @@ public class ADFieldEditStrategy {
 			};
 			showLabel = false;
 		} else {
-			valueProvider = new AdModelValueProvider<String>(propertyName, fieldType);
+			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
 			if (formStrategy.isCreateGridEditor())
 				gridEditor = new TextField();
 			if (formStrategy.isCreateFormEditor())
