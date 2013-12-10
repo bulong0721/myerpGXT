@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="c_calendar")
 @NamedQuery(name="CCalendar.findAll", query="SELECT c FROM CCalendar c")
-public class CCalendar extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CCalendar extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cCalendarId;
 	private BigDecimal adClientId;

@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="ad_sysconfig")
 @NamedQuery(name="AdSysconfig.findAll", query="SELECT a FROM AdSysconfig a")
-public class AdSysconfig extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class AdSysconfig extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adSysconfigId;
 	private BigDecimal adClientId;

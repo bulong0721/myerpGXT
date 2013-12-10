@@ -3,9 +3,9 @@ package org.adempiere.web.client.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class AdTabModel implements Serializable {
+public class ADTabModel implements Serializable {
 	private static final long	serialVersionUID	= 1L;
-	private List<AdFieldModel>	fieldList;
+	private List<ADFieldModel>	fieldList;
 	private long				adTabId;
 	private Long				adColumnId;
 	private Long				adTableId;
@@ -18,15 +18,16 @@ public class AdTabModel implements Serializable {
 	private Boolean				issinglerow;
 	private Boolean				isSortTab;
 	private Boolean				hasTree;
+	private Boolean				isHighVolume;
 	private String				name;
 	private String				readonlylogic;
 	private String				tablename;
 
-	public List<AdFieldModel> getFieldList() {
+	public List<ADFieldModel> getFieldList() {
 		return fieldList;
 	}
 
-	public void setFieldList(List<AdFieldModel> fieldList) {
+	public void setFieldList(List<ADFieldModel> fieldList) {
 		this.fieldList = fieldList;
 	}
 
@@ -148,6 +149,14 @@ public class AdTabModel implements Serializable {
 
 	public void setReadonlylogic(String readonlylogic) {
 		this.readonlylogic = readonlylogic;
+	}
+
+	public Boolean getIsHighVolume() {
+		return isHighVolume;
+	}
+
+	public void setIsHighVolume(Boolean isHighVolume) {
+		this.isHighVolume = isHighVolume;
 	}
 
 }

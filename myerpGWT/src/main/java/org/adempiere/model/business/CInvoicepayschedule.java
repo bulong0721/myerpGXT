@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_invoicepayschedule")
 @NamedQuery(name="CInvoicepayschedule.findAll", query="SELECT c FROM CInvoicepayschedule c")
-public class CInvoicepayschedule extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CInvoicepayschedule extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cInvoicepayscheduleId;
 	private BigDecimal adClientId;

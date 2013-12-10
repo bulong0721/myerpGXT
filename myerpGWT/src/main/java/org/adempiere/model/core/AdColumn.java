@@ -3,7 +3,7 @@ package org.adempiere.model.core;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 
 import java.math.BigDecimal;
@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="ad_column")
-public class AdColumn extends AdEntityBase implements Serializable {
+public class AdColumn extends ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adColumnId;
 	private BigDecimal adClientId;

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 
 /**
@@ -21,7 +21,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name="ad_user")
-public class AdUser extends AdEntityBase implements Serializable {
+public class AdUser extends ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adUserId;
 	private BigDecimal adClientId;

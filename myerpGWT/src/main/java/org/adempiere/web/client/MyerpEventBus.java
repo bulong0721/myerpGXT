@@ -1,6 +1,6 @@
 package org.adempiere.web.client;
 
-import org.adempiere.web.client.model.AdMenuModel;
+import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.presenter.ApplicationPresenter;
 import org.adempiere.web.client.presenter.ContentPresenter;
 import org.adempiere.web.client.presenter.LoginPresenter;
@@ -31,7 +31,7 @@ public interface MyerpEventBus extends EventBus {
 	void setBody(IsWidget widget);
 
 	@Event(handlers = { ContentPresenter.class })
-	void showPage(AdMenuModel model);
+	void showPage(ADMenuModel model);
 
 //	@Event(handlers = { ContentPresenter.class })
 //	IDesktop getDesktop();

@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 
 /**
@@ -18,7 +18,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name="m_warehouse")
-public class MWarehouse extends AdEntityBase implements Serializable {
+public class MWarehouse extends ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long mWarehouseId;
 	private BigDecimal adClientId;

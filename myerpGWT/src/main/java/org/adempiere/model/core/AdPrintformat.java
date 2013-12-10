@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.adempiere.common.Language;
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the ad_printformat database table.
@@ -18,7 +18,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "ad_printformat")
-public class AdPrintformat extends AdEntityBase implements Serializable {
+public class AdPrintformat extends ADEntityBase implements Serializable {
 	private static final long		serialVersionUID	= 1L;
 	private long					adPrintformatId;
 	private Long					adClientId;

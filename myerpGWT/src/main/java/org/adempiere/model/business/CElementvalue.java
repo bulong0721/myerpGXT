@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_elementvalue")
 @NamedQuery(name="CElementvalue.findAll", query="SELECT c FROM CElementvalue c")
-public class CElementvalue extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CElementvalue extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cElementvalueId;
 	private String accountsign;

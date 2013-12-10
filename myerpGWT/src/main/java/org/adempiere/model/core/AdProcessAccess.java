@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="ad_process_access")
 @NamedQuery(name="AdProcessAccess.findAll", query="SELECT a FROM AdProcessAccess a")
-public class AdProcessAccess extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class AdProcessAccess extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private AdProcessAccessPK id;
 	private BigDecimal adClientId;

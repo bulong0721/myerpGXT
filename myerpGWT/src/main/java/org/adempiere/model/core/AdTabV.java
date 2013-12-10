@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 
 /**
@@ -16,7 +16,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "ad_tab_v")
-public class AdTabV extends AdEntityBase implements Serializable {
+public class AdTabV extends ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private String				accesslevel;
 	private Long				adColumnId;

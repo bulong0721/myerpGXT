@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="ad_labelprinterfunction")
 @NamedQuery(name="AdLabelprinterfunction.findAll", query="SELECT a FROM AdLabelprinterfunction a")
-public class AdLabelprinterfunction extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class AdLabelprinterfunction extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adLabelprinterfunctionId;
 	private BigDecimal adClientId;

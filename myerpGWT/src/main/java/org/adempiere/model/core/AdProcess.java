@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the AD_PROCESS database table.
@@ -17,7 +17,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "AD_PROCESS")
-public class AdProcess extends AdEntityBase implements Serializable {
+public class AdProcess extends ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				adProcessId;
 	private String				accesslevel;

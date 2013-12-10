@@ -17,7 +17,7 @@ import javax.persistence.criteria.Root;
 
 import org.adempiere.model.common.ADExpression.ADPredicate;
 import org.adempiere.model.common.ADUserContext;
-import org.adempiere.model.common.AdModelKey;
+import org.adempiere.model.common.ADModelKey;
 import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.common.ADExpression;
 import org.adempiere.model.common.LookupValue;
@@ -28,15 +28,15 @@ import org.adempiere.model.core.AdTabV;
 import org.adempiere.model.core.AdTreenodemm;
 import org.adempiere.model.util.DTOUtil;
 import org.adempiere.model.util.RefTableCriteria;
-import org.adempiere.web.client.model.AdFieldModel;
-import org.adempiere.web.client.model.AdFormModel;
-import org.adempiere.web.client.model.AdJSONData;
-import org.adempiere.web.client.model.AdLoadConfig;
+import org.adempiere.web.client.model.ADFieldModel;
+import org.adempiere.web.client.model.ADFormModel;
+import org.adempiere.web.client.model.ADJSONData;
+import org.adempiere.web.client.model.ADLoadConfig;
 import org.adempiere.web.client.model.AdProcessModel;
-import org.adempiere.web.client.model.AdResultWithError;
-import org.adempiere.web.client.model.AdTabModel;
-import org.adempiere.web.client.model.AdWindowModel;
-import org.adempiere.web.client.model.IAdTreeNode;
+import org.adempiere.web.client.model.ADResultWithError;
+import org.adempiere.web.client.model.ADTabModel;
+import org.adempiere.web.client.model.ADWindowModel;
+import org.adempiere.web.client.model.ADTreeNode;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.util.StringUtil;
 
@@ -47,12 +47,12 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereService {
 
 	@Override
-	public List<IAdTreeNode> getAdMenuModels() {
+	public List<ADTreeNode> getAdMenuModels() {
 		try {
 			EntityManager em = getEntityManager();
 			TypedQuery<AdTreenodemm> query = em.createNamedQuery("queryMainMenuNodes", AdTreenodemm.class);
 			List<AdTreenodemm> menuList = query.getResultList();
-			List<IAdTreeNode> resultList = new ArrayList<IAdTreeNode>(menuList.size());
+			List<ADTreeNode> resultList = new ArrayList<ADTreeNode>(menuList.size());
 			for (AdTreenodemm nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
@@ -64,15 +64,15 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public AdResultWithError deleteData(List<AdModelKey> keyList, String tableName) {
+	public ADResultWithError deleteData(List<ADModelKey> keyList, String tableName) {
 		// TODO Auto-generated method stub
-		return AdResultWithError.newSuccess();
+		return ADResultWithError.newSuccess();
 	}
 
 	@Override
-	public AdResultWithError selectData(List<AdModelKey> keyList, String tableName) {
+	public ADResultWithError selectData(List<ADModelKey> keyList, String tableName) {
 		// TODO Auto-generated method stub
-		return AdResultWithError.newSuccess();
+		return ADResultWithError.newSuccess();
 	}
 
 	// @Override
@@ -94,19 +94,19 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public AdWindowModel getADWindowModel(long windowId) {
-		AdWindowModel windowModel = new AdWindowModel();
+	public ADWindowModel getADWindowModel(long windowId) {
+		ADWindowModel windowModel = new ADWindowModel();
 		try {
 			EntityManager em = getEntityManager();
 			windowModel.setAdWindowId(windowId);
 			TypedQuery<AdTabV> tabQuery = em.createNamedQuery("queryTabvsByWindowId", AdTabV.class);
 			tabQuery.setParameter("adWindowId", windowId);
-			List<AdTabModel> tabList = DTOUtil.toTabModels(tabQuery.getResultList());
+			List<ADTabModel> tabList = DTOUtil.toTabModels(tabQuery.getResultList());
 			windowModel.setTabList(tabList);
-			for (AdTabModel tabModel : tabList) {
+			for (ADTabModel tabModel : tabList) {
 				TypedQuery<AdFieldV> fieldQuery = em.createNamedQuery("queryFieldvsByTabId", AdFieldV.class);
 				fieldQuery.setParameter("adTabId", tabModel.getAdTabId());
-				List<AdFieldModel> fieldList = DTOUtil.toFieldModels(fieldQuery.getResultList());
+				List<ADFieldModel> fieldList = DTOUtil.toFieldModels(fieldQuery.getResultList());
 				tabModel.setFieldList(fieldList);
 			}
 		} catch (Exception e) {
@@ -115,7 +115,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public AdJSONData getWindowTabData(AdLoadConfig loadCfg) {
+	public ADJSONData getWindowTabData(ADLoadConfig loadCfg) {
 		String entityClass = getEntityClassName(loadCfg.getTableName());
 		System.out.println("fetchByClass1:" + entityClass);
 		String data = "";
@@ -129,7 +129,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			Root<?> root = cq.from(entityClazz);
 			aq.from(entityClazz);
 			aq.select(cb.count(root));
-			AdModelKey parentKey = loadCfg.getParentKey();
+			ADModelKey parentKey = loadCfg.getParentKey();
 			if (null != parentKey) {
 				cq.where(cb.equal(root.get(parentKey.getKeyField()), parentKey.getKeyValue()));
 				aq.where(cb.equal(root.get(parentKey.getKeyField()), parentKey.getKeyValue()));
@@ -146,7 +146,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		AdJSONData jsonData = new AdJSONData(data);
+		ADJSONData jsonData = new ADJSONData(data);
 		jsonData.setTotalCount(totalCount);
 		return jsonData;
 	}
@@ -328,7 +328,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public AdResultWithError updateData(String text, String tableName) {
+	public ADResultWithError updateData(String text, String tableName) {
 		EntityTransaction tx = null;
 		System.out.println(text);
 		try {
@@ -342,19 +342,19 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 				em.merge(entity);
 			}
 			tx.commit();
-			return AdResultWithError.newSuccess();
+			return ADResultWithError.newSuccess();
 		} catch (Exception e) {
 			if (null != tx) {
 				tx.rollback();
 			}
 			e.printStackTrace();
-			return AdResultWithError.newError(e.getMessage());
+			return ADResultWithError.newError(e.getMessage());
 		}
 	}
 
 	@Override
-	public AdFormModel getADFormModel(long formId) {
-		AdFormModel formModel = null;
+	public ADFormModel getADFormModel(long formId) {
+		ADFormModel formModel = null;
 		try {
 			EntityManager em = getEntityManager();
 			TypedQuery<AdForm> query = em.createNamedQuery("queryFormByFormId", AdForm.class);

@@ -1,8 +1,8 @@
 package org.adempiere.web.client.presenter;
 
 import org.adempiere.web.client.MyerpEventBus;
-import org.adempiere.web.client.model.AdMenuModel;
-import org.adempiere.web.client.model.IAdTreeNode;
+import org.adempiere.web.client.model.ADMenuModel;
+import org.adempiere.web.client.model.ADTreeNode;
 import org.adempiere.web.client.presenter.interfaces.INavigationView;
 import org.adempiere.web.client.presenter.interfaces.INavigationView.INavigationPresenter;
 import org.adempiere.web.client.util.StringUtil;
@@ -27,11 +27,11 @@ public class NavigationPresenter extends BasePresenter<INavigationView, MyerpEve
 
 	@Override
 	public void bind() {
-		Tree<IAdTreeNode, String> tree = view.getTreePanel().getTree();
-		tree.getSelectionModel().addSelectionHandler(new SelectionHandler<IAdTreeNode>() {
+		Tree<ADTreeNode, String> tree = view.getTreePanel().getTree();
+		tree.getSelectionModel().addSelectionHandler(new SelectionHandler<ADTreeNode>() {
 			@Override
-			public void onSelection(SelectionEvent<IAdTreeNode> event) {
-				AdMenuModel item = (AdMenuModel) event.getSelectedItem();
+			public void onSelection(SelectionEvent<ADTreeNode> event) {
+				ADMenuModel item = (ADMenuModel) event.getSelectedItem();
 				if (!StringUtil.isNullOrEmpty(item.getAction())) {
 					getEventBus().showPage(item);
 				}

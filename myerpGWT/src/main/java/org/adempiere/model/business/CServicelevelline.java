@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_servicelevelline")
 @NamedQuery(name="CServicelevelline.findAll", query="SELECT c FROM CServicelevelline c")
-public class CServicelevelline extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CServicelevelline extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cServicelevellineId;
 	private BigDecimal adClientId;

@@ -3,20 +3,20 @@ package org.adempiere.web.client.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class AdWindowModel implements Serializable {
+public class ADWindowModel implements Serializable {
 	private static final long	serialVersionUID	= 1L;
-	private List<AdTabModel>	tabList;
+	private List<ADTabModel>	tabList;
 	private long				activeTabId;
 	private long				adWindowId;
 	private String				name;
 	private String				processing;
 	private String				windowtype;
 
-	public List<AdTabModel> getTabList() {
+	public List<ADTabModel> getTabList() {
 		return tabList;
 	}
 
-	public void setTabList(List<AdTabModel> tabList) {
+	public void setTabList(List<ADTabModel> tabList) {
 		this.tabList = tabList;
 	}
 

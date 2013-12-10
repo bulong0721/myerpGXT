@@ -2,17 +2,17 @@ package org.adempiere.model.util;
 
 import javax.persistence.EntityManager;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 import org.adempiere.model.core.AdAttachment;
 
 public class POUtil {
 
-	public static <T extends AdEntityBase> T find(Class<T> clazz, int id) {
+	public static <T extends ADEntityBase> T find(Class<T> clazz, int id) {
 		EntityManager em = getEntityManager();
 		return em.find(clazz, id);
 	}
 
-	public static <T extends AdEntityBase> T find(Class<T> clazz, long id) {
+	public static <T extends ADEntityBase> T find(Class<T> clazz, long id) {
 		EntityManager em = getEntityManager();
 		return em.find(clazz, id);
 	}

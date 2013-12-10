@@ -2,32 +2,27 @@ package org.adempiere.web.client.apps;
 
 import java.util.List;
 
-import org.adempiere.model.common.AdModelKey;
-import org.adempiere.model.common.ADExpression;
-import org.adempiere.web.client.apps.ADFindPanel.ConditionLoader;
-import org.adempiere.web.client.component.AdFormEditStrategy;
-import org.adempiere.web.client.component.AdModelDriver;
+import org.adempiere.model.common.ADModelKey;
+import org.adempiere.web.client.component.ADFormEditStrategy;
+import org.adempiere.web.client.component.ADModelDriver;
+import org.adempiere.web.client.component.ADModelReader;
 import org.adempiere.web.client.component.AdModelEditor;
-import org.adempiere.web.client.component.AdModelReader;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.event.FieldButtonListener;
-import org.adempiere.web.client.model.AdJSONData;
-import org.adempiere.web.client.model.AdLoadConfig;
-import org.adempiere.web.client.model.AdMenuModel;
-import org.adempiere.web.client.model.AdModelData;
-import org.adempiere.web.client.model.AdResultWithError;
-import org.adempiere.web.client.model.AdTabModel;
-import org.adempiere.web.client.model.AdWindowModel;
-import org.adempiere.web.client.model.IAdFormField;
-import org.adempiere.web.client.model.MapAccessable;
-import org.adempiere.web.client.model.MapAccessable.AdModelKeyProvider;
+import org.adempiere.web.client.model.ADFormField;
+import org.adempiere.web.client.model.ADJSONData;
+import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.ADMapData;
+import org.adempiere.web.client.model.ADMapData.AdModelKeyProvider;
+import org.adempiere.web.client.model.ADMenuModel;
+import org.adempiere.web.client.model.ADModelData;
+import org.adempiere.web.client.model.ADResultWithError;
+import org.adempiere.web.client.model.ADTabModel;
+import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.LoggingUtil;
-import org.adempiere.web.client.widget.CHistoryWindow;
-import org.adempiere.web.client.widget.CHistoryWindow.History;
-import org.adempiere.web.client.widget.CHistoryWindow.HistoryLoader;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.TabStatus;
 
@@ -64,38 +59,38 @@ import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent.SelectionChangedHandler;
 import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
 
-public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader, TabStatus, ConditionLoader {
+public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 
 	private static ADTabPanelUiBinder	uiBinder	= GWT.create(ADTabPanelUiBinder.class);
 
 	interface ADTabPanelUiBinder extends UiBinder<Widget, ADTabPanel> {
 	}
 
-	PagingLoader<AdLoadConfig, PagingLoadResult<MapAccessable>>	loader				= null;
-	private AdempiereServiceAsync								adempiereService	= GWT.create(AdempiereService.class);
-	private AdWindowModel										windowModel;
-	private AdTabModel											tabModel;
-	private CWindowToolBar										toolBar;
-	private Widget												widget;
-	private ColumnModel<MapAccessable>							cm;
-	private ListStore<MapAccessable>							store;
-	private AdFormEditStrategy									tabStrategy;
-	private GridEditing<MapAccessable>							gridEditing;
-	private AdModelDriver										adModelDriver;
-	private AdModelKeyProvider									keyProvider;
+	PagingLoader<ADLoadConfig, PagingLoadResult<ADMapData>>	loader				= null;
+	private AdempiereServiceAsync							adempiereService	= GWT.create(AdempiereService.class);
+	private ADWindowModel									windowModel;
+	private ADTabModel										tabModel;
+	private CWindowToolBar									toolBar;
+	private Widget											widget;
+	private ColumnModel<ADMapData>							cm;
+	private ListStore<ADMapData>							store;
+	private ADFormEditStrategy								tabStrategy;
+	private GridEditing<ADMapData>							gridEditing;
+	private ADModelDriver									adModelDriver;
+	private AdModelKeyProvider								keyProvider;
 	@UiField(provided = true)
-	Grid<MapAccessable>											grid;
+	Grid<ADMapData>											grid;
 	@UiField(provided = true)
-	PagingToolBar												pageToolBar;
+	PagingToolBar											pageToolBar;
 	@UiField(provided = true)
-	AdModelEditor												formEditing;
+	AdModelEditor											formEditing;
 	@UiField
-	CardLayoutContainer											layoutContainer;
+	CardLayoutContainer										layoutContainer;
 	@UiField
-	SimplePanel													treePlaceHolder;
+	SimplePanel												treePlaceHolder;
 
-	public ADTabPanel(AdWindowModel windowModel, AdTabModel tabModel, CWindowToolBar toolBar) {
-		this.tabStrategy = new AdFormEditStrategy(tabModel.getFieldList());
+	public ADTabPanel(ADWindowModel windowModel, ADTabModel tabModel, CWindowToolBar toolBar) {
+		this.tabStrategy = new ADFormEditStrategy(tabModel.getFieldList());
 		this.tabStrategy.setFieldButtonListener(this);
 		this.windowModel = windowModel;
 		this.tabModel = tabModel;
@@ -119,61 +114,61 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	}
 
 	private void createGrid() {
-		RpcProxy<AdLoadConfig, AdJSONData> proxy = new RpcProxy<AdLoadConfig, AdJSONData>() {
+		RpcProxy<ADLoadConfig, ADJSONData> proxy = new RpcProxy<ADLoadConfig, ADJSONData>() {
 			@Override
-			public void load(AdLoadConfig loadConfig, AsyncCallback<AdJSONData> callback) {
+			public void load(ADLoadConfig loadConfig, AsyncCallback<ADJSONData> callback) {
 				adempiereService.getWindowTabData(loadConfig, callback);
 			}
 		};
-		AdModelReader reader = new AdModelReader();
-		loader = new PagingLoader<AdLoadConfig, PagingLoadResult<MapAccessable>>(proxy, reader);
+		ADModelReader reader = new ADModelReader();
+		loader = new PagingLoader<ADLoadConfig, PagingLoadResult<ADMapData>>(proxy, reader);
 		loader.setRemoteSort(true);
 		pageToolBar = new PagingToolBar(50);
 		pageToolBar.bind(loader);
-		keyProvider = AdModelData.createKeyProvider(tabModel);
-		store = new ListStore<MapAccessable>(keyProvider);
-		store.addStoreDataChangeHandler(new StoreDataChangeHandler<MapAccessable>() {
+		keyProvider = ADModelData.createKeyProvider(tabModel);
+		store = new ListStore<ADMapData>(keyProvider);
+		store.addStoreDataChangeHandler(new StoreDataChangeHandler<ADMapData>() {
 			@Override
-			public void onDataChange(StoreDataChangeEvent<MapAccessable> event) {
+			public void onDataChange(StoreDataChangeEvent<ADMapData> event) {
 				grid.getSelectionModel().select(0, false);
 				grid.setLoadMask(true);
 			}
 		});
-		final LoadHandler<AdLoadConfig, PagingLoadResult<MapAccessable>> loadHandler = new LoadResultListStoreBinding<AdLoadConfig, MapAccessable, PagingLoadResult<MapAccessable>>(
+		final LoadHandler<ADLoadConfig, PagingLoadResult<ADMapData>> loadHandler = new LoadResultListStoreBinding<ADLoadConfig, ADMapData, PagingLoadResult<ADMapData>>(
 				store);
 		loader.addLoadHandler(loadHandler);
 		cm = tabStrategy.createColumnModel();
-		grid = new Grid<MapAccessable>(store, cm);
+		grid = new Grid<ADMapData>(store, cm);
 		grid.setLoader(loader);
 		grid.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-		grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedHandler<MapAccessable>() {
+		grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedHandler<ADMapData>() {
 			@Override
-			public void onSelectionChanged(SelectionChangedEvent<MapAccessable> event) {
+			public void onSelectionChanged(SelectionChangedEvent<ADMapData> event) {
 				// TODO Auto-generated method stub
 
 			}
 		});
 		gridEditing = tabStrategy.createGridEditing(grid);
-		gridEditing.addCompleteEditHandler(new CompleteEditHandler<MapAccessable>() {
+		gridEditing.addCompleteEditHandler(new CompleteEditHandler<ADMapData>() {
 			@Override
-			public void onCompleteEdit(CompleteEditEvent<MapAccessable> event) {
+			public void onCompleteEdit(CompleteEditEvent<ADMapData> event) {
 				toolBar.setTabState(ADTabPanel.this);
 			}
 		});
-		gridEditing.addCancelEditHandler(new CancelEditHandler<MapAccessable>() {
+		gridEditing.addCancelEditHandler(new CancelEditHandler<ADMapData>() {
 			@Override
-			public void onCancelEdit(CancelEditEvent<MapAccessable> event) {
+			public void onCancelEdit(CancelEditEvent<ADMapData> event) {
 				toolBar.setTabState(ADTabPanel.this);
 			}
 		});
 	}
 
-	public AdTabModel getTabModel() {
+	public ADTabModel getTabModel() {
 		return tabModel;
 	}
 
-	public AdModelKey getSelectedKey() {
-		MapAccessable item = grid.getSelectionModel().getSelectedItem();
+	public ADModelKey getSelectedKey() {
+		ADMapData item = grid.getSelectionModel().getSelectedItem();
 		if (null != item) {
 			return keyProvider.getKeys(item).get(0);
 		}
@@ -193,7 +188,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	private void createTree() {
 		if (tabModel.getHasTree()) {
 			LoggingUtil.info("rander tree");
-			ADTreePanel treepanel = new ADTreePanel(AdMenuModel.TREE_ID);
+			ADTreePanel treepanel = new ADTreePanel(ADMenuModel.TREE_ID);
 			treePlaceHolder.setWidget(treepanel);
 			treePlaceHolder.setWidth("200");
 		}
@@ -206,21 +201,16 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 		Widget nextWidget = layoutContainer.getWidget(nextIndex);
 		layoutContainer.setActiveWidget(nextWidget);
 		if (null == adModelDriver) {
-			adModelDriver = GWT.create(AdModelDriver.class);
+			adModelDriver = GWT.create(ADModelDriver.class);
 			adModelDriver.initialize(formEditing);
 		}
 		if (isGridMode()) {
 			// MapAccessable data = adModelDriver.flush();
 			// store.update(data);
 		} else {
-			MapAccessable selectedItem = grid.getSelectionModel().getSelectedItem();
+			ADMapData selectedItem = grid.getSelectionModel().getSelectedItem();
 			adModelDriver.edit(selectedItem);
 		}
-	}
-
-	public void loadHistory() {
-		CHistoryWindow historyWindow = CHistoryWindow.instance(ADTabPanel.this);
-		historyWindow.show();
 	}
 
 	public boolean isActive() {
@@ -228,9 +218,9 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	}
 
 	public void saveOrUpdateRecord() {
-		AsyncCallback<AdResultWithError> callback = new AsyncSuccessCallback<AdResultWithError>() {
+		AsyncCallback<ADResultWithError> callback = new AsyncSuccessCallback<ADResultWithError>() {
 			@Override
-			public void onSuccess(AdResultWithError result) {
+			public void onSuccess(ADResultWithError result) {
 				if (result.isSuccess()) {
 					store.commitChanges();
 					toolBar.setTabState(ADTabPanel.this);
@@ -248,18 +238,18 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	private String getModifyRecords() {
 		JavaScriptObject array = JavaScriptObject.createArray();
 		int index = 0;
-		for (Store<MapAccessable>.Record record : store.getModifiedRecords()) {
-			JSOUtil.arraySet(array, index, ((AdModelData) copyWithChange(record)).getJso());
+		for (Store<ADMapData>.Record record : store.getModifiedRecords()) {
+			JSOUtil.arraySet(array, index, ((ADModelData) copyWithChange(record)).getJso());
 			index++;
 		}
 		LoggingUtil.info(array.toString());
 		return JSOUtil.toString(array);
 	}
 
-	private MapAccessable copyWithChange(Store<MapAccessable>.Record record) {
-		MapAccessable copy = record.getModel().deepClone();
+	private ADMapData copyWithChange(Store<ADMapData>.Record record) {
+		ADMapData copy = record.getModel().deepClone();
 		if (record.isDirty()) {
-			for (Change<MapAccessable, ?> c : record.getChanges()) {
+			for (Change<ADMapData, ?> c : record.getChanges()) {
 				c.modify(copy);
 			}
 		}
@@ -267,17 +257,17 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	}
 
 	public void deleteRecord() {
-		final MapAccessable selectedData = grid.getSelectionModel().getSelectedItem();
+		final ADMapData selectedData = grid.getSelectionModel().getSelectedItem();
 		final MessageBox box = new MessageBox("Error");
 		if (null == selectedData) {
 			box.setMessage("Select the row you want to delete");
 			box.show();
 			return;
 		}
-		List<AdModelKey> keys = keyProvider.getKeys(selectedData);
-		adempiereService.deleteData(keys, tabModel.getTablename(), new AsyncSuccessCallback<AdResultWithError>() {
+		List<ADModelKey> keys = keyProvider.getKeys(selectedData);
+		adempiereService.deleteData(keys, tabModel.getTablename(), new AsyncSuccessCallback<ADResultWithError>() {
 			@Override
-			public void onSuccess(AdResultWithError result) {
+			public void onSuccess(ADResultWithError result) {
 				store.remove(selectedData);
 				store.commitChanges();
 				grid.getSelectionModel().select(0, false);
@@ -298,7 +288,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	}
 
 	public void newRecord() {
-		MapAccessable data = new AdModelData();
+		ADMapData data = new ADModelData();
 		store.add(data);
 		if (!isGridMode()) {
 			adModelDriver.edit(data);
@@ -326,14 +316,14 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	}
 
 	public void copyRecord() {
-		final MapAccessable selectedData = grid.getSelectionModel().getSelectedItem();
+		final ADMapData selectedData = grid.getSelectionModel().getSelectedItem();
 		final MessageBox box = new MessageBox("Error");
 		if (null == selectedData) {
 			box.setMessage("Select the row you want to copy");
 			box.show();
 			return;
 		}
-		MapAccessable newData = (MapAccessable) selectedData.deepClone();
+		ADMapData newData = (ADMapData) selectedData.deepClone();
 		keyProvider.resetKeys(newData);
 		store.add(newData);
 	}
@@ -342,11 +332,9 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 
 	}
 
-	@Override
-	public void loadData(History history) {
-		AdLoadConfig cfg = new AdLoadConfig();
-		cfg.setTableName(tabModel.getTablename());
-		loader.load(cfg);
+	public void loadData(ADLoadConfig loadCfg) {
+		loadCfg.setTableName(tabModel.getTablename());
+		loader.load(loadCfg);
 		toolBar.setTabState(this);
 	}
 
@@ -364,7 +352,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 
 	@Override
 	public int getCurrentIndex() {
-		MapAccessable data = grid.getSelectionModel().getSelectedItem();
+		ADMapData data = grid.getSelectionModel().getSelectedItem();
 		if (null != data) {
 			return store.indexOf(data);
 		}
@@ -376,13 +364,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, HistoryLoader,
 	}
 
 	@Override
-	public void load(ADExpression condition) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onActionButton(IAdFormField field) {
+	public void onActionButton(ADFormField field) {
 		Info.display("adempiere", field.getName());
 	}
 

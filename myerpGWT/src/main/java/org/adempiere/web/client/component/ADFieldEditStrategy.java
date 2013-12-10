@@ -8,9 +8,9 @@ import java.util.Map;
 import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.common.LookupValue;
 import org.adempiere.web.client.event.FieldButtonListener;
-import org.adempiere.web.client.model.IAdFormField;
-import org.adempiere.web.client.model.MapAccessable;
-import org.adempiere.web.client.model.MapAccessable.AdModelValueProvider;
+import org.adempiere.web.client.model.ADFormField;
+import org.adempiere.web.client.model.ADMapData;
+import org.adempiere.web.client.model.ADMapData.AdModelValueProvider;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
@@ -44,9 +44,9 @@ import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
-public class AdFieldEditStrategy {
-	private IAdFormField					field;
-	private ColumnConfig<MapAccessable, ?>	columnCfg;
+public class ADFieldEditStrategy {
+	private ADFormField					field;
+	private ColumnConfig<ADMapData, ?>	columnCfg;
 	private Cell<?>							columnCell;
 	private Field<?>						gridEditor;
 	private Field<?>						formEditor;
@@ -54,9 +54,9 @@ public class AdFieldEditStrategy {
 	private boolean							showLabel	= true;
 	private Converter						converter;
 	private DisplayType						fieldType;
-	private AdFormEditStrategy				formStrategy;
+	private ADFormEditStrategy				formStrategy;
 
-	public AdFieldEditStrategy(AdFormEditStrategy formStrategy, IAdFormField field) {
+	public ADFieldEditStrategy(ADFormEditStrategy formStrategy, ADFormField field) {
 		this.formStrategy = formStrategy;
 		this.field = field;
 		this.init();
@@ -265,11 +265,11 @@ public class AdFieldEditStrategy {
 		}
 	}
 
-	public IAdFormField getField() {
+	public ADFormField getField() {
 		return field;
 	}
 
-	public ColumnConfig<MapAccessable, ?> getColumnCfg() {
+	public ColumnConfig<ADMapData, ?> getColumnCfg() {
 		return columnCfg;
 	}
 

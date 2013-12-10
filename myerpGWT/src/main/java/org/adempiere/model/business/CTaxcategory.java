@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "c_taxcategory")
 @NamedQuery(name = "CTaxcategory.findAll", query = "SELECT c FROM CTaxcategory c")
-public class CTaxcategory extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CTaxcategory extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				cTaxcategoryId;
 	private BigDecimal			adClientId;

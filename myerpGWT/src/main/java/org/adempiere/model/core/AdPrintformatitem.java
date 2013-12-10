@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the ad_printformatitem database table.
@@ -18,7 +18,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "ad_printformatitem")
-public class AdPrintformatitem extends AdEntityBase implements Serializable {
+public class AdPrintformatitem extends ADEntityBase implements Serializable {
 	/** FieldAlignmentType AD_Reference_ID=253 */
 	public static final int		FIELDALIGNMENTTYPE_AD_Reference_ID			= 253;
 	/** Default = D */

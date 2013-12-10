@@ -1,6 +1,6 @@
 package org.adempiere.web.client.apps;
 
-public interface IADTabpanel {
+public interface IADTab {
 	/**
 	 * @return
 	 */

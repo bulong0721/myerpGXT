@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_orgassignment")
 @NamedQuery(name="COrgassignment.findAll", query="SELECT c FROM COrgassignment c")
-public class COrgassignment extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class COrgassignment extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cOrgassignmentId;
 	private BigDecimal adClientId;

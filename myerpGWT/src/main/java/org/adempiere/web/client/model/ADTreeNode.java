@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.web.client.util.LoggingUtil;
-
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.Store;
@@ -14,7 +12,7 @@ import com.sencha.gxt.data.shared.loader.LoadEvent;
 import com.sencha.gxt.data.shared.loader.LoadHandler;
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 
-public interface IAdTreeNode extends Serializable {
+public interface ADTreeNode extends Serializable {
 
 	String getName();
 
@@ -24,31 +22,30 @@ public interface IAdTreeNode extends Serializable {
 
 	boolean hasChildren();
 
-	public static class TreeStoreBinding implements LoadHandler<IAdTreeNode, List<IAdTreeNode>> {
-		private final TreeStore<IAdTreeNode>	store;
+	public static class TreeStoreBinding implements LoadHandler<ADTreeNode, List<ADTreeNode>> {
+		private final TreeStore<ADTreeNode>	store;
 
-		public TreeStoreBinding(TreeStore<IAdTreeNode> store) {
+		public TreeStoreBinding(TreeStore<ADTreeNode> store) {
 			this.store = store;
 		}
 
 		@Override
-		public void onLoad(LoadEvent<IAdTreeNode, List<IAdTreeNode>> event) {
-			IAdTreeNode parent = event.getLoadConfig();
-			List<IAdTreeNode> loadResult = event.getLoadResult();
-			List<IAdTreeNode> children = getChildren(parent, loadResult);
+		public void onLoad(LoadEvent<ADTreeNode, List<ADTreeNode>> event) {
+			ADTreeNode parent = event.getLoadConfig();
+			List<ADTreeNode> loadResult = event.getLoadResult();
+			List<ADTreeNode> children = getChildren(parent, loadResult);
 			if (null == parent) {
-				LoggingUtil.info("xxxxxxxxxxxxxxxxxxxx");
+				//TODO 当前只计算了一层结构，需要遍历到最后一层
 				store.add(children);
 			} else {
-				LoggingUtil.info("yyyyyyyyyyyyyyyyyyyy");
 				store.replaceChildren(parent, children);
 			}
 		}
 
-		protected List<IAdTreeNode> getChildren(IAdTreeNode parent, List<IAdTreeNode> loadResult) {
-			List<IAdTreeNode> children = new ArrayList<IAdTreeNode>();
+		protected List<ADTreeNode> getChildren(ADTreeNode parent, List<ADTreeNode> loadResult) {
+			List<ADTreeNode> children = new ArrayList<ADTreeNode>();
 			Long parentId = null == parent ? 0L : parent.getID();
-			for (IAdTreeNode model : loadResult) {
+			for (ADTreeNode model : loadResult) {
 				if (parentId.equals(model.getParentID())) {
 					children.add(model);
 				}
@@ -58,9 +55,9 @@ public interface IAdTreeNode extends Serializable {
 
 	}
 
-	public static class NameFilterField extends StoreFilterField<IAdTreeNode> {
+	public static class NameFilterField extends StoreFilterField<ADTreeNode> {
 		@Override
-		protected boolean doSelect(Store<IAdTreeNode> store, IAdTreeNode parent, IAdTreeNode item, String filter) {
+		protected boolean doSelect(Store<ADTreeNode> store, ADTreeNode parent, ADTreeNode item, String filter) {
 			if (null != parent && null != filter) {
 				String itemName = parent.getName().toLowerCase();
 				return itemName.contains(filter.toLowerCase());
@@ -73,22 +70,22 @@ public interface IAdTreeNode extends Serializable {
 		}
 	}
 
-	public static class TreeKeyProvider implements ModelKeyProvider<IAdTreeNode> {
+	public static class TreeKeyProvider implements ModelKeyProvider<ADTreeNode> {
 		@Override
-		public String getKey(IAdTreeNode item) {
+		public String getKey(ADTreeNode item) {
 			return String.valueOf(item.getID());
 		}
 	}
 
-	public static class TreeValueProvider implements ValueProvider<IAdTreeNode, String> {
+	public static class TreeValueProvider implements ValueProvider<ADTreeNode, String> {
 
 		@Override
-		public String getValue(IAdTreeNode model) {
+		public String getValue(ADTreeNode model) {
 			return model.getName();
 		}
 
 		@Override
-		public void setValue(IAdTreeNode object, String value) {
+		public void setValue(ADTreeNode object, String value) {
 		}
 
 		@Override

@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_period")
 @NamedQuery(name="CPeriod.findAll", query="SELECT c FROM CPeriod c")
-public class CPeriod extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CPeriod extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cPeriodId;
 	private BigDecimal adClientId;

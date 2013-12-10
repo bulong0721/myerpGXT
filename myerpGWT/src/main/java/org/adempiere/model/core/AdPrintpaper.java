@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the ad_printpaper database table.
@@ -15,7 +15,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "ad_printpaper")
-public class AdPrintpaper extends AdEntityBase implements Serializable {
+public class AdPrintpaper extends ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				adPrintpaperId;
 	private Long				adClientId;

@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the AD_PROCESS_PARA database table.
@@ -18,7 +18,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "AD_PROCESS_PARA")
-public class AdProcessPara extends AdEntityBase implements Serializable {
+public class AdProcessPara extends ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				adProcessParaId;
 	private Long				adClientId;

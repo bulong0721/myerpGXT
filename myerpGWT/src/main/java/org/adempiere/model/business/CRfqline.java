@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_rfqline")
 @NamedQuery(name="CRfqline.findAll", query="SELECT c FROM CRfqline c")
-public class CRfqline extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CRfqline extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cRfqlineId;
 	private BigDecimal adClientId;

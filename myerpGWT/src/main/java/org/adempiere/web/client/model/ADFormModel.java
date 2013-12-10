@@ -2,7 +2,7 @@ package org.adempiere.web.client.model;
 
 import java.io.Serializable;
 
-public class AdFormModel implements Serializable {
+public class ADFormModel implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				adFormId;
 	private String				accesslevel;

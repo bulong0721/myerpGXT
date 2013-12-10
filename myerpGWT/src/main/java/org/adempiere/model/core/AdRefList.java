@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the ad_ref_list database table.
@@ -18,7 +18,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "ad_ref_list")
-public class AdRefList extends AdEntityBase implements Serializable {
+public class AdRefList extends ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				adRefListId;
 	private Long				adClientId;

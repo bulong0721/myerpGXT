@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_commissionrun")
 @NamedQuery(name="CCommissionrun.findAll", query="SELECT c FROM CCommissionrun c")
-public class CCommissionrun extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CCommissionrun extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cCommissionrunId;
 	private BigDecimal adClientId;

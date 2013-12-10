@@ -8,7 +8,7 @@ import org.adempiere.web.client.resources.ResourcesFactory;
 import com.google.gwt.resources.client.ImageResource;
 import com.sencha.gxt.data.shared.IconProvider;
 
-public class AdMenuModel implements Serializable, IAdTreeNode {
+public class ADMenuModel implements Serializable, ADTreeNode {
 	private static final long	serialVersionUID	= 1L;
 	private String				isactive;
 	private Long				adMenuId;
@@ -147,11 +147,11 @@ public class AdMenuModel implements Serializable, IAdTreeNode {
 		return adMenuId;
 	}
 
-	public static IconProvider<IAdTreeNode> createIconProvider() {
-		return new IconProvider<IAdTreeNode>() {
+	public static IconProvider<ADTreeNode> createIconProvider() {
+		return new IconProvider<ADTreeNode>() {
 			@Override
-			public ImageResource getIcon(IAdTreeNode node) {
-				AdMenuModel model = (AdMenuModel) node;
+			public ImageResource getIcon(ADTreeNode node) {
+				ADMenuModel model = (ADMenuModel) node;
 				if (null == model) {
 					return null;
 				}

@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the AD_CLIENT database table.
@@ -15,7 +15,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "AD_CLIENT")
-public class AdClient extends AdEntityBase implements Serializable {
+public class AdClient extends ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				adClientId;
 	private String				adLanguage;

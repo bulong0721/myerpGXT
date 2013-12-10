@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_taxdeclaration")
 @NamedQuery(name="CTaxdeclaration.findAll", query="SELECT c FROM CTaxdeclaration c")
-public class CTaxdeclaration extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CTaxdeclaration extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cTaxdeclarationId;
 	private BigDecimal adClientId;

@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="c_dunninglevel")
 @NamedQuery(name="CDunninglevel.findAll", query="SELECT c FROM CDunninglevel c")
-public class CDunninglevel extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CDunninglevel extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cDunninglevelId;
 	private BigDecimal adClientId;

@@ -1,7 +1,7 @@
 package org.adempiere.web.client.view;
 
 import org.adempiere.web.client.apps.ADTreePanel;
-import org.adempiere.web.client.model.AdMenuModel;
+import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.presenter.interfaces.INavigationView;
 import org.adempiere.web.client.presenter.interfaces.INavigationView.INavigationPresenter;
 
@@ -25,7 +25,7 @@ public class NavigationView extends BaseReverseView<INavigationPresenter> implem
 	@Override
 	public Widget asWidget() {
 		if (null == widget) {
-			this.treepanel = new ADTreePanel(AdMenuModel.TREE_ID);
+			this.treepanel = new ADTreePanel(ADMenuModel.TREE_ID);
 			this.widget = uiBinder.createAndBindUi(this);
 		}
 		return widget;

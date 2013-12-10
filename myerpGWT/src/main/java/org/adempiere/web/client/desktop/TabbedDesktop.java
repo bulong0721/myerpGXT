@@ -6,7 +6,7 @@ import org.adempiere.web.client.apps.ADWindowPanel;
 import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.form.AbstractForm;
-import org.adempiere.web.client.model.AdFormModel;
+import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.AdProcessModel;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
@@ -66,9 +66,9 @@ public class TabbedDesktop implements IDesktop {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
-		AsyncCallback<AdFormModel> callback = new AsyncSuccessCallback<AdFormModel>() {
+		AsyncCallback<ADFormModel> callback = new AsyncSuccessCallback<ADFormModel>() {
 			@Override
-			public void onSuccess(AdFormModel model) {
+			public void onSuccess(ADFormModel model) {
 				String modelClass = model.getClassname();
 				AbstractForm form = ClassUtil.newInstance(modelClass);
 				if (null != form) {

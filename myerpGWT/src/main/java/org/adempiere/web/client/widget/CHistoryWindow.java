@@ -1,6 +1,7 @@
 package org.adempiere.web.client.widget;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -8,6 +9,8 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.event.HideEvent;
+import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 public class CHistoryWindow implements IsWidget {
@@ -15,10 +18,6 @@ public class CHistoryWindow implements IsWidget {
 	private static HWindowUiBinder	uiBinder	= GWT.create(HWindowUiBinder.class);
 
 	interface HWindowUiBinder extends UiBinder<Widget, CHistoryWindow> {
-	}
-
-	public static interface HistoryLoader {
-		void loadData(History history);
 	}
 
 	public static enum History {
@@ -50,52 +49,42 @@ public class CHistoryWindow implements IsWidget {
 	}
 
 	@UiField
-	Window					window;
+	Window			window;
 	@UiField
-	TextButton				dayButton;
+	TextButton		dayButton;
 	@UiField
-	TextButton				weekButton;
+	TextButton		weekButton;
 	@UiField
-	TextButton				monthButton;
+	TextButton		monthButton;
 	@UiField
-	TextButton				yearButton;
+	TextButton		yearButton;
 	@UiField
-	TextButton				allButton;
-	private HistoryLoader	loader;
-	private Widget			widget;
-	private static CHistoryWindow	instance;
-
-	public static CHistoryWindow instance(HistoryLoader loader) {
-		if (null == instance) {
-			instance = new CHistoryWindow();
-		}
-		instance.setLoader(loader);
-		return instance;
+	TextButton		allButton;
+	private History	history;
+	private Widget	widget;
+	
+	public CHistoryWindow() {
+		asWidget();
 	}
 
-	private CHistoryWindow() {
-		super();
-	}
-
-	public void show() {
-		this.asWidget();
+	public void showDialog() {
 		this.window.show();
 	}
 
-	public void setLoader(HistoryLoader loader) {
-		this.loader = loader;
+	public HandlerRegistration addHideHandler(HideHandler handler) {
+		return window.addHandler(handler, HideEvent.getType());
 	}
 
 	@UiHandler({ "dayButton", "weekButton", "monthButton", "yearButton", "allButton" })
 	public void onButtonSelected(SelectEvent event) {
-		if (null == loader) {
-			return;
-		}
 		TextButton sourceButton = (TextButton) event.getSource();
 		int index = window.getButtonBar().getWidgetIndex(sourceButton);
-		History history = History.fromInteger(index);
-		loader.loadData(history);
+		history = History.fromInteger(index);
 		window.hide();
+	}
+
+	public History getHistory() {
+		return history;
 	}
 
 	@Override

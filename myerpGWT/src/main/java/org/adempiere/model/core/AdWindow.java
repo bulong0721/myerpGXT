@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 
 /**
@@ -16,7 +16,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name="ad_window")
-public class AdWindow extends AdEntityBase implements Serializable {
+public class AdWindow extends ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adWindowId;
 	private Long adClientId;

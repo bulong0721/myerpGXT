@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_conversion_rate")
 @NamedQuery(name="CConversionRate.findAll", query="SELECT c FROM CConversionRate c")
-public class CConversionRate extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CConversionRate extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cConversionRateId;
 	private BigDecimal adClientId;

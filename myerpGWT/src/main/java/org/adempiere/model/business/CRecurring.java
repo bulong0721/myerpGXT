@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_recurring")
 @NamedQuery(name="CRecurring.findAll", query="SELECT c FROM CRecurring c")
-public class CRecurring extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CRecurring extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cRecurringId;
 	private BigDecimal adClientId;

@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="ad_registration")
 @NamedQuery(name="AdRegistration.findAll", query="SELECT a FROM AdRegistration a")
-public class AdRegistration extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class AdRegistration extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private AdRegistrationPK id;
 	private BigDecimal adOrgId;

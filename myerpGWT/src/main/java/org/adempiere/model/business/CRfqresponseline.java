@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_rfqresponseline")
 @NamedQuery(name="CRfqresponseline.findAll", query="SELECT c FROM CRfqresponseline c")
-public class CRfqresponseline extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CRfqresponseline extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cRfqresponselineId;
 	private BigDecimal adClientId;

@@ -2,16 +2,20 @@ package org.adempiere.web.client.apps;
 
 import java.util.List;
 
+import org.adempiere.model.common.ADExpression;
 import org.adempiere.web.client.component.ADTabContainer;
 import org.adempiere.web.client.component.ADTabContainer.TabItemConfig;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.event.WindowToolListener;
-import org.adempiere.web.client.model.AdTabModel;
-import org.adempiere.web.client.model.AdWindowModel;
+import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.ADTabModel;
+import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.presenter.interfaces.IContentView.IContentPresenter;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
+import org.adempiere.web.client.widget.CHistoryWindow;
+import org.adempiere.web.client.widget.CHistoryWindow.History;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.WindowStatus;
 
@@ -24,6 +28,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.Component;
+import com.sencha.gxt.widget.core.client.event.HideEvent;
+import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 
 public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener {
 
@@ -43,7 +49,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 	private IContentPresenter		contentPresenter;
 	private Long					adWindowId;
 	private Widget					widget;
-	private AdWindowModel			windowModel;
+	private ADWindowModel			windowModel;
 	private ADTabPanel				currentTab;
 	private IDesktop				desktop;
 	@UiField
@@ -73,12 +79,12 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 	}
 
 	private void initWindow(Long adWindowId) {
-		AsyncCallback<AdWindowModel> callback = new AsyncSuccessCallback<AdWindowModel>() {
+		AsyncCallback<ADWindowModel> callback = new AsyncSuccessCallback<ADWindowModel>() {
 			@Override
-			public void onSuccess(AdWindowModel windowModel) {
+			public void onSuccess(ADWindowModel windowModel) {
 				ADWindowPanel.this.windowModel = windowModel;
 				tabSet.setMaxLevel(getMaxLevel(windowModel.getTabList()));
-				for (AdTabModel tabModel : windowModel.getTabList()) {
+				for (ADTabModel tabModel : windowModel.getTabList()) {
 					ADTabPanel tabPanel = new ADTabPanel(windowModel, tabModel, toolBar);
 					TabItemConfig itemCfg = new TabItemConfig(tabModel.getName(), tabPanel, tabModel.getTablevel());
 					tabSet.add(tabPanel, itemCfg);
@@ -87,11 +93,16 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 					}
 				}
 				tabSet.setActiveIndex(0);
+				if (currentTab.getTabModel().getIsHighVolume()) {
+					onFind();
+				} else {
+					currentTab.loadData(new ADLoadConfig());
+				}
 			}
 
-			private int getMaxLevel(List<AdTabModel> tabs) {
+			private int getMaxLevel(List<ADTabModel> tabs) {
 				int level = 0;
-				for (AdTabModel tabModel : tabs) {
+				for (ADTabModel tabModel : tabs) {
 					if (tabModel.getTablevel() > level) {
 						level = tabModel.getTablevel();
 					}
@@ -238,7 +249,18 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 
 	@Override
 	public void onFind() {
-		ADFindPanel findPanel = new ADFindPanel(currentTab.getTabModel(), currentTab);
+		final ADFindPanel findPanel = new ADFindPanel(currentTab.getTabModel());
+		findPanel.addHideHandler(new HideHandler() {
+			@Override
+			public void onHide(HideEvent event) {
+				ADExpression expr = findPanel.getCondition();
+				if (null != expr) {
+					ADLoadConfig loadCfg = new ADLoadConfig();
+					loadCfg.setExpr(expr);
+					currentTab.loadData(loadCfg);
+				}
+			}
+		});
 		findPanel.show();
 	}
 
@@ -250,7 +272,18 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 
 	@Override
 	public void onHistoryRecords() {
-		currentTab.loadHistory();
+		final CHistoryWindow window = new CHistoryWindow();
+		window.addHideHandler(new HideHandler() {
+			@Override
+			public void onHide(HideEvent event) {
+				History result = window.getHistory();
+				if (null != result) {
+					ADLoadConfig loadCfg = new ADLoadConfig();
+					currentTab.loadData(loadCfg);
+				}
+			}
+		});
+		window.showDialog();
 	}
 
 	@Override

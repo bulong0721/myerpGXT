@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_allocationhdr")
 @NamedQuery(name="CAllocationhdr.findAll", query="SELECT c FROM CAllocationhdr c")
-public class CAllocationhdr extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CAllocationhdr extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cAllocationhdrId;
 	private BigDecimal adClientId;

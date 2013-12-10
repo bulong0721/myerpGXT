@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="ad_desktopworkbench")
 @NamedQuery(name="AdDesktopworkbench.findAll", query="SELECT a FROM AdDesktopworkbench a")
-public class AdDesktopworkbench extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class AdDesktopworkbench extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adDesktopworkbenchId;
 	private BigDecimal adClientId;

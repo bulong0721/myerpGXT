@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="ad_val_rule")
 @NamedQuery(name="AdValRule.findAll", query="SELECT a FROM AdValRule a")
-public class AdValRule extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class AdValRule extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adValRuleId;
 	private BigDecimal adClientId;

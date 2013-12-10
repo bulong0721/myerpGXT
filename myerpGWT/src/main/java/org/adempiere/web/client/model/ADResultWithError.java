@@ -2,19 +2,19 @@ package org.adempiere.web.client.model;
 
 import java.io.Serializable;
 
-public class AdResultWithError implements Serializable {
+public class ADResultWithError implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private boolean				isSuccess;
 	private String				errorMessage;
 
-	public static AdResultWithError newSuccess() {
-		AdResultWithError rs = new AdResultWithError();
+	public static ADResultWithError newSuccess() {
+		ADResultWithError rs = new ADResultWithError();
 		rs.isSuccess = true;
 		return rs;
 	}
 
-	public static AdResultWithError newError(String error) {
-		AdResultWithError rs = new AdResultWithError();
+	public static ADResultWithError newError(String error) {
+		ADResultWithError rs = new ADResultWithError();
 		rs.errorMessage = error;
 		rs.isSuccess = false;
 		return rs;

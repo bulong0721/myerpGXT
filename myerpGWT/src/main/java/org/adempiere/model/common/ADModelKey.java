@@ -2,18 +2,18 @@ package org.adempiere.model.common;
 
 import java.io.Serializable;
 
-public class AdModelKey implements Serializable {
+public class ADModelKey implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private String				keyField;
 	private Integer				keyValue;
 
-	public AdModelKey(String keyField, Integer keyValue) {
+	public ADModelKey(String keyField, Integer keyValue) {
 		super();
 		this.keyField = keyField;
 		this.keyValue = keyValue;
 	}
 
-	public AdModelKey() {
+	public ADModelKey() {
 	}
 
 	public String getKeyField() {

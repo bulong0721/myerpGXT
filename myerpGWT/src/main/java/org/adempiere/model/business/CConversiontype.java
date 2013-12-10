@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="c_conversiontype")
 @NamedQuery(name="CConversiontype.findAll", query="SELECT c FROM CConversiontype c")
-public class CConversiontype extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CConversiontype extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cConversiontypeId;
 	private BigDecimal adClientId;

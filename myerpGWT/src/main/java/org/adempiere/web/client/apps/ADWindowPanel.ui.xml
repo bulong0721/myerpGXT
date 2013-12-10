@@ -2,7 +2,7 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:widgets="urn:import:org.adempiere.web.client.widget"
 	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
 	xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
-	xmlns:component="urn:import:org.adempiere.web.client.component">
+	xmlns:component="urn:import:org.adempiere.web.client.component" xmlns:ad="urn:import:org.adempiere.web.client.widget">
 
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins4">
 		<ui:attributes top="2" right="4" bottom="2" left="4" />
@@ -33,8 +33,8 @@
 			<component:ADTabContainer ui:field="tabSet">
 			</component:ADTabContainer>
 		</container:child>
-		<container:child>
-			<toolbar:ToolBar layoutData="{toolLayoutData}">
+		<container:child layoutData="{toolLayoutData}">
+			<toolbar:ToolBar>
 				<gxt:Status ui:field="status" text="Navigate or Update record" width="200" />
 				<toolbar:FillToolItem />
 				<gxt:Status ui:field="wordCount" text="1/5" width="100" styleName="{statusStyle.statusPanel}" />

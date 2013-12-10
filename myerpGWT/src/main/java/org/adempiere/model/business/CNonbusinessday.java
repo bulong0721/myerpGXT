@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_nonbusinessday")
 @NamedQuery(name="CNonbusinessday.findAll", query="SELECT c FROM CNonbusinessday c")
-public class CNonbusinessday extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CNonbusinessday extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cNonbusinessdayId;
 	private BigDecimal adClientId;

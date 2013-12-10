@@ -3,7 +3,7 @@ package org.adempiere.model.core;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 
 /**
@@ -12,7 +12,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "ad_issue")
-public class AdIssue extends AdEntityBase implements Serializable {
+public class AdIssue extends ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				adIssueId;
 	private Long				aAssetId;

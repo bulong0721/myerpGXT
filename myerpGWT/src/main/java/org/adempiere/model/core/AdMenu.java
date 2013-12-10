@@ -3,7 +3,7 @@ package org.adempiere.model.core;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 
 import java.sql.Timestamp;
@@ -15,7 +15,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name="ad_menu")
-public class AdMenu extends AdEntityBase implements Serializable {
+public class AdMenu extends ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adMenuId;
 	private String action;

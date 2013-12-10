@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="c_ordersource")
 @NamedQuery(name="COrdersource.findAll", query="SELECT c FROM COrdersource c")
-public class COrdersource extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class COrdersource extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cOrdersourceId;
 	private java.math.BigDecimal adClientId;

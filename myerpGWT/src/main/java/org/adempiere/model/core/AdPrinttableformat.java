@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the ad_printtableformat database table.
@@ -20,7 +20,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "ad_printtableformat")
-public class AdPrinttableformat extends AdEntityBase implements Serializable {
+public class AdPrinttableformat extends ADEntityBase implements Serializable {
 	private static final long		serialVersionUID	= 1L;
 	private static final BigDecimal	ZERO				= new BigDecimal(0);
 	private long					adPrinttableformatId;

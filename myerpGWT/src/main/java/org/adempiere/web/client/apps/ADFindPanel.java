@@ -1,21 +1,20 @@
 package org.adempiere.web.client.apps;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.adempiere.model.common.ADExpression;
+import org.adempiere.model.common.ADExpression.ADPredicate;
 import org.adempiere.model.common.ADExpression.BooleanOperator;
 import org.adempiere.model.common.ADExpression.FieldOperator;
-import org.adempiere.model.common.ADExpression.ADPredicate;
 import org.adempiere.model.common.LookupValue;
-import org.adempiere.web.client.component.AdFormEditStrategy;
+import org.adempiere.web.client.component.ADFormEditStrategy;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
-import org.adempiere.web.client.model.AdFieldModel;
-import org.adempiere.web.client.model.AdTabModel;
-import org.adempiere.web.client.model.IAdFormField;
+import org.adempiere.web.client.model.ADFieldModel;
+import org.adempiere.web.client.model.ADTabModel;
+import org.adempiere.web.client.model.ADFormField;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.util.WidgetUtil;
@@ -23,6 +22,7 @@ import org.adempiere.web.client.widget.ConfirmToolBar;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -37,7 +37,9 @@ import com.sencha.gxt.data.shared.StringLabelProvider;
 import com.sencha.gxt.data.shared.TreeStore;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.button.IconButton;
+import com.sencha.gxt.widget.core.client.event.HideEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
+import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
 import com.sencha.gxt.widget.core.client.form.TextField;
@@ -67,15 +69,14 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 	IconButton							btnAdd, btnDelete, btnSave;
 	private static final List<String>	LOOKUP_FIELDS	= Arrays.asList("name", "description");
 	private Widget						widget			= null;
-	private AdTabModel					tabModel;
-	private ADExpression					condition;
-	private ConditionLoader				loader;
+	private ADTabModel					tabModel;
+	private ADExpression				condition		= new ADExpression();
 
-	public ADFindPanel(AdTabModel tabModel, ConditionLoader loader) {
+	public ADFindPanel(ADTabModel tabModel) {
 		super();
 		this.tabModel = tabModel;
-		this.loader = loader;
 		this.initWidget(tabModel);
+		this.asWidget();
 	}
 
 	@Override
@@ -107,9 +108,9 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 	void onProfileSelected(SelectionEvent<LookupValue> event) {
 	}
 
-	private void initWidget(AdTabModel tabModel) {
-		List<? extends IAdFormField> fieldList = pickSimpleFields(tabModel);
-		AdFormEditStrategy formStrategy = new AdFormEditStrategy(fieldList);
+	private void initWidget(ADTabModel tabModel) {
+		List<? extends ADFormField> fieldList = pickSimpleFields(tabModel);
+		ADFormEditStrategy formStrategy = new ADFormEditStrategy(fieldList);
 		formStrategy.setCreateGridEditor(false);
 		formStrategy.setDisableKey(false);
 		simpleEditor = new AdModelEditor(formStrategy);
@@ -119,7 +120,8 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		TreeStore<ADExpression> store = new TreeStore<ADExpression>(new XKeyProvider());
 		ColumnConfig<ADExpression, String> nameColumn = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("columnName"));
 		nameColumn.setHeader("Column");
-		ColumnConfig<ADExpression, String> operatorColumn = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("fieldOperator"));
+		ColumnConfig<ADExpression, String> operatorColumn = new ColumnConfig<ADExpression, String>(new XValueProvider<String>(
+				"fieldOperator"));
 		operatorColumn.setHeader("Operator");
 		ColumnConfig<ADExpression, String> value1Column = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("value2"));
 		value1Column.setHeader("Value1");
@@ -171,7 +173,7 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		cmbFields = new SimpleComboBox<String>(labelProvider);
 		cmbFields.add("**And**");
 		cmbFields.add("**Or**");
-		for (AdFieldModel field : tabModel.getFieldList()) {
+		for (ADFieldModel field : tabModel.getFieldList()) {
 			cmbFields.add(field.getName());
 		}
 		cmbFields.setForceSelection(true);
@@ -194,10 +196,10 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		return comboBox;
 	}
 
-	List<? extends IAdFormField> pickSimpleFields(AdTabModel tabModel) {
-		List<AdFieldModel> fieldList = new ArrayList<AdFieldModel>(5);
+	List<? extends ADFormField> pickSimpleFields(ADTabModel tabModel) {
+		List<ADFieldModel> fieldList = new ArrayList<ADFieldModel>(5);
 		if (null != tabModel && null != tabModel.getFieldList()) {
-			for (AdFieldModel fieldModel : tabModel.getFieldList()) {
+			for (ADFieldModel fieldModel : tabModel.getFieldList()) {
 				if (fieldModel.getIsselectioncolumn() || fieldModel.getIskey()
 						|| LOOKUP_FIELDS.contains(fieldModel.getName().toLowerCase())) {
 					fieldList.add(fieldModel);
@@ -215,12 +217,11 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		return condition;
 	}
 
-	public interface ConditionLoader {
-		void load(ADExpression condition);
+	public HandlerRegistration addHideHandler(HideHandler handler) {
+		return window.addHandler(handler, HideEvent.getType());
 	}
 
 	public void show() {
-		asWidget();
 		window.show();
 	}
 
@@ -230,7 +231,6 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 
 	@Override
 	public void onOK() {
-		loader.load(condition);
 		window.hide();
 	}
 
@@ -266,7 +266,7 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 				result = ex.getFieldOperator();
 			} else if ("value1".equals(path)) {
 				result = ex.getValue1();
-			} else if ("value1".equals(path)) {
+			} else if ("value2".equals(path)) {
 				result = ex.getValue2();
 			}
 			return (T) result;
@@ -281,10 +281,17 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 			} else if ("fieldOperator".equals(path)) {
 				ex.setFieldOperator((FieldOperator) value);
 			} else if ("value1".equals(path)) {
-				ex.setValue1((Serializable) value);
-			} else if ("value1".equals(path)) {
-				ex.setValue2((Serializable) value);
+				ex.setValue1(toString(value));
+			} else if ("value2".equals(path)) {
+				ex.setValue2(toString(value));
 			}
+		}
+
+		public String toString(T value) {
+			if (null != value) {
+				return value.toString();
+			}
+			return "";
 		}
 
 		@Override

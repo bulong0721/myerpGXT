@@ -9,17 +9,17 @@ import org.adempiere.model.core.AdProcess;
 import org.adempiere.model.core.AdProcessPara;
 import org.adempiere.model.core.AdTabV;
 import org.adempiere.model.core.AdTreenodemm;
-import org.adempiere.web.client.model.AdFieldModel;
-import org.adempiere.web.client.model.AdFormModel;
-import org.adempiere.web.client.model.AdMenuModel;
+import org.adempiere.web.client.model.ADFieldModel;
+import org.adempiere.web.client.model.ADFormModel;
+import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.model.AdProcessModel;
-import org.adempiere.web.client.model.AdProcessParameter;
-import org.adempiere.web.client.model.AdTabModel;
+import org.adempiere.web.client.model.AdProcessArgModel;
+import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.util.StringUtil;
 
 public class DTOUtil {
-	public static AdFieldModel toFieldModel(AdFieldV entity) {
-		AdFieldModel model = new AdFieldModel();
+	public static ADFieldModel toFieldModel(AdFieldV entity) {
+		ADFieldModel model = new ADFieldModel();
 		model.setAdFieldId(entity.getAdFieldId());
 		model.setAdProcessId(entity.getAdProcessId());
 		model.setAdReferenceId(entity.getAdReferenceId());
@@ -51,9 +51,9 @@ public class DTOUtil {
 		return model;
 	}
 
-	public static List<AdFieldModel> toFieldModels(List<AdFieldV> fieldList) {
+	public static List<ADFieldModel> toFieldModels(List<AdFieldV> fieldList) {
 		int size = null == fieldList ? 0 : fieldList.size();
-		List<AdFieldModel> resultList = new ArrayList<AdFieldModel>(size);
+		List<ADFieldModel> resultList = new ArrayList<ADFieldModel>(size);
 		if (null != fieldList) {
 			for (AdFieldV fieldEntity : fieldList) {
 				resultList.add(toFieldModel(fieldEntity));
@@ -62,8 +62,8 @@ public class DTOUtil {
 		return resultList;
 	}
 
-	public static AdMenuModel toMenuModel(AdTreenodemm entity) {
-		AdMenuModel model = new AdMenuModel();
+	public static ADMenuModel toMenuModel(AdTreenodemm entity) {
+		ADMenuModel model = new ADMenuModel();
 		model.setIsactive(entity.getIsactive());
 		model.setAdMenuId(entity.getId().getNodeId());
 		model.setParentId(entity.getParentId());
@@ -117,8 +117,8 @@ public class DTOUtil {
 		return resultList;
 	}
 
-	public static AdProcessParameter toProcessParameter(AdProcessPara entity) {
-		AdProcessParameter model = new AdProcessParameter();
+	public static AdProcessArgModel toProcessParameter(AdProcessPara entity) {
+		AdProcessArgModel model = new AdProcessArgModel();
 		model.setAdProcessParaId(entity.getAdProcessParaId());
 		model.setAdReferenceId(entity.getAdReferenceId());
 		model.setAdReferenceValueId(entity.getAdReferenceValueId());
@@ -139,9 +139,9 @@ public class DTOUtil {
 		return model;
 	}
 
-	public static List<AdProcessParameter> toProcessParameters(List<AdProcessPara> list) {
+	public static List<AdProcessArgModel> toProcessParameters(List<AdProcessPara> list) {
 		int size = null == list ? 0 : list.size();
-		List<AdProcessParameter> resultList = new ArrayList<AdProcessParameter>(size);
+		List<AdProcessArgModel> resultList = new ArrayList<AdProcessArgModel>(size);
 		if (null != list) {
 			for (AdProcessPara entity : list) {
 				resultList.add(toProcessParameter(entity));
@@ -150,8 +150,8 @@ public class DTOUtil {
 		return resultList;
 	}
 
-	public static AdTabModel toTabModel(AdTabV entity) {
-		AdTabModel model = new AdTabModel();
+	public static ADTabModel toTabModel(AdTabV entity) {
+		ADTabModel model = new ADTabModel();
 		model.setAdTabId(entity.getAdTabId());
 		model.setAdColumnId(entity.getAdColumnId());
 		model.setAdTableId(entity.getAdTableId());
@@ -166,12 +166,13 @@ public class DTOUtil {
 		model.setTablename(entity.getTablename());
 		model.setHasTree(StringUtil.isYes(entity.getHastree()));
 		model.setIsSortTab(StringUtil.isYes(entity.getIssorttab()));
+		model.setIsHighVolume(StringUtil.isYes(entity.getIshighvolume()));
 		return model;
 	}
 
-	public static List<AdTabModel> toTabModels(List<AdTabV> tabList) {
+	public static List<ADTabModel> toTabModels(List<AdTabV> tabList) {
 		int size = null == tabList ? 0 : tabList.size();
-		List<AdTabModel> resultList = new ArrayList<AdTabModel>(size);
+		List<ADTabModel> resultList = new ArrayList<ADTabModel>(size);
 		if (null != tabList) {
 			for (AdTabV tabEntity : tabList) {
 				resultList.add(toTabModel(tabEntity));
@@ -180,8 +181,8 @@ public class DTOUtil {
 		return resultList;
 	}
 
-	public static AdFormModel toFormModel(AdForm entity) {
-		AdFormModel model = new AdFormModel();
+	public static ADFormModel toFormModel(AdForm entity) {
+		ADFormModel model = new ADFormModel();
 		model.setAdFormId(entity.getAdFormId());
 		model.setAccesslevel(entity.getAccesslevel());
 		model.setAdClientId(entity.getAdClientId());
@@ -196,9 +197,9 @@ public class DTOUtil {
 		return model;
 	}
 
-	public static List<AdFormModel> toFormModels(List<AdForm> formList) {
+	public static List<ADFormModel> toFormModels(List<AdForm> formList) {
 		int size = null == formList ? 0 : formList.size();
-		List<AdFormModel> resultList = new ArrayList<AdFormModel>(size);
+		List<ADFormModel> resultList = new ArrayList<ADFormModel>(size);
 		if (null != formList) {
 			for (AdForm formEntity : formList) {
 				resultList.add(toFormModel(formEntity));

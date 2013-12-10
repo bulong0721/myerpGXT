@@ -2,16 +2,16 @@ package org.adempiere.web.client.model;
 
 import java.io.Serializable;
 
-public class AdJSONData implements Serializable {
+public class ADJSONData implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private String				data;
 	private long				totalCount;
 	private int					offset;
 
-	public AdJSONData() {
+	public ADJSONData() {
 	}
 
-	public AdJSONData(String data) {
+	public ADJSONData(String data) {
 		super();
 		this.data = data;
 	}

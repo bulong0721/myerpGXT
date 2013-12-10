@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the ad_printcolor database table.
@@ -16,7 +16,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "ad_printcolor")
-public class AdPrintcolor extends AdEntityBase implements Serializable {
+public class AdPrintcolor extends ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				adPrintcolorId;
 	private Long				adClientId;

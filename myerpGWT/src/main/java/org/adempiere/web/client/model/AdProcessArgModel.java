@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.adempiere.model.common.DisplayType;
 
-public class AdProcessParameter implements Serializable, IAdFormField {
+public class AdProcessArgModel implements Serializable, ADFormField {
 	private static final long	serialVersionUID	= 1L;
 
 	private long				adProcessParaId;

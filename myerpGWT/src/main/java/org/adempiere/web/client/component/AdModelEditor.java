@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.model.common.DisplayType;
-import org.adempiere.web.client.model.IAdFormField;
-import org.adempiere.web.client.model.MapAccessable;
+import org.adempiere.web.client.model.ADFormField;
+import org.adempiere.web.client.model.ADMapData;
 import org.adempiere.web.client.util.StringUtil;
 
 import com.google.gwt.editor.client.CompositeEditor;
@@ -22,19 +22,19 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class AdModelEditor implements CompositeEditor<MapAccessable, Object, Field<Object>>, IsWidget {
-	private AdFormEditStrategy					tabStrategy;
+public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<Object>>, IsWidget {
+	private ADFormEditStrategy					tabStrategy;
 	private EditorChain<Object, Field<Object>>	chain;
-	private List<AdFieldEditStrategy>			fieldList;
-	private MapAccessable						model;
+	private List<ADFieldEditStrategy>			fieldList;
+	private ADMapData						model;
 	private double								layoutWidth	= 0.49d;
 	private int									labelWidth	= 135;
 
 	@UiConstructor
-	public AdModelEditor(AdFormEditStrategy tabStrategy) {
+	public AdModelEditor(ADFormEditStrategy tabStrategy) {
 		super();
 		this.tabStrategy = tabStrategy;
-		this.fieldList = new ArrayList<AdFieldEditStrategy>();
+		this.fieldList = new ArrayList<ADFieldEditStrategy>();
 	}
 
 	public AdModelEditor() {
@@ -53,8 +53,8 @@ public class AdModelEditor implements CompositeEditor<MapAccessable, Object, Fie
 		CssFloatLayoutContainer container = new CssFloatLayoutContainer();
 		CssFloatLayoutContainer groupContainer = null;
 		String oldFieldGroup = null;
-		for (AdFieldEditStrategy fieldStrategy : tabStrategy.getFieldStrategies()) {
-			IAdFormField field = fieldStrategy.getField();
+		for (ADFieldEditStrategy fieldStrategy : tabStrategy.getFieldStrategies()) {
+			ADFormField field = fieldStrategy.getField();
 			String fieldGroup = field.getFieldgroup();
 			if (!StringUtil.isNullOrEmpty(fieldGroup)) {
 				if (!fieldGroup.equals(oldFieldGroup)) {
@@ -75,7 +75,7 @@ public class AdModelEditor implements CompositeEditor<MapAccessable, Object, Fie
 		return container;
 	}
 
-	private void layoutFiled(CssFloatLayoutContainer container, AdFieldEditStrategy fieldStrategy) {
+	private void layoutFiled(CssFloatLayoutContainer container, ADFieldEditStrategy fieldStrategy) {
 		FieldLabel fieldLabel = fieldStrategy.getFieldLabel(labelWidth);
 		Widget widget = fieldLabel.getWidget();
 		if (widget instanceof Field) {
@@ -90,7 +90,7 @@ public class AdModelEditor implements CompositeEditor<MapAccessable, Object, Fie
 		if (null == fieldList || null == model) {
 			return;
 		}
-		for (AdFieldEditStrategy fieldStrategy : fieldList) {
+		for (ADFieldEditStrategy fieldStrategy : fieldList) {
 			Field formEditor = fieldStrategy.getFormEditor();
 			Converter converter = fieldStrategy.getConverter();
 			Object value = chain.getValue(formEditor);
@@ -111,12 +111,12 @@ public class AdModelEditor implements CompositeEditor<MapAccessable, Object, Fie
 	}
 
 	@Override
-	public void setValue(MapAccessable model) {
+	public void setValue(ADMapData model) {
 		if (null == fieldList || null == model) {
 			return;
 		}
 		this.model = model;
-		for (AdFieldEditStrategy fieldStrategy : fieldList) {
+		for (ADFieldEditStrategy fieldStrategy : fieldList) {
 			Converter converter = fieldStrategy.getConverter();
 			Field formEditor = fieldStrategy.getFormEditor();
 			DisplayType fieldType = fieldStrategy.getField().getFieldType();
@@ -129,7 +129,7 @@ public class AdModelEditor implements CompositeEditor<MapAccessable, Object, Fie
 	}
 
 	@Override
-	public void setDelegate(EditorDelegate<MapAccessable> delegate) {
+	public void setDelegate(EditorDelegate<ADMapData> delegate) {
 	}
 
 	@Override

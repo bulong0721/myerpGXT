@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_bankstatementline")
 @NamedQuery(name="CBankstatementline.findAll", query="SELECT c FROM CBankstatementline c")
-public class CBankstatementline extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CBankstatementline extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cBankstatementlineId;
 	private BigDecimal adClientId;

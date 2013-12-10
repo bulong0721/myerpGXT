@@ -1,17 +1,17 @@
 package org.adempiere.web.client.model;
 
 import org.adempiere.model.common.ADExpression;
-import org.adempiere.model.common.AdModelKey;
+import org.adempiere.model.common.ADModelKey;
 
 import com.sencha.gxt.data.shared.loader.PagingLoadConfigBean;
 
-public class AdLoadConfig extends PagingLoadConfigBean {
+public class ADLoadConfig extends PagingLoadConfigBean {
 	private static final long	serialVersionUID	= 1L;
 	private String				tableName;
-	private AdModelKey			parentKey;
+	private ADModelKey			parentKey;
 	private ADExpression		expr;
 
-	public AdLoadConfig() {
+	public ADLoadConfig() {
 		super(0, 50);
 	}
 
@@ -23,11 +23,11 @@ public class AdLoadConfig extends PagingLoadConfigBean {
 		this.tableName = tableName;
 	}
 
-	public AdModelKey getParentKey() {
+	public ADModelKey getParentKey() {
 		return parentKey;
 	}
 
-	public void setParentKey(AdModelKey parentKey) {
+	public void setParentKey(ADModelKey parentKey) {
 		this.parentKey = parentKey;
 	}
 

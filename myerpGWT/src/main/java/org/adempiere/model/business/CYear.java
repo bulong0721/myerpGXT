@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="c_year")
 @NamedQuery(name="CYear.findAll", query="SELECT c FROM CYear c")
-public class CYear extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CYear extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cYearId;
 	private BigDecimal adClientId;

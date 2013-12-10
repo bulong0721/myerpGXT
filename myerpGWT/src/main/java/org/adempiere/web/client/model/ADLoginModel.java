@@ -1,5 +1,5 @@
 package org.adempiere.web.client.model;
 
-public class AdLoginModel {
+public class ADLoginModel {
 
 }

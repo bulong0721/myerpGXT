@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the ad_reference database table.
@@ -19,7 +19,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "ad_reference")
-public class AdReference extends AdEntityBase implements Serializable {
+public class AdReference extends ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				adReferenceId;
 	private Long				adClientId;

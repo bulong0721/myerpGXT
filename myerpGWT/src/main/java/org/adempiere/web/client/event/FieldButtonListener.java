@@ -1,8 +1,8 @@
 package org.adempiere.web.client.event;
 
-import org.adempiere.web.client.model.IAdFormField;
+import org.adempiere.web.client.model.ADFormField;
 
 public interface FieldButtonListener {
 	
-	void onActionButton(IAdFormField field);
+	void onActionButton(ADFormField field);
 }

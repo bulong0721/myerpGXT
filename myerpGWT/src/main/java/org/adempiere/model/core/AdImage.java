@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="ad_image")
-public class AdImage extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class AdImage extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adImageId;
 	private BigDecimal adClientId;

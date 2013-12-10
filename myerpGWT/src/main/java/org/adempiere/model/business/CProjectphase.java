@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_projectphase")
 @NamedQuery(name="CProjectphase.findAll", query="SELECT c FROM CProjectphase c")
-public class CProjectphase extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CProjectphase extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cProjectphaseId;
 	private BigDecimal adClientId;

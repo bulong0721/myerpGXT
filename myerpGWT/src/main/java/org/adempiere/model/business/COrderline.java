@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_orderline")
 @NamedQuery(name="COrderline.findAll", query="SELECT c FROM COrderline c")
-public class COrderline extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class COrderline extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cOrderlineId;
 	private BigDecimal adClientId;

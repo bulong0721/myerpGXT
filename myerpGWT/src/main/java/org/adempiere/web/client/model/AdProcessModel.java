@@ -22,7 +22,7 @@ public class AdProcessModel implements Serializable {
 	private String						procedurename;
 	private String						value;
 	private String						workflowvalue;
-	private List<AdProcessParameter>	paramList;
+	private List<AdProcessArgModel>	paramList;
 
 	public long getAdProcessId() {
 		return adProcessId;
@@ -160,11 +160,11 @@ public class AdProcessModel implements Serializable {
 		this.workflowvalue = workflowvalue;
 	}
 
-	public List<AdProcessParameter> getParamList() {
+	public List<AdProcessArgModel> getParamList() {
 		return paramList;
 	}
 
-	public void setParamList(List<AdProcessParameter> paramList) {
+	public void setParamList(List<AdProcessArgModel> paramList) {
 		this.paramList = paramList;
 	}
 

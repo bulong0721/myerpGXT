@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.adempiere.model.common.AdEntityBase;
+import org.adempiere.model.common.ADEntityBase;
 
 /**
  * The persistent class for the M_RMATYPE database table.
@@ -15,7 +15,7 @@ import org.adempiere.model.common.AdEntityBase;
  */
 @Entity
 @Table(name = "M_RMATYPE")
-public class MRmatype extends AdEntityBase implements Serializable {
+public class MRmatype extends ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				mRmatypeId;
 	private Long				adClientId;

@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="c_poskey")
 @NamedQuery(name="CPoskey.findAll", query="SELECT c FROM CPoskey c")
-public class CPoskey extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CPoskey extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cPoskeyId;
 	private BigDecimal adClientId;

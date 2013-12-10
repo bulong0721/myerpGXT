@@ -7,15 +7,15 @@ import org.adempiere.web.client.util.JSOUtil;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class AdModelData implements Serializable, MapAccessable {
+public class ADModelData implements Serializable, ADMapData {
 	private static final long	serialVersionUID	= 1L;
 	private JavaScriptObject	jso;
 
-	public AdModelData() {
+	public ADModelData() {
 		jso = JavaScriptObject.createObject();
 	}
 
-	public AdModelData(JavaScriptObject jso) {
+	public ADModelData(JavaScriptObject jso) {
 		this.jso = jso;
 	}
 
@@ -49,12 +49,12 @@ public class AdModelData implements Serializable, MapAccessable {
 	 * @see org.adempiere.web.client.model.MapAccessable#deepClone()
 	 */
 	@Override
-	public AdModelData deepClone() {
+	public ADModelData deepClone() {
 		JavaScriptObject newJso = JSOUtil.deepClone(jso);
-		return new AdModelData(newJso);
+		return new ADModelData(newJso);
 	}
 
-	public static AdModelKeyProvider createKeyProvider(AdTabModel tabModel) {
+	public static AdModelKeyProvider createKeyProvider(ADTabModel tabModel) {
 		return new AdModelKeyProvider(tabModel);
 	}
 }

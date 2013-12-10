@@ -2,8 +2,8 @@ package org.adempiere.web.client.apps;
 
 import java.util.List;
 
-import org.adempiere.web.client.model.AdMenuModel;
-import org.adempiere.web.client.model.IAdTreeNode;
+import org.adempiere.web.client.model.ADMenuModel;
+import org.adempiere.web.client.model.ADTreeNode;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.service.AdempiereService;
@@ -35,14 +35,14 @@ public class ADTreePanel implements IsWidget {
 	}
 
 	@UiField(provided = true)
-	StoreFilterField<IAdTreeNode>	filter				= new IAdTreeNode.NameFilterField();
+	StoreFilterField<ADTreeNode>	filter				= new ADTreeNode.NameFilterField();
 	@UiField(provided = true)
-	Tree<IAdTreeNode, String>		tree;
+	Tree<ADTreeNode, String>		tree;
 	@UiField
 	CheckBox						chkExpandAll;
-	private TreeStore<IAdTreeNode>	store;
+	private TreeStore<ADTreeNode>	store;
 	private AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
-	private TreeLoader<IAdTreeNode>	loader;
+	private TreeLoader<ADTreeNode>	loader;
 	private Widget					widget;
 	private int						treeId;
 
@@ -70,23 +70,23 @@ public class ADTreePanel implements IsWidget {
 	}
 
 	private void createTree() {
-		RpcProxy<IAdTreeNode, List<IAdTreeNode>> proxy = new RpcProxy<IAdTreeNode, List<IAdTreeNode>>() {
+		RpcProxy<ADTreeNode, List<ADTreeNode>> proxy = new RpcProxy<ADTreeNode, List<ADTreeNode>>() {
 			@Override
-			public void load(IAdTreeNode loadConfig, AsyncCallback<List<IAdTreeNode>> callback) {
+			public void load(ADTreeNode loadConfig, AsyncCallback<List<ADTreeNode>> callback) {
 				adempiereService.getAdMenuModels(callback);
 			}
 		};
 		store = CommonUtil.createTreeStore();
-		loader = new TreeLoader<IAdTreeNode>(proxy) {
+		loader = new TreeLoader<ADTreeNode>(proxy) {
 			@Override
-			public boolean hasChildren(IAdTreeNode parent) {
+			public boolean hasChildren(ADTreeNode parent) {
 				return parent.hasChildren();
 			}
 		};
-		loader.addLoadHandler(new IAdTreeNode.TreeStoreBinding(store));
-		ValueProvider<IAdTreeNode, String> valueProvider = new IAdTreeNode.TreeValueProvider();
-		tree = new Tree<IAdTreeNode, String>(store, valueProvider);
-		IconProvider<IAdTreeNode> iconProvider = createIconProvider(treeId);
+		loader.addLoadHandler(new ADTreeNode.TreeStoreBinding(store));
+		ValueProvider<ADTreeNode, String> valueProvider = new ADTreeNode.TreeValueProvider();
+		tree = new Tree<ADTreeNode, String>(store, valueProvider);
+		IconProvider<ADTreeNode> iconProvider = createIconProvider(treeId);
 		tree.setIconProvider(iconProvider);
 		tree.setLoader(loader);
 		Images images = ResourcesFactory.createImages();
@@ -99,11 +99,11 @@ public class ADTreePanel implements IsWidget {
 		this.loader.load();
 	}
 
-	private IconProvider<IAdTreeNode> createIconProvider(int adTreeId) {
-		return AdMenuModel.createIconProvider();
+	private IconProvider<ADTreeNode> createIconProvider(int adTreeId) {
+		return ADMenuModel.createIconProvider();
 	}
 
-	public Tree<IAdTreeNode, String> getTree() {
+	public Tree<ADTreeNode, String> getTree() {
 		return tree;
 	}
 

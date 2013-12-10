@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="ad_table_scriptvalidator")
 @NamedQuery(name="AdTableScriptvalidator.findAll", query="SELECT a FROM AdTableScriptvalidator a")
-public class AdTableScriptvalidator extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class AdTableScriptvalidator extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long adTableScriptvalidatorId;
 	private BigDecimal adClientId;

@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="c_acctprocessor")
 @NamedQuery(name="CAcctprocessor.findAll", query="SELECT c FROM CAcctprocessor c")
-public class CAcctprocessor extends org.adempiere.model.common.AdEntityBase implements Serializable {
+public class CAcctprocessor extends org.adempiere.model.common.ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long cAcctprocessorId;
 	private BigDecimal adClientId;
