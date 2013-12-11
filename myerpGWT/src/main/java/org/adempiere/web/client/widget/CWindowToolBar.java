@@ -195,9 +195,9 @@ public class CWindowToolBar implements IsWidget {
 		this.btnPrevious.setEnabled(false);
 		this.btnLast.setEnabled(false);
 		if (ts.getTotalCount() > 1) {
-			this.btnFirst.setEnabled(ts.getTotalCount() > 0);
+			this.btnFirst.setEnabled(ts.getCurrentIndex() > 0);
 			this.btnNext.setEnabled(ts.getCurrentIndex() + 1 < ts.getTotalCount());
-			this.btnPrevious.setEnabled(ts.getTotalCount() > 0);
+			this.btnPrevious.setEnabled(ts.getCurrentIndex() > 0);
 			this.btnLast.setEnabled(ts.getCurrentIndex() + 1 < ts.getTotalCount());
 		}
 

@@ -1,6 +1,10 @@
 package org.adempiere.web.client.util;
 
+import java.math.BigDecimal;
+
 public class StringUtil {
+
+	private static final String	EMPTY	= "";
 
 	/**
 	 * @param text
@@ -122,4 +126,14 @@ public class StringUtil {
 		return false;
 	}
 
+	public static String toString(Object value) {
+		if (null != value) {
+			return value.toString();
+		}
+		return EMPTY;
+	}
+
+	public static Number toNumber(String value) {
+		return new BigDecimal(value);
+	}
 }

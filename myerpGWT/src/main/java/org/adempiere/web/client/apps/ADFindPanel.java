@@ -9,14 +9,16 @@ import org.adempiere.model.common.ADExpression.ADPredicate;
 import org.adempiere.model.common.ADExpression.BooleanOperator;
 import org.adempiere.model.common.ADExpression.FieldOperator;
 import org.adempiere.model.common.LookupValue;
+import org.adempiere.web.client.component.ADFieldEditStrategy;
 import org.adempiere.web.client.component.ADFormEditStrategy;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.model.ADFieldModel;
-import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.model.ADFormField;
+import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
+import org.adempiere.web.client.util.StringUtil;
 import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.ConfirmToolBar;
 
@@ -35,11 +37,13 @@ import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.StringLabelProvider;
 import com.sencha.gxt.data.shared.TreeStore;
+import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.Window;
+import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
 import com.sencha.gxt.widget.core.client.button.IconButton;
 import com.sencha.gxt.widget.core.client.event.HideEvent;
-import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
 import com.sencha.gxt.widget.core.client.form.TextField;
@@ -50,11 +54,15 @@ import com.sencha.gxt.widget.core.client.treegrid.TreeGrid;
 
 public class ADFindPanel implements IsWidget, ConfirmToolListener {
 
-	private static FindPanelUiBinder	uiBinder	= GWT.create(FindPanelUiBinder.class);
+	private static final String			OPERATOR_BOOL_OR	= "**Or**";
+	private static final String			OPERATOR_BOOL_AND	= "**And**";
+	private static FindPanelUiBinder	uiBinder			= GWT.create(FindPanelUiBinder.class);
 
 	interface FindPanelUiBinder extends UiBinder<Widget, ADFindPanel> {
 	}
 
+	@UiField
+	TabPanel							tabContainer;
 	@UiField(provided = true)
 	AdModelEditor						simpleEditor;
 	@UiField
@@ -69,11 +77,13 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 	IconButton							btnAdd, btnDelete, btnSave;
 	private static final List<String>	LOOKUP_FIELDS	= Arrays.asList("name", "description");
 	private Widget						widget			= null;
+	private TreeStore<ADExpression>		store;
 	private ADTabModel					tabModel;
-	private ADExpression				condition		= new ADExpression();
+	private ADPredicate					advanceCondition;
+	private ADPredicate					simpleConditon;
+	private boolean						usingCondition	= false;
 
 	public ADFindPanel(ADTabModel tabModel) {
-		super();
 		this.tabModel = tabModel;
 		this.initWidget(tabModel);
 		this.asWidget();
@@ -91,12 +101,46 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 
 	@UiHandler({ "btnAdd" })
 	void onAddSelected(SelectEvent event) {
+		ADExpression item = grid.getSelectionModel().getSelectedItem();
+		if (null == item || !item.isParent()) {
+			AlertMessageBox dialog = new AlertMessageBox("Adempiere", "Please select a container to add!");
+			dialog.show();
+			return;
+		}
+		ADPredicate parent = (ADPredicate) item;
+		ADExpression child = createExprBySelect();
+		parent.getExpressions().add(child);
+		store.add(parent, child);
+		grid.getView().refresh(true);
+	}
 
+	private ADExpression createExprBySelect() {
+		String value = cmbFields.getValue();
+		if (OPERATOR_BOOL_AND.equalsIgnoreCase(value)) {
+			return new ADPredicate(BooleanOperator.And);
+		}
+		if (OPERATOR_BOOL_OR.equalsIgnoreCase(value)) {
+			return new ADPredicate(BooleanOperator.Or);
+		}
+		return new ADExpression(StringUtil.toCamelStyle(value));
 	}
 
 	@UiHandler({ "btnDelete" })
 	void onDeleteSelected(SelectEvent event) {
-
+		ADExpression childNode = grid.getSelectionModel().getSelectedItem();
+		if (null == childNode) {
+			AlertMessageBox dialog = new AlertMessageBox("Adempiere", "Please select a node to Delete!");
+			dialog.show();
+			return;
+		}
+		ADPredicate parentNode = (ADPredicate) store.getParent(childNode);
+		if (null == parentNode) {
+			AlertMessageBox mbox = new AlertMessageBox("Adempiere", "Root node cannot be delete.");
+			mbox.show();
+			return;
+		}
+		parentNode.remove(childNode);
+		store.remove(childNode);
 	}
 
 	@UiHandler({ "btnSave" })
@@ -117,7 +161,7 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		simpleEditor.setLabelWidth(85);
 		simpleEditor.setLayoutWidth(0.62d);
 
-		TreeStore<ADExpression> store = new TreeStore<ADExpression>(new XKeyProvider());
+		store = new TreeStore<ADExpression>(new XKeyProvider());
 		ColumnConfig<ADExpression, String> nameColumn = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("columnName"));
 		nameColumn.setHeader("Column");
 		ColumnConfig<ADExpression, String> operatorColumn = new ColumnConfig<ADExpression, String>(new XValueProvider<String>(
@@ -133,14 +177,8 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		columns.add(value1Column);
 		columns.add(value2Column);
 
-		ADPredicate root = new ADPredicate();
-		root.setBooleanOperator(BooleanOperator.And);
-		store.add(root);
-		ADExpression child = new ADExpression();
-		child.setColumnName("Name");
-		child.setFieldOperator(FieldOperator.Equal);
-		child.setValue1("123456");
-		store.add(root, child);
+		advanceCondition = new ADPredicate(BooleanOperator.And);
+		store.add(advanceCondition);
 
 		ColumnModel<ADExpression> cm = new ColumnModel<ADExpression>(columns);
 		Images imgs = ResourcesFactory.createImages();
@@ -171,15 +209,15 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 
 		LabelProvider<String> labelProvider = new StringLabelProvider<String>();
 		cmbFields = new SimpleComboBox<String>(labelProvider);
-		cmbFields.add("**And**");
-		cmbFields.add("**Or**");
+		cmbFields.add(OPERATOR_BOOL_AND);
+		cmbFields.add(OPERATOR_BOOL_OR);
 		for (ADFieldModel field : tabModel.getFieldList()) {
 			cmbFields.add(field.getName());
 		}
 		cmbFields.setForceSelection(true);
 		cmbFields.setTriggerAction(TriggerAction.ALL);
 		cmbFields.setEditable(false);
-		cmbFields.setValue("**And**");
+		cmbFields.setValue(OPERATOR_BOOL_AND);
 
 		labelProvider = new StringLabelProvider<String>();
 		cmbProfiles = new SimpleComboBox<String>(labelProvider);
@@ -214,7 +252,32 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 	}
 
 	public ADExpression getCondition() {
-		return condition;
+		if (!usingCondition) {
+			return null;
+		}
+		Widget widget = tabContainer.getActiveWidget();
+		if (0 == tabContainer.getWidgetIndex(widget)) {
+			createSimpleConditon();
+			return simpleConditon;
+		}
+		return advanceCondition;
+	}
+
+	private void createSimpleConditon() {
+		simpleConditon = new ADPredicate(BooleanOperator.Or);
+		for (ADFieldEditStrategy fieldStrategy : simpleEditor.getFieldList()) {
+			String columnName = fieldStrategy.getField().getColumnname();
+			String value = StringUtil.toString(fieldStrategy.getFormEditor().getValue());
+			if (StringUtil.isNullOrEmpty(value)) {
+				continue;
+			}
+			FieldOperator fOp = FieldOperator.Equal;
+			if (fieldStrategy.getFieldType().isText()) {
+				fOp = FieldOperator.Like;
+			}
+			ADExpression expr = new ADExpression(StringUtil.toCamelStyle(columnName), fOp, value);
+			simpleConditon.add(expr);
+		}
 	}
 
 	public HandlerRegistration addHideHandler(HideHandler handler) {
@@ -231,6 +294,7 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 
 	@Override
 	public void onOK() {
+		usingCondition = true;
 		window.hide();
 	}
 

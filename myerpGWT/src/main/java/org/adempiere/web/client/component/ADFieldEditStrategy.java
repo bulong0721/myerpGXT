@@ -47,14 +47,14 @@ import com.sencha.gxt.widget.core.client.info.Info;
 public class ADFieldEditStrategy {
 	private ADFormField					field;
 	private ColumnConfig<ADMapData, ?>	columnCfg;
-	private Cell<?>							columnCell;
-	private Field<?>						gridEditor;
-	private Field<?>						formEditor;
-	private OptionStore						optionStore;
-	private boolean							showLabel	= true;
-	private Converter						converter;
-	private DisplayType						fieldType;
-	private ADFormEditStrategy				formStrategy;
+	private Cell<?>						columnCell;
+	private Field<?>					gridEditor;
+	private Field<?>					formEditor;
+	private OptionStore					optionStore;
+	private boolean						showLabel	= true;
+	private Converter					converter;
+	private DisplayType					fieldType;
+	private ADFormEditStrategy			formStrategy;
 
 	public ADFieldEditStrategy(ADFormEditStrategy formStrategy, ADFormField field) {
 		this.formStrategy = formStrategy;

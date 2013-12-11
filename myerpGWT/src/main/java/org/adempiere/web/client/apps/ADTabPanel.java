@@ -131,11 +131,12 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 			@Override
 			public void onDataChange(StoreDataChangeEvent<ADMapData> event) {
 				grid.getSelectionModel().select(0, false);
+				toolBar.setTabState(ADTabPanel.this);
 				grid.setLoadMask(true);
 			}
 		});
-		final LoadHandler<ADLoadConfig, PagingLoadResult<ADMapData>> loadHandler = new LoadResultListStoreBinding<ADLoadConfig, ADMapData, PagingLoadResult<ADMapData>>(
-				store);
+		final LoadHandler<ADLoadConfig, PagingLoadResult<ADMapData>> loadHandler;
+		loadHandler = new LoadResultListStoreBinding<ADLoadConfig, ADMapData, PagingLoadResult<ADMapData>>(store);
 		loader.addLoadHandler(loadHandler);
 		cm = tabStrategy.createColumnModel();
 		grid = new Grid<ADMapData>(store, cm);

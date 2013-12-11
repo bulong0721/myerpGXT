@@ -26,7 +26,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 	private ADFormEditStrategy					tabStrategy;
 	private EditorChain<Object, Field<Object>>	chain;
 	private List<ADFieldEditStrategy>			fieldList;
-	private ADMapData						model;
+	private ADMapData							model;
 	private double								layoutWidth	= 0.49d;
 	private int									labelWidth	= 135;
 
@@ -146,6 +146,10 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 	@Override
 	public void setEditorChain(EditorChain<Object, Field<Object>> chain) {
 		this.chain = chain;
+	}
+
+	public List<ADFieldEditStrategy> getFieldList() {
+		return fieldList;
 	}
 
 }

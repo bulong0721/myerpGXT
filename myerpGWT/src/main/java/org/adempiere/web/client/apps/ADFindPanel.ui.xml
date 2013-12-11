@@ -32,7 +32,7 @@
 	<gxt:Window ui:field="window" pixelSize="640, 480" modal="true">
 		<container:VerticalLayoutContainer>
 			<container:child layoutData="{simpleLayout}">
-				<tabs:TabPanel borders="false" layoutData="{simpleLayout}">
+				<tabs:TabPanel borders="false" layoutData="{simpleLayout}" ui:field="tabContainer">
 					<tabs:child config="{simpleConfig}">
 						<component:AdModelEditor ui:field="simpleEditor" />
 					</tabs:child>

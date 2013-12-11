@@ -1,7 +1,5 @@
 package org.adempiere.web.server;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,11 +13,11 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.adempiere.model.common.ADExpression.ADPredicate;
-import org.adempiere.model.common.ADUserContext;
-import org.adempiere.model.common.ADModelKey;
-import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.common.ADExpression;
+import org.adempiere.model.common.ADExpression.ADPredicate;
+import org.adempiere.model.common.ADModelKey;
+import org.adempiere.model.common.ADUserContext;
+import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.common.LookupValue;
 import org.adempiere.model.core.AdFieldV;
 import org.adempiere.model.core.AdForm;
@@ -32,11 +30,11 @@ import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
-import org.adempiere.web.client.model.AdProcessModel;
 import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADTabModel;
-import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.model.ADTreeNode;
+import org.adempiere.web.client.model.ADWindowModel;
+import org.adempiere.web.client.model.AdProcessModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.util.StringUtil;
 
@@ -130,10 +128,10 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			aq.from(entityClazz);
 			aq.select(cb.count(root));
 			ADModelKey parentKey = loadCfg.getParentKey();
-			if (null != parentKey) {
-				cq.where(cb.equal(root.get(parentKey.getKeyField()), parentKey.getKeyValue()));
-				aq.where(cb.equal(root.get(parentKey.getKeyField()), parentKey.getKeyValue()));
-			}
+			ADExpression expr = loadCfg.getExpr();
+			// TODO openjpa中当改属性在XXPk中会抛找不到属性的异常，考虑替换为hibernate
+			cq.where(buildWhere(cb, root, expr, parentKey));
+			aq.where(buildWhere(cb, root, expr, parentKey));
 			TypedQuery<Long> countQuery = em.createQuery(aq);
 			totalCount = countQuery.getSingleResult();
 			if (totalCount > 0) {
@@ -151,7 +149,25 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		return jsonData;
 	}
 
-	Predicate buildWhere(CriteriaBuilder cb, Root<?> root, ADExpression expr) {
+	private Predicate buildWhere(CriteriaBuilder cb, Root<?> root, ADExpression expr, ADModelKey pKey) {
+		List<Predicate> predList = new ArrayList<Predicate>();
+		if (null != pKey) {
+			Predicate pred = cb.equal(root.get(pKey.getKeyField()), pKey.getKeyValue());
+			if (null != pred) {
+				predList.add(pred);
+			}
+		}
+		if (null != expr) {
+			Predicate pred = buildWhere(cb, root, expr);
+			if (null != pred) {
+				predList.add(pred);
+			}
+		}
+		Predicate[] predArray = new Predicate[predList.size()];
+		return cb.and(predList.toArray(predArray));
+	}
+
+	private Predicate buildWhere(CriteriaBuilder cb, Root<?> root, ADExpression expr) {
 		if (null == expr) {
 			return null;
 		}
@@ -188,37 +204,26 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			case NotEqual:
 				return cb.notEqual(target, expr.getValue1());
 			case Gt:
-				return cb.gt(target, toNumber(expr.getValue1()));
+				return cb.gt(target, StringUtil.toNumber(expr.getValue1()));
 			case Ge:
-				return cb.ge(target, toNumber(expr.getValue1()));
+				return cb.ge(target, StringUtil.toNumber(expr.getValue1()));
 			case Lt:
-				return cb.lt(target, toNumber(expr.getValue1()));
+				return cb.lt(target, StringUtil.toNumber(expr.getValue1()));
 			case Le:
-				return cb.le(target, toNumber(expr.getValue1()));
+				return cb.le(target, StringUtil.toNumber(expr.getValue1()));
 			case Between:
-				return cb.between(target, toString(expr.getValue1()), toString(expr.getValue2()));
+				return cb.between(target, StringUtil.toString(expr.getValue1()), StringUtil.toString(expr.getValue2()));
 			case NotBetween:
-				return cb.not(cb.between(target, toString(expr.getValue1()), toString(expr.getValue2())));
+				return cb.not(cb.between(target, StringUtil.toString(expr.getValue1()), StringUtil.toString(expr.getValue2())));
 			case Like:
-				return cb.like(target, toString(expr.getValue1()));
+				return cb.like(target, StringUtil.toString(expr.getValue1()));
 			case NotLike:
-				return cb.notLike(target, toString(expr.getValue1()));
+				return cb.notLike(target, StringUtil.toString(expr.getValue1()));
 			default:
 				break;
 			}
 		}
 		return null;
-	}
-
-	String toString(Serializable value) {
-		return value.toString();
-	}
-
-	Number toNumber(Serializable value) {
-		if (value instanceof Number) {
-			return (Number) value;
-		}
-		return new BigDecimal(value.toString());
 	}
 
 	private static Class<?> toClass(String className) throws ClassNotFoundException {

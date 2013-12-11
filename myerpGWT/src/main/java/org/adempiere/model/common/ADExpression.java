@@ -1,6 +1,7 @@
 package org.adempiere.model.common;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ADExpression implements Serializable {
@@ -9,6 +10,29 @@ public class ADExpression implements Serializable {
 	private FieldOperator		fieldOperator;
 	private String				value1;
 	private String				value2;
+
+	public ADExpression() {
+	}
+
+	public ADExpression(String columnName) {
+		this(columnName, FieldOperator.Equal);
+	}
+
+	public ADExpression(String columnName, FieldOperator fieldOperator) {
+		this(columnName, fieldOperator, null, null);
+	}
+
+	public ADExpression(String columnName, FieldOperator fieldOperator, String value1) {
+		this(columnName, fieldOperator, value1, null);
+	}
+
+	public ADExpression(String columnName, FieldOperator fieldOperator, String value1, String value2) {
+		super();
+		this.columnName = columnName;
+		this.fieldOperator = fieldOperator;
+		this.value1 = value1;
+		this.value2 = value2;
+	}
 
 	public boolean isParent() {
 		return false;
@@ -49,7 +73,15 @@ public class ADExpression implements Serializable {
 	public static class ADPredicate extends ADExpression implements Serializable {
 		private static final long	serialVersionUID	= 1L;
 		private BooleanOperator		booleanOperator;
-		private List<ADExpression>	expressions;
+		private List<ADExpression>	expressions			= new ArrayList<ADExpression>();
+
+		public ADPredicate() {
+		}
+
+		public ADPredicate(BooleanOperator booleanOperator) {
+			super();
+			this.booleanOperator = booleanOperator;
+		}
 
 		@Override
 		public boolean isParent() {
@@ -78,8 +110,16 @@ public class ADExpression implements Serializable {
 			return expressions;
 		}
 
+		public void add(ADExpression expr) {
+			expressions.add(expr);
+		}
+
 		public void setExpressions(List<ADExpression> expressions) {
 			this.expressions = expressions;
+		}
+
+		public void remove(ADExpression childNode) {
+			expressions.remove(childNode);
 		}
 
 	}
