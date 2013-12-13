@@ -44,7 +44,7 @@ import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
-public class ADFieldEditStrategy {
+public class ADFieldBuilder {
 	private ADFormField					field;
 	private ColumnConfig<ADMapData, ?>	columnCfg;
 	private Cell<?>						columnCell;
@@ -54,9 +54,9 @@ public class ADFieldEditStrategy {
 	private boolean						showLabel	= true;
 	private Converter					converter;
 	private DisplayType					fieldType;
-	private ADFormEditStrategy			formStrategy;
+	private ADFormBuilder			formStrategy;
 
-	public ADFieldEditStrategy(ADFormEditStrategy formStrategy, ADFormField field) {
+	public ADFieldBuilder(ADFormBuilder formStrategy, ADFormField field) {
 		this.formStrategy = formStrategy;
 		this.field = field;
 		this.init();

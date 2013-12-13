@@ -3,6 +3,8 @@ package org.adempiere.web.client.model;
 import java.io.Serializable;
 import java.util.List;
 
+import org.adempiere.web.client.util.StringUtil;
+
 public class ADTabModel implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private List<ADFieldModel>	fieldList;
@@ -157,6 +159,18 @@ public class ADTabModel implements Serializable {
 
 	public void setIsHighVolume(Boolean isHighVolume) {
 		this.isHighVolume = isHighVolume;
+	}
+
+	public ADFieldModel getFieldByName(String value) {
+		if (StringUtil.isNullOrEmpty(value)) {
+			return null;
+		}
+		for (ADFieldModel fieldModel : fieldList) {
+			if (value.equalsIgnoreCase(fieldModel.getName())) {
+				return fieldModel;
+			}
+		}
+		return null;
 	}
 
 }

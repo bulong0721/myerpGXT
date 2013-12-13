@@ -3,7 +3,7 @@ package org.adempiere.web.client.apps;
 import java.util.List;
 
 import org.adempiere.model.common.ADModelKey;
-import org.adempiere.web.client.component.ADFormEditStrategy;
+import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.ADModelDriver;
 import org.adempiere.web.client.component.ADModelReader;
 import org.adempiere.web.client.component.AdModelEditor;
@@ -73,7 +73,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 	private Widget											widget;
 	private ColumnModel<ADMapData>							cm;
 	private ListStore<ADMapData>							store;
-	private ADFormEditStrategy								tabStrategy;
+	private ADFormBuilder								tabStrategy;
 	private GridEditing<ADMapData>							gridEditing;
 	private ADModelDriver									adModelDriver;
 	private ADModelKeyProvider								keyProvider;
@@ -90,7 +90,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 	SimplePanel												treePlaceHolder;
 
 	public ADTabPanel(ADWindowPanel windowPanel, ADTabModel tabModel, CWindowToolBar toolBar) {
-		this.tabStrategy = new ADFormEditStrategy(tabModel.getFieldList());
+		this.tabStrategy = new ADFormBuilder(tabModel.getFieldList());
 		this.tabStrategy.setFieldButtonListener(this);
 		this.windowPanel = windowPanel;
 		this.tabModel = tabModel;

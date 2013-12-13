@@ -23,18 +23,18 @@ import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<Object>>, IsWidget {
-	private ADFormEditStrategy					tabStrategy;
+	private ADFormBuilder					tabStrategy;
 	private EditorChain<Object, Field<Object>>	chain;
-	private List<ADFieldEditStrategy>			fieldList;
+	private List<ADFieldBuilder>			fieldList;
 	private ADMapData							model;
 	private double								layoutWidth	= 0.49d;
 	private int									labelWidth	= 135;
 
 	@UiConstructor
-	public AdModelEditor(ADFormEditStrategy tabStrategy) {
+	public AdModelEditor(ADFormBuilder tabStrategy) {
 		super();
 		this.tabStrategy = tabStrategy;
-		this.fieldList = new ArrayList<ADFieldEditStrategy>();
+		this.fieldList = new ArrayList<ADFieldBuilder>();
 	}
 
 	public AdModelEditor() {
@@ -53,7 +53,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 		CssFloatLayoutContainer container = new CssFloatLayoutContainer();
 		CssFloatLayoutContainer groupContainer = null;
 		String oldFieldGroup = null;
-		for (ADFieldEditStrategy fieldStrategy : tabStrategy.getFieldStrategies()) {
+		for (ADFieldBuilder fieldStrategy : tabStrategy.getFieldStrategies()) {
 			ADFormField field = fieldStrategy.getField();
 			String fieldGroup = field.getFieldgroup();
 			if (!StringUtil.isNullOrEmpty(fieldGroup)) {
@@ -75,7 +75,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 		return container;
 	}
 
-	private void layoutFiled(CssFloatLayoutContainer container, ADFieldEditStrategy fieldStrategy) {
+	private void layoutFiled(CssFloatLayoutContainer container, ADFieldBuilder fieldStrategy) {
 		FieldLabel fieldLabel = fieldStrategy.getFieldLabel(labelWidth);
 		Widget widget = fieldLabel.getWidget();
 		if (widget instanceof Field) {
@@ -90,7 +90,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 		if (null == fieldList || null == model) {
 			return;
 		}
-		for (ADFieldEditStrategy fieldStrategy : fieldList) {
+		for (ADFieldBuilder fieldStrategy : fieldList) {
 			Field formEditor = fieldStrategy.getFormEditor();
 			Converter converter = fieldStrategy.getConverter();
 			Object value = chain.getValue(formEditor);
@@ -116,7 +116,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 			return;
 		}
 		this.model = model;
-		for (ADFieldEditStrategy fieldStrategy : fieldList) {
+		for (ADFieldBuilder fieldStrategy : fieldList) {
 			Converter converter = fieldStrategy.getConverter();
 			Field formEditor = fieldStrategy.getFormEditor();
 			DisplayType fieldType = fieldStrategy.getField().getFieldType();
@@ -148,7 +148,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 		this.chain = chain;
 	}
 
-	public List<ADFieldEditStrategy> getFieldList() {
+	public List<ADFieldBuilder> getFieldList() {
 		return fieldList;
 	}
 

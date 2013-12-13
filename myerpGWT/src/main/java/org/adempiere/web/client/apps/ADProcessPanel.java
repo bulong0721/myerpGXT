@@ -3,7 +3,7 @@ package org.adempiere.web.client.apps;
 import java.util.List;
 
 import org.adempiere.web.client.component.ADReportViewer;
-import org.adempiere.web.client.component.ADFormEditStrategy;
+import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.model.AdProcessModel;
@@ -65,7 +65,7 @@ public class ADProcessPanel implements IsWidget, ConfirmToolListener {
 		nameLabel = new Label(processModel.getName());
 		descLabel = new Label(processModel.getDescription(), true);
 		List<AdProcessArgModel> fieldList = processModel.getParamList();
-		ADFormEditStrategy formStrategy = new ADFormEditStrategy(fieldList);
+		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
 		formStrategy.setDisableKey(false);
 		formStrategy.setCreateGridEditor(false);
 		prarmEditor = new AdModelEditor(formStrategy);

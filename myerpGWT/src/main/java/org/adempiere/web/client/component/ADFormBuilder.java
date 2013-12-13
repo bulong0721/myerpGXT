@@ -6,6 +6,7 @@ import java.util.List;
 import org.adempiere.web.client.event.FieldButtonListener;
 import org.adempiere.web.client.model.ADFormField;
 import org.adempiere.web.client.model.ADMapData;
+import org.adempiere.web.client.util.StringUtil;
 
 import com.sencha.gxt.data.shared.Converter;
 import com.sencha.gxt.widget.core.client.form.Field;
@@ -15,29 +16,33 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 
-public class ADFormEditStrategy {
+public class ADFormBuilder {
 	private List<? extends ADFormField>	fieldList;
-	private List<ADFieldEditStrategy>		fieldStrategies;
-	private boolean							disableKey			= true;
-	private boolean							createFormEditor	= true;
-	private boolean							createGridEditor	= true;
-	private FieldButtonListener				fieldButtonListener;
+	private List<ADFieldBuilder>	fieldStrategies;
+	private boolean						disableKey			= true;
+	private boolean						createFormEditor	= true;
+	private boolean						createGridEditor	= true;
+	private FieldButtonListener			fieldButtonListener;
+	private boolean						isCreated;
 
-	public ADFormEditStrategy(List<? extends ADFormField> fieldList) {
+	public ADFormBuilder(List<? extends ADFormField> fieldList) {
 		super();
 		this.fieldList = fieldList;
-		this.init();
 	}
 
-	private void init() {
+	private void initialize() {
+		if (isCreated) {
+			return;
+		}
 		int size = fieldList.size();
-		fieldStrategies = new ArrayList<ADFieldEditStrategy>(size);
+		fieldStrategies = new ArrayList<ADFieldBuilder>(size);
 		for (ADFormField field : fieldList) {
 			if (field.getIsdisplayed() || field.getIskey()) {
-				ADFieldEditStrategy fieldStrategy = new ADFieldEditStrategy(this, field);
+				ADFieldBuilder fieldStrategy = new ADFieldBuilder(this, field);
 				fieldStrategies.add(fieldStrategy);
 			}
 		}
+		isCreated = true;
 	}
 
 	public boolean isDisableKey() {
@@ -64,8 +69,21 @@ public class ADFormEditStrategy {
 		this.createGridEditor = createGridEditor;
 	}
 
-	public List<ADFieldEditStrategy> getFieldStrategies() {
+	public List<ADFieldBuilder> getFieldStrategies() {
+		this.initialize();
 		return fieldStrategies;
+	}
+
+	public ADFieldBuilder getFieldStrategy(String column) {
+		if (StringUtil.isNullOrEmpty(column)) {
+			return null;
+		}
+		for (ADFieldBuilder fieldStrategy : getFieldStrategies()) {
+			if (column.equalsIgnoreCase(fieldStrategy.getField().getColumnname())) {
+				return fieldStrategy;
+			}
+		}
+		return null;
 	}
 
 	public FieldButtonListener getFieldButtonListener() {
@@ -78,7 +96,7 @@ public class ADFormEditStrategy {
 
 	public ColumnModel<ADMapData> createColumnModel() {
 		List<ColumnConfig<ADMapData, ?>> columnList = new ArrayList<ColumnConfig<ADMapData, ?>>();
-		for (ADFieldEditStrategy strategy : fieldStrategies) {
+		for (ADFieldBuilder strategy : getFieldStrategies()) {
 			columnList.add(strategy.getColumnCfg());
 		}
 		return new ColumnModel<ADMapData>(columnList);
@@ -87,7 +105,7 @@ public class ADFormEditStrategy {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public GridEditing<ADMapData> createGridEditing(Grid<ADMapData> editableGrid) {
 		GridInlineEditing<ADMapData> editing = new GridInlineEditing<ADMapData>(editableGrid);
-		for (ADFieldEditStrategy strategy : fieldStrategies) {
+		for (ADFieldBuilder strategy : getFieldStrategies()) {
 			ColumnConfig<ADMapData, ?> columnConfig = strategy.getColumnCfg();
 			Field editor = strategy.getGridEditor();
 			Converter converter = strategy.getConverter();

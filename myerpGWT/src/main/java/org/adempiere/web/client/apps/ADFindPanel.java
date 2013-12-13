@@ -9,8 +9,8 @@ import org.adempiere.model.common.ADExpression.ADPredicate;
 import org.adempiere.model.common.ADExpression.BooleanOperator;
 import org.adempiere.model.common.ADExpression.FieldOperator;
 import org.adempiere.model.common.LookupValue;
-import org.adempiere.web.client.component.ADFieldEditStrategy;
-import org.adempiere.web.client.component.ADFormEditStrategy;
+import org.adempiere.web.client.component.ADFieldBuilder;
+import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.model.ADFieldModel;
@@ -41,12 +41,14 @@ import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
 import com.sencha.gxt.widget.core.client.button.IconButton;
+import com.sencha.gxt.widget.core.client.event.BeforeStartEditEvent;
+import com.sencha.gxt.widget.core.client.event.BeforeStartEditEvent.BeforeStartEditHandler;
 import com.sencha.gxt.widget.core.client.event.HideEvent;
 import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
+import com.sencha.gxt.widget.core.client.form.Field;
 import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
-import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
@@ -122,7 +124,8 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		if (OPERATOR_BOOL_OR.equalsIgnoreCase(value)) {
 			return new ADPredicate(BooleanOperator.Or);
 		}
-		return new ADExpression(StringUtil.toCamelStyle(value));
+		String columnName = tabModel.getFieldByName(value).getColumnname();
+		return new ADExpression(columnName);
 	}
 
 	@UiHandler({ "btnDelete" })
@@ -152,9 +155,9 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 	void onProfileSelected(SelectionEvent<LookupValue> event) {
 	}
 
-	private void initWidget(ADTabModel tabModel) {
+	private void initWidget(final ADTabModel tabModel) {
 		List<? extends ADFormField> fieldList = pickSimpleFields(tabModel);
-		ADFormEditStrategy formStrategy = new ADFormEditStrategy(fieldList);
+		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
 		formStrategy.setCreateGridEditor(false);
 		formStrategy.setDisableKey(false);
 		simpleEditor = new AdModelEditor(formStrategy);
@@ -164,12 +167,12 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		store = new TreeStore<ADExpression>(new XKeyProvider());
 		ColumnConfig<ADExpression, String> nameColumn = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("columnName"));
 		nameColumn.setHeader("Column");
-		ColumnConfig<ADExpression, String> operatorColumn = new ColumnConfig<ADExpression, String>(new XValueProvider<String>(
-				"fieldOperator"));
+		ColumnConfig<ADExpression, FieldOperator> operatorColumn = new ColumnConfig<ADExpression, FieldOperator>(
+				new XValueProvider<FieldOperator>("fieldOperator"));
 		operatorColumn.setHeader("Operator");
-		ColumnConfig<ADExpression, String> value1Column = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("value2"));
+		final ColumnConfig<ADExpression, ?> value1Column = new ColumnConfig<ADExpression, Object>(new XValueProvider<Object>("value1"));
 		value1Column.setHeader("Value1");
-		ColumnConfig<ADExpression, String> value2Column = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("value2"));
+		final ColumnConfig<ADExpression, ?> value2Column = new ColumnConfig<ADExpression, Object>(new XValueProvider<Object>("value2"));
 		value2Column.setHeader("Value2");
 		List<ColumnConfig<ADExpression, ?>> columns = new ArrayList<ColumnConfig<ADExpression, ?>>();
 		columns.add(nameColumn);
@@ -188,17 +191,34 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		grid.getStyle().setLeafIcon(imgs.function16());
 		grid.getView().setAutoExpandColumn(nameColumn);
 
-		GridInlineEditing<ADExpression> editing = new GridInlineEditing<ADExpression>(grid);
-
-		LabelProvider<String> labelProvider = new StringLabelProvider<String>();
-		SimpleComboBox<String> opComboBox = new SimpleComboBox<String>(labelProvider);
-		opComboBox.add(Arrays.asList(FieldOperator.allNames()));
+		final GridInlineEditing<ADExpression> editing = new GridInlineEditing<ADExpression>(grid);
+		LabelProvider<FieldOperator> labelProvider = new StringLabelProvider<FieldOperator>();
+		SimpleComboBox<FieldOperator> opComboBox = new SimpleComboBox<FieldOperator>(labelProvider);
+		opComboBox.add(Arrays.asList(FieldOperator.values()));
 		opComboBox.setForceSelection(true);
 		opComboBox.setTriggerAction(TriggerAction.ALL);
 		opComboBox.setEditable(false);
 		editing.addEditor(operatorColumn, opComboBox);
-		editing.addEditor(value1Column, new TextField());
-		editing.addEditor(value2Column, new TextField());
+
+		final ADFormBuilder gridStrategy = new ADFormBuilder(tabModel.getFieldList());
+		gridStrategy.setDisableKey(false);
+		editing.addBeforeStartEditHandler(new BeforeStartEditHandler<ADExpression>() {
+			@SuppressWarnings({ "rawtypes", "unchecked" })
+			@Override
+			public void onBeforeStartEdit(BeforeStartEditEvent<ADExpression> event) {
+				ADExpression item = grid.getSelectionModel().getSelectedItem();
+				if (item.isParent()) {
+					event.setCancelled(true);
+					return;
+				}
+				ADFieldBuilder fieldStrategy = gridStrategy.getFieldStrategy(item.getColumnName());
+				if (null != fieldStrategy) {
+					Field value1Editor = fieldStrategy.getGridEditor();
+					editing.addEditor(value1Column, fieldStrategy.getConverter(), value1Editor);
+					// editing.addEditor(value2Column, fieldStrategy.getConverter(), value1Editor);
+				}
+			}
+		});
 		initAdvToolBar();
 	}
 
@@ -259,13 +279,27 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		if (0 == tabContainer.getWidgetIndex(widget)) {
 			createSimpleConditon();
 			return simpleConditon;
+		} else {
+			store.commitChanges();
+			toCamel(advanceCondition);
+			return advanceCondition;
 		}
-		return advanceCondition;
+	}
+
+	private void toCamel(ADExpression expr) {
+		if (expr.isParent()) {
+			ADPredicate pred = (ADPredicate) expr;
+			for (ADExpression subExpr : pred.getExpressions()) {
+				toCamel(subExpr);
+			}
+		} else {
+			expr.setColumnName(StringUtil.toCamelStyle(expr.getColumnName()));
+		}
 	}
 
 	private void createSimpleConditon() {
 		simpleConditon = new ADPredicate(BooleanOperator.Or);
-		for (ADFieldEditStrategy fieldStrategy : simpleEditor.getFieldList()) {
+		for (ADFieldBuilder fieldStrategy : simpleEditor.getFieldList()) {
 			String columnName = fieldStrategy.getField().getColumnname();
 			String value = StringUtil.toString(fieldStrategy.getFormEditor().getValue());
 			if (StringUtil.isNullOrEmpty(value)) {
