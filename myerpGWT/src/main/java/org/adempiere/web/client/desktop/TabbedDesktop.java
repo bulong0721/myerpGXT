@@ -7,7 +7,7 @@ import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.form.AbstractForm;
 import org.adempiere.web.client.model.ADFormModel;
-import org.adempiere.web.client.model.AdProcessModel;
+import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.service.AdempiereService;
@@ -48,9 +48,9 @@ public class TabbedDesktop implements IDesktop {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
-		AsyncCallback<AdProcessModel> callback = new AsyncSuccessCallback<AdProcessModel>() {
+		AsyncCallback<ADProcessModel> callback = new AsyncSuccessCallback<ADProcessModel>() {
 			@Override
-			public void onSuccess(AdProcessModel result) {
+			public void onSuccess(ADProcessModel result) {
 				ADProcessPanel panel = new ADProcessPanel(result);
 				TabItemConfig config = new TabItemConfig(name, true);
 				config.setIcon(getIcon(MenuActionType.Process));

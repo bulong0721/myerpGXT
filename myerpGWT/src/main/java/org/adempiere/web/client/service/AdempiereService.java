@@ -8,7 +8,7 @@ import org.adempiere.model.common.LookupValue;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
-import org.adempiere.web.client.model.AdProcessModel;
+import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.model.ADTreeNode;
@@ -27,7 +27,7 @@ public interface AdempiereService extends RemoteService {
 	
 	ADFormModel getADFormModel(long formId);
 
-	AdProcessModel getADProcessModel(long processId);
+	ADProcessModel getADProcessModel(long processId);
 
 	ADJSONData getWindowTabData(ADLoadConfig loadCfg);
 

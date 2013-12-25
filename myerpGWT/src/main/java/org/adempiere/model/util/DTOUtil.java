@@ -12,8 +12,8 @@ import org.adempiere.model.core.AdTreenodemm;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADMenuModel;
-import org.adempiere.web.client.model.AdProcessModel;
-import org.adempiere.web.client.model.AdProcessArgModel;
+import org.adempiere.web.client.model.ADProcessModel;
+import org.adempiere.web.client.model.ADProcessArgModel;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.util.StringUtil;
 
@@ -81,8 +81,8 @@ public class DTOUtil {
 		return model;
 	}
 
-	public static AdProcessModel toProcessModel(AdProcess entity) {
-		AdProcessModel model = new AdProcessModel();
+	public static ADProcessModel toProcessModel(AdProcess entity) {
+		ADProcessModel model = new ADProcessModel();
 		model.setAdProcessId(entity.getAdProcessId());
 		model.setAdFormId(entity.getAdFormId());
 		model.setAdPrintformatId(entity.getAdPrintformatId());
@@ -106,9 +106,9 @@ public class DTOUtil {
 		return model;
 	}
 
-	public static List<AdProcessModel> toProcessModels(List<AdProcess> list) {
+	public static List<ADProcessModel> toProcessModels(List<AdProcess> list) {
 		int size = null == list ? 0 : list.size();
-		List<AdProcessModel> resultList = new ArrayList<AdProcessModel>(size);
+		List<ADProcessModel> resultList = new ArrayList<ADProcessModel>(size);
 		if (null != list) {
 			for (AdProcess entity : list) {
 				resultList.add(toProcessModel(entity));
@@ -117,8 +117,8 @@ public class DTOUtil {
 		return resultList;
 	}
 
-	public static AdProcessArgModel toProcessParameter(AdProcessPara entity) {
-		AdProcessArgModel model = new AdProcessArgModel();
+	public static ADProcessArgModel toProcessParameter(AdProcessPara entity) {
+		ADProcessArgModel model = new ADProcessArgModel();
 		model.setAdProcessParaId(entity.getAdProcessParaId());
 		model.setAdReferenceId(entity.getAdReferenceId());
 		model.setAdReferenceValueId(entity.getAdReferenceValueId());
@@ -139,9 +139,9 @@ public class DTOUtil {
 		return model;
 	}
 
-	public static List<AdProcessArgModel> toProcessParameters(List<AdProcessPara> list) {
+	public static List<ADProcessArgModel> toProcessParameters(List<AdProcessPara> list) {
 		int size = null == list ? 0 : list.size();
-		List<AdProcessArgModel> resultList = new ArrayList<AdProcessArgModel>(size);
+		List<ADProcessArgModel> resultList = new ArrayList<ADProcessArgModel>(size);
 		if (null != list) {
 			for (AdProcessPara entity : list) {
 				resultList.add(toProcessParameter(entity));

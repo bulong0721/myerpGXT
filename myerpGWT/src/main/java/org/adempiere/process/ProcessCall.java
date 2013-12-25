@@ -1,6 +1,5 @@
 package org.adempiere.process;
 
-import org.adempiere.model.common.ProcessInfo;
 
 /**
  * @author Administrator
@@ -13,5 +12,5 @@ public interface ProcessCall {
 	 * @param pi
 	 * @return
 	 */
-	boolean startProcess(ProcessContext ctx, ProcessInfo pi);
+	boolean startProcess(ProcessContext ctx);
 }

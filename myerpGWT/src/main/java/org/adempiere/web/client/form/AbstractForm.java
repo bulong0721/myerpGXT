@@ -1,12 +1,12 @@
 package org.adempiere.web.client.form;
 
-import org.adempiere.web.client.model.AdProcessModel;
+import org.adempiere.web.client.model.ADProcessModel;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 public abstract class AbstractForm implements IsWidget {
-	protected AdProcessModel	processInfo;
+	protected ADProcessModel	processInfo;
 	protected int				adFormId;
 	protected int				windowNo;
 	protected String			name;
@@ -32,11 +32,11 @@ public abstract class AbstractForm implements IsWidget {
 		return null;
 	}
 
-	public AdProcessModel getProcessInfo() {
+	public ADProcessModel getProcessInfo() {
 		return processInfo;
 	}
 
-	public void setProcessInfo(AdProcessModel processInfo) {
+	public void setProcessInfo(ADProcessModel processInfo) {
 		this.processInfo = processInfo;
 	}
 

@@ -3,7 +3,7 @@ package org.adempiere.web.client.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class AdProcessModel implements Serializable {
+public class ADProcessModel implements Serializable {
 	private static final long			serialVersionUID	= 1L;
 	private long						adProcessId;
 	private Long						adFormId;
@@ -22,7 +22,7 @@ public class AdProcessModel implements Serializable {
 	private String						procedurename;
 	private String						value;
 	private String						workflowvalue;
-	private List<AdProcessArgModel>	paramList;
+	private List<ADProcessArgModel>	paramList;
 
 	public long getAdProcessId() {
 		return adProcessId;
@@ -160,11 +160,11 @@ public class AdProcessModel implements Serializable {
 		this.workflowvalue = workflowvalue;
 	}
 
-	public List<AdProcessArgModel> getParamList() {
+	public List<ADProcessArgModel> getParamList() {
 		return paramList;
 	}
 
-	public void setParamList(List<AdProcessArgModel> paramList) {
+	public void setParamList(List<ADProcessArgModel> paramList) {
 		this.paramList = paramList;
 	}
 

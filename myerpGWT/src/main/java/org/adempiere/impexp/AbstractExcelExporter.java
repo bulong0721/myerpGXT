@@ -277,6 +277,7 @@ public abstract class AbstractExcelExporter {
 		return sheet;
 	}
 
+	@SuppressWarnings("deprecation")
 	private void createTableHeader(HSSFSheet sheet) {
 		short colnumMax = 0;
 
@@ -329,6 +330,7 @@ public abstract class AbstractExcelExporter {
 	 * @param out
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	private void export(OutputStream out) throws Exception {
 		HSSFSheet sheet = createTableSheet();
 		String sheetName = null;

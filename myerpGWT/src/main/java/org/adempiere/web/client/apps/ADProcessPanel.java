@@ -6,8 +6,8 @@ import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
-import org.adempiere.web.client.model.AdProcessModel;
-import org.adempiere.web.client.model.AdProcessArgModel;
+import org.adempiere.web.client.model.ADProcessModel;
+import org.adempiere.web.client.model.ADProcessArgModel;
 import org.adempiere.web.client.widget.ConfirmToolBar;
 
 import com.google.gwt.core.client.GWT;
@@ -40,14 +40,14 @@ public class ADProcessPanel implements IsWidget, ConfirmToolListener {
 	@UiField
 	CardLayoutContainer		layoutContainer;
 	private Widget			widget;
-	private AdProcessModel	processModel;
+	private ADProcessModel	processModel;
 
-	public ADProcessPanel(AdProcessModel process) {
+	public ADProcessPanel(ADProcessModel process) {
 		super();
 		this.processModel = process;
 	}
 
-	public AdProcessModel getProcessModel() {
+	public ADProcessModel getProcessModel() {
 		return processModel;
 	}
 
@@ -61,10 +61,10 @@ public class ADProcessPanel implements IsWidget, ConfirmToolListener {
 		return widget;
 	}
 
-	private void initWindow(AdProcessModel processModel) {
+	private void initWindow(ADProcessModel processModel) {
 		nameLabel = new Label(processModel.getName());
 		descLabel = new Label(processModel.getDescription(), true);
-		List<AdProcessArgModel> fieldList = processModel.getParamList();
+		List<ADProcessArgModel> fieldList = processModel.getParamList();
 		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
 		formStrategy.setDisableKey(false);
 		formStrategy.setCreateGridEditor(false);

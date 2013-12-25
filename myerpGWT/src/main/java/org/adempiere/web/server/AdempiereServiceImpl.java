@@ -34,7 +34,7 @@ import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.model.ADTreeNode;
 import org.adempiere.web.client.model.ADWindowModel;
-import org.adempiere.web.client.model.AdProcessModel;
+import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.util.StringUtil;
 
@@ -319,8 +319,8 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public AdProcessModel getADProcessModel(long processId) {
-		AdProcessModel processModel = null;
+	public ADProcessModel getADProcessModel(long processId) {
+		ADProcessModel processModel = null;
 		try {
 			EntityManager em = getEntityManager();
 			TypedQuery<AdProcess> query = em.createNamedQuery("queryProcessWithParamsByProcessId", AdProcess.class);
