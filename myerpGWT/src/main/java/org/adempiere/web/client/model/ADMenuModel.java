@@ -1,15 +1,12 @@
 package org.adempiere.web.client.model;
 
-import java.io.Serializable;
-
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 
 import com.google.gwt.resources.client.ImageResource;
 import com.sencha.gxt.data.shared.IconProvider;
 
-public class ADMenuModel implements Serializable, ADTreeNode {
-	private static final long	serialVersionUID	= 1L;
+public class ADMenuModel implements IsADRPCModel, ADTreeNode {
 	private String				isactive;
 	private Long				adMenuId;
 	private Long				parentId;

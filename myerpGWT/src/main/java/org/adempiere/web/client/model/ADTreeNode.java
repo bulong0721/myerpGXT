@@ -1,6 +1,5 @@
 package org.adempiere.web.client.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,7 @@ import com.sencha.gxt.data.shared.loader.LoadEvent;
 import com.sencha.gxt.data.shared.loader.LoadHandler;
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 
-public interface ADTreeNode extends Serializable {
+public interface ADTreeNode extends IsADRPCModel {
 
 	String getName();
 

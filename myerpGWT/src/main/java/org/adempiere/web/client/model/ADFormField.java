@@ -2,7 +2,7 @@ package org.adempiere.web.client.model;
 
 import org.adempiere.model.common.DisplayType;
 
-public interface ADFormField {
+public interface ADFormField extends IsADRPCModel {
 
 	Integer getAdReferenceId();
 

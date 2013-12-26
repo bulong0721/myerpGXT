@@ -8,6 +8,7 @@ import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.form.AbstractForm;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADProcessModel;
+import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.service.AdempiereService;
@@ -108,15 +109,21 @@ public class TabbedDesktop implements IDesktop {
 	}
 
 	@Override
-	public void openWindow(String name, long iWindowId) {
+	public void openWindow(final String name, long iWindowId) {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
-		ADWindowPanel windowPanel = new ADWindowPanel(iWindowId);
-		TabItemConfig config = new TabItemConfig(name, true);
-		config.setIcon(getIcon(MenuActionType.Window));
-		tabPanel.add(windowPanel, config);
-		tabPanel.setActiveWidget(windowPanel);
+		AsyncCallback<ADWindowModel> callback = new AsyncSuccessCallback<ADWindowModel>() {
+			@Override
+			public void onSuccess(ADWindowModel windowModel) {
+				ADWindowPanel windowPanel = new ADWindowPanel(windowModel);
+				TabItemConfig config = new TabItemConfig(name, true);
+				config.setIcon(getIcon(MenuActionType.Window));
+				tabPanel.add(windowPanel, config);
+				tabPanel.setActiveWidget(windowPanel);
+			}
+		};
+		adempiereService.getADWindowModel(iWindowId, callback);
 	}
 
 	protected ImageResource getIcon(MenuActionType action) {

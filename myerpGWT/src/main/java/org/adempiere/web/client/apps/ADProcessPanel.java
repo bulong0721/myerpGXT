@@ -2,25 +2,25 @@ package org.adempiere.web.client.apps;
 
 import java.util.List;
 
-import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.ADFormBuilder;
+import org.adempiere.web.client.component.ADDialog;
+import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
-import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADProcessArgModel;
+import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.widget.ConfirmToolBar;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.resources.ThemeStyles;
 import com.sencha.gxt.core.client.resources.ThemeStyles.Styles;
 import com.sencha.gxt.widget.core.client.container.CardLayoutContainer;
 
-public class ADProcessPanel implements IsWidget, ConfirmToolListener {
+public class ADProcessPanel extends ADDialog implements ConfirmToolListener {
 
 	private static ADProcessPanelUiBinder	uiBinder	= GWT.create(ADProcessPanelUiBinder.class);
 
@@ -81,14 +81,12 @@ public class ADProcessPanel implements IsWidget, ConfirmToolListener {
 
 	@Override
 	public void onOK() {
-		// TODO Auto-generated method stub
-
+		hide();
 	}
 
 	@Override
 	public void onCancel() {
-		// TODO Auto-generated method stub
-
+		hide();
 	}
 
 }

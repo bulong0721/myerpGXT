@@ -1,9 +1,7 @@
 package org.adempiere.web.client.model;
 
-import java.io.Serializable;
 
-public class ADFormModel implements Serializable {
-	private static final long	serialVersionUID	= 1L;
+public class ADFormModel implements IsADRPCModel {
 	private long				adFormId;
 	private String				accesslevel;
 	private Long				adClientId;

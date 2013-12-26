@@ -3,7 +3,7 @@ package org.adempiere.web.client.component;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.web.client.event.FieldButtonListener;
+import org.adempiere.web.client.event.ActionListener;
 import org.adempiere.web.client.model.ADFormField;
 import org.adempiere.web.client.model.ADMapData;
 import org.adempiere.web.client.util.StringUtil;
@@ -22,7 +22,7 @@ public class ADFormBuilder {
 	private boolean						disableKey			= true;
 	private boolean						createFormEditor	= true;
 	private boolean						createGridEditor	= true;
-	private FieldButtonListener			fieldButtonListener;
+	private ActionListener			fieldButtonListener;
 	private boolean						isCreated;
 
 	public ADFormBuilder(List<? extends ADFormField> fieldList) {
@@ -86,11 +86,11 @@ public class ADFormBuilder {
 		return null;
 	}
 
-	public FieldButtonListener getFieldButtonListener() {
+	public ActionListener getFieldButtonListener() {
 		return fieldButtonListener;
 	}
 
-	public void setFieldButtonListener(FieldButtonListener fieldButtonListener) {
+	public void setFieldButtonListener(ActionListener fieldButtonListener) {
 		this.fieldButtonListener = fieldButtonListener;
 	}
 

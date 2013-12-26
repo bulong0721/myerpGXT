@@ -1,9 +1,7 @@
 package org.adempiere.web.client.model;
 
-import java.io.Serializable;
 
-public class ADJSONData implements Serializable {
-	private static final long	serialVersionUID	= 1L;
+public class ADJSONData implements IsADRPCModel {
 	private String				data;
 	private long				totalCount;
 	private int					offset;

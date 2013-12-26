@@ -1,10 +1,8 @@
 package org.adempiere.web.client.model;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class ADWindowModel implements Serializable {
-	private static final long	serialVersionUID	= 1L;
+public class ADWindowModel implements IsADRPCModel {
 	private List<ADTabModel>	tabList;
 	private long				activeTabId;
 	private long				adWindowId;

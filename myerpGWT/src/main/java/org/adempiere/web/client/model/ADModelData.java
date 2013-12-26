@@ -1,14 +1,11 @@
 package org.adempiere.web.client.model;
 
-import java.io.Serializable;
-
 import org.adempiere.model.common.DisplayType;
 import org.adempiere.web.client.util.JSOUtil;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class ADModelData implements Serializable, ADMapData {
-	private static final long	serialVersionUID	= 1L;
+public class ADModelData implements IsADRPCModel, ADMapData {
 	private JavaScriptObject	jso;
 
 	public ADModelData() {

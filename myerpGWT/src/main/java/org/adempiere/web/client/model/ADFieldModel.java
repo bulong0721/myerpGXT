@@ -1,11 +1,8 @@
 package org.adempiere.web.client.model;
 
-import java.io.Serializable;
-
 import org.adempiere.model.common.DisplayType;
 
-public class ADFieldModel implements Serializable, ADFormField {
-	private static final long	serialVersionUID	= 1L;
+public class ADFieldModel implements IsADRPCModel, ADFormField {
 	private Long				adProcessId;
 	private Integer				adReferenceId;
 	private Long				adReferenceValueId;

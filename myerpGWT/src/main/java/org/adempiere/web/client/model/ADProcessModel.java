@@ -1,10 +1,8 @@
 package org.adempiere.web.client.model;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class ADProcessModel implements Serializable {
-	private static final long			serialVersionUID	= 1L;
+public class ADProcessModel implements IsADRPCModel {
 	private long						adProcessId;
 	private Long						adFormId;
 	private Long						adPrintformatId;

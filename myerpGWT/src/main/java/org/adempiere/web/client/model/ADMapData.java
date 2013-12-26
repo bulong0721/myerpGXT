@@ -10,7 +10,7 @@ import org.adempiere.web.client.util.StringUtil;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
-public interface ADMapData {
+public interface ADMapData extends IsADRPCModel {
 
 	public abstract void setValue(String path, Object value);
 

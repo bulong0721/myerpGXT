@@ -8,20 +8,28 @@ import org.adempiere.web.client.component.ADModelDriver;
 import org.adempiere.web.client.component.ADModelReader;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
-import org.adempiere.web.client.event.FieldButtonListener;
-import org.adempiere.web.client.model.ADFormField;
+import org.adempiere.web.client.event.ActionEvent;
+import org.adempiere.web.client.event.ActionListener;
+import org.adempiere.web.client.form.AbstractForm;
+import org.adempiere.web.client.model.ADFieldModel;
+import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
 import org.adempiere.web.client.model.ADMapData;
 import org.adempiere.web.client.model.ADMapData.ADModelKeyProvider;
 import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.model.ADModelData;
+import org.adempiere.web.client.model.ADProcessModel;
+import org.adempiere.web.client.model.ADResultPair;
 import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
+import org.adempiere.web.client.util.ClassUtil;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.LoggingUtil;
+import org.adempiere.web.client.util.StringUtil;
+import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.TabStatus;
 
@@ -44,6 +52,7 @@ import com.sencha.gxt.data.shared.loader.LoadHandler;
 import com.sencha.gxt.data.shared.loader.LoadResultListStoreBinding;
 import com.sencha.gxt.data.shared.loader.PagingLoadResult;
 import com.sencha.gxt.data.shared.loader.PagingLoader;
+import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
 import com.sencha.gxt.widget.core.client.box.MessageBox;
 import com.sencha.gxt.widget.core.client.container.CardLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.CancelEditEvent;
@@ -58,7 +67,7 @@ import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent.SelectionChangedHandler;
 import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
 
-public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
+public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 
 	private static ADTabPanelUiBinder	uiBinder	= GWT.create(ADTabPanelUiBinder.class);
 
@@ -73,7 +82,7 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 	private Widget											widget;
 	private ColumnModel<ADMapData>							cm;
 	private ListStore<ADMapData>							store;
-	private ADFormBuilder								tabStrategy;
+	private ADFormBuilder									tabStrategy;
 	private GridEditing<ADMapData>							gridEditing;
 	private ADModelDriver									adModelDriver;
 	private ADModelKeyProvider								keyProvider;
@@ -369,8 +378,51 @@ public class ADTabPanel implements IsWidget, FieldButtonListener, TabStatus {
 	}
 
 	@Override
-	public void onActionButton(ADFormField field) {
-		Info.display("adempiere", field.getName());
+	public void actionPerformed(ActionEvent event) {
+		// TODO actionPerformed
+		LoggingUtil.info("actionPerformed");
+		ADFieldModel field = (ADFieldModel) event.getSource();
+		String error = processCallout(field);
+		if (!StringUtil.isNullOrEmpty(error)) {
+			return;
+		}
+		doButtonAction4Field(field);
+	}
+
+	private String processCallout(ADFieldModel field) {
+		// TODO process callout
+		return StringUtil.EMPTY;
+	}
+
+	private void doButtonAction4Field(ADFieldModel field) {
+		if (hasChanges()) {
+			AlertMessageBox dialog = new AlertMessageBox("Adempiere", "Data has changes, please reload data!");
+			dialog.show();
+			return;
+		}
+		if (0 == field.getAdProcessId()) {
+			return;
+		}
+		AsyncCallback<ADResultPair<ADProcessModel, ADFormModel>> callback = new AsyncSuccessCallback<ADResultPair<ADProcessModel, ADFormModel>>() {
+			@Override
+			public void onSuccess(ADResultPair<ADProcessModel, ADFormModel> pair) {
+				ADProcessModel processModel = pair.getOne();
+				ADFormModel formModel = pair.getTwo();
+				if (null != formModel) {
+					AbstractForm form = ClassUtil.newInstance(formModel.getClassname());
+					if (null != form) {
+						form.setProcessInfo(processModel);
+						form.setWindow(WidgetUtil.createWindow(formModel.getName(), 600, 400));
+						form.show();
+					}
+				} else {
+					ADProcessPanel processPanel = new ADProcessPanel(pair.getOne());
+					processPanel.setWindow(WidgetUtil.createWindow(processModel.getName(), 600, 400));
+					processPanel.show();
+				}
+			}
+		};
+		adempiereService.getProcessWithFormModel(field.getAdProcessId(), callback);
 	}
 
 	public void loadData() {

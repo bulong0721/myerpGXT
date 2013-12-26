@@ -1,9 +1,7 @@
 package org.adempiere.web.client.model;
 
-import java.io.Serializable;
 
-public class ADResultWithError implements Serializable {
-	private static final long	serialVersionUID	= 1L;
+public class ADResultWithError implements IsADRPCModel {
 	private boolean				isSuccess;
 	private String				errorMessage;
 

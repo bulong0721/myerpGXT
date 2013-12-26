@@ -30,6 +30,7 @@ import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.ADResultPair;
 import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.model.ADTreeNode;
@@ -369,5 +370,17 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			e.printStackTrace();
 		}
 		return formModel;
+	}
+
+	@Override
+	public ADResultPair<ADProcessModel, ADFormModel> getProcessWithFormModel(long processId) {
+		System.out.println("Server:getProcessWithFormModel11111");
+		ADProcessModel processModel = getADProcessModel(processId);
+		ADFormModel formModel = null;
+		if (null != processModel.getAdFormId()) {
+			formModel = getADFormModel(processModel.getAdFormId());
+		}
+		System.out.println("Server:getProcessWithFormModel222222");
+		return new ADResultPair(processModel, formModel);
 	}
 }

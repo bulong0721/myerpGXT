@@ -11,6 +11,7 @@ import org.adempiere.model.common.ADExpression.FieldOperator;
 import org.adempiere.model.common.LookupValue;
 import org.adempiere.web.client.component.ADFieldBuilder;
 import org.adempiere.web.client.component.ADFormBuilder;
+import org.adempiere.web.client.component.ADDialog;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.model.ADFieldModel;
@@ -24,11 +25,9 @@ import org.adempiere.web.client.widget.ConfirmToolBar;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
 import com.sencha.gxt.core.client.ValueProvider;
@@ -43,8 +42,6 @@ import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
 import com.sencha.gxt.widget.core.client.button.IconButton;
 import com.sencha.gxt.widget.core.client.event.BeforeStartEditEvent;
 import com.sencha.gxt.widget.core.client.event.BeforeStartEditEvent.BeforeStartEditHandler;
-import com.sencha.gxt.widget.core.client.event.HideEvent;
-import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.Field;
@@ -54,7 +51,7 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 import com.sencha.gxt.widget.core.client.treegrid.TreeGrid;
 
-public class ADFindPanel implements IsWidget, ConfirmToolListener {
+public class ADFindPanel extends ADDialog implements ConfirmToolListener {
 
 	private static final String			OPERATOR_BOOL_OR	= "**Or**";
 	private static final String			OPERATOR_BOOL_AND	= "**And**";
@@ -99,6 +96,10 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 			toolBar.setToolbarListener(this);
 		}
 		return widget;
+	}
+
+	public Window getWindow() {
+		return window;
 	}
 
 	@UiHandler({ "btnAdd" })
@@ -215,7 +216,8 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 				if (null != fieldStrategy) {
 					Field value1Editor = fieldStrategy.getGridEditor();
 					editing.addEditor(value1Column, fieldStrategy.getConverter(), value1Editor);
-					// editing.addEditor(value2Column, fieldStrategy.getConverter(), value1Editor);
+					// editing.addEditor(value2Column,
+					// fieldStrategy.getConverter(), value1Editor);
 				}
 			}
 		});
@@ -314,14 +316,6 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 		}
 	}
 
-	public HandlerRegistration addHideHandler(HideHandler handler) {
-		return window.addHandler(handler, HideEvent.getType());
-	}
-
-	public void show() {
-		window.show();
-	}
-
 	@Override
 	public void onHelp() {
 	}
@@ -329,12 +323,12 @@ public class ADFindPanel implements IsWidget, ConfirmToolListener {
 	@Override
 	public void onOK() {
 		usingCondition = true;
-		window.hide();
+		super.hide();
 	}
 
 	@Override
 	public void onCancel() {
-		window.hide();
+		super.hide();
 	}
 
 	public static class XKeyProvider implements ModelKeyProvider<ADExpression> {

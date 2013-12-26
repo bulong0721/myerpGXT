@@ -7,7 +7,8 @@ import java.util.Map;
 
 import org.adempiere.model.common.DisplayType;
 import org.adempiere.model.common.LookupValue;
-import org.adempiere.web.client.event.FieldButtonListener;
+import org.adempiere.web.client.event.ActionEvent;
+import org.adempiere.web.client.event.ActionListener;
 import org.adempiere.web.client.model.ADFormField;
 import org.adempiere.web.client.model.ADMapData;
 import org.adempiere.web.client.model.ADMapData.ADModelValueProvider;
@@ -21,7 +22,6 @@ import com.google.gwt.cell.client.Cell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
 import com.sencha.gxt.data.shared.Converter;
 import com.sencha.gxt.data.shared.LabelProvider;
@@ -41,7 +41,6 @@ import com.sencha.gxt.widget.core.client.form.NumberPropertyEditor.IntegerProper
 import com.sencha.gxt.widget.core.client.form.PasswordField;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
-import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class ADFieldBuilder {
@@ -54,7 +53,7 @@ public class ADFieldBuilder {
 	private boolean						showLabel	= true;
 	private Converter					converter;
 	private DisplayType					fieldType;
-	private ADFormBuilder			formStrategy;
+	private ADFormBuilder				formStrategy;
 
 	public ADFieldBuilder(ADFormBuilder formStrategy, ADFormField field) {
 		this.formStrategy = formStrategy;
@@ -223,12 +222,7 @@ public class ADFieldBuilder {
 
 		static OptionStore createOptionStore(String columnname, Integer display, Long adRefId) {
 			final OptionStore store = new OptionStore();
-			adempiereService.getOptions(columnname, display, adRefId, new AsyncCallback<List<LookupValue>>() {
-				@Override
-				public void onFailure(Throwable caught) {
-					Info.display("createOptionStore", caught.getMessage());
-				}
-
+			adempiereService.getOptions(columnname, display, adRefId, new AsyncSuccessCallback<List<LookupValue>>() {
 				@Override
 				public void onSuccess(List<LookupValue> result) {
 					store.addAll(result);
@@ -301,12 +295,12 @@ public class ADFieldBuilder {
 		fieldLabel.setWidget(formEditor);
 		if (field.getFieldType().isButton()) {
 			TextButton button = new TextButton(field.getName());
-			final FieldButtonListener listener = formStrategy.getFieldButtonListener();
+			final ActionListener listener = formStrategy.getFieldButtonListener();
 			if (null != listener) {
 				button.addSelectHandler(new SelectHandler() {
 					@Override
 					public void onSelect(SelectEvent event) {
-						listener.onActionButton(field);
+						listener.actionPerformed(new ActionEvent(field));
 					}
 				});
 			}

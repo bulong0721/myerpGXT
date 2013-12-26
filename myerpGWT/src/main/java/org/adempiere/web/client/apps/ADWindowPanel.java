@@ -3,17 +3,15 @@ package org.adempiere.web.client.apps;
 import java.util.List;
 
 import org.adempiere.model.common.ADExpression;
+import org.adempiere.web.client.component.ADDialog;
 import org.adempiere.web.client.component.ADTabContainer;
 import org.adempiere.web.client.component.ADTabContainer.TabItemConfig;
-import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.event.WindowToolListener;
 import org.adempiere.web.client.model.ADLoadConfig;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.presenter.interfaces.IContentView.IContentPresenter;
-import org.adempiere.web.client.service.AdempiereService;
-import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.widget.CHistoryWindow;
 import org.adempiere.web.client.widget.CHistoryWindow.History;
 import org.adempiere.web.client.widget.CWindowToolBar;
@@ -24,38 +22,33 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.event.HideEvent;
 import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 
-public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener {
+public class ADWindowPanel extends ADDialog implements  WindowStatus, WindowToolListener {
 
 	private static ADWindowPanelUiBinder	uiBinder	= GWT.create(ADWindowPanelUiBinder.class);
 
 	interface ADWindowPanelUiBinder extends UiBinder<Widget, ADWindowPanel> {
 	}
 
-	public ADWindowPanel() {
+	public ADWindowPanel(ADWindowModel windowModel) {
+		// this.adWindowId = adWindowId;
+		this.windowModel = windowModel;
 	}
 
-	public ADWindowPanel(Long adWindowId) {
-		this.adWindowId = adWindowId;
-	}
-
-	private AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
-	private IContentPresenter		contentPresenter;
-	private Long					adWindowId;
-	private Widget					widget;
-	private ADWindowModel			windowModel;
-	private ADTabPanel				currentTab;
-	private IDesktop				desktop;
+	private IContentPresenter	contentPresenter;
+	// private Long adWindowId;
+	private Widget				widget;
+	private ADWindowModel		windowModel;
+	private ADTabPanel			currentTab;
+	private IDesktop			desktop;
 	@UiField
-	CWindowToolBar					toolBar;
+	CWindowToolBar				toolBar;
 	@UiField
-	ADTabContainer					tabSet;
+	ADTabContainer				tabSet;
 
 	@Override
 	public Widget asWidget() {
@@ -64,7 +57,7 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 			Component container = (Component) widget;
 			container.show();
 			toolBar.addToolbarListener(this);
-			initWindow(adWindowId);
+			initWindow();
 		}
 		return widget;
 	}
@@ -81,39 +74,32 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 		currentTab = tabPanel;
 	}
 
-	private void initWindow(Long adWindowId) {
-		AsyncCallback<ADWindowModel> callback = new AsyncSuccessCallback<ADWindowModel>() {
-			@Override
-			public void onSuccess(ADWindowModel windowModel) {
-				ADWindowPanel.this.windowModel = windowModel;
-				tabSet.setMaxLevel(getMaxLevel(windowModel.getTabList()));
-				for (ADTabModel tabModel : windowModel.getTabList()) {
-					ADTabPanel tabPanel = new ADTabPanel(ADWindowPanel.this, tabModel, toolBar);
-					TabItemConfig itemCfg = new TabItemConfig(tabModel.getName(), tabPanel, tabModel.getTablevel());
-					tabSet.add(tabPanel, itemCfg);
-					if (null == currentTab) {
-						currentTab = tabPanel;
-					}
-				}
-				tabSet.setActiveIndex(0);
-				if (currentTab.getTabModel().getIsHighVolume()) {
-					onFind();
-				} else {
-					currentTab.loadData();
-				}
+	private int getMaxLevel(List<ADTabModel> tabs) {
+		int level = 0;
+		for (ADTabModel tabModel : tabs) {
+			if (tabModel.getTablevel() > level) {
+				level = tabModel.getTablevel();
 			}
+		}
+		return level;
+	}
 
-			private int getMaxLevel(List<ADTabModel> tabs) {
-				int level = 0;
-				for (ADTabModel tabModel : tabs) {
-					if (tabModel.getTablevel() > level) {
-						level = tabModel.getTablevel();
-					}
-				}
-				return level;
+	private void initWindow() {
+		tabSet.setMaxLevel(getMaxLevel(windowModel.getTabList()));
+		for (ADTabModel tabModel : windowModel.getTabList()) {
+			ADTabPanel tabPanel = new ADTabPanel(ADWindowPanel.this, tabModel, toolBar);
+			TabItemConfig itemCfg = new TabItemConfig(tabModel.getName(), tabPanel, tabModel.getTablevel());
+			tabSet.add(tabPanel, itemCfg);
+			if (null == currentTab) {
+				currentTab = tabPanel;
 			}
-		};
-		adempiereService.getADWindowModel(adWindowId, callback);
+		}
+		tabSet.setActiveIndex(0);
+		if (currentTab.getTabModel().getIsHighVolume()) {
+			onFind();
+		} else {
+			currentTab.loadData();
+		}
 	}
 
 	public ADTabPanel getParentTab(ADTabPanel tabPanel) {
@@ -131,13 +117,13 @@ public class ADWindowPanel implements IsWidget, WindowStatus, WindowToolListener
 		return null;
 	}
 
-	public Long getAdWindowId() {
-		return adWindowId;
-	}
-
-	public void setAdWindowId(Long adWindowId) {
-		this.adWindowId = adWindowId;
-	}
+	// public Long getAdWindowId() {
+	// return adWindowId;
+	// }
+	//
+	// public void setAdWindowId(Long adWindowId) {
+	// this.adWindowId = adWindowId;
+	// }
 
 	@Override
 	public int getTotalCount() {

@@ -1,12 +1,10 @@
 package org.adempiere.web.client.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.adempiere.web.client.util.StringUtil;
 
-public class ADTabModel implements Serializable {
-	private static final long	serialVersionUID	= 1L;
+public class ADTabModel implements IsADRPCModel {
 	private List<ADFieldModel>	fieldList;
 	private long				adTabId;
 	private Long				adColumnId;

@@ -1,5 +1,5 @@
 package org.adempiere.web.client.model;
 
-public class ADLoginModel {
+public class ADLoginModel implements IsADRPCModel {
 
 }

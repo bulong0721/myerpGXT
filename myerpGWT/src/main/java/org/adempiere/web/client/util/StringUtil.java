@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class StringUtil {
 
-	private static final String	EMPTY	= "";
+	public static final String	EMPTY	= "";
 
 	/**
 	 * @param text
