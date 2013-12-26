@@ -374,13 +374,11 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 
 	@Override
 	public ADResultPair<ADProcessModel, ADFormModel> getProcessWithFormModel(long processId) {
-		System.out.println("Server:getProcessWithFormModel11111");
 		ADProcessModel processModel = getADProcessModel(processId);
 		ADFormModel formModel = null;
 		if (null != processModel.getAdFormId()) {
 			formModel = getADFormModel(processModel.getAdFormId());
 		}
-		System.out.println("Server:getProcessWithFormModel222222");
 		return new ADResultPair(processModel, formModel);
 	}
 }
