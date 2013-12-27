@@ -11,7 +11,7 @@ import org.adempiere.model.common.ADExpression.FieldOperator;
 import org.adempiere.model.common.LookupValue;
 import org.adempiere.web.client.component.ADFieldBuilder;
 import org.adempiere.web.client.component.ADFormBuilder;
-import org.adempiere.web.client.component.ADDialog;
+import org.adempiere.web.client.component.ADModalDialog;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.model.ADFieldModel;
@@ -51,7 +51,7 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 import com.sencha.gxt.widget.core.client.treegrid.TreeGrid;
 
-public class ADFindPanel extends ADDialog implements ConfirmToolListener {
+public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 
 	private static final String			OPERATOR_BOOL_OR	= "**Or**";
 	private static final String			OPERATOR_BOOL_AND	= "**And**";

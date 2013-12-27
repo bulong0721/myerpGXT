@@ -22,5 +22,5 @@ public interface IContentView extends ReverseViewInterface<IContentView.IContent
 
 	}
 
-	TabPanel getTabSet();
+	TabPanel getTabPanel();
 }

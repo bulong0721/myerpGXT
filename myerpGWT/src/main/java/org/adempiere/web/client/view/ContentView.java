@@ -31,7 +31,7 @@ public class ContentView extends BaseReverseView<IContentPresenter> implements I
 	}
 
 	@Override
-	public TabPanel getTabSet() {
+	public TabPanel getTabPanel() {
 		return tabPanel;
 	}
 

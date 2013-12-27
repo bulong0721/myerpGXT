@@ -3,48 +3,57 @@ package org.adempiere.web.client.apps;
 import java.util.List;
 
 import org.adempiere.web.client.component.ADFormBuilder;
-import org.adempiere.web.client.component.ADDialog;
+import org.adempiere.web.client.component.ADModalDialog;
 import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
+import org.adempiere.web.client.model.ADMapData;
+import org.adempiere.web.client.model.ADModelData;
 import org.adempiere.web.client.model.ADProcessArgModel;
 import org.adempiere.web.client.model.ADProcessModel;
+import org.adempiere.web.client.service.AdempiereService;
+import org.adempiere.web.client.service.AdempiereServiceAsync;
+import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.ConfirmToolBar;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.resources.ThemeStyles;
 import com.sencha.gxt.core.client.resources.ThemeStyles.Styles;
 import com.sencha.gxt.widget.core.client.container.CardLayoutContainer;
 
-public class ADProcessPanel extends ADDialog implements ConfirmToolListener {
+public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener {
 
 	private static ADProcessPanelUiBinder	uiBinder	= GWT.create(ADProcessPanelUiBinder.class);
 
 	interface ADProcessPanelUiBinder extends UiBinder<Widget, ADProcessPanel> {
 	}
 
+	private AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
 	@UiField(provided = true)
-	Styles					themeStyles	= ThemeStyles.getStyle();
+	Styles							themeStyles			= ThemeStyles.getStyle();
 	@UiField(provided = true)
-	ADReportViewer			reportViewer;
+	ADReportViewer					reportViewer;
 	@UiField(provided = true)
-	Label					nameLabel, descLabel;
+	Label							nameLabel, descLabel;
 	@UiField(provided = true)
-	AdModelEditor			prarmEditor;
+	AdModelEditor					prarmEditor;
 	@UiField
-	ConfirmToolBar			toolBar;
+	ConfirmToolBar					toolBar;
 	@UiField
-	CardLayoutContainer		layoutContainer;
-	private Widget			widget;
-	private ADProcessModel	processModel;
+	CardLayoutContainer				layoutContainer;
+	private Widget					widget;
+	private ADProcessModel			processModel;
+	private ADMapData				paramData;
 
 	public ADProcessPanel(ADProcessModel process) {
 		super();
 		this.processModel = process;
+		this.paramData = new ADModelData();
 	}
 
 	public ADProcessModel getProcessModel() {
@@ -70,18 +79,33 @@ public class ADProcessPanel extends ADDialog implements ConfirmToolListener {
 		formStrategy.setCreateGridEditor(false);
 		prarmEditor = new AdModelEditor(formStrategy);
 		prarmEditor.setLayoutWidth(0.52d);
+		prarmEditor.setValue(paramData);
 		reportViewer = new ADReportViewer(processModel.getAdProcessId());
 	}
 
 	@Override
 	public void onHelp() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void onOK() {
-		hide();
+		WidgetUtil.mask(widget, "process on server...");
+		AsyncCallback<String> callback = new AsyncCallback<String>() {
+			@Override
+			public void onFailure(Throwable caught) {
+				WidgetUtil.unmask(widget);
+			}
+			@Override
+			public void onSuccess(String result) {
+				WidgetUtil.unmask(widget);
+				if (processModel.getIsreport()) {
+					layoutContainer.setActiveWidget(reportViewer);
+				}
+				hide();
+			}
+		};
+		adempiereService.executeProcess(processModel, paramData.toString(), callback);
 	}
 
 	@Override

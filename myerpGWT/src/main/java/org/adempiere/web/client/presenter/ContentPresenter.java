@@ -3,6 +3,7 @@ package org.adempiere.web.client.presenter;
 import org.adempiere.model.common.MenuActionType;
 import org.adempiere.web.client.MyerpEventBus;
 import org.adempiere.web.client.desktop.IDesktop;
+import org.adempiere.web.client.desktop.IDesktopHolder;
 import org.adempiere.web.client.desktop.TabbedDesktop;
 import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.presenter.interfaces.IContentView;
@@ -16,23 +17,27 @@ import com.mvp4g.client.presenter.BasePresenter;
 public class ContentPresenter extends BasePresenter<IContentView, MyerpEventBus> implements IContentPresenter {
 	private IDesktop	desktop;
 
-	public IDesktop onGetDesktop() {
+	private IDesktop getDesktop() {
+		if (null == desktop) {
+			desktop = new TabbedDesktop(getView().getTabPanel());
+		}
 		return desktop;
+	}
+
+	public void onInjectDesktop(IDesktopHolder desktopHolder) {
+		desktopHolder.setDesktop(getDesktop());
 	}
 
 	public void onShowPage(ADMenuModel node) {
 		MenuActionType action = MenuActionType.fromString(node.getAction());
-		if (null == desktop) {
-			desktop = new TabbedDesktop(getView().getTabSet());
-		}
 		if (action.isWindow()) {
-			onGetDesktop().openWindow(node.getName(), node.getAdWindowId());
+			getDesktop().openWindow(node.getName(), node.getAdWindowId());
 		} else if (action.isReport()) {
-			onGetDesktop().openReport(node.getName(), node.getAdProcessId());
+			getDesktop().openReport(node.getName(), node.getAdProcessId());
 		} else if (action.isProcess()) {
-			onGetDesktop().openPorcess(node.getName(), node.getAdProcessId());
+			getDesktop().openPorcess(node.getName(), node.getAdProcessId());
 		} else if (action.isForm()) {
-			onGetDesktop().openForm(node.getName(), node.getAdFormId());
+			getDesktop().openForm(node.getName(), node.getAdFormId());
 		}
 	}
 

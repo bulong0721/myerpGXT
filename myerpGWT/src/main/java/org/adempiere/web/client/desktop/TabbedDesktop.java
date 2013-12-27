@@ -3,7 +3,6 @@ package org.adempiere.web.client.desktop;
 import org.adempiere.model.common.MenuActionType;
 import org.adempiere.web.client.apps.ADProcessPanel;
 import org.adempiere.web.client.apps.ADWindowPanel;
-import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.form.AbstractForm;
 import org.adempiere.web.client.model.ADFormModel;
@@ -97,15 +96,26 @@ public class TabbedDesktop implements IDesktop {
 	}
 
 	@Override
-	public void openReport(String name, long iProcessId) {
+	public void openReport(final String name, long iProcessId) {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
-		ADReportViewer viewer = new ADReportViewer(iProcessId);
-		TabItemConfig config = new TabItemConfig(name, true);
-		config.setIcon(getIcon(MenuActionType.Report));
-		tabPanel.add(viewer, config);
-		tabPanel.setActiveWidget(viewer);
+		AsyncCallback<ADProcessModel> callback = new AsyncSuccessCallback<ADProcessModel>() {
+			@Override
+			public void onSuccess(ADProcessModel result) {
+				ADProcessPanel panel = new ADProcessPanel(result);
+				TabItemConfig config = new TabItemConfig(name, true);
+				config.setIcon(getIcon(MenuActionType.Report));
+				tabPanel.add(panel, config);
+				tabPanel.setActiveWidget(panel);
+			}
+		};
+		adempiereService.getADProcessModel(iProcessId, callback);
+//		ADReportViewer viewer = new ADReportViewer(iProcessId);
+//		TabItemConfig config = new TabItemConfig(name, true);
+//		config.setIcon(getIcon(MenuActionType.Report));
+//		tabPanel.add(viewer, config);
+//		tabPanel.setActiveWidget(viewer);
 	}
 
 	@Override

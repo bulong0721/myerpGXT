@@ -3,7 +3,7 @@ package org.adempiere.web.client.apps;
 import java.util.List;
 
 import org.adempiere.model.common.ADExpression;
-import org.adempiere.web.client.component.ADDialog;
+import org.adempiere.web.client.component.ADModalDialog;
 import org.adempiere.web.client.component.ADTabContainer;
 import org.adempiere.web.client.component.ADTabContainer.TabItemConfig;
 import org.adempiere.web.client.desktop.IDesktop;
@@ -27,7 +27,7 @@ import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.event.HideEvent;
 import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 
-public class ADWindowPanel extends ADDialog implements  WindowStatus, WindowToolListener {
+public class ADWindowPanel extends ADModalDialog implements  WindowStatus, WindowToolListener {
 
 	private static ADWindowPanelUiBinder	uiBinder	= GWT.create(ADWindowPanelUiBinder.class);
 
@@ -35,12 +35,10 @@ public class ADWindowPanel extends ADDialog implements  WindowStatus, WindowTool
 	}
 
 	public ADWindowPanel(ADWindowModel windowModel) {
-		// this.adWindowId = adWindowId;
 		this.windowModel = windowModel;
 	}
 
 	private IContentPresenter	contentPresenter;
-	// private Long adWindowId;
 	private Widget				widget;
 	private ADWindowModel		windowModel;
 	private ADTabPanel			currentTab;

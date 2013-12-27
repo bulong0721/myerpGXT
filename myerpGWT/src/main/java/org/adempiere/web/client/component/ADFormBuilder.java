@@ -18,11 +18,11 @@ import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 
 public class ADFormBuilder {
 	private List<? extends ADFormField>	fieldList;
-	private List<ADFieldBuilder>	fieldStrategies;
+	private List<ADFieldBuilder>		fieldStrategies;
 	private boolean						disableKey			= true;
 	private boolean						createFormEditor	= true;
 	private boolean						createGridEditor	= true;
-	private ActionListener			fieldButtonListener;
+	private ActionListener				fieldButtonListener;
 	private boolean						isCreated;
 
 	public ADFormBuilder(List<? extends ADFormField> fieldList) {

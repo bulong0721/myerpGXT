@@ -41,6 +41,11 @@ public class ADModelData implements IsADRPCModel, ADMapData {
 	public JavaScriptObject getJso() {
 		return jso;
 	}
+	
+	@Override
+	public String toString() {
+		return JSOUtil.toString(jso);
+	}
 
 	/* (non-Javadoc)
 	 * @see org.adempiere.web.client.model.MapAccessable#deepClone()

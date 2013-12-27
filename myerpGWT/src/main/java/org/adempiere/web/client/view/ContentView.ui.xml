@@ -18,7 +18,7 @@
 		}
 	</ui:style>
 	<container:SimpleContainer>
-		<gxt:TabPanel ui:field="tabPanel">
+		<gxt:TabPanel ui:field="tabPanel" closeContextMenu="true" tabScroll="true" animScroll="true">
 			<gxt:child config="{shortTextTabConfig}">
 				<container:PortalLayoutContainer numColumns="2" styleName="{style.background}">
 					<container:portlet column="0">

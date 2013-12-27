@@ -28,7 +28,6 @@ import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.ClassUtil;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.LoggingUtil;
-import org.adempiere.web.client.util.StringUtil;
 import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.TabStatus;
@@ -118,8 +117,8 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 	}
 
 	private void onRender() {
-		createGrid();
 		createForm();
+		createGrid();
 	}
 
 	private void createGrid() {
@@ -193,11 +192,11 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 
 	private void createForm() {
 		formEditing = new AdModelEditor(tabStrategy);
+		formEditing.asWidget();
 	}
 
 	private void createTree() {
 		if (tabModel.getHasTree()) {
-			LoggingUtil.info("rander tree");
 			ADTreePanel treepanel = new ADTreePanel(ADMenuModel.TREE_ID);
 			treePlaceHolder.setWidget(treepanel);
 			treePlaceHolder.setWidth("200");
@@ -215,7 +214,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			adModelDriver.initialize(formEditing);
 		}
 		if (isGridMode()) {
-			// MapAccessable data = adModelDriver.flush();
+			// ADMapData data = adModelDriver.flush();
 			// store.update(data);
 		} else {
 			ADMapData selectedItem = grid.getSelectionModel().getSelectedItem();
@@ -379,50 +378,54 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		// TODO actionPerformed
-		LoggingUtil.info("actionPerformed");
-		ADFieldModel field = (ADFieldModel) event.getSource();
-		String error = processCallout(field);
-		if (!StringUtil.isNullOrEmpty(error)) {
-			return;
-		}
-		doButtonAction4Field(field);
-	}
-
-	private String processCallout(ADFieldModel field) {
-		// TODO process callout
-		return StringUtil.EMPTY;
-	}
-
-	private void doButtonAction4Field(ADFieldModel field) {
-		if (hasChanges()) {
-			AlertMessageBox dialog = new AlertMessageBox("Adempiere", "Data has changes, please reload data!");
-			dialog.show();
-			return;
-		}
-		if (0 == field.getAdProcessId()) {
-			return;
-		}
-		AsyncCallback<ADResultPair<ADProcessModel, ADFormModel>> callback = new AsyncSuccessCallback<ADResultPair<ADProcessModel, ADFormModel>>() {
+		ADFieldModel fieldModel = (ADFieldModel) event.getSource();
+		AsyncCallback<ADFieldModel> callback = new AsyncSuccessCallback<ADFieldModel>() {
 			@Override
-			public void onSuccess(ADResultPair<ADProcessModel, ADFormModel> pair) {
-				ADProcessModel processModel = pair.getOne();
-				ADFormModel formModel = pair.getTwo();
-				if (null != formModel) {
-					AbstractForm form = ClassUtil.newInstance(formModel.getClassname());
-					if (null != form) {
-						form.setProcessInfo(processModel);
-						form.setWindow(WidgetUtil.createWindow(formModel.getName(), 600, 400));
-						form.show();
+			public void onSuccess(ADFieldModel field) {
+				if (hasChanges()) {
+					AlertMessageBox dialog = new AlertMessageBox("Adempiere", "Data has changes, please reload data!");
+					dialog.show();
+					return;
+				}
+				if (0 == field.getAdProcessId()) {
+					return;
+				}
+				AsyncCallback<ADResultPair<ADProcessModel, ADFormModel>> callback = new AsyncSuccessCallback<ADResultPair<ADProcessModel, ADFormModel>>() {
+					@Override
+					public void onSuccess(ADResultPair<ADProcessModel, ADFormModel> pair) {
+						ADProcessModel processModel = pair.getOne();
+						ADFormModel formModel = pair.getTwo();
+						if (null != formModel) {
+							AbstractForm form = ClassUtil.newInstance(formModel.getClassname());
+							if (null != form) {
+								form.setProcessInfo(processModel);
+								form.setWindow(WidgetUtil.createWindow(formModel.getName(), 600, 400));
+								form.show();
+							}
+						} else {
+							ADProcessPanel processPanel = new ADProcessPanel(pair.getOne());
+							processPanel.setWindow(WidgetUtil.createWindow("", 600, 400));
+							processPanel.show();
+						}
 					}
-				} else {
-					ADProcessPanel processPanel = new ADProcessPanel(pair.getOne());
-					processPanel.setWindow(WidgetUtil.createWindow(processModel.getName(), 600, 400));
-					processPanel.show();
+				};
+				adempiereService.getProcessWithFormModel(field.getAdProcessId(), callback);
+			}
+		};
+		processCallout(fieldModel, callback);
+	}
+
+	private void processCallout(final ADFieldModel field, final AsyncCallback<ADFieldModel> procCallback) {
+		AsyncCallback<String> callback = new AsyncSuccessCallback<String>() {
+			@Override
+			public void onSuccess(String result) {
+				if (null != procCallback) {
+					procCallback.onSuccess(field);
 				}
 			}
 		};
-		adempiereService.getProcessWithFormModel(field.getAdProcessId(), callback);
+		ADMapData row = grid.getSelectionModel().getSelectedItem();
+		adempiereService.processCallout(field, row.toString(), callback);
 	}
 
 	public void loadData() {

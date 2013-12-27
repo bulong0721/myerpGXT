@@ -74,12 +74,6 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		return ADResultWithError.newSuccess();
 	}
 
-	// @Override
-	// public Boolean addNewData(AdTab tabModel) {
-	// // TODO Auto-generated method stub
-	// return true;
-	// }
-
 	@Override
 	public ADUserContext getADUserContext() {
 		// TODO Auto-generated method stub
@@ -380,5 +374,24 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			formModel = getADFormModel(processModel.getAdFormId());
 		}
 		return new ADResultPair(processModel, formModel);
+	}
+
+	@Override
+	public String processCallout(ADFieldModel field, String rowJson) {
+		// TODO Auto-generated method stub
+		System.out.println("parameter json:" + rowJson);
+		return StringUtil.EMPTY;
+	}
+
+	@Override
+	public String executeProcess(ADProcessModel pModel, String paramJson) {
+		// TODO Auto-generated method stub
+		System.out.println("parameter json:" + paramJson);
+		try {
+			Thread.sleep(3000L);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return StringUtil.EMPTY;
 	}
 }

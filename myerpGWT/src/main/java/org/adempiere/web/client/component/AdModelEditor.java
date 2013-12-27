@@ -23,10 +23,11 @@ import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<Object>>, IsWidget {
-	private ADFormBuilder					tabStrategy;
+	private ADFormBuilder						tabStrategy;
 	private EditorChain<Object, Field<Object>>	chain;
-	private List<ADFieldBuilder>			fieldList;
+	private List<ADFieldBuilder>				fieldList;
 	private ADMapData							model;
+	private CssFloatLayoutContainer				container;
 	private double								layoutWidth	= 0.49d;
 	private int									labelWidth	= 135;
 
@@ -50,7 +51,8 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 
 	@Override
 	public Widget asWidget() {
-		CssFloatLayoutContainer container = new CssFloatLayoutContainer();
+		// if (null == container) {
+		container = new CssFloatLayoutContainer();
 		CssFloatLayoutContainer groupContainer = null;
 		String oldFieldGroup = null;
 		for (ADFieldBuilder fieldStrategy : tabStrategy.getFieldStrategies()) {
@@ -72,6 +74,8 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 				layoutFiled(container, fieldStrategy);
 			}
 		}
+		// LoggingUtil.info("xxxxxxxxxxxxxxxxxxx:" + tabStrategy);
+		// }
 		return container;
 	}
 

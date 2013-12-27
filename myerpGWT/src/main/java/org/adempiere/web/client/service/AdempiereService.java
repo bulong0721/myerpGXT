@@ -5,6 +5,7 @@ import java.util.List;
 import org.adempiere.model.common.ADUserContext;
 import org.adempiere.model.common.ADModelKey;
 import org.adempiere.model.common.LookupValue;
+import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
@@ -43,6 +44,10 @@ public interface AdempiereService extends RemoteService {
 	ADResultWithError updateData(String json, String tableName);
 
 	ADUserContext getADUserContext();
+	
+	String processCallout(ADFieldModel field, String rowJson);
+	
+	String executeProcess(ADProcessModel pModel, String paramJson);
 
 	Boolean logout();
 }
