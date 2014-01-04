@@ -27,8 +27,8 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.util.JRResourcesUtil;
 
 import org.adempiere.common.Language;
-import org.adempiere.model.common.ProcessInfo;
-import org.adempiere.model.core.AdAttachment;
+import org.adempiere.common.ProcessInfo;
+import org.adempiere.model.AdAttachment;
 import org.adempiere.process.ClientProcess;
 import org.adempiere.process.ProcessCall;
 import org.adempiere.process.ProcessContext;

@@ -2,10 +2,10 @@ package org.adempiere.web.client.model;
 
 
 public class ADFormModel implements IsADRPCModel {
-	private long				adFormId;
+	private Integer				adFormId;
 	private String				accesslevel;
-	private Long				adClientId;
-	private Long				adOrgId;
+	private Integer				adClientId;
+	private Integer				adOrgId;
 	private String				classname;
 	private String				description;
 	private String				help;
@@ -14,11 +14,11 @@ public class ADFormModel implements IsADRPCModel {
 	private String				jspurl;
 	private String				name;
 
-	public long getAdFormId() {
+	public Integer getAdFormId() {
 		return adFormId;
 	}
 
-	public void setAdFormId(long adFormId) {
+	public void setAdFormId(Integer adFormId) {
 		this.adFormId = adFormId;
 	}
 
@@ -30,19 +30,19 @@ public class ADFormModel implements IsADRPCModel {
 		this.accesslevel = accesslevel;
 	}
 
-	public Long getAdClientId() {
+	public Integer getAdClientId() {
 		return adClientId;
 	}
 
-	public void setAdClientId(Long adClientId) {
+	public void setAdClientId(Integer adClientId) {
 		this.adClientId = adClientId;
 	}
 
-	public Long getAdOrgId() {
+	public Integer getAdOrgId() {
 		return adOrgId;
 	}
 
-	public void setAdOrgId(Long adOrgId) {
+	public void setAdOrgId(Integer adOrgId) {
 		this.adOrgId = adOrgId;
 	}
 

@@ -13,7 +13,7 @@
 	<container:VerticalLayoutContainer>
 		<container:child>
 			<toolbar:ToolBar layoutData="{toolLayoutData}">
-				<g:Image url="images/icons/AdempiereHR.png" />
+				<g:Image width="200" height="41" url="images/icons/AdempiereHR.png" />
 				<toolbar:FillToolItem />
 				<!-- <g:Grid>
 					<g:row>

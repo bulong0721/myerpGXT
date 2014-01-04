@@ -1,6 +1,6 @@
 package org.adempiere.web.client.view;
 
-import org.adempiere.model.common.LookupValue;
+import org.adempiere.common.LookupValue;
 import org.adempiere.web.client.MyerpEventBus;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.presenter.interfaces.ILoginView;

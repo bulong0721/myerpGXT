@@ -3,7 +3,7 @@ package org.adempiere.web.client.component;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.model.common.DisplayType;
+import org.adempiere.common.DisplayType;
 import org.adempiere.web.client.model.ADFormField;
 import org.adempiere.web.client.model.ADMapData;
 import org.adempiere.web.client.util.StringUtil;

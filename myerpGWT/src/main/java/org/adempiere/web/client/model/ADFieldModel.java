@@ -1,11 +1,11 @@
 package org.adempiere.web.client.model;
 
-import org.adempiere.model.common.DisplayType;
+import org.adempiere.common.DisplayType;
 
 public class ADFieldModel implements IsADRPCModel, ADFormField {
-	private Long				adProcessId;
+	private Integer				adProcessId;
 	private Integer				adReferenceId;
-	private Long				adReferenceValueId;
+	private Integer				adReferenceValueId;
 	private String				callout;
 	private String				columnname;
 	private String				defaultvalue;
@@ -31,13 +31,13 @@ public class ADFieldModel implements IsADRPCModel, ADFormField {
 	private String				valuemax;
 	private String				valuemin;
 	private String				vformat;
-	private Long				adFieldId;
+	private Integer				adFieldId;
 
-	public Long getAdFieldId() {
+	public Integer getAdFieldId() {
 		return adFieldId;
 	}
 
-	public void setAdFieldId(Long adFieldId) {
+	public void setAdFieldId(Integer adFieldId) {
 		this.adFieldId = adFieldId;
 	}
 
@@ -45,11 +45,11 @@ public class ADFieldModel implements IsADRPCModel, ADFormField {
 		return DisplayType.fromInteger(adReferenceId);
 	}
 
-	public Long getAdProcessId() {
+	public Integer getAdProcessId() {
 		return adProcessId;
 	}
 
-	public void setAdProcessId(Long adProcessId) {
+	public void setAdProcessId(Integer adProcessId) {
 		this.adProcessId = adProcessId;
 	}
 
@@ -81,11 +81,11 @@ public class ADFieldModel implements IsADRPCModel, ADFormField {
 	 * @see org.adempiere.web.client.model.IAdParameter#getAdReferenceValueId()
 	 */
 	@Override
-	public Long getAdReferenceValueId() {
+	public Integer getAdReferenceValueId() {
 		return adReferenceValueId;
 	}
 
-	public void setAdReferenceValueId(Long adReferenceValueId) {
+	public void setAdReferenceValueId(Integer adReferenceValueId) {
 		this.adReferenceValueId = adReferenceValueId;
 	}
 

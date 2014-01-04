@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import org.adempiere.model.common.LookupValue;
+import org.adempiere.common.LookupValue;
 import org.adempiere.web.client.model.ADTreeNode;
 import org.adempiere.web.client.model.ADTreeNode.TreeKeyProvider;
 

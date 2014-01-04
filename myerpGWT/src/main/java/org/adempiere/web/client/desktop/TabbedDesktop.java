@@ -1,6 +1,6 @@
 package org.adempiere.web.client.desktop;
 
-import org.adempiere.model.common.MenuActionType;
+import org.adempiere.common.MenuActionType;
 import org.adempiere.web.client.apps.ADProcessPanel;
 import org.adempiere.web.client.apps.ADWindowPanel;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
@@ -44,7 +44,7 @@ public class TabbedDesktop implements IDesktop {
 	}
 
 	@Override
-	public void openPorcess(final String name, long iProcessId) {
+	public void openPorcess(final String name, Integer iProcessId) {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
@@ -62,7 +62,7 @@ public class TabbedDesktop implements IDesktop {
 	}
 
 	@Override
-	public void openForm(final String name, long adFormId) {
+	public void openForm(final String name, Integer adFormId) {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
@@ -86,17 +86,17 @@ public class TabbedDesktop implements IDesktop {
 	}
 
 	@Override
-	public void openTask(String name, long iTaskId) {
+	public void openTask(String name, Integer iTaskId) {
 
 	}
 
 	@Override
-	public void openWorkflow(String name, long iWorkflowId) {
+	public void openWorkflow(String name, Integer iWorkflowId) {
 
 	}
 
 	@Override
-	public void openReport(final String name, long iProcessId) {
+	public void openReport(final String name, Integer iProcessId) {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
@@ -119,7 +119,7 @@ public class TabbedDesktop implements IDesktop {
 	}
 
 	@Override
-	public void openWindow(final String name, long iWindowId) {
+	public void openWindow(final String name, Integer iWindowId) {
 		if (isAlreadyOpen(name)) {
 			return;
 		}

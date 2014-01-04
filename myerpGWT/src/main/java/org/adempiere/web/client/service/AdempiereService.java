@@ -2,9 +2,9 @@ package org.adempiere.web.client.service;
 
 import java.util.List;
 
-import org.adempiere.model.common.ADUserContext;
-import org.adempiere.model.common.ADModelKey;
-import org.adempiere.model.common.LookupValue;
+import org.adempiere.common.ADModelKey;
+import org.adempiere.common.ADUserContext;
+import org.adempiere.common.LookupValue;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
@@ -23,15 +23,15 @@ public interface AdempiereService extends RemoteService {
 
 	List<ADTreeNode> getAdMenuModels();
 
-	List<LookupValue> getOptions(String columnName, int type, Long adRefId);
+	List<LookupValue> getOptions(String columnName, int type, Integer adRefId);
 
-	ADWindowModel getADWindowModel(long windowId);
+	ADWindowModel getADWindowModel(Integer windowId);
 	
-	ADFormModel getADFormModel(long formId);
+	ADFormModel getADFormModel(Integer formId);
 
-	ADProcessModel getADProcessModel(long processId);
+	ADProcessModel getADProcessModel(Integer processId);
 	
-	ADResultPair<ADProcessModel, ADFormModel> getProcessWithFormModel(long processId);
+	ADResultPair<ADProcessModel, ADFormModel> getProcessWithFormModel(Integer processId);
 
 	ADJSONData getWindowTabData(ADLoadConfig loadCfg);
 

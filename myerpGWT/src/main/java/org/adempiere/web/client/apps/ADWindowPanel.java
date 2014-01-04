@@ -2,7 +2,7 @@ package org.adempiere.web.client.apps;
 
 import java.util.List;
 
-import org.adempiere.model.common.ADExpression;
+import org.adempiere.common.ADExpression;
 import org.adempiere.web.client.component.ADModalDialog;
 import org.adempiere.web.client.component.ADTabContainer;
 import org.adempiere.web.client.component.ADTabContainer.TabItemConfig;
@@ -198,7 +198,7 @@ public class ADWindowPanel extends ADModalDialog implements  WindowStatus, Windo
 		String name = "Report:" + currentTab.getTabModel().getName();
 		if (null != contentPresenter) {
 			// TODO 使用iTabId代替iProcessId
-			desktop.openReport(name, 0L);
+			desktop.openReport(name, 0);
 		}
 	}
 

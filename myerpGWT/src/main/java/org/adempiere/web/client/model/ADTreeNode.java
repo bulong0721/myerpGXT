@@ -3,6 +3,8 @@ package org.adempiere.web.client.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adempiere.web.client.util.LoggingUtil;
+
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.Store;
@@ -15,9 +17,9 @@ public interface ADTreeNode extends IsADRPCModel {
 
 	String getName();
 
-	Long getID();
+	Integer getID();
 
-	Long getParentID();
+	Integer getParentID();
 
 	boolean hasChildren();
 
@@ -35,6 +37,7 @@ public interface ADTreeNode extends IsADRPCModel {
 			List<ADTreeNode> children = getChildren(parent, loadResult);
 			if (null == parent) {
 				//TODO 当前只计算了一层结构，需要遍历到最后一层
+				LoggingUtil.info("children size:" + children.size());
 				store.add(children);
 			} else {
 				store.replaceChildren(parent, children);
@@ -43,7 +46,7 @@ public interface ADTreeNode extends IsADRPCModel {
 
 		protected List<ADTreeNode> getChildren(ADTreeNode parent, List<ADTreeNode> loadResult) {
 			List<ADTreeNode> children = new ArrayList<ADTreeNode>();
-			Long parentId = null == parent ? 0L : parent.getID();
+			Integer parentId = null == parent ? 0 : parent.getID();
 			for (ADTreeNode model : loadResult) {
 				if (parentId.equals(model.getParentID())) {
 					children.add(model);

@@ -1,12 +1,12 @@
 package org.adempiere.web.client.model;
 
-import org.adempiere.model.common.DisplayType;
+import org.adempiere.common.DisplayType;
 
 public interface ADFormField extends IsADRPCModel {
 
 	Integer getAdReferenceId();
 
-	Long getAdReferenceValueId();
+	Integer getAdReferenceValueId();
 
 	String getColumnname();
 

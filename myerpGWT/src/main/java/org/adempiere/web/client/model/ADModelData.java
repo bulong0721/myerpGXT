@@ -1,6 +1,6 @@
 package org.adempiere.web.client.model;
 
-import org.adempiere.model.common.DisplayType;
+import org.adempiere.common.DisplayType;
 import org.adempiere.web.client.util.JSOUtil;
 
 import com.google.gwt.core.client.JavaScriptObject;

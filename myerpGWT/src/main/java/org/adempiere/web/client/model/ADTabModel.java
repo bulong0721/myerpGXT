@@ -6,11 +6,11 @@ import org.adempiere.web.client.util.StringUtil;
 
 public class ADTabModel implements IsADRPCModel {
 	private List<ADFieldModel>	fieldList;
-	private long				adTabId;
-	private Long				adColumnId;
-	private Long				adTableId;
-	private Long				parentColumnId;
-	private Long				seqno;
+	private Integer				adTabId;
+	private Integer				adColumnId;
+	private Integer				adTableId;
+	private Integer				parentColumnId;
+	private Integer				seqno;
 	private Integer				tablevel;
 	private Boolean				isinfotab;
 	private Boolean				isinsertrecord;
@@ -55,43 +55,43 @@ public class ADTabModel implements IsADRPCModel {
 		this.tablename = tablename;
 	}
 
-	public long getAdTabId() {
+	public Integer getAdTabId() {
 		return adTabId;
 	}
 
-	public void setAdTabId(long adTabId) {
+	public void setAdTabId(Integer adTabId) {
 		this.adTabId = adTabId;
 	}
 
-	public Long getAdColumnId() {
+	public Integer getAdColumnId() {
 		return adColumnId;
 	}
 
-	public void setAdColumnId(Long adColumnId) {
+	public void setAdColumnId(Integer adColumnId) {
 		this.adColumnId = adColumnId;
 	}
 
-	public Long getAdTableId() {
+	public Integer getAdTableId() {
 		return adTableId;
 	}
 
-	public void setAdTableId(Long adTableId) {
+	public void setAdTableId(Integer adTableId) {
 		this.adTableId = adTableId;
 	}
 
-	public Long getParentColumnId() {
+	public Integer getParentColumnId() {
 		return parentColumnId;
 	}
 
-	public void setParentColumnId(Long parentColumnId) {
+	public void setParentColumnId(Integer parentColumnId) {
 		this.parentColumnId = parentColumnId;
 	}
 
-	public Long getSeqno() {
+	public Integer getSeqno() {
 		return seqno;
 	}
 
-	public void setSeqno(Long seqno) {
+	public void setSeqno(Integer seqno) {
 		this.seqno = seqno;
 	}
 

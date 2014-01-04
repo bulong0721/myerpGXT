@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.adempiere.model.common.ADExpression;
-import org.adempiere.model.common.ADExpression.ADPredicate;
-import org.adempiere.model.common.ADExpression.BooleanOperator;
-import org.adempiere.model.common.ADExpression.FieldOperator;
-import org.adempiere.model.common.LookupValue;
+import org.adempiere.common.ADExpression;
+import org.adempiere.common.LookupValue;
+import org.adempiere.common.ADExpression.ADPredicate;
+import org.adempiere.common.ADExpression.BooleanOperator;
+import org.adempiere.common.ADExpression.FieldOperator;
 import org.adempiere.web.client.component.ADFieldBuilder;
 import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.ADModalDialog;

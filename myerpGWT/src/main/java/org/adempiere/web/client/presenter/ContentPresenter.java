@@ -1,6 +1,6 @@
 package org.adempiere.web.client.presenter;
 
-import org.adempiere.model.common.MenuActionType;
+import org.adempiere.common.MenuActionType;
 import org.adempiere.web.client.MyerpEventBus;
 import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.desktop.IDesktopHolder;

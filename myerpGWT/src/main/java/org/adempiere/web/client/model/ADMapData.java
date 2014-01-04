@@ -3,8 +3,8 @@ package org.adempiere.web.client.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.model.common.ADModelKey;
-import org.adempiere.model.common.DisplayType;
+import org.adempiere.common.ADModelKey;
+import org.adempiere.common.DisplayType;
 import org.adempiere.web.client.util.StringUtil;
 
 import com.sencha.gxt.core.client.ValueProvider;

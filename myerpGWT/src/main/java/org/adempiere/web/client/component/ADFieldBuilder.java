@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.adempiere.model.common.DisplayType;
-import org.adempiere.model.common.LookupValue;
+import org.adempiere.common.DisplayType;
+import org.adempiere.common.LookupValue;
 import org.adempiere.web.client.event.ActionEvent;
 import org.adempiere.web.client.event.ActionListener;
 import org.adempiere.web.client.model.ADFormField;
@@ -220,7 +220,7 @@ public class ADFieldBuilder {
 		private static Map<String, OptionStore>	optionStoreMap		= new HashMap<String, OptionStore>();
 		private static AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
 
-		static OptionStore createOptionStore(String columnname, Integer display, Long adRefId) {
+		static OptionStore createOptionStore(String columnname, Integer display, Integer adRefId) {
 			final OptionStore store = new OptionStore();
 			adempiereService.getOptions(columnname, display, adRefId, new AsyncSuccessCallback<List<LookupValue>>() {
 				@Override
@@ -231,7 +231,7 @@ public class ADFieldBuilder {
 			return store;
 		}
 
-		public static OptionStore getOptionStore(String columnname, Integer displayType, Long adRefId) {
+		public static OptionStore getOptionStore(String columnname, Integer displayType, Integer adRefId) {
 			if (optionStoreMap.containsKey(adRefId)) {
 				return optionStoreMap.get(columnname + adRefId);
 			}

@@ -3,42 +3,42 @@ package org.adempiere.web.client.model;
 import java.util.List;
 
 public class ADProcessModel implements IsADRPCModel {
-	private long						adProcessId;
-	private Long						adFormId;
-	private Long						adPrintformatId;
-	private Long						adReportviewId;
-	private Long						adWorkflowId;
-	private String						classname;
-	private String						copyfromprocess;
-	private Boolean						isactive;
-	private Boolean						isdirectprint;
-	private Boolean						isreport;
-	private Boolean						isserverprocess;
-	private String						jasperreport;
-	private String						name;
-	private String						description;
-	private String						procedurename;
-	private String						value;
-	private String						workflowvalue;
+	private Integer					adProcessId;
+	private Integer					adFormId;
+	private Integer					adPrintformatId;
+	private Integer					adReportviewId;
+	private Integer					adWorkflowId;
+	private String					classname;
+	private String					copyfromprocess;
+	private Boolean					isactive;
+	private Boolean					isdirectprint;
+	private Boolean					isreport;
+	private Boolean					isserverprocess;
+	private String					jasperreport;
+	private String					name;
+	private String					description;
+	private String					procedurename;
+	private String					value;
+	private String					workflowvalue;
 	private List<ADProcessArgModel>	paramList;
 
-	public long getAdProcessId() {
+	public Integer getAdProcessId() {
 		return adProcessId;
 	}
 
-	public void setAdProcessId(long adProcessId) {
+	public void setAdProcessId(Integer adProcessId) {
 		this.adProcessId = adProcessId;
 	}
 
-	public Long getAdFormId() {
+	public Integer getAdFormId() {
 		return adFormId;
 	}
 
-	public void setAdFormId(Long adFormId) {
+	public void setAdFormId(Integer adFormId) {
 		this.adFormId = adFormId;
 	}
 
-	public Long getAdPrintformatId() {
+	public Integer getAdPrintformatId() {
 		return adPrintformatId;
 	}
 
@@ -74,23 +74,23 @@ public class ADProcessModel implements IsADRPCModel {
 		this.isserverprocess = isserverprocess;
 	}
 
-	public void setAdPrintformatId(Long adPrintformatId) {
+	public void setAdPrintformatId(Integer adPrintformatId) {
 		this.adPrintformatId = adPrintformatId;
 	}
 
-	public Long getAdReportviewId() {
+	public Integer getAdReportviewId() {
 		return adReportviewId;
 	}
 
-	public void setAdReportviewId(Long adReportviewId) {
+	public void setAdReportviewId(Integer adReportviewId) {
 		this.adReportviewId = adReportviewId;
 	}
 
-	public Long getAdWorkflowId() {
+	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
 
-	public void setAdWorkflowId(Long adWorkflowId) {
+	public void setAdWorkflowId(Integer adWorkflowId) {
 		this.adWorkflowId = adWorkflowId;
 	}
 

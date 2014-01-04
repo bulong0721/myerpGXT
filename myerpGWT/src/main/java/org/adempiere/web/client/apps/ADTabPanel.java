@@ -2,7 +2,7 @@ package org.adempiere.web.client.apps;
 
 import java.util.List;
 
-import org.adempiere.model.common.ADModelKey;
+import org.adempiere.common.ADModelKey;
 import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.ADModelDriver;
 import org.adempiere.web.client.component.ADModelReader;

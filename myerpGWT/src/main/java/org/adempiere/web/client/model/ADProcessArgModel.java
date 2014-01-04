@@ -1,16 +1,16 @@
 package org.adempiere.web.client.model;
 
-import org.adempiere.model.common.DisplayType;
+import org.adempiere.common.DisplayType;
 
 public class ADProcessArgModel implements IsADRPCModel, ADFormField {
-	private long				adProcessParaId;
+	private Integer				adProcessParaId;
 	private Integer				adReferenceId;
-	private Long				adReferenceValueId;
-	private Long				adValRuleId;
+	private Integer				adReferenceValueId;
+	private Integer				adValRuleId;
 	private String				columnname;
 	private String				defaultvalue;
 	private String				displaylogic;
-	private Long				fieldlength;
+	private Integer				fieldlength;
 	private String				isactive;
 	private String				iscentrallymaintained;
 	private String				ismandatory;
@@ -21,11 +21,11 @@ public class ADProcessArgModel implements IsADRPCModel, ADFormField {
 	private String				valuemin;
 	private String				vformat;
 
-	public long getAdProcessParaId() {
+	public Integer getAdProcessParaId() {
 		return adProcessParaId;
 	}
 
-	public void setAdProcessParaId(long adProcessParaId) {
+	public void setAdProcessParaId(Integer adProcessParaId) {
 		this.adProcessParaId = adProcessParaId;
 	}
 
@@ -37,19 +37,19 @@ public class ADProcessArgModel implements IsADRPCModel, ADFormField {
 		this.adReferenceId = adReferenceId;
 	}
 
-	public Long getAdReferenceValueId() {
+	public Integer getAdReferenceValueId() {
 		return adReferenceValueId;
 	}
 
-	public void setAdReferenceValueId(Long adReferenceValueId) {
+	public void setAdReferenceValueId(Integer adReferenceValueId) {
 		this.adReferenceValueId = adReferenceValueId;
 	}
 
-	public Long getAdValRuleId() {
+	public Integer getAdValRuleId() {
 		return adValRuleId;
 	}
 
-	public void setAdValRuleId(Long adValRuleId) {
+	public void setAdValRuleId(Integer adValRuleId) {
 		this.adValRuleId = adValRuleId;
 	}
 
@@ -77,11 +77,11 @@ public class ADProcessArgModel implements IsADRPCModel, ADFormField {
 		this.displaylogic = displaylogic;
 	}
 
-	public Long getFieldlength() {
+	public Integer getFieldlength() {
 		return fieldlength;
 	}
 
-	public void setFieldlength(Long fieldlength) {
+	public void setFieldlength(Integer fieldlength) {
 		this.fieldlength = fieldlength;
 	}
 

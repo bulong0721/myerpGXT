@@ -8,15 +8,15 @@ import com.sencha.gxt.data.shared.IconProvider;
 
 public class ADMenuModel implements IsADRPCModel, ADTreeNode {
 	private String				isactive;
-	private Long				adMenuId;
-	private Long				parentId;
-	private Long				adFormId;
-	private Long				adProcessId;
-	private Long				adTaskId;
-	private Long				adWindowId;
-	private Long				adWorkbenchId;
-	private Long				adWorkflowId;
-	private Long				seqno;
+	private Integer				adMenuId;
+	private Integer				parentId;
+	private Integer				adFormId;
+	private Integer				adProcessId;
+	private Integer				adTaskId;
+	private Integer				adWindowId;
+	private Integer				adWorkbenchId;
+	private Integer				adWorkflowId;
+	private Integer				seqno;
 	private String				action;
 	private String				name;
 
@@ -59,75 +59,75 @@ public class ADMenuModel implements IsADRPCModel, ADTreeNode {
 		this.isactive = isactive;
 	}
 
-	public Long getAdMenuId() {
+	public Integer getAdMenuId() {
 		return adMenuId;
 	}
 
-	public void setAdMenuId(Long adMenuId) {
+	public void setAdMenuId(Integer adMenuId) {
 		this.adMenuId = adMenuId;
 	}
 
-	public Long getParentId() {
+	public Integer getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(Long parentId) {
+	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
 
-	public Long getAdFormId() {
+	public Integer getAdFormId() {
 		return adFormId;
 	}
 
-	public void setAdFormId(Long adFormId) {
+	public void setAdFormId(Integer adFormId) {
 		this.adFormId = adFormId;
 	}
 
-	public Long getAdProcessId() {
+	public Integer getAdProcessId() {
 		return adProcessId;
 	}
 
-	public void setAdProcessId(Long adProcessId) {
+	public void setAdProcessId(Integer adProcessId) {
 		this.adProcessId = adProcessId;
 	}
 
-	public Long getAdTaskId() {
+	public Integer getAdTaskId() {
 		return adTaskId;
 	}
 
-	public void setAdTaskId(Long adTaskId) {
+	public void setAdTaskId(Integer adTaskId) {
 		this.adTaskId = adTaskId;
 	}
 
-	public Long getAdWindowId() {
+	public Integer getAdWindowId() {
 		return adWindowId;
 	}
 
-	public void setAdWindowId(Long adWindowId) {
+	public void setAdWindowId(Integer adWindowId) {
 		this.adWindowId = adWindowId;
 	}
 
-	public Long getAdWorkbenchId() {
+	public Integer getAdWorkbenchId() {
 		return adWorkbenchId;
 	}
 
-	public void setAdWorkbenchId(Long adWorkbenchId) {
+	public void setAdWorkbenchId(Integer adWorkbenchId) {
 		this.adWorkbenchId = adWorkbenchId;
 	}
 
-	public Long getAdWorkflowId() {
+	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
 
-	public void setAdWorkflowId(Long adWorkflowId) {
+	public void setAdWorkflowId(Integer adWorkflowId) {
 		this.adWorkflowId = adWorkflowId;
 	}
 
-	public Long getSeqno() {
+	public Integer getSeqno() {
 		return seqno;
 	}
 
-	public void setSeqno(Long seqno) {
+	public void setSeqno(Integer seqno) {
 		this.seqno = seqno;
 	}
 
@@ -140,7 +140,7 @@ public class ADMenuModel implements IsADRPCModel, ADTreeNode {
 	}
 
 	@Override
-	public Long getID() {
+	public Integer getID() {
 		return adMenuId;
 	}
 
@@ -185,7 +185,7 @@ public class ADMenuModel implements IsADRPCModel, ADTreeNode {
 	}
 
 	@Override
-	public Long getParentID() {
+	public Integer getParentID() {
 		return parentId;
 	}
 }

@@ -3,7 +3,7 @@ package org.adempiere.web.client.widget;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.model.common.LookupValue;
+import org.adempiere.common.LookupValue;
 import org.adempiere.web.client.event.ReportToolListener;
 import org.adempiere.web.client.util.CommonUtil;
 import org.adempiere.web.client.util.WidgetUtil;
@@ -93,9 +93,9 @@ public class CReportToolBar implements IsWidget {
 
 		LabelProvider<LookupValue> labelProvider = CommonUtil.createLabelProvider();
 		List<LookupValue> reportTypes = new ArrayList<LookupValue>();
-		reportTypes.add(new LookupValue("PDF", 0L));
-		reportTypes.add(new LookupValue("HTML", 1L));
-		reportTypes.add(new LookupValue("Excel", 2L));
+		reportTypes.add(new LookupValue("PDF", 0));
+		reportTypes.add(new LookupValue("HTML", 1));
+		reportTypes.add(new LookupValue("Excel", 2));
 		ListStore<LookupValue> reportTypeStore = CommonUtil.createDataSource(reportTypes);
 		cmbReportType = createComboBox(reportTypeStore, labelProvider);
 		cmbReportType.setValue(reportTypes.get(0));

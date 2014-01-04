@@ -13,19 +13,19 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.adempiere.model.common.ADExpression;
-import org.adempiere.model.common.ADExpression.ADPredicate;
-import org.adempiere.model.common.ADModelKey;
-import org.adempiere.model.common.ADUserContext;
-import org.adempiere.model.common.DisplayType;
-import org.adempiere.model.common.LookupValue;
-import org.adempiere.model.core.AdFieldV;
-import org.adempiere.model.core.AdForm;
-import org.adempiere.model.core.AdProcess;
-import org.adempiere.model.core.AdTabV;
-import org.adempiere.model.core.AdTreenodemm;
-import org.adempiere.model.util.DTOUtil;
-import org.adempiere.model.util.RefTableCriteria;
+import org.adempiere.common.ADExpression;
+import org.adempiere.common.ADModelKey;
+import org.adempiere.common.ADUserContext;
+import org.adempiere.common.DisplayType;
+import org.adempiere.common.LookupValue;
+import org.adempiere.common.ADExpression.ADPredicate;
+import org.adempiere.model.AdFieldV;
+import org.adempiere.model.AdForm;
+import org.adempiere.model.AdProcess;
+import org.adempiere.model.AdTabV;
+import org.adempiere.model.AdTreenodemm;
+import org.adempiere.util.DTOUtil;
+import org.adempiere.util.RefTableCriteria;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
@@ -87,7 +87,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public ADWindowModel getADWindowModel(long windowId) {
+	public ADWindowModel getADWindowModel(Integer windowId) {
 		ADWindowModel windowModel = new ADWindowModel();
 		try {
 			EntityManager em = getEntityManager();
@@ -124,7 +124,6 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			aq.select(cb.count(root));
 			ADModelKey parentKey = loadCfg.getParentKey();
 			ADExpression expr = loadCfg.getExpr();
-			// TODO openjpa中当改属性在XXPk中会抛找不到属性的异常，考虑替换为hibernate
 			cq.where(buildWhere(cb, root, expr, parentKey));
 			aq.where(buildWhere(cb, root, expr, parentKey));
 			TypedQuery<Long> countQuery = em.createQuery(aq);
@@ -230,18 +229,13 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	public static String getEntityClassName(String tableName) {
-		StringBuffer buffer = new StringBuffer();
-		if (tableName.toUpperCase().startsWith("AD_")) {
-			buffer.append("org.adempiere.model.core.");
-		} else {
-			buffer.append("org.adempiere.model.business.");
-		}
+		StringBuffer buffer = new StringBuffer("org.adempiere.model.");
 		buffer.append(StringUtil.convertToPascal(tableName));
 		return buffer.toString();
 	}
 
 	@Override
-	public List<LookupValue> getOptions(String columnName, int type, Long adRefId) {
+	public List<LookupValue> getOptions(String columnName, int type, Integer adRefId) {
 		if (type == DisplayType.List.getValue()) {
 			return getOptionsFromList(adRefId);
 		}
@@ -314,7 +308,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public ADProcessModel getADProcessModel(long processId) {
+	public ADProcessModel getADProcessModel(Integer processId) {
 		ADProcessModel processModel = null;
 		try {
 			EntityManager em = getEntityManager();
@@ -353,7 +347,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public ADFormModel getADFormModel(long formId) {
+	public ADFormModel getADFormModel(Integer formId) {
 		ADFormModel formModel = null;
 		try {
 			EntityManager em = getEntityManager();
@@ -367,7 +361,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public ADResultPair<ADProcessModel, ADFormModel> getProcessWithFormModel(long processId) {
+	public ADResultPair<ADProcessModel, ADFormModel> getProcessWithFormModel(Integer processId) {
 		ADProcessModel processModel = getADProcessModel(processId);
 		ADFormModel formModel = null;
 		if (null != processModel.getAdFormId()) {
