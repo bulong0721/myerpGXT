@@ -1,18 +1,17 @@
 package org.adempiere.web.client.model;
 
-
 public class ADFormModel implements IsADRPCModel {
-	private Integer				adFormId;
-	private String				accesslevel;
-	private Integer				adClientId;
-	private Integer				adOrgId;
-	private String				classname;
-	private String				description;
-	private String				help;
-	private Boolean				isActive;
-	private Boolean				isBetafunctionality;
-	private String				jspurl;
-	private String				name;
+	private Integer	adFormId;
+	private String	accesslevel;
+	private Integer	adClientId;
+	private Integer	adOrgId;
+	private String	classname;
+	private String	description;
+	private String	help;
+	private Boolean	isActive;
+	private Boolean	isBetafunctionality;
+	private String	jspurl;
+	private String	name;
 
 	public Integer getAdFormId() {
 		return adFormId;

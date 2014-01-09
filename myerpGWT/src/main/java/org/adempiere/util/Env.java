@@ -7,4 +7,8 @@ public final class Env {
 		return "d:/adempiere_home/";
 	}
 
+	public static String getReportPath(String path) {
+		return getAdempiereHome() + "reports/" + path;
+	}
+
 }

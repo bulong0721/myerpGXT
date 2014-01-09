@@ -2,6 +2,7 @@ package org.adempiere.web.client.apps;
 
 import java.util.List;
 
+import org.adempiere.common.ProcessResult;
 import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.ADModalDialog;
 import org.adempiere.web.client.component.ADReportViewer;
@@ -13,6 +14,7 @@ import org.adempiere.web.client.model.ADProcessArgModel;
 import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
+import org.adempiere.web.client.util.LoggingUtil;
 import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.ConfirmToolBar;
 
@@ -91,16 +93,18 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 	@Override
 	public void onOK() {
 		WidgetUtil.mask(widget, "process on server...");
-		AsyncCallback<String> callback = new AsyncCallback<String>() {
+		AsyncCallback<ProcessResult> callback = new AsyncCallback<ProcessResult>() {
 			@Override
 			public void onFailure(Throwable caught) {
 				WidgetUtil.unmask(widget);
 			}
 			@Override
-			public void onSuccess(String result) {
+			public void onSuccess(ProcessResult result) {
 				WidgetUtil.unmask(widget);
 				if (processModel.getIsreport()) {
 					layoutContainer.setActiveWidget(reportViewer);
+					LoggingUtil.info(result.getPDFReport());
+					reportViewer.setReportURL(result.getPDFReport());
 				}
 				hide();
 			}

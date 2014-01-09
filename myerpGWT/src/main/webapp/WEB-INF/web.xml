@@ -8,17 +8,16 @@
 	<welcome-file-list>
 		<welcome-file>myerpGXT.html</welcome-file>
 	</welcome-file-list>
-	<!--
-		<servlet>
-		<servlet-name>jpaDataSourceServlet</servlet-name>
-		<servlet-class>org.adempiere.web.server.JpaRPCServiceImpl
+
+	<servlet>
+		<servlet-name>reportServlet</servlet-name>
+		<servlet-class>org.adempiere.web.server.ReportDistributeServlet
 		</servlet-class>
-		</servlet>
-		<servlet-mapping>
-		<servlet-name>jpaDataSourceServlet</servlet-name>
-		<url-pattern>/myerpGXT/jpads</url-pattern>
-		</servlet-mapping>
-	-->
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>reportServlet</servlet-name>
+		<url-pattern>/myerpGXT/report</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>adempiereServlet</servlet-name>
 		<servlet-class>org.adempiere.web.server.AdempiereServiceImpl

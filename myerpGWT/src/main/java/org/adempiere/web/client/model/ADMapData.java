@@ -18,8 +18,6 @@ public interface ADMapData extends IsADRPCModel {
 
 	public abstract ADMapData deepClone();
 
-	
-
 	public static class ADModelKeyProvider implements ModelKeyProvider<ADMapData> {
 		private List<String>	keyFields;
 		private Long			RecordId	= -1L;

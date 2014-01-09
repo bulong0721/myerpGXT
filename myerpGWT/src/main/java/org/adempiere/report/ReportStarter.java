@@ -12,12 +12,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.PropertyResourceBundle;
 
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -27,20 +27,20 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.util.JRResourcesUtil;
 
 import org.adempiere.common.Language;
-import org.adempiere.common.ProcessInfo;
+import org.adempiere.common.ProcessResult;
 import org.adempiere.model.AdAttachment;
 import org.adempiere.process.ClientProcess;
 import org.adempiere.process.ProcessCall;
 import org.adempiere.process.ProcessContext;
 import org.adempiere.util.Env;
 import org.adempiere.web.client.util.StringUtil;
+import org.adempiere.web.server.ReportDistributeServlet;
 
 public class ReportStarter implements ProcessCall, ClientProcess {
 	private static File				REPORT_HOME	= null;
 	private static JRViewerProvider	viewerProvider;
 	private static JasperPrint		jasperPrint;
 	private AdAttachment			attachment;
-	private ProcessInfo				processInfo;
 
 	static {
 		String reportPath = System.getProperty("org.adempiere.report.path");
@@ -57,7 +57,7 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean startProcess(ProcessContext ctx) {
+	public boolean startProcess(ProcessContext ctx, ProcessResult pInfo) {
 		int pInstanceId = 0;
 		ReportData reportData = getReportData(ctx);
 		if (reportData == null) {
@@ -81,7 +81,7 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 			reportFile = getReportFile(reportPath);
 		}
 
-		if (reportFile == null || reportFile.exists() == false) {
+		if (reportFile == null || !reportFile.exists()) {
 			String tmp = "Can not find report file at path - " + reportPath;
 			reportResult(pInstanceId, tmp);
 		}
@@ -132,7 +132,7 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 			Language currLang = Language.getAD_Language();
 
 			params.put("CURRENT_LANG", Language.getAD_Language());
-			params.put(JRParameter.REPORT_LOCALE, currLang.getLocale());
+			// params.put(JRParameter.REPORT_LOCALE, currLang.getLocale());
 
 			// Resources
 			File resFile = null;
@@ -141,7 +141,11 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 			} else if (reportPath.startsWith("resource:")) {
 				resFile = getResourcesForResourceFile(jasperName, currLang);
 			} else {
-				resFile = new File(jasperName + "_" + currLang.getLocale().getLanguage() + ".properties");
+				resFile = new File(jasperName /*
+											 * + "_" +
+											 * currLang.getLocale().getLanguage
+											 * ()
+											 */+ ".properties");
 				if (!resFile.exists()) {
 					resFile = null;
 				}
@@ -165,18 +169,20 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 				conn = ctx.getConnection();
 				jasperPrint = JasperFillManager.fillReport(jasperReport, params, conn);
 				try {
-					File PDF = File.createTempFile("mail", ".pdf");
-					JasperExportManager.exportReportToPdfFile(jasperPrint, PDF.getAbsolutePath());
-					processInfo.setPDFReport(PDF);
+					File rptFile = new File(Env.getReportPath("form.pdf"));
+					rptFile.createNewFile();
+					JasperExportManager.exportReportToPdfFile(jasperPrint, rptFile.getAbsolutePath());
+					pInfo.setPDFReport(ReportDistributeServlet.toDistributionURL("form.pdf"));
 				} catch (IOException e) {
 				}
 			} catch (JRException e) {
 			} finally {
-				if (conn != null)
+				if (conn != null) {
 					try {
 						conn.close();
 					} catch (SQLException e) {
 					}
+				}
 			}
 		}
 		reportResult(pInstanceId, null);
@@ -185,13 +191,31 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 
 	private ReportData getReportData(ProcessContext ctx) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ReportData("form.jrxml", false);
 	}
 
 	public static void setReportViewerProvider(JRViewerProvider provider) {
 		if (provider == null)
 			throw new IllegalArgumentException("Cannot set report viewer provider to null");
 		viewerProvider = provider;
+	}
+
+	public static void main(String[] args) {
+		ProcessContext ctx = new ProcessContext() {
+			@Override
+			public Connection getConnection() {
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					return DriverManager.getConnection("jdbc:mysql://localhost:3306/adempiere", "adempiere", "adempiere");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+		};
+		ReportStarter starter = new ReportStarter();
+		ProcessResult pInfo = new ProcessResult();
+		starter.startProcess(ctx, pInfo);
 	}
 
 	/**
@@ -213,17 +237,17 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 
 	private File[] getResourceSubreports(String string, String reportPath, String fileExtension) {
 		// TODO Auto-generated method stub
-		return null;
+		return new File[0];
 	}
 
 	private File[] getAttachmentSubreports(String reportPath) {
 		// TODO Auto-generated method stub
-		return null;
+		return new File[0];
 	}
 
 	private File[] getHttpSubreports(String string, String reportPath, String fileExtension) {
 		// TODO Auto-generated method stub
-		return null;
+		return new File[0];
 	}
 
 	private File getReportFile(String reportPath, String reportType) {
@@ -246,7 +270,7 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 		// test if the compiled report exists
 		File jasperFile = new File(reportDir.getAbsolutePath(), jasperName + ".jasper");
 		if (jasperFile.exists()) { // test time
-			if (reportFile.lastModified() == jasperFile.lastModified()) {
+			if (reportFile.lastModified() != jasperFile.lastModified()) {
 				try {
 					jasperReport = (JasperReport) JRLoader.loadObjectFromFile(jasperFile.getAbsolutePath());
 				} catch (JRException e) {

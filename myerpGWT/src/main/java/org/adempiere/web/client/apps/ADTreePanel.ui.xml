@@ -10,7 +10,7 @@
 		<ui:attributes margins="{margins4}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="topLayoutData">
-		<ui:attributes margins="{margins4}" width="-1" />
+		<ui:attributes margins="{margins4}" width="1" height="-1" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="centerLayoutData">
 		<ui:attributes margins="{margins4}" height="1" width="1" />

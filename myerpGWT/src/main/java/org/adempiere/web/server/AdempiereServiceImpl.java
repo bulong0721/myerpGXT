@@ -1,5 +1,7 @@
 package org.adempiere.web.server;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,11 +21,14 @@ import org.adempiere.common.ADUserContext;
 import org.adempiere.common.DisplayType;
 import org.adempiere.common.LookupValue;
 import org.adempiere.common.ADExpression.ADPredicate;
+import org.adempiere.common.ProcessResult;
 import org.adempiere.model.AdFieldV;
 import org.adempiere.model.AdForm;
 import org.adempiere.model.AdProcess;
 import org.adempiere.model.AdTabV;
 import org.adempiere.model.AdTreenodemm;
+import org.adempiere.process.ProcessContext;
+import org.adempiere.report.ReportStarter;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.RefTableCriteria;
 import org.adempiere.web.client.model.ADFieldModel;
@@ -55,7 +60,6 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			for (AdTreenodemm nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
-			System.out.println("getAdMenuModels:" + resultList.size());
 			return resultList;
 		} catch (Exception e) {
 			return null;
@@ -111,7 +115,10 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	public ADJSONData getWindowTabData(ADLoadConfig loadCfg) {
 		String entityClass = getEntityClassName(loadCfg.getTableName());
 		System.out.println("fetchByClass1:" + entityClass);
-		String data = "";
+		StringBuffer buffer = new StringBuffer();
+		toString(loadCfg.getExpr(), buffer, 0);
+		System.out.println(buffer.toString());
+		String data = "[]";
 		long totalCount = 0;
 		try {
 			EntityManager em = getEntityManager();
@@ -140,7 +147,33 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		}
 		ADJSONData jsonData = new ADJSONData(data);
 		jsonData.setTotalCount(totalCount);
+		System.out.println("count:" + totalCount + "=>data:" + data);
 		return jsonData;
+	}
+
+	private void toString(ADExpression expr, StringBuffer buffer, int level) {
+		if (null == expr) {
+			return;
+		}
+		if (expr.isParent()) {
+			ADPredicate pred = (ADPredicate) expr;
+			appendTab(buffer, level).append(pred.getBooleanOperator().getSymbol()).append(" ");
+			for (ADExpression subExpr : pred.getExpressions()) {
+				toString(subExpr, buffer, level + 1);
+			}
+		} else {
+			appendTab(buffer, level).append("(");
+			buffer.append(expr.getColumnName()).append(" ").append(expr.getFieldOperator().getSymbol()).append(" ")
+					.append(expr.getValue1());
+			buffer.append(")").append("\n");
+		}
+	}
+
+	StringBuffer appendTab(StringBuffer buffer, int level) {
+		for (; level > 0; level--) {
+			buffer.append("\t");
+		}
+		return buffer;
 	}
 
 	private Predicate buildWhere(CriteriaBuilder cb, Root<?> root, ADExpression expr, ADModelKey pKey) {
@@ -378,14 +411,24 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	}
 
 	@Override
-	public String executeProcess(ADProcessModel pModel, String paramJson) {
+	public ProcessResult executeProcess(ADProcessModel pModel, String paramJson) {
 		// TODO Auto-generated method stub
 		System.out.println("parameter json:" + paramJson);
-		try {
-			Thread.sleep(3000L);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return StringUtil.EMPTY;
+		ProcessContext ctx = new ProcessContext() {
+			@Override
+			public Connection getConnection() {
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					return DriverManager.getConnection("jdbc:mysql://localhost:3306/adempiere", "adempiere", "adempiere");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+		};
+		ReportStarter starter = new ReportStarter();
+		ProcessResult pInfo = new ProcessResult();
+		starter.startProcess(ctx, pInfo);
+		return pInfo;
 	}
 }

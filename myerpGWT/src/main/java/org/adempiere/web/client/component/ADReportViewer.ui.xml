@@ -17,7 +17,7 @@
 		    <widget:CReportToolBar ui:field="toolBar" />
 		</container:child>
 		<container:child layoutData="{mainMaginData}">
-		    <g:Frame ui:field="window" url="http://www.tutorialspoint.com/gwt/gwt_tutorial.pdf" />
+		    <g:Frame ui:field="content" url="http://www.tutorialspoint.com/gwt/gwt_tutorial.pdf" />
 		</container:child>
 	</container:VerticalLayoutContainer>
 

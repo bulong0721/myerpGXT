@@ -20,13 +20,13 @@ public class ADReportViewer implements IsWidget, ReportToolListener {
 	@UiField
 	CReportToolBar	toolBar;
 	@UiField
-	Frame			window;
+	Frame			content;
 
 	private Widget	widget	= null;
 	private Integer	processId;
-	
+
 	public ADReportViewer() {
-		
+
 	}
 
 	public ADReportViewer(Integer iProcessId) {
@@ -45,6 +45,10 @@ public class ADReportViewer implements IsWidget, ReportToolListener {
 			toolBar.addToolbarListener(this);
 		}
 		return widget;
+	}
+
+	public void setReportURL(String rptURL) {
+		content.setUrl(rptURL);
 	}
 
 	@Override
