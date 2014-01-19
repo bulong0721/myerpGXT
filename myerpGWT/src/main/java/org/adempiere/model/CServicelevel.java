@@ -18,10 +18,10 @@ public class CServicelevel extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mProductId;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private BigDecimal servicelevelinvoiced;
 	private BigDecimal servicelevelprovided;
 	private String updated;
@@ -35,7 +35,7 @@ public class CServicelevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class CServicelevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class CServicelevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_REVENUERECOGNITION_PLAN_ID", nullable=false)
+	@Column(name="C_REVENUERECOGNITION_PLAN_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRevenuerecognitionPlanId() {
 		return cRevenuerecognitionPlanId;
 	}
@@ -65,7 +65,7 @@ public class CServicelevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_SERVICELEVEL_ID")
+	@Column(name="C_SERVICELEVEL_ID", columnDefinition="INT")
 	public Integer getCServicelevelId() {
 		return cServicelevelId;
 	}
@@ -85,7 +85,7 @@ public class CServicelevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -104,17 +104,17 @@ public class CServicelevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -124,22 +124,20 @@ public class CServicelevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -174,7 +172,7 @@ public class CServicelevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

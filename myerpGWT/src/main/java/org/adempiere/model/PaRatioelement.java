@@ -18,7 +18,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private Integer paMeasurecalcId;
 	private Integer paRatioId;
@@ -39,7 +39,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ACCOUNT_ID")
+	@Column(name="ACCOUNT_ID", columnDefinition="INT")
 	public Integer getAccountId() {
 		return accountId;
 	}
@@ -49,7 +49,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -59,7 +59,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -88,7 +88,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -107,12 +107,12 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -127,7 +127,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_MEASURECALC_ID")
+	@Column(name="PA_MEASURECALC_ID", columnDefinition="INT")
 	public Integer getPaMeasurecalcId() {
 		return paMeasurecalcId;
 	}
@@ -137,7 +137,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_RATIO_ID", nullable=false)
+	@Column(name="PA_RATIO_ID", columnDefinition="INT", nullable=false)
 	public Integer getPaRatioId() {
 		return paRatioId;
 	}
@@ -147,7 +147,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_RATIOELEMENT_ID")
+	@Column(name="PA_RATIOELEMENT_ID", columnDefinition="INT")
 	public Integer getPaRatioelementId() {
 		return paRatioelementId;
 	}
@@ -157,7 +157,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_RATIOUSED_ID")
+	@Column(name="PA_RATIOUSED_ID", columnDefinition="INT")
 	public Integer getPaRatiousedId() {
 		return paRatiousedId;
 	}
@@ -197,7 +197,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -217,7 +217,7 @@ public class PaRatioelement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -21,8 +21,8 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String isreport;
+	private Boolean isactive;
+	private Boolean isreport;
 	private String name;
 	private Integer recordId;
 	private String updated;
@@ -36,7 +36,7 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ARCHIVE_ID")
+	@Column(name="AD_ARCHIVE_ID", columnDefinition="INT")
 	public Integer getAdArchiveId() {
 		return adArchiveId;
 	}
@@ -46,7 +46,7 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -56,7 +56,7 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PROCESS_ID")
+	@Column(name="AD_PROCESS_ID", columnDefinition="INT")
 	public Integer getAdProcessId() {
 		return adProcessId;
 	}
@@ -76,7 +76,7 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -96,7 +96,7 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -116,7 +116,7 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -145,22 +145,22 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreport() {
+	@Column(nullable=false)
+	public Boolean isIsreport() {
 		return isreport;
 	}
 
-	public void setIsreport(String isreport) {
+	public void setIsreport(Boolean isreport) {
 		this.isreport = isreport;
 	}
 
@@ -175,7 +175,7 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="RECORD_ID")
+	@Column(name="RECORD_ID", columnDefinition="INT")
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -195,7 +195,7 @@ public class AdArchive extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

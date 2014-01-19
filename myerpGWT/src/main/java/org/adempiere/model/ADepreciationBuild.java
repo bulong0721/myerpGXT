@@ -20,11 +20,11 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String dateacct;
 	private String datedoc;
-	private String isactive;
+	private Boolean isactive;
 	private Integer periodno;
 	private String postingtype;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -36,7 +36,7 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_DEPRECIATION_BUILD_ID")
+	@Column(name="A_DEPRECIATION_BUILD_ID", columnDefinition="INT")
 	public Integer getADepreciationBuildId() {
 		return aDepreciationBuildId;
 	}
@@ -46,7 +46,7 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_END_ASSET_ID")
+	@Column(name="A_END_ASSET_ID", columnDefinition="INT")
 	public Integer getAEndAssetId() {
 		return aEndAssetId;
 	}
@@ -56,7 +56,7 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_START_ASSET_ID")
+	@Column(name="A_START_ASSET_ID", columnDefinition="INT")
 	public Integer getAStartAssetId() {
 		return aStartAssetId;
 	}
@@ -66,7 +66,7 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -76,7 +76,7 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -86,7 +86,7 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID")
+	@Column(name="C_PERIOD_ID", columnDefinition="INT")
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -106,6 +106,7 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -133,16 +134,16 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getPeriodno() {
 		return periodno;
 	}
@@ -162,22 +163,20 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -192,6 +191,7 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

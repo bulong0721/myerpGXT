@@ -17,7 +17,7 @@ public class AdRoleIncluded extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private Integer includedRoleId;
-	private String isactive;
+	private Boolean isactive;
 	private Integer seqno;
 	private String updated;
 	private Integer updatedby;
@@ -31,7 +31,7 @@ public class AdRoleIncluded extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class AdRoleIncluded extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -51,7 +51,7 @@ public class AdRoleIncluded extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ROLE_ID")
+	@Column(name="AD_ROLE_ID", columnDefinition="INT")
 	public Integer getAdRoleId() {
 		return adRoleId;
 	}
@@ -71,7 +71,7 @@ public class AdRoleIncluded extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -81,7 +81,7 @@ public class AdRoleIncluded extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="INCLUDED_ROLE_ID")
+	@Column(name="INCLUDED_ROLE_ID", columnDefinition="INT")
 	public Integer getIncludedRoleId() {
 		return includedRoleId;
 	}
@@ -91,17 +91,17 @@ public class AdRoleIncluded extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -121,7 +121,7 @@ public class AdRoleIncluded extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

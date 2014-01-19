@@ -18,9 +18,9 @@ public class CBpWithholding extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String exemptreason;
-	private String isactive;
-	private String ismandatorywithholding;
-	private String istemporaryexempt;
+	private Boolean isactive;
+	private Boolean ismandatorywithholding;
+	private Boolean istemporaryexempt;
 	private String updated;
 	private Integer updatedby;
 
@@ -33,7 +33,7 @@ public class CBpWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class CBpWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class CBpWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -63,7 +63,7 @@ public class CBpWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_WITHHOLDING_ID")
+	@Column(name="C_WITHHOLDING_ID", columnDefinition="INT")
 	public Integer getCWithholdingId() {
 		return cWithholdingId;
 	}
@@ -83,7 +83,7 @@ public class CBpWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -103,32 +103,32 @@ public class CBpWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmandatorywithholding() {
+	@Column(nullable=false)
+	public Boolean isIsmandatorywithholding() {
 		return ismandatorywithholding;
 	}
 
-	public void setIsmandatorywithholding(String ismandatorywithholding) {
+	public void setIsmandatorywithholding(Boolean ismandatorywithholding) {
 		this.ismandatorywithholding = ismandatorywithholding;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstemporaryexempt() {
+	@Column(nullable=false)
+	public Boolean isIstemporaryexempt() {
 		return istemporaryexempt;
 	}
 
-	public void setIstemporaryexempt(String istemporaryexempt) {
+	public void setIstemporaryexempt(Boolean istemporaryexempt) {
 		this.istemporaryexempt = istemporaryexempt;
 	}
 
@@ -143,7 +143,7 @@ public class CBpWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

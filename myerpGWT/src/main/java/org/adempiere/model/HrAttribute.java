@@ -27,8 +27,8 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	private Integer hrEmployeeId;
 	private Integer hrJobId;
 	private Integer hrPayrollId;
-	private String isactive;
-	private String isprinted;
+	private Boolean isactive;
+	private Boolean isprinted;
 	private Integer maxvalue;
 	private Integer minvalue;
 	private BigDecimal qty;
@@ -47,7 +47,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_RULE_ID")
+	@Column(name="AD_RULE_ID", columnDefinition="INT")
 	public Integer getAdRuleId() {
 		return adRuleId;
 	}
@@ -86,7 +86,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -116,7 +116,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -135,7 +135,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_ATTRIBUTE_ACCT")
+	@Column(name="HR_ATTRIBUTE_ACCT", columnDefinition="INT")
 	public Integer getHrAttributeAcct() {
 		return hrAttributeAcct;
 	}
@@ -145,7 +145,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="HR_ATTRIBUTE_ID")
+	@Column(name="HR_ATTRIBUTE_ID", columnDefinition="INT")
 	public Integer getHrAttributeId() {
 		return hrAttributeId;
 	}
@@ -155,7 +155,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_CONCEPT_ID", nullable=false)
+	@Column(name="HR_CONCEPT_ID", columnDefinition="INT", nullable=false)
 	public Integer getHrConceptId() {
 		return hrConceptId;
 	}
@@ -165,7 +165,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_DEPARTMENT_ID")
+	@Column(name="HR_DEPARTMENT_ID", columnDefinition="INT")
 	public Integer getHrDepartmentId() {
 		return hrDepartmentId;
 	}
@@ -175,7 +175,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_EMPLOYEE_ID")
+	@Column(name="HR_EMPLOYEE_ID", columnDefinition="INT")
 	public Integer getHrEmployeeId() {
 		return hrEmployeeId;
 	}
@@ -185,7 +185,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_JOB_ID")
+	@Column(name="HR_JOB_ID", columnDefinition="INT")
 	public Integer getHrJobId() {
 		return hrJobId;
 	}
@@ -195,7 +195,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_PAYROLL_ID")
+	@Column(name="HR_PAYROLL_ID", columnDefinition="INT")
 	public Integer getHrPayrollId() {
 		return hrPayrollId;
 	}
@@ -205,26 +205,26 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsprinted() {
+	public Boolean isIsprinted() {
 		return isprinted;
 	}
 
-	public void setIsprinted(String isprinted) {
+	public void setIsprinted(Boolean isprinted) {
 		this.isprinted = isprinted;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getMaxvalue() {
 		return maxvalue;
 	}
@@ -234,6 +234,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getMinvalue() {
 		return minvalue;
 	}
@@ -280,7 +281,7 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

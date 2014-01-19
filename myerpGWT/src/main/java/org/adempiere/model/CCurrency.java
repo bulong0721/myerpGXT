@@ -21,9 +21,9 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String emuentrydate;
 	private BigDecimal emurate;
-	private String isactive;
-	private String isemumember;
-	private String iseuro;
+	private Boolean isactive;
+	private Boolean isemumember;
+	private Boolean iseuro;
 	private String isoCode;
 	private BigDecimal roundofffactor;
 	private Integer stdprecision;
@@ -38,7 +38,7 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -58,7 +58,7 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -68,7 +68,7 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCostingprecision() {
 		return costingprecision;
 	}
@@ -88,7 +88,7 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -136,32 +136,32 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsemumember() {
+	@Column(nullable=false)
+	public Boolean isIsemumember() {
 		return isemumember;
 	}
 
-	public void setIsemumember(String isemumember) {
+	public void setIsemumember(Boolean isemumember) {
 		this.isemumember = isemumember;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIseuro() {
+	@Column(nullable=false)
+	public Boolean isIseuro() {
 		return iseuro;
 	}
 
-	public void setIseuro(String iseuro) {
+	public void setIseuro(Boolean iseuro) {
 		this.iseuro = iseuro;
 	}
 
@@ -185,7 +185,7 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getStdprecision() {
 		return stdprecision;
 	}
@@ -205,7 +205,7 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

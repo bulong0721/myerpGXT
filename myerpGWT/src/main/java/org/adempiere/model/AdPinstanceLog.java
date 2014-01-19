@@ -28,7 +28,7 @@ public class AdPinstanceLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -38,7 +38,7 @@ public class AdPinstanceLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="LOG_ID")
+	@Column(name="LOG_ID", columnDefinition="INT")
 	public Integer getLogId() {
 		return logId;
 	}
@@ -58,7 +58,7 @@ public class AdPinstanceLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_ID")
+	@Column(name="P_ID", columnDefinition="INT")
 	public Integer getPId() {
 		return pId;
 	}

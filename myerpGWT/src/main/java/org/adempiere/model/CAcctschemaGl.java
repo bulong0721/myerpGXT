@@ -21,7 +21,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	private Integer incomesummaryAcct;
 	private Integer intercompanyduefromAcct;
 	private Integer intercompanyduetoAcct;
-	private String isactive;
+	private Boolean isactive;
 	private Integer ppvoffsetAcct;
 	private Integer retainedearningAcct;
 	private Integer suspensebalancingAcct;
@@ -40,7 +40,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -60,7 +60,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -70,7 +70,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="COMMITMENTOFFSET_ACCT", nullable=false)
+	@Column(name="COMMITMENTOFFSET_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCommitmentoffsetAcct() {
 		return commitmentoffsetAcct;
 	}
@@ -80,7 +80,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="COMMITMENTOFFSETSALES_ACCT", nullable=false)
+	@Column(name="COMMITMENTOFFSETSALES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCommitmentoffsetsalesAcct() {
 		return commitmentoffsetsalesAcct;
 	}
@@ -100,7 +100,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -110,7 +110,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CURRENCYBALANCING_ACCT")
+	@Column(name="CURRENCYBALANCING_ACCT", columnDefinition="INT")
 	public Integer getCurrencybalancingAcct() {
 		return currencybalancingAcct;
 	}
@@ -120,7 +120,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="INCOMESUMMARY_ACCT", nullable=false)
+	@Column(name="INCOMESUMMARY_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getIncomesummaryAcct() {
 		return incomesummaryAcct;
 	}
@@ -130,7 +130,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="INTERCOMPANYDUEFROM_ACCT", nullable=false)
+	@Column(name="INTERCOMPANYDUEFROM_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getIntercompanyduefromAcct() {
 		return intercompanyduefromAcct;
 	}
@@ -140,7 +140,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="INTERCOMPANYDUETO_ACCT", nullable=false)
+	@Column(name="INTERCOMPANYDUETO_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getIntercompanyduetoAcct() {
 		return intercompanyduetoAcct;
 	}
@@ -150,17 +150,17 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="PPVOFFSET_ACCT", nullable=false)
+	@Column(name="PPVOFFSET_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPpvoffsetAcct() {
 		return ppvoffsetAcct;
 	}
@@ -170,7 +170,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="RETAINEDEARNING_ACCT", nullable=false)
+	@Column(name="RETAINEDEARNING_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getRetainedearningAcct() {
 		return retainedearningAcct;
 	}
@@ -180,7 +180,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SUSPENSEBALANCING_ACCT")
+	@Column(name="SUSPENSEBALANCING_ACCT", columnDefinition="INT")
 	public Integer getSuspensebalancingAcct() {
 		return suspensebalancingAcct;
 	}
@@ -190,7 +190,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SUSPENSEERROR_ACCT")
+	@Column(name="SUSPENSEERROR_ACCT", columnDefinition="INT")
 	public Integer getSuspenseerrorAcct() {
 		return suspenseerrorAcct;
 	}
@@ -210,7 +210,7 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -32,21 +32,21 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	private String factor;
 	private String formatpattern;
 	private Integer glBudgetId;
-	private String isactive;
-	private String isadhocconversion;
-	private String isincludenullsactivity;
-	private String isincludenullsbpartner;
-	private String isincludenullscampaign;
-	private String isincludenullselementvalue;
-	private String isincludenullslocation;
-	private String isincludenullsorg;
-	private String isincludenullsorgtrx;
-	private String isincludenullsproduct;
-	private String isincludenullsproject;
-	private String isincludenullssalesregion;
-	private String isincludenullsuserelement1;
-	private String isincludenullsuserelement2;
-	private String isprinted;
+	private Boolean isactive;
+	private Boolean isadhocconversion;
+	private Boolean isincludenullsactivity;
+	private Boolean isincludenullsbpartner;
+	private Boolean isincludenullscampaign;
+	private Boolean isincludenullselementvalue;
+	private Boolean isincludenullslocation;
+	private Boolean isincludenullsorg;
+	private Boolean isincludenullsorgtrx;
+	private Boolean isincludenullsproduct;
+	private Boolean isincludenullsproject;
+	private Boolean isincludenullssalesregion;
+	private Boolean isincludenullsuserelement1;
+	private Boolean isincludenullsuserelement2;
+	private Boolean isprinted;
 	private Integer mProductId;
 	private String name;
 	private Integer oper1Id;
@@ -72,7 +72,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -82,7 +82,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -92,7 +92,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -112,7 +112,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -122,7 +122,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -132,7 +132,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -142,7 +142,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -152,7 +152,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ELEMENTVALUE_ID")
+	@Column(name="C_ELEMENTVALUE_ID", columnDefinition="INT")
 	public Integer getCElementvalueId() {
 		return cElementvalueId;
 	}
@@ -162,7 +162,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCATION_ID")
+	@Column(name="C_LOCATION_ID", columnDefinition="INT")
 	public Integer getCLocationId() {
 		return cLocationId;
 	}
@@ -172,7 +172,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -182,7 +182,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SALESREGION_ID")
+	@Column(name="C_SALESREGION_ID", columnDefinition="INT")
 	public Integer getCSalesregionId() {
 		return cSalesregionId;
 	}
@@ -222,7 +222,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -281,7 +281,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_BUDGET_ID")
+	@Column(name="GL_BUDGET_ID", columnDefinition="INT")
 	public Integer getGlBudgetId() {
 		return glBudgetId;
 	}
@@ -291,157 +291,156 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsadhocconversion() {
+	public Boolean isIsadhocconversion() {
 		return isadhocconversion;
 	}
 
-	public void setIsadhocconversion(String isadhocconversion) {
+	public void setIsadhocconversion(Boolean isadhocconversion) {
 		this.isadhocconversion = isadhocconversion;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullsactivity() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullsactivity() {
 		return isincludenullsactivity;
 	}
 
-	public void setIsincludenullsactivity(String isincludenullsactivity) {
+	public void setIsincludenullsactivity(Boolean isincludenullsactivity) {
 		this.isincludenullsactivity = isincludenullsactivity;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullsbpartner() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullsbpartner() {
 		return isincludenullsbpartner;
 	}
 
-	public void setIsincludenullsbpartner(String isincludenullsbpartner) {
+	public void setIsincludenullsbpartner(Boolean isincludenullsbpartner) {
 		this.isincludenullsbpartner = isincludenullsbpartner;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullscampaign() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullscampaign() {
 		return isincludenullscampaign;
 	}
 
-	public void setIsincludenullscampaign(String isincludenullscampaign) {
+	public void setIsincludenullscampaign(Boolean isincludenullscampaign) {
 		this.isincludenullscampaign = isincludenullscampaign;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullselementvalue() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullselementvalue() {
 		return isincludenullselementvalue;
 	}
 
-	public void setIsincludenullselementvalue(String isincludenullselementvalue) {
+	public void setIsincludenullselementvalue(Boolean isincludenullselementvalue) {
 		this.isincludenullselementvalue = isincludenullselementvalue;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullslocation() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullslocation() {
 		return isincludenullslocation;
 	}
 
-	public void setIsincludenullslocation(String isincludenullslocation) {
+	public void setIsincludenullslocation(Boolean isincludenullslocation) {
 		this.isincludenullslocation = isincludenullslocation;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullsorg() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullsorg() {
 		return isincludenullsorg;
 	}
 
-	public void setIsincludenullsorg(String isincludenullsorg) {
+	public void setIsincludenullsorg(Boolean isincludenullsorg) {
 		this.isincludenullsorg = isincludenullsorg;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullsorgtrx() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullsorgtrx() {
 		return isincludenullsorgtrx;
 	}
 
-	public void setIsincludenullsorgtrx(String isincludenullsorgtrx) {
+	public void setIsincludenullsorgtrx(Boolean isincludenullsorgtrx) {
 		this.isincludenullsorgtrx = isincludenullsorgtrx;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullsproduct() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullsproduct() {
 		return isincludenullsproduct;
 	}
 
-	public void setIsincludenullsproduct(String isincludenullsproduct) {
+	public void setIsincludenullsproduct(Boolean isincludenullsproduct) {
 		this.isincludenullsproduct = isincludenullsproduct;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullsproject() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullsproject() {
 		return isincludenullsproject;
 	}
 
-	public void setIsincludenullsproject(String isincludenullsproject) {
+	public void setIsincludenullsproject(Boolean isincludenullsproject) {
 		this.isincludenullsproject = isincludenullsproject;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullssalesregion() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullssalesregion() {
 		return isincludenullssalesregion;
 	}
 
-	public void setIsincludenullssalesregion(String isincludenullssalesregion) {
+	public void setIsincludenullssalesregion(Boolean isincludenullssalesregion) {
 		this.isincludenullssalesregion = isincludenullssalesregion;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullsuserelement1() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullsuserelement1() {
 		return isincludenullsuserelement1;
 	}
 
-	public void setIsincludenullsuserelement1(String isincludenullsuserelement1) {
+	public void setIsincludenullsuserelement1(Boolean isincludenullsuserelement1) {
 		this.isincludenullsuserelement1 = isincludenullsuserelement1;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsincludenullsuserelement2() {
+	@Column(nullable=false)
+	public Boolean isIsincludenullsuserelement2() {
 		return isincludenullsuserelement2;
 	}
 
-	public void setIsincludenullsuserelement2(String isincludenullsuserelement2) {
+	public void setIsincludenullsuserelement2(Boolean isincludenullsuserelement2) {
 		this.isincludenullsuserelement2 = isincludenullsuserelement2;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprinted() {
+	@Column(nullable=false)
+	public Boolean isIsprinted() {
 		return isprinted;
 	}
 
-	public void setIsprinted(String isprinted) {
+	public void setIsprinted(Boolean isprinted) {
 		this.isprinted = isprinted;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -461,7 +460,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="OPER_1_ID")
+	@Column(name="OPER_1_ID", columnDefinition="INT")
 	public Integer getOper1Id() {
 		return oper1Id;
 	}
@@ -471,7 +470,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="OPER_2_ID")
+	@Column(name="OPER_2_ID", columnDefinition="INT")
 	public Integer getOper2Id() {
 		return oper2Id;
 	}
@@ -481,7 +480,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ORG_ID")
+	@Column(name="ORG_ID", columnDefinition="INT")
 	public Integer getOrgId() {
 		return orgId;
 	}
@@ -491,7 +490,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_REPORTCOLUMN_ID")
+	@Column(name="PA_REPORTCOLUMN_ID", columnDefinition="INT")
 	public Integer getPaReportcolumnId() {
 		return paReportcolumnId;
 	}
@@ -501,7 +500,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_REPORTCOLUMNSET_ID", nullable=false)
+	@Column(name="PA_REPORTCOLUMNSET_ID", columnDefinition="INT", nullable=false)
 	public Integer getPaReportcolumnsetId() {
 		return paReportcolumnsetId;
 	}
@@ -541,6 +540,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getRelativeperiod() {
 		return relativeperiod;
 	}
@@ -550,7 +550,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -570,7 +570,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -580,7 +580,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USERELEMENT1_ID")
+	@Column(name="USERELEMENT1_ID", columnDefinition="INT")
 	public Integer getUserelement1Id() {
 		return userelement1Id;
 	}
@@ -590,7 +590,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USERELEMENT2_ID")
+	@Column(name="USERELEMENT2_ID", columnDefinition="INT")
 	public Integer getUserelement2Id() {
 		return userelement2Id;
 	}

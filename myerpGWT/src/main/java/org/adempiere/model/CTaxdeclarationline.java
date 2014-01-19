@@ -25,8 +25,8 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String dateacct;
 	private String description;
-	private String isactive;
-	private String ismanual;
+	private Boolean isactive;
+	private Boolean ismanual;
 	private Integer line;
 	private BigDecimal taxamt;
 	private BigDecimal taxbaseamt;
@@ -41,7 +41,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ALLOCATIONLINE_ID")
+	@Column(name="C_ALLOCATIONLINE_ID", columnDefinition="INT")
 	public Integer getCAllocationlineId() {
 		return cAllocationlineId;
 	}
@@ -71,7 +71,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -81,7 +81,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -91,7 +91,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -101,7 +101,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICELINE_ID")
+	@Column(name="C_INVOICELINE_ID", columnDefinition="INT")
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}
@@ -111,7 +111,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAX_ID", nullable=false)
+	@Column(name="C_TAX_ID", columnDefinition="INT", nullable=false)
 	public Integer getCTaxId() {
 		return cTaxId;
 	}
@@ -121,7 +121,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXDECLARATION_ID", nullable=false)
+	@Column(name="C_TAXDECLARATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCTaxdeclarationId() {
 		return cTaxdeclarationId;
 	}
@@ -131,7 +131,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_TAXDECLARATIONLINE_ID")
+	@Column(name="C_TAXDECLARATIONLINE_ID", columnDefinition="INT")
 	public Integer getCTaxdeclarationlineId() {
 		return cTaxdeclarationlineId;
 	}
@@ -151,7 +151,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -180,27 +180,27 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmanual() {
+	@Column(nullable=false)
+	public Boolean isIsmanual() {
 		return ismanual;
 	}
 
-	public void setIsmanual(String ismanual) {
+	public void setIsmanual(Boolean ismanual) {
 		this.ismanual = ismanual;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -240,7 +240,7 @@ public class CTaxdeclarationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

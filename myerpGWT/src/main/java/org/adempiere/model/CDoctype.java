@@ -30,20 +30,20 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	private Integer glCategoryId;
 	private String hascharges;
 	private String hasproforma;
-	private String isactive;
-	private String iscreatecounter;
-	private String isdefault;
-	private String isdefaultcounterdoc;
-	private String isdocnocontrolled;
-	private String isindexed;
-	private String isintransit;
-	private String isoverwritedateoncomplete;
-	private String isoverwriteseqoncomplete;
-	private String ispickqaconfirm;
-	private String ispreparesplitdocument;
-	private String isshipconfirm;
-	private String issotrx;
-	private String issplitwhendifference;
+	private Boolean isactive;
+	private Boolean iscreatecounter;
+	private Boolean isdefault;
+	private Boolean isdefaultcounterdoc;
+	private Boolean isdocnocontrolled;
+	private Boolean isindexed;
+	private Boolean isintransit;
+	private Boolean isoverwritedateoncomplete;
+	private Boolean isoverwriteseqoncomplete;
+	private Boolean ispickqaconfirm;
+	private Boolean ispreparesplitdocument;
+	private Boolean isshipconfirm;
+	private Boolean issotrx;
+	private Boolean issplitwhendifference;
 	private String name;
 	private String printname;
 	private String updated;
@@ -57,7 +57,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -67,7 +67,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTFORMAT_ID")
+	@Column(name="AD_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getAdPrintformatId() {
 		return adPrintformatId;
 	}
@@ -87,7 +87,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_DOCTYPE_ID")
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -97,7 +97,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPEDIFFERENCE_ID")
+	@Column(name="C_DOCTYPEDIFFERENCE_ID", columnDefinition="INT")
 	public Integer getCDoctypedifferenceId() {
 		return cDoctypedifferenceId;
 	}
@@ -107,7 +107,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPEINVOICE_ID")
+	@Column(name="C_DOCTYPEINVOICE_ID", columnDefinition="INT")
 	public Integer getCDoctypeinvoiceId() {
 		return cDoctypeinvoiceId;
 	}
@@ -117,7 +117,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPEPROFORMA_ID")
+	@Column(name="C_DOCTYPEPROFORMA_ID", columnDefinition="INT")
 	public Integer getCDoctypeproformaId() {
 		return cDoctypeproformaId;
 	}
@@ -127,7 +127,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPESHIPMENT_ID")
+	@Column(name="C_DOCTYPESHIPMENT_ID", columnDefinition="INT")
 	public Integer getCDoctypeshipmentId() {
 		return cDoctypeshipmentId;
 	}
@@ -147,7 +147,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -157,7 +157,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DEFINITESEQUENCE_ID")
+	@Column(name="DEFINITESEQUENCE_ID", columnDefinition="INT")
 	public Integer getDefinitesequenceId() {
 		return definitesequenceId;
 	}
@@ -186,7 +186,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DOCNOSEQUENCE_ID")
+	@Column(name="DOCNOSEQUENCE_ID", columnDefinition="INT")
 	public Integer getDocnosequenceId() {
 		return docnosequenceId;
 	}
@@ -206,7 +206,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getDocumentcopies() {
 		return documentcopies;
 	}
@@ -226,7 +226,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_CATEGORY_ID", nullable=false)
+	@Column(name="GL_CATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getGlCategoryId() {
 		return glCategoryId;
 	}
@@ -256,142 +256,140 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscreatecounter() {
+	@Column(nullable=false)
+	public Boolean isIscreatecounter() {
 		return iscreatecounter;
 	}
 
-	public void setIscreatecounter(String iscreatecounter) {
+	public void setIscreatecounter(Boolean iscreatecounter) {
 		this.iscreatecounter = iscreatecounter;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefaultcounterdoc() {
+	@Column(nullable=false)
+	public Boolean isIsdefaultcounterdoc() {
 		return isdefaultcounterdoc;
 	}
 
-	public void setIsdefaultcounterdoc(String isdefaultcounterdoc) {
+	public void setIsdefaultcounterdoc(Boolean isdefaultcounterdoc) {
 		this.isdefaultcounterdoc = isdefaultcounterdoc;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdocnocontrolled() {
+	@Column(nullable=false)
+	public Boolean isIsdocnocontrolled() {
 		return isdocnocontrolled;
 	}
 
-	public void setIsdocnocontrolled(String isdocnocontrolled) {
+	public void setIsdocnocontrolled(Boolean isdocnocontrolled) {
 		this.isdocnocontrolled = isdocnocontrolled;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsindexed() {
+	@Column(nullable=false)
+	public Boolean isIsindexed() {
 		return isindexed;
 	}
 
-	public void setIsindexed(String isindexed) {
+	public void setIsindexed(Boolean isindexed) {
 		this.isindexed = isindexed;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsintransit() {
+	@Column(nullable=false)
+	public Boolean isIsintransit() {
 		return isintransit;
 	}
 
-	public void setIsintransit(String isintransit) {
+	public void setIsintransit(Boolean isintransit) {
 		this.isintransit = isintransit;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsoverwritedateoncomplete() {
+	public Boolean isIsoverwritedateoncomplete() {
 		return isoverwritedateoncomplete;
 	}
 
-	public void setIsoverwritedateoncomplete(String isoverwritedateoncomplete) {
+	public void setIsoverwritedateoncomplete(Boolean isoverwritedateoncomplete) {
 		this.isoverwritedateoncomplete = isoverwritedateoncomplete;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsoverwriteseqoncomplete() {
+	public Boolean isIsoverwriteseqoncomplete() {
 		return isoverwriteseqoncomplete;
 	}
 
-	public void setIsoverwriteseqoncomplete(String isoverwriteseqoncomplete) {
+	public void setIsoverwriteseqoncomplete(Boolean isoverwriteseqoncomplete) {
 		this.isoverwriteseqoncomplete = isoverwriteseqoncomplete;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspickqaconfirm() {
+	@Column(nullable=false)
+	public Boolean isIspickqaconfirm() {
 		return ispickqaconfirm;
 	}
 
-	public void setIspickqaconfirm(String ispickqaconfirm) {
+	public void setIspickqaconfirm(Boolean ispickqaconfirm) {
 		this.ispickqaconfirm = ispickqaconfirm;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspreparesplitdocument() {
+	@Column(nullable=false)
+	public Boolean isIspreparesplitdocument() {
 		return ispreparesplitdocument;
 	}
 
-	public void setIspreparesplitdocument(String ispreparesplitdocument) {
+	public void setIspreparesplitdocument(Boolean ispreparesplitdocument) {
 		this.ispreparesplitdocument = ispreparesplitdocument;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsshipconfirm() {
+	@Column(nullable=false)
+	public Boolean isIsshipconfirm() {
 		return isshipconfirm;
 	}
 
-	public void setIsshipconfirm(String isshipconfirm) {
+	public void setIsshipconfirm(Boolean isshipconfirm) {
 		this.isshipconfirm = isshipconfirm;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssotrx() {
+	@Column(nullable=false)
+	public Boolean isIssotrx() {
 		return issotrx;
 	}
 
-	public void setIssotrx(String issotrx) {
+	public void setIssotrx(Boolean issotrx) {
 		this.issotrx = issotrx;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssplitwhendifference() {
+	@Column(nullable=false)
+	public Boolean isIssplitwhendifference() {
 		return issplitwhendifference;
 	}
 
-	public void setIssplitwhendifference(String issplitwhendifference) {
+	public void setIssplitwhendifference(Boolean issplitwhendifference) {
 		this.issplitwhendifference = issplitwhendifference;
 	}
 
@@ -426,7 +424,7 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -18,9 +18,9 @@ public class COrdertax extends org.adempiere.common.ADEntityBase {
 	private Integer cTaxId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String istaxincluded;
-	private String processed;
+	private Boolean isactive;
+	private Boolean istaxincluded;
+	private Boolean processed;
 	private BigDecimal taxamt;
 	private BigDecimal taxbaseamt;
 	private String updated;
@@ -35,7 +35,7 @@ public class COrdertax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class COrdertax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class COrdertax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -65,7 +65,7 @@ public class COrdertax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_TAX_ID")
+	@Column(name="C_TAX_ID", columnDefinition="INT")
 	public Integer getCTaxId() {
 		return cTaxId;
 	}
@@ -85,7 +85,7 @@ public class COrdertax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -95,32 +95,32 @@ public class COrdertax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstaxincluded() {
+	@Column(nullable=false)
+	public Boolean isIstaxincluded() {
 		return istaxincluded;
 	}
 
-	public void setIstaxincluded(String istaxincluded) {
+	public void setIstaxincluded(Boolean istaxincluded) {
 		this.istaxincluded = istaxincluded;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -155,7 +155,7 @@ public class COrdertax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

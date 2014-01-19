@@ -18,8 +18,8 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 	private Integer bTopicId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String iswillingtocommit;
+	private Boolean isactive;
+	private Boolean iswillingtocommit;
 	private String name;
 	private String privatenote;
 	private String textmsg;
@@ -34,7 +34,7 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -54,7 +54,7 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID", nullable=false)
+	@Column(name="AD_USER_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -64,7 +64,7 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="B_BID_ID")
+	@Column(name="B_BID_ID", columnDefinition="INT")
 	public Integer getBBidId() {
 		return bBidId;
 	}
@@ -74,7 +74,7 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_BUYERFUNDS_ID", nullable=false)
+	@Column(name="B_BUYERFUNDS_ID", columnDefinition="INT", nullable=false)
 	public Integer getBBuyerfundsId() {
 		return bBuyerfundsId;
 	}
@@ -84,7 +84,7 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_TOPIC_ID", nullable=false)
+	@Column(name="B_TOPIC_ID", columnDefinition="INT", nullable=false)
 	public Integer getBTopicId() {
 		return bTopicId;
 	}
@@ -104,7 +104,7 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -114,22 +114,22 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIswillingtocommit() {
+	@Column(nullable=false)
+	public Boolean isIswillingtocommit() {
 		return iswillingtocommit;
 	}
 
-	public void setIswillingtocommit(String iswillingtocommit) {
+	public void setIswillingtocommit(Boolean iswillingtocommit) {
 		this.iswillingtocommit = iswillingtocommit;
 	}
 
@@ -174,7 +174,7 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

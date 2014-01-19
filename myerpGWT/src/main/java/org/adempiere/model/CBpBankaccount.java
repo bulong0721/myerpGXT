@@ -35,8 +35,8 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	private String creditcardnumber;
 	private String creditcardtype;
 	private String creditcardvv;
-	private String isach;
-	private String isactive;
+	private Boolean isach;
+	private Boolean isactive;
 	private String rAvsaddr;
 	private String rAvszip;
 	private String routingno;
@@ -151,7 +151,7 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -161,7 +161,7 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -171,7 +171,7 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -201,7 +201,7 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BANK_ID")
+	@Column(name="C_BANK_ID", columnDefinition="INT")
 	public Integer getCBankId() {
 		return cBankId;
 	}
@@ -211,7 +211,7 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BP_BANKACCOUNT_ID")
+	@Column(name="C_BP_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCBpBankaccountId() {
 		return cBpBankaccountId;
 	}
@@ -221,7 +221,7 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -241,7 +241,7 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -251,6 +251,7 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreditcardexpmm() {
 		return creditcardexpmm;
 	}
@@ -260,6 +261,7 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreditcardexpyy() {
 		return creditcardexpyy;
 	}
@@ -299,22 +301,22 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsach() {
+	@Column(nullable=false)
+	public Boolean isIsach() {
 		return isach;
 	}
 
-	public void setIsach(String isach) {
+	public void setIsach(Boolean isach) {
 		this.isach = isach;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -359,7 +361,7 @@ public class CBpBankaccount extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

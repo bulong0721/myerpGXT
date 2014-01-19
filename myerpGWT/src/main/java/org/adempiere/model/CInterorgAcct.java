@@ -19,7 +19,7 @@ public class CInterorgAcct extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private Integer intercompanyduefromAcct;
 	private Integer intercompanyduetoAcct;
-	private String isactive;
+	private Boolean isactive;
 	private String updated;
 	private Integer updatedby;
 
@@ -33,7 +33,7 @@ public class CInterorgAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class CInterorgAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class CInterorgAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ORGTO_ID")
+	@Column(name="AD_ORGTO_ID", columnDefinition="INT")
 	public Integer getAdOrgtoId() {
 		return adOrgtoId;
 	}
@@ -63,7 +63,7 @@ public class CInterorgAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -83,7 +83,7 @@ public class CInterorgAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -93,7 +93,7 @@ public class CInterorgAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="INTERCOMPANYDUEFROM_ACCT", nullable=false)
+	@Column(name="INTERCOMPANYDUEFROM_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getIntercompanyduefromAcct() {
 		return intercompanyduefromAcct;
 	}
@@ -103,7 +103,7 @@ public class CInterorgAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="INTERCOMPANYDUETO_ACCT", nullable=false)
+	@Column(name="INTERCOMPANYDUETO_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getIntercompanyduetoAcct() {
 		return intercompanyduetoAcct;
 	}
@@ -113,12 +113,12 @@ public class CInterorgAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -133,7 +133,7 @@ public class CInterorgAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

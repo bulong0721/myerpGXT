@@ -18,7 +18,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal manualactual;
 	private String manualnote;
 	private String measuredatatype;
@@ -41,7 +41,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTTYPE_ID")
+	@Column(name="C_PROJECTTYPE_ID", columnDefinition="INT")
 	public Integer getCProjecttypeId() {
 		return cProjecttypeId;
 	}
@@ -91,7 +91,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -110,12 +110,12 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -169,7 +169,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_BENCHMARK_ID")
+	@Column(name="PA_BENCHMARK_ID", columnDefinition="INT")
 	public Integer getPaBenchmarkId() {
 		return paBenchmarkId;
 	}
@@ -179,7 +179,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_HIERARCHY_ID")
+	@Column(name="PA_HIERARCHY_ID", columnDefinition="INT")
 	public Integer getPaHierarchyId() {
 		return paHierarchyId;
 	}
@@ -189,7 +189,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_MEASURE_ID")
+	@Column(name="PA_MEASURE_ID", columnDefinition="INT")
 	public Integer getPaMeasureId() {
 		return paMeasureId;
 	}
@@ -199,7 +199,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_MEASURECALC_ID")
+	@Column(name="PA_MEASURECALC_ID", columnDefinition="INT")
 	public Integer getPaMeasurecalcId() {
 		return paMeasurecalcId;
 	}
@@ -209,7 +209,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_RATIO_ID")
+	@Column(name="PA_RATIO_ID", columnDefinition="INT")
 	public Integer getPaRatioId() {
 		return paRatioId;
 	}
@@ -219,7 +219,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_REQUESTTYPE_ID")
+	@Column(name="R_REQUESTTYPE_ID", columnDefinition="INT")
 	public Integer getRRequesttypeId() {
 		return rRequesttypeId;
 	}
@@ -239,7 +239,7 @@ public class PaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

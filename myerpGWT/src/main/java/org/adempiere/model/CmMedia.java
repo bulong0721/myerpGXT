@@ -21,8 +21,8 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String directdeploy;
 	private String help;
-	private String isactive;
-	private String issummary;
+	private Boolean isactive;
+	private Boolean issummary;
 	private String mediatype;
 	private String name;
 	private String updated;
@@ -36,7 +36,7 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_IMAGE_ID")
+	@Column(name="AD_IMAGE_ID", columnDefinition="INT")
 	public Integer getAdImageId() {
 		return adImageId;
 	}
@@ -56,7 +56,7 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="CM_MEDIA_ID")
+	@Column(name="CM_MEDIA_ID", columnDefinition="INT")
 	public Integer getCmMediaId() {
 		return cmMediaId;
 	}
@@ -76,7 +76,7 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_WEBPROJECT_ID", nullable=false)
+	@Column(name="CM_WEBPROJECT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCmWebprojectId() {
 		return cmWebprojectId;
 	}
@@ -106,7 +106,7 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -145,22 +145,22 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
@@ -195,7 +195,7 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

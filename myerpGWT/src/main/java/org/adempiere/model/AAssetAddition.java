@@ -26,7 +26,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String documentno;
 	private Integer glJournalbatchId;
-	private String isactive;
+	private Boolean isactive;
 	private Integer line;
 	private Integer mInoutlineId;
 	private String postingtype;
@@ -41,7 +41,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_ASSET_ADDITION_ID")
+	@Column(name="A_ASSET_ADDITION_ID", columnDefinition="INT")
 	public Integer getAAssetAdditionId() {
 		return aAssetAdditionId;
 	}
@@ -51,7 +51,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID", nullable=false)
+	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -91,7 +91,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -101,7 +101,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -121,7 +121,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -131,7 +131,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICELINE_ID")
+	@Column(name="C_INVOICELINE_ID", columnDefinition="INT")
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}
@@ -151,7 +151,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -181,7 +181,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_JOURNALBATCH_ID")
+	@Column(name="GL_JOURNALBATCH_ID", columnDefinition="INT")
 	public Integer getGlJournalbatchId() {
 		return glJournalbatchId;
 	}
@@ -191,16 +191,17 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLine() {
 		return line;
 	}
@@ -210,7 +211,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUTLINE_ID")
+	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}
@@ -240,7 +241,7 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

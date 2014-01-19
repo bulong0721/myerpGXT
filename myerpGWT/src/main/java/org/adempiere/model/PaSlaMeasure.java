@@ -18,12 +18,12 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String datetrx;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal measureactual;
 	private Integer paSlaGoalId;
 	private Integer paSlaMeasureId;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private Integer recordId;
 	private String updated;
 	private Integer updatedby;
@@ -36,7 +36,7 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -56,7 +56,7 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -76,7 +76,7 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -105,12 +105,12 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -125,7 +125,7 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_SLA_GOAL_ID", nullable=false)
+	@Column(name="PA_SLA_GOAL_ID", columnDefinition="INT", nullable=false)
 	public Integer getPaSlaGoalId() {
 		return paSlaGoalId;
 	}
@@ -135,7 +135,7 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_SLA_MEASURE_ID")
+	@Column(name="PA_SLA_MEASURE_ID", columnDefinition="INT")
 	public Integer getPaSlaMeasureId() {
 		return paSlaMeasureId;
 	}
@@ -145,27 +145,26 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="RECORD_ID")
+	@Column(name="RECORD_ID", columnDefinition="INT")
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -185,7 +184,7 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -32,16 +32,16 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String documentno;
 	private String help;
-	private String isactive;
-	private String isinvitedvendorsonly;
-	private String isquoteallqty;
-	private String isquotetotalamt;
-	private String isrfqresponseaccepted;
-	private String isselfservice;
+	private Boolean isactive;
+	private Boolean isinvitedvendorsonly;
+	private Boolean isquoteallqty;
+	private Boolean isquotetotalamt;
+	private Boolean isrfqresponseaccepted;
+	private Boolean isselfservice;
 	private BigDecimal margin;
 	private String name;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String publishrfq;
 	private String quotetype;
 	private String rankrfq;
@@ -57,7 +57,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -67,7 +67,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -87,7 +87,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -97,7 +97,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID")
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -107,7 +107,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -117,7 +117,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -127,7 +127,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_RFQ_ID")
+	@Column(name="C_RFQ_ID", columnDefinition="INT")
 	public Integer getCRfqId() {
 		return cRfqId;
 	}
@@ -137,7 +137,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RFQ_TOPIC_ID", nullable=false)
+	@Column(name="C_RFQ_TOPIC_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRfqTopicId() {
 		return cRfqTopicId;
 	}
@@ -167,7 +167,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -225,6 +225,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDeliverydays() {
 		return deliverydays;
 	}
@@ -263,62 +264,62 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinvitedvendorsonly() {
+	@Column(nullable=false)
+	public Boolean isIsinvitedvendorsonly() {
 		return isinvitedvendorsonly;
 	}
 
-	public void setIsinvitedvendorsonly(String isinvitedvendorsonly) {
+	public void setIsinvitedvendorsonly(Boolean isinvitedvendorsonly) {
 		this.isinvitedvendorsonly = isinvitedvendorsonly;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsquoteallqty() {
+	@Column(nullable=false)
+	public Boolean isIsquoteallqty() {
 		return isquoteallqty;
 	}
 
-	public void setIsquoteallqty(String isquoteallqty) {
+	public void setIsquoteallqty(Boolean isquoteallqty) {
 		this.isquoteallqty = isquoteallqty;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsquotetotalamt() {
+	@Column(nullable=false)
+	public Boolean isIsquotetotalamt() {
 		return isquotetotalamt;
 	}
 
-	public void setIsquotetotalamt(String isquotetotalamt) {
+	public void setIsquotetotalamt(Boolean isquotetotalamt) {
 		this.isquotetotalamt = isquotetotalamt;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsrfqresponseaccepted() {
+	@Column(nullable=false)
+	public Boolean isIsrfqresponseaccepted() {
 		return isrfqresponseaccepted;
 	}
 
-	public void setIsrfqresponseaccepted(String isrfqresponseaccepted) {
+	public void setIsrfqresponseaccepted(Boolean isrfqresponseaccepted) {
 		this.isrfqresponseaccepted = isrfqresponseaccepted;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
@@ -342,22 +343,21 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -392,7 +392,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID", nullable=false)
+	@Column(name="SALESREP_ID", columnDefinition="INT", nullable=false)
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -412,7 +412,7 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

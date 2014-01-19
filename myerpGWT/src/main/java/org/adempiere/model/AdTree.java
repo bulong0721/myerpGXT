@@ -16,11 +16,11 @@ public class AdTree extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isallnodes;
-	private String isdefault;
+	private Boolean isactive;
+	private Boolean isallnodes;
+	private Boolean isdefault;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private String treetype;
 	private String updated;
 	private Integer updatedby;
@@ -33,7 +33,7 @@ public class AdTree extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class AdTree extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class AdTree extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_TREE_ID")
+	@Column(name="AD_TREE_ID", columnDefinition="INT")
 	public Integer getAdTreeId() {
 		return adTreeId;
 	}
@@ -73,7 +73,7 @@ public class AdTree extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -92,32 +92,32 @@ public class AdTree extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsallnodes() {
+	@Column(nullable=false)
+	public Boolean isIsallnodes() {
 		return isallnodes;
 	}
 
-	public void setIsallnodes(String isallnodes) {
+	public void setIsallnodes(Boolean isallnodes) {
 		this.isallnodes = isallnodes;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
@@ -132,12 +132,11 @@ public class AdTree extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -162,7 +161,7 @@ public class AdTree extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

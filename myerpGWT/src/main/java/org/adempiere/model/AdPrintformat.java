@@ -27,11 +27,11 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private Integer footermargin;
 	private Integer headermargin;
-	private String isactive;
-	private String isdefault;
-	private String isform;
-	private String isstandardheaderfooter;
-	private String istablebased;
+	private Boolean isactive;
+	private Boolean isdefault;
+	private Boolean isform;
+	private Boolean isstandardheaderfooter;
+	private Boolean istablebased;
 	private Integer jasperprocessId;
 	private String name;
 	private String printername;
@@ -46,7 +46,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -56,7 +56,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTCOLOR_ID", nullable=false)
+	@Column(name="AD_PRINTCOLOR_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdPrintcolorId() {
 		return adPrintcolorId;
 	}
@@ -76,7 +76,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTFONT_ID", nullable=false)
+	@Column(name="AD_PRINTFONT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdPrintfontId() {
 		return adPrintfontId;
 	}
@@ -86,7 +86,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PRINTFORMAT_ID")
+	@Column(name="AD_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getAdPrintformatId() {
 		return adPrintformatId;
 	}
@@ -96,7 +96,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTPAPER_ID", nullable=false)
+	@Column(name="AD_PRINTPAPER_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdPrintpaperId() {
 		return adPrintpaperId;
 	}
@@ -106,7 +106,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTTABLEFORMAT_ID")
+	@Column(name="AD_PRINTTABLEFORMAT_ID", columnDefinition="INT")
 	public Integer getAdPrinttableformatId() {
 		return adPrinttableformatId;
 	}
@@ -116,7 +116,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REPORTVIEW_ID")
+	@Column(name="AD_REPORTVIEW_ID", columnDefinition="INT")
 	public Integer getAdReportviewId() {
 		return adReportviewId;
 	}
@@ -126,7 +126,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -176,7 +176,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -195,7 +195,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getFootermargin() {
 		return footermargin;
 	}
@@ -205,7 +205,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getHeadermargin() {
 		return headermargin;
 	}
@@ -215,57 +215,57 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsform() {
+	@Column(nullable=false)
+	public Boolean isIsform() {
 		return isform;
 	}
 
-	public void setIsform(String isform) {
+	public void setIsform(Boolean isform) {
 		this.isform = isform;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsstandardheaderfooter() {
+	@Column(nullable=false)
+	public Boolean isIsstandardheaderfooter() {
 		return isstandardheaderfooter;
 	}
 
-	public void setIsstandardheaderfooter(String isstandardheaderfooter) {
+	public void setIsstandardheaderfooter(Boolean isstandardheaderfooter) {
 		this.isstandardheaderfooter = isstandardheaderfooter;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstablebased() {
+	@Column(nullable=false)
+	public Boolean isIstablebased() {
 		return istablebased;
 	}
 
-	public void setIstablebased(String istablebased) {
+	public void setIstablebased(Boolean istablebased) {
 		this.istablebased = istablebased;
 	}
 
 	@Basic
-	@Column(name="JASPERPROCESS_ID")
+	@Column(name="JASPERPROCESS_ID", columnDefinition="INT")
 	public Integer getJasperprocessId() {
 		return jasperprocessId;
 	}
@@ -305,7 +305,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

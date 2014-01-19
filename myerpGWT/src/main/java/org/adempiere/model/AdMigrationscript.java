@@ -18,8 +18,8 @@ public class AdMigrationscript extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String developername;
 	private String filename;
-	private String isactive;
-	private String isapply;
+	private Boolean isactive;
+	private Boolean isapply;
 	private String name;
 	private String projectname;
 	private String reference;
@@ -39,7 +39,7 @@ public class AdMigrationscript extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -49,7 +49,7 @@ public class AdMigrationscript extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_MIGRATIONSCRIPT_ID")
+	@Column(name="AD_MIGRATIONSCRIPT_ID", columnDefinition="INT")
 	public Integer getAdMigrationscriptId() {
 		return adMigrationscriptId;
 	}
@@ -59,7 +59,7 @@ public class AdMigrationscript extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -79,7 +79,7 @@ public class AdMigrationscript extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -119,22 +119,22 @@ public class AdMigrationscript extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsapply() {
+	@Column(nullable=false)
+	public Boolean isIsapply() {
 		return isapply;
 	}
 
-	public void setIsapply(String isapply) {
+	public void setIsapply(Boolean isapply) {
 		this.isapply = isapply;
 	}
 
@@ -219,7 +219,7 @@ public class AdMigrationscript extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

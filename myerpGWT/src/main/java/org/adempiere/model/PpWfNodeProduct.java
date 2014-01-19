@@ -18,8 +18,8 @@ public class PpWfNodeProduct extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String entitytype;
-	private String isactive;
-	private String issubcontracting;
+	private Boolean isactive;
+	private Boolean issubcontracting;
 	private Integer mProductId;
 	private Integer ppWfNodeProductId;
 	private BigDecimal qty;
@@ -36,7 +36,7 @@ public class PpWfNodeProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class PpWfNodeProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -56,7 +56,7 @@ public class PpWfNodeProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_NODE_ID", nullable=false)
+	@Column(name="AD_WF_NODE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfNodeId() {
 		return adWfNodeId;
 	}
@@ -86,7 +86,7 @@ public class PpWfNodeProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -106,27 +106,26 @@ public class PpWfNodeProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssubcontracting() {
+	public Boolean isIssubcontracting() {
 		return issubcontracting;
 	}
 
-	public void setIssubcontracting(String issubcontracting) {
+	public void setIssubcontracting(Boolean issubcontracting) {
 		this.issubcontracting = issubcontracting;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -136,7 +135,7 @@ public class PpWfNodeProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PP_WF_NODE_PRODUCT_ID")
+	@Column(name="PP_WF_NODE_PRODUCT_ID", columnDefinition="INT")
 	public Integer getPpWfNodeProductId() {
 		return ppWfNodeProductId;
 	}
@@ -155,6 +154,7 @@ public class PpWfNodeProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -174,7 +174,7 @@ public class PpWfNodeProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -184,6 +184,7 @@ public class PpWfNodeProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getYield() {
 		return yield;
 	}

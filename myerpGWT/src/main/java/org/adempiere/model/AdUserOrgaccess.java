@@ -16,8 +16,8 @@ public class AdUserOrgaccess extends org.adempiere.common.ADEntityBase {
 	private Integer adUserId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String isreadonly;
+	private Boolean isactive;
+	private Boolean isreadonly;
 	private String updated;
 	private Integer updatedby;
 
@@ -30,7 +30,7 @@ public class AdUserOrgaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -40,7 +40,7 @@ public class AdUserOrgaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -50,7 +50,7 @@ public class AdUserOrgaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -70,7 +70,7 @@ public class AdUserOrgaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -80,22 +80,22 @@ public class AdUserOrgaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreadonly() {
+	@Column(nullable=false)
+	public Boolean isIsreadonly() {
 		return isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
@@ -110,7 +110,7 @@ public class AdUserOrgaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

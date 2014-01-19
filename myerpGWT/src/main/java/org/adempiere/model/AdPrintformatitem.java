@@ -28,30 +28,30 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	private String formatpattern;
 	private String imageisattached;
 	private String imageurl;
-	private String isactive;
-	private String isaveraged;
-	private String iscentrallymaintained;
-	private String iscounted;
-	private String isdeviationcalc;
-	private String isfilledrectangle;
-	private String isfixedwidth;
-	private String isgroupby;
-	private String isheightoneline;
-	private String isimagefield;
-	private String ismaxcalc;
-	private String ismincalc;
-	private String isnextline;
-	private String isnextpage;
-	private String isorderby;
-	private String ispagebreak;
-	private String isprinted;
-	private String isrelativeposition;
-	private String isrunningtotal;
-	private String issetnlposition;
-	private String issummarized;
-	private String issuppressnull;
-	private String issuppressrepeats;
-	private String isvariancecalc;
+	private Boolean isactive;
+	private Boolean isaveraged;
+	private Boolean iscentrallymaintained;
+	private Boolean iscounted;
+	private Boolean isdeviationcalc;
+	private Boolean isfilledrectangle;
+	private Boolean isfixedwidth;
+	private Boolean isgroupby;
+	private Boolean isheightoneline;
+	private Boolean isimagefield;
+	private Boolean ismaxcalc;
+	private Boolean ismincalc;
+	private Boolean isnextline;
+	private Boolean isnextpage;
+	private Boolean isorderby;
+	private Boolean ispagebreak;
+	private Boolean isprinted;
+	private Boolean isrelativeposition;
+	private Boolean isrunningtotal;
+	private Boolean issetnlposition;
+	private Boolean issummarized;
+	private Boolean issuppressnull;
+	private Boolean issuppressrepeats;
+	private Boolean isvariancecalc;
 	private String linealignmenttype;
 	private Integer linewidth;
 	private Integer maxheight;
@@ -80,7 +80,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -90,7 +90,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -100,7 +100,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -110,7 +110,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTCOLOR_ID")
+	@Column(name="AD_PRINTCOLOR_ID", columnDefinition="INT")
 	public Integer getAdPrintcolorId() {
 		return adPrintcolorId;
 	}
@@ -120,7 +120,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTFONT_ID")
+	@Column(name="AD_PRINTFONT_ID", columnDefinition="INT")
 	public Integer getAdPrintfontId() {
 		return adPrintfontId;
 	}
@@ -130,7 +130,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTFORMAT_ID", nullable=false)
+	@Column(name="AD_PRINTFORMAT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdPrintformatId() {
 		return adPrintformatId;
 	}
@@ -140,7 +140,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTFORMATCHILD_ID")
+	@Column(name="AD_PRINTFORMATCHILD_ID", columnDefinition="INT")
 	public Integer getAdPrintformatchildId() {
 		return adPrintformatchildId;
 	}
@@ -150,7 +150,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PRINTFORMATITEM_ID")
+	@Column(name="AD_PRINTFORMATITEM_ID", columnDefinition="INT")
 	public Integer getAdPrintformatitemId() {
 		return adPrintformatitemId;
 	}
@@ -160,7 +160,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTGRAPH_ID")
+	@Column(name="AD_PRINTGRAPH_ID", columnDefinition="INT")
 	public Integer getAdPrintgraphId() {
 		return adPrintgraphId;
 	}
@@ -170,6 +170,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getArcdiameter() {
 		return arcdiameter;
 	}
@@ -189,6 +190,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getBelowcolumn() {
 		return belowcolumn;
 	}
@@ -208,7 +210,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -258,242 +260,242 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsaveraged() {
+	@Column(nullable=false)
+	public Boolean isIsaveraged() {
 		return isaveraged;
 	}
 
-	public void setIsaveraged(String isaveraged) {
+	public void setIsaveraged(Boolean isaveraged) {
 		this.isaveraged = isaveraged;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscentrallymaintained() {
+	@Column(nullable=false)
+	public Boolean isIscentrallymaintained() {
 		return iscentrallymaintained;
 	}
 
-	public void setIscentrallymaintained(String iscentrallymaintained) {
+	public void setIscentrallymaintained(Boolean iscentrallymaintained) {
 		this.iscentrallymaintained = iscentrallymaintained;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscounted() {
+	@Column(nullable=false)
+	public Boolean isIscounted() {
 		return iscounted;
 	}
 
-	public void setIscounted(String iscounted) {
+	public void setIscounted(Boolean iscounted) {
 		this.iscounted = iscounted;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdeviationcalc() {
+	@Column(nullable=false)
+	public Boolean isIsdeviationcalc() {
 		return isdeviationcalc;
 	}
 
-	public void setIsdeviationcalc(String isdeviationcalc) {
+	public void setIsdeviationcalc(Boolean isdeviationcalc) {
 		this.isdeviationcalc = isdeviationcalc;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsfilledrectangle() {
+	@Column(nullable=false)
+	public Boolean isIsfilledrectangle() {
 		return isfilledrectangle;
 	}
 
-	public void setIsfilledrectangle(String isfilledrectangle) {
+	public void setIsfilledrectangle(Boolean isfilledrectangle) {
 		this.isfilledrectangle = isfilledrectangle;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsfixedwidth() {
+	@Column(nullable=false)
+	public Boolean isIsfixedwidth() {
 		return isfixedwidth;
 	}
 
-	public void setIsfixedwidth(String isfixedwidth) {
+	public void setIsfixedwidth(Boolean isfixedwidth) {
 		this.isfixedwidth = isfixedwidth;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsgroupby() {
+	@Column(nullable=false)
+	public Boolean isIsgroupby() {
 		return isgroupby;
 	}
 
-	public void setIsgroupby(String isgroupby) {
+	public void setIsgroupby(Boolean isgroupby) {
 		this.isgroupby = isgroupby;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsheightoneline() {
+	@Column(nullable=false)
+	public Boolean isIsheightoneline() {
 		return isheightoneline;
 	}
 
-	public void setIsheightoneline(String isheightoneline) {
+	public void setIsheightoneline(Boolean isheightoneline) {
 		this.isheightoneline = isheightoneline;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsimagefield() {
+	@Column(nullable=false)
+	public Boolean isIsimagefield() {
 		return isimagefield;
 	}
 
-	public void setIsimagefield(String isimagefield) {
+	public void setIsimagefield(Boolean isimagefield) {
 		this.isimagefield = isimagefield;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmaxcalc() {
+	@Column(nullable=false)
+	public Boolean isIsmaxcalc() {
 		return ismaxcalc;
 	}
 
-	public void setIsmaxcalc(String ismaxcalc) {
+	public void setIsmaxcalc(Boolean ismaxcalc) {
 		this.ismaxcalc = ismaxcalc;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmincalc() {
+	@Column(nullable=false)
+	public Boolean isIsmincalc() {
 		return ismincalc;
 	}
 
-	public void setIsmincalc(String ismincalc) {
+	public void setIsmincalc(Boolean ismincalc) {
 		this.ismincalc = ismincalc;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsnextline() {
+	@Column(nullable=false)
+	public Boolean isIsnextline() {
 		return isnextline;
 	}
 
-	public void setIsnextline(String isnextline) {
+	public void setIsnextline(Boolean isnextline) {
 		this.isnextline = isnextline;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsnextpage() {
+	@Column(nullable=false)
+	public Boolean isIsnextpage() {
 		return isnextpage;
 	}
 
-	public void setIsnextpage(String isnextpage) {
+	public void setIsnextpage(Boolean isnextpage) {
 		this.isnextpage = isnextpage;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsorderby() {
+	@Column(nullable=false)
+	public Boolean isIsorderby() {
 		return isorderby;
 	}
 
-	public void setIsorderby(String isorderby) {
+	public void setIsorderby(Boolean isorderby) {
 		this.isorderby = isorderby;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspagebreak() {
+	@Column(nullable=false)
+	public Boolean isIspagebreak() {
 		return ispagebreak;
 	}
 
-	public void setIspagebreak(String ispagebreak) {
+	public void setIspagebreak(Boolean ispagebreak) {
 		this.ispagebreak = ispagebreak;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprinted() {
+	@Column(nullable=false)
+	public Boolean isIsprinted() {
 		return isprinted;
 	}
 
-	public void setIsprinted(String isprinted) {
+	public void setIsprinted(Boolean isprinted) {
 		this.isprinted = isprinted;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsrelativeposition() {
+	@Column(nullable=false)
+	public Boolean isIsrelativeposition() {
 		return isrelativeposition;
 	}
 
-	public void setIsrelativeposition(String isrelativeposition) {
+	public void setIsrelativeposition(Boolean isrelativeposition) {
 		this.isrelativeposition = isrelativeposition;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsrunningtotal() {
+	@Column(nullable=false)
+	public Boolean isIsrunningtotal() {
 		return isrunningtotal;
 	}
 
-	public void setIsrunningtotal(String isrunningtotal) {
+	public void setIsrunningtotal(Boolean isrunningtotal) {
 		this.isrunningtotal = isrunningtotal;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssetnlposition() {
+	@Column(nullable=false)
+	public Boolean isIssetnlposition() {
 		return issetnlposition;
 	}
 
-	public void setIssetnlposition(String issetnlposition) {
+	public void setIssetnlposition(Boolean issetnlposition) {
 		this.issetnlposition = issetnlposition;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummarized() {
+	@Column(nullable=false)
+	public Boolean isIssummarized() {
 		return issummarized;
 	}
 
-	public void setIssummarized(String issummarized) {
+	public void setIssummarized(Boolean issummarized) {
 		this.issummarized = issummarized;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssuppressnull() {
+	@Column(nullable=false)
+	public Boolean isIssuppressnull() {
 		return issuppressnull;
 	}
 
-	public void setIssuppressnull(String issuppressnull) {
+	public void setIssuppressnull(Boolean issuppressnull) {
 		this.issuppressnull = issuppressnull;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssuppressrepeats() {
+	@Column(nullable=false)
+	public Boolean isIssuppressrepeats() {
 		return issuppressrepeats;
 	}
 
-	public void setIssuppressrepeats(String issuppressrepeats) {
+	public void setIssuppressrepeats(Boolean issuppressrepeats) {
 		this.issuppressrepeats = issuppressrepeats;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsvariancecalc() {
+	@Column(nullable=false)
+	public Boolean isIsvariancecalc() {
 		return isvariancecalc;
 	}
 
-	public void setIsvariancecalc(String isvariancecalc) {
+	public void setIsvariancecalc(Boolean isvariancecalc) {
 		this.isvariancecalc = isvariancecalc;
 	}
 
@@ -508,6 +510,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLinewidth() {
 		return linewidth;
 	}
@@ -517,7 +520,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMaxheight() {
 		return maxheight;
 	}
@@ -527,7 +530,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMaxwidth() {
 		return maxwidth;
 	}
@@ -587,6 +590,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getRunningtotallines() {
 		return runningtotallines;
 	}
@@ -596,7 +600,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -616,7 +620,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSortno() {
 		return sortno;
 	}
@@ -636,7 +640,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -646,7 +650,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getXposition() {
 		return xposition;
 	}
@@ -656,7 +660,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getXspace() {
 		return xspace;
 	}
@@ -666,7 +670,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getYposition() {
 		return yposition;
 	}
@@ -676,7 +680,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getYspace() {
 		return yspace;
 	}

@@ -17,9 +17,9 @@ public class CChargetypeDoctype extends org.adempiere.common.ADEntityBase {
 	private Integer cDoctypeId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String isallownegative;
-	private String isallowpositive;
+	private Boolean isactive;
+	private Boolean isallownegative;
+	private Boolean isallowpositive;
 	private String updated;
 	private Integer updatedby;
 
@@ -32,7 +32,7 @@ public class CChargetypeDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class CChargetypeDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -52,7 +52,7 @@ public class CChargetypeDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_CHARGETYPE_ID")
+	@Column(name="C_CHARGETYPE_ID", columnDefinition="INT")
 	public Integer getCChargetypeId() {
 		return cChargetypeId;
 	}
@@ -62,7 +62,7 @@ public class CChargetypeDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_DOCTYPE_ID")
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -82,7 +82,7 @@ public class CChargetypeDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -92,32 +92,32 @@ public class CChargetypeDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsallownegative() {
+	@Column(nullable=false)
+	public Boolean isIsallownegative() {
 		return isallownegative;
 	}
 
-	public void setIsallownegative(String isallownegative) {
+	public void setIsallownegative(Boolean isallownegative) {
 		this.isallownegative = isallownegative;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsallowpositive() {
+	@Column(nullable=false)
+	public Boolean isIsallowpositive() {
 		return isallowpositive;
 	}
 
-	public void setIsallowpositive(String isallowpositive) {
+	public void setIsallowpositive(Boolean isallowpositive) {
 		this.isallowpositive = isallowpositive;
 	}
 
@@ -132,7 +132,7 @@ public class CChargetypeDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

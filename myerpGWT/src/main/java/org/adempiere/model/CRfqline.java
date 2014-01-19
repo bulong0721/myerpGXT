@@ -21,7 +21,7 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	private Integer deliverydays;
 	private String description;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private Integer line;
 	private Integer mAttributesetinstanceId;
 	private Integer mProductId;
@@ -36,7 +36,7 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -56,7 +56,7 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RFQ_ID", nullable=false)
+	@Column(name="C_RFQ_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRfqId() {
 		return cRfqId;
 	}
@@ -66,7 +66,7 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_RFQLINE_ID")
+	@Column(name="C_RFQLINE_ID", columnDefinition="INT")
 	public Integer getCRfqlineId() {
 		return cRfqlineId;
 	}
@@ -86,7 +86,7 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -114,6 +114,7 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDeliverydays() {
 		return deliverydays;
 	}
@@ -142,17 +143,17 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -162,7 +163,7 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -172,7 +173,7 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -192,7 +193,7 @@ public class CRfqline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -16,7 +16,7 @@ public class MRmatype extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mRmatypeId;
 	private String name;
 	private String updated;
@@ -30,7 +30,7 @@ public class MRmatype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -40,7 +40,7 @@ public class MRmatype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -60,7 +60,7 @@ public class MRmatype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -89,17 +89,17 @@ public class MRmatype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="M_RMATYPE_ID")
+	@Column(name="M_RMATYPE_ID", columnDefinition="INT")
 	public Integer getMRmatypeId() {
 		return mRmatypeId;
 	}
@@ -129,7 +129,7 @@ public class MRmatype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -20,7 +20,7 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	private Integer cReceivableServicesAcct;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String updated;
 	private Integer updatedby;
 
@@ -33,7 +33,7 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -63,7 +63,7 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -73,7 +73,7 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PREPAYMENT_ACCT")
+	@Column(name="C_PREPAYMENT_ACCT", columnDefinition="INT")
 	public Integer getCPrepaymentAcct() {
 		return cPrepaymentAcct;
 	}
@@ -83,7 +83,7 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RECEIVABLE_ACCT")
+	@Column(name="C_RECEIVABLE_ACCT", columnDefinition="INT")
 	public Integer getCReceivableAcct() {
 		return cReceivableAcct;
 	}
@@ -93,7 +93,7 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RECEIVABLE_SERVICES_ACCT")
+	@Column(name="C_RECEIVABLE_SERVICES_ACCT", columnDefinition="INT")
 	public Integer getCReceivableServicesAcct() {
 		return cReceivableServicesAcct;
 	}
@@ -113,7 +113,7 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -123,12 +123,12 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -143,7 +143,7 @@ public class CBpCustomerAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

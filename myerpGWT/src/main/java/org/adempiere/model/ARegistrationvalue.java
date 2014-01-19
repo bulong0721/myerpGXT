@@ -18,7 +18,7 @@ public class ARegistrationvalue extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -32,7 +32,7 @@ public class ARegistrationvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_REGISTRATION_ID")
+	@Column(name="A_REGISTRATION_ID", columnDefinition="INT")
 	public Integer getARegistrationId() {
 		return aRegistrationId;
 	}
@@ -42,7 +42,7 @@ public class ARegistrationvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_REGISTRATIONATTRIBUTE_ID")
+	@Column(name="A_REGISTRATIONATTRIBUTE_ID", columnDefinition="INT")
 	public Integer getARegistrationattributeId() {
 		return aRegistrationattributeId;
 	}
@@ -52,7 +52,7 @@ public class ARegistrationvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -62,7 +62,7 @@ public class ARegistrationvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -82,7 +82,7 @@ public class ARegistrationvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -101,12 +101,12 @@ public class ARegistrationvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -131,7 +131,7 @@ public class ARegistrationvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

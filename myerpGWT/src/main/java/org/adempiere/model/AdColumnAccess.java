@@ -18,9 +18,9 @@ public class AdColumnAccess extends org.adempiere.common.ADEntityBase {
 	private Integer adTableId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String isexclude;
-	private String isreadonly;
+	private Boolean isactive;
+	private Boolean isexclude;
+	private Boolean isreadonly;
 	private String updated;
 	private Integer updatedby;
 
@@ -33,7 +33,7 @@ public class AdColumnAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class AdColumnAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -53,7 +53,7 @@ public class AdColumnAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -63,7 +63,7 @@ public class AdColumnAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ROLE_ID")
+	@Column(name="AD_ROLE_ID", columnDefinition="INT")
 	public Integer getAdRoleId() {
 		return adRoleId;
 	}
@@ -73,7 +73,7 @@ public class AdColumnAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -93,7 +93,7 @@ public class AdColumnAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -103,32 +103,32 @@ public class AdColumnAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsexclude() {
+	@Column(nullable=false)
+	public Boolean isIsexclude() {
 		return isexclude;
 	}
 
-	public void setIsexclude(String isexclude) {
+	public void setIsexclude(Boolean isexclude) {
 		this.isexclude = isexclude;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreadonly() {
+	@Column(nullable=false)
+	public Boolean isIsreadonly() {
 		return isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
@@ -143,7 +143,7 @@ public class AdColumnAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

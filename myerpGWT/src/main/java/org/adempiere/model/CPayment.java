@@ -55,16 +55,16 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	private String docaction;
 	private String docstatus;
 	private String documentno;
-	private String isactive;
-	private String isallocated;
-	private String isapproved;
-	private String isdelayedcapture;
-	private String isonline;
-	private String isoverunderpayment;
-	private String isprepayment;
-	private String isreceipt;
-	private String isreconciled;
-	private String isselfservice;
+	private Boolean isactive;
+	private Boolean isallocated;
+	private Boolean isapproved;
+	private Boolean isdelayedcapture;
+	private Boolean isonline;
+	private Boolean isoverunderpayment;
+	private Boolean isprepayment;
+	private Boolean isreceipt;
+	private Boolean isreconciled;
+	private Boolean isselfservice;
 	private String micr;
 	private String oprocessing;
 	private String origTrxid;
@@ -72,9 +72,9 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	private BigDecimal payamt;
 	private String ponum;
 	private String posted;
-	private String processed;
+	private Boolean processed;
 	private Long processedon;
-	private String processing;
+	private Boolean processing;
 	private String rAuthcode;
 	private String rAuthcodeDc;
 	private String rAvsaddr;
@@ -207,7 +207,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -217,7 +217,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -227,7 +227,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -237,7 +237,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -247,7 +247,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BANKACCOUNT_ID")
+	@Column(name="C_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCBankaccountId() {
 		return cBankaccountId;
 	}
@@ -257,7 +257,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BP_BANKACCOUNT_ID")
+	@Column(name="C_BP_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCBpBankaccountId() {
 		return cBpBankaccountId;
 	}
@@ -267,7 +267,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -277,7 +277,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -287,7 +287,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CASHBOOK_ID")
+	@Column(name="C_CASHBOOK_ID", columnDefinition="INT")
 	public Integer getCCashbookId() {
 		return cCashbookId;
 	}
@@ -297,7 +297,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -307,7 +307,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CONVERSIONTYPE_ID")
+	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT")
 	public Integer getCConversiontypeId() {
 		return cConversiontypeId;
 	}
@@ -317,7 +317,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -327,7 +327,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID", nullable=false)
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -337,7 +337,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -347,7 +347,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -357,7 +357,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -367,7 +367,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENTBATCH_ID")
+	@Column(name="C_PAYMENTBATCH_ID", columnDefinition="INT")
 	public Integer getCPaymentbatchId() {
 		return cPaymentbatchId;
 	}
@@ -377,7 +377,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -416,7 +416,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -426,6 +426,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreditcardexpmm() {
 		return creditcardexpmm;
 	}
@@ -435,6 +436,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreditcardexpyy() {
 		return creditcardexpyy;
 	}
@@ -542,102 +544,102 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsallocated() {
+	@Column(nullable=false)
+	public Boolean isIsallocated() {
 		return isallocated;
 	}
 
-	public void setIsallocated(String isallocated) {
+	public void setIsallocated(Boolean isallocated) {
 		this.isallocated = isallocated;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsapproved() {
+	@Column(nullable=false)
+	public Boolean isIsapproved() {
 		return isapproved;
 	}
 
-	public void setIsapproved(String isapproved) {
+	public void setIsapproved(Boolean isapproved) {
 		this.isapproved = isapproved;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdelayedcapture() {
+	@Column(nullable=false)
+	public Boolean isIsdelayedcapture() {
 		return isdelayedcapture;
 	}
 
-	public void setIsdelayedcapture(String isdelayedcapture) {
+	public void setIsdelayedcapture(Boolean isdelayedcapture) {
 		this.isdelayedcapture = isdelayedcapture;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsonline() {
+	@Column(nullable=false)
+	public Boolean isIsonline() {
 		return isonline;
 	}
 
-	public void setIsonline(String isonline) {
+	public void setIsonline(Boolean isonline) {
 		this.isonline = isonline;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsoverunderpayment() {
+	@Column(nullable=false)
+	public Boolean isIsoverunderpayment() {
 		return isoverunderpayment;
 	}
 
-	public void setIsoverunderpayment(String isoverunderpayment) {
+	public void setIsoverunderpayment(Boolean isoverunderpayment) {
 		this.isoverunderpayment = isoverunderpayment;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprepayment() {
+	@Column(nullable=false)
+	public Boolean isIsprepayment() {
 		return isprepayment;
 	}
 
-	public void setIsprepayment(String isprepayment) {
+	public void setIsprepayment(Boolean isprepayment) {
 		this.isprepayment = isprepayment;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreceipt() {
+	@Column(nullable=false)
+	public Boolean isIsreceipt() {
 		return isreceipt;
 	}
 
-	public void setIsreceipt(String isreceipt) {
+	public void setIsreceipt(Boolean isreceipt) {
 		this.isreceipt = isreceipt;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreconciled() {
+	@Column(nullable=false)
+	public Boolean isIsreconciled() {
 		return isreconciled;
 	}
 
-	public void setIsreconciled(String isreconciled) {
+	public void setIsreconciled(Boolean isreconciled) {
 		this.isreconciled = isreconciled;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
@@ -711,12 +713,12 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -730,12 +732,11 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -840,7 +841,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REF_PAYMENT_ID")
+	@Column(name="REF_PAYMENT_ID", columnDefinition="INT")
 	public Integer getRefPaymentId() {
 		return refPaymentId;
 	}
@@ -850,7 +851,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REVERSAL_ID")
+	@Column(name="REVERSAL_ID", columnDefinition="INT")
 	public Integer getReversalId() {
 		return reversalId;
 	}
@@ -919,7 +920,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -929,7 +930,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -939,7 +940,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}

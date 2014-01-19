@@ -26,20 +26,20 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	private String gaap;
 	private String hasalias;
 	private String hascombination;
-	private String isaccrual;
-	private String isactive;
-	private String isadjustcogs;
-	private String isallownegativeposting;
-	private String isdiscountcorrectstax;
-	private String isexplicitcostadjustment;
-	private String ispostifclearingequal;
-	private String ispostservices;
-	private String istradediscountposted;
+	private Boolean isaccrual;
+	private Boolean isactive;
+	private Boolean isadjustcogs;
+	private Boolean isallownegativeposting;
+	private Boolean isdiscountcorrectstax;
+	private Boolean isexplicitcostadjustment;
+	private Boolean ispostifclearingequal;
+	private Boolean ispostservices;
+	private Boolean istradediscountposted;
 	private Integer mCosttypeId;
 	private String name;
 	private Integer periodOpenfuture;
 	private Integer periodOpenhistory;
-	private String processing;
+	private Boolean processing;
 	private String separator;
 	private String taxcorrectiontype;
 	private String updated;
@@ -53,7 +53,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -63,7 +63,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -73,7 +73,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGONLY_ID")
+	@Column(name="AD_ORGONLY_ID", columnDefinition="INT")
 	public Integer getAdOrgonlyId() {
 		return adOrgonlyId;
 	}
@@ -93,7 +93,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -103,7 +103,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -113,7 +113,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID")
+	@Column(name="C_PERIOD_ID", columnDefinition="INT")
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -163,7 +163,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -212,97 +212,95 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsaccrual() {
+	@Column(nullable=false)
+	public Boolean isIsaccrual() {
 		return isaccrual;
 	}
 
-	public void setIsaccrual(String isaccrual) {
+	public void setIsaccrual(Boolean isaccrual) {
 		this.isaccrual = isaccrual;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsadjustcogs() {
+	@Column(nullable=false)
+	public Boolean isIsadjustcogs() {
 		return isadjustcogs;
 	}
 
-	public void setIsadjustcogs(String isadjustcogs) {
+	public void setIsadjustcogs(Boolean isadjustcogs) {
 		this.isadjustcogs = isadjustcogs;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsallownegativeposting() {
+	public Boolean isIsallownegativeposting() {
 		return isallownegativeposting;
 	}
 
-	public void setIsallownegativeposting(String isallownegativeposting) {
+	public void setIsallownegativeposting(Boolean isallownegativeposting) {
 		this.isallownegativeposting = isallownegativeposting;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdiscountcorrectstax() {
+	@Column(nullable=false)
+	public Boolean isIsdiscountcorrectstax() {
 		return isdiscountcorrectstax;
 	}
 
-	public void setIsdiscountcorrectstax(String isdiscountcorrectstax) {
+	public void setIsdiscountcorrectstax(Boolean isdiscountcorrectstax) {
 		this.isdiscountcorrectstax = isdiscountcorrectstax;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsexplicitcostadjustment() {
+	@Column(nullable=false)
+	public Boolean isIsexplicitcostadjustment() {
 		return isexplicitcostadjustment;
 	}
 
-	public void setIsexplicitcostadjustment(String isexplicitcostadjustment) {
+	public void setIsexplicitcostadjustment(Boolean isexplicitcostadjustment) {
 		this.isexplicitcostadjustment = isexplicitcostadjustment;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIspostifclearingequal() {
+	public Boolean isIspostifclearingequal() {
 		return ispostifclearingequal;
 	}
 
-	public void setIspostifclearingequal(String ispostifclearingequal) {
+	public void setIspostifclearingequal(Boolean ispostifclearingequal) {
 		this.ispostifclearingequal = ispostifclearingequal;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspostservices() {
+	@Column(nullable=false)
+	public Boolean isIspostservices() {
 		return ispostservices;
 	}
 
-	public void setIspostservices(String ispostservices) {
+	public void setIspostservices(Boolean ispostservices) {
 		this.ispostservices = ispostservices;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstradediscountposted() {
+	@Column(nullable=false)
+	public Boolean isIstradediscountposted() {
 		return istradediscountposted;
 	}
 
-	public void setIstradediscountposted(String istradediscountposted) {
+	public void setIstradediscountposted(Boolean istradediscountposted) {
 		this.istradediscountposted = istradediscountposted;
 	}
 
 	@Basic
-	@Column(name="M_COSTTYPE_ID")
+	@Column(name="M_COSTTYPE_ID", columnDefinition="INT")
 	public Integer getMCosttypeId() {
 		return mCosttypeId;
 	}
@@ -322,7 +320,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PERIOD_OPENFUTURE")
+	@Column(name="PERIOD_OPENFUTURE", columnDefinition="INT")
 	public Integer getPeriodOpenfuture() {
 		return periodOpenfuture;
 	}
@@ -332,7 +330,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PERIOD_OPENHISTORY")
+	@Column(name="PERIOD_OPENHISTORY", columnDefinition="INT")
 	public Integer getPeriodOpenhistory() {
 		return periodOpenhistory;
 	}
@@ -342,12 +340,11 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -382,7 +379,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

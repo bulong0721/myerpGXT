@@ -1,17 +1,17 @@
-package org.adempiere.util;
+package org.adempiere.common;
 
 import java.io.Serializable;
 
-public class RefTableCriteria implements Serializable {
+public class RefCriteria implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private String				adTable;
 	private String				keyColumn;
 	private String				displayColumn;
-	private String				isvaluedisplayed;
+	private Boolean				isvaluedisplayed;
 	private String				orderbyclause;
 	private String				whereclause;
 
-	public RefTableCriteria(String adTable, String keyColumn, String displayColumn, String isvaluedisplayed,
+	public RefCriteria(String adTable, String keyColumn, String displayColumn, Boolean isvaluedisplayed,
 			String orderbyclause, String whereclause) {
 		super();
 		this.adTable = adTable;
@@ -46,11 +46,11 @@ public class RefTableCriteria implements Serializable {
 		this.displayColumn = displayColumn;
 	}
 
-	public String getIsvaluedisplayed() {
+	public Boolean getIsvaluedisplayed() {
 		return isvaluedisplayed;
 	}
 
-	public void setIsvaluedisplayed(String isvaluedisplayed) {
+	public void setIsvaluedisplayed(Boolean isvaluedisplayed) {
 		this.isvaluedisplayed = isvaluedisplayed;
 	}
 

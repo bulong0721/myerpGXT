@@ -16,7 +16,7 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mBomId;
 	private Integer mChangenoticeId;
 	private String name;
@@ -33,7 +33,7 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -63,7 +63,7 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -92,17 +92,17 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_BOM_ID")
+	@Column(name="M_BOM_ID", columnDefinition="INT")
 	public Integer getMBomId() {
 		return mBomId;
 	}
@@ -112,7 +112,7 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_CHANGENOTICE_ID")
+	@Column(name="M_CHANGENOTICE_ID", columnDefinition="INT")
 	public Integer getMChangenoticeId() {
 		return mChangenoticeId;
 	}
@@ -132,7 +132,7 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_PRODUCT_BOM_ID")
+	@Column(name="PP_PRODUCT_BOM_ID", columnDefinition="INT")
 	public Integer getPpProductBomId() {
 		return ppProductBomId;
 	}
@@ -142,7 +142,7 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="R_GROUP_ID")
+	@Column(name="R_GROUP_ID", columnDefinition="INT")
 	public Integer getRGroupId() {
 		return rGroupId;
 	}
@@ -162,7 +162,7 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

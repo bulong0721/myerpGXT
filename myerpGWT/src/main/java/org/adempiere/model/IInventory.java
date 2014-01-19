@@ -20,7 +20,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	private String iErrormsg;
 	private Integer iInventoryId;
 	private String iIsimported;
-	private String isactive;
+	private Boolean isactive;
 	private String locatorvalue;
 	private String lot;
 	private Integer mInventoryId;
@@ -29,8 +29,8 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	private Integer mProductId;
 	private Integer mWarehouseId;
 	private String movementdate;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private BigDecimal qtybook;
 	private BigDecimal qtycount;
 	private String serno;
@@ -51,7 +51,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -61,7 +61,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -81,6 +81,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -118,7 +119,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_INVENTORY_ID")
+	@Column(name="I_INVENTORY_ID", columnDefinition="INT")
 	public Integer getIInventoryId() {
 		return iInventoryId;
 	}
@@ -138,12 +139,11 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -168,7 +168,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INVENTORY_ID")
+	@Column(name="M_INVENTORY_ID", columnDefinition="INT")
 	public Integer getMInventoryId() {
 		return mInventoryId;
 	}
@@ -178,7 +178,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INVENTORYLINE_ID")
+	@Column(name="M_INVENTORYLINE_ID", columnDefinition="INT")
 	public Integer getMInventorylineId() {
 		return mInventorylineId;
 	}
@@ -188,7 +188,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID")
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -198,7 +198,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -208,7 +208,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -227,22 +227,20 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -295,6 +293,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

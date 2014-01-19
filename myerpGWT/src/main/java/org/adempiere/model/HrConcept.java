@@ -23,14 +23,14 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	private Integer hrDepartmentId;
 	private Integer hrJobId;
 	private Integer hrPayrollId;
-	private String isactive;
-	private String isdefault;
-	private String isemployee;
-	private String ispaid;
-	private String isprinted;
-	private String isreadwrite;
-	private String isreceipt;
-	private String isregistered;
+	private Boolean isactive;
+	private Boolean isdefault;
+	private Boolean isemployee;
+	private Boolean ispaid;
+	private Boolean isprinted;
+	private Boolean isreadwrite;
+	private Boolean isreceipt;
+	private Boolean isregistered;
 	private String name;
 	private Integer seqno;
 	private String type;
@@ -58,7 +58,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -68,7 +68,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -78,7 +78,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REFERENCE_ID")
+	@Column(name="AD_REFERENCE_ID", columnDefinition="INT")
 	public Integer getAdReferenceId() {
 		return adReferenceId;
 	}
@@ -108,7 +108,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -127,7 +127,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_CONCEPT_CATEGORY_ID")
+	@Column(name="HR_CONCEPT_CATEGORY_ID", columnDefinition="INT")
 	public Integer getHrConceptCategoryId() {
 		return hrConceptCategoryId;
 	}
@@ -137,7 +137,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="HR_CONCEPT_ID")
+	@Column(name="HR_CONCEPT_ID", columnDefinition="INT")
 	public Integer getHrConceptId() {
 		return hrConceptId;
 	}
@@ -147,7 +147,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_DEPARTMENT_ID")
+	@Column(name="HR_DEPARTMENT_ID", columnDefinition="INT")
 	public Integer getHrDepartmentId() {
 		return hrDepartmentId;
 	}
@@ -157,7 +157,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_JOB_ID")
+	@Column(name="HR_JOB_ID", columnDefinition="INT")
 	public Integer getHrJobId() {
 		return hrJobId;
 	}
@@ -167,7 +167,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_PAYROLL_ID")
+	@Column(name="HR_PAYROLL_ID", columnDefinition="INT")
 	public Integer getHrPayrollId() {
 		return hrPayrollId;
 	}
@@ -177,82 +177,75 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdefault() {
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsemployee() {
+	public Boolean isIsemployee() {
 		return isemployee;
 	}
 
-	public void setIsemployee(String isemployee) {
+	public void setIsemployee(Boolean isemployee) {
 		this.isemployee = isemployee;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIspaid() {
+	public Boolean isIspaid() {
 		return ispaid;
 	}
 
-	public void setIspaid(String ispaid) {
+	public void setIspaid(Boolean ispaid) {
 		this.ispaid = ispaid;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsprinted() {
+	public Boolean isIsprinted() {
 		return isprinted;
 	}
 
-	public void setIsprinted(String isprinted) {
+	public void setIsprinted(Boolean isprinted) {
 		this.isprinted = isprinted;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsreadwrite() {
+	public Boolean isIsreadwrite() {
 		return isreadwrite;
 	}
 
-	public void setIsreadwrite(String isreadwrite) {
+	public void setIsreadwrite(Boolean isreadwrite) {
 		this.isreadwrite = isreadwrite;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsreceipt() {
+	public Boolean isIsreceipt() {
 		return isreceipt;
 	}
 
-	public void setIsreceipt(String isreceipt) {
+	public void setIsreceipt(Boolean isreceipt) {
 		this.isreceipt = isreceipt;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsregistered() {
+	public Boolean isIsregistered() {
 		return isregistered;
 	}
 
-	public void setIsregistered(String isregistered) {
+	public void setIsregistered(Boolean isregistered) {
 		this.isregistered = isregistered;
 	}
 
@@ -267,6 +260,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -296,7 +290,7 @@ public class HrConcept extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

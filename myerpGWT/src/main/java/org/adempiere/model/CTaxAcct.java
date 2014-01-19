@@ -17,7 +17,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	private Integer cTaxId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer tCreditAcct;
 	private Integer tDueAcct;
 	private Integer tExpenseAcct;
@@ -35,7 +35,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -65,7 +65,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_TAX_ID")
+	@Column(name="C_TAX_ID", columnDefinition="INT")
 	public Integer getCTaxId() {
 		return cTaxId;
 	}
@@ -85,7 +85,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -95,17 +95,17 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="T_CREDIT_ACCT", nullable=false)
+	@Column(name="T_CREDIT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getTCreditAcct() {
 		return tCreditAcct;
 	}
@@ -115,7 +115,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="T_DUE_ACCT", nullable=false)
+	@Column(name="T_DUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getTDueAcct() {
 		return tDueAcct;
 	}
@@ -125,7 +125,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="T_EXPENSE_ACCT", nullable=false)
+	@Column(name="T_EXPENSE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getTExpenseAcct() {
 		return tExpenseAcct;
 	}
@@ -135,7 +135,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="T_LIABILITY_ACCT", nullable=false)
+	@Column(name="T_LIABILITY_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getTLiabilityAcct() {
 		return tLiabilityAcct;
 	}
@@ -145,7 +145,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="T_RECEIVABLES_ACCT", nullable=false)
+	@Column(name="T_RECEIVABLES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getTReceivablesAcct() {
 		return tReceivablesAcct;
 	}
@@ -165,7 +165,7 @@ public class CTaxAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

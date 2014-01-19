@@ -15,12 +15,12 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private String issuestatus;
 	private String issuesummary;
 	private Integer lineno;
 	private String loggername;
-	private String processing;
+	private Boolean processing;
 	private Integer rIssueknownId;
 	private Integer rIssuerecommendationId;
 	private Integer rIssuestatusId;
@@ -39,7 +39,7 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -49,7 +49,7 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -69,7 +69,7 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -88,12 +88,12 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -118,6 +118,7 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLineno() {
 		return lineno;
 	}
@@ -137,17 +138,16 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Id
-	@Column(name="R_ISSUEKNOWN_ID")
+	@Column(name="R_ISSUEKNOWN_ID", columnDefinition="INT")
 	public Integer getRIssueknownId() {
 		return rIssueknownId;
 	}
@@ -157,7 +157,7 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_ISSUERECOMMENDATION_ID")
+	@Column(name="R_ISSUERECOMMENDATION_ID", columnDefinition="INT")
 	public Integer getRIssuerecommendationId() {
 		return rIssuerecommendationId;
 	}
@@ -167,7 +167,7 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_ISSUESTATUS_ID")
+	@Column(name="R_ISSUESTATUS_ID", columnDefinition="INT")
 	public Integer getRIssuestatusId() {
 		return rIssuestatusId;
 	}
@@ -177,7 +177,7 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_REQUEST_ID")
+	@Column(name="R_REQUEST_ID", columnDefinition="INT")
 	public Integer getRRequestId() {
 		return rRequestId;
 	}
@@ -227,7 +227,7 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

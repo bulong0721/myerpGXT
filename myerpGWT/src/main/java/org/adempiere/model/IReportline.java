@@ -22,9 +22,9 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	private String iErrormsg;
 	private String iIsimported;
 	private Integer iReportlineId;
-	private String isactive;
-	private String isprinted;
-	private String issummary;
+	private Boolean isactive;
+	private Boolean isprinted;
+	private Boolean issummary;
 	private String linetype;
 	private String name;
 	private Integer paReportlineId;
@@ -33,8 +33,8 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	private String paamounttype;
 	private String paperiodtype;
 	private String postingtype;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String reportlinesetname;
 	private Integer seqno;
 	private String updated;
@@ -48,7 +48,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -58,7 +58,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -78,7 +78,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ELEMENTVALUE_ID")
+	@Column(name="C_ELEMENTVALUE_ID", columnDefinition="INT")
 	public Integer getCElementvalueId() {
 		return cElementvalueId;
 	}
@@ -108,6 +108,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -156,7 +157,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_REPORTLINE_ID")
+	@Column(name="I_REPORTLINE_ID", columnDefinition="INT")
 	public Integer getIReportlineId() {
 		return iReportlineId;
 	}
@@ -166,32 +167,29 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsprinted() {
+	public Boolean isIsprinted() {
 		return isprinted;
 	}
 
-	public void setIsprinted(String isprinted) {
+	public void setIsprinted(Boolean isprinted) {
 		this.isprinted = isprinted;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssummary() {
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
@@ -216,7 +214,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_REPORTLINE_ID")
+	@Column(name="PA_REPORTLINE_ID", columnDefinition="INT")
 	public Integer getPaReportlineId() {
 		return paReportlineId;
 	}
@@ -226,7 +224,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_REPORTLINESET_ID")
+	@Column(name="PA_REPORTLINESET_ID", columnDefinition="INT")
 	public Integer getPaReportlinesetId() {
 		return paReportlinesetId;
 	}
@@ -236,7 +234,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_REPORTSOURCE_ID")
+	@Column(name="PA_REPORTSOURCE_ID", columnDefinition="INT")
 	public Integer getPaReportsourceId() {
 		return paReportsourceId;
 	}
@@ -276,22 +274,20 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -306,6 +302,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -325,6 +322,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

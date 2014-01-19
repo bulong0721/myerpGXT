@@ -19,7 +19,7 @@ public class AdReplicationstrategy extends org.adempiere.common.ADEntityBase {
 	private String entitytype;
 	private Integer expProcessorId;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -33,7 +33,7 @@ public class AdReplicationstrategy extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class AdReplicationstrategy extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class AdReplicationstrategy extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_REPLICATIONSTRATEGY_ID")
+	@Column(name="AD_REPLICATIONSTRATEGY_ID", columnDefinition="INT")
 	public Integer getAdReplicationstrategyId() {
 		return adReplicationstrategyId;
 	}
@@ -73,7 +73,7 @@ public class AdReplicationstrategy extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -102,7 +102,7 @@ public class AdReplicationstrategy extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="EXP_PROCESSOR_ID")
+	@Column(name="EXP_PROCESSOR_ID", columnDefinition="INT")
 	public Integer getExpProcessorId() {
 		return expProcessorId;
 	}
@@ -122,12 +122,12 @@ public class AdReplicationstrategy extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -152,7 +152,7 @@ public class AdReplicationstrategy extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

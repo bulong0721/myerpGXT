@@ -14,8 +14,8 @@ public class RMailtext extends org.adempiere.common.ADEntityBase {
 	private Integer adOrgId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String ishtml;
+	private Boolean isactive;
+	private Boolean ishtml;
 	private String mailheader;
 	private String mailtext;
 	private String mailtext2;
@@ -33,7 +33,7 @@ public class RMailtext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class RMailtext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -63,7 +63,7 @@ public class RMailtext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -73,22 +73,22 @@ public class RMailtext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIshtml() {
+	@Column(nullable=false)
+	public Boolean isIshtml() {
 		return ishtml;
 	}
 
-	public void setIshtml(String ishtml) {
+	public void setIshtml(Boolean ishtml) {
 		this.ishtml = ishtml;
 	}
 
@@ -143,7 +143,7 @@ public class RMailtext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="R_MAILTEXT_ID")
+	@Column(name="R_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getRMailtextId() {
 		return rMailtextId;
 	}
@@ -163,7 +163,7 @@ public class RMailtext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

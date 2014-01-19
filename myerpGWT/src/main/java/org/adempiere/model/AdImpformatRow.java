@@ -24,7 +24,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	private String decimalpoint;
 	private String divideby100;
 	private Integer endno;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String script;
 	private Integer seqno;
@@ -40,7 +40,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID", nullable=false)
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -60,7 +60,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_IMPFORMAT_ID", nullable=false)
+	@Column(name="AD_IMPFORMAT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdImpformatId() {
 		return adImpformatId;
 	}
@@ -70,7 +70,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_IMPFORMAT_ROW_ID")
+	@Column(name="AD_IMPFORMAT_ROW_ID", columnDefinition="INT")
 	public Integer getAdImpformatRowId() {
 		return adImpformatRowId;
 	}
@@ -80,7 +80,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -120,7 +120,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -170,6 +170,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getEndno() {
 		return endno;
 	}
@@ -179,12 +180,12 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -209,7 +210,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -219,6 +220,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getStartno() {
 		return startno;
 	}
@@ -238,7 +240,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

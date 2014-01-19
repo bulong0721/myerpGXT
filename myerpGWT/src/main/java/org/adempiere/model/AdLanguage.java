@@ -18,13 +18,13 @@ public class AdLanguage extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String datepattern;
-	private String isactive;
-	private String isbaselanguage;
-	private String isdecimalpoint;
-	private String issystemlanguage;
+	private Boolean isactive;
+	private Boolean isbaselanguage;
+	private Boolean isdecimalpoint;
+	private Boolean issystemlanguage;
 	private String languageiso;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private String timepattern;
 	private String updated;
 	private Integer updatedby;
@@ -37,7 +37,7 @@ public class AdLanguage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class AdLanguage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_LANGUAGE_ID", nullable=false)
+	@Column(name="AD_LANGUAGE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdLanguageId() {
 		return adLanguageId;
 	}
@@ -67,7 +67,7 @@ public class AdLanguage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -97,7 +97,7 @@ public class AdLanguage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -117,42 +117,42 @@ public class AdLanguage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsbaselanguage() {
+	@Column(nullable=false)
+	public Boolean isIsbaselanguage() {
 		return isbaselanguage;
 	}
 
-	public void setIsbaselanguage(String isbaselanguage) {
+	public void setIsbaselanguage(Boolean isbaselanguage) {
 		this.isbaselanguage = isbaselanguage;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdecimalpoint() {
+	@Column(nullable=false)
+	public Boolean isIsdecimalpoint() {
 		return isdecimalpoint;
 	}
 
-	public void setIsdecimalpoint(String isdecimalpoint) {
+	public void setIsdecimalpoint(Boolean isdecimalpoint) {
 		this.isdecimalpoint = isdecimalpoint;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssystemlanguage() {
+	@Column(nullable=false)
+	public Boolean isIssystemlanguage() {
 		return issystemlanguage;
 	}
 
-	public void setIssystemlanguage(String issystemlanguage) {
+	public void setIssystemlanguage(Boolean issystemlanguage) {
 		this.issystemlanguage = issystemlanguage;
 	}
 
@@ -177,12 +177,11 @@ public class AdLanguage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -207,7 +206,7 @@ public class AdLanguage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

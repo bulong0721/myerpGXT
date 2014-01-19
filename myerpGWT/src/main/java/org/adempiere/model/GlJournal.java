@@ -32,14 +32,14 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	private Integer glCategoryId;
 	private Integer glJournalId;
 	private Integer glJournalbatchId;
-	private String isactive;
-	private String isapproved;
-	private String isprinted;
+	private Boolean isactive;
+	private Boolean isapproved;
+	private Boolean isprinted;
 	private String posted;
 	private String postingtype;
-	private String processed;
+	private Boolean processed;
 	private Long processedon;
-	private String processing;
+	private Boolean processing;
 	private Integer reversalId;
 	private BigDecimal totalcr;
 	private BigDecimal totaldr;
@@ -54,7 +54,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -64,7 +64,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -74,7 +74,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -84,7 +84,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CONVERSIONTYPE_ID", nullable=false)
+	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCConversiontypeId() {
 		return cConversiontypeId;
 	}
@@ -94,7 +94,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -104,7 +104,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID", nullable=false)
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -114,7 +114,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID", nullable=false)
+	@Column(name="C_PERIOD_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -143,7 +143,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -223,7 +223,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_BUDGET_ID")
+	@Column(name="GL_BUDGET_ID", columnDefinition="INT")
 	public Integer getGlBudgetId() {
 		return glBudgetId;
 	}
@@ -233,7 +233,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_CATEGORY_ID", nullable=false)
+	@Column(name="GL_CATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getGlCategoryId() {
 		return glCategoryId;
 	}
@@ -243,7 +243,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="GL_JOURNAL_ID")
+	@Column(name="GL_JOURNAL_ID", columnDefinition="INT")
 	public Integer getGlJournalId() {
 		return glJournalId;
 	}
@@ -253,7 +253,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_JOURNALBATCH_ID")
+	@Column(name="GL_JOURNALBATCH_ID", columnDefinition="INT")
 	public Integer getGlJournalbatchId() {
 		return glJournalbatchId;
 	}
@@ -263,32 +263,32 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsapproved() {
+	@Column(nullable=false)
+	public Boolean isIsapproved() {
 		return isapproved;
 	}
 
-	public void setIsapproved(String isapproved) {
+	public void setIsapproved(Boolean isapproved) {
 		this.isapproved = isapproved;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprinted() {
+	@Column(nullable=false)
+	public Boolean isIsprinted() {
 		return isprinted;
 	}
 
-	public void setIsprinted(String isprinted) {
+	public void setIsprinted(Boolean isprinted) {
 		this.isprinted = isprinted;
 	}
 
@@ -313,12 +313,11 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -332,17 +331,16 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="REVERSAL_ID")
+	@Column(name="REVERSAL_ID", columnDefinition="INT")
 	public Integer getReversalId() {
 		return reversalId;
 	}
@@ -382,7 +380,7 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

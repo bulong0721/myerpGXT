@@ -19,7 +19,7 @@ public class CBpEmployeeAcct extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private Integer eExpenseAcct;
 	private Integer ePrepaymentAcct;
-	private String isactive;
+	private Boolean isactive;
 	private String updated;
 	private Integer updatedby;
 
@@ -32,7 +32,7 @@ public class CBpEmployeeAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class CBpEmployeeAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -52,7 +52,7 @@ public class CBpEmployeeAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -62,7 +62,7 @@ public class CBpEmployeeAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -82,7 +82,7 @@ public class CBpEmployeeAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -92,7 +92,7 @@ public class CBpEmployeeAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="E_EXPENSE_ACCT")
+	@Column(name="E_EXPENSE_ACCT", columnDefinition="INT")
 	public Integer getEExpenseAcct() {
 		return eExpenseAcct;
 	}
@@ -102,7 +102,7 @@ public class CBpEmployeeAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="E_PREPAYMENT_ACCT")
+	@Column(name="E_PREPAYMENT_ACCT", columnDefinition="INT")
 	public Integer getEPrepaymentAcct() {
 		return ePrepaymentAcct;
 	}
@@ -112,12 +112,12 @@ public class CBpEmployeeAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -132,7 +132,7 @@ public class CBpEmployeeAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

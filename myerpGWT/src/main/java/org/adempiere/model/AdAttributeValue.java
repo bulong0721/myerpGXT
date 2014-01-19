@@ -27,7 +27,7 @@ public class AdAttributeValue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ATTRIBUTE_ID")
+	@Column(name="AD_ATTRIBUTE_ID", columnDefinition="INT")
 	public Integer getAdAttributeId() {
 		return adAttributeId;
 	}
@@ -37,7 +37,7 @@ public class AdAttributeValue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="RECORD_ID")
+	@Column(name="RECORD_ID", columnDefinition="INT")
 	public Integer getRecordId() {
 		return recordId;
 	}

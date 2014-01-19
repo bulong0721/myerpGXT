@@ -25,9 +25,9 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	private Integer iElementvalueId;
 	private String iErrormsg;
 	private String iIsimported;
-	private String isactive;
-	private String isdoccontrolled;
-	private String issummary;
+	private Boolean isactive;
+	private Boolean isdoccontrolled;
+	private Boolean issummary;
 	private String name;
 	private Integer parentelementvalueId;
 	private String parentvalue;
@@ -35,8 +35,8 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	private String postbudget;
 	private String postencumbrance;
 	private String poststatistical;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 	private String value;
@@ -69,7 +69,7 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -79,7 +79,7 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -89,7 +89,7 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -99,7 +99,7 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ELEMENT_ID")
+	@Column(name="C_ELEMENT_ID", columnDefinition="INT")
 	public Integer getCElementId() {
 		return cElementId;
 	}
@@ -109,7 +109,7 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ELEMENTVALUE_ID")
+	@Column(name="C_ELEMENTVALUE_ID", columnDefinition="INT")
 	public Integer getCElementvalueId() {
 		return cElementvalueId;
 	}
@@ -129,6 +129,7 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -167,7 +168,7 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_ELEMENTVALUE_ID")
+	@Column(name="I_ELEMENTVALUE_ID", columnDefinition="INT")
 	public Integer getIElementvalueId() {
 		return iElementvalueId;
 	}
@@ -197,32 +198,29 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdoccontrolled() {
+	public Boolean isIsdoccontrolled() {
 		return isdoccontrolled;
 	}
 
-	public void setIsdoccontrolled(String isdoccontrolled) {
+	public void setIsdoccontrolled(Boolean isdoccontrolled) {
 		this.isdoccontrolled = isdoccontrolled;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssummary() {
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
@@ -237,7 +235,7 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PARENTELEMENTVALUE_ID")
+	@Column(name="PARENTELEMENTVALUE_ID", columnDefinition="INT")
 	public Integer getParentelementvalueId() {
 		return parentelementvalueId;
 	}
@@ -297,22 +295,20 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -327,6 +323,7 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -18,7 +18,7 @@ public class BTopictype extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mPricelistId;
 	private Integer mProductId;
 	private Integer mProductmemberId;
@@ -34,7 +34,7 @@ public class BTopictype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class BTopictype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -64,7 +64,7 @@ public class BTopictype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="B_TOPICTYPE_ID")
+	@Column(name="B_TOPICTYPE_ID", columnDefinition="INT")
 	public Integer getBTopictypeId() {
 		return bTopictypeId;
 	}
@@ -84,7 +84,7 @@ public class BTopictype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -113,17 +113,17 @@ public class BTopictype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_ID", nullable=false)
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT", nullable=false)
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -133,7 +133,7 @@ public class BTopictype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -143,7 +143,7 @@ public class BTopictype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCTMEMBER_ID", nullable=false)
+	@Column(name="M_PRODUCTMEMBER_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductmemberId() {
 		return mProductmemberId;
 	}
@@ -173,7 +173,7 @@ public class BTopictype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

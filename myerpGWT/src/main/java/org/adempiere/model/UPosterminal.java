@@ -31,7 +31,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private String lastlocktime;
 	private String locked;
 	private Integer locktime;
@@ -55,7 +55,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -65,7 +65,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -85,7 +85,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CASHBOOK_ID", nullable=false)
+	@Column(name="C_CASHBOOK_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCashbookId() {
 		return cCashbookId;
 	}
@@ -95,7 +95,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CASHBPARTNER_ID", nullable=false)
+	@Column(name="C_CASHBPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCashbpartnerId() {
 		return cCashbpartnerId;
 	}
@@ -105,7 +105,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TEMPLATEBPARTNER_ID")
+	@Column(name="C_TEMPLATEBPARTNER_ID", columnDefinition="INT")
 	public Integer getCTemplatebpartnerId() {
 		return cTemplatebpartnerId;
 	}
@@ -115,7 +115,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CARD_BANKACCOUNT_ID")
+	@Column(name="CARD_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCardBankaccountId() {
 		return cardBankaccountId;
 	}
@@ -125,7 +125,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CARDTRANSFERBANKACCOUNT_ID")
+	@Column(name="CARDTRANSFERBANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCardtransferbankaccountId() {
 		return cardtransferbankaccountId;
 	}
@@ -135,7 +135,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CARDTRANSFERCASHBOOK_ID")
+	@Column(name="CARDTRANSFERCASHBOOK_ID", columnDefinition="INT")
 	public Integer getCardtransfercashbookId() {
 		return cardtransfercashbookId;
 	}
@@ -165,7 +165,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CASHTRANSFERBANKACCOUNT_ID")
+	@Column(name="CASHTRANSFERBANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCashtransferbankaccountId() {
 		return cashtransferbankaccountId;
 	}
@@ -175,7 +175,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CASHTRANSFERCASHBOOK_ID")
+	@Column(name="CASHTRANSFERCASHBOOK_ID", columnDefinition="INT")
 	public Integer getCashtransfercashbookId() {
 		return cashtransfercashbookId;
 	}
@@ -185,7 +185,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CHECK_BANKACCOUNT_ID")
+	@Column(name="CHECK_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCheckBankaccountId() {
 		return checkBankaccountId;
 	}
@@ -195,7 +195,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CHECKTRANSFERBANKACCOUNT_ID")
+	@Column(name="CHECKTRANSFERBANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getChecktransferbankaccountId() {
 		return checktransferbankaccountId;
 	}
@@ -205,7 +205,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CHECKTRANSFERCASHBOOK_ID")
+	@Column(name="CHECKTRANSFERCASHBOOK_ID", columnDefinition="INT")
 	public Integer getChecktransfercashbookId() {
 		return checktransfercashbookId;
 	}
@@ -235,7 +235,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -264,12 +264,11 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -293,6 +292,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLocktime() {
 		return locktime;
 	}
@@ -302,7 +302,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -322,7 +322,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PO_PRICELIST_ID")
+	@Column(name="PO_PRICELIST_ID", columnDefinition="INT")
 	public Integer getPoPricelistId() {
 		return poPricelistId;
 	}
@@ -342,7 +342,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID")
+	@Column(name="SALESREP_ID", columnDefinition="INT")
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -352,7 +352,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SO_PRICELIST_ID")
+	@Column(name="SO_PRICELIST_ID", columnDefinition="INT")
 	public Integer getSoPricelistId() {
 		return soPricelistId;
 	}
@@ -362,7 +362,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="U_POSTERMINAL_ID")
+	@Column(name="U_POSTERMINAL_ID", columnDefinition="INT")
 	public Integer getUPosterminalId() {
 		return uPosterminalId;
 	}
@@ -391,6 +391,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

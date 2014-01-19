@@ -18,8 +18,8 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String errormsg;
-	private String isactive;
-	private String isprocessing;
+	private Boolean isactive;
+	private Boolean isprocessing;
 	private Integer recordId;
 	private Integer result;
 	private String updated;
@@ -33,7 +33,7 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -63,7 +63,7 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PROCESS_ID", nullable=false)
+	@Column(name="AD_PROCESS_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdProcessId() {
 		return adProcessId;
 	}
@@ -73,7 +73,7 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -93,6 +93,7 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -112,27 +113,26 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprocessing() {
+	@Column(nullable=false)
+	public Boolean isIsprocessing() {
 		return isprocessing;
 	}
 
-	public void setIsprocessing(String isprocessing) {
+	public void setIsprocessing(Boolean isprocessing) {
 		this.isprocessing = isprocessing;
 	}
 
 	@Basic
-	@Column(name="RECORD_ID", nullable=false)
+	@Column(name="RECORD_ID", columnDefinition="INT", nullable=false)
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -142,6 +142,7 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getResult() {
 		return result;
 	}
@@ -161,7 +162,7 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

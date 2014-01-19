@@ -18,7 +18,7 @@ public class CRevenuerecognitionRun extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private Integer glJournalId;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal recognizedamt;
 	private String updated;
 	private Integer updatedby;
@@ -31,7 +31,7 @@ public class CRevenuerecognitionRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class CRevenuerecognitionRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -51,7 +51,7 @@ public class CRevenuerecognitionRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_REVENUERECOGNITION_PLAN_ID", nullable=false)
+	@Column(name="C_REVENUERECOGNITION_PLAN_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRevenuerecognitionPlanId() {
 		return cRevenuerecognitionPlanId;
 	}
@@ -61,7 +61,7 @@ public class CRevenuerecognitionRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_REVENUERECOGNITION_RUN_ID")
+	@Column(name="C_REVENUERECOGNITION_RUN_ID", columnDefinition="INT")
 	public Integer getCRevenuerecognitionRunId() {
 		return cRevenuerecognitionRunId;
 	}
@@ -81,7 +81,7 @@ public class CRevenuerecognitionRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -91,7 +91,7 @@ public class CRevenuerecognitionRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_JOURNAL_ID", nullable=false)
+	@Column(name="GL_JOURNAL_ID", columnDefinition="INT", nullable=false)
 	public Integer getGlJournalId() {
 		return glJournalId;
 	}
@@ -101,12 +101,12 @@ public class CRevenuerecognitionRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -131,7 +131,7 @@ public class CRevenuerecognitionRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -16,7 +16,7 @@ public class MAttributesetinstance extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String guaranteedate;
-	private String isactive;
+	private Boolean isactive;
 	private String lot;
 	private Integer mAttributesetId;
 	private Integer mAttributesetinstanceId;
@@ -33,7 +33,7 @@ public class MAttributesetinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class MAttributesetinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -63,7 +63,7 @@ public class MAttributesetinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -91,12 +91,12 @@ public class MAttributesetinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -111,7 +111,7 @@ public class MAttributesetinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESET_ID")
+	@Column(name="M_ATTRIBUTESET_ID", columnDefinition="INT")
 	public Integer getMAttributesetId() {
 		return mAttributesetId;
 	}
@@ -121,7 +121,7 @@ public class MAttributesetinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -131,7 +131,7 @@ public class MAttributesetinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOT_ID")
+	@Column(name="M_LOT_ID", columnDefinition="INT")
 	public Integer getMLotId() {
 		return mLotId;
 	}
@@ -161,7 +161,7 @@ public class MAttributesetinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

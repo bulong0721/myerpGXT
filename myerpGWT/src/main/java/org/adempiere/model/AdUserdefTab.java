@@ -19,10 +19,10 @@ public class AdUserdefTab extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String ismultirowonly;
-	private String isreadonly;
-	private String issinglerow;
+	private Boolean isactive;
+	private Boolean ismultirowonly;
+	private Boolean isreadonly;
+	private Boolean issinglerow;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -35,7 +35,7 @@ public class AdUserdefTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class AdUserdefTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class AdUserdefTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TAB_ID", nullable=false)
+	@Column(name="AD_TAB_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTabId() {
 		return adTabId;
 	}
@@ -65,7 +65,7 @@ public class AdUserdefTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_USERDEF_TAB_ID")
+	@Column(name="AD_USERDEF_TAB_ID", columnDefinition="INT")
 	public Integer getAdUserdefTabId() {
 		return adUserdefTabId;
 	}
@@ -75,7 +75,7 @@ public class AdUserdefTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USERDEF_WIN_ID", nullable=false)
+	@Column(name="AD_USERDEF_WIN_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdUserdefWinId() {
 		return adUserdefWinId;
 	}
@@ -95,7 +95,7 @@ public class AdUserdefTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -124,42 +124,42 @@ public class AdUserdefTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmultirowonly() {
+	@Column(nullable=false)
+	public Boolean isIsmultirowonly() {
 		return ismultirowonly;
 	}
 
-	public void setIsmultirowonly(String ismultirowonly) {
+	public void setIsmultirowonly(Boolean ismultirowonly) {
 		this.ismultirowonly = ismultirowonly;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreadonly() {
+	@Column(nullable=false)
+	public Boolean isIsreadonly() {
 		return isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssinglerow() {
+	@Column(nullable=false)
+	public Boolean isIssinglerow() {
 		return issinglerow;
 	}
 
-	public void setIssinglerow(String issinglerow) {
+	public void setIssinglerow(Boolean issinglerow) {
 		this.issinglerow = issinglerow;
 	}
 
@@ -184,7 +184,7 @@ public class AdUserdefTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

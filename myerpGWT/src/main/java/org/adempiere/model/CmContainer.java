@@ -23,11 +23,11 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String isindexed;
-	private String issecure;
-	private String issummary;
-	private String isvalid;
+	private Boolean isactive;
+	private Boolean isindexed;
+	private Boolean issecure;
+	private Boolean issummary;
+	private Boolean isvalid;
 	private String metaAuthor;
 	private String metaContent;
 	private String metaCopyright;
@@ -53,7 +53,7 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -63,7 +63,7 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -73,7 +73,7 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="CM_CONTAINER_ID")
+	@Column(name="CM_CONTAINER_ID", columnDefinition="INT")
 	public Integer getCmContainerId() {
 		return cmContainerId;
 	}
@@ -83,7 +83,7 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_CONTAINERLINK_ID")
+	@Column(name="CM_CONTAINERLINK_ID", columnDefinition="INT")
 	public Integer getCmContainerlinkId() {
 		return cmContainerlinkId;
 	}
@@ -93,7 +93,7 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_TEMPLATE_ID")
+	@Column(name="CM_TEMPLATE_ID", columnDefinition="INT")
 	public Integer getCmTemplateId() {
 		return cmTemplateId;
 	}
@@ -103,7 +103,7 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_WEBPROJECT_ID", nullable=false)
+	@Column(name="CM_WEBPROJECT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCmWebprojectId() {
 		return cmWebprojectId;
 	}
@@ -152,7 +152,7 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -180,52 +180,52 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsindexed() {
+	@Column(nullable=false)
+	public Boolean isIsindexed() {
 		return isindexed;
 	}
 
-	public void setIsindexed(String isindexed) {
+	public void setIsindexed(Boolean isindexed) {
 		this.isindexed = isindexed;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssecure() {
+	@Column(nullable=false)
+	public Boolean isIssecure() {
 		return issecure;
 	}
 
-	public void setIssecure(String issecure) {
+	public void setIssecure(Boolean issecure) {
 		this.issecure = issecure;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsvalid() {
+	@Column(nullable=false)
+	public Boolean isIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(String isvalid) {
+	public void setIsvalid(Boolean isvalid) {
 		this.isvalid = isvalid;
 	}
 
@@ -329,6 +329,7 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getPriority() {
 		return priority;
 	}
@@ -377,7 +378,7 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

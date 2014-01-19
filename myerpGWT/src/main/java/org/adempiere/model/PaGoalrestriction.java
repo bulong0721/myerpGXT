@@ -17,7 +17,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String goalrestrictiontype;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mProductCategoryId;
 	private Integer mProductId;
 	private String name;
@@ -35,7 +35,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BP_GROUP_ID")
+	@Column(name="C_BP_GROUP_ID", columnDefinition="INT")
 	public Integer getCBpGroupId() {
 		return cBpGroupId;
 	}
@@ -65,7 +65,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -85,7 +85,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -105,17 +105,17 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_CATEGORY_ID")
+	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}
@@ -125,7 +125,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -145,7 +145,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ORG_ID")
+	@Column(name="ORG_ID", columnDefinition="INT")
 	public Integer getOrgId() {
 		return orgId;
 	}
@@ -155,7 +155,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_GOAL_ID", nullable=false)
+	@Column(name="PA_GOAL_ID", columnDefinition="INT", nullable=false)
 	public Integer getPaGoalId() {
 		return paGoalId;
 	}
@@ -165,7 +165,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_GOALRESTRICTION_ID")
+	@Column(name="PA_GOALRESTRICTION_ID", columnDefinition="INT")
 	public Integer getPaGoalrestrictionId() {
 		return paGoalrestrictionId;
 	}
@@ -185,7 +185,7 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

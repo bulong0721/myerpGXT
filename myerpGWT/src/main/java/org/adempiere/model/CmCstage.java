@@ -23,12 +23,12 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String isindexed;
-	private String ismodified;
-	private String issecure;
-	private String issummary;
-	private String isvalid;
+	private Boolean isactive;
+	private Boolean isindexed;
+	private Boolean ismodified;
+	private Boolean issecure;
+	private Boolean issummary;
+	private Boolean isvalid;
 	private String metaAuthor;
 	private String metaContent;
 	private String metaCopyright;
@@ -40,7 +40,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	private String name;
 	private String notice;
 	private Integer priority;
-	private String processing;
+	private Boolean processing;
 	private String relativeurl;
 	private String structurexml;
 	private String title;
@@ -55,7 +55,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -65,7 +65,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -75,7 +75,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="CM_CSTAGE_ID")
+	@Column(name="CM_CSTAGE_ID", columnDefinition="INT")
 	public Integer getCmCstageId() {
 		return cmCstageId;
 	}
@@ -85,7 +85,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_CSTAGELINK_ID")
+	@Column(name="CM_CSTAGELINK_ID", columnDefinition="INT")
 	public Integer getCmCstagelinkId() {
 		return cmCstagelinkId;
 	}
@@ -95,7 +95,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_TEMPLATE_ID")
+	@Column(name="CM_TEMPLATE_ID", columnDefinition="INT")
 	public Integer getCmTemplateId() {
 		return cmTemplateId;
 	}
@@ -105,7 +105,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_WEBPROJECT_ID", nullable=false)
+	@Column(name="CM_WEBPROJECT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCmWebprojectId() {
 		return cmWebprojectId;
 	}
@@ -154,7 +154,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -182,62 +182,61 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsindexed() {
+	@Column(nullable=false)
+	public Boolean isIsindexed() {
 		return isindexed;
 	}
 
-	public void setIsindexed(String isindexed) {
+	public void setIsindexed(Boolean isindexed) {
 		this.isindexed = isindexed;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmodified() {
+	@Column(nullable=false)
+	public Boolean isIsmodified() {
 		return ismodified;
 	}
 
-	public void setIsmodified(String ismodified) {
+	public void setIsmodified(Boolean ismodified) {
 		this.ismodified = ismodified;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssecure() {
+	@Column(nullable=false)
+	public Boolean isIssecure() {
 		return issecure;
 	}
 
-	public void setIssecure(String issecure) {
+	public void setIssecure(Boolean issecure) {
 		this.issecure = issecure;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsvalid() {
+	public Boolean isIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(String isvalid) {
+	public void setIsvalid(Boolean isvalid) {
 		this.isvalid = isvalid;
 	}
 
@@ -341,6 +340,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getPriority() {
 		return priority;
 	}
@@ -350,12 +350,11 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -399,7 +398,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

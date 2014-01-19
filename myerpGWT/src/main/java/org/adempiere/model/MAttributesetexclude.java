@@ -15,8 +15,8 @@ public class MAttributesetexclude extends org.adempiere.common.ADEntityBase {
 	private Integer adTableId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String issotrx;
+	private Boolean isactive;
+	private Boolean issotrx;
 	private Integer mAttributesetId;
 	private Integer mAttributesetexcludeId;
 	private String updated;
@@ -30,7 +30,7 @@ public class MAttributesetexclude extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -40,7 +40,7 @@ public class MAttributesetexclude extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -50,7 +50,7 @@ public class MAttributesetexclude extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -70,7 +70,7 @@ public class MAttributesetexclude extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -80,27 +80,27 @@ public class MAttributesetexclude extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssotrx() {
+	@Column(nullable=false)
+	public Boolean isIssotrx() {
 		return issotrx;
 	}
 
-	public void setIssotrx(String issotrx) {
+	public void setIssotrx(Boolean issotrx) {
 		this.issotrx = issotrx;
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESET_ID", nullable=false)
+	@Column(name="M_ATTRIBUTESET_ID", columnDefinition="INT", nullable=false)
 	public Integer getMAttributesetId() {
 		return mAttributesetId;
 	}
@@ -110,7 +110,7 @@ public class MAttributesetexclude extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_ATTRIBUTESETEXCLUDE_ID")
+	@Column(name="M_ATTRIBUTESETEXCLUDE_ID", columnDefinition="INT")
 	public Integer getMAttributesetexcludeId() {
 		return mAttributesetexcludeId;
 	}
@@ -130,7 +130,7 @@ public class MAttributesetexclude extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

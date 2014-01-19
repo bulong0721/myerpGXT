@@ -26,9 +26,9 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	private String frequencytype;
 	private Integer glJournalbatchId;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private String recurringtype;
 	private Integer runsmax;
 	private Integer runsremaining;
@@ -43,7 +43,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -53,7 +53,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -63,7 +63,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -73,7 +73,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -83,7 +83,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -93,7 +93,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -103,7 +103,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_RECURRING_ID")
+	@Column(name="C_RECURRING_ID", columnDefinition="INT")
 	public Integer getCRecurringId() {
 		return cRecurringId;
 	}
@@ -123,7 +123,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -160,6 +160,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getFrequency() {
 		return frequency;
 	}
@@ -179,7 +180,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_JOURNALBATCH_ID")
+	@Column(name="GL_JOURNALBATCH_ID", columnDefinition="INT")
 	public Integer getGlJournalbatchId() {
 		return glJournalbatchId;
 	}
@@ -199,12 +200,12 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -219,12 +220,11 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -239,7 +239,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getRunsmax() {
 		return runsmax;
 	}
@@ -249,7 +249,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getRunsremaining() {
 		return runsremaining;
 	}
@@ -269,7 +269,7 @@ public class CRecurring extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

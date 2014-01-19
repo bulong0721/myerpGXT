@@ -20,10 +20,10 @@ public class CRfqlineqty extends org.adempiere.common.ADEntityBase {
 	private Integer cUomId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String isofferqty;
-	private String ispurchaseqty;
-	private String isrfqqty;
+	private Boolean isactive;
+	private Boolean isofferqty;
+	private Boolean ispurchaseqty;
+	private Boolean isrfqqty;
 	private BigDecimal margin;
 	private BigDecimal offeramt;
 	private BigDecimal qty;
@@ -38,7 +38,7 @@ public class CRfqlineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class CRfqlineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class CRfqlineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RFQLINE_ID", nullable=false)
+	@Column(name="C_RFQLINE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRfqlineId() {
 		return cRfqlineId;
 	}
@@ -87,7 +87,7 @@ public class CRfqlineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_RFQLINEQTY_ID")
+	@Column(name="C_RFQLINEQTY_ID", columnDefinition="INT")
 	public Integer getCRfqlineqtyId() {
 		return cRfqlineqtyId;
 	}
@@ -97,7 +97,7 @@ public class CRfqlineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID", nullable=false)
+	@Column(name="C_UOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -117,7 +117,7 @@ public class CRfqlineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -127,42 +127,42 @@ public class CRfqlineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsofferqty() {
+	@Column(nullable=false)
+	public Boolean isIsofferqty() {
 		return isofferqty;
 	}
 
-	public void setIsofferqty(String isofferqty) {
+	public void setIsofferqty(Boolean isofferqty) {
 		this.isofferqty = isofferqty;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspurchaseqty() {
+	@Column(nullable=false)
+	public Boolean isIspurchaseqty() {
 		return ispurchaseqty;
 	}
 
-	public void setIspurchaseqty(String ispurchaseqty) {
+	public void setIspurchaseqty(Boolean ispurchaseqty) {
 		this.ispurchaseqty = ispurchaseqty;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsrfqqty() {
+	@Column(nullable=false)
+	public Boolean isIsrfqqty() {
 		return isrfqqty;
 	}
 
-	public void setIsrfqqty(String isrfqqty) {
+	public void setIsrfqqty(Boolean isrfqqty) {
 		this.isrfqqty = isrfqqty;
 	}
 
@@ -205,7 +205,7 @@ public class CRfqlineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

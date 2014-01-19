@@ -20,7 +20,7 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private BigDecimal dividerate;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal multiplyrate;
 	private String updated;
 	private Integer updatedby;
@@ -35,7 +35,7 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_CONVERSION_RATE_ID")
+	@Column(name="C_CONVERSION_RATE_ID", columnDefinition="INT")
 	public Integer getCConversionRateId() {
 		return cConversionRateId;
 	}
@@ -65,7 +65,7 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CONVERSIONTYPE_ID", nullable=false)
+	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCConversiontypeId() {
 		return cConversiontypeId;
 	}
@@ -75,7 +75,7 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -85,7 +85,7 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID_TO", nullable=false)
+	@Column(name="C_CURRENCY_ID_TO", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyIdTo() {
 		return cCurrencyIdTo;
 	}
@@ -105,7 +105,7 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -125,12 +125,12 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -155,7 +155,7 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

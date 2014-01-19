@@ -17,7 +17,7 @@ public class MLotctl extends org.adempiere.common.ADEntityBase {
 	private Integer currentnext;
 	private String description;
 	private Integer incrementno;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mLotctlId;
 	private String name;
 	private String prefix;
@@ -34,7 +34,7 @@ public class MLotctl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class MLotctl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -64,7 +64,7 @@ public class MLotctl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -74,7 +74,7 @@ public class MLotctl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCurrentnext() {
 		return currentnext;
 	}
@@ -93,7 +93,7 @@ public class MLotctl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getIncrementno() {
 		return incrementno;
 	}
@@ -103,17 +103,17 @@ public class MLotctl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="M_LOTCTL_ID")
+	@Column(name="M_LOTCTL_ID", columnDefinition="INT")
 	public Integer getMLotctlId() {
 		return mLotctlId;
 	}
@@ -143,7 +143,7 @@ public class MLotctl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getStartno() {
 		return startno;
 	}
@@ -173,7 +173,7 @@ public class MLotctl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

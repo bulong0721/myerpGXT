@@ -17,8 +17,8 @@ public class PaSlaCriteria extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String ismanual;
+	private Boolean isactive;
+	private Boolean ismanual;
 	private String name;
 	private Integer paSlaCriteriaId;
 	private String updated;
@@ -32,7 +32,7 @@ public class PaSlaCriteria extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class PaSlaCriteria extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -72,7 +72,7 @@ public class PaSlaCriteria extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -101,22 +101,22 @@ public class PaSlaCriteria extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmanual() {
+	@Column(nullable=false)
+	public Boolean isIsmanual() {
 		return ismanual;
 	}
 
-	public void setIsmanual(String ismanual) {
+	public void setIsmanual(Boolean ismanual) {
 		this.ismanual = ismanual;
 	}
 
@@ -131,7 +131,7 @@ public class PaSlaCriteria extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_SLA_CRITERIA_ID")
+	@Column(name="PA_SLA_CRITERIA_ID", columnDefinition="INT")
 	public Integer getPaSlaCriteriaId() {
 		return paSlaCriteriaId;
 	}
@@ -151,7 +151,7 @@ public class PaSlaCriteria extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

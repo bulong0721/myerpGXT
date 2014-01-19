@@ -20,9 +20,9 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String processed;
-	private String processing;
+	private Boolean isactive;
+	private Boolean processed;
+	private Boolean processing;
 	private Integer recordId;
 	private String reference;
 	private String textmsg;
@@ -37,7 +37,7 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_MESSAGE_ID", nullable=false)
+	@Column(name="AD_MESSAGE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdMessageId() {
 		return adMessageId;
 	}
@@ -57,7 +57,7 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_NOTE_ID")
+	@Column(name="AD_NOTE_ID", columnDefinition="INT")
 	public Integer getAdNoteId() {
 		return adNoteId;
 	}
@@ -67,7 +67,7 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -87,7 +87,7 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -97,7 +97,7 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_ACTIVITY_ID")
+	@Column(name="AD_WF_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getAdWfActivityId() {
 		return adWfActivityId;
 	}
@@ -117,7 +117,7 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -136,37 +136,35 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="RECORD_ID")
+	@Column(name="RECORD_ID", columnDefinition="INT")
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -206,7 +204,7 @@ public class AdNote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -43,10 +43,10 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	private String entitytype;
 	private String finishmode;
 	private String help;
-	private String isactive;
-	private String iscentrallymaintained;
-	private String ismilestone;
-	private String issubcontracting;
+	private Boolean isactive;
+	private Boolean iscentrallymaintained;
+	private Boolean ismilestone;
+	private Boolean issubcontracting;
 	private String joinelement;
 	private Integer limit;
 	private Integer movingtime;
@@ -99,7 +99,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -109,7 +109,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -119,7 +119,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_FORM_ID")
+	@Column(name="AD_FORM_ID", columnDefinition="INT")
 	public Integer getAdFormId() {
 		return adFormId;
 	}
@@ -129,7 +129,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_IMAGE_ID")
+	@Column(name="AD_IMAGE_ID", columnDefinition="INT")
 	public Integer getAdImageId() {
 		return adImageId;
 	}
@@ -139,7 +139,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -149,7 +149,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PROCESS_ID")
+	@Column(name="AD_PROCESS_ID", columnDefinition="INT")
 	public Integer getAdProcessId() {
 		return adProcessId;
 	}
@@ -159,7 +159,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TASK_ID")
+	@Column(name="AD_TASK_ID", columnDefinition="INT")
 	public Integer getAdTaskId() {
 		return adTaskId;
 	}
@@ -169,7 +169,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_BLOCK_ID")
+	@Column(name="AD_WF_BLOCK_ID", columnDefinition="INT")
 	public Integer getAdWfBlockId() {
 		return adWfBlockId;
 	}
@@ -179,7 +179,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_NODE_ID", nullable=false)
+	@Column(name="AD_WF_NODE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfNodeId() {
 		return adWfNodeId;
 	}
@@ -189,7 +189,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_RESPONSIBLE_ID")
+	@Column(name="AD_WF_RESPONSIBLE_ID", columnDefinition="INT")
 	public Integer getAdWfResponsibleId() {
 		return adWfResponsibleId;
 	}
@@ -199,7 +199,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WINDOW_ID")
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT")
 	public Integer getAdWindowId() {
 		return adWindowId;
 	}
@@ -209,7 +209,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKFLOW_ID", nullable=false)
+	@Column(name="AD_WORKFLOW_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
@@ -239,7 +239,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -269,7 +269,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -344,6 +344,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDuration() {
 		return duration;
 	}
@@ -353,6 +354,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDurationreal() {
 		return durationreal;
 	}
@@ -362,6 +364,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDurationrequiered() {
 		return durationrequiered;
 	}
@@ -401,42 +404,40 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscentrallymaintained() {
+	@Column(nullable=false)
+	public Boolean isIscentrallymaintained() {
 		return iscentrallymaintained;
 	}
 
-	public void setIscentrallymaintained(String iscentrallymaintained) {
+	public void setIscentrallymaintained(Boolean iscentrallymaintained) {
 		this.iscentrallymaintained = iscentrallymaintained;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsmilestone() {
+	public Boolean isIsmilestone() {
 		return ismilestone;
 	}
 
-	public void setIsmilestone(String ismilestone) {
+	public void setIsmilestone(Boolean ismilestone) {
 		this.ismilestone = ismilestone;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssubcontracting() {
+	public Boolean isIssubcontracting() {
 		return issubcontracting;
 	}
 
-	public void setIssubcontracting(String issubcontracting) {
+	public void setIssubcontracting(Boolean issubcontracting) {
 		this.issubcontracting = issubcontracting;
 	}
 
@@ -451,7 +452,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLimit() {
 		return limit;
 	}
@@ -461,6 +462,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getMovingtime() {
 		return movingtime;
 	}
@@ -480,6 +482,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getOverlapunits() {
 		return overlapunits;
 	}
@@ -489,7 +492,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_ID", nullable=false)
+	@Column(name="PP_ORDER_ID", columnDefinition="INT", nullable=false)
 	public Integer getPpOrderId() {
 		return ppOrderId;
 	}
@@ -499,7 +502,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PP_ORDER_NODE_ID")
+	@Column(name="PP_ORDER_NODE_ID", columnDefinition="INT")
 	public Integer getPpOrderNodeId() {
 		return ppOrderNodeId;
 	}
@@ -509,7 +512,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_WORKFLOW_ID", nullable=false)
+	@Column(name="PP_ORDER_WORKFLOW_ID", columnDefinition="INT", nullable=false)
 	public Integer getPpOrderWorkflowId() {
 		return ppOrderWorkflowId;
 	}
@@ -519,7 +522,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getPriority() {
 		return priority;
 	}
@@ -565,6 +568,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getQueuingtime() {
 		return queuingtime;
 	}
@@ -574,7 +578,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCE_ID")
+	@Column(name="S_RESOURCE_ID", columnDefinition="INT")
 	public Integer getSResourceId() {
 		return sResourceId;
 	}
@@ -584,6 +588,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSetuptime() {
 		return setuptime;
 	}
@@ -593,6 +598,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSetuptimereal() {
 		return setuptimereal;
 	}
@@ -602,6 +608,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSetuptimerequiered() {
 		return setuptimerequiered;
 	}
@@ -641,6 +648,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUnitscycles() {
 		return unitscycles;
 	}
@@ -660,7 +668,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -698,7 +706,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getWaitingtime() {
 		return waitingtime;
 	}
@@ -708,7 +716,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="WORKFLOW_ID")
+	@Column(name="WORKFLOW_ID", columnDefinition="INT")
 	public Integer getWorkflowId() {
 		return workflowId;
 	}
@@ -718,7 +726,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getWorkingtime() {
 		return workingtime;
 	}
@@ -728,7 +736,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getXposition() {
 		return xposition;
 	}
@@ -738,6 +746,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getYield() {
 		return yield;
 	}
@@ -747,7 +756,7 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getYposition() {
 		return yposition;
 	}

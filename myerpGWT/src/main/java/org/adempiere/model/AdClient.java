@@ -20,14 +20,14 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String documentdir;
 	private String emailtest;
-	private String isactive;
-	private String iscostimmediate;
-	private String ismultilingualdocument;
-	private String ispostimmediate;
-	private String isserveremail;
-	private String issmtpauthorization;
-	private String isuseasp;
-	private String isusebetafunctions;
+	private Boolean isactive;
+	private Boolean iscostimmediate;
+	private Boolean ismultilingualdocument;
+	private Boolean ispostimmediate;
+	private Boolean isserveremail;
+	private Boolean issmtpauthorization;
+	private Boolean isuseasp;
+	private Boolean isusebetafunctions;
 	private String ldapquery;
 	private String mmpolicy;
 	private String modelvalidationclasses;
@@ -55,7 +55,7 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -75,7 +75,7 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -85,7 +85,7 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REPLICATIONSTRATEGY_ID")
+	@Column(name="AD_REPLICATIONSTRATEGY_ID", columnDefinition="INT")
 	public Integer getAdReplicationstrategyId() {
 		return adReplicationstrategyId;
 	}
@@ -115,7 +115,7 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -154,82 +154,82 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscostimmediate() {
+	@Column(nullable=false)
+	public Boolean isIscostimmediate() {
 		return iscostimmediate;
 	}
 
-	public void setIscostimmediate(String iscostimmediate) {
+	public void setIscostimmediate(Boolean iscostimmediate) {
 		this.iscostimmediate = iscostimmediate;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmultilingualdocument() {
+	@Column(nullable=false)
+	public Boolean isIsmultilingualdocument() {
 		return ismultilingualdocument;
 	}
 
-	public void setIsmultilingualdocument(String ismultilingualdocument) {
+	public void setIsmultilingualdocument(Boolean ismultilingualdocument) {
 		this.ismultilingualdocument = ismultilingualdocument;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspostimmediate() {
+	@Column(nullable=false)
+	public Boolean isIspostimmediate() {
 		return ispostimmediate;
 	}
 
-	public void setIspostimmediate(String ispostimmediate) {
+	public void setIspostimmediate(Boolean ispostimmediate) {
 		this.ispostimmediate = ispostimmediate;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsserveremail() {
+	@Column(nullable=false)
+	public Boolean isIsserveremail() {
 		return isserveremail;
 	}
 
-	public void setIsserveremail(String isserveremail) {
+	public void setIsserveremail(Boolean isserveremail) {
 		this.isserveremail = isserveremail;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssmtpauthorization() {
+	@Column(nullable=false)
+	public Boolean isIssmtpauthorization() {
 		return issmtpauthorization;
 	}
 
-	public void setIssmtpauthorization(String issmtpauthorization) {
+	public void setIssmtpauthorization(Boolean issmtpauthorization) {
 		this.issmtpauthorization = issmtpauthorization;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsuseasp() {
+	@Column(nullable=false)
+	public Boolean isIsuseasp() {
 		return isuseasp;
 	}
 
-	public void setIsuseasp(String isuseasp) {
+	public void setIsuseasp(Boolean isuseasp) {
 		this.isuseasp = isuseasp;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsusebetafunctions() {
+	@Column(nullable=false)
+	public Boolean isIsusebetafunctions() {
 		return isusebetafunctions;
 	}
 
-	public void setIsusebetafunctions(String isusebetafunctions) {
+	public void setIsusebetafunctions(Boolean isusebetafunctions) {
 		this.isusebetafunctions = isusebetafunctions;
 	}
 
@@ -370,7 +370,7 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

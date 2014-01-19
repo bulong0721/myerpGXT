@@ -20,8 +20,8 @@ public class PaDashboardcontent extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String goaldisplay;
 	private String html;
-	private String isactive;
-	private String iscollapsible;
+	private Boolean isactive;
+	private Boolean iscollapsible;
 	private BigDecimal line;
 	private String name;
 	private Integer paDashboardcontentId;
@@ -38,7 +38,7 @@ public class PaDashboardcontent extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class PaDashboardcontent extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -58,7 +58,7 @@ public class PaDashboardcontent extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WINDOW_ID")
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT")
 	public Integer getAdWindowId() {
 		return adWindowId;
 	}
@@ -68,6 +68,7 @@ public class PaDashboardcontent extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getColumnno() {
 		return columnno;
 	}
@@ -87,7 +88,7 @@ public class PaDashboardcontent extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -126,22 +127,22 @@ public class PaDashboardcontent extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscollapsible() {
+	@Column(nullable=false)
+	public Boolean isIscollapsible() {
 		return iscollapsible;
 	}
 
-	public void setIscollapsible(String iscollapsible) {
+	public void setIscollapsible(Boolean iscollapsible) {
 		this.iscollapsible = iscollapsible;
 	}
 
@@ -165,7 +166,7 @@ public class PaDashboardcontent extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_DASHBOARDCONTENT_ID")
+	@Column(name="PA_DASHBOARDCONTENT_ID", columnDefinition="INT")
 	public Integer getPaDashboardcontentId() {
 		return paDashboardcontentId;
 	}
@@ -175,7 +176,7 @@ public class PaDashboardcontent extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_GOAL_ID")
+	@Column(name="PA_GOAL_ID", columnDefinition="INT")
 	public Integer getPaGoalId() {
 		return paGoalId;
 	}
@@ -195,7 +196,7 @@ public class PaDashboardcontent extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

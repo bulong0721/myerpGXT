@@ -30,10 +30,10 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	private String expressionpostalAdd;
 	private String haspostalAdd;
 	private String hasregion;
-	private String isactive;
-	private String isaddresslineslocalreverse;
-	private String isaddresslinesreverse;
-	private String ispostcodelookup;
+	private Boolean isactive;
+	private Boolean isaddresslineslocalreverse;
+	private Boolean isaddresslinesreverse;
+	private Boolean ispostcodelookup;
 	private String lookupclassname;
 	private String lookupclientid;
 	private String lookuppassword;
@@ -52,7 +52,7 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -72,7 +72,7 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -92,7 +92,7 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_COUNTRY_ID")
+	@Column(name="C_COUNTRY_ID", columnDefinition="INT")
 	public Integer getCCountryId() {
 		return cCountryId;
 	}
@@ -102,7 +102,7 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -142,7 +142,7 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -251,42 +251,42 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsaddresslineslocalreverse() {
+	@Column(nullable=false)
+	public Boolean isIsaddresslineslocalreverse() {
 		return isaddresslineslocalreverse;
 	}
 
-	public void setIsaddresslineslocalreverse(String isaddresslineslocalreverse) {
+	public void setIsaddresslineslocalreverse(Boolean isaddresslineslocalreverse) {
 		this.isaddresslineslocalreverse = isaddresslineslocalreverse;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsaddresslinesreverse() {
+	@Column(nullable=false)
+	public Boolean isIsaddresslinesreverse() {
 		return isaddresslinesreverse;
 	}
 
-	public void setIsaddresslinesreverse(String isaddresslinesreverse) {
+	public void setIsaddresslinesreverse(Boolean isaddresslinesreverse) {
 		this.isaddresslinesreverse = isaddresslinesreverse;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspostcodelookup() {
+	@Column(nullable=false)
+	public Boolean isIspostcodelookup() {
 		return ispostcodelookup;
 	}
 
-	public void setIspostcodelookup(String ispostcodelookup) {
+	public void setIspostcodelookup(Boolean ispostcodelookup) {
 		this.ispostcodelookup = ispostcodelookup;
 	}
 
@@ -370,7 +370,7 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -21,7 +21,7 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mProductId;
 	private String name;
 	private BigDecimal plannedamt;
@@ -39,7 +39,7 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -49,7 +49,7 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -59,7 +59,7 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTPHASE_ID", nullable=false)
+	@Column(name="C_PROJECTPHASE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCProjectphaseId() {
 		return cProjectphaseId;
 	}
@@ -69,7 +69,7 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_PROJECTTASK_ID")
+	@Column(name="C_PROJECTTASK_ID", columnDefinition="INT")
 	public Integer getCProjecttaskId() {
 		return cProjecttaskId;
 	}
@@ -79,7 +79,7 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TASK_ID")
+	@Column(name="C_TASK_ID", columnDefinition="INT")
 	public Integer getCTaskId() {
 		return cTaskId;
 	}
@@ -109,7 +109,7 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -138,17 +138,17 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -197,7 +197,7 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -217,7 +217,7 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

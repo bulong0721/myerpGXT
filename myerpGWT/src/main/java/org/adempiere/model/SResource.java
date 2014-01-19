@@ -19,9 +19,9 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private BigDecimal dailycapacity;
 	private String description;
-	private String isactive;
-	private String isavailable;
-	private String ismanufacturingresource;
+	private Boolean isactive;
+	private Boolean isavailable;
+	private Boolean ismanufacturingresource;
 	private Integer mWarehouseId;
 	private String manufacturingresourcetype;
 	private String name;
@@ -43,7 +43,7 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -53,7 +53,7 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -63,7 +63,7 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -92,7 +92,7 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -120,37 +120,36 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsavailable() {
+	@Column(nullable=false)
+	public Boolean isIsavailable() {
 		return isavailable;
 	}
 
-	public void setIsavailable(String isavailable) {
+	public void setIsavailable(Boolean isavailable) {
 		this.isavailable = isavailable;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsmanufacturingresource() {
+	public Boolean isIsmanufacturingresource() {
 		return ismanufacturingresource;
 	}
 
-	public void setIsmanufacturingresource(String ismanufacturingresource) {
+	public void setIsmanufacturingresource(Boolean ismanufacturingresource) {
 		this.ismanufacturingresource = ismanufacturingresource;
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -190,6 +189,7 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getPlanninghorizon() {
 		return planninghorizon;
 	}
@@ -208,7 +208,7 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="S_RESOURCE_ID")
+	@Column(name="S_RESOURCE_ID", columnDefinition="INT")
 	public Integer getSResourceId() {
 		return sResourceId;
 	}
@@ -218,7 +218,7 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCETYPE_ID", nullable=false)
+	@Column(name="S_RESOURCETYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getSResourcetypeId() {
 		return sResourcetypeId;
 	}
@@ -238,7 +238,7 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

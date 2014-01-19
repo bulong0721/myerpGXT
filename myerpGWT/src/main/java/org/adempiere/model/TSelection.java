@@ -23,7 +23,7 @@ public class TSelection extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -33,7 +33,7 @@ public class TSelection extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="T_SELECTION_ID")
+	@Column(name="T_SELECTION_ID", columnDefinition="INT")
 	public Integer getTSelectionId() {
 		return tSelectionId;
 	}

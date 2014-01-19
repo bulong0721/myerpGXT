@@ -25,8 +25,8 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String isinvoiced;
+	private Boolean isactive;
+	private Boolean isinvoiced;
 	private Integer mProductCategoryId;
 	private Integer mProductId;
 	private Integer maxtaxable;
@@ -47,7 +47,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTYPE_ID")
+	@Column(name="AD_ORGTYPE_ID", columnDefinition="INT")
 	public Integer getAdOrgtypeId() {
 		return adOrgtypeId;
 	}
@@ -77,7 +77,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BP_GROUP_ID")
+	@Column(name="C_BP_GROUP_ID", columnDefinition="INT")
 	public Integer getCBpGroupId() {
 		return cBpGroupId;
 	}
@@ -87,7 +87,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -97,7 +97,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAX_ID")
+	@Column(name="C_TAX_ID", columnDefinition="INT")
 	public Integer getCTaxId() {
 		return cTaxId;
 	}
@@ -107,7 +107,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXBASE_ID")
+	@Column(name="C_TAXBASE_ID", columnDefinition="INT")
 	public Integer getCTaxbaseId() {
 		return cTaxbaseId;
 	}
@@ -117,7 +117,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXCATEGORY_ID")
+	@Column(name="C_TAXCATEGORY_ID", columnDefinition="INT")
 	public Integer getCTaxcategoryId() {
 		return cTaxcategoryId;
 	}
@@ -127,7 +127,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_TAXDEFINITION_ID")
+	@Column(name="C_TAXDEFINITION_ID", columnDefinition="INT")
 	public Integer getCTaxdefinitionId() {
 		return cTaxdefinitionId;
 	}
@@ -137,7 +137,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXGROUP_ID")
+	@Column(name="C_TAXGROUP_ID", columnDefinition="INT")
 	public Integer getCTaxgroupId() {
 		return cTaxgroupId;
 	}
@@ -147,7 +147,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXTYPE_ID")
+	@Column(name="C_TAXTYPE_ID", columnDefinition="INT")
 	public Integer getCTaxtypeId() {
 		return cTaxtypeId;
 	}
@@ -167,7 +167,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -196,27 +196,26 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsinvoiced() {
+	public Boolean isIsinvoiced() {
 		return isinvoiced;
 	}
 
-	public void setIsinvoiced(String isinvoiced) {
+	public void setIsinvoiced(Boolean isinvoiced) {
 		this.isinvoiced = isinvoiced;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_CATEGORY_ID")
+	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}
@@ -226,7 +225,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -236,6 +235,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getMaxtaxable() {
 		return maxtaxable;
 	}
@@ -245,6 +245,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getMintaxable() {
 		return mintaxable;
 	}
@@ -264,6 +265,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -283,7 +285,7 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

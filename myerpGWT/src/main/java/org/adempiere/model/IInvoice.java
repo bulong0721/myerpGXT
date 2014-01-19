@@ -49,8 +49,8 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	private String iErrormsg;
 	private Integer iInvoiceId;
 	private String iIsimported;
-	private String isactive;
-	private String issotrx;
+	private Boolean isactive;
+	private Boolean issotrx;
 	private String linedescription;
 	private Integer mPricelistId;
 	private Integer mProductId;
@@ -59,8 +59,8 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	private String phone;
 	private String postal;
 	private BigDecimal priceactual;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String productvalue;
 	private String projectvalue;
 	private BigDecimal qtyordered;
@@ -91,7 +91,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -101,7 +101,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -111,7 +111,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -121,7 +121,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -161,7 +161,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -171,7 +171,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -181,7 +181,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID")
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -191,7 +191,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -201,7 +201,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -211,7 +211,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_COUNTRY_ID")
+	@Column(name="C_COUNTRY_ID", columnDefinition="INT")
 	public Integer getCCountryId() {
 		return cCountryId;
 	}
@@ -221,7 +221,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -231,7 +231,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID")
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -241,7 +241,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -251,7 +251,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICELINE_ID")
+	@Column(name="C_INVOICELINE_ID", columnDefinition="INT")
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}
@@ -261,7 +261,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCATION_ID")
+	@Column(name="C_LOCATION_ID", columnDefinition="INT")
 	public Integer getCLocationId() {
 		return cLocationId;
 	}
@@ -271,7 +271,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENTTERM_ID")
+	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT")
 	public Integer getCPaymenttermId() {
 		return cPaymenttermId;
 	}
@@ -281,7 +281,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -291,7 +291,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_REGION_ID")
+	@Column(name="C_REGION_ID", columnDefinition="INT")
 	public Integer getCRegionId() {
 		return cRegionId;
 	}
@@ -301,7 +301,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAX_ID")
+	@Column(name="C_TAX_ID", columnDefinition="INT")
 	public Integer getCTaxId() {
 		return cTaxId;
 	}
@@ -361,6 +361,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -437,7 +438,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_INVOICE_ID")
+	@Column(name="I_INVOICE_ID", columnDefinition="INT")
 	public Integer getIInvoiceId() {
 		return iInvoiceId;
 	}
@@ -457,22 +458,20 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssotrx() {
+	public Boolean isIssotrx() {
 		return issotrx;
 	}
 
-	public void setIssotrx(String issotrx) {
+	public void setIssotrx(Boolean issotrx) {
 		this.issotrx = issotrx;
 	}
 
@@ -486,7 +485,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_ID")
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT")
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -496,7 +495,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -555,22 +554,20 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -614,7 +611,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID")
+	@Column(name="SALESREP_ID", columnDefinition="INT")
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -673,6 +670,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

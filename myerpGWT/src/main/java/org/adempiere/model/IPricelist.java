@@ -25,10 +25,10 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	private String iErrormsg;
 	private String iIsimported;
 	private Integer iPricelistId;
-	private String isactive;
+	private Boolean isactive;
 	private String isoCode;
-	private String issopricelist;
-	private String istaxincluded;
+	private Boolean issopricelist;
+	private Boolean istaxincluded;
 	private Integer mPricelistId;
 	private Integer mPricelistVersionId;
 	private Integer mProductId;
@@ -37,8 +37,8 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	private BigDecimal pricelist;
 	private BigDecimal priceprecision;
 	private BigDecimal pricestd;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String productvalue;
 	private String updated;
 	private Integer updatedby;
@@ -53,7 +53,7 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -63,7 +63,7 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -92,7 +92,7 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -102,7 +102,7 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -112,7 +112,7 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID")
+	@Column(name="C_UOM_ID", columnDefinition="INT")
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -132,6 +132,7 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -180,7 +181,7 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_PRICELIST_ID")
+	@Column(name="I_PRICELIST_ID", columnDefinition="INT")
 	public Integer getIPricelistId() {
 		return iPricelistId;
 	}
@@ -190,12 +191,11 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -210,27 +210,25 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssopricelist() {
+	public Boolean isIssopricelist() {
 		return issopricelist;
 	}
 
-	public void setIssopricelist(String issopricelist) {
+	public void setIssopricelist(Boolean issopricelist) {
 		this.issopricelist = issopricelist;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIstaxincluded() {
+	public Boolean isIstaxincluded() {
 		return istaxincluded;
 	}
 
-	public void setIstaxincluded(String istaxincluded) {
+	public void setIstaxincluded(Boolean istaxincluded) {
 		this.istaxincluded = istaxincluded;
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_ID")
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT")
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -240,7 +238,7 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_VERSION_ID")
+	@Column(name="M_PRICELIST_VERSION_ID", columnDefinition="INT")
 	public Integer getMPricelistVersionId() {
 		return mPricelistVersionId;
 	}
@@ -250,7 +248,7 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -306,22 +304,20 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -346,6 +342,7 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -29,15 +29,15 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	private String help;
 	private Integer includedTabId;
 	private String infofactoryclass;
-	private String isactive;
-	private String iscentrallymaintained;
-	private String isdisplayed;
-	private String isencrypted;
-	private String isfieldonly;
-	private String isheading;
-	private String ismandatory;
-	private String isreadonly;
-	private String issameline;
+	private Boolean isactive;
+	private Boolean iscentrallymaintained;
+	private Boolean isdisplayed;
+	private Boolean isencrypted;
+	private Boolean isfieldonly;
+	private Boolean isheading;
+	private Boolean ismandatory;
+	private Boolean isreadonly;
+	private Boolean issameline;
 	private String name;
 	private String obscuretype;
 	private Integer seqno;
@@ -53,7 +53,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -63,7 +63,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -73,7 +73,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_FIELD_ID")
+	@Column(name="AD_FIELD_ID", columnDefinition="INT")
 	public Integer getAdFieldId() {
 		return adFieldId;
 	}
@@ -83,7 +83,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_FIELDGROUP_ID")
+	@Column(name="AD_FIELDGROUP_ID", columnDefinition="INT")
 	public Integer getAdFieldgroupId() {
 		return adFieldgroupId;
 	}
@@ -93,7 +93,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -103,7 +103,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REFERENCE_ID")
+	@Column(name="AD_REFERENCE_ID", columnDefinition="INT")
 	public Integer getAdReferenceId() {
 		return adReferenceId;
 	}
@@ -113,7 +113,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REFERENCE_VALUE_ID")
+	@Column(name="AD_REFERENCE_VALUE_ID", columnDefinition="INT")
 	public Integer getAdReferenceValueId() {
 		return adReferenceValueId;
 	}
@@ -123,7 +123,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TAB_ID", nullable=false)
+	@Column(name="AD_TAB_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTabId() {
 		return adTabId;
 	}
@@ -133,7 +133,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_VAL_RULE_ID")
+	@Column(name="AD_VAL_RULE_ID", columnDefinition="INT")
 	public Integer getAdValRuleId() {
 		return adValRuleId;
 	}
@@ -153,7 +153,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -182,6 +182,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDisplaylength() {
 		return displaylength;
 	}
@@ -221,7 +222,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="INCLUDED_TAB_ID")
+	@Column(name="INCLUDED_TAB_ID", columnDefinition="INT")
 	public Integer getIncludedTabId() {
 		return includedTabId;
 	}
@@ -240,92 +241,91 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscentrallymaintained() {
+	@Column(nullable=false)
+	public Boolean isIscentrallymaintained() {
 		return iscentrallymaintained;
 	}
 
-	public void setIscentrallymaintained(String iscentrallymaintained) {
+	public void setIscentrallymaintained(Boolean iscentrallymaintained) {
 		this.iscentrallymaintained = iscentrallymaintained;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdisplayed() {
+	@Column(nullable=false)
+	public Boolean isIsdisplayed() {
 		return isdisplayed;
 	}
 
-	public void setIsdisplayed(String isdisplayed) {
+	public void setIsdisplayed(Boolean isdisplayed) {
 		this.isdisplayed = isdisplayed;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsencrypted() {
+	@Column(nullable=false)
+	public Boolean isIsencrypted() {
 		return isencrypted;
 	}
 
-	public void setIsencrypted(String isencrypted) {
+	public void setIsencrypted(Boolean isencrypted) {
 		this.isencrypted = isencrypted;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsfieldonly() {
+	@Column(nullable=false)
+	public Boolean isIsfieldonly() {
 		return isfieldonly;
 	}
 
-	public void setIsfieldonly(String isfieldonly) {
+	public void setIsfieldonly(Boolean isfieldonly) {
 		this.isfieldonly = isfieldonly;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsheading() {
+	@Column(nullable=false)
+	public Boolean isIsheading() {
 		return isheading;
 	}
 
-	public void setIsheading(String isheading) {
+	public void setIsheading(Boolean isheading) {
 		this.isheading = isheading;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsmandatory() {
+	public Boolean isIsmandatory() {
 		return ismandatory;
 	}
 
-	public void setIsmandatory(String ismandatory) {
+	public void setIsmandatory(Boolean ismandatory) {
 		this.ismandatory = ismandatory;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreadonly() {
+	@Column(nullable=false)
+	public Boolean isIsreadonly() {
 		return isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssameline() {
+	@Column(nullable=false)
+	public Boolean isIssameline() {
 		return issameline;
 	}
 
-	public void setIssameline(String issameline) {
+	public void setIssameline(Boolean issameline) {
 		this.issameline = issameline;
 	}
 
@@ -350,6 +350,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -359,6 +360,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSortno() {
 		return sortno;
 	}
@@ -378,7 +380,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

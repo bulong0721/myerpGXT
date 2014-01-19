@@ -18,9 +18,9 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isdefault;
-	private String isselfservice;
+	private Boolean isactive;
+	private Boolean isdefault;
+	private Boolean isselfservice;
 	private Integer mProductCategoryId;
 	private Integer mProductCategoryParentId;
 	private String mmpolicy;
@@ -38,7 +38,7 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_GROUP_ID")
+	@Column(name="A_ASSET_GROUP_ID", columnDefinition="INT")
 	public Integer getAAssetGroupId() {
 		return aAssetGroupId;
 	}
@@ -48,7 +48,7 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -58,7 +58,7 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -68,7 +68,7 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTCOLOR_ID")
+	@Column(name="AD_PRINTCOLOR_ID", columnDefinition="INT")
 	public Integer getAdPrintcolorId() {
 		return adPrintcolorId;
 	}
@@ -88,7 +88,7 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -107,37 +107,37 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
 	@Id
-	@Column(name="M_PRODUCT_CATEGORY_ID")
+	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}
@@ -147,7 +147,7 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_CATEGORY_PARENT_ID")
+	@Column(name="M_PRODUCT_CATEGORY_PARENT_ID", columnDefinition="INT")
 	public Integer getMProductCategoryParentId() {
 		return mProductCategoryParentId;
 	}
@@ -197,7 +197,7 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

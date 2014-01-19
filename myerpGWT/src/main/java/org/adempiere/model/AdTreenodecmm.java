@@ -16,7 +16,7 @@ public class AdTreenodecmm extends org.adempiere.common.ADEntityBase {
 	private Integer adTreeId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer nodeId;
 	private Integer parentId;
 	private Integer seqno;
@@ -32,7 +32,7 @@ public class AdTreenodecmm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class AdTreenodecmm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -52,7 +52,7 @@ public class AdTreenodecmm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_TREE_ID")
+	@Column(name="AD_TREE_ID", columnDefinition="INT")
 	public Integer getAdTreeId() {
 		return adTreeId;
 	}
@@ -72,7 +72,7 @@ public class AdTreenodecmm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -82,17 +82,17 @@ public class AdTreenodecmm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="NODE_ID")
+	@Column(name="NODE_ID", columnDefinition="INT")
 	public Integer getNodeId() {
 		return nodeId;
 	}
@@ -102,7 +102,7 @@ public class AdTreenodecmm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PARENT_ID", nullable=false)
+	@Column(name="PARENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getParentId() {
 		return parentId;
 	}
@@ -112,7 +112,7 @@ public class AdTreenodecmm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -132,7 +132,7 @@ public class AdTreenodecmm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -17,8 +17,8 @@ public class HrConceptCategory extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private Integer hrConceptAcct;
 	private Integer hrConceptCategoryId;
-	private String isactive;
-	private String isdefault;
+	private Boolean isactive;
+	private Boolean isdefault;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -32,7 +32,7 @@ public class HrConceptCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class HrConceptCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -62,7 +62,7 @@ public class HrConceptCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -81,7 +81,7 @@ public class HrConceptCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_CONCEPT_ACCT")
+	@Column(name="HR_CONCEPT_ACCT", columnDefinition="INT")
 	public Integer getHrConceptAcct() {
 		return hrConceptAcct;
 	}
@@ -91,7 +91,7 @@ public class HrConceptCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="HR_CONCEPT_CATEGORY_ID")
+	@Column(name="HR_CONCEPT_CATEGORY_ID", columnDefinition="INT")
 	public Integer getHrConceptCategoryId() {
 		return hrConceptCategoryId;
 	}
@@ -101,22 +101,21 @@ public class HrConceptCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdefault() {
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
@@ -141,7 +140,7 @@ public class HrConceptCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

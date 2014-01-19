@@ -18,7 +18,7 @@ public class ExpProcessorparameter extends org.adempiere.common.ADEntityBase {
 	private Integer expProcessorId;
 	private Integer expProcessorparameterId;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String parametervalue;
 	private String updated;
@@ -33,7 +33,7 @@ public class ExpProcessorparameter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class ExpProcessorparameter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -63,7 +63,7 @@ public class ExpProcessorparameter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -82,7 +82,7 @@ public class ExpProcessorparameter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="EXP_PROCESSOR_ID", nullable=false)
+	@Column(name="EXP_PROCESSOR_ID", columnDefinition="INT", nullable=false)
 	public Integer getExpProcessorId() {
 		return expProcessorId;
 	}
@@ -92,7 +92,7 @@ public class ExpProcessorparameter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="EXP_PROCESSORPARAMETER_ID")
+	@Column(name="EXP_PROCESSORPARAMETER_ID", columnDefinition="INT")
 	public Integer getExpProcessorparameterId() {
 		return expProcessorparameterId;
 	}
@@ -112,12 +112,12 @@ public class ExpProcessorparameter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -152,7 +152,7 @@ public class ExpProcessorparameter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -25,10 +25,10 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	private String datelastalert;
 	private Integer dynprioritystart;
 	private String endwaittime;
-	private String isactive;
+	private Boolean isactive;
 	private Integer priority;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private Integer recordId;
 	private String textmsg;
 	private String updated;
@@ -43,7 +43,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -53,7 +53,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_MESSAGE_ID")
+	@Column(name="AD_MESSAGE_ID", columnDefinition="INT")
 	public Integer getAdMessageId() {
 		return adMessageId;
 	}
@@ -63,7 +63,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -73,7 +73,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -83,7 +83,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -93,7 +93,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_WF_ACTIVITY_ID")
+	@Column(name="AD_WF_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getAdWfActivityId() {
 		return adWfActivityId;
 	}
@@ -103,7 +103,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_NODE_ID", nullable=false)
+	@Column(name="AD_WF_NODE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfNodeId() {
 		return adWfNodeId;
 	}
@@ -113,7 +113,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_PROCESS_ID", nullable=false)
+	@Column(name="AD_WF_PROCESS_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfProcessId() {
 		return adWfProcessId;
 	}
@@ -123,7 +123,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_RESPONSIBLE_ID")
+	@Column(name="AD_WF_RESPONSIBLE_ID", columnDefinition="INT")
 	public Integer getAdWfResponsibleId() {
 		return adWfResponsibleId;
 	}
@@ -133,7 +133,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKFLOW_ID", nullable=false)
+	@Column(name="AD_WORKFLOW_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
@@ -153,7 +153,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -172,6 +172,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDynprioritystart() {
 		return dynprioritystart;
 	}
@@ -190,16 +191,17 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getPriority() {
 		return priority;
 	}
@@ -209,27 +211,26 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="RECORD_ID", nullable=false)
+	@Column(name="RECORD_ID", columnDefinition="INT", nullable=false)
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -259,7 +260,7 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

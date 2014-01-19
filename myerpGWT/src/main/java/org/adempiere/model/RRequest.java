@@ -38,10 +38,10 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	private String documentno;
 	private String duetype;
 	private String endtime;
-	private String isactive;
-	private String isescalated;
-	private String isinvoiced;
-	private String isselfservice;
+	private Boolean isactive;
+	private Boolean isescalated;
+	private Boolean isinvoiced;
+	private Boolean isselfservice;
 	private String lastresult;
 	private Integer mChangerequestId;
 	private Integer mFixchangenoticeId;
@@ -52,7 +52,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	private String nextaction;
 	private String priority;
 	private String priorityuser;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal qtyinvoiced;
 	private BigDecimal qtyplan;
 	private BigDecimal qtyspent;
@@ -84,7 +84,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID")
+	@Column(name="A_ASSET_ID", columnDefinition="INT")
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -94,7 +94,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -104,7 +104,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -114,7 +114,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ROLE_ID")
+	@Column(name="AD_ROLE_ID", columnDefinition="INT")
 	public Integer getAdRoleId() {
 		return adRoleId;
 	}
@@ -124,7 +124,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -134,7 +134,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -144,7 +144,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -154,7 +154,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -164,7 +164,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -174,7 +174,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -184,7 +184,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICEREQUEST_ID")
+	@Column(name="C_INVOICEREQUEST_ID", columnDefinition="INT")
 	public Integer getCInvoicerequestId() {
 		return cInvoicerequestId;
 	}
@@ -194,7 +194,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -204,7 +204,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -214,7 +214,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -263,7 +263,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -347,42 +347,42 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsescalated() {
+	@Column(nullable=false)
+	public Boolean isIsescalated() {
 		return isescalated;
 	}
 
-	public void setIsescalated(String isescalated) {
+	public void setIsescalated(Boolean isescalated) {
 		this.isescalated = isescalated;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinvoiced() {
+	@Column(nullable=false)
+	public Boolean isIsinvoiced() {
 		return isinvoiced;
 	}
 
-	public void setIsinvoiced(String isinvoiced) {
+	public void setIsinvoiced(Boolean isinvoiced) {
 		this.isinvoiced = isinvoiced;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
@@ -397,7 +397,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_CHANGEREQUEST_ID")
+	@Column(name="M_CHANGEREQUEST_ID", columnDefinition="INT")
 	public Integer getMChangerequestId() {
 		return mChangerequestId;
 	}
@@ -407,7 +407,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_FIXCHANGENOTICE_ID")
+	@Column(name="M_FIXCHANGENOTICE_ID", columnDefinition="INT")
 	public Integer getMFixchangenoticeId() {
 		return mFixchangenoticeId;
 	}
@@ -417,7 +417,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUT_ID")
+	@Column(name="M_INOUT_ID", columnDefinition="INT")
 	public Integer getMInoutId() {
 		return mInoutId;
 	}
@@ -427,7 +427,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -437,7 +437,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCTSPENT_ID")
+	@Column(name="M_PRODUCTSPENT_ID", columnDefinition="INT")
 	public Integer getMProductspentId() {
 		return mProductspentId;
 	}
@@ -447,7 +447,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_RMA_ID")
+	@Column(name="M_RMA_ID", columnDefinition="INT")
 	public Integer getMRmaId() {
 		return mRmaId;
 	}
@@ -487,12 +487,12 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -524,7 +524,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_CATEGORY_ID")
+	@Column(name="R_CATEGORY_ID", columnDefinition="INT")
 	public Integer getRCategoryId() {
 		return rCategoryId;
 	}
@@ -534,7 +534,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_GROUP_ID")
+	@Column(name="R_GROUP_ID", columnDefinition="INT")
 	public Integer getRGroupId() {
 		return rGroupId;
 	}
@@ -544,7 +544,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_MAILTEXT_ID")
+	@Column(name="R_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getRMailtextId() {
 		return rMailtextId;
 	}
@@ -554,7 +554,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="R_REQUEST_ID")
+	@Column(name="R_REQUEST_ID", columnDefinition="INT")
 	public Integer getRRequestId() {
 		return rRequestId;
 	}
@@ -564,7 +564,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_REQUESTRELATED_ID")
+	@Column(name="R_REQUESTRELATED_ID", columnDefinition="INT")
 	public Integer getRRequestrelatedId() {
 		return rRequestrelatedId;
 	}
@@ -574,7 +574,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_REQUESTTYPE_ID", nullable=false)
+	@Column(name="R_REQUESTTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getRRequesttypeId() {
 		return rRequesttypeId;
 	}
@@ -584,7 +584,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_RESOLUTION_ID")
+	@Column(name="R_RESOLUTION_ID", columnDefinition="INT")
 	public Integer getRResolutionId() {
 		return rResolutionId;
 	}
@@ -594,7 +594,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_STANDARDRESPONSE_ID")
+	@Column(name="R_STANDARDRESPONSE_ID", columnDefinition="INT")
 	public Integer getRStandardresponseId() {
 		return rStandardresponseId;
 	}
@@ -604,7 +604,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_STATUS_ID")
+	@Column(name="R_STATUS_ID", columnDefinition="INT")
 	public Integer getRStatusId() {
 		return rStatusId;
 	}
@@ -614,7 +614,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="RECORD_ID")
+	@Column(name="RECORD_ID", columnDefinition="INT")
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -644,7 +644,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID", nullable=false)
+	@Column(name="SALESREP_ID", columnDefinition="INT", nullable=false)
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -702,7 +702,7 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

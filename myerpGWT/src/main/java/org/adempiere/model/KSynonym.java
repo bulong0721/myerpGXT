@@ -15,7 +15,7 @@ public class KSynonym extends org.adempiere.common.ADEntityBase {
 	private Integer adOrgId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer kSynonymId;
 	private String name;
 	private String synonymname;
@@ -30,7 +30,7 @@ public class KSynonym extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class KSynonym extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -70,7 +70,7 @@ public class KSynonym extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -80,17 +80,17 @@ public class KSynonym extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="K_SYNONYM_ID")
+	@Column(name="K_SYNONYM_ID", columnDefinition="INT")
 	public Integer getKSynonymId() {
 		return kSynonymId;
 	}
@@ -130,7 +130,7 @@ public class KSynonym extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

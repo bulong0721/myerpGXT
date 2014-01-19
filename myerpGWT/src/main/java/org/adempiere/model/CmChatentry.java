@@ -22,7 +22,7 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	private String confidentialtype;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String moderatorstatus;
 	private String subject;
 	private String updated;
@@ -36,7 +36,7 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -56,7 +56,7 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -86,7 +86,7 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_CHAT_ID", nullable=false)
+	@Column(name="CM_CHAT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCmChatId() {
 		return cmChatId;
 	}
@@ -96,7 +96,7 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="CM_CHATENTRY_ID")
+	@Column(name="CM_CHATENTRY_ID", columnDefinition="INT")
 	public Integer getCmChatentryId() {
 		return cmChatentryId;
 	}
@@ -106,7 +106,7 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_CHATENTRYGRANDPARENT_ID")
+	@Column(name="CM_CHATENTRYGRANDPARENT_ID", columnDefinition="INT")
 	public Integer getCmChatentrygrandparentId() {
 		return cmChatentrygrandparentId;
 	}
@@ -116,7 +116,7 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_CHATENTRYPARENT_ID")
+	@Column(name="CM_CHATENTRYPARENT_ID", columnDefinition="INT")
 	public Integer getCmChatentryparentId() {
 		return cmChatentryparentId;
 	}
@@ -146,7 +146,7 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -156,12 +156,12 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -195,7 +195,7 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

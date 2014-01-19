@@ -34,24 +34,24 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	private Integer adWorkbenchId;
 	private Integer adWorkflowId;
 	private String created;
-	private BigDecimal createdby;
+	private Integer createdby;
 	private String dbtype;
 	private String description;
 	private String destinationDirectory;
 	private String destinationFilename;
 	private String fileDirectory;
 	private String filename;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal line;
 	private String name2;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String releaseno;
 	private String sqlstatement;
 	private String targetDirectory;
 	private String type;
 	private String updated;
-	private BigDecimal updatedby;
+	private Integer updatedby;
 
 	public AdPackageExpDetail() {
 	}
@@ -61,7 +61,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -71,7 +71,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ENTITYTYPE_ID")
+	@Column(name="AD_ENTITYTYPE_ID", columnDefinition="INT")
 	public Integer getAdEntitytypeId() {
 		return adEntitytypeId;
 	}
@@ -81,7 +81,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_FORM_ID")
+	@Column(name="AD_FORM_ID", columnDefinition="INT")
 	public Integer getAdFormId() {
 		return adFormId;
 	}
@@ -91,7 +91,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_IMPFORMAT_ID")
+	@Column(name="AD_IMPFORMAT_ID", columnDefinition="INT")
 	public Integer getAdImpformatId() {
 		return adImpformatId;
 	}
@@ -101,7 +101,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_MENU_ID")
+	@Column(name="AD_MENU_ID", columnDefinition="INT")
 	public Integer getAdMenuId() {
 		return adMenuId;
 	}
@@ -111,7 +111,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_MESSAGE_ID")
+	@Column(name="AD_MESSAGE_ID", columnDefinition="INT")
 	public Integer getAdMessageId() {
 		return adMessageId;
 	}
@@ -121,7 +121,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_MODELVALIDATOR_ID")
+	@Column(name="AD_MODELVALIDATOR_ID", columnDefinition="INT")
 	public Integer getAdModelvalidatorId() {
 		return adModelvalidatorId;
 	}
@@ -131,7 +131,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -161,7 +161,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PACKAGE_EXP_DETAIL_ID")
+	@Column(name="AD_PACKAGE_EXP_DETAIL_ID", columnDefinition="INT")
 	public Integer getAdPackageExpDetailId() {
 		return adPackageExpDetailId;
 	}
@@ -171,7 +171,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PACKAGE_EXP_ID", nullable=false)
+	@Column(name="AD_PACKAGE_EXP_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdPackageExpId() {
 		return adPackageExpId;
 	}
@@ -181,7 +181,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTFORMAT_ID")
+	@Column(name="AD_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getAdPrintformatId() {
 		return adPrintformatId;
 	}
@@ -191,7 +191,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PROCESS_ID")
+	@Column(name="AD_PROCESS_ID", columnDefinition="INT")
 	public Integer getAdProcessId() {
 		return adProcessId;
 	}
@@ -201,7 +201,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REFERENCE_ID")
+	@Column(name="AD_REFERENCE_ID", columnDefinition="INT")
 	public Integer getAdReferenceId() {
 		return adReferenceId;
 	}
@@ -211,7 +211,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REPORTVIEW_ID")
+	@Column(name="AD_REPORTVIEW_ID", columnDefinition="INT")
 	public Integer getAdReportviewId() {
 		return adReportviewId;
 	}
@@ -221,7 +221,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ROLE_ID")
+	@Column(name="AD_ROLE_ID", columnDefinition="INT")
 	public Integer getAdRoleId() {
 		return adRoleId;
 	}
@@ -231,7 +231,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -241,7 +241,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_VAL_RULE_ID")
+	@Column(name="AD_VAL_RULE_ID", columnDefinition="INT")
 	public Integer getAdValRuleId() {
 		return adValRuleId;
 	}
@@ -251,7 +251,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WINDOW_ID")
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT")
 	public Integer getAdWindowId() {
 		return adWindowId;
 	}
@@ -261,7 +261,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKBENCH_ID")
+	@Column(name="AD_WORKBENCH_ID", columnDefinition="INT")
 	public Integer getAdWorkbenchId() {
 		return adWorkbenchId;
 	}
@@ -271,7 +271,7 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKFLOW_ID")
+	@Column(name="AD_WORKFLOW_ID", columnDefinition="INT")
 	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
@@ -292,11 +292,11 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCreatedby() {
+	public Integer getCreatedby() {
 		return createdby;
 	}
 
-	public void setCreatedby(BigDecimal createdby) {
+	public void setCreatedby(Integer createdby) {
 		this.createdby = createdby;
 	}
 
@@ -360,12 +360,12 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -389,22 +389,21 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessing() {
+	@Column(nullable=false)
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -460,11 +459,11 @@ public class AdPackageExpDetail extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getUpdatedby() {
+	public Integer getUpdatedby() {
 		return updatedby;
 	}
 
-	public void setUpdatedby(BigDecimal updatedby) {
+	public void setUpdatedby(Integer updatedby) {
 		this.updatedby = updatedby;
 	}
 }

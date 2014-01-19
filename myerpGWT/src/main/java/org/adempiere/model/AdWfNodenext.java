@@ -19,8 +19,8 @@ public class AdWfNodenext extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String entitytype;
-	private String isactive;
-	private String isstduserworkflow;
+	private Boolean isactive;
+	private Boolean isstduserworkflow;
 	private Integer seqno;
 	private String transitioncode;
 	private String updated;
@@ -34,7 +34,7 @@ public class AdWfNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class AdWfNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -54,7 +54,7 @@ public class AdWfNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_NEXT_ID", nullable=false)
+	@Column(name="AD_WF_NEXT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfNextId() {
 		return adWfNextId;
 	}
@@ -64,7 +64,7 @@ public class AdWfNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_NODE_ID", nullable=false)
+	@Column(name="AD_WF_NODE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfNodeId() {
 		return adWfNodeId;
 	}
@@ -74,7 +74,7 @@ public class AdWfNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_WF_NODENEXT_ID")
+	@Column(name="AD_WF_NODENEXT_ID", columnDefinition="INT")
 	public Integer getAdWfNodenextId() {
 		return adWfNodenextId;
 	}
@@ -94,7 +94,7 @@ public class AdWfNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -123,27 +123,27 @@ public class AdWfNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsstduserworkflow() {
+	@Column(nullable=false)
+	public Boolean isIsstduserworkflow() {
 		return isstduserworkflow;
 	}
 
-	public void setIsstduserworkflow(String isstduserworkflow) {
+	public void setIsstduserworkflow(Boolean isstduserworkflow) {
 		this.isstduserworkflow = isstduserworkflow;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -173,7 +173,7 @@ public class AdWfNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

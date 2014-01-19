@@ -20,11 +20,11 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isbillto;
-	private String ispayfrom;
-	private String isremitto;
-	private String isshipto;
+	private Boolean isactive;
+	private Boolean isbillto;
+	private Boolean ispayfrom;
+	private Boolean isremitto;
+	private Boolean isshipto;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -37,7 +37,7 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -57,7 +57,7 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BP_RELATION_ID")
+	@Column(name="C_BP_RELATION_ID", columnDefinition="INT")
 	public Integer getCBpRelationId() {
 		return cBpRelationId;
 	}
@@ -67,7 +67,7 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -77,7 +77,7 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID")
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -87,7 +87,7 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNERRELATION_ID", nullable=false)
+	@Column(name="C_BPARTNERRELATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerrelationId() {
 		return cBpartnerrelationId;
 	}
@@ -97,7 +97,7 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNERRELATION_LOCATION_ID", nullable=false)
+	@Column(name="C_BPARTNERRELATION_LOCATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerrelationLocationId() {
 		return cBpartnerrelationLocationId;
 	}
@@ -117,7 +117,7 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -136,52 +136,52 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsbillto() {
+	@Column(nullable=false)
+	public Boolean isIsbillto() {
 		return isbillto;
 	}
 
-	public void setIsbillto(String isbillto) {
+	public void setIsbillto(Boolean isbillto) {
 		this.isbillto = isbillto;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspayfrom() {
+	@Column(nullable=false)
+	public Boolean isIspayfrom() {
 		return ispayfrom;
 	}
 
-	public void setIspayfrom(String ispayfrom) {
+	public void setIspayfrom(Boolean ispayfrom) {
 		this.ispayfrom = ispayfrom;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsremitto() {
+	@Column(nullable=false)
+	public Boolean isIsremitto() {
 		return isremitto;
 	}
 
-	public void setIsremitto(String isremitto) {
+	public void setIsremitto(Boolean isremitto) {
 		this.isremitto = isremitto;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsshipto() {
+	@Column(nullable=false)
+	public Boolean isIsshipto() {
 		return isshipto;
 	}
 
-	public void setIsshipto(String isshipto) {
+	public void setIsshipto(Boolean isshipto) {
 		this.isshipto = isshipto;
 	}
 
@@ -206,7 +206,7 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

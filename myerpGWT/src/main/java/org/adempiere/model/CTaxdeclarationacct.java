@@ -19,7 +19,7 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private Integer factAcctId;
-	private String isactive;
+	private Boolean isactive;
 	private Integer line;
 	private String updated;
 	private Integer updatedby;
@@ -32,7 +32,7 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -52,7 +52,7 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -62,7 +62,7 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXDECLARATION_ID", nullable=false)
+	@Column(name="C_TAXDECLARATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCTaxdeclarationId() {
 		return cTaxdeclarationId;
 	}
@@ -72,7 +72,7 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_TAXDECLARATIONACCT_ID")
+	@Column(name="C_TAXDECLARATIONACCT_ID", columnDefinition="INT")
 	public Integer getCTaxdeclarationacctId() {
 		return cTaxdeclarationacctId;
 	}
@@ -92,7 +92,7 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -111,7 +111,7 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="FACT_ACCT_ID", nullable=false)
+	@Column(name="FACT_ACCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getFactAcctId() {
 		return factAcctId;
 	}
@@ -121,16 +121,17 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLine() {
 		return line;
 	}
@@ -150,7 +151,7 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

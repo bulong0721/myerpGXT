@@ -29,8 +29,8 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	private String durationunit;
 	private String entitytype;
 	private String help;
-	private String isactive;
-	private String isdefault;
+	private Boolean isactive;
+	private Boolean isdefault;
 	private Integer limit;
 	private Integer movingtime;
 	private String name;
@@ -76,7 +76,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -86,7 +86,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -96,7 +96,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -106,7 +106,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_NODE_ID")
+	@Column(name="AD_WF_NODE_ID", columnDefinition="INT")
 	public Integer getAdWfNodeId() {
 		return adWfNodeId;
 	}
@@ -116,7 +116,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_RESPONSIBLE_ID")
+	@Column(name="AD_WF_RESPONSIBLE_ID", columnDefinition="INT")
 	public Integer getAdWfResponsibleId() {
 		return adWfResponsibleId;
 	}
@@ -126,7 +126,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKFLOW_ID", nullable=false)
+	@Column(name="AD_WORKFLOW_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
@@ -136,7 +136,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKFLOWPROCESSOR_ID")
+	@Column(name="AD_WORKFLOWPROCESSOR_ID", columnDefinition="INT")
 	public Integer getAdWorkflowprocessorId() {
 		return adWorkflowprocessorId;
 	}
@@ -175,7 +175,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -204,7 +204,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getDuration() {
 		return duration;
 	}
@@ -244,27 +244,26 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdefault() {
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLimit() {
 		return limit;
 	}
@@ -274,6 +273,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getMovingtime() {
 		return movingtime;
 	}
@@ -302,7 +302,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_ID", nullable=false)
+	@Column(name="PP_ORDER_ID", columnDefinition="INT", nullable=false)
 	public Integer getPpOrderId() {
 		return ppOrderId;
 	}
@@ -312,7 +312,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_NODE_ID")
+	@Column(name="PP_ORDER_NODE_ID", columnDefinition="INT")
 	public Integer getPpOrderNodeId() {
 		return ppOrderNodeId;
 	}
@@ -322,7 +322,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PP_ORDER_WORKFLOW_ID")
+	@Column(name="PP_ORDER_WORKFLOW_ID", columnDefinition="INT")
 	public Integer getPpOrderWorkflowId() {
 		return ppOrderWorkflowId;
 	}
@@ -332,7 +332,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getPriority() {
 		return priority;
 	}
@@ -371,6 +371,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getQueuingtime() {
 		return queuingtime;
 	}
@@ -380,7 +381,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCE_ID")
+	@Column(name="S_RESOURCE_ID", columnDefinition="INT")
 	public Integer getSResourceId() {
 		return sResourceId;
 	}
@@ -390,6 +391,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSetuptime() {
 		return setuptime;
 	}
@@ -418,7 +420,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -466,7 +468,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getVersion() {
 		return version;
 	}
@@ -476,7 +478,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getWaitingtime() {
 		return waitingtime;
 	}
@@ -496,6 +498,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getWorkingtime() {
 		return workingtime;
 	}
@@ -505,6 +508,7 @@ public class PpOrderWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getYield() {
 		return yield;
 	}

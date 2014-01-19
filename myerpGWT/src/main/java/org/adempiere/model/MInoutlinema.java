@@ -16,7 +16,7 @@ public class MInoutlinema extends org.adempiere.common.ADEntityBase {
 	private Integer adOrgId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mAttributesetinstanceId;
 	private Integer mInoutlineId;
 	private BigDecimal movementqty;
@@ -32,7 +32,7 @@ public class MInoutlinema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class MInoutlinema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -62,7 +62,7 @@ public class MInoutlinema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -72,17 +72,17 @@ public class MInoutlinema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -92,7 +92,7 @@ public class MInoutlinema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_INOUTLINE_ID")
+	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}
@@ -122,7 +122,7 @@ public class MInoutlinema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

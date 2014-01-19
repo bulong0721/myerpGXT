@@ -16,7 +16,7 @@ public class MReplenish extends org.adempiere.common.ADEntityBase {
 	private Integer adOrgId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal levelMax;
 	private BigDecimal levelMin;
 	private Integer mLocatorId;
@@ -36,7 +36,7 @@ public class MReplenish extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class MReplenish extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class MReplenish extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -76,12 +76,12 @@ public class MReplenish extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -106,7 +106,7 @@ public class MReplenish extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID")
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -116,7 +116,7 @@ public class MReplenish extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -126,7 +126,7 @@ public class MReplenish extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -136,7 +136,7 @@ public class MReplenish extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSESOURCE_ID")
+	@Column(name="M_WAREHOUSESOURCE_ID", columnDefinition="INT")
 	public Integer getMWarehousesourceId() {
 		return mWarehousesourceId;
 	}
@@ -166,7 +166,7 @@ public class MReplenish extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

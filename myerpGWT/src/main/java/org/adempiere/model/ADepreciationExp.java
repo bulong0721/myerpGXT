@@ -23,10 +23,10 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	private String dateacct;
 	private String description;
 	private BigDecimal expense;
-	private String isactive;
-	private String isdepreciated;
+	private Boolean isactive;
+	private Boolean isdepreciated;
 	private String postingtype;
-	private String processed;
+	private Boolean processed;
 	private String updated;
 	private Integer updatedby;
 
@@ -48,7 +48,7 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID", nullable=false)
+	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -58,7 +58,7 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_DEPRECIATION_EXP_ID")
+	@Column(name="A_DEPRECIATION_EXP_ID", columnDefinition="INT")
 	public Integer getADepreciationExpId() {
 		return aDepreciationExpId;
 	}
@@ -78,7 +78,7 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PERIOD", nullable=false)
+	@Column(name="A_PERIOD", columnDefinition="INT", nullable=false)
 	public Integer getAPeriod() {
 		return aPeriod;
 	}
@@ -88,7 +88,7 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -98,7 +98,7 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -118,7 +118,7 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -157,22 +157,22 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdepreciated() {
+	@Column(nullable=false)
+	public Boolean isIsdepreciated() {
 		return isdepreciated;
 	}
 
-	public void setIsdepreciated(String isdepreciated) {
+	public void setIsdepreciated(Boolean isdepreciated) {
 		this.isdepreciated = isdepreciated;
 	}
 
@@ -187,12 +187,12 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -207,7 +207,7 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

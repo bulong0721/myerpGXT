@@ -23,7 +23,7 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 	private String city;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String postal;
 	private String postalAdd;
 	private String regionname;
@@ -38,7 +38,7 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -98,7 +98,7 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CITY_ID")
+	@Column(name="C_CITY_ID", columnDefinition="INT")
 	public Integer getCCityId() {
 		return cCityId;
 	}
@@ -108,7 +108,7 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_COUNTRY_ID", nullable=false)
+	@Column(name="C_COUNTRY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCountryId() {
 		return cCountryId;
 	}
@@ -118,7 +118,7 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_LOCATION_ID")
+	@Column(name="C_LOCATION_ID", columnDefinition="INT")
 	public Integer getCLocationId() {
 		return cLocationId;
 	}
@@ -128,7 +128,7 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_REGION_ID")
+	@Column(name="C_REGION_ID", columnDefinition="INT")
 	public Integer getCRegionId() {
 		return cRegionId;
 	}
@@ -158,7 +158,7 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -168,12 +168,12 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -218,7 +218,7 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

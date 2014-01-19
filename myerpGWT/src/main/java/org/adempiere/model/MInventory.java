@@ -26,16 +26,16 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	private String docstatus;
 	private String documentno;
 	private String generatelist;
-	private String isactive;
-	private String isapproved;
+	private Boolean isactive;
+	private Boolean isapproved;
 	private Integer mInventoryId;
 	private Integer mPerpetualinvId;
 	private Integer mWarehouseId;
 	private String movementdate;
 	private String posted;
-	private String processed;
+	private Boolean processed;
 	private Long processedon;
-	private String processing;
+	private Boolean processing;
 	private Integer reversalId;
 	private String updated;
 	private Integer updatedby;
@@ -51,7 +51,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -61,7 +61,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -71,7 +71,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -90,7 +90,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -100,7 +100,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -110,7 +110,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID", nullable=false)
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -120,7 +120,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -140,7 +140,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -199,27 +199,27 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsapproved() {
+	@Column(nullable=false)
+	public Boolean isIsapproved() {
 		return isapproved;
 	}
 
-	public void setIsapproved(String isapproved) {
+	public void setIsapproved(Boolean isapproved) {
 		this.isapproved = isapproved;
 	}
 
 	@Id
-	@Column(name="M_INVENTORY_ID")
+	@Column(name="M_INVENTORY_ID", columnDefinition="INT")
 	public Integer getMInventoryId() {
 		return mInventoryId;
 	}
@@ -229,7 +229,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PERPETUALINV_ID")
+	@Column(name="M_PERPETUALINV_ID", columnDefinition="INT")
 	public Integer getMPerpetualinvId() {
 		return mPerpetualinvId;
 	}
@@ -239,7 +239,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -269,12 +269,12 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -288,17 +288,16 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="REVERSAL_ID")
+	@Column(name="REVERSAL_ID", columnDefinition="INT")
 	public Integer getReversalId() {
 		return reversalId;
 	}
@@ -318,7 +317,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -338,7 +337,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -348,7 +347,7 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}

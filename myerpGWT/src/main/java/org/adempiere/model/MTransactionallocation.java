@@ -17,9 +17,9 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	private String allocationstrategytype;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String isallocated;
-	private String ismanual;
+	private Boolean isactive;
+	private Boolean isallocated;
+	private Boolean ismanual;
 	private Integer mAttributesetinstanceId;
 	private Integer mInoutlineId;
 	private Integer mInventorylineId;
@@ -43,7 +43,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -53,7 +53,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -83,7 +83,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -93,37 +93,37 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsallocated() {
+	@Column(nullable=false)
+	public Boolean isIsallocated() {
 		return isallocated;
 	}
 
-	public void setIsallocated(String isallocated) {
+	public void setIsallocated(Boolean isallocated) {
 		this.isallocated = isallocated;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmanual() {
+	@Column(nullable=false)
+	public Boolean isIsmanual() {
 		return ismanual;
 	}
 
-	public void setIsmanual(String ismanual) {
+	public void setIsmanual(Boolean ismanual) {
 		this.ismanual = ismanual;
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID", nullable=false)
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -133,7 +133,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUTLINE_ID")
+	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}
@@ -143,7 +143,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INVENTORYLINE_ID")
+	@Column(name="M_INVENTORYLINE_ID", columnDefinition="INT")
 	public Integer getMInventorylineId() {
 		return mInventorylineId;
 	}
@@ -153,7 +153,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -163,7 +163,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCTIONLINE_ID")
+	@Column(name="M_PRODUCTIONLINE_ID", columnDefinition="INT")
 	public Integer getMProductionlineId() {
 		return mProductionlineId;
 	}
@@ -173,7 +173,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_TRANSACTION_ID")
+	@Column(name="M_TRANSACTION_ID", columnDefinition="INT")
 	public Integer getMTransactionId() {
 		return mTransactionId;
 	}
@@ -183,7 +183,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="OUT_M_INOUTLINE_ID")
+	@Column(name="OUT_M_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getOutMInoutlineId() {
 		return outMInoutlineId;
 	}
@@ -193,7 +193,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="OUT_M_INVENTORYLINE_ID")
+	@Column(name="OUT_M_INVENTORYLINE_ID", columnDefinition="INT")
 	public Integer getOutMInventorylineId() {
 		return outMInventorylineId;
 	}
@@ -203,7 +203,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="OUT_M_PRODUCTIONLINE_ID")
+	@Column(name="OUT_M_PRODUCTIONLINE_ID", columnDefinition="INT")
 	public Integer getOutMProductionlineId() {
 		return outMProductionlineId;
 	}
@@ -213,7 +213,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="OUT_M_TRANSACTION_ID")
+	@Column(name="OUT_M_TRANSACTION_ID", columnDefinition="INT")
 	public Integer getOutMTransactionId() {
 		return outMTransactionId;
 	}
@@ -243,7 +243,7 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

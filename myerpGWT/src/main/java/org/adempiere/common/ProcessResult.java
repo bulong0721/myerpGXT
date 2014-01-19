@@ -9,6 +9,7 @@ public class ProcessResult implements Serializable {
 	private String				pdfUrl;
 	private boolean				hasError;
 	private List<String>		logs;
+	private String				summary;
 
 	public String getTitle() {
 		return title;
@@ -41,5 +42,29 @@ public class ProcessResult implements Serializable {
 	public void setHasError(boolean hasError) {
 		this.hasError = hasError;
 	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	} // setSummary
+
+	/**
+	 * Method getSummary
+	 * 
+	 * @return String
+	 */
+	public String getSummary() {
+		return this.summary;
+	} // getSummary
+
+	/**
+	 * Method setSummary
+	 * 
+	 * @param translatedSummary String
+	 * @param error  boolean
+	 */
+	public void setSummary(String translatedSummary, boolean error) {
+		setSummary(translatedSummary);
+		setHasError(error);
+	} // setSummary
 
 }

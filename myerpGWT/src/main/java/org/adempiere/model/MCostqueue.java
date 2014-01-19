@@ -18,7 +18,7 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private BigDecimal currentcostprice;
 	private BigDecimal currentqty;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mAttributesetinstanceId;
 	private Integer mCostelementId;
 	private Integer mCostqueueId;
@@ -35,7 +35,7 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -75,7 +75,7 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -105,17 +105,17 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID", nullable=false)
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -125,7 +125,7 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_COSTELEMENT_ID", nullable=false)
+	@Column(name="M_COSTELEMENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMCostelementId() {
 		return mCostelementId;
 	}
@@ -135,7 +135,7 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_COSTQUEUE_ID")
+	@Column(name="M_COSTQUEUE_ID", columnDefinition="INT")
 	public Integer getMCostqueueId() {
 		return mCostqueueId;
 	}
@@ -145,7 +145,7 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_COSTTYPE_ID", nullable=false)
+	@Column(name="M_COSTTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMCosttypeId() {
 		return mCosttypeId;
 	}
@@ -155,7 +155,7 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -175,7 +175,7 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

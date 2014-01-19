@@ -29,9 +29,9 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	private Integer ddOrderlineId;
 	private String description;
 	private BigDecimal freightamt;
-	private String isactive;
-	private String isdescription;
-	private String isinvoiced;
+	private Boolean isactive;
+	private Boolean isdescription;
+	private Boolean isinvoiced;
 	private Integer line;
 	private BigDecimal linenetamt;
 	private Integer mAttributesetinstanceId;
@@ -41,7 +41,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	private Integer mProductId;
 	private Integer mShipperId;
 	private BigDecimal pickedqty;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal qtydelivered;
 	private BigDecimal qtyentered;
 	private BigDecimal qtyintransit;
@@ -62,7 +62,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -72,7 +72,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -82,7 +82,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -92,7 +92,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -102,7 +102,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -112,7 +112,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -122,7 +122,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -132,7 +132,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID", nullable=false)
+	@Column(name="C_UOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -161,7 +161,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -198,7 +198,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DD_ORDER_ID", nullable=false)
+	@Column(name="DD_ORDER_ID", columnDefinition="INT", nullable=false)
 	public Integer getDdOrderId() {
 		return ddOrderId;
 	}
@@ -208,7 +208,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="DD_ORDERLINE_ID")
+	@Column(name="DD_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getDdOrderlineId() {
 		return ddOrderlineId;
 	}
@@ -236,37 +236,37 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdescription() {
+	@Column(nullable=false)
+	public Boolean isIsdescription() {
 		return isdescription;
 	}
 
-	public void setIsdescription(String isdescription) {
+	public void setIsdescription(Boolean isdescription) {
 		this.isdescription = isdescription;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinvoiced() {
+	@Column(nullable=false)
+	public Boolean isIsinvoiced() {
 		return isinvoiced;
 	}
 
-	public void setIsinvoiced(String isinvoiced) {
+	public void setIsinvoiced(Boolean isinvoiced) {
 		this.isinvoiced = isinvoiced;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -285,7 +285,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -295,7 +295,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCETO_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCETO_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstancetoId() {
 		return mAttributesetinstancetoId;
 	}
@@ -305,7 +305,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID", nullable=false)
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT", nullable=false)
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -315,7 +315,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATORTO_ID", nullable=false)
+	@Column(name="M_LOCATORTO_ID", columnDefinition="INT", nullable=false)
 	public Integer getMLocatortoId() {
 		return mLocatortoId;
 	}
@@ -325,7 +325,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -335,7 +335,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_SHIPPER_ID")
+	@Column(name="M_SHIPPER_ID", columnDefinition="INT")
 	public Integer getMShipperId() {
 		return mShipperId;
 	}
@@ -354,12 +354,12 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -439,7 +439,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -449,7 +449,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -459,7 +459,7 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}

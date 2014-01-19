@@ -44,7 +44,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	private Integer factAcctId;
 	private Integer glBudgetId;
 	private Integer glCategoryId;
-	private String isactive;
+	private Boolean isactive;
 	private Integer lineId;
 	private Integer mLocatorId;
 	private Integer mProductId;
@@ -66,7 +66,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID")
+	@Column(name="A_ASSET_ID", columnDefinition="INT")
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -76,7 +76,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ACCOUNT_ID", nullable=false)
+	@Column(name="ACCOUNT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAccountId() {
 		return accountId;
 	}
@@ -86,7 +86,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -96,7 +96,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -106,7 +106,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -116,7 +116,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -166,7 +166,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -176,7 +176,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -186,7 +186,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -196,7 +196,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -206,7 +206,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -216,7 +216,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCFROM_ID")
+	@Column(name="C_LOCFROM_ID", columnDefinition="INT")
 	public Integer getCLocfromId() {
 		return cLocfromId;
 	}
@@ -226,7 +226,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCTO_ID")
+	@Column(name="C_LOCTO_ID", columnDefinition="INT")
 	public Integer getCLoctoId() {
 		return cLoctoId;
 	}
@@ -236,7 +236,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID")
+	@Column(name="C_PERIOD_ID", columnDefinition="INT")
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -246,7 +246,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -256,7 +256,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTPHASE_ID")
+	@Column(name="C_PROJECTPHASE_ID", columnDefinition="INT")
 	public Integer getCProjectphaseId() {
 		return cProjectphaseId;
 	}
@@ -266,7 +266,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTTASK_ID")
+	@Column(name="C_PROJECTTASK_ID", columnDefinition="INT")
 	public Integer getCProjecttaskId() {
 		return cProjecttaskId;
 	}
@@ -276,7 +276,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SALESREGION_ID")
+	@Column(name="C_SALESREGION_ID", columnDefinition="INT")
 	public Integer getCSalesregionId() {
 		return cSalesregionId;
 	}
@@ -286,7 +286,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SUBACCT_ID")
+	@Column(name="C_SUBACCT_ID", columnDefinition="INT")
 	public Integer getCSubacctId() {
 		return cSubacctId;
 	}
@@ -296,7 +296,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAX_ID")
+	@Column(name="C_TAX_ID", columnDefinition="INT")
 	public Integer getCTaxId() {
 		return cTaxId;
 	}
@@ -306,7 +306,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID")
+	@Column(name="C_UOM_ID", columnDefinition="INT")
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -326,7 +326,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -365,7 +365,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="FACT_ACCT_ID")
+	@Column(name="FACT_ACCT_ID", columnDefinition="INT")
 	public Integer getFactAcctId() {
 		return factAcctId;
 	}
@@ -375,7 +375,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_BUDGET_ID")
+	@Column(name="GL_BUDGET_ID", columnDefinition="INT")
 	public Integer getGlBudgetId() {
 		return glBudgetId;
 	}
@@ -385,7 +385,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_CATEGORY_ID")
+	@Column(name="GL_CATEGORY_ID", columnDefinition="INT")
 	public Integer getGlCategoryId() {
 		return glCategoryId;
 	}
@@ -395,17 +395,17 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="LINE_ID")
+	@Column(name="LINE_ID", columnDefinition="INT")
 	public Integer getLineId() {
 		return lineId;
 	}
@@ -415,7 +415,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID")
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -425,7 +425,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -454,7 +454,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="RECORD_ID", nullable=false)
+	@Column(name="RECORD_ID", columnDefinition="INT", nullable=false)
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -474,7 +474,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -484,7 +484,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -494,7 +494,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}
@@ -504,7 +504,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USERELEMENT1_ID")
+	@Column(name="USERELEMENT1_ID", columnDefinition="INT")
 	public Integer getUserelement1Id() {
 		return userelement1Id;
 	}
@@ -514,7 +514,7 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USERELEMENT2_ID")
+	@Column(name="USERELEMENT2_ID", columnDefinition="INT")
 	public Integer getUserelement2Id() {
 		return userelement2Id;
 	}

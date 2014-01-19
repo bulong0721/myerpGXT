@@ -16,28 +16,28 @@ public class PaReportcube extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isactivitydim;
-	private String isbpartnerdim;
-	private String iscampaigndim;
-	private String isglbudgetdim;
-	private String islocfromdim;
-	private String isloctodim;
-	private String isorgtrxdim;
-	private String isproductdim;
-	private String isprojectdim;
-	private String isprojectphasedim;
-	private String isprojecttaskdim;
-	private String issalesregiondim;
-	private String issubacctdim;
-	private String isuser1dim;
-	private String isuser2dim;
-	private String isuserelement1dim;
-	private String isuserelement2dim;
+	private Boolean isactive;
+	private Boolean isactivitydim;
+	private Boolean isbpartnerdim;
+	private Boolean iscampaigndim;
+	private Boolean isglbudgetdim;
+	private Boolean islocfromdim;
+	private Boolean isloctodim;
+	private Boolean isorgtrxdim;
+	private Boolean isproductdim;
+	private Boolean isprojectdim;
+	private Boolean isprojectphasedim;
+	private Boolean isprojecttaskdim;
+	private Boolean issalesregiondim;
+	private Boolean issubacctdim;
+	private Boolean isuser1dim;
+	private Boolean isuser2dim;
+	private Boolean isuserelement1dim;
+	private Boolean isuserelement2dim;
 	private String lastrecalculated;
 	private String name;
 	private Integer paReportcubeId;
-	private String processing;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -49,7 +49,7 @@ public class PaReportcube extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -59,7 +59,7 @@ public class PaReportcube extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -69,7 +69,7 @@ public class PaReportcube extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CALENDAR_ID", nullable=false)
+	@Column(name="C_CALENDAR_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCalendarId() {
 		return cCalendarId;
 	}
@@ -89,7 +89,7 @@ public class PaReportcube extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -108,182 +108,164 @@ public class PaReportcube extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactivitydim() {
+	public Boolean isIsactivitydim() {
 		return isactivitydim;
 	}
 
-	public void setIsactivitydim(String isactivitydim) {
+	public void setIsactivitydim(Boolean isactivitydim) {
 		this.isactivitydim = isactivitydim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsbpartnerdim() {
+	public Boolean isIsbpartnerdim() {
 		return isbpartnerdim;
 	}
 
-	public void setIsbpartnerdim(String isbpartnerdim) {
+	public void setIsbpartnerdim(Boolean isbpartnerdim) {
 		this.isbpartnerdim = isbpartnerdim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIscampaigndim() {
+	public Boolean isIscampaigndim() {
 		return iscampaigndim;
 	}
 
-	public void setIscampaigndim(String iscampaigndim) {
+	public void setIscampaigndim(Boolean iscampaigndim) {
 		this.iscampaigndim = iscampaigndim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsglbudgetdim() {
+	public Boolean isIsglbudgetdim() {
 		return isglbudgetdim;
 	}
 
-	public void setIsglbudgetdim(String isglbudgetdim) {
+	public void setIsglbudgetdim(Boolean isglbudgetdim) {
 		this.isglbudgetdim = isglbudgetdim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIslocfromdim() {
+	public Boolean isIslocfromdim() {
 		return islocfromdim;
 	}
 
-	public void setIslocfromdim(String islocfromdim) {
+	public void setIslocfromdim(Boolean islocfromdim) {
 		this.islocfromdim = islocfromdim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsloctodim() {
+	public Boolean isIsloctodim() {
 		return isloctodim;
 	}
 
-	public void setIsloctodim(String isloctodim) {
+	public void setIsloctodim(Boolean isloctodim) {
 		this.isloctodim = isloctodim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsorgtrxdim() {
+	public Boolean isIsorgtrxdim() {
 		return isorgtrxdim;
 	}
 
-	public void setIsorgtrxdim(String isorgtrxdim) {
+	public void setIsorgtrxdim(Boolean isorgtrxdim) {
 		this.isorgtrxdim = isorgtrxdim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsproductdim() {
+	public Boolean isIsproductdim() {
 		return isproductdim;
 	}
 
-	public void setIsproductdim(String isproductdim) {
+	public void setIsproductdim(Boolean isproductdim) {
 		this.isproductdim = isproductdim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsprojectdim() {
+	public Boolean isIsprojectdim() {
 		return isprojectdim;
 	}
 
-	public void setIsprojectdim(String isprojectdim) {
+	public void setIsprojectdim(Boolean isprojectdim) {
 		this.isprojectdim = isprojectdim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsprojectphasedim() {
+	public Boolean isIsprojectphasedim() {
 		return isprojectphasedim;
 	}
 
-	public void setIsprojectphasedim(String isprojectphasedim) {
+	public void setIsprojectphasedim(Boolean isprojectphasedim) {
 		this.isprojectphasedim = isprojectphasedim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsprojecttaskdim() {
+	public Boolean isIsprojecttaskdim() {
 		return isprojecttaskdim;
 	}
 
-	public void setIsprojecttaskdim(String isprojecttaskdim) {
+	public void setIsprojecttaskdim(Boolean isprojecttaskdim) {
 		this.isprojecttaskdim = isprojecttaskdim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssalesregiondim() {
+	public Boolean isIssalesregiondim() {
 		return issalesregiondim;
 	}
 
-	public void setIssalesregiondim(String issalesregiondim) {
+	public void setIssalesregiondim(Boolean issalesregiondim) {
 		this.issalesregiondim = issalesregiondim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssubacctdim() {
+	public Boolean isIssubacctdim() {
 		return issubacctdim;
 	}
 
-	public void setIssubacctdim(String issubacctdim) {
+	public void setIssubacctdim(Boolean issubacctdim) {
 		this.issubacctdim = issubacctdim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsuser1dim() {
+	public Boolean isIsuser1dim() {
 		return isuser1dim;
 	}
 
-	public void setIsuser1dim(String isuser1dim) {
+	public void setIsuser1dim(Boolean isuser1dim) {
 		this.isuser1dim = isuser1dim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsuser2dim() {
+	public Boolean isIsuser2dim() {
 		return isuser2dim;
 	}
 
-	public void setIsuser2dim(String isuser2dim) {
+	public void setIsuser2dim(Boolean isuser2dim) {
 		this.isuser2dim = isuser2dim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsuserelement1dim() {
+	public Boolean isIsuserelement1dim() {
 		return isuserelement1dim;
 	}
 
-	public void setIsuserelement1dim(String isuserelement1dim) {
+	public void setIsuserelement1dim(Boolean isuserelement1dim) {
 		this.isuserelement1dim = isuserelement1dim;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsuserelement2dim() {
+	public Boolean isIsuserelement2dim() {
 		return isuserelement2dim;
 	}
 
-	public void setIsuserelement2dim(String isuserelement2dim) {
+	public void setIsuserelement2dim(Boolean isuserelement2dim) {
 		this.isuserelement2dim = isuserelement2dim;
 	}
 
@@ -307,7 +289,7 @@ public class PaReportcube extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_REPORTCUBE_ID")
+	@Column(name="PA_REPORTCUBE_ID", columnDefinition="INT")
 	public Integer getPaReportcubeId() {
 		return paReportcubeId;
 	}
@@ -317,12 +299,12 @@ public class PaReportcube extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessing() {
+	@Column(nullable=false)
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -337,7 +319,7 @@ public class PaReportcube extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

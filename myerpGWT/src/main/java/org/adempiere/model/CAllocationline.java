@@ -26,8 +26,8 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String datetrx;
 	private BigDecimal discountamt;
-	private String isactive;
-	private String ismanual;
+	private Boolean isactive;
+	private Boolean ismanual;
 	private BigDecimal overunderamt;
 	private String posted;
 	private String updated;
@@ -42,7 +42,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -52,7 +52,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -62,6 +62,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getAllocationno() {
 		return allocationno;
 	}
@@ -81,7 +82,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ALLOCATIONHDR_ID", nullable=false)
+	@Column(name="C_ALLOCATIONHDR_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAllocationhdrId() {
 		return cAllocationhdrId;
 	}
@@ -91,7 +92,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ALLOCATIONLINE_ID")
+	@Column(name="C_ALLOCATIONLINE_ID", columnDefinition="INT")
 	public Integer getCAllocationlineId() {
 		return cAllocationlineId;
 	}
@@ -101,7 +102,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -111,7 +112,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CASHLINE_ID")
+	@Column(name="C_CASHLINE_ID", columnDefinition="INT")
 	public Integer getCCashlineId() {
 		return cCashlineId;
 	}
@@ -121,7 +122,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -131,7 +132,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -141,7 +142,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -161,7 +162,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -190,22 +191,21 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsmanual() {
+	public Boolean isIsmanual() {
 		return ismanual;
 	}
 
-	public void setIsmanual(String ismanual) {
+	public void setIsmanual(Boolean ismanual) {
 		this.ismanual = ismanual;
 	}
 
@@ -239,7 +239,7 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

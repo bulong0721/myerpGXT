@@ -22,10 +22,10 @@ public class CInvoicepayschedule extends org.adempiere.common.ADEntityBase {
 	private String discountdate;
 	private BigDecimal dueamt;
 	private String duedate;
-	private String isactive;
-	private String isvalid;
-	private String processed;
-	private String processing;
+	private Boolean isactive;
+	private Boolean isvalid;
+	private Boolean processed;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -37,7 +37,7 @@ public class CInvoicepayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class CInvoicepayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -57,7 +57,7 @@ public class CInvoicepayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID", nullable=false)
+	@Column(name="C_INVOICE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -67,7 +67,7 @@ public class CInvoicepayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_INVOICEPAYSCHEDULE_ID")
+	@Column(name="C_INVOICEPAYSCHEDULE_ID", columnDefinition="INT")
 	public Integer getCInvoicepayscheduleId() {
 		return cInvoicepayscheduleId;
 	}
@@ -77,7 +77,7 @@ public class CInvoicepayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYSCHEDULE_ID")
+	@Column(name="C_PAYSCHEDULE_ID", columnDefinition="INT")
 	public Integer getCPayscheduleId() {
 		return cPayscheduleId;
 	}
@@ -97,7 +97,7 @@ public class CInvoicepayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -147,42 +147,41 @@ public class CInvoicepayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsvalid() {
+	@Column(nullable=false)
+	public Boolean isIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(String isvalid) {
+	public void setIsvalid(Boolean isvalid) {
 		this.isvalid = isvalid;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -197,7 +196,7 @@ public class CInvoicepayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

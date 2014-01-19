@@ -20,8 +20,8 @@ public class CmMediaServer extends org.adempiere.common.ADEntityBase {
 	private String folder;
 	private String help;
 	private String ipAddress;
-	private String isactive;
-	private String ispassive;
+	private Boolean isactive;
+	private Boolean ispassive;
 	private String name;
 	private String password;
 	private String updated;
@@ -37,7 +37,7 @@ public class CmMediaServer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class CmMediaServer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -57,7 +57,7 @@ public class CmMediaServer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="CM_MEDIA_SERVER_ID")
+	@Column(name="CM_MEDIA_SERVER_ID", columnDefinition="INT")
 	public Integer getCmMediaServerId() {
 		return cmMediaServerId;
 	}
@@ -67,7 +67,7 @@ public class CmMediaServer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_WEBPROJECT_ID", nullable=false)
+	@Column(name="CM_WEBPROJECT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCmWebprojectId() {
 		return cmWebprojectId;
 	}
@@ -87,7 +87,7 @@ public class CmMediaServer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -136,22 +136,22 @@ public class CmMediaServer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspassive() {
+	@Column(nullable=false)
+	public Boolean isIspassive() {
 		return ispassive;
 	}
 
-	public void setIspassive(String ispassive) {
+	public void setIspassive(Boolean ispassive) {
 		this.ispassive = ispassive;
 	}
 
@@ -186,7 +186,7 @@ public class CmMediaServer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

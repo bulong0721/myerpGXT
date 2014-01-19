@@ -16,8 +16,8 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isintransit;
+	private Boolean isactive;
+	private Boolean isintransit;
 	private Integer mWarehouseId;
 	private Integer mWarehousesourceId;
 	private String name;
@@ -35,7 +35,7 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCATION_ID", nullable=false)
+	@Column(name="C_LOCATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCLocationId() {
 		return cLocationId;
 	}
@@ -75,7 +75,7 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -94,27 +94,26 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsintransit() {
+	public Boolean isIsintransit() {
 		return isintransit;
 	}
 
-	public void setIsintransit(String isintransit) {
+	public void setIsintransit(Boolean isintransit) {
 		this.isintransit = isintransit;
 	}
 
 	@Id
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -124,7 +123,7 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSESOURCE_ID")
+	@Column(name="M_WAREHOUSESOURCE_ID", columnDefinition="INT")
 	public Integer getMWarehousesourceId() {
 		return mWarehousesourceId;
 	}
@@ -174,7 +173,7 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

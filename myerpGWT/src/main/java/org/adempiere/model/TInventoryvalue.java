@@ -47,7 +47,7 @@ public class TInventoryvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class TInventoryvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class TInventoryvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -77,7 +77,7 @@ public class TInventoryvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -132,7 +132,7 @@ public class TInventoryvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -142,7 +142,7 @@ public class TInventoryvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_COSTELEMENT_ID")
+	@Column(name="M_COSTELEMENT_ID", columnDefinition="INT")
 	public Integer getMCostelementId() {
 		return mCostelementId;
 	}
@@ -152,7 +152,7 @@ public class TInventoryvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_VERSION_ID")
+	@Column(name="M_PRICELIST_VERSION_ID", columnDefinition="INT")
 	public Integer getMPricelistVersionId() {
 		return mPricelistVersionId;
 	}
@@ -162,7 +162,7 @@ public class TInventoryvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -172,7 +172,7 @@ public class TInventoryvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}

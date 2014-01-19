@@ -17,7 +17,7 @@ public abstract class JPAServiceBase extends RemoteServiceServlet {
 	private ReentrantLock					lock		= new ReentrantLock();
 
 	public JPAServiceBase() {
-		emf = Persistence.createEntityManagerFactory("gwtApp02");
+		emf = Persistence.createEntityManagerFactory("adempiere");
 	}
 
 	public final EntityManagerFactory getUnit() {

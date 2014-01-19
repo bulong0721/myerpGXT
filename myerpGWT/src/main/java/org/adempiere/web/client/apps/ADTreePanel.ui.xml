@@ -4,7 +4,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:tree="urn:import:com.sencha.gxt.widget.core.client.tree">
 
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins4">
-		<ui:attributes top="4" right="4" bottom="2" left="4" />
+		<ui:attributes top="2" right="4" bottom="2" left="4" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="marginData">
 		<ui:attributes margins="{margins4}" />

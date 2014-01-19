@@ -57,19 +57,19 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	private String freightcostrule;
 	private BigDecimal grandtotal;
 	private String invoicerule;
-	private String isactive;
-	private String isapproved;
-	private String iscreditapproved;
-	private String isdelivered;
-	private String isdiscountprinted;
-	private String isdropship;
-	private String isinvoiced;
-	private String isprinted;
-	private String isselected;
-	private String isselfservice;
-	private String issotrx;
-	private String istaxincluded;
-	private String istransferred;
+	private Boolean isactive;
+	private Boolean isapproved;
+	private Boolean iscreditapproved;
+	private Boolean isdelivered;
+	private Boolean isdiscountprinted;
+	private Boolean isdropship;
+	private Boolean isinvoiced;
+	private Boolean isprinted;
+	private Boolean isselected;
+	private Boolean isselfservice;
+	private Boolean issotrx;
+	private Boolean istaxincluded;
+	private Boolean istransferred;
 	private Integer linkOrderId;
 	private Integer mFreightcategoryId;
 	private Integer mPricelistId;
@@ -82,9 +82,9 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	private String poreference;
 	private String posted;
 	private String priorityrule;
-	private String processed;
+	private Boolean processed;
 	private Long processedon;
-	private String processing;
+	private Boolean processing;
 	private String promotioncode;
 	private Integer refOrderId;
 	private Integer salesrepId;
@@ -105,7 +105,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -115,7 +115,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -125,7 +125,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -135,7 +135,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -163,7 +163,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="BILL_BPARTNER_ID")
+	@Column(name="BILL_BPARTNER_ID", columnDefinition="INT")
 	public Integer getBillBpartnerId() {
 		return billBpartnerId;
 	}
@@ -173,7 +173,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="BILL_LOCATION_ID")
+	@Column(name="BILL_LOCATION_ID", columnDefinition="INT")
 	public Integer getBillLocationId() {
 		return billLocationId;
 	}
@@ -183,7 +183,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="BILL_USER_ID")
+	@Column(name="BILL_USER_ID", columnDefinition="INT")
 	public Integer getBillUserId() {
 		return billUserId;
 	}
@@ -193,7 +193,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -203,7 +203,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -213,7 +213,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID", nullable=false)
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -223,7 +223,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -233,7 +233,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CASHLINE_ID")
+	@Column(name="C_CASHLINE_ID", columnDefinition="INT")
 	public Integer getCCashlineId() {
 		return cCashlineId;
 	}
@@ -243,7 +243,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -253,7 +253,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CONVERSIONTYPE_ID")
+	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT")
 	public Integer getCConversiontypeId() {
 		return cConversiontypeId;
 	}
@@ -263,7 +263,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -273,7 +273,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID", nullable=false)
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -283,7 +283,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPETARGET_ID", nullable=false)
+	@Column(name="C_DOCTYPETARGET_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDoctypetargetId() {
 		return cDoctypetargetId;
 	}
@@ -293,7 +293,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -303,7 +303,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDERSOURCE_ID")
+	@Column(name="C_ORDERSOURCE_ID", columnDefinition="INT")
 	public Integer getCOrdersourceId() {
 		return cOrdersourceId;
 	}
@@ -313,7 +313,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -323,7 +323,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENTTERM_ID", nullable=false)
+	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPaymenttermId() {
 		return cPaymenttermId;
 	}
@@ -333,7 +333,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_POS_ID")
+	@Column(name="C_POS_ID", columnDefinition="INT")
 	public Integer getCPosId() {
 		return cPosId;
 	}
@@ -343,7 +343,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -382,7 +382,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -489,7 +489,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DROPSHIP_BPARTNER_ID")
+	@Column(name="DROPSHIP_BPARTNER_ID", columnDefinition="INT")
 	public Integer getDropshipBpartnerId() {
 		return dropshipBpartnerId;
 	}
@@ -499,7 +499,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DROPSHIP_LOCATION_ID")
+	@Column(name="DROPSHIP_LOCATION_ID", columnDefinition="INT")
 	public Integer getDropshipLocationId() {
 		return dropshipLocationId;
 	}
@@ -509,7 +509,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DROPSHIP_USER_ID")
+	@Column(name="DROPSHIP_USER_ID", columnDefinition="INT")
 	public Integer getDropshipUserId() {
 		return dropshipUserId;
 	}
@@ -558,137 +558,137 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsapproved() {
+	@Column(nullable=false)
+	public Boolean isIsapproved() {
 		return isapproved;
 	}
 
-	public void setIsapproved(String isapproved) {
+	public void setIsapproved(Boolean isapproved) {
 		this.isapproved = isapproved;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscreditapproved() {
+	@Column(nullable=false)
+	public Boolean isIscreditapproved() {
 		return iscreditapproved;
 	}
 
-	public void setIscreditapproved(String iscreditapproved) {
+	public void setIscreditapproved(Boolean iscreditapproved) {
 		this.iscreditapproved = iscreditapproved;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdelivered() {
+	@Column(nullable=false)
+	public Boolean isIsdelivered() {
 		return isdelivered;
 	}
 
-	public void setIsdelivered(String isdelivered) {
+	public void setIsdelivered(Boolean isdelivered) {
 		this.isdelivered = isdelivered;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdiscountprinted() {
+	@Column(nullable=false)
+	public Boolean isIsdiscountprinted() {
 		return isdiscountprinted;
 	}
 
-	public void setIsdiscountprinted(String isdiscountprinted) {
+	public void setIsdiscountprinted(Boolean isdiscountprinted) {
 		this.isdiscountprinted = isdiscountprinted;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdropship() {
+	@Column(nullable=false)
+	public Boolean isIsdropship() {
 		return isdropship;
 	}
 
-	public void setIsdropship(String isdropship) {
+	public void setIsdropship(Boolean isdropship) {
 		this.isdropship = isdropship;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinvoiced() {
+	@Column(nullable=false)
+	public Boolean isIsinvoiced() {
 		return isinvoiced;
 	}
 
-	public void setIsinvoiced(String isinvoiced) {
+	public void setIsinvoiced(Boolean isinvoiced) {
 		this.isinvoiced = isinvoiced;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprinted() {
+	@Column(nullable=false)
+	public Boolean isIsprinted() {
 		return isprinted;
 	}
 
-	public void setIsprinted(String isprinted) {
+	public void setIsprinted(Boolean isprinted) {
 		this.isprinted = isprinted;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselected() {
+	@Column(nullable=false)
+	public Boolean isIsselected() {
 		return isselected;
 	}
 
-	public void setIsselected(String isselected) {
+	public void setIsselected(Boolean isselected) {
 		this.isselected = isselected;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssotrx() {
+	@Column(nullable=false)
+	public Boolean isIssotrx() {
 		return issotrx;
 	}
 
-	public void setIssotrx(String issotrx) {
+	public void setIssotrx(Boolean issotrx) {
 		this.issotrx = issotrx;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstaxincluded() {
+	@Column(nullable=false)
+	public Boolean isIstaxincluded() {
 		return istaxincluded;
 	}
 
-	public void setIstaxincluded(String istaxincluded) {
+	public void setIstaxincluded(Boolean istaxincluded) {
 		this.istaxincluded = istaxincluded;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstransferred() {
+	@Column(nullable=false)
+	public Boolean isIstransferred() {
 		return istransferred;
 	}
 
-	public void setIstransferred(String istransferred) {
+	public void setIstransferred(Boolean istransferred) {
 		this.istransferred = istransferred;
 	}
 
 	@Basic
-	@Column(name="LINK_ORDER_ID")
+	@Column(name="LINK_ORDER_ID", columnDefinition="INT")
 	public Integer getLinkOrderId() {
 		return linkOrderId;
 	}
@@ -698,7 +698,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_FREIGHTCATEGORY_ID")
+	@Column(name="M_FREIGHTCATEGORY_ID", columnDefinition="INT")
 	public Integer getMFreightcategoryId() {
 		return mFreightcategoryId;
 	}
@@ -708,7 +708,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_ID", nullable=false)
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT", nullable=false)
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -718,7 +718,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_SHIPPER_ID")
+	@Column(name="M_SHIPPER_ID", columnDefinition="INT")
 	public Integer getMShipperId() {
 		return mShipperId;
 	}
@@ -728,7 +728,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -748,7 +748,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PAY_BPARTNER_ID")
+	@Column(name="PAY_BPARTNER_ID", columnDefinition="INT")
 	public Integer getPayBpartnerId() {
 		return payBpartnerId;
 	}
@@ -758,7 +758,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PAY_LOCATION_ID")
+	@Column(name="PAY_LOCATION_ID", columnDefinition="INT")
 	public Integer getPayLocationId() {
 		return payLocationId;
 	}
@@ -808,12 +808,12 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -827,12 +827,11 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -847,7 +846,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REF_ORDER_ID")
+	@Column(name="REF_ORDER_ID", columnDefinition="INT")
 	public Integer getRefOrderId() {
 		return refOrderId;
 	}
@@ -857,7 +856,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID")
+	@Column(name="SALESREP_ID", columnDefinition="INT")
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -897,7 +896,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -907,7 +906,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -917,7 +916,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}

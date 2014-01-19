@@ -18,9 +18,9 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private Integer glBudgetId;
-	private String isactive;
-	private String isprinted;
-	private String issummary;
+	private Boolean isactive;
+	private Boolean isprinted;
+	private Boolean issummary;
 	private String linetype;
 	private String name;
 	private Integer oper1Id;
@@ -43,7 +43,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -53,7 +53,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -93,7 +93,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -112,7 +112,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_BUDGET_ID")
+	@Column(name="GL_BUDGET_ID", columnDefinition="INT")
 	public Integer getGlBudgetId() {
 		return glBudgetId;
 	}
@@ -122,32 +122,32 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprinted() {
+	@Column(nullable=false)
+	public Boolean isIsprinted() {
 		return isprinted;
 	}
 
-	public void setIsprinted(String isprinted) {
+	public void setIsprinted(Boolean isprinted) {
 		this.isprinted = isprinted;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
@@ -172,7 +172,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="OPER_1_ID")
+	@Column(name="OPER_1_ID", columnDefinition="INT")
 	public Integer getOper1Id() {
 		return oper1Id;
 	}
@@ -182,7 +182,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="OPER_2_ID")
+	@Column(name="OPER_2_ID", columnDefinition="INT")
 	public Integer getOper2Id() {
 		return oper2Id;
 	}
@@ -192,7 +192,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_REPORTLINE_ID")
+	@Column(name="PA_REPORTLINE_ID", columnDefinition="INT")
 	public Integer getPaReportlineId() {
 		return paReportlineId;
 	}
@@ -202,7 +202,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_REPORTLINESET_ID", nullable=false)
+	@Column(name="PA_REPORTLINESET_ID", columnDefinition="INT", nullable=false)
 	public Integer getPaReportlinesetId() {
 		return paReportlinesetId;
 	}
@@ -232,7 +232,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PARENT_ID")
+	@Column(name="PARENT_ID", columnDefinition="INT")
 	public Integer getParentId() {
 		return parentId;
 	}
@@ -252,7 +252,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -272,7 +272,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

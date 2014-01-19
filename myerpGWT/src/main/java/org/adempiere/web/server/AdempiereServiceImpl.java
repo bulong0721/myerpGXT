@@ -1,7 +1,5 @@
 package org.adempiere.web.server;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,31 +14,31 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.adempiere.common.ADExpression;
+import org.adempiere.common.ADExpression.ADPredicate;
 import org.adempiere.common.ADModelKey;
 import org.adempiere.common.ADUserContext;
 import org.adempiere.common.DisplayType;
 import org.adempiere.common.LookupValue;
-import org.adempiere.common.ADExpression.ADPredicate;
 import org.adempiere.common.ProcessResult;
+import org.adempiere.common.RefCriteria;
 import org.adempiere.model.AdFieldV;
 import org.adempiere.model.AdForm;
 import org.adempiere.model.AdProcess;
 import org.adempiere.model.AdTabV;
 import org.adempiere.model.AdTreenodemm;
 import org.adempiere.process.ProcessContext;
-import org.adempiere.report.ReportStarter;
 import org.adempiere.util.DTOUtil;
-import org.adempiere.util.RefTableCriteria;
+import org.adempiere.util.ProcessUtil;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADResultPair;
 import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.model.ADTreeNode;
 import org.adempiere.web.client.model.ADWindowModel;
-import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.util.StringUtil;
 
@@ -284,9 +282,9 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	public List<LookupValue> getOptionsFromTable(long adRefId) {
 		try {
 			EntityManager em = getEntityManager();
-			TypedQuery<RefTableCriteria> qurey = em.createNamedQuery("queryRefTable", RefTableCriteria.class);
+			TypedQuery<RefCriteria> qurey = em.createNamedQuery("queryRefTable", RefCriteria.class);
 			qurey.setParameter("adReferenceId", adRefId);
-			RefTableCriteria criteria = qurey.getSingleResult();
+			RefCriteria criteria = qurey.getSingleResult();
 			String tableName = getEntityClassName(criteria.getAdTable());
 			String keyColumn = StringUtil.convertToCamel(criteria.getKeyColumn());
 			String disColumn = StringUtil.convertToCamel(criteria.getDisplayColumn());
@@ -406,29 +404,35 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	@Override
 	public String processCallout(ADFieldModel field, String rowJson) {
 		// TODO Auto-generated method stub
-		System.out.println("parameter json:" + rowJson);
+		System.out.println("callout parameter:" + rowJson);
 		return StringUtil.EMPTY;
 	}
 
 	@Override
-	public ProcessResult executeProcess(ADProcessModel pModel, String paramJson) {
-		// TODO Auto-generated method stub
-		System.out.println("parameter json:" + paramJson);
-		ProcessContext ctx = new ProcessContext() {
-			@Override
-			public Connection getConnection() {
-				try {
-					Class.forName("com.mysql.jdbc.Driver");
-					return DriverManager.getConnection("jdbc:mysql://localhost:3306/adempiere", "adempiere", "adempiere");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				return null;
-			}
-		};
-		ReportStarter starter = new ReportStarter();
+	public ProcessResult executeProcess(ADProcessModel pModel, String rowJson, String paramJson) {
+		System.out.println("row parameter:" + rowJson);
+		System.out.println("process parameter:" + paramJson);
+		ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson, paramJson);
 		ProcessResult pInfo = new ProcessResult();
-		starter.startProcess(ctx, pInfo);
+		try {
+			ProcessUtil.process(ctx, pInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return pInfo;
 	}
+	
+	public static void main(String[] args) {
+		String json = "{\"adProcessId\":173,\"classname\":\"org.adempiere.process.TableCreateColumns\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":\"Y\",\"iscentrallymaintained\":\"Y\",\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":\"Y\",\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":\"N\",\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":\"Y\",\"iscentrallymaintained\":\"Y\",\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":\"Y\",\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
+		String rowJson = "{\"accesslevel\":\"6\",\"adClientId\":0,\"adOrgId\":0,\"adTableId\":906,\"adWindowId\":113,\"entitytype\":\"D\",\"isactive\":\"Y\",\"iscentrallymaintained\":\"Y\",\"ischangelog\":\"N\",\"isdeleteable\":\"Y\",\"ishighvolume\":\"N\",\"issecurityenabled\":\"N\",\"isview\":\"N\",\"loadseq\":125,\"name\":\"Workflow\",\"replicationtype\":\"L\",\"tablename\":\"AD_Workflow\"}";
+		ADProcessModel pModel = JSON.parseObject(json, ADProcessModel.class);
+		ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson, "{}");
+		ProcessResult pInfo = new ProcessResult();
+		try {
+			ProcessUtil.process(ctx, pInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

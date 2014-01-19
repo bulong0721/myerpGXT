@@ -21,12 +21,12 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isdefault;
-	private String isdocumentlevel;
-	private String issalestax;
-	private String issummary;
-	private String istaxexempt;
+	private Boolean isactive;
+	private Boolean isdefault;
+	private Boolean isdocumentlevel;
+	private Boolean issalestax;
+	private Boolean issummary;
+	private Boolean istaxexempt;
 	private String name;
 	private Integer parentTaxId;
 	private BigDecimal rate;
@@ -47,7 +47,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_RULE_ID")
+	@Column(name="AD_RULE_ID", columnDefinition="INT")
 	public Integer getAdRuleId() {
 		return adRuleId;
 	}
@@ -77,7 +77,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_COUNTRY_ID")
+	@Column(name="C_COUNTRY_ID", columnDefinition="INT")
 	public Integer getCCountryId() {
 		return cCountryId;
 	}
@@ -87,7 +87,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_REGION_ID")
+	@Column(name="C_REGION_ID", columnDefinition="INT")
 	public Integer getCRegionId() {
 		return cRegionId;
 	}
@@ -97,7 +97,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_TAX_ID")
+	@Column(name="C_TAX_ID", columnDefinition="INT")
 	public Integer getCTaxId() {
 		return cTaxId;
 	}
@@ -107,7 +107,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXCATEGORY_ID", nullable=false)
+	@Column(name="C_TAXCATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCTaxcategoryId() {
 		return cTaxcategoryId;
 	}
@@ -127,7 +127,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -146,62 +146,62 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdocumentlevel() {
+	@Column(nullable=false)
+	public Boolean isIsdocumentlevel() {
 		return isdocumentlevel;
 	}
 
-	public void setIsdocumentlevel(String isdocumentlevel) {
+	public void setIsdocumentlevel(Boolean isdocumentlevel) {
 		this.isdocumentlevel = isdocumentlevel;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssalestax() {
+	@Column(nullable=false)
+	public Boolean isIssalestax() {
 		return issalestax;
 	}
 
-	public void setIssalestax(String issalestax) {
+	public void setIssalestax(Boolean issalestax) {
 		this.issalestax = issalestax;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstaxexempt() {
+	@Column(nullable=false)
+	public Boolean isIstaxexempt() {
 		return istaxexempt;
 	}
 
-	public void setIstaxexempt(String istaxexempt) {
+	public void setIstaxexempt(Boolean istaxexempt) {
 		this.istaxexempt = istaxexempt;
 	}
 
@@ -216,7 +216,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PARENT_TAX_ID")
+	@Column(name="PARENT_TAX_ID", columnDefinition="INT")
 	public Integer getParentTaxId() {
 		return parentTaxId;
 	}
@@ -266,7 +266,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="TO_COUNTRY_ID")
+	@Column(name="TO_COUNTRY_ID", columnDefinition="INT")
 	public Integer getToCountryId() {
 		return toCountryId;
 	}
@@ -276,7 +276,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="TO_REGION_ID")
+	@Column(name="TO_REGION_ID", columnDefinition="INT")
 	public Integer getToRegionId() {
 		return toRegionId;
 	}
@@ -296,7 +296,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

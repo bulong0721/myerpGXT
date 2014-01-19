@@ -25,12 +25,12 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	private Integer iConversionRateId;
 	private String iErrormsg;
 	private String iIsimported;
-	private String isactive;
+	private Boolean isactive;
 	private String isoCode;
 	private String isoCodeTo;
 	private BigDecimal multiplyrate;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 	private String validfrom;
@@ -44,7 +44,7 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -54,7 +54,7 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -64,7 +64,7 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CONVERSION_RATE_ID")
+	@Column(name="C_CONVERSION_RATE_ID", columnDefinition="INT")
 	public Integer getCConversionRateId() {
 		return cConversionRateId;
 	}
@@ -74,7 +74,7 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CONVERSIONTYPE_ID")
+	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT")
 	public Integer getCConversiontypeId() {
 		return cConversiontypeId;
 	}
@@ -84,7 +84,7 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -94,7 +94,7 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID_TO")
+	@Column(name="C_CURRENCY_ID_TO", columnDefinition="INT")
 	public Integer getCCurrencyIdTo() {
 		return cCurrencyIdTo;
 	}
@@ -124,6 +124,7 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -152,7 +153,7 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_CONVERSION_RATE_ID")
+	@Column(name="I_CONVERSION_RATE_ID", columnDefinition="INT")
 	public Integer getIConversionRateId() {
 		return iConversionRateId;
 	}
@@ -182,12 +183,11 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -221,22 +221,20 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -251,6 +249,7 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

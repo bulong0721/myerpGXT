@@ -40,9 +40,9 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String depreciationtype;
-	private String isactive;
+	private Boolean isactive;
 	private String postingtype;
-	private String processing;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 	private Integer uselifemonths;
@@ -56,7 +56,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ACCUMDEPRECIATION_ACCT")
+	@Column(name="A_ACCUMDEPRECIATION_ACCT", columnDefinition="INT")
 	public Integer getAAccumdepreciationAcct() {
 		return aAccumdepreciationAcct;
 	}
@@ -66,7 +66,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ACCT")
+	@Column(name="A_ASSET_ACCT", columnDefinition="INT")
 	public Integer getAAssetAcct() {
 		return aAssetAcct;
 	}
@@ -76,7 +76,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_ASSET_GROUP_ACCT_ID")
+	@Column(name="A_ASSET_GROUP_ACCT_ID", columnDefinition="INT")
 	public Integer getAAssetGroupAcctId() {
 		return aAssetGroupAcctId;
 	}
@@ -86,7 +86,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_GROUP_ID", nullable=false)
+	@Column(name="A_ASSET_GROUP_ID", columnDefinition="INT", nullable=false)
 	public Integer getAAssetGroupId() {
 		return aAssetGroupId;
 	}
@@ -106,7 +106,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DEPRECIATION_ACCT")
+	@Column(name="A_DEPRECIATION_ACCT", columnDefinition="INT")
 	public Integer getADepreciationAcct() {
 		return aDepreciationAcct;
 	}
@@ -126,7 +126,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DEPRECIATION_ID")
+	@Column(name="A_DEPRECIATION_ID", columnDefinition="INT")
 	public Integer getADepreciationId() {
 		return aDepreciationId;
 	}
@@ -156,7 +156,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID")
+	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID", columnDefinition="INT")
 	public Integer getADepreciationTableHeaderId() {
 		return aDepreciationTableHeaderId;
 	}
@@ -276,7 +276,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -286,7 +286,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -296,7 +296,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -326,6 +326,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -345,12 +346,11 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -365,12 +365,11 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -385,6 +384,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -394,6 +394,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUselifemonths() {
 		return uselifemonths;
 	}
@@ -403,6 +404,7 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUselifeyears() {
 		return uselifeyears;
 	}

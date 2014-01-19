@@ -25,12 +25,12 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	private BigDecimal idrangeend;
 	private BigDecimal idrangestart;
 	private String info;
-	private String isactive;
-	private String isallowstatistics;
-	private String isautoerrorreport;
-	private String isfailonbuilddiffer;
-	private String isfailonmissingmodelvalidator;
-	private String isjustmigrated;
+	private Boolean isactive;
+	private Boolean isallowstatistics;
+	private Boolean isautoerrorreport;
+	private Boolean isfailonbuilddiffer;
+	private Boolean isfailonmissingmodelvalidator;
+	private Boolean isjustmigrated;
 	private String lastbuildinfo;
 	private String ldapdomain;
 	private String ldaphost;
@@ -38,7 +38,7 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	private Integer noprocessors;
 	private String oldname;
 	private String password;
-	private String processing;
+	private Boolean processing;
 	private String profileinfo;
 	private Integer recordId;
 	private String releaseno;
@@ -63,7 +63,7 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -73,7 +73,7 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -83,7 +83,7 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_SYSTEM_ID")
+	@Column(name="AD_SYSTEM_ID", columnDefinition="INT")
 	public Integer getAdSystemId() {
 		return adSystemId;
 	}
@@ -103,7 +103,7 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -187,62 +187,61 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsallowstatistics() {
+	@Column(nullable=false)
+	public Boolean isIsallowstatistics() {
 		return isallowstatistics;
 	}
 
-	public void setIsallowstatistics(String isallowstatistics) {
+	public void setIsallowstatistics(Boolean isallowstatistics) {
 		this.isallowstatistics = isallowstatistics;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsautoerrorreport() {
+	@Column(nullable=false)
+	public Boolean isIsautoerrorreport() {
 		return isautoerrorreport;
 	}
 
-	public void setIsautoerrorreport(String isautoerrorreport) {
+	public void setIsautoerrorreport(Boolean isautoerrorreport) {
 		this.isautoerrorreport = isautoerrorreport;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsfailonbuilddiffer() {
+	@Column(nullable=false)
+	public Boolean isIsfailonbuilddiffer() {
 		return isfailonbuilddiffer;
 	}
 
-	public void setIsfailonbuilddiffer(String isfailonbuilddiffer) {
+	public void setIsfailonbuilddiffer(Boolean isfailonbuilddiffer) {
 		this.isfailonbuilddiffer = isfailonbuilddiffer;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsfailonmissingmodelvalidator() {
+	@Column(nullable=false)
+	public Boolean isIsfailonmissingmodelvalidator() {
 		return isfailonmissingmodelvalidator;
 	}
 
-	public void setIsfailonmissingmodelvalidator(String isfailonmissingmodelvalidator) {
+	public void setIsfailonmissingmodelvalidator(Boolean isfailonmissingmodelvalidator) {
 		this.isfailonmissingmodelvalidator = isfailonmissingmodelvalidator;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsjustmigrated() {
+	public Boolean isIsjustmigrated() {
 		return isjustmigrated;
 	}
 
-	public void setIsjustmigrated(String isjustmigrated) {
+	public void setIsjustmigrated(Boolean isjustmigrated) {
 		this.isjustmigrated = isjustmigrated;
 	}
 
@@ -285,6 +284,7 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getNoprocessors() {
 		return noprocessors;
 	}
@@ -314,12 +314,11 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -334,7 +333,7 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="RECORD_ID")
+	@Column(name="RECORD_ID", columnDefinition="INT")
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -402,6 +401,7 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSupportunits() {
 		return supportunits;
 	}
@@ -431,7 +431,7 @@ public class AdSystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

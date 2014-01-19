@@ -33,20 +33,20 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	private Integer guaranteedaysmin;
 	private String help;
 	private String imageurl;
-	private String isactive;
-	private String isbom;
-	private String isdropship;
-	private String isexcludeautodelivery;
-	private String isinvoiceprintdetails;
-	private String ispicklistprintdetails;
-	private String ispurchased;
-	private String isselfservice;
-	private String issold;
-	private String isstocked;
-	private String issummary;
-	private String istoformule;
-	private String isverified;
-	private String iswebstorefeatured;
+	private Boolean isactive;
+	private Boolean isbom;
+	private Boolean isdropship;
+	private Boolean isexcludeautodelivery;
+	private Boolean isinvoiceprintdetails;
+	private Boolean ispicklistprintdetails;
+	private Boolean ispurchased;
+	private Boolean isselfservice;
+	private Boolean issold;
+	private Boolean isstocked;
+	private Boolean issummary;
+	private Boolean istoformule;
+	private Boolean isverified;
+	private Boolean iswebstorefeatured;
 	private Integer lowlevel;
 	private Integer mAttributesetId;
 	private Integer mAttributesetinstanceId;
@@ -55,7 +55,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	private Integer mProductCategoryId;
 	private Integer mProductId;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private String producttype;
 	private Integer rMailtextId;
 	private Integer sExpensetypeId;
@@ -83,7 +83,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -93,7 +93,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -103,7 +103,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_REVENUERECOGNITION_ID")
+	@Column(name="C_REVENUERECOGNITION_ID", columnDefinition="INT")
 	public Integer getCRevenuerecognitionId() {
 		return cRevenuerecognitionId;
 	}
@@ -113,7 +113,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SUBSCRIPTIONTYPE_ID")
+	@Column(name="C_SUBSCRIPTIONTYPE_ID", columnDefinition="INT")
 	public Integer getCSubscriptiontypeId() {
 		return cSubscriptiontypeId;
 	}
@@ -123,7 +123,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXCATEGORY_ID", nullable=false)
+	@Column(name="C_TAXCATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCTaxcategoryId() {
 		return cTaxcategoryId;
 	}
@@ -133,7 +133,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID", nullable=false)
+	@Column(name="C_UOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -163,7 +163,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -258,6 +258,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getGuaranteedays() {
 		return guaranteedays;
 	}
@@ -267,6 +268,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getGuaranteedaysmin() {
 		return guaranteedaysmin;
 	}
@@ -296,147 +298,146 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsbom() {
+	@Column(nullable=false)
+	public Boolean isIsbom() {
 		return isbom;
 	}
 
-	public void setIsbom(String isbom) {
+	public void setIsbom(Boolean isbom) {
 		this.isbom = isbom;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdropship() {
+	@Column(nullable=false)
+	public Boolean isIsdropship() {
 		return isdropship;
 	}
 
-	public void setIsdropship(String isdropship) {
+	public void setIsdropship(Boolean isdropship) {
 		this.isdropship = isdropship;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsexcludeautodelivery() {
+	@Column(nullable=false)
+	public Boolean isIsexcludeautodelivery() {
 		return isexcludeautodelivery;
 	}
 
-	public void setIsexcludeautodelivery(String isexcludeautodelivery) {
+	public void setIsexcludeautodelivery(Boolean isexcludeautodelivery) {
 		this.isexcludeautodelivery = isexcludeautodelivery;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinvoiceprintdetails() {
+	@Column(nullable=false)
+	public Boolean isIsinvoiceprintdetails() {
 		return isinvoiceprintdetails;
 	}
 
-	public void setIsinvoiceprintdetails(String isinvoiceprintdetails) {
+	public void setIsinvoiceprintdetails(Boolean isinvoiceprintdetails) {
 		this.isinvoiceprintdetails = isinvoiceprintdetails;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspicklistprintdetails() {
+	@Column(nullable=false)
+	public Boolean isIspicklistprintdetails() {
 		return ispicklistprintdetails;
 	}
 
-	public void setIspicklistprintdetails(String ispicklistprintdetails) {
+	public void setIspicklistprintdetails(Boolean ispicklistprintdetails) {
 		this.ispicklistprintdetails = ispicklistprintdetails;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspurchased() {
+	@Column(nullable=false)
+	public Boolean isIspurchased() {
 		return ispurchased;
 	}
 
-	public void setIspurchased(String ispurchased) {
+	public void setIspurchased(Boolean ispurchased) {
 		this.ispurchased = ispurchased;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssold() {
+	@Column(nullable=false)
+	public Boolean isIssold() {
 		return issold;
 	}
 
-	public void setIssold(String issold) {
+	public void setIssold(Boolean issold) {
 		this.issold = issold;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsstocked() {
+	@Column(nullable=false)
+	public Boolean isIsstocked() {
 		return isstocked;
 	}
 
-	public void setIsstocked(String isstocked) {
+	public void setIsstocked(Boolean isstocked) {
 		this.isstocked = isstocked;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIstoformule() {
+	public Boolean isIstoformule() {
 		return istoformule;
 	}
 
-	public void setIstoformule(String istoformule) {
+	public void setIstoformule(Boolean istoformule) {
 		this.istoformule = istoformule;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsverified() {
+	@Column(nullable=false)
+	public Boolean isIsverified() {
 		return isverified;
 	}
 
-	public void setIsverified(String isverified) {
+	public void setIsverified(Boolean isverified) {
 		this.isverified = isverified;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIswebstorefeatured() {
+	@Column(nullable=false)
+	public Boolean isIswebstorefeatured() {
 		return iswebstorefeatured;
 	}
 
-	public void setIswebstorefeatured(String iswebstorefeatured) {
+	public void setIswebstorefeatured(Boolean iswebstorefeatured) {
 		this.iswebstorefeatured = iswebstorefeatured;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLowlevel() {
 		return lowlevel;
 	}
@@ -446,7 +447,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESET_ID")
+	@Column(name="M_ATTRIBUTESET_ID", columnDefinition="INT")
 	public Integer getMAttributesetId() {
 		return mAttributesetId;
 	}
@@ -456,7 +457,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -466,7 +467,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_FREIGHTCATEGORY_ID")
+	@Column(name="M_FREIGHTCATEGORY_ID", columnDefinition="INT")
 	public Integer getMFreightcategoryId() {
 		return mFreightcategoryId;
 	}
@@ -476,7 +477,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID")
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -486,7 +487,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_CATEGORY_ID", nullable=false)
+	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}
@@ -496,7 +497,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -516,12 +517,11 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -536,7 +536,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_MAILTEXT_ID")
+	@Column(name="R_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getRMailtextId() {
 		return rMailtextId;
 	}
@@ -546,7 +546,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_EXPENSETYPE_ID")
+	@Column(name="S_EXPENSETYPE_ID", columnDefinition="INT")
 	public Integer getSExpensetypeId() {
 		return sExpensetypeId;
 	}
@@ -556,7 +556,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCE_ID")
+	@Column(name="S_RESOURCE_ID", columnDefinition="INT")
 	public Integer getSResourceId() {
 		return sResourceId;
 	}
@@ -566,7 +566,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID")
+	@Column(name="SALESREP_ID", columnDefinition="INT")
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -576,6 +576,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getShelfdepth() {
 		return shelfdepth;
 	}
@@ -594,6 +595,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getShelfwidth() {
 		return shelfwidth;
 	}
@@ -613,7 +615,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUnitsperpack() {
 		return unitsperpack;
 	}
@@ -652,7 +654,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

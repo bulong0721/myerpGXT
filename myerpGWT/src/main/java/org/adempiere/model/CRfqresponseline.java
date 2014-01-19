@@ -22,9 +22,9 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 	private Integer deliverydays;
 	private String description;
 	private String help;
-	private String isactive;
-	private String isselectedwinner;
-	private String isselfservice;
+	private Boolean isactive;
+	private Boolean isselectedwinner;
+	private Boolean isselfservice;
 	private String updated;
 	private Integer updatedby;
 
@@ -36,7 +36,7 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -56,7 +56,7 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RFQLINE_ID", nullable=false)
+	@Column(name="C_RFQLINE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRfqlineId() {
 		return cRfqlineId;
 	}
@@ -66,7 +66,7 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RFQRESPONSE_ID", nullable=false)
+	@Column(name="C_RFQRESPONSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRfqresponseId() {
 		return cRfqresponseId;
 	}
@@ -76,7 +76,7 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_RFQRESPONSELINE_ID")
+	@Column(name="C_RFQRESPONSELINE_ID", columnDefinition="INT")
 	public Integer getCRfqresponselineId() {
 		return cRfqresponselineId;
 	}
@@ -96,7 +96,7 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -124,6 +124,7 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDeliverydays() {
 		return deliverydays;
 	}
@@ -152,32 +153,32 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselectedwinner() {
+	@Column(nullable=false)
+	public Boolean isIsselectedwinner() {
 		return isselectedwinner;
 	}
 
-	public void setIsselectedwinner(String isselectedwinner) {
+	public void setIsselectedwinner(Boolean isselectedwinner) {
 		this.isselectedwinner = isselectedwinner;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
@@ -192,7 +193,7 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

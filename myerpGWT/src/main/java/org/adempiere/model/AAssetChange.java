@@ -65,12 +65,12 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String dateacct;
 	private String depreciationtype;
-	private String isactive;
-	private String isdepreciated;
-	private String isdisposed;
-	private String isfullydepreciated;
-	private String isinposession;
-	private String isowned;
+	private Boolean isactive;
+	private Boolean isdepreciated;
+	private Boolean isdisposed;
+	private Boolean isfullydepreciated;
+	private Boolean isinposession;
+	private Boolean isowned;
 	private Integer lifeuseunits;
 	private String lot;
 	private String postingtype;
@@ -91,7 +91,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ACCUMDEPRECIATION_ACCT")
+	@Column(name="A_ACCUMDEPRECIATION_ACCT", columnDefinition="INT")
 	public Integer getAAccumdepreciationAcct() {
 		return aAccumdepreciationAcct;
 	}
@@ -101,7 +101,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ACCT")
+	@Column(name="A_ASSET_ACCT", columnDefinition="INT")
 	public Integer getAAssetAcct() {
 		return aAssetAcct;
 	}
@@ -111,7 +111,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ACCT_ID")
+	@Column(name="A_ASSET_ACCT_ID", columnDefinition="INT")
 	public Integer getAAssetAcctId() {
 		return aAssetAcctId;
 	}
@@ -121,7 +121,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ADDITION_ID")
+	@Column(name="A_ASSET_ADDITION_ID", columnDefinition="INT")
 	public Integer getAAssetAdditionId() {
 		return aAssetAdditionId;
 	}
@@ -131,7 +131,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_ASSET_CHANGE_ID")
+	@Column(name="A_ASSET_CHANGE_ID", columnDefinition="INT")
 	public Integer getAAssetChangeId() {
 		return aAssetChangeId;
 	}
@@ -151,7 +151,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID", nullable=false)
+	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -161,7 +161,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_RETIREMENT_ID")
+	@Column(name="A_ASSET_RETIREMENT_ID", columnDefinition="INT")
 	public Integer getAAssetRetirementId() {
 		return aAssetRetirementId;
 	}
@@ -191,7 +191,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DEPRECIATION_ACCT")
+	@Column(name="A_DEPRECIATION_ACCT", columnDefinition="INT")
 	public Integer getADepreciationAcct() {
 		return aDepreciationAcct;
 	}
@@ -231,7 +231,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID")
+	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID", columnDefinition="INT")
 	public Integer getADepreciationTableHeaderId() {
 		return aDepreciationTableHeaderId;
 	}
@@ -271,7 +271,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PARENT_ASSET_ID")
+	@Column(name="A_PARENT_ASSET_ID", columnDefinition="INT")
 	public Integer getAParentAssetId() {
 		return aParentAssetId;
 	}
@@ -281,7 +281,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PERIOD_END")
+	@Column(name="A_PERIOD_END", columnDefinition="INT")
 	public Integer getAPeriodEnd() {
 		return aPeriodEnd;
 	}
@@ -291,7 +291,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PERIOD_START")
+	@Column(name="A_PERIOD_START", columnDefinition="INT")
 	public Integer getAPeriodStart() {
 		return aPeriodStart;
 	}
@@ -321,7 +321,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_REVAL_ACCUMDEP_OFFSET_CUR")
+	@Column(name="A_REVAL_ACCUMDEP_OFFSET_CUR", columnDefinition="INT")
 	public Integer getARevalAccumdepOffsetCur() {
 		return aRevalAccumdepOffsetCur;
 	}
@@ -331,7 +331,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_REVAL_ACCUMDEP_OFFSET_PRIOR")
+	@Column(name="A_REVAL_ACCUMDEP_OFFSET_PRIOR", columnDefinition="INT")
 	public Integer getARevalAccumdepOffsetPrior() {
 		return aRevalAccumdepOffsetPrior;
 	}
@@ -351,7 +351,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_REVAL_COST_OFFSET")
+	@Column(name="A_REVAL_COST_OFFSET", columnDefinition="INT")
 	public Integer getARevalCostOffset() {
 		return aRevalCostOffset;
 	}
@@ -361,7 +361,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_REVAL_COST_OFFSET_PRIOR")
+	@Column(name="A_REVAL_COST_OFFSET_PRIOR", columnDefinition="INT")
 	public Integer getARevalCostOffsetPrior() {
 		return aRevalCostOffsetPrior;
 	}
@@ -371,7 +371,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_REVAL_DEPEXP_OFFSET")
+	@Column(name="A_REVAL_DEPEXP_OFFSET", columnDefinition="INT")
 	public Integer getARevalDepexpOffset() {
 		return aRevalDepexpOffset;
 	}
@@ -401,7 +401,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -411,7 +411,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -421,7 +421,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -494,7 +494,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -504,7 +504,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -514,7 +514,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID")
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -524,7 +524,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCATION_ID")
+	@Column(name="C_LOCATION_ID", columnDefinition="INT")
 	public Integer getCLocationId() {
 		return cLocationId;
 	}
@@ -534,7 +534,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_VALIDCOMBINATION_ID")
+	@Column(name="C_VALIDCOMBINATION_ID", columnDefinition="INT")
 	public Integer getCValidcombinationId() {
 		return cValidcombinationId;
 	}
@@ -592,7 +592,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -621,66 +621,62 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdepreciated() {
+	public Boolean isIsdepreciated() {
 		return isdepreciated;
 	}
 
-	public void setIsdepreciated(String isdepreciated) {
+	public void setIsdepreciated(Boolean isdepreciated) {
 		this.isdepreciated = isdepreciated;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdisposed() {
+	public Boolean isIsdisposed() {
 		return isdisposed;
 	}
 
-	public void setIsdisposed(String isdisposed) {
+	public void setIsdisposed(Boolean isdisposed) {
 		this.isdisposed = isdisposed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsfullydepreciated() {
+	public Boolean isIsfullydepreciated() {
 		return isfullydepreciated;
 	}
 
-	public void setIsfullydepreciated(String isfullydepreciated) {
+	public void setIsfullydepreciated(Boolean isfullydepreciated) {
 		this.isfullydepreciated = isfullydepreciated;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsinposession() {
+	public Boolean isIsinposession() {
 		return isinposession;
 	}
 
-	public void setIsinposession(String isinposession) {
+	public void setIsinposession(Boolean isinposession) {
 		this.isinposession = isinposession;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsowned() {
+	public Boolean isIsowned() {
 		return isowned;
 	}
 
-	public void setIsowned(String isowned) {
+	public void setIsowned(Boolean isowned) {
 		this.isowned = isowned;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLifeuseunits() {
 		return lifeuseunits;
 	}
@@ -740,7 +736,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -750,6 +746,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUselifemonths() {
 		return uselifemonths;
 	}
@@ -759,6 +756,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUselifeyears() {
 		return uselifeyears;
 	}
@@ -768,6 +766,7 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUseunits() {
 		return useunits;
 	}

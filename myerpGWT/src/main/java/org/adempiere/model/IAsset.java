@@ -69,12 +69,12 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	private Integer iAssetId;
 	private String iErrormsg;
 	private String iIsimported;
-	private String isactive;
-	private String isdepreciated;
-	private String isdisposed;
-	private String isfullydepreciated;
-	private String isinposession;
-	private String isowned;
+	private Boolean isactive;
+	private Boolean isdepreciated;
+	private Boolean isdisposed;
+	private Boolean isfullydepreciated;
+	private Boolean isinposession;
+	private Boolean isowned;
 	private Integer lifeuseunits;
 	private String locationcomment;
 	private String lot;
@@ -83,8 +83,8 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	private Integer mProductId;
 	private String name;
 	private String postingtype;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String serno;
 	private String updated;
 	private Integer updatedby;
@@ -102,7 +102,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ACCUMDEPRECIATION_ACCT")
+	@Column(name="A_ACCUMDEPRECIATION_ACCT", columnDefinition="INT")
 	public Integer getAAccumdepreciationAcct() {
 		return aAccumdepreciationAcct;
 	}
@@ -122,7 +122,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ACCT")
+	@Column(name="A_ASSET_ACCT", columnDefinition="INT")
 	public Integer getAAssetAcct() {
 		return aAssetAcct;
 	}
@@ -142,7 +142,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_GROUP_ID")
+	@Column(name="A_ASSET_GROUP_ID", columnDefinition="INT")
 	public Integer getAAssetGroupId() {
 		return aAssetGroupId;
 	}
@@ -152,7 +152,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID")
+	@Column(name="A_ASSET_ID", columnDefinition="INT")
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -162,7 +162,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_LIFE_CURRENT_YEAR")
+	@Column(name="A_ASSET_LIFE_CURRENT_YEAR", columnDefinition="INT")
 	public Integer getAAssetLifeCurrentYear() {
 		return aAssetLifeCurrentYear;
 	}
@@ -172,7 +172,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_LIFE_YEARS")
+	@Column(name="A_ASSET_LIFE_YEARS", columnDefinition="INT")
 	public Integer getAAssetLifeYears() {
 		return aAssetLifeYears;
 	}
@@ -222,7 +222,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_CURRENT_PERIOD")
+	@Column(name="A_CURRENT_PERIOD", columnDefinition="INT")
 	public Integer getACurrentPeriod() {
 		return aCurrentPeriod;
 	}
@@ -232,7 +232,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DEPRECIATION_ACCT")
+	@Column(name="A_DEPRECIATION_ACCT", columnDefinition="INT")
 	public Integer getADepreciationAcct() {
 		return aDepreciationAcct;
 	}
@@ -272,7 +272,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID")
+	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID", columnDefinition="INT")
 	public Integer getADepreciationTableHeaderId() {
 		return aDepreciationTableHeaderId;
 	}
@@ -312,7 +312,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_LIFE_PERIOD")
+	@Column(name="A_LIFE_PERIOD", columnDefinition="INT")
 	public Integer getALifePeriod() {
 		return aLifePeriod;
 	}
@@ -322,7 +322,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PARENT_ASSET_ID")
+	@Column(name="A_PARENT_ASSET_ID", columnDefinition="INT")
 	public Integer getAParentAssetId() {
 		return aParentAssetId;
 	}
@@ -332,7 +332,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PERIOD_END")
+	@Column(name="A_PERIOD_END", columnDefinition="INT")
 	public Integer getAPeriodEnd() {
 		return aPeriodEnd;
 	}
@@ -342,7 +342,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PERIOD_POSTED")
+	@Column(name="A_PERIOD_POSTED", columnDefinition="INT")
 	public Integer getAPeriodPosted() {
 		return aPeriodPosted;
 	}
@@ -352,7 +352,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PERIOD_START")
+	@Column(name="A_PERIOD_START", columnDefinition="INT")
 	public Integer getAPeriodStart() {
 		return aPeriodStart;
 	}
@@ -372,7 +372,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_QTY_CURRENT")
+	@Column(name="A_QTY_CURRENT", columnDefinition="INT")
 	public Integer getAQtyCurrent() {
 		return aQtyCurrent;
 	}
@@ -382,7 +382,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_QTY_ORIGINAL")
+	@Column(name="A_QTY_ORIGINAL", columnDefinition="INT")
 	public Integer getAQtyOriginal() {
 		return aQtyOriginal;
 	}
@@ -472,7 +472,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -482,7 +482,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -492,7 +492,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -538,7 +538,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -548,7 +548,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -558,7 +558,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID")
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -568,7 +568,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCATION_ID")
+	@Column(name="C_LOCATION_ID", columnDefinition="INT")
 	public Integer getCLocationId() {
 		return cLocationId;
 	}
@@ -598,6 +598,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -646,7 +647,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_ASSET_ID")
+	@Column(name="I_ASSET_ID", columnDefinition="INT")
 	public Integer getIAssetId() {
 		return iAssetId;
 	}
@@ -676,66 +677,61 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdepreciated() {
+	public Boolean isIsdepreciated() {
 		return isdepreciated;
 	}
 
-	public void setIsdepreciated(String isdepreciated) {
+	public void setIsdepreciated(Boolean isdepreciated) {
 		this.isdepreciated = isdepreciated;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdisposed() {
+	public Boolean isIsdisposed() {
 		return isdisposed;
 	}
 
-	public void setIsdisposed(String isdisposed) {
+	public void setIsdisposed(Boolean isdisposed) {
 		this.isdisposed = isdisposed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsfullydepreciated() {
+	public Boolean isIsfullydepreciated() {
 		return isfullydepreciated;
 	}
 
-	public void setIsfullydepreciated(String isfullydepreciated) {
+	public void setIsfullydepreciated(Boolean isfullydepreciated) {
 		this.isfullydepreciated = isfullydepreciated;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsinposession() {
+	public Boolean isIsinposession() {
 		return isinposession;
 	}
 
-	public void setIsinposession(String isinposession) {
+	public void setIsinposession(Boolean isinposession) {
 		this.isinposession = isinposession;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsowned() {
+	public Boolean isIsowned() {
 		return isowned;
 	}
 
-	public void setIsowned(String isowned) {
+	public void setIsowned(Boolean isowned) {
 		this.isowned = isowned;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLifeuseunits() {
 		return lifeuseunits;
 	}
@@ -764,7 +760,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -774,7 +770,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID")
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -784,7 +780,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -814,22 +810,20 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -854,7 +848,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -864,6 +858,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUselifemonths() {
 		return uselifemonths;
 	}
@@ -873,6 +868,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUselifeyears() {
 		return uselifeyears;
 	}
@@ -882,6 +878,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUseunits() {
 		return useunits;
 	}

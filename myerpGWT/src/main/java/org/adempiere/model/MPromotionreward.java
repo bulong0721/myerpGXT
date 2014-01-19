@@ -18,9 +18,9 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String distributionsorting;
-	private String isactive;
-	private String isforalldistribution;
-	private String issamedistribution;
+	private Boolean isactive;
+	private Boolean isforalldistribution;
+	private Boolean issamedistribution;
 	private Integer mPromotionId;
 	private Integer mPromotiondistributionId;
 	private Integer mPromotionrewardId;
@@ -39,7 +39,7 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -49,7 +49,7 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -68,7 +68,7 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -88,7 +88,7 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -108,37 +108,36 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsforalldistribution() {
+	@Column(nullable=false)
+	public Boolean isIsforalldistribution() {
 		return isforalldistribution;
 	}
 
-	public void setIsforalldistribution(String isforalldistribution) {
+	public void setIsforalldistribution(Boolean isforalldistribution) {
 		this.isforalldistribution = isforalldistribution;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssamedistribution() {
+	public Boolean isIssamedistribution() {
 		return issamedistribution;
 	}
 
-	public void setIssamedistribution(String issamedistribution) {
+	public void setIssamedistribution(Boolean issamedistribution) {
 		this.issamedistribution = issamedistribution;
 	}
 
 	@Basic
-	@Column(name="M_PROMOTION_ID", nullable=false)
+	@Column(name="M_PROMOTION_ID", columnDefinition="INT", nullable=false)
 	public Integer getMPromotionId() {
 		return mPromotionId;
 	}
@@ -148,7 +147,7 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PROMOTIONDISTRIBUTION_ID")
+	@Column(name="M_PROMOTIONDISTRIBUTION_ID", columnDefinition="INT")
 	public Integer getMPromotiondistributionId() {
 		return mPromotiondistributionId;
 	}
@@ -158,7 +157,7 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_PROMOTIONREWARD_ID")
+	@Column(name="M_PROMOTIONREWARD_ID", columnDefinition="INT")
 	public Integer getMPromotionrewardId() {
 		return mPromotionrewardId;
 	}
@@ -168,7 +167,7 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_TARGETDISTRIBUTION_ID")
+	@Column(name="M_TARGETDISTRIBUTION_ID", columnDefinition="INT")
 	public Integer getMTargetdistributionId() {
 		return mTargetdistributionId;
 	}
@@ -197,7 +196,7 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -217,7 +216,7 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

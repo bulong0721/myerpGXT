@@ -19,7 +19,7 @@ public class AdPinstancePara extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String info;
 	private String infoTo;
-	private String isactive;
+	private Boolean isactive;
 	private String pDate;
 	private String pDateTo;
 	private BigDecimal pNumber;
@@ -40,7 +40,7 @@ public class AdPinstancePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class AdPinstancePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -60,7 +60,7 @@ public class AdPinstancePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -80,6 +80,7 @@ public class AdPinstancePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -109,12 +110,11 @@ public class AdPinstancePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -189,6 +189,7 @@ public class AdPinstancePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
+	@Column(columnDefinition="INT")
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -208,6 +209,7 @@ public class AdPinstancePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

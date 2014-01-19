@@ -14,13 +14,13 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 	private Integer adClientId;
 	private Integer adOrgId;
 	private String created;
-	private BigDecimal createdby;
-	private String isactive;
+	private Integer createdby;
+	private Boolean isactive;
 	private String uKey;
 	private String uValue;
 	private Integer uWebPropertiesId;
 	private String updated;
-	private BigDecimal updatedby;
+	private Integer updatedby;
 
 	public UWebProperties() {
 	}
@@ -30,7 +30,7 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -40,7 +40,7 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,21 +61,21 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCreatedby() {
+	public Integer getCreatedby() {
 		return createdby;
 	}
 
-	public void setCreatedby(BigDecimal createdby) {
+	public void setCreatedby(Integer createdby) {
 		this.createdby = createdby;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -100,7 +100,7 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="U_WEB_PROPERTIES_ID")
+	@Column(name="U_WEB_PROPERTIES_ID", columnDefinition="INT")
 	public Integer getUWebPropertiesId() {
 		return uWebPropertiesId;
 	}
@@ -121,11 +121,11 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getUpdatedby() {
+	public Integer getUpdatedby() {
 		return updatedby;
 	}
 
-	public void setUpdatedby(BigDecimal updatedby) {
+	public void setUpdatedby(Integer updatedby) {
 		this.updatedby = updatedby;
 	}
 }

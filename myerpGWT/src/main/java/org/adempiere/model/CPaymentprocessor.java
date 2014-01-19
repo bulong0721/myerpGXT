@@ -34,7 +34,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String hostaddress;
 	private Integer hostport;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal minimumamt;
 	private String name;
 	private String partnerid;
@@ -158,7 +158,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -168,7 +168,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -178,7 +178,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_SEQUENCE_ID")
+	@Column(name="AD_SEQUENCE_ID", columnDefinition="INT")
 	public Integer getAdSequenceId() {
 		return adSequenceId;
 	}
@@ -188,7 +188,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BANKACCOUNT_ID", nullable=false)
+	@Column(name="C_BANKACCOUNT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBankaccountId() {
 		return cBankaccountId;
 	}
@@ -198,7 +198,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -208,7 +208,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_PAYMENTPROCESSOR_ID")
+	@Column(name="C_PAYMENTPROCESSOR_ID", columnDefinition="INT")
 	public Integer getCPaymentprocessorId() {
 		return cPaymentprocessorId;
 	}
@@ -248,7 +248,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -277,6 +277,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getHostport() {
 		return hostport;
 	}
@@ -286,12 +287,12 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -375,6 +376,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getProxyport() {
 		return proxyport;
 	}
@@ -404,7 +406,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

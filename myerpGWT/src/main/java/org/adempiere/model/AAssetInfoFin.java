@@ -27,7 +27,7 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	private Integer cBpartnerId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String textmsg;
 	private String updated;
 	private Integer updatedby;
@@ -40,7 +40,7 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID", nullable=false)
+	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -50,7 +50,7 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_ASSET_INFO_FIN_ID")
+	@Column(name="A_ASSET_INFO_FIN_ID", columnDefinition="INT")
 	public Integer getAAssetInfoFinId() {
 		return aAssetInfoFinId;
 	}
@@ -120,7 +120,7 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PURCHASE_OPTION_CREDIT")
+	@Column(name="A_PURCHASE_OPTION_CREDIT", columnDefinition="INT")
 	public Integer getAPurchaseOptionCredit() {
 		return aPurchaseOptionCredit;
 	}
@@ -150,7 +150,7 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -160,7 +160,7 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -170,7 +170,7 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -190,7 +190,7 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -200,12 +200,12 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -230,7 +230,7 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -19,7 +19,7 @@ public class CRfqresponselineqty extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private BigDecimal discount;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal price;
 	private Integer ranking;
 	private String updated;
@@ -33,7 +33,7 @@ public class CRfqresponselineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class CRfqresponselineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class CRfqresponselineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RFQLINEQTY_ID", nullable=false)
+	@Column(name="C_RFQLINEQTY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRfqlineqtyId() {
 		return cRfqlineqtyId;
 	}
@@ -63,7 +63,7 @@ public class CRfqresponselineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RFQRESPONSELINE_ID", nullable=false)
+	@Column(name="C_RFQRESPONSELINE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRfqresponselineId() {
 		return cRfqresponselineId;
 	}
@@ -73,7 +73,7 @@ public class CRfqresponselineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_RFQRESPONSELINEQTY_ID")
+	@Column(name="C_RFQRESPONSELINEQTY_ID", columnDefinition="INT")
 	public Integer getCRfqresponselineqtyId() {
 		return cRfqresponselineqtyId;
 	}
@@ -93,7 +93,7 @@ public class CRfqresponselineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -112,12 +112,12 @@ public class CRfqresponselineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -132,6 +132,7 @@ public class CRfqresponselineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getRanking() {
 		return ranking;
 	}
@@ -151,7 +152,7 @@ public class CRfqresponselineqty extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

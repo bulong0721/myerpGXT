@@ -30,14 +30,14 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	private Integer deliverydays;
 	private String description;
 	private String help;
-	private String isactive;
-	private String iscomplete;
-	private String isselectedwinner;
-	private String isselfservice;
+	private Boolean isactive;
+	private Boolean iscomplete;
+	private Boolean isselectedwinner;
+	private Boolean isselfservice;
 	private String name;
 	private BigDecimal price;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private Integer ranking;
 	private String updated;
 	private Integer updatedby;
@@ -50,7 +50,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -60,7 +60,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -70,7 +70,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -80,7 +80,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -90,7 +90,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID", nullable=false)
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -100,7 +100,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -110,7 +110,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -120,7 +120,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RFQ_ID", nullable=false)
+	@Column(name="C_RFQ_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRfqId() {
 		return cRfqId;
 	}
@@ -130,7 +130,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_RFQRESPONSE_ID")
+	@Column(name="C_RFQRESPONSE_ID", columnDefinition="INT")
 	public Integer getCRfqresponseId() {
 		return cRfqresponseId;
 	}
@@ -160,7 +160,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -206,6 +206,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDeliverydays() {
 		return deliverydays;
 	}
@@ -234,42 +235,42 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscomplete() {
+	@Column(nullable=false)
+	public Boolean isIscomplete() {
 		return iscomplete;
 	}
 
-	public void setIscomplete(String iscomplete) {
+	public void setIscomplete(Boolean iscomplete) {
 		this.iscomplete = iscomplete;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselectedwinner() {
+	@Column(nullable=false)
+	public Boolean isIsselectedwinner() {
 		return isselectedwinner;
 	}
 
-	public void setIsselectedwinner(String isselectedwinner) {
+	public void setIsselectedwinner(Boolean isselectedwinner) {
 		this.isselectedwinner = isselectedwinner;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
@@ -294,26 +295,26 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getRanking() {
 		return ranking;
 	}
@@ -333,7 +334,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -16,14 +16,14 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private Integer guaranteedays;
-	private String isactive;
-	private String isguaranteedate;
-	private String isguaranteedatemandatory;
-	private String isinstanceattribute;
-	private String islot;
-	private String islotmandatory;
-	private String isserno;
-	private String issernomandatory;
+	private Boolean isactive;
+	private Boolean isguaranteedate;
+	private Boolean isguaranteedatemandatory;
+	private Boolean isinstanceattribute;
+	private Boolean islot;
+	private Boolean islotmandatory;
+	private Boolean isserno;
+	private Boolean issernomandatory;
 	private String lotchareoverwrite;
 	private String lotcharsoverwrite;
 	private Integer mAttributesetId;
@@ -44,7 +44,7 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -54,7 +54,7 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -74,7 +74,7 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -93,6 +93,7 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getGuaranteedays() {
 		return guaranteedays;
 	}
@@ -102,82 +103,82 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsguaranteedate() {
+	@Column(nullable=false)
+	public Boolean isIsguaranteedate() {
 		return isguaranteedate;
 	}
 
-	public void setIsguaranteedate(String isguaranteedate) {
+	public void setIsguaranteedate(Boolean isguaranteedate) {
 		this.isguaranteedate = isguaranteedate;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsguaranteedatemandatory() {
+	@Column(nullable=false)
+	public Boolean isIsguaranteedatemandatory() {
 		return isguaranteedatemandatory;
 	}
 
-	public void setIsguaranteedatemandatory(String isguaranteedatemandatory) {
+	public void setIsguaranteedatemandatory(Boolean isguaranteedatemandatory) {
 		this.isguaranteedatemandatory = isguaranteedatemandatory;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinstanceattribute() {
+	@Column(nullable=false)
+	public Boolean isIsinstanceattribute() {
 		return isinstanceattribute;
 	}
 
-	public void setIsinstanceattribute(String isinstanceattribute) {
+	public void setIsinstanceattribute(Boolean isinstanceattribute) {
 		this.isinstanceattribute = isinstanceattribute;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIslot() {
+	@Column(nullable=false)
+	public Boolean isIslot() {
 		return islot;
 	}
 
-	public void setIslot(String islot) {
+	public void setIslot(Boolean islot) {
 		this.islot = islot;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIslotmandatory() {
+	@Column(nullable=false)
+	public Boolean isIslotmandatory() {
 		return islotmandatory;
 	}
 
-	public void setIslotmandatory(String islotmandatory) {
+	public void setIslotmandatory(Boolean islotmandatory) {
 		this.islotmandatory = islotmandatory;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsserno() {
+	@Column(nullable=false)
+	public Boolean isIsserno() {
 		return isserno;
 	}
 
-	public void setIsserno(String isserno) {
+	public void setIsserno(Boolean isserno) {
 		this.isserno = isserno;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssernomandatory() {
+	@Column(nullable=false)
+	public Boolean isIssernomandatory() {
 		return issernomandatory;
 	}
 
-	public void setIssernomandatory(String issernomandatory) {
+	public void setIssernomandatory(Boolean issernomandatory) {
 		this.issernomandatory = issernomandatory;
 	}
 
@@ -202,7 +203,7 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_ATTRIBUTESET_ID")
+	@Column(name="M_ATTRIBUTESET_ID", columnDefinition="INT")
 	public Integer getMAttributesetId() {
 		return mAttributesetId;
 	}
@@ -212,7 +213,7 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOTCTL_ID")
+	@Column(name="M_LOTCTL_ID", columnDefinition="INT")
 	public Integer getMLotctlId() {
 		return mLotctlId;
 	}
@@ -222,7 +223,7 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_SERNOCTL_ID")
+	@Column(name="M_SERNOCTL_ID", columnDefinition="INT")
 	public Integer getMSernoctlId() {
 		return mSernoctlId;
 	}
@@ -282,7 +283,7 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

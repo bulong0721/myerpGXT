@@ -20,7 +20,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	private Integer distribOrderPrintformatId;
 	private Integer invoiceMailtextId;
 	private Integer invoicePrintformatId;
-	private String isactive;
+	private Boolean isactive;
 	private Integer manufOrderMailtextId;
 	private Integer manufOrderPrintformatId;
 	private String name;
@@ -43,7 +43,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -53,7 +53,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -63,7 +63,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PRINTFORM_ID")
+	@Column(name="AD_PRINTFORM_ID", columnDefinition="INT")
 	public Integer getAdPrintformId() {
 		return adPrintformId;
 	}
@@ -83,7 +83,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -102,7 +102,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DISTRIB_ORDER_MAILTEXT_ID")
+	@Column(name="DISTRIB_ORDER_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getDistribOrderMailtextId() {
 		return distribOrderMailtextId;
 	}
@@ -112,7 +112,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DISTRIB_ORDER_PRINTFORMAT_ID")
+	@Column(name="DISTRIB_ORDER_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getDistribOrderPrintformatId() {
 		return distribOrderPrintformatId;
 	}
@@ -122,7 +122,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="INVOICE_MAILTEXT_ID")
+	@Column(name="INVOICE_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getInvoiceMailtextId() {
 		return invoiceMailtextId;
 	}
@@ -132,7 +132,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="INVOICE_PRINTFORMAT_ID")
+	@Column(name="INVOICE_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getInvoicePrintformatId() {
 		return invoicePrintformatId;
 	}
@@ -142,17 +142,17 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="MANUF_ORDER_MAILTEXT_ID")
+	@Column(name="MANUF_ORDER_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getManufOrderMailtextId() {
 		return manufOrderMailtextId;
 	}
@@ -162,7 +162,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="MANUF_ORDER_PRINTFORMAT_ID")
+	@Column(name="MANUF_ORDER_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getManufOrderPrintformatId() {
 		return manufOrderPrintformatId;
 	}
@@ -182,7 +182,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ORDER_MAILTEXT_ID")
+	@Column(name="ORDER_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getOrderMailtextId() {
 		return orderMailtextId;
 	}
@@ -192,7 +192,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ORDER_PRINTFORMAT_ID")
+	@Column(name="ORDER_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getOrderPrintformatId() {
 		return orderPrintformatId;
 	}
@@ -202,7 +202,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PROJECT_MAILTEXT_ID")
+	@Column(name="PROJECT_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getProjectMailtextId() {
 		return projectMailtextId;
 	}
@@ -212,7 +212,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PROJECT_PRINTFORMAT_ID")
+	@Column(name="PROJECT_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getProjectPrintformatId() {
 		return projectPrintformatId;
 	}
@@ -222,7 +222,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REMITTANCE_MAILTEXT_ID")
+	@Column(name="REMITTANCE_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getRemittanceMailtextId() {
 		return remittanceMailtextId;
 	}
@@ -232,7 +232,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REMITTANCE_PRINTFORMAT_ID")
+	@Column(name="REMITTANCE_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getRemittancePrintformatId() {
 		return remittancePrintformatId;
 	}
@@ -242,7 +242,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SHIPMENT_MAILTEXT_ID")
+	@Column(name="SHIPMENT_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getShipmentMailtextId() {
 		return shipmentMailtextId;
 	}
@@ -252,7 +252,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SHIPMENT_PRINTFORMAT_ID")
+	@Column(name="SHIPMENT_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getShipmentPrintformatId() {
 		return shipmentPrintformatId;
 	}
@@ -272,7 +272,7 @@ public class AdPrintform extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

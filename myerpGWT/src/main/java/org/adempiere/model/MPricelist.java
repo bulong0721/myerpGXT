@@ -18,12 +18,12 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String enforcepricelimit;
-	private String isactive;
-	private String isdefault;
-	private String ismandatory;
-	private String ispresentforproduct;
-	private String issopricelist;
-	private String istaxincluded;
+	private Boolean isactive;
+	private Boolean isdefault;
+	private Boolean ismandatory;
+	private Boolean ispresentforproduct;
+	private Boolean issopricelist;
+	private Boolean istaxincluded;
 	private Integer mPricelistId;
 	private String name;
 	private Integer priceprecision;
@@ -38,7 +38,7 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -58,7 +58,7 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="BASEPRICELIST_ID")
+	@Column(name="BASEPRICELIST_ID", columnDefinition="INT")
 	public Integer getBasepricelistId() {
 		return basepricelistId;
 	}
@@ -68,7 +68,7 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -88,7 +88,7 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -117,67 +117,65 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsmandatory() {
+	public Boolean isIsmandatory() {
 		return ismandatory;
 	}
 
-	public void setIsmandatory(String ismandatory) {
+	public void setIsmandatory(Boolean ismandatory) {
 		this.ismandatory = ismandatory;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIspresentforproduct() {
+	public Boolean isIspresentforproduct() {
 		return ispresentforproduct;
 	}
 
-	public void setIspresentforproduct(String ispresentforproduct) {
+	public void setIspresentforproduct(Boolean ispresentforproduct) {
 		this.ispresentforproduct = ispresentforproduct;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssopricelist() {
+	@Column(nullable=false)
+	public Boolean isIssopricelist() {
 		return issopricelist;
 	}
 
-	public void setIssopricelist(String issopricelist) {
+	public void setIssopricelist(Boolean issopricelist) {
 		this.issopricelist = issopricelist;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstaxincluded() {
+	@Column(nullable=false)
+	public Boolean isIstaxincluded() {
 		return istaxincluded;
 	}
 
-	public void setIstaxincluded(String istaxincluded) {
+	public void setIstaxincluded(Boolean istaxincluded) {
 		this.istaxincluded = istaxincluded;
 	}
 
 	@Id
-	@Column(name="M_PRICELIST_ID")
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT")
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -197,7 +195,7 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getPriceprecision() {
 		return priceprecision;
 	}
@@ -217,7 +215,7 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

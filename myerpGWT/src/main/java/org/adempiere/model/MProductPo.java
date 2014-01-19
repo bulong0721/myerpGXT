@@ -25,8 +25,8 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	private String discontinued;
 	private String discontinuedat;
 	private String discontinuedby;
-	private String isactive;
-	private String iscurrentvendor;
+	private Boolean isactive;
+	private Boolean iscurrentvendor;
 	private Integer mProductId;
 	private String manufacturer;
 	private BigDecimal orderMin;
@@ -53,7 +53,7 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -63,7 +63,7 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -73,7 +73,7 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -83,7 +83,7 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -93,7 +93,7 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID")
+	@Column(name="C_UOM_ID", columnDefinition="INT")
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -122,7 +122,7 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -132,7 +132,7 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DELIVERYTIME_ACTUAL")
+	@Column(name="DELIVERYTIME_ACTUAL", columnDefinition="INT")
 	public Integer getDeliverytimeActual() {
 		return deliverytimeActual;
 	}
@@ -142,7 +142,7 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DELIVERYTIME_PROMISED")
+	@Column(name="DELIVERYTIME_PROMISED", columnDefinition="INT")
 	public Integer getDeliverytimePromised() {
 		return deliverytimePromised;
 	}
@@ -180,27 +180,27 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscurrentvendor() {
+	@Column(nullable=false)
+	public Boolean isIscurrentvendor() {
 		return iscurrentvendor;
 	}
 
-	public void setIscurrentvendor(String iscurrentvendor) {
+	public void setIscurrentvendor(Boolean iscurrentvendor) {
 		this.iscurrentvendor = iscurrentvendor;
 	}
 
 	@Id
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -323,7 +323,7 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

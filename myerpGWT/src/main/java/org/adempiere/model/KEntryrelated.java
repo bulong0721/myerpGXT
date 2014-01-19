@@ -15,7 +15,7 @@ public class KEntryrelated extends org.adempiere.common.ADEntityBase {
 	private Integer adOrgId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer kEntryId;
 	private Integer kEntryrelatedId;
 	private String name;
@@ -31,7 +31,7 @@ public class KEntryrelated extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class KEntryrelated extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class KEntryrelated extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -71,17 +71,17 @@ public class KEntryrelated extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="K_ENTRY_ID")
+	@Column(name="K_ENTRY_ID", columnDefinition="INT")
 	public Integer getKEntryId() {
 		return kEntryId;
 	}
@@ -91,7 +91,7 @@ public class KEntryrelated extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="K_ENTRYRELATED_ID")
+	@Column(name="K_ENTRYRELATED_ID", columnDefinition="INT")
 	public Integer getKEntryrelatedId() {
 		return kEntryrelatedId;
 	}
@@ -121,7 +121,7 @@ public class KEntryrelated extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

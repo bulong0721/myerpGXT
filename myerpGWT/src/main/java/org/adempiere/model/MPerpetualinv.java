@@ -18,7 +18,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	private String datelastrun;
 	private String datenextrun;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mPerpetualinvId;
 	private Integer mProductCategoryId;
 	private Integer mWarehouseId;
@@ -26,7 +26,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	private Integer noinventorycount;
 	private Integer noproductcount;
 	private Integer numberofruns;
-	private String processing;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -38,7 +38,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -78,7 +78,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -116,17 +116,17 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="M_PERPETUALINV_ID")
+	@Column(name="M_PERPETUALINV_ID", columnDefinition="INT")
 	public Integer getMPerpetualinvId() {
 		return mPerpetualinvId;
 	}
@@ -136,7 +136,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_CATEGORY_ID")
+	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}
@@ -146,7 +146,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -166,7 +166,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getNoinventorycount() {
 		return noinventorycount;
 	}
@@ -176,7 +176,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getNoproductcount() {
 		return noproductcount;
 	}
@@ -186,7 +186,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getNumberofruns() {
 		return numberofruns;
 	}
@@ -196,12 +196,11 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -216,7 +215,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -15,8 +15,8 @@ public class MPromotionline extends org.adempiere.common.ADEntityBase {
 	private Integer adOrgId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String ismandatorypl;
+	private Boolean isactive;
+	private Boolean ismandatorypl;
 	private Integer mPromotionId;
 	private Integer mPromotiongroupId;
 	private Integer mPromotionlineId;
@@ -32,7 +32,7 @@ public class MPromotionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class MPromotionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -62,7 +62,7 @@ public class MPromotionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -72,27 +72,27 @@ public class MPromotionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmandatorypl() {
+	@Column(nullable=false)
+	public Boolean isIsmandatorypl() {
 		return ismandatorypl;
 	}
 
-	public void setIsmandatorypl(String ismandatorypl) {
+	public void setIsmandatorypl(Boolean ismandatorypl) {
 		this.ismandatorypl = ismandatorypl;
 	}
 
 	@Basic
-	@Column(name="M_PROMOTION_ID", nullable=false)
+	@Column(name="M_PROMOTION_ID", columnDefinition="INT", nullable=false)
 	public Integer getMPromotionId() {
 		return mPromotionId;
 	}
@@ -102,7 +102,7 @@ public class MPromotionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PROMOTIONGROUP_ID")
+	@Column(name="M_PROMOTIONGROUP_ID", columnDefinition="INT")
 	public Integer getMPromotiongroupId() {
 		return mPromotiongroupId;
 	}
@@ -112,7 +112,7 @@ public class MPromotionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_PROMOTIONLINE_ID")
+	@Column(name="M_PROMOTIONLINE_ID", columnDefinition="INT")
 	public Integer getMPromotionlineId() {
 		return mPromotionlineId;
 	}
@@ -141,7 +141,7 @@ public class MPromotionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

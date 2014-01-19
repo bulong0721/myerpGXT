@@ -30,9 +30,9 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	private String emailverify;
 	private String emailverifydate;
 	private String fax;
-	private String isactive;
-	private String isfullbpaccess;
-	private String isinpayroll;
+	private Boolean isactive;
+	private Boolean isfullbpaccess;
+	private Boolean isinpayroll;
 	private String lastcontact;
 	private String lastresult;
 	private String ldapuser;
@@ -41,7 +41,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	private String password;
 	private String phone;
 	private String phone2;
-	private String processing;
+	private Boolean processing;
 	private Integer supervisorId;
 	private String title;
 	private String updated;
@@ -57,7 +57,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -67,7 +67,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -87,7 +87,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -106,7 +106,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -116,7 +116,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID")
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -126,7 +126,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_GREETING_ID")
+	@Column(name="C_GREETING_ID", columnDefinition="INT")
 	public Integer getCGreetingId() {
 		return cGreetingId;
 	}
@@ -136,7 +136,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_JOB_ID")
+	@Column(name="C_JOB_ID", columnDefinition="INT")
 	public Integer getCJobId() {
 		return cJobId;
 	}
@@ -176,7 +176,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -253,32 +253,32 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsfullbpaccess() {
+	@Column(nullable=false)
+	public Boolean isIsfullbpaccess() {
 		return isfullbpaccess;
 	}
 
-	public void setIsfullbpaccess(String isfullbpaccess) {
+	public void setIsfullbpaccess(Boolean isfullbpaccess) {
 		this.isfullbpaccess = isfullbpaccess;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinpayroll() {
+	@Column(nullable=false)
+	public Boolean isIsinpayroll() {
 		return isinpayroll;
 	}
 
-	public void setIsinpayroll(String isinpayroll) {
+	public void setIsinpayroll(Boolean isinpayroll) {
 		this.isinpayroll = isinpayroll;
 	}
 
@@ -361,17 +361,16 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="SUPERVISOR_ID")
+	@Column(name="SUPERVISOR_ID", columnDefinition="INT")
 	public Integer getSupervisorId() {
 		return supervisorId;
 	}
@@ -401,7 +400,7 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -17,12 +17,12 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String iscreateasactive;
-	private String isdepreciated;
-	private String isoneassetperuom;
-	private String isowned;
-	private String istrackissues;
+	private Boolean isactive;
+	private Boolean iscreateasactive;
+	private Boolean isdepreciated;
+	private Boolean isoneassetperuom;
+	private Boolean isowned;
+	private Boolean istrackissues;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -35,7 +35,7 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_ASSET_GROUP_ID")
+	@Column(name="A_ASSET_GROUP_ID", columnDefinition="INT")
 	public Integer getAAssetGroupId() {
 		return aAssetGroupId;
 	}
@@ -45,7 +45,7 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -55,7 +55,7 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -75,7 +75,7 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -104,62 +104,61 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscreateasactive() {
+	@Column(nullable=false)
+	public Boolean isIscreateasactive() {
 		return iscreateasactive;
 	}
 
-	public void setIscreateasactive(String iscreateasactive) {
+	public void setIscreateasactive(Boolean iscreateasactive) {
 		this.iscreateasactive = iscreateasactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdepreciated() {
+	@Column(nullable=false)
+	public Boolean isIsdepreciated() {
 		return isdepreciated;
 	}
 
-	public void setIsdepreciated(String isdepreciated) {
+	public void setIsdepreciated(Boolean isdepreciated) {
 		this.isdepreciated = isdepreciated;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsoneassetperuom() {
+	@Column(nullable=false)
+	public Boolean isIsoneassetperuom() {
 		return isoneassetperuom;
 	}
 
-	public void setIsoneassetperuom(String isoneassetperuom) {
+	public void setIsoneassetperuom(Boolean isoneassetperuom) {
 		this.isoneassetperuom = isoneassetperuom;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsowned() {
+	@Column(nullable=false)
+	public Boolean isIsowned() {
 		return isowned;
 	}
 
-	public void setIsowned(String isowned) {
+	public void setIsowned(Boolean isowned) {
 		this.isowned = isowned;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIstrackissues() {
+	public Boolean isIstrackissues() {
 		return istrackissues;
 	}
 
-	public void setIstrackissues(String istrackissues) {
+	public void setIstrackissues(Boolean istrackissues) {
 		this.istrackissues = istrackissues;
 	}
 
@@ -184,7 +183,7 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

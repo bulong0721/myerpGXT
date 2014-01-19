@@ -30,8 +30,8 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	private String datereval;
 	private Integer factAcctId;
 	private BigDecimal grandtotal;
-	private String isactive;
-	private String isallcurrencies;
+	private Boolean isactive;
+	private Boolean isallcurrencies;
 	private BigDecimal openamt;
 	private BigDecimal percent;
 	private String updated;
@@ -47,7 +47,7 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -147,7 +147,7 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CONVERSIONTYPEREVAL_ID", nullable=false)
+	@Column(name="C_CONVERSIONTYPEREVAL_ID", columnDefinition="INT", nullable=false)
 	public Integer getCConversiontyperevalId() {
 		return cConversiontyperevalId;
 	}
@@ -157,7 +157,7 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPEREVAL_ID")
+	@Column(name="C_DOCTYPEREVAL_ID", columnDefinition="INT")
 	public Integer getCDoctyperevalId() {
 		return cDoctyperevalId;
 	}
@@ -167,7 +167,7 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -187,7 +187,7 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -207,7 +207,7 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="FACT_ACCT_ID")
+	@Column(name="FACT_ACCT_ID", columnDefinition="INT")
 	public Integer getFactAcctId() {
 		return factAcctId;
 	}
@@ -227,22 +227,22 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsallcurrencies() {
+	@Column(nullable=false)
+	public Boolean isIsallcurrencies() {
 		return isallcurrencies;
 	}
 
-	public void setIsallcurrencies(String isallcurrencies) {
+	public void setIsallcurrencies(Boolean isallcurrencies) {
 		this.isallcurrencies = isallcurrencies;
 	}
 
@@ -276,7 +276,7 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

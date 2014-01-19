@@ -21,14 +21,14 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String isallowpublish;
-	private String isinproduction;
-	private String isregistered;
+	private Boolean isactive;
+	private Boolean isallowpublish;
+	private Boolean isinproduction;
+	private Boolean isregistered;
 	private Integer mProductId;
 	private String name;
 	private String note;
-	private String processing;
+	private Boolean processing;
 	private String remoteAddr;
 	private String remoteHost;
 	private String updated;
@@ -42,7 +42,7 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID")
+	@Column(name="A_ASSET_ID", columnDefinition="INT")
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -52,7 +52,7 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_REGISTRATION_ID")
+	@Column(name="A_REGISTRATION_ID", columnDefinition="INT")
 	public Integer getARegistrationId() {
 		return aRegistrationId;
 	}
@@ -62,7 +62,7 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -72,7 +72,7 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -82,7 +82,7 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -101,7 +101,7 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -121,7 +121,7 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -150,47 +150,47 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsallowpublish() {
+	@Column(nullable=false)
+	public Boolean isIsallowpublish() {
 		return isallowpublish;
 	}
 
-	public void setIsallowpublish(String isallowpublish) {
+	public void setIsallowpublish(Boolean isallowpublish) {
 		this.isallowpublish = isallowpublish;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinproduction() {
+	@Column(nullable=false)
+	public Boolean isIsinproduction() {
 		return isinproduction;
 	}
 
-	public void setIsinproduction(String isinproduction) {
+	public void setIsinproduction(Boolean isinproduction) {
 		this.isinproduction = isinproduction;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsregistered() {
+	@Column(nullable=false)
+	public Boolean isIsregistered() {
 		return isregistered;
 	}
 
-	public void setIsregistered(String isregistered) {
+	public void setIsregistered(Boolean isregistered) {
 		this.isregistered = isregistered;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -220,12 +220,11 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -260,7 +259,7 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

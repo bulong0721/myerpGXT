@@ -21,10 +21,10 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 	private String documentnote;
 	private String help;
 	private String imageurl;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mProductCategoryId;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private Integer sTrainingId;
 	private String updated;
 	private Integer updatedby;
@@ -37,7 +37,7 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -57,7 +57,7 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXCATEGORY_ID", nullable=false)
+	@Column(name="C_TAXCATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCTaxcategoryId() {
 		return cTaxcategoryId;
 	}
@@ -67,7 +67,7 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID", nullable=false)
+	@Column(name="C_UOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -87,7 +87,7 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -146,17 +146,17 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_CATEGORY_ID", nullable=false)
+	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}
@@ -176,17 +176,16 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Id
-	@Column(name="S_TRAINING_ID")
+	@Column(name="S_TRAINING_ID", columnDefinition="INT")
 	public Integer getSTrainingId() {
 		return sTrainingId;
 	}
@@ -206,7 +205,7 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

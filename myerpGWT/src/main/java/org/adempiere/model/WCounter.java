@@ -17,9 +17,9 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String email;
-	private String isactive;
+	private Boolean isactive;
 	private String pageurl;
-	private String processed;
+	private Boolean processed;
 	private String referrer;
 	private String remoteAddr;
 	private String remoteHost;
@@ -47,7 +47,7 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -87,7 +87,7 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -107,12 +107,12 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -127,12 +127,12 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -177,7 +177,7 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -196,7 +196,7 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="W_COUNTER_ID")
+	@Column(name="W_COUNTER_ID", columnDefinition="INT")
 	public Integer getWCounterId() {
 		return wCounterId;
 	}
@@ -206,7 +206,7 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_COUNTERCOUNT_ID")
+	@Column(name="W_COUNTERCOUNT_ID", columnDefinition="INT")
 	public Integer getWCountercountId() {
 		return wCountercountId;
 	}

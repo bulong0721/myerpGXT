@@ -21,10 +21,10 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String issamecurrency;
-	private String issametax;
-	private String istaxincluded;
+	private Boolean isactive;
+	private Boolean issamecurrency;
+	private Boolean issametax;
+	private Boolean istaxincluded;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -37,7 +37,7 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -57,7 +57,7 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -67,7 +67,7 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -77,7 +77,7 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGETYPE_ID")
+	@Column(name="C_CHARGETYPE_ID", columnDefinition="INT")
 	public Integer getCChargetypeId() {
 		return cChargetypeId;
 	}
@@ -87,7 +87,7 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXCATEGORY_ID")
+	@Column(name="C_TAXCATEGORY_ID", columnDefinition="INT")
 	public Integer getCTaxcategoryId() {
 		return cTaxcategoryId;
 	}
@@ -117,7 +117,7 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -136,42 +136,42 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssamecurrency() {
+	@Column(nullable=false)
+	public Boolean isIssamecurrency() {
 		return issamecurrency;
 	}
 
-	public void setIssamecurrency(String issamecurrency) {
+	public void setIssamecurrency(Boolean issamecurrency) {
 		this.issamecurrency = issamecurrency;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssametax() {
+	@Column(nullable=false)
+	public Boolean isIssametax() {
 		return issametax;
 	}
 
-	public void setIssametax(String issametax) {
+	public void setIssametax(Boolean issametax) {
 		this.issametax = issametax;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstaxincluded() {
+	@Column(nullable=false)
+	public Boolean isIstaxincluded() {
 		return istaxincluded;
 	}
 
-	public void setIstaxincluded(String istaxincluded) {
+	public void setIstaxincluded(Boolean istaxincluded) {
 		this.istaxincluded = istaxincluded;
 	}
 
@@ -196,7 +196,7 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

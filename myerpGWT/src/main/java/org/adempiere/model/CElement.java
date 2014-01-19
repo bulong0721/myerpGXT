@@ -18,9 +18,9 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String elementtype;
-	private String isactive;
-	private String isbalancing;
-	private String isnaturalaccount;
+	private Boolean isactive;
+	private Boolean isbalancing;
+	private Boolean isnaturalaccount;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -34,7 +34,7 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -54,7 +54,7 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_ID")
+	@Column(name="AD_TREE_ID", columnDefinition="INT")
 	public Integer getAdTreeId() {
 		return adTreeId;
 	}
@@ -64,7 +64,7 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ELEMENT_ID")
+	@Column(name="C_ELEMENT_ID", columnDefinition="INT")
 	public Integer getCElementId() {
 		return cElementId;
 	}
@@ -84,7 +84,7 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -113,32 +113,32 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsbalancing() {
+	@Column(nullable=false)
+	public Boolean isIsbalancing() {
 		return isbalancing;
 	}
 
-	public void setIsbalancing(String isbalancing) {
+	public void setIsbalancing(Boolean isbalancing) {
 		this.isbalancing = isbalancing;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsnaturalaccount() {
+	@Column(nullable=false)
+	public Boolean isIsnaturalaccount() {
 		return isnaturalaccount;
 	}
 
-	public void setIsnaturalaccount(String isnaturalaccount) {
+	public void setIsnaturalaccount(Boolean isnaturalaccount) {
 		this.isnaturalaccount = isnaturalaccount;
 	}
 
@@ -163,7 +163,7 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

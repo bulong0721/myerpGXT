@@ -30,15 +30,15 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private BigDecimal expenseamt;
 	private BigDecimal invoiceprice;
-	private String isactive;
-	private String isinvoiced;
-	private String istimereport;
+	private Boolean isactive;
+	private Boolean isinvoiced;
+	private Boolean istimereport;
 	private Integer line;
 	private Integer mProductId;
 	private String note;
 	private BigDecimal priceinvoiced;
 	private BigDecimal pricereimbursed;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal qty;
 	private BigDecimal qtyinvoiced;
 	private BigDecimal qtyreimbursed;
@@ -57,7 +57,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -67,7 +67,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -87,7 +87,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -97,7 +97,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -107,7 +107,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -117,7 +117,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICELINE_ID")
+	@Column(name="C_INVOICELINE_ID", columnDefinition="INT")
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}
@@ -127,7 +127,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDERLINE_ID")
+	@Column(name="C_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getCOrderlineId() {
 		return cOrderlineId;
 	}
@@ -137,7 +137,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -147,7 +147,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTPHASE_ID")
+	@Column(name="C_PROJECTPHASE_ID", columnDefinition="INT")
 	public Integer getCProjectphaseId() {
 		return cProjectphaseId;
 	}
@@ -157,7 +157,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTTASK_ID")
+	@Column(name="C_PROJECTTASK_ID", columnDefinition="INT")
 	public Integer getCProjecttaskId() {
 		return cProjecttaskId;
 	}
@@ -167,7 +167,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID")
+	@Column(name="C_UOM_ID", columnDefinition="INT")
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -196,7 +196,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -242,37 +242,37 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinvoiced() {
+	@Column(nullable=false)
+	public Boolean isIsinvoiced() {
 		return isinvoiced;
 	}
 
-	public void setIsinvoiced(String isinvoiced) {
+	public void setIsinvoiced(Boolean isinvoiced) {
 		this.isinvoiced = isinvoiced;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstimereport() {
+	@Column(nullable=false)
+	public Boolean isIstimereport() {
 		return istimereport;
 	}
 
-	public void setIstimereport(String istimereport) {
+	public void setIstimereport(Boolean istimereport) {
 		this.istimereport = istimereport;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -282,7 +282,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -319,12 +319,12 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -356,7 +356,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCEASSIGNMENT_ID")
+	@Column(name="S_RESOURCEASSIGNMENT_ID", columnDefinition="INT")
 	public Integer getSResourceassignmentId() {
 		return sResourceassignmentId;
 	}
@@ -366,7 +366,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_TIMEEXPENSE_ID", nullable=false)
+	@Column(name="S_TIMEEXPENSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getSTimeexpenseId() {
 		return sTimeexpenseId;
 	}
@@ -376,7 +376,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="S_TIMEEXPENSELINE_ID")
+	@Column(name="S_TIMEEXPENSELINE_ID", columnDefinition="INT")
 	public Integer getSTimeexpenselineId() {
 		return sTimeexpenselineId;
 	}
@@ -386,7 +386,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_TIMETYPE_ID")
+	@Column(name="S_TIMETYPE_ID", columnDefinition="INT")
 	public Integer getSTimetypeId() {
 		return sTimetypeId;
 	}
@@ -406,7 +406,7 @@ public class STimeexpenseline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

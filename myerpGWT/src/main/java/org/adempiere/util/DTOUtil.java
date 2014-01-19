@@ -64,7 +64,7 @@ public final class DTOUtil {
 
 	public static ADMenuModel toMenuModel(AdTreenodemm entity) {
 		ADMenuModel model = new ADMenuModel();
-		model.setIsactive(entity.getIsactive());
+		model.setIsactive(entity.isIsactive());
 		model.setAdMenuId(entity.getNodeId());
 		model.setParentId(entity.getParentId());
 		model.setSeqno(entity.getSeqno());
@@ -90,10 +90,10 @@ public final class DTOUtil {
 		model.setAdWorkflowId(entity.getAdWorkflowId());
 		model.setClassname(entity.getClassname());
 		model.setCopyfromprocess(entity.getCopyfromprocess());
-		model.setIsactive(StringUtil.isYes(entity.getIsactive()));
-		model.setIsdirectprint(StringUtil.isYes(entity.getIsdirectprint()));
-		model.setIsreport(StringUtil.isYes(entity.getIsreport()));
-		model.setIsserverprocess(StringUtil.isYes(entity.getIsserverprocess()));
+		model.setIsactive(entity.isIsactive());
+		model.setIsdirectprint(entity.isIsdirectprint());
+		model.setIsreport(entity.isIsreport());
+		model.setIsserverprocess(entity.isIsserverprocess());
 		model.setJasperreport(entity.getJasperreport());
 		model.setName(entity.getName());
 		model.setDescription(entity.getDescription());
@@ -127,9 +127,9 @@ public final class DTOUtil {
 		model.setDefaultvalue(entity.getDefaultvalue());
 		model.setDisplaylogic(entity.getDisplaylogic());
 		model.setFieldlength(entity.getFieldlength());
-		model.setIsactive(entity.getIsactive());
-		model.setIscentrallymaintained(entity.getIscentrallymaintained());
-		model.setIsmandatory(entity.getIsmandatory());
+		model.setIsactive(entity.isIsactive());
+		model.setIscentrallymaintained(entity.isIscentrallymaintained());
+		model.setIsmandatory(entity.isIsmandatory());
 		model.setName(entity.getName());
 		model.setReadonlylogic(entity.getReadonlylogic());
 		model.setSeqno(entity.getSeqno());
@@ -190,8 +190,8 @@ public final class DTOUtil {
 		model.setClassname(entity.getClassname());
 		model.setDescription(entity.getDescription());
 		model.setHelp(entity.getHelp());
-		model.setIsActive(StringUtil.isYes(entity.getIsactive()));
-		model.setIsBetafunctionality(StringUtil.isYes(entity.getIsbetafunctionality()));
+		model.setIsActive(entity.isIsactive());
+		model.setIsBetafunctionality(entity.isIsbetafunctionality());
 		model.setJspurl(entity.getJspurl());
 		model.setName(entity.getName());
 		return model;

@@ -19,8 +19,8 @@ public class ARegistrationattribute extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isselfservice;
+	private Boolean isactive;
+	private Boolean isselfservice;
 	private String name;
 	private Integer seqno;
 	private String updated;
@@ -34,7 +34,7 @@ public class ARegistrationattribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_REGISTRATIONATTRIBUTE_ID")
+	@Column(name="A_REGISTRATIONATTRIBUTE_ID", columnDefinition="INT")
 	public Integer getARegistrationattributeId() {
 		return aRegistrationattributeId;
 	}
@@ -44,7 +44,7 @@ public class ARegistrationattribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -54,7 +54,7 @@ public class ARegistrationattribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -64,7 +64,7 @@ public class ARegistrationattribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REFERENCE_ID", nullable=false)
+	@Column(name="AD_REFERENCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdReferenceId() {
 		return adReferenceId;
 	}
@@ -74,7 +74,7 @@ public class ARegistrationattribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REFERENCE_VALUE_ID")
+	@Column(name="AD_REFERENCE_VALUE_ID", columnDefinition="INT")
 	public Integer getAdReferenceValueId() {
 		return adReferenceValueId;
 	}
@@ -104,7 +104,7 @@ public class ARegistrationattribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -123,22 +123,22 @@ public class ARegistrationattribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
@@ -153,7 +153,7 @@ public class ARegistrationattribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -173,7 +173,7 @@ public class ARegistrationattribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

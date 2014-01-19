@@ -22,7 +22,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	private Integer mInoutId;
 	private Integer mInoutlineId;
 	private Integer mProductId;
-	private String processing;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -34,7 +34,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -54,7 +54,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICELINE_ID", nullable=false)
+	@Column(name="C_INVOICELINE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}
@@ -64,7 +64,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_LANDEDCOST_ID")
+	@Column(name="C_LANDEDCOST_ID", columnDefinition="INT")
 	public Integer getCLandedcostId() {
 		return cLandedcostId;
 	}
@@ -84,7 +84,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -113,7 +113,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_COSTELEMENT_ID", nullable=false)
+	@Column(name="M_COSTELEMENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMCostelementId() {
 		return mCostelementId;
 	}
@@ -123,7 +123,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUT_ID")
+	@Column(name="M_INOUT_ID", columnDefinition="INT")
 	public Integer getMInoutId() {
 		return mInoutId;
 	}
@@ -133,7 +133,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUTLINE_ID")
+	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}
@@ -143,7 +143,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -153,12 +153,11 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -173,7 +172,7 @@ public class CLandedcost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

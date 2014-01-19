@@ -29,7 +29,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	private Integer cBankaccountId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String updated;
 	private Integer updatedby;
 
@@ -42,7 +42,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -52,7 +52,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -62,7 +62,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_ASSET_ACCT", nullable=false)
+	@Column(name="B_ASSET_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBAssetAcct() {
 		return bAssetAcct;
 	}
@@ -72,7 +72,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_EXPENSE_ACCT", nullable=false)
+	@Column(name="B_EXPENSE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBExpenseAcct() {
 		return bExpenseAcct;
 	}
@@ -82,7 +82,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_INTERESTEXP_ACCT", nullable=false)
+	@Column(name="B_INTERESTEXP_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBInterestexpAcct() {
 		return bInterestexpAcct;
 	}
@@ -92,7 +92,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_INTERESTREV_ACCT", nullable=false)
+	@Column(name="B_INTERESTREV_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBInterestrevAcct() {
 		return bInterestrevAcct;
 	}
@@ -102,7 +102,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_INTRANSIT_ACCT", nullable=false)
+	@Column(name="B_INTRANSIT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBIntransitAcct() {
 		return bIntransitAcct;
 	}
@@ -112,7 +112,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_PAYMENTSELECT_ACCT", nullable=false)
+	@Column(name="B_PAYMENTSELECT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBPaymentselectAcct() {
 		return bPaymentselectAcct;
 	}
@@ -122,7 +122,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_REVALUATIONGAIN_ACCT", nullable=false)
+	@Column(name="B_REVALUATIONGAIN_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBRevaluationgainAcct() {
 		return bRevaluationgainAcct;
 	}
@@ -132,7 +132,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_REVALUATIONLOSS_ACCT", nullable=false)
+	@Column(name="B_REVALUATIONLOSS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBRevaluationlossAcct() {
 		return bRevaluationlossAcct;
 	}
@@ -142,7 +142,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_SETTLEMENTGAIN_ACCT", nullable=false)
+	@Column(name="B_SETTLEMENTGAIN_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBSettlementgainAcct() {
 		return bSettlementgainAcct;
 	}
@@ -152,7 +152,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_SETTLEMENTLOSS_ACCT", nullable=false)
+	@Column(name="B_SETTLEMENTLOSS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBSettlementlossAcct() {
 		return bSettlementlossAcct;
 	}
@@ -162,7 +162,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_UNALLOCATEDCASH_ACCT", nullable=false)
+	@Column(name="B_UNALLOCATEDCASH_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBUnallocatedcashAcct() {
 		return bUnallocatedcashAcct;
 	}
@@ -172,7 +172,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_UNIDENTIFIED_ACCT", nullable=false)
+	@Column(name="B_UNIDENTIFIED_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBUnidentifiedAcct() {
 		return bUnidentifiedAcct;
 	}
@@ -182,7 +182,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -192,7 +192,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BANKACCOUNT_ID")
+	@Column(name="C_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCBankaccountId() {
 		return cBankaccountId;
 	}
@@ -212,7 +212,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -222,12 +222,12 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -242,7 +242,7 @@ public class CBankaccountAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

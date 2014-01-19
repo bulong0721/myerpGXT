@@ -19,14 +19,14 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 	private String datelastrun;
 	private String description;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal measureactual;
 	private BigDecimal measuretarget;
 	private String name;
 	private Integer paSlaCriteriaId;
 	private Integer paSlaGoalId;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 	private String validfrom;
@@ -40,7 +40,7 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -60,7 +60,7 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -80,7 +80,7 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -118,12 +118,12 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -158,7 +158,7 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_SLA_CRITERIA_ID", nullable=false)
+	@Column(name="PA_SLA_CRITERIA_ID", columnDefinition="INT", nullable=false)
 	public Integer getPaSlaCriteriaId() {
 		return paSlaCriteriaId;
 	}
@@ -168,7 +168,7 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_SLA_GOAL_ID")
+	@Column(name="PA_SLA_GOAL_ID", columnDefinition="INT")
 	public Integer getPaSlaGoalId() {
 		return paSlaGoalId;
 	}
@@ -178,22 +178,21 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -208,7 +207,7 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

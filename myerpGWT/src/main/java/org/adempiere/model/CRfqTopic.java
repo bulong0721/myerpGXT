@@ -17,8 +17,8 @@ public class CRfqTopic extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isselfservice;
+	private Boolean isactive;
+	private Boolean isselfservice;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -31,7 +31,7 @@ public class CRfqTopic extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class CRfqTopic extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -51,7 +51,7 @@ public class CRfqTopic extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTFORMAT_ID")
+	@Column(name="AD_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getAdPrintformatId() {
 		return adPrintformatId;
 	}
@@ -61,7 +61,7 @@ public class CRfqTopic extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_RFQ_TOPIC_ID")
+	@Column(name="C_RFQ_TOPIC_ID", columnDefinition="INT")
 	public Integer getCRfqTopicId() {
 		return cRfqTopicId;
 	}
@@ -81,7 +81,7 @@ public class CRfqTopic extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -100,22 +100,22 @@ public class CRfqTopic extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
@@ -140,7 +140,7 @@ public class CRfqTopic extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -18,12 +18,12 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String documentno;
 	private String edistatus;
-	private String isactive;
+	private Boolean isactive;
 	private Integer line;
 	private Integer mEdiId;
 	private Integer mProductId;
 	private Integer mWarehouseId;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal replyPrice;
 	private BigDecimal replyQtyavailable;
 	private BigDecimal replyQtyconfirmed;
@@ -47,7 +47,7 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BP_EDI_ID", nullable=false)
+	@Column(name="C_BP_EDI_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpEdiId() {
 		return cBpEdiId;
 	}
@@ -87,7 +87,7 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -117,17 +117,17 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -137,7 +137,7 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_EDI_ID")
+	@Column(name="M_EDI_ID", columnDefinition="INT")
 	public Integer getMEdiId() {
 		return mEdiId;
 	}
@@ -147,7 +147,7 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -157,7 +157,7 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -167,12 +167,12 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -306,7 +306,7 @@ public class MEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

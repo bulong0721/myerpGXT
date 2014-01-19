@@ -53,7 +53,7 @@ public class TReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -282,7 +282,7 @@ public class TReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="FACT_ACCT_ID")
+	@Column(name="FACT_ACCT_ID", columnDefinition="INT")
 	public Integer getFactAcctId() {
 		return factAcctId;
 	}
@@ -292,6 +292,7 @@ public class TReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLevelno() {
 		return levelno;
 	}
@@ -311,7 +312,7 @@ public class TReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_REPORTLINE_ID")
+	@Column(name="PA_REPORTLINE_ID", columnDefinition="INT")
 	public Integer getPaReportlineId() {
 		return paReportlineId;
 	}
@@ -321,7 +322,7 @@ public class TReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="RECORD_ID")
+	@Column(name="RECORD_ID", columnDefinition="INT")
 	public Integer getRecordId() {
 		return recordId;
 	}

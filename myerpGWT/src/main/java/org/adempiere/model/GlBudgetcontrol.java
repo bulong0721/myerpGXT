@@ -21,8 +21,8 @@ public class GlBudgetcontrol extends org.adempiere.common.ADEntityBase {
 	private Integer glBudgetId;
 	private Integer glBudgetcontrolId;
 	private String help;
-	private String isactive;
-	private String isbeforeapproval;
+	private Boolean isactive;
+	private Boolean isbeforeapproval;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -35,7 +35,7 @@ public class GlBudgetcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class GlBudgetcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -65,7 +65,7 @@ public class GlBudgetcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -95,7 +95,7 @@ public class GlBudgetcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -114,7 +114,7 @@ public class GlBudgetcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_BUDGET_ID", nullable=false)
+	@Column(name="GL_BUDGET_ID", columnDefinition="INT", nullable=false)
 	public Integer getGlBudgetId() {
 		return glBudgetId;
 	}
@@ -124,7 +124,7 @@ public class GlBudgetcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="GL_BUDGETCONTROL_ID")
+	@Column(name="GL_BUDGETCONTROL_ID", columnDefinition="INT")
 	public Integer getGlBudgetcontrolId() {
 		return glBudgetcontrolId;
 	}
@@ -144,22 +144,22 @@ public class GlBudgetcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsbeforeapproval() {
+	@Column(nullable=false)
+	public Boolean isIsbeforeapproval() {
 		return isbeforeapproval;
 	}
 
-	public void setIsbeforeapproval(String isbeforeapproval) {
+	public void setIsbeforeapproval(Boolean isbeforeapproval) {
 		this.isbeforeapproval = isbeforeapproval;
 	}
 
@@ -184,7 +184,7 @@ public class GlBudgetcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

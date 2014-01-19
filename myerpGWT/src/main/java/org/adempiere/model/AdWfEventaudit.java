@@ -25,7 +25,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private BigDecimal elapsedtimems;
 	private String eventtype;
-	private String isactive;
+	private Boolean isactive;
 	private String newvalue;
 	private String oldvalue;
 	private Integer recordId;
@@ -42,7 +42,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -52,7 +52,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -62,7 +62,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -72,7 +72,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -82,7 +82,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_WF_EVENTAUDIT_ID")
+	@Column(name="AD_WF_EVENTAUDIT_ID", columnDefinition="INT")
 	public Integer getAdWfEventauditId() {
 		return adWfEventauditId;
 	}
@@ -92,7 +92,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_NODE_ID", nullable=false)
+	@Column(name="AD_WF_NODE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfNodeId() {
 		return adWfNodeId;
 	}
@@ -102,7 +102,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_PROCESS_ID", nullable=false)
+	@Column(name="AD_WF_PROCESS_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfProcessId() {
 		return adWfProcessId;
 	}
@@ -112,7 +112,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_RESPONSIBLE_ID", nullable=false)
+	@Column(name="AD_WF_RESPONSIBLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfResponsibleId() {
 		return adWfResponsibleId;
 	}
@@ -142,7 +142,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -181,12 +181,12 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -211,7 +211,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="RECORD_ID", nullable=false)
+	@Column(name="RECORD_ID", columnDefinition="INT", nullable=false)
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -241,7 +241,7 @@ public class AdWfEventaudit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

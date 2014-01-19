@@ -18,7 +18,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	private Integer cBpartnerLocationId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mDistributionlistId;
 	private Integer mDistributionlistlineId;
 	private Integer mDistributionrunId;
@@ -41,7 +41,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -71,7 +71,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID", nullable=false)
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -91,7 +91,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -101,17 +101,17 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="M_DISTRIBUTIONLIST_ID")
+	@Column(name="M_DISTRIBUTIONLIST_ID", columnDefinition="INT")
 	public Integer getMDistributionlistId() {
 		return mDistributionlistId;
 	}
@@ -121,7 +121,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_DISTRIBUTIONLISTLINE_ID")
+	@Column(name="M_DISTRIBUTIONLISTLINE_ID", columnDefinition="INT")
 	public Integer getMDistributionlistlineId() {
 		return mDistributionlistlineId;
 	}
@@ -131,7 +131,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_DISTRIBUTIONRUN_ID")
+	@Column(name="M_DISTRIBUTIONRUN_ID", columnDefinition="INT")
 	public Integer getMDistributionrunId() {
 		return mDistributionrunId;
 	}
@@ -141,7 +141,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_DISTRIBUTIONRUNLINE_ID")
+	@Column(name="M_DISTRIBUTIONRUNLINE_ID", columnDefinition="INT")
 	public Integer getMDistributionrunlineId() {
 		return mDistributionrunlineId;
 	}
@@ -151,7 +151,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -201,7 +201,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

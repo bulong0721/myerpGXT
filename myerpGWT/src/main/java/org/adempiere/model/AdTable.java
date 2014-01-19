@@ -23,13 +23,13 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	private String entitytype;
 	private String help;
 	private String importtable;
-	private String isactive;
-	private String iscentrallymaintained;
-	private String ischangelog;
-	private String isdeleteable;
-	private String ishighvolume;
-	private String issecurityenabled;
-	private String isview;
+	private Boolean isactive;
+	private Boolean iscentrallymaintained;
+	private Boolean ischangelog;
+	private Boolean isdeleteable;
+	private Boolean ishighvolume;
+	private Boolean issecurityenabled;
+	private Boolean isview;
 	private Integer loadseq;
 	private String name;
 	private Integer poWindowId;
@@ -56,7 +56,7 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -66,7 +66,7 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -76,7 +76,7 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -86,7 +86,7 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_VAL_RULE_ID")
+	@Column(name="AD_VAL_RULE_ID", columnDefinition="INT")
 	public Integer getAdValRuleId() {
 		return adValRuleId;
 	}
@@ -96,7 +96,7 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WINDOW_ID")
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT")
 	public Integer getAdWindowId() {
 		return adWindowId;
 	}
@@ -126,7 +126,7 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -175,76 +175,76 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIscentrallymaintained() {
+	public Boolean isIscentrallymaintained() {
 		return iscentrallymaintained;
 	}
 
-	public void setIscentrallymaintained(String iscentrallymaintained) {
+	public void setIscentrallymaintained(Boolean iscentrallymaintained) {
 		this.iscentrallymaintained = iscentrallymaintained;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIschangelog() {
+	@Column(nullable=false)
+	public Boolean isIschangelog() {
 		return ischangelog;
 	}
 
-	public void setIschangelog(String ischangelog) {
+	public void setIschangelog(Boolean ischangelog) {
 		this.ischangelog = ischangelog;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdeleteable() {
+	@Column(nullable=false)
+	public Boolean isIsdeleteable() {
 		return isdeleteable;
 	}
 
-	public void setIsdeleteable(String isdeleteable) {
+	public void setIsdeleteable(Boolean isdeleteable) {
 		this.isdeleteable = isdeleteable;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIshighvolume() {
+	@Column(nullable=false)
+	public Boolean isIshighvolume() {
 		return ishighvolume;
 	}
 
-	public void setIshighvolume(String ishighvolume) {
+	public void setIshighvolume(Boolean ishighvolume) {
 		this.ishighvolume = ishighvolume;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssecurityenabled() {
+	@Column(nullable=false)
+	public Boolean isIssecurityenabled() {
 		return issecurityenabled;
 	}
 
-	public void setIssecurityenabled(String issecurityenabled) {
+	public void setIssecurityenabled(Boolean issecurityenabled) {
 		this.issecurityenabled = issecurityenabled;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsview() {
+	@Column(nullable=false)
+	public Boolean isIsview() {
 		return isview;
 	}
 
-	public void setIsview(String isview) {
+	public void setIsview(Boolean isview) {
 		this.isview = isview;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLoadseq() {
 		return loadseq;
 	}
@@ -264,7 +264,7 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PO_WINDOW_ID")
+	@Column(name="PO_WINDOW_ID", columnDefinition="INT")
 	public Integer getPoWindowId() {
 		return poWindowId;
 	}
@@ -304,7 +304,7 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

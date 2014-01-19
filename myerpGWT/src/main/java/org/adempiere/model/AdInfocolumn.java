@@ -21,9 +21,9 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String entitytype;
 	private String help;
-	private String isactive;
-	private String isdisplayed;
-	private String isquerycriteria;
+	private Boolean isactive;
+	private Boolean isdisplayed;
+	private Boolean isquerycriteria;
 	private String name;
 	private String selectclause;
 	private Integer seqno;
@@ -38,7 +38,7 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ELEMENT_ID")
+	@Column(name="AD_ELEMENT_ID", columnDefinition="INT")
 	public Integer getAdElementId() {
 		return adElementId;
 	}
@@ -58,7 +58,7 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_INFOCOLUMN_ID")
+	@Column(name="AD_INFOCOLUMN_ID", columnDefinition="INT")
 	public Integer getAdInfocolumnId() {
 		return adInfocolumnId;
 	}
@@ -68,7 +68,7 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_INFOWINDOW_ID", nullable=false)
+	@Column(name="AD_INFOWINDOW_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdInfowindowId() {
 		return adInfowindowId;
 	}
@@ -78,7 +78,7 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -88,7 +88,7 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REFERENCE_ID", nullable=false)
+	@Column(name="AD_REFERENCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdReferenceId() {
 		return adReferenceId;
 	}
@@ -108,7 +108,7 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -147,32 +147,32 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdisplayed() {
+	@Column(nullable=false)
+	public Boolean isIsdisplayed() {
 		return isdisplayed;
 	}
 
-	public void setIsdisplayed(String isdisplayed) {
+	public void setIsdisplayed(Boolean isdisplayed) {
 		this.isdisplayed = isdisplayed;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsquerycriteria() {
+	@Column(nullable=false)
+	public Boolean isIsquerycriteria() {
 		return isquerycriteria;
 	}
 
-	public void setIsquerycriteria(String isquerycriteria) {
+	public void setIsquerycriteria(Boolean isquerycriteria) {
 		this.isquerycriteria = isquerycriteria;
 	}
 
@@ -197,7 +197,7 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -217,7 +217,7 @@ public class AdInfocolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

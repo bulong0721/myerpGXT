@@ -24,7 +24,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	private BigDecimal filesize;
 	private String hyphen;
 	private String ipAddress;
-	private String isactive;
+	private Boolean isactive;
 	private String logtype;
 	private String pageurl;
 	private String protocol;
@@ -56,7 +56,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -66,7 +66,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -76,7 +76,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -86,7 +86,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_BROADCASTSERVER_ID")
+	@Column(name="CM_BROADCASTSERVER_ID", columnDefinition="INT")
 	public Integer getCmBroadcastserverId() {
 		return cmBroadcastserverId;
 	}
@@ -96,7 +96,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_MEDIA_ID")
+	@Column(name="CM_MEDIA_ID", columnDefinition="INT")
 	public Integer getCmMediaId() {
 		return cmMediaId;
 	}
@@ -106,7 +106,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="CM_WEBACCESSLOG_ID")
+	@Column(name="CM_WEBACCESSLOG_ID", columnDefinition="INT")
 	public Integer getCmWebaccesslogId() {
 		return cmWebaccesslogId;
 	}
@@ -116,7 +116,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_WEBPROJECT_ID")
+	@Column(name="CM_WEBPROJECT_ID", columnDefinition="INT")
 	public Integer getCmWebprojectId() {
 		return cmWebprojectId;
 	}
@@ -136,7 +136,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -175,12 +175,12 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -255,6 +255,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getStatuscode() {
 		return statuscode;
 	}
@@ -274,7 +275,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

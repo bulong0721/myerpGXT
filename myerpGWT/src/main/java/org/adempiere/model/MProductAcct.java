@@ -16,7 +16,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	private Integer cAcctschemaId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mProductId;
 	private Integer pAssetAcct;
 	private Integer pAveragecostvarianceAcct;
@@ -53,7 +53,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -63,7 +63,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -73,7 +73,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -93,7 +93,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -103,17 +103,17 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -123,7 +123,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_ASSET_ACCT", nullable=false)
+	@Column(name="P_ASSET_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPAssetAcct() {
 		return pAssetAcct;
 	}
@@ -133,7 +133,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_AVERAGECOSTVARIANCE_ACCT")
+	@Column(name="P_AVERAGECOSTVARIANCE_ACCT", columnDefinition="INT")
 	public Integer getPAveragecostvarianceAcct() {
 		return pAveragecostvarianceAcct;
 	}
@@ -143,7 +143,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_BURDEN_ACCT")
+	@Column(name="P_BURDEN_ACCT", columnDefinition="INT")
 	public Integer getPBurdenAcct() {
 		return pBurdenAcct;
 	}
@@ -153,7 +153,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_COGS_ACCT", nullable=false)
+	@Column(name="P_COGS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPCogsAcct() {
 		return pCogsAcct;
 	}
@@ -163,7 +163,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_COSTADJUSTMENT_ACCT")
+	@Column(name="P_COSTADJUSTMENT_ACCT", columnDefinition="INT")
 	public Integer getPCostadjustmentAcct() {
 		return pCostadjustmentAcct;
 	}
@@ -173,7 +173,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_COSTOFPRODUCTION_ACCT")
+	@Column(name="P_COSTOFPRODUCTION_ACCT", columnDefinition="INT")
 	public Integer getPCostofproductionAcct() {
 		return pCostofproductionAcct;
 	}
@@ -183,7 +183,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_EXPENSE_ACCT", nullable=false)
+	@Column(name="P_EXPENSE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPExpenseAcct() {
 		return pExpenseAcct;
 	}
@@ -193,7 +193,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_FLOORSTOCK_ACCT")
+	@Column(name="P_FLOORSTOCK_ACCT", columnDefinition="INT")
 	public Integer getPFloorstockAcct() {
 		return pFloorstockAcct;
 	}
@@ -203,7 +203,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_INVENTORYCLEARING_ACCT")
+	@Column(name="P_INVENTORYCLEARING_ACCT", columnDefinition="INT")
 	public Integer getPInventoryclearingAcct() {
 		return pInventoryclearingAcct;
 	}
@@ -213,7 +213,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_INVOICEPRICEVARIANCE_ACCT", nullable=false)
+	@Column(name="P_INVOICEPRICEVARIANCE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPInvoicepricevarianceAcct() {
 		return pInvoicepricevarianceAcct;
 	}
@@ -223,7 +223,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_LABOR_ACCT")
+	@Column(name="P_LABOR_ACCT", columnDefinition="INT")
 	public Integer getPLaborAcct() {
 		return pLaborAcct;
 	}
@@ -233,7 +233,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_METHODCHANGEVARIANCE_ACCT")
+	@Column(name="P_METHODCHANGEVARIANCE_ACCT", columnDefinition="INT")
 	public Integer getPMethodchangevarianceAcct() {
 		return pMethodchangevarianceAcct;
 	}
@@ -243,7 +243,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_MIXVARIANCE_ACCT")
+	@Column(name="P_MIXVARIANCE_ACCT", columnDefinition="INT")
 	public Integer getPMixvarianceAcct() {
 		return pMixvarianceAcct;
 	}
@@ -253,7 +253,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_OUTSIDEPROCESSING_ACCT")
+	@Column(name="P_OUTSIDEPROCESSING_ACCT", columnDefinition="INT")
 	public Integer getPOutsideprocessingAcct() {
 		return pOutsideprocessingAcct;
 	}
@@ -263,7 +263,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_OVERHEAD_ACCT")
+	@Column(name="P_OVERHEAD_ACCT", columnDefinition="INT")
 	public Integer getPOverheadAcct() {
 		return pOverheadAcct;
 	}
@@ -273,7 +273,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_PURCHASEPRICEVARIANCE_ACCT", nullable=false)
+	@Column(name="P_PURCHASEPRICEVARIANCE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPPurchasepricevarianceAcct() {
 		return pPurchasepricevarianceAcct;
 	}
@@ -283,7 +283,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_RATEVARIANCE_ACCT")
+	@Column(name="P_RATEVARIANCE_ACCT", columnDefinition="INT")
 	public Integer getPRatevarianceAcct() {
 		return pRatevarianceAcct;
 	}
@@ -293,7 +293,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_REVENUE_ACCT", nullable=false)
+	@Column(name="P_REVENUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPRevenueAcct() {
 		return pRevenueAcct;
 	}
@@ -303,7 +303,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_SCRAP_ACCT")
+	@Column(name="P_SCRAP_ACCT", columnDefinition="INT")
 	public Integer getPScrapAcct() {
 		return pScrapAcct;
 	}
@@ -313,7 +313,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_TRADEDISCOUNTGRANT_ACCT", nullable=false)
+	@Column(name="P_TRADEDISCOUNTGRANT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPTradediscountgrantAcct() {
 		return pTradediscountgrantAcct;
 	}
@@ -323,7 +323,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_TRADEDISCOUNTREC_ACCT", nullable=false)
+	@Column(name="P_TRADEDISCOUNTREC_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPTradediscountrecAcct() {
 		return pTradediscountrecAcct;
 	}
@@ -333,7 +333,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_USAGEVARIANCE_ACCT")
+	@Column(name="P_USAGEVARIANCE_ACCT", columnDefinition="INT")
 	public Integer getPUsagevarianceAcct() {
 		return pUsagevarianceAcct;
 	}
@@ -343,7 +343,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_WIP_ACCT")
+	@Column(name="P_WIP_ACCT", columnDefinition="INT")
 	public Integer getPWipAcct() {
 		return pWipAcct;
 	}
@@ -363,7 +363,7 @@ public class MProductAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

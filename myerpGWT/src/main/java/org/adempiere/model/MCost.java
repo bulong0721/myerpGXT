@@ -25,8 +25,8 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private BigDecimal futurecostprice;
 	private BigDecimal futurecostpricell;
-	private String isactive;
-	private String iscostfrozen;
+	private Boolean isactive;
+	private Boolean iscostfrozen;
 	private Integer mAttributesetinstanceId;
 	private Integer mCostelementId;
 	private Integer mCosttypeId;
@@ -49,7 +49,7 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -59,7 +59,7 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -69,7 +69,7 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -89,7 +89,7 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -173,27 +173,26 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIscostfrozen() {
+	public Boolean isIscostfrozen() {
 		return iscostfrozen;
 	}
 
-	public void setIscostfrozen(String iscostfrozen) {
+	public void setIscostfrozen(Boolean iscostfrozen) {
 		this.iscostfrozen = iscostfrozen;
 	}
 
 	@Id
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -203,7 +202,7 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_COSTELEMENT_ID")
+	@Column(name="M_COSTELEMENT_ID", columnDefinition="INT")
 	public Integer getMCostelementId() {
 		return mCostelementId;
 	}
@@ -213,7 +212,7 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_COSTTYPE_ID")
+	@Column(name="M_COSTTYPE_ID", columnDefinition="INT")
 	public Integer getMCosttypeId() {
 		return mCosttypeId;
 	}
@@ -223,7 +222,7 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -233,6 +232,7 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getPercent() {
 		return percent;
 	}
@@ -252,7 +252,7 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

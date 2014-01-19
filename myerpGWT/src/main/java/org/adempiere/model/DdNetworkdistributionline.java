@@ -17,7 +17,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	private Integer createdby;
 	private Integer ddNetworkdistributionId;
 	private Integer ddNetworkdistributionlineId;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mShipperId;
 	private Integer mWarehouseId;
 	private Integer mWarehousesourceId;
@@ -37,7 +37,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -77,7 +77,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Basic
-	@Column(name="DD_NETWORKDISTRIBUTION_ID", nullable=false)
+	@Column(name="DD_NETWORKDISTRIBUTION_ID", columnDefinition="INT", nullable=false)
 	public Integer getDdNetworkdistributionId() {
 		return ddNetworkdistributionId;
 	}
@@ -87,7 +87,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Id
-	@Column(name="DD_NETWORKDISTRIBUTIONLINE_ID")
+	@Column(name="DD_NETWORKDISTRIBUTIONLINE_ID", columnDefinition="INT")
 	public Integer getDdNetworkdistributionlineId() {
 		return ddNetworkdistributionlineId;
 	}
@@ -97,17 +97,17 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_SHIPPER_ID", nullable=false)
+	@Column(name="M_SHIPPER_ID", columnDefinition="INT", nullable=false)
 	public Integer getMShipperId() {
 		return mShipperId;
 	}
@@ -117,7 +117,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -127,7 +127,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSESOURCE_ID", nullable=false)
+	@Column(name="M_WAREHOUSESOURCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehousesourceId() {
 		return mWarehousesourceId;
 	}
@@ -146,6 +146,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getPriorityno() {
 		return priorityno;
 	}
@@ -155,6 +156,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getTransferttime() {
 		return transferttime;
 	}
@@ -174,7 +176,7 @@ public class DdNetworkdistributionline extends org.adempiere.common.ADEntityBase
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

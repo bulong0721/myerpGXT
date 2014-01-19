@@ -26,9 +26,9 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String elementtype;
-	private String isactive;
-	private String isbalanced;
-	private String ismandatory;
+	private Boolean isactive;
+	private Boolean isbalanced;
+	private Boolean ismandatory;
 	private Integer mProductId;
 	private String name;
 	private Integer orgId;
@@ -44,7 +44,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -54,7 +54,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -64,7 +64,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -74,7 +74,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ELEMENT_ID")
+	@Column(name="C_ACCTSCHEMA_ELEMENT_ID", columnDefinition="INT")
 	public Integer getCAcctschemaElementId() {
 		return cAcctschemaElementId;
 	}
@@ -84,7 +84,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -94,7 +94,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -104,7 +104,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -114,7 +114,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -124,7 +124,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ELEMENT_ID")
+	@Column(name="C_ELEMENT_ID", columnDefinition="INT")
 	public Integer getCElementId() {
 		return cElementId;
 	}
@@ -134,7 +134,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ELEMENTVALUE_ID")
+	@Column(name="C_ELEMENTVALUE_ID", columnDefinition="INT")
 	public Integer getCElementvalueId() {
 		return cElementvalueId;
 	}
@@ -144,7 +144,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCATION_ID")
+	@Column(name="C_LOCATION_ID", columnDefinition="INT")
 	public Integer getCLocationId() {
 		return cLocationId;
 	}
@@ -154,7 +154,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -164,7 +164,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SALESREGION_ID")
+	@Column(name="C_SALESREGION_ID", columnDefinition="INT")
 	public Integer getCSalesregionId() {
 		return cSalesregionId;
 	}
@@ -184,7 +184,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -204,37 +204,37 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsbalanced() {
+	@Column(nullable=false)
+	public Boolean isIsbalanced() {
 		return isbalanced;
 	}
 
-	public void setIsbalanced(String isbalanced) {
+	public void setIsbalanced(Boolean isbalanced) {
 		this.isbalanced = isbalanced;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmandatory() {
+	@Column(nullable=false)
+	public Boolean isIsmandatory() {
 		return ismandatory;
 	}
 
-	public void setIsmandatory(String ismandatory) {
+	public void setIsmandatory(Boolean ismandatory) {
 		this.ismandatory = ismandatory;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -254,7 +254,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ORG_ID")
+	@Column(name="ORG_ID", columnDefinition="INT")
 	public Integer getOrgId() {
 		return orgId;
 	}
@@ -264,7 +264,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -284,7 +284,7 @@ public class CAcctschemaElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

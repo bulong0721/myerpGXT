@@ -17,8 +17,8 @@ public class AdReplicationLog extends org.adempiere.common.ADEntityBase {
 	private Integer adReplicationtableId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String isreplicated;
+	private Boolean isactive;
+	private Boolean isreplicated;
 	private String pMsg;
 	private String updated;
 	private Integer updatedby;
@@ -31,7 +31,7 @@ public class AdReplicationLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class AdReplicationLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -51,7 +51,7 @@ public class AdReplicationLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_REPLICATION_LOG_ID")
+	@Column(name="AD_REPLICATION_LOG_ID", columnDefinition="INT")
 	public Integer getAdReplicationLogId() {
 		return adReplicationLogId;
 	}
@@ -61,7 +61,7 @@ public class AdReplicationLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REPLICATION_RUN_ID", nullable=false)
+	@Column(name="AD_REPLICATION_RUN_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdReplicationRunId() {
 		return adReplicationRunId;
 	}
@@ -71,7 +71,7 @@ public class AdReplicationLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REPLICATIONTABLE_ID")
+	@Column(name="AD_REPLICATIONTABLE_ID", columnDefinition="INT")
 	public Integer getAdReplicationtableId() {
 		return adReplicationtableId;
 	}
@@ -91,7 +91,7 @@ public class AdReplicationLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -101,22 +101,22 @@ public class AdReplicationLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreplicated() {
+	@Column(nullable=false)
+	public Boolean isIsreplicated() {
 		return isreplicated;
 	}
 
-	public void setIsreplicated(String isreplicated) {
+	public void setIsreplicated(Boolean isreplicated) {
 		this.isreplicated = isreplicated;
 	}
 
@@ -141,7 +141,7 @@ public class AdReplicationLog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

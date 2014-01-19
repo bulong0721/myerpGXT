@@ -27,8 +27,8 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	private BigDecimal deltaamt;
 	private BigDecimal deltaqty;
 	private String description;
-	private String isactive;
-	private String issotrx;
+	private Boolean isactive;
+	private Boolean issotrx;
 	private Integer mAttributesetinstanceId;
 	private Integer mCostdetailId;
 	private Integer mCostelementId;
@@ -38,7 +38,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	private Integer mProductId;
 	private Integer mProductionlineId;
 	private Integer ppCostCollectorId;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal qty;
 	private String updated;
 	private Integer updatedby;
@@ -51,7 +51,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -61,7 +61,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -81,7 +81,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -91,7 +91,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICELINE_ID")
+	@Column(name="C_INVOICELINE_ID", columnDefinition="INT")
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}
@@ -101,7 +101,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDERLINE_ID")
+	@Column(name="C_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getCOrderlineId() {
 		return cOrderlineId;
 	}
@@ -111,7 +111,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTISSUE_ID")
+	@Column(name="C_PROJECTISSUE_ID", columnDefinition="INT")
 	public Integer getCProjectissueId() {
 		return cProjectissueId;
 	}
@@ -131,7 +131,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -204,27 +204,27 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssotrx() {
+	@Column(nullable=false)
+	public Boolean isIssotrx() {
 		return issotrx;
 	}
 
-	public void setIssotrx(String issotrx) {
+	public void setIssotrx(Boolean issotrx) {
 		this.issotrx = issotrx;
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID", nullable=false)
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -234,7 +234,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_COSTDETAIL_ID")
+	@Column(name="M_COSTDETAIL_ID", columnDefinition="INT")
 	public Integer getMCostdetailId() {
 		return mCostdetailId;
 	}
@@ -244,7 +244,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_COSTELEMENT_ID")
+	@Column(name="M_COSTELEMENT_ID", columnDefinition="INT")
 	public Integer getMCostelementId() {
 		return mCostelementId;
 	}
@@ -254,7 +254,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUTLINE_ID")
+	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}
@@ -264,7 +264,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INVENTORYLINE_ID")
+	@Column(name="M_INVENTORYLINE_ID", columnDefinition="INT")
 	public Integer getMInventorylineId() {
 		return mInventorylineId;
 	}
@@ -274,7 +274,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_MOVEMENTLINE_ID")
+	@Column(name="M_MOVEMENTLINE_ID", columnDefinition="INT")
 	public Integer getMMovementlineId() {
 		return mMovementlineId;
 	}
@@ -284,7 +284,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -294,7 +294,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCTIONLINE_ID")
+	@Column(name="M_PRODUCTIONLINE_ID", columnDefinition="INT")
 	public Integer getMProductionlineId() {
 		return mProductionlineId;
 	}
@@ -304,7 +304,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_COST_COLLECTOR_ID")
+	@Column(name="PP_COST_COLLECTOR_ID", columnDefinition="INT")
 	public Integer getPpCostCollectorId() {
 		return ppCostCollectorId;
 	}
@@ -314,12 +314,12 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -344,7 +344,7 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

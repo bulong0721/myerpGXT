@@ -29,8 +29,8 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	private Integer cUomWeightId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String isdiscountlineamt;
+	private Boolean isactive;
+	private Boolean isdiscountlineamt;
 	private Integer keeplogdays;
 	private Integer logoId;
 	private Integer logoreportId;
@@ -47,7 +47,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_ACTIVITY_ID")
+	@Column(name="AD_TREE_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getAdTreeActivityId() {
 		return adTreeActivityId;
 	}
@@ -77,7 +77,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_BPARTNER_ID")
+	@Column(name="AD_TREE_BPARTNER_ID", columnDefinition="INT")
 	public Integer getAdTreeBpartnerId() {
 		return adTreeBpartnerId;
 	}
@@ -87,7 +87,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_CAMPAIGN_ID")
+	@Column(name="AD_TREE_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getAdTreeCampaignId() {
 		return adTreeCampaignId;
 	}
@@ -97,7 +97,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_MENU_ID")
+	@Column(name="AD_TREE_MENU_ID", columnDefinition="INT")
 	public Integer getAdTreeMenuId() {
 		return adTreeMenuId;
 	}
@@ -107,7 +107,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_ORG_ID")
+	@Column(name="AD_TREE_ORG_ID", columnDefinition="INT")
 	public Integer getAdTreeOrgId() {
 		return adTreeOrgId;
 	}
@@ -117,7 +117,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_PRODUCT_ID")
+	@Column(name="AD_TREE_PRODUCT_ID", columnDefinition="INT")
 	public Integer getAdTreeProductId() {
 		return adTreeProductId;
 	}
@@ -127,7 +127,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_PROJECT_ID")
+	@Column(name="AD_TREE_PROJECT_ID", columnDefinition="INT")
 	public Integer getAdTreeProjectId() {
 		return adTreeProjectId;
 	}
@@ -137,7 +137,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_SALESREGION_ID")
+	@Column(name="AD_TREE_SALESREGION_ID", columnDefinition="INT")
 	public Integer getAdTreeSalesregionId() {
 		return adTreeSalesregionId;
 	}
@@ -147,7 +147,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA1_ID")
+	@Column(name="C_ACCTSCHEMA1_ID", columnDefinition="INT")
 	public Integer getCAcctschema1Id() {
 		return cAcctschema1Id;
 	}
@@ -157,7 +157,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNERCASHTRX_ID")
+	@Column(name="C_BPARTNERCASHTRX_ID", columnDefinition="INT")
 	public Integer getCBpartnercashtrxId() {
 		return cBpartnercashtrxId;
 	}
@@ -167,7 +167,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CALENDAR_ID")
+	@Column(name="C_CALENDAR_ID", columnDefinition="INT")
 	public Integer getCCalendarId() {
 		return cCalendarId;
 	}
@@ -177,7 +177,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_LENGTH_ID")
+	@Column(name="C_UOM_LENGTH_ID", columnDefinition="INT")
 	public Integer getCUomLengthId() {
 		return cUomLengthId;
 	}
@@ -187,7 +187,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_TIME_ID")
+	@Column(name="C_UOM_TIME_ID", columnDefinition="INT")
 	public Integer getCUomTimeId() {
 		return cUomTimeId;
 	}
@@ -197,7 +197,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_VOLUME_ID")
+	@Column(name="C_UOM_VOLUME_ID", columnDefinition="INT")
 	public Integer getCUomVolumeId() {
 		return cUomVolumeId;
 	}
@@ -207,7 +207,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_WEIGHT_ID")
+	@Column(name="C_UOM_WEIGHT_ID", columnDefinition="INT")
 	public Integer getCUomWeightId() {
 		return cUomWeightId;
 	}
@@ -227,7 +227,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -237,26 +237,27 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdiscountlineamt() {
+	@Column(nullable=false)
+	public Boolean isIsdiscountlineamt() {
 		return isdiscountlineamt;
 	}
 
-	public void setIsdiscountlineamt(String isdiscountlineamt) {
+	public void setIsdiscountlineamt(Boolean isdiscountlineamt) {
 		this.isdiscountlineamt = isdiscountlineamt;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getKeeplogdays() {
 		return keeplogdays;
 	}
@@ -266,7 +267,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="LOGO_ID")
+	@Column(name="LOGO_ID", columnDefinition="INT")
 	public Integer getLogoId() {
 		return logoId;
 	}
@@ -276,7 +277,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="LOGOREPORT_ID")
+	@Column(name="LOGOREPORT_ID", columnDefinition="INT")
 	public Integer getLogoreportId() {
 		return logoreportId;
 	}
@@ -286,7 +287,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="LOGOWEB_ID")
+	@Column(name="LOGOWEB_ID", columnDefinition="INT")
 	public Integer getLogowebId() {
 		return logowebId;
 	}
@@ -296,7 +297,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCTFREIGHT_ID")
+	@Column(name="M_PRODUCTFREIGHT_ID", columnDefinition="INT")
 	public Integer getMProductfreightId() {
 		return mProductfreightId;
 	}
@@ -316,7 +317,7 @@ public class AdClientinfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

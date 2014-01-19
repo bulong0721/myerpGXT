@@ -29,8 +29,8 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	private Integer ddOrderlineId;
 	private String description;
 	private String docstatus;
-	private String isactive;
-	private String isavailable;
+	private Boolean isactive;
+	private Boolean isavailable;
 	private Integer mForecastId;
 	private Integer mForecastlineId;
 	private Integer mProductId;
@@ -60,7 +60,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -70,7 +70,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -80,7 +80,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -90,7 +90,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -100,7 +100,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDERLINE_ID")
+	@Column(name="C_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getCOrderlineId() {
 		return cOrderlineId;
 	}
@@ -120,7 +120,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -195,7 +195,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DD_ORDER_ID")
+	@Column(name="DD_ORDER_ID", columnDefinition="INT")
 	public Integer getDdOrderId() {
 		return ddOrderId;
 	}
@@ -205,7 +205,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DD_ORDERLINE_ID")
+	@Column(name="DD_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getDdOrderlineId() {
 		return ddOrderlineId;
 	}
@@ -235,27 +235,26 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsavailable() {
+	public Boolean isIsavailable() {
 		return isavailable;
 	}
 
-	public void setIsavailable(String isavailable) {
+	public void setIsavailable(Boolean isavailable) {
 		this.isavailable = isavailable;
 	}
 
 	@Basic
-	@Column(name="M_FORECAST_ID")
+	@Column(name="M_FORECAST_ID", columnDefinition="INT")
 	public Integer getMForecastId() {
 		return mForecastId;
 	}
@@ -265,7 +264,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_FORECASTLINE_ID")
+	@Column(name="M_FORECASTLINE_ID", columnDefinition="INT")
 	public Integer getMForecastlineId() {
 		return mForecastlineId;
 	}
@@ -275,7 +274,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -285,7 +284,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_REQUISITION_ID")
+	@Column(name="M_REQUISITION_ID", columnDefinition="INT")
 	public Integer getMRequisitionId() {
 		return mRequisitionId;
 	}
@@ -295,7 +294,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_REQUISITIONLINE_ID")
+	@Column(name="M_REQUISITIONLINE_ID", columnDefinition="INT")
 	public Integer getMRequisitionlineId() {
 		return mRequisitionlineId;
 	}
@@ -305,7 +304,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -335,7 +334,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PLANNER_ID")
+	@Column(name="PLANNER_ID", columnDefinition="INT")
 	public Integer getPlannerId() {
 		return plannerId;
 	}
@@ -345,7 +344,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PP_MRP_ID")
+	@Column(name="PP_MRP_ID", columnDefinition="INT")
 	public Integer getPpMrpId() {
 		return ppMrpId;
 	}
@@ -355,7 +354,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_BOMLINE_ID")
+	@Column(name="PP_ORDER_BOMLINE_ID", columnDefinition="INT")
 	public Integer getPpOrderBomlineId() {
 		return ppOrderBomlineId;
 	}
@@ -365,7 +364,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_ID")
+	@Column(name="PP_ORDER_ID", columnDefinition="INT")
 	public Integer getPpOrderId() {
 		return ppOrderId;
 	}
@@ -394,7 +393,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCE_ID")
+	@Column(name="S_RESOURCE_ID", columnDefinition="INT")
 	public Integer getSResourceId() {
 		return sResourceId;
 	}
@@ -424,7 +423,7 @@ public class PpMrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

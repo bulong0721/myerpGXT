@@ -24,8 +24,8 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String ispositiveonly;
+	private Boolean isactive;
+	private Boolean ispositiveonly;
 	private Integer line;
 	private Integer mProductCategoryId;
 	private Integer mProductId;
@@ -44,7 +44,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -54,7 +54,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -84,7 +84,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BP_GROUP_ID")
+	@Column(name="C_BP_GROUP_ID", columnDefinition="INT")
 	public Integer getCBpGroupId() {
 		return cBpGroupId;
 	}
@@ -94,7 +94,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -104,7 +104,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_COMMISSION_ID", nullable=false)
+	@Column(name="C_COMMISSION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCommissionId() {
 		return cCommissionId;
 	}
@@ -114,7 +114,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_COMMISSIONLINE_ID")
+	@Column(name="C_COMMISSIONLINE_ID", columnDefinition="INT")
 	public Integer getCCommissionlineId() {
 		return cCommissionlineId;
 	}
@@ -124,7 +124,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SALESREGION_ID")
+	@Column(name="C_SALESREGION_ID", columnDefinition="INT")
 	public Integer getCSalesregionId() {
 		return cSalesregionId;
 	}
@@ -154,7 +154,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -173,27 +173,27 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspositiveonly() {
+	@Column(nullable=false)
+	public Boolean isIspositiveonly() {
 		return ispositiveonly;
 	}
 
-	public void setIspositiveonly(String ispositiveonly) {
+	public void setIspositiveonly(Boolean ispositiveonly) {
 		this.ispositiveonly = ispositiveonly;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -203,7 +203,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_CATEGORY_ID")
+	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}
@@ -213,7 +213,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -223,7 +223,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ORG_ID")
+	@Column(name="ORG_ID", columnDefinition="INT")
 	public Integer getOrgId() {
 		return orgId;
 	}
@@ -273,7 +273,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -24,11 +24,11 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String entitytype;
-	private String isactive;
-	private String iscentrallymaintained;
-	private String isreadonly;
-	private String issotrx;
-	private String issummary;
+	private Boolean isactive;
+	private Boolean iscentrallymaintained;
+	private Boolean isreadonly;
+	private Boolean issotrx;
+	private Boolean issummary;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -51,7 +51,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -61,7 +61,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_FORM_ID")
+	@Column(name="AD_FORM_ID", columnDefinition="INT")
 	public Integer getAdFormId() {
 		return adFormId;
 	}
@@ -71,7 +71,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_MENU_ID")
+	@Column(name="AD_MENU_ID", columnDefinition="INT")
 	public Integer getAdMenuId() {
 		return adMenuId;
 	}
@@ -81,7 +81,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -91,7 +91,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PROCESS_ID")
+	@Column(name="AD_PROCESS_ID", columnDefinition="INT")
 	public Integer getAdProcessId() {
 		return adProcessId;
 	}
@@ -101,7 +101,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TASK_ID")
+	@Column(name="AD_TASK_ID", columnDefinition="INT")
 	public Integer getAdTaskId() {
 		return adTaskId;
 	}
@@ -111,7 +111,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WINDOW_ID")
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT")
 	public Integer getAdWindowId() {
 		return adWindowId;
 	}
@@ -121,7 +121,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKBENCH_ID")
+	@Column(name="AD_WORKBENCH_ID", columnDefinition="INT")
 	public Integer getAdWorkbenchId() {
 		return adWorkbenchId;
 	}
@@ -131,7 +131,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKFLOW_ID")
+	@Column(name="AD_WORKFLOW_ID", columnDefinition="INT")
 	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
@@ -151,7 +151,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -180,52 +180,51 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIscentrallymaintained() {
+	public Boolean isIscentrallymaintained() {
 		return iscentrallymaintained;
 	}
 
-	public void setIscentrallymaintained(String iscentrallymaintained) {
+	public void setIscentrallymaintained(Boolean iscentrallymaintained) {
 		this.iscentrallymaintained = iscentrallymaintained;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreadonly() {
+	@Column(nullable=false)
+	public Boolean isIsreadonly() {
 		return isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssotrx() {
+	@Column(nullable=false)
+	public Boolean isIssotrx() {
 		return issotrx;
 	}
 
-	public void setIssotrx(String issotrx) {
+	public void setIssotrx(Boolean issotrx) {
 		this.issotrx = issotrx;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
@@ -250,7 +249,7 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

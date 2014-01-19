@@ -18,11 +18,11 @@ public class AdTableAccess extends org.adempiere.common.ADEntityBase {
 	private Integer adTableId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String iscanexport;
-	private String iscanreport;
-	private String isexclude;
-	private String isreadonly;
+	private Boolean isactive;
+	private Boolean iscanexport;
+	private Boolean iscanreport;
+	private Boolean isexclude;
+	private Boolean isreadonly;
 	private String updated;
 	private Integer updatedby;
 
@@ -46,7 +46,7 @@ public class AdTableAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -56,7 +56,7 @@ public class AdTableAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class AdTableAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ROLE_ID")
+	@Column(name="AD_ROLE_ID", columnDefinition="INT")
 	public Integer getAdRoleId() {
 		return adRoleId;
 	}
@@ -76,7 +76,7 @@ public class AdTableAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -96,7 +96,7 @@ public class AdTableAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -106,52 +106,52 @@ public class AdTableAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscanexport() {
+	@Column(nullable=false)
+	public Boolean isIscanexport() {
 		return iscanexport;
 	}
 
-	public void setIscanexport(String iscanexport) {
+	public void setIscanexport(Boolean iscanexport) {
 		this.iscanexport = iscanexport;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscanreport() {
+	@Column(nullable=false)
+	public Boolean isIscanreport() {
 		return iscanreport;
 	}
 
-	public void setIscanreport(String iscanreport) {
+	public void setIscanreport(Boolean iscanreport) {
 		this.iscanreport = iscanreport;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsexclude() {
+	@Column(nullable=false)
+	public Boolean isIsexclude() {
 		return isexclude;
 	}
 
-	public void setIsexclude(String isexclude) {
+	public void setIsexclude(Boolean isexclude) {
 		this.isexclude = isexclude;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreadonly() {
+	@Column(nullable=false)
+	public Boolean isIsreadonly() {
 		return isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
@@ -166,7 +166,7 @@ public class AdTableAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -18,15 +18,15 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private Integer duedatetolerance;
-	private String isactive;
-	private String isautochangerequest;
-	private String isconfidentialinfo;
-	private String isdefault;
-	private String isemailwhendue;
-	private String isemailwhenoverdue;
-	private String isindexed;
-	private String isinvoiced;
-	private String isselfservice;
+	private Boolean isactive;
+	private Boolean isautochangerequest;
+	private Boolean isconfidentialinfo;
+	private Boolean isdefault;
+	private Boolean isemailwhendue;
+	private Boolean isemailwhenoverdue;
+	private Boolean isindexed;
+	private Boolean isinvoiced;
+	private Boolean isselfservice;
 	private String name;
 	private Integer rRequesttypeId;
 	private Integer rStatuscategoryId;
@@ -41,7 +41,7 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,6 +61,7 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getAutoduedatedays() {
 		return autoduedatedays;
 	}
@@ -90,7 +91,7 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -109,7 +110,7 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getDuedatetolerance() {
 		return duedatetolerance;
 	}
@@ -119,92 +120,91 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsautochangerequest() {
+	@Column(nullable=false)
+	public Boolean isIsautochangerequest() {
 		return isautochangerequest;
 	}
 
-	public void setIsautochangerequest(String isautochangerequest) {
+	public void setIsautochangerequest(Boolean isautochangerequest) {
 		this.isautochangerequest = isautochangerequest;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsconfidentialinfo() {
+	@Column(nullable=false)
+	public Boolean isIsconfidentialinfo() {
 		return isconfidentialinfo;
 	}
 
-	public void setIsconfidentialinfo(String isconfidentialinfo) {
+	public void setIsconfidentialinfo(Boolean isconfidentialinfo) {
 		this.isconfidentialinfo = isconfidentialinfo;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsemailwhendue() {
+	@Column(nullable=false)
+	public Boolean isIsemailwhendue() {
 		return isemailwhendue;
 	}
 
-	public void setIsemailwhendue(String isemailwhendue) {
+	public void setIsemailwhendue(Boolean isemailwhendue) {
 		this.isemailwhendue = isemailwhendue;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsemailwhenoverdue() {
+	@Column(nullable=false)
+	public Boolean isIsemailwhenoverdue() {
 		return isemailwhenoverdue;
 	}
 
-	public void setIsemailwhenoverdue(String isemailwhenoverdue) {
+	public void setIsemailwhenoverdue(Boolean isemailwhenoverdue) {
 		this.isemailwhenoverdue = isemailwhenoverdue;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsindexed() {
+	@Column(nullable=false)
+	public Boolean isIsindexed() {
 		return isindexed;
 	}
 
-	public void setIsindexed(String isindexed) {
+	public void setIsindexed(Boolean isindexed) {
 		this.isindexed = isindexed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsinvoiced() {
+	public Boolean isIsinvoiced() {
 		return isinvoiced;
 	}
 
-	public void setIsinvoiced(String isinvoiced) {
+	public void setIsinvoiced(Boolean isinvoiced) {
 		this.isinvoiced = isinvoiced;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
@@ -219,7 +219,7 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="R_REQUESTTYPE_ID")
+	@Column(name="R_REQUESTTYPE_ID", columnDefinition="INT")
 	public Integer getRRequesttypeId() {
 		return rRequesttypeId;
 	}
@@ -229,7 +229,7 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_STATUSCATEGORY_ID", nullable=false)
+	@Column(name="R_STATUSCATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getRStatuscategoryId() {
 		return rStatuscategoryId;
 	}
@@ -249,7 +249,7 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

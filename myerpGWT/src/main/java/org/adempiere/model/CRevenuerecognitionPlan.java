@@ -20,7 +20,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	private Integer cRevenuerecognitionPlanId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer pRevenueAcct;
 	private BigDecimal recognizedamt;
 	private BigDecimal totalamt;
@@ -36,7 +36,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -56,7 +56,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -66,7 +66,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -76,7 +76,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICELINE_ID", nullable=false)
+	@Column(name="C_INVOICELINE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}
@@ -86,7 +86,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_REVENUERECOGNITION_ID", nullable=false)
+	@Column(name="C_REVENUERECOGNITION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRevenuerecognitionId() {
 		return cRevenuerecognitionId;
 	}
@@ -96,7 +96,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_REVENUERECOGNITION_PLAN_ID")
+	@Column(name="C_REVENUERECOGNITION_PLAN_ID", columnDefinition="INT")
 	public Integer getCRevenuerecognitionPlanId() {
 		return cRevenuerecognitionPlanId;
 	}
@@ -116,7 +116,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -126,17 +126,17 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="P_REVENUE_ACCT", nullable=false)
+	@Column(name="P_REVENUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPRevenueAcct() {
 		return pRevenueAcct;
 	}
@@ -166,7 +166,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="UNEARNEDREVENUE_ACCT", nullable=false)
+	@Column(name="UNEARNEDREVENUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getUnearnedrevenueAcct() {
 		return unearnedrevenueAcct;
 	}
@@ -186,7 +186,7 @@ public class CRevenuerecognitionPlan extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

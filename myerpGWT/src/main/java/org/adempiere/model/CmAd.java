@@ -23,9 +23,9 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String enddate;
 	private String help;
-	private String isactive;
-	private String isadflag;
-	private String islogged;
+	private Boolean isactive;
+	private Boolean isadflag;
+	private Boolean islogged;
 	private Integer maxclick;
 	private Integer maximpression;
 	private String name;
@@ -44,7 +44,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getActualclick() {
 		return actualclick;
 	}
@@ -54,7 +54,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getActualimpression() {
 		return actualimpression;
 	}
@@ -64,7 +64,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -74,7 +74,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -84,7 +84,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_AD_CAT_ID", nullable=false)
+	@Column(name="CM_AD_CAT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCmAdCatId() {
 		return cmAdCatId;
 	}
@@ -94,7 +94,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="CM_AD_ID")
+	@Column(name="CM_AD_ID", columnDefinition="INT")
 	public Integer getCmAdId() {
 		return cmAdId;
 	}
@@ -104,7 +104,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_MEDIA_ID", nullable=false)
+	@Column(name="CM_MEDIA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCmMediaId() {
 		return cmMediaId;
 	}
@@ -134,7 +134,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -172,37 +172,37 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsadflag() {
+	@Column(nullable=false)
+	public Boolean isIsadflag() {
 		return isadflag;
 	}
 
-	public void setIsadflag(String isadflag) {
+	public void setIsadflag(Boolean isadflag) {
 		this.isadflag = isadflag;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIslogged() {
+	@Column(nullable=false)
+	public Boolean isIslogged() {
 		return islogged;
 	}
 
-	public void setIslogged(String islogged) {
+	public void setIslogged(Boolean islogged) {
 		this.islogged = islogged;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMaxclick() {
 		return maxclick;
 	}
@@ -212,7 +212,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMaximpression() {
 		return maximpression;
 	}
@@ -242,7 +242,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getStartimpression() {
 		return startimpression;
 	}
@@ -282,7 +282,7 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

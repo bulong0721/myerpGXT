@@ -22,11 +22,11 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	private Integer displaylength;
 	private String displaylogic;
 	private String help;
-	private String isactive;
-	private String isdisplayed;
-	private String isreadonly;
-	private String issameline;
-	private String isupdateable;
+	private Boolean isactive;
+	private Boolean isdisplayed;
+	private Boolean isreadonly;
+	private Boolean issameline;
+	private Boolean isupdateable;
 	private String name;
 	private Integer seqno;
 	private Integer sortno;
@@ -41,7 +41,7 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_FIELD_ID", nullable=false)
+	@Column(name="AD_FIELD_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdFieldId() {
 		return adFieldId;
 	}
@@ -61,7 +61,7 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -71,7 +71,7 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_USERDEF_FIELD_ID")
+	@Column(name="AD_USERDEF_FIELD_ID", columnDefinition="INT")
 	public Integer getAdUserdefFieldId() {
 		return adUserdefFieldId;
 	}
@@ -81,7 +81,7 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USERDEF_TAB_ID", nullable=false)
+	@Column(name="AD_USERDEF_TAB_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdUserdefTabId() {
 		return adUserdefTabId;
 	}
@@ -101,7 +101,7 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -130,7 +130,7 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getDisplaylength() {
 		return displaylength;
 	}
@@ -160,52 +160,52 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdisplayed() {
+	@Column(nullable=false)
+	public Boolean isIsdisplayed() {
 		return isdisplayed;
 	}
 
-	public void setIsdisplayed(String isdisplayed) {
+	public void setIsdisplayed(Boolean isdisplayed) {
 		this.isdisplayed = isdisplayed;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreadonly() {
+	@Column(nullable=false)
+	public Boolean isIsreadonly() {
 		return isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssameline() {
+	@Column(nullable=false)
+	public Boolean isIssameline() {
 		return issameline;
 	}
 
-	public void setIssameline(String issameline) {
+	public void setIssameline(Boolean issameline) {
 		this.issameline = issameline;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsupdateable() {
+	@Column(nullable=false)
+	public Boolean isIsupdateable() {
 		return isupdateable;
 	}
 
-	public void setIsupdateable(String isupdateable) {
+	public void setIsupdateable(Boolean isupdateable) {
 		this.isupdateable = isupdateable;
 	}
 
@@ -220,7 +220,7 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -230,7 +230,7 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSortno() {
 		return sortno;
 	}
@@ -250,7 +250,7 @@ public class AdUserdefField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

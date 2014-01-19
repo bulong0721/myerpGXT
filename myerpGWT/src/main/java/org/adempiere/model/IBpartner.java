@@ -39,10 +39,10 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	private String iErrormsg;
 	private String iIsimported;
 	private String interestareaname;
-	private String isactive;
-	private String iscustomer;
-	private String isemployee;
-	private String isvendor;
+	private Boolean isactive;
+	private Boolean iscustomer;
+	private Boolean isemployee;
+	private Boolean isvendor;
 	private String naics;
 	private String name;
 	private String name2;
@@ -51,8 +51,8 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	private String phone2;
 	private String postal;
 	private String postalAdd;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private Integer rInterestareaId;
 	private String regionname;
 	private String taxid;
@@ -69,7 +69,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -79,7 +79,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -89,7 +89,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -138,7 +138,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BP_GROUP_ID")
+	@Column(name="C_BP_GROUP_ID", columnDefinition="INT")
 	public Integer getCBpGroupId() {
 		return cBpGroupId;
 	}
@@ -148,7 +148,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -158,7 +158,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID")
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -168,7 +168,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_COUNTRY_ID")
+	@Column(name="C_COUNTRY_ID", columnDefinition="INT")
 	public Integer getCCountryId() {
 		return cCountryId;
 	}
@@ -178,7 +178,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_GREETING_ID")
+	@Column(name="C_GREETING_ID", columnDefinition="INT")
 	public Integer getCGreetingId() {
 		return cGreetingId;
 	}
@@ -188,7 +188,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_REGION_ID")
+	@Column(name="C_REGION_ID", columnDefinition="INT")
 	public Integer getCRegionId() {
 		return cRegionId;
 	}
@@ -257,6 +257,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -315,7 +316,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_BPARTNER_ID")
+	@Column(name="I_BPARTNER_ID", columnDefinition="INT")
 	public Integer getIBpartnerId() {
 		return iBpartnerId;
 	}
@@ -355,42 +356,38 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIscustomer() {
+	public Boolean isIscustomer() {
 		return iscustomer;
 	}
 
-	public void setIscustomer(String iscustomer) {
+	public void setIscustomer(Boolean iscustomer) {
 		this.iscustomer = iscustomer;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsemployee() {
+	public Boolean isIsemployee() {
 		return isemployee;
 	}
 
-	public void setIsemployee(String isemployee) {
+	public void setIsemployee(Boolean isemployee) {
 		this.isemployee = isemployee;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsvendor() {
+	public Boolean isIsvendor() {
 		return isvendor;
 	}
 
-	public void setIsvendor(String isvendor) {
+	public void setIsvendor(Boolean isvendor) {
 		this.isvendor = isvendor;
 	}
 
@@ -475,27 +472,25 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="R_INTERESTAREA_ID")
+	@Column(name="R_INTERESTAREA_ID", columnDefinition="INT")
 	public Integer getRInterestareaId() {
 		return rInterestareaId;
 	}
@@ -545,6 +540,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -24,11 +24,11 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	private Integer hostport;
 	private BigDecimal idrangeend;
 	private BigDecimal idrangestart;
-	private String isactive;
-	private String isrmioverhttp;
+	private Boolean isactive;
+	private Boolean isrmioverhttp;
 	private String name;
 	private String prefix;
-	private String processing;
+	private Boolean processing;
 	private Integer remoteClientId;
 	private Integer remoteOrgId;
 	private String suffix;
@@ -43,7 +43,7 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -53,7 +53,7 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -63,7 +63,7 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_REPLICATION_ID")
+	@Column(name="AD_REPLICATION_ID", columnDefinition="INT")
 	public Integer getAdReplicationId() {
 		return adReplicationId;
 	}
@@ -73,7 +73,7 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REPLICATIONSTRATEGY_ID", nullable=false)
+	@Column(name="AD_REPLICATIONSTRATEGY_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdReplicationstrategyId() {
 		return adReplicationstrategyId;
 	}
@@ -93,7 +93,7 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -141,7 +141,7 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getHostport() {
 		return hostport;
 	}
@@ -169,22 +169,22 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsrmioverhttp() {
+	@Column(nullable=false)
+	public Boolean isIsrmioverhttp() {
 		return isrmioverhttp;
 	}
 
-	public void setIsrmioverhttp(String isrmioverhttp) {
+	public void setIsrmioverhttp(Boolean isrmioverhttp) {
 		this.isrmioverhttp = isrmioverhttp;
 	}
 
@@ -209,17 +209,16 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="REMOTE_CLIENT_ID")
+	@Column(name="REMOTE_CLIENT_ID", columnDefinition="INT")
 	public Integer getRemoteClientId() {
 		return remoteClientId;
 	}
@@ -229,7 +228,7 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REMOTE_ORG_ID")
+	@Column(name="REMOTE_ORG_ID", columnDefinition="INT")
 	public Integer getRemoteOrgId() {
 		return remoteOrgId;
 	}
@@ -259,7 +258,7 @@ public class AdReplication extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

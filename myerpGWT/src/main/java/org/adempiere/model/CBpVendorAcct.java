@@ -17,7 +17,7 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	private Integer cBpartnerId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String updated;
 	private Integer updatedby;
 	private Integer vLiabilityAcct;
@@ -33,7 +33,7 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -63,7 +63,7 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -83,7 +83,7 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -93,12 +93,12 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -113,7 +113,7 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -123,7 +123,7 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="V_LIABILITY_ACCT")
+	@Column(name="V_LIABILITY_ACCT", columnDefinition="INT")
 	public Integer getVLiabilityAcct() {
 		return vLiabilityAcct;
 	}
@@ -133,7 +133,7 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="V_LIABILITY_SERVICES_ACCT")
+	@Column(name="V_LIABILITY_SERVICES_ACCT", columnDefinition="INT")
 	public Integer getVLiabilityServicesAcct() {
 		return vLiabilityServicesAcct;
 	}
@@ -143,7 +143,7 @@ public class CBpVendorAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="V_PREPAYMENT_ACCT")
+	@Column(name="V_PREPAYMENT_ACCT", columnDefinition="INT")
 	public Integer getVPrepaymentAcct() {
 		return vPrepaymentAcct;
 	}

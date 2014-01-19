@@ -25,10 +25,10 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	private Integer daysdue;
 	private BigDecimal feeamt;
 	private BigDecimal interestamt;
-	private String isactive;
-	private String isindispute;
+	private Boolean isactive;
+	private Boolean isindispute;
 	private BigDecimal openamt;
-	private String processed;
+	private Boolean processed;
 	private Integer timesdunned;
 	private BigDecimal totalamt;
 	private String updated;
@@ -42,7 +42,7 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -52,7 +52,7 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -72,7 +72,7 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DUNNINGRUNENTRY_ID", nullable=false)
+	@Column(name="C_DUNNINGRUNENTRY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDunningrunentryId() {
 		return cDunningrunentryId;
 	}
@@ -82,7 +82,7 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_DUNNINGRUNLINE_ID")
+	@Column(name="C_DUNNINGRUNLINE_ID", columnDefinition="INT")
 	public Integer getCDunningrunlineId() {
 		return cDunningrunlineId;
 	}
@@ -92,7 +92,7 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -102,7 +102,7 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICEPAYSCHEDULE_ID")
+	@Column(name="C_INVOICEPAYSCHEDULE_ID", columnDefinition="INT")
 	public Integer getCInvoicepayscheduleId() {
 		return cInvoicepayscheduleId;
 	}
@@ -112,7 +112,7 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -142,7 +142,7 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -152,7 +152,7 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getDaysdue() {
 		return daysdue;
 	}
@@ -182,22 +182,22 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsindispute() {
+	@Column(nullable=false)
+	public Boolean isIsindispute() {
 		return isindispute;
 	}
 
-	public void setIsindispute(String isindispute) {
+	public void setIsindispute(Boolean isindispute) {
 		this.isindispute = isindispute;
 	}
 
@@ -212,17 +212,17 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getTimesdunned() {
 		return timesdunned;
 	}
@@ -252,7 +252,7 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

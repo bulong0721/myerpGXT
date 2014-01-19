@@ -19,7 +19,7 @@ public class AdImage extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String entitytype;
 	private String imageurl;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -32,7 +32,7 @@ public class AdImage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class AdImage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_IMAGE_ID")
+	@Column(name="AD_IMAGE_ID", columnDefinition="INT")
 	public Integer getAdImageId() {
 		return adImageId;
 	}
@@ -52,7 +52,7 @@ public class AdImage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -82,7 +82,7 @@ public class AdImage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -121,12 +121,12 @@ public class AdImage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -151,7 +151,7 @@ public class AdImage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

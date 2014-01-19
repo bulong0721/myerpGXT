@@ -16,9 +16,9 @@ public class MAttribute extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isinstanceattribute;
-	private String ismandatory;
+	private Boolean isactive;
+	private Boolean isinstanceattribute;
+	private Boolean ismandatory;
 	private Integer mAttributeId;
 	private Integer mAttributesearchId;
 	private String name;
@@ -33,7 +33,7 @@ public class MAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class MAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -73,7 +73,7 @@ public class MAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -92,37 +92,37 @@ public class MAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinstanceattribute() {
+	@Column(nullable=false)
+	public Boolean isIsinstanceattribute() {
 		return isinstanceattribute;
 	}
 
-	public void setIsinstanceattribute(String isinstanceattribute) {
+	public void setIsinstanceattribute(Boolean isinstanceattribute) {
 		this.isinstanceattribute = isinstanceattribute;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmandatory() {
+	@Column(nullable=false)
+	public Boolean isIsmandatory() {
 		return ismandatory;
 	}
 
-	public void setIsmandatory(String ismandatory) {
+	public void setIsmandatory(Boolean ismandatory) {
 		this.ismandatory = ismandatory;
 	}
 
 	@Id
-	@Column(name="M_ATTRIBUTE_ID")
+	@Column(name="M_ATTRIBUTE_ID", columnDefinition="INT")
 	public Integer getMAttributeId() {
 		return mAttributeId;
 	}
@@ -132,7 +132,7 @@ public class MAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESEARCH_ID")
+	@Column(name="M_ATTRIBUTESEARCH_ID", columnDefinition="INT")
 	public Integer getMAttributesearchId() {
 		return mAttributesearchId;
 	}
@@ -162,7 +162,7 @@ public class MAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

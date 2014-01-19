@@ -18,7 +18,7 @@ public class AdUserbpaccess extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String docbasetype;
-	private String isactive;
+	private Boolean isactive;
 	private Integer rRequesttypeId;
 	private String updated;
 	private Integer updatedby;
@@ -31,7 +31,7 @@ public class AdUserbpaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class AdUserbpaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -51,7 +51,7 @@ public class AdUserbpaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID", nullable=false)
+	@Column(name="AD_USER_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -61,7 +61,7 @@ public class AdUserbpaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_USERBPACCESS_ID")
+	@Column(name="AD_USERBPACCESS_ID", columnDefinition="INT")
 	public Integer getAdUserbpaccessId() {
 		return adUserbpaccessId;
 	}
@@ -91,7 +91,7 @@ public class AdUserbpaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -111,17 +111,17 @@ public class AdUserbpaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="R_REQUESTTYPE_ID")
+	@Column(name="R_REQUESTTYPE_ID", columnDefinition="INT")
 	public Integer getRRequesttypeId() {
 		return rRequesttypeId;
 	}
@@ -141,7 +141,7 @@ public class AdUserbpaccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

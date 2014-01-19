@@ -66,7 +66,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID")
+	@Column(name="A_ASSET_ID", columnDefinition="INT")
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -76,7 +76,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ACCOUNT_ID")
+	@Column(name="ACCOUNT_ID", columnDefinition="INT")
 	public Integer getAccountId() {
 		return accountId;
 	}
@@ -96,7 +96,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -106,7 +106,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -116,7 +116,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -126,7 +126,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -136,7 +136,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -203,7 +203,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -213,7 +213,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -223,7 +223,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -233,7 +233,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -243,7 +243,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -253,7 +253,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCFROM_ID")
+	@Column(name="C_LOCFROM_ID", columnDefinition="INT")
 	public Integer getCLocfromId() {
 		return cLocfromId;
 	}
@@ -263,7 +263,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCTO_ID")
+	@Column(name="C_LOCTO_ID", columnDefinition="INT")
 	public Integer getCLoctoId() {
 		return cLoctoId;
 	}
@@ -273,7 +273,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID")
+	@Column(name="C_PERIOD_ID", columnDefinition="INT")
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -283,7 +283,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -293,7 +293,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SALESREGION_ID")
+	@Column(name="C_SALESREGION_ID", columnDefinition="INT")
 	public Integer getCSalesregionId() {
 		return cSalesregionId;
 	}
@@ -303,7 +303,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAX_ID")
+	@Column(name="C_TAX_ID", columnDefinition="INT")
 	public Integer getCTaxId() {
 		return cTaxId;
 	}
@@ -313,7 +313,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID")
+	@Column(name="C_UOM_ID", columnDefinition="INT")
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -333,7 +333,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -371,7 +371,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="FACT_ACCT_ID")
+	@Column(name="FACT_ACCT_ID", columnDefinition="INT")
 	public Integer getFactAcctId() {
 		return factAcctId;
 	}
@@ -381,7 +381,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_BUDGET_ID")
+	@Column(name="GL_BUDGET_ID", columnDefinition="INT")
 	public Integer getGlBudgetId() {
 		return glBudgetId;
 	}
@@ -391,7 +391,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_CATEGORY_ID")
+	@Column(name="GL_CATEGORY_ID", columnDefinition="INT")
 	public Integer getGlCategoryId() {
 		return glCategoryId;
 	}
@@ -401,7 +401,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="LINE_ID")
+	@Column(name="LINE_ID", columnDefinition="INT")
 	public Integer getLineId() {
 		return lineId;
 	}
@@ -411,7 +411,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID")
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -421,7 +421,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -450,7 +450,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="RECORD_ID")
+	@Column(name="RECORD_ID", columnDefinition="INT")
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -470,7 +470,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -480,7 +480,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -490,7 +490,7 @@ public class TTrialbalance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}

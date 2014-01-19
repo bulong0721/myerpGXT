@@ -30,9 +30,9 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	private String docstatus;
 	private String documentno;
 	private BigDecimal durationreal;
-	private String isactive;
-	private String isbatchtime;
-	private String issubcontracting;
+	private Boolean isactive;
+	private Boolean isbatchtime;
+	private Boolean issubcontracting;
 	private Integer mAttributesetinstanceId;
 	private Integer mLocatorId;
 	private Integer mProductId;
@@ -45,9 +45,9 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	private Integer ppOrderId;
 	private Integer ppOrderNodeId;
 	private Integer ppOrderWorkflowId;
-	private String processed;
+	private Boolean processed;
 	private Long processedon;
-	private String processing;
+	private Boolean processing;
 	private BigDecimal qtyreject;
 	private Integer reversalId;
 	private Integer sResourceId;
@@ -66,7 +66,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -76,7 +76,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -86,7 +86,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -96,7 +96,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -106,7 +106,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -116,7 +116,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -126,7 +126,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID", nullable=false)
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -136,7 +136,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPETARGET_ID", nullable=false)
+	@Column(name="C_DOCTYPETARGET_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDoctypetargetId() {
 		return cDoctypetargetId;
 	}
@@ -146,7 +146,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -156,7 +156,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID")
+	@Column(name="C_UOM_ID", columnDefinition="INT")
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -186,7 +186,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -254,37 +254,35 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsbatchtime() {
+	public Boolean isIsbatchtime() {
 		return isbatchtime;
 	}
 
-	public void setIsbatchtime(String isbatchtime) {
+	public void setIsbatchtime(Boolean isbatchtime) {
 		this.isbatchtime = isbatchtime;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssubcontracting() {
+	public Boolean isIssubcontracting() {
 		return issubcontracting;
 	}
 
-	public void setIssubcontracting(String issubcontracting) {
+	public void setIssubcontracting(Boolean issubcontracting) {
 		this.issubcontracting = issubcontracting;
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -294,7 +292,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID", nullable=false)
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT", nullable=false)
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -304,7 +302,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -314,7 +312,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -354,7 +352,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PP_COST_COLLECTOR_ID")
+	@Column(name="PP_COST_COLLECTOR_ID", columnDefinition="INT")
 	public Integer getPpCostCollectorId() {
 		return ppCostCollectorId;
 	}
@@ -364,7 +362,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_BOMLINE_ID")
+	@Column(name="PP_ORDER_BOMLINE_ID", columnDefinition="INT")
 	public Integer getPpOrderBomlineId() {
 		return ppOrderBomlineId;
 	}
@@ -374,7 +372,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_ID", nullable=false)
+	@Column(name="PP_ORDER_ID", columnDefinition="INT", nullable=false)
 	public Integer getPpOrderId() {
 		return ppOrderId;
 	}
@@ -384,7 +382,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_NODE_ID")
+	@Column(name="PP_ORDER_NODE_ID", columnDefinition="INT")
 	public Integer getPpOrderNodeId() {
 		return ppOrderNodeId;
 	}
@@ -394,7 +392,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_WORKFLOW_ID")
+	@Column(name="PP_ORDER_WORKFLOW_ID", columnDefinition="INT")
 	public Integer getPpOrderWorkflowId() {
 		return ppOrderWorkflowId;
 	}
@@ -404,12 +402,12 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -423,12 +421,11 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -442,7 +439,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REVERSAL_ID")
+	@Column(name="REVERSAL_ID", columnDefinition="INT")
 	public Integer getReversalId() {
 		return reversalId;
 	}
@@ -452,7 +449,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCE_ID", nullable=false)
+	@Column(name="S_RESOURCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getSResourceId() {
 		return sResourceId;
 	}
@@ -490,7 +487,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -500,7 +497,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -510,7 +507,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}

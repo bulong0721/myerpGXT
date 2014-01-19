@@ -16,7 +16,7 @@ public class RContactinterest extends org.adempiere.common.ADEntityBase {
 	private Integer adUserId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String optoutdate;
 	private Integer rInterestareaId;
 	private String subscribedate;
@@ -32,7 +32,7 @@ public class RContactinterest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class RContactinterest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -52,7 +52,7 @@ public class RContactinterest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -72,7 +72,7 @@ public class RContactinterest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -82,12 +82,12 @@ public class RContactinterest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -101,7 +101,7 @@ public class RContactinterest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="R_INTERESTAREA_ID")
+	@Column(name="R_INTERESTAREA_ID", columnDefinition="INT")
 	public Integer getRInterestareaId() {
 		return rInterestareaId;
 	}
@@ -130,7 +130,7 @@ public class RContactinterest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

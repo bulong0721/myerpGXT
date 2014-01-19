@@ -17,8 +17,8 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 	private Integer cSubscriptiontypeId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String isdue;
+	private Boolean isactive;
+	private Boolean isdue;
 	private Integer mProductId;
 	private String name;
 	private String paiduntildate;
@@ -35,7 +35,7 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -65,7 +65,7 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_SUBSCRIPTION_ID")
+	@Column(name="C_SUBSCRIPTION_ID", columnDefinition="INT")
 	public Integer getCSubscriptionId() {
 		return cSubscriptionId;
 	}
@@ -75,7 +75,7 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SUBSCRIPTIONTYPE_ID", nullable=false)
+	@Column(name="C_SUBSCRIPTIONTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCSubscriptiontypeId() {
 		return cSubscriptiontypeId;
 	}
@@ -95,7 +95,7 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -105,27 +105,27 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdue() {
+	@Column(nullable=false)
+	public Boolean isIsdue() {
 		return isdue;
 	}
 
-	public void setIsdue(String isdue) {
+	public void setIsdue(Boolean isdue) {
 		this.isdue = isdue;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -185,7 +185,7 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

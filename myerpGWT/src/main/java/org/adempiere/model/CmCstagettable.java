@@ -18,7 +18,7 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String otherclause;
 	private Integer recordId;
@@ -34,7 +34,7 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -54,7 +54,7 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_CSTAGE_ID", nullable=false)
+	@Column(name="CM_CSTAGE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCmCstageId() {
 		return cmCstageId;
 	}
@@ -64,7 +64,7 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="CM_CSTAGETTABLE_ID")
+	@Column(name="CM_CSTAGETTABLE_ID", columnDefinition="INT")
 	public Integer getCmCstagettableId() {
 		return cmCstagettableId;
 	}
@@ -74,7 +74,7 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_TEMPLATETABLE_ID", nullable=false)
+	@Column(name="CM_TEMPLATETABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCmTemplatetableId() {
 		return cmTemplatetableId;
 	}
@@ -94,7 +94,7 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -113,12 +113,12 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -143,7 +143,7 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="RECORD_ID")
+	@Column(name="RECORD_ID", columnDefinition="INT")
 	public Integer getRecordId() {
 		return recordId;
 	}
@@ -163,7 +163,7 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

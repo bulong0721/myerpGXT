@@ -18,8 +18,8 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String islandscape;
+	private Boolean isactive;
+	private Boolean islandscape;
 	private Integer labelheight;
 	private Integer labelwidth;
 	private String name;
@@ -35,7 +35,7 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_LABELPRINTER_ID", nullable=false)
+	@Column(name="AD_LABELPRINTER_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdLabelprinterId() {
 		return adLabelprinterId;
 	}
@@ -55,7 +55,7 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -65,7 +65,7 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PRINTLABEL_ID")
+	@Column(name="AD_PRINTLABEL_ID", columnDefinition="INT")
 	public Integer getAdPrintlabelId() {
 		return adPrintlabelId;
 	}
@@ -75,7 +75,7 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -95,7 +95,7 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -114,27 +114,27 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIslandscape() {
+	@Column(nullable=false)
+	public Boolean isIslandscape() {
 		return islandscape;
 	}
 
-	public void setIslandscape(String islandscape) {
+	public void setIslandscape(Boolean islandscape) {
 		this.islandscape = islandscape;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLabelheight() {
 		return labelheight;
 	}
@@ -144,7 +144,7 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLabelwidth() {
 		return labelwidth;
 	}
@@ -184,7 +184,7 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

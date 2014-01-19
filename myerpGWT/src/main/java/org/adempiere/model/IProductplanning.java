@@ -25,10 +25,10 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	private String iErrormsg;
 	private String iIsimported;
 	private Integer iProductplanningId;
-	private String isactive;
-	private String iscreateplan;
-	private String ismps;
-	private String isphantom;
+	private Boolean isactive;
+	private Boolean iscreateplan;
+	private Boolean ismps;
+	private Boolean isphantom;
 	private Integer mForecastId;
 	private Integer mForecastlineId;
 	private Integer mProductId;
@@ -45,8 +45,8 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	private String plannervalue;
 	private Integer ppProductBomId;
 	private Integer ppProductPlanningId;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String productBomValue;
 	private String productvalue;
 	private BigDecimal qty;
@@ -71,7 +71,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -81,7 +81,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -91,7 +91,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKFLOW_ID")
+	@Column(name="AD_WORKFLOW_ID", columnDefinition="INT")
 	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
@@ -111,7 +111,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -131,7 +131,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -150,7 +150,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DD_NETWORKDISTRIBUTION_ID")
+	@Column(name="DD_NETWORKDISTRIBUTION_ID", columnDefinition="INT")
 	public Integer getDdNetworkdistributionId() {
 		return ddNetworkdistributionId;
 	}
@@ -200,7 +200,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_PRODUCTPLANNING_ID")
+	@Column(name="I_PRODUCTPLANNING_ID", columnDefinition="INT")
 	public Integer getIProductplanningId() {
 		return iProductplanningId;
 	}
@@ -210,47 +210,46 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscreateplan() {
+	@Column(nullable=false)
+	public Boolean isIscreateplan() {
 		return iscreateplan;
 	}
 
-	public void setIscreateplan(String iscreateplan) {
+	public void setIscreateplan(Boolean iscreateplan) {
 		this.iscreateplan = iscreateplan;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsmps() {
+	public Boolean isIsmps() {
 		return ismps;
 	}
 
-	public void setIsmps(String ismps) {
+	public void setIsmps(Boolean ismps) {
 		this.ismps = ismps;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsphantom() {
+	@Column(nullable=false)
+	public Boolean isIsphantom() {
 		return isphantom;
 	}
 
-	public void setIsphantom(String isphantom) {
+	public void setIsphantom(Boolean isphantom) {
 		this.isphantom = isphantom;
 	}
 
 	@Basic
-	@Column(name="M_FORECAST_ID")
+	@Column(name="M_FORECAST_ID", columnDefinition="INT")
 	public Integer getMForecastId() {
 		return mForecastId;
 	}
@@ -260,7 +259,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_FORECASTLINE_ID")
+	@Column(name="M_FORECASTLINE_ID", columnDefinition="INT")
 	public Integer getMForecastlineId() {
 		return mForecastlineId;
 	}
@@ -270,7 +269,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -280,7 +279,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -370,7 +369,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PLANNER_ID")
+	@Column(name="PLANNER_ID", columnDefinition="INT")
 	public Integer getPlannerId() {
 		return plannerId;
 	}
@@ -390,7 +389,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_PRODUCT_BOM_ID")
+	@Column(name="PP_PRODUCT_BOM_ID", columnDefinition="INT")
 	public Integer getPpProductBomId() {
 		return ppProductBomId;
 	}
@@ -400,7 +399,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_PRODUCT_PLANNING_ID")
+	@Column(name="PP_PRODUCT_PLANNING_ID", columnDefinition="INT")
 	public Integer getPpProductPlanningId() {
 		return ppProductPlanningId;
 	}
@@ -410,22 +409,20 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -470,7 +467,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCE_ID")
+	@Column(name="S_RESOURCE_ID", columnDefinition="INT")
 	public Integer getSResourceId() {
 		return sResourceId;
 	}
@@ -489,7 +486,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID")
+	@Column(name="SALESREP_ID", columnDefinition="INT")
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -527,7 +524,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -566,6 +563,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getYield() {
 		return yield;
 	}

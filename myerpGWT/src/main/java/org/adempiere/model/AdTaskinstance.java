@@ -16,7 +16,7 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 	private Integer adTaskinstanceId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String updated;
 	private Integer updatedby;
 
@@ -28,7 +28,7 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -38,7 +38,7 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -48,7 +48,7 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TASK_ID", nullable=false)
+	@Column(name="AD_TASK_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTaskId() {
 		return adTaskId;
 	}
@@ -58,7 +58,7 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_TASKINSTANCE_ID")
+	@Column(name="AD_TASKINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdTaskinstanceId() {
 		return adTaskinstanceId;
 	}
@@ -78,6 +78,7 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -87,12 +88,12 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -107,6 +108,7 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

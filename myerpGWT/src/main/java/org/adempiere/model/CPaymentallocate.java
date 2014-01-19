@@ -22,7 +22,7 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private BigDecimal discountamt;
 	private BigDecimal invoiceamt;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal overunderamt;
 	private String updated;
 	private Integer updatedby;
@@ -36,7 +36,7 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ALLOCATIONLINE_ID")
+	@Column(name="C_ALLOCATIONLINE_ID", columnDefinition="INT")
 	public Integer getCAllocationlineId() {
 		return cAllocationlineId;
 	}
@@ -76,7 +76,7 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID", nullable=false)
+	@Column(name="C_INVOICE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -86,7 +86,7 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID", nullable=false)
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -96,7 +96,7 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_PAYMENTALLOCATE_ID")
+	@Column(name="C_PAYMENTALLOCATE_ID", columnDefinition="INT")
 	public Integer getCPaymentallocateId() {
 		return cPaymentallocateId;
 	}
@@ -116,7 +116,7 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -145,12 +145,12 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -175,7 +175,7 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

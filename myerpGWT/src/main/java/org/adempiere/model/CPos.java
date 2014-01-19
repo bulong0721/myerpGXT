@@ -23,8 +23,8 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String ismodifyprice;
+	private Boolean isactive;
+	private Boolean ismodifyprice;
 	private Integer mPricelistId;
 	private Integer mWarehouseId;
 	private String name;
@@ -41,7 +41,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BANKACCOUNT_ID")
+	@Column(name="C_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCBankaccountId() {
 		return cBankaccountId;
 	}
@@ -71,7 +71,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNERCASHTRX_ID")
+	@Column(name="C_BPARTNERCASHTRX_ID", columnDefinition="INT")
 	public Integer getCBpartnercashtrxId() {
 		return cBpartnercashtrxId;
 	}
@@ -81,7 +81,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CASHBOOK_ID", nullable=false)
+	@Column(name="C_CASHBOOK_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCashbookId() {
 		return cCashbookId;
 	}
@@ -91,7 +91,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID")
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -101,7 +101,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_POS_ID")
+	@Column(name="C_POS_ID", columnDefinition="INT")
 	public Integer getCPosId() {
 		return cPosId;
 	}
@@ -111,7 +111,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_POSKEYLAYOUT_ID")
+	@Column(name="C_POSKEYLAYOUT_ID", columnDefinition="INT")
 	public Integer getCPoskeylayoutId() {
 		return cPoskeylayoutId;
 	}
@@ -141,7 +141,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -170,27 +170,27 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmodifyprice() {
+	@Column(nullable=false)
+	public Boolean isIsmodifyprice() {
 		return ismodifyprice;
 	}
 
-	public void setIsmodifyprice(String ismodifyprice) {
+	public void setIsmodifyprice(Boolean ismodifyprice) {
 		this.ismodifyprice = ismodifyprice;
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_ID", nullable=false)
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT", nullable=false)
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -200,7 +200,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -230,7 +230,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID", nullable=false)
+	@Column(name="SALESREP_ID", columnDefinition="INT", nullable=false)
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -250,7 +250,7 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

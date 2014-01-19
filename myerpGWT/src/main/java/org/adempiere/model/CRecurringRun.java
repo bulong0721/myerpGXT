@@ -22,7 +22,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String datedoc;
 	private Integer glJournalbatchId;
-	private String isactive;
+	private Boolean isactive;
 	private String updated;
 	private Integer updatedby;
 
@@ -34,7 +34,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -54,7 +54,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -64,7 +64,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -74,7 +74,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -84,7 +84,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -94,7 +94,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RECURRING_ID", nullable=false)
+	@Column(name="C_RECURRING_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRecurringId() {
 		return cRecurringId;
 	}
@@ -104,7 +104,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_RECURRING_RUN_ID")
+	@Column(name="C_RECURRING_RUN_ID", columnDefinition="INT")
 	public Integer getCRecurringRunId() {
 		return cRecurringRunId;
 	}
@@ -124,7 +124,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -143,7 +143,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_JOURNALBATCH_ID")
+	@Column(name="GL_JOURNALBATCH_ID", columnDefinition="INT")
 	public Integer getGlJournalbatchId() {
 		return glJournalbatchId;
 	}
@@ -153,12 +153,12 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -173,7 +173,7 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -18,7 +18,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String enddate;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mPricelistId;
 	private Integer mPromotionId;
 	private Integer mPromotionpreconditionId;
@@ -39,7 +39,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -49,7 +49,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -59,7 +59,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -69,7 +69,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BP_GROUP_ID")
+	@Column(name="C_BP_GROUP_ID", columnDefinition="INT")
 	public Integer getCBpGroupId() {
 		return cBpGroupId;
 	}
@@ -79,7 +79,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -99,7 +99,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -118,17 +118,17 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_ID")
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT")
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -138,7 +138,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PROMOTION_ID", nullable=false)
+	@Column(name="M_PROMOTION_ID", columnDefinition="INT", nullable=false)
 	public Integer getMPromotionId() {
 		return mPromotionId;
 	}
@@ -148,7 +148,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_PROMOTIONPRECONDITION_ID")
+	@Column(name="M_PROMOTIONPRECONDITION_ID", columnDefinition="INT")
 	public Integer getMPromotionpreconditionId() {
 		return mPromotionpreconditionId;
 	}
@@ -158,7 +158,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -178,6 +178,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getPromotioncounter() {
 		return promotioncounter;
 	}
@@ -187,6 +188,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getPromotionusagelimit() {
 		return promotionusagelimit;
 	}
@@ -196,7 +198,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -226,7 +228,7 @@ public class MPromotionprecondition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

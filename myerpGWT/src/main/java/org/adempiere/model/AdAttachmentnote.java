@@ -17,7 +17,7 @@ public class AdAttachmentnote extends org.adempiere.common.ADEntityBase {
 	private Integer adUserId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String textmsg;
 	private String title;
 	private String updated;
@@ -31,7 +31,7 @@ public class AdAttachmentnote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ATTACHMENT_ID", nullable=false)
+	@Column(name="AD_ATTACHMENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdAttachmentId() {
 		return adAttachmentId;
 	}
@@ -41,7 +41,7 @@ public class AdAttachmentnote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ATTACHMENTNOTE_ID")
+	@Column(name="AD_ATTACHMENTNOTE_ID", columnDefinition="INT")
 	public Integer getAdAttachmentnoteId() {
 		return adAttachmentnoteId;
 	}
@@ -51,7 +51,7 @@ public class AdAttachmentnote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -61,7 +61,7 @@ public class AdAttachmentnote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -71,7 +71,7 @@ public class AdAttachmentnote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID", nullable=false)
+	@Column(name="AD_USER_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -91,7 +91,7 @@ public class AdAttachmentnote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -101,12 +101,12 @@ public class AdAttachmentnote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -141,7 +141,7 @@ public class AdAttachmentnote extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

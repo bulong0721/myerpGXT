@@ -24,16 +24,16 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	private String docstatus;
 	private String documentno;
 	private String help;
-	private String isactive;
-	private String isapproved;
+	private Boolean isactive;
+	private Boolean isapproved;
 	private Integer mPricelistId;
 	private Integer mRequisitionId;
 	private Integer mWarehouseId;
 	private String posted;
 	private String priorityrule;
-	private String processed;
+	private Boolean processed;
 	private Long processedon;
-	private String processing;
+	private Boolean processing;
 	private BigDecimal totallines;
 	private String updated;
 	private Integer updatedby;
@@ -46,7 +46,7 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -56,7 +56,7 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID", nullable=false)
+	@Column(name="AD_USER_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -76,7 +76,7 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID", nullable=false)
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -96,7 +96,7 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -175,27 +175,27 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsapproved() {
+	@Column(nullable=false)
+	public Boolean isIsapproved() {
 		return isapproved;
 	}
 
-	public void setIsapproved(String isapproved) {
+	public void setIsapproved(Boolean isapproved) {
 		this.isapproved = isapproved;
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_ID", nullable=false)
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT", nullable=false)
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -205,7 +205,7 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_REQUISITION_ID")
+	@Column(name="M_REQUISITION_ID", columnDefinition="INT")
 	public Integer getMRequisitionId() {
 		return mRequisitionId;
 	}
@@ -215,7 +215,7 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -245,12 +245,12 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -264,12 +264,11 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -294,7 +293,7 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

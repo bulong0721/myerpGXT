@@ -23,8 +23,8 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	private String dateto;
 	private String description;
 	private BigDecimal goalperformance;
-	private String isactive;
-	private String issummary;
+	private Boolean isactive;
+	private Boolean issummary;
 	private BigDecimal measureactual;
 	private String measuredisplay;
 	private String measurescope;
@@ -48,7 +48,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -58,7 +58,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -68,7 +68,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ROLE_ID")
+	@Column(name="AD_ROLE_ID", columnDefinition="INT")
 	public Integer getAdRoleId() {
 		return adRoleId;
 	}
@@ -78,7 +78,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -108,7 +108,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -163,22 +163,22 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
@@ -242,7 +242,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_COLORSCHEMA_ID", nullable=false)
+	@Column(name="PA_COLORSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getPaColorschemaId() {
 		return paColorschemaId;
 	}
@@ -252,7 +252,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_GOAL_ID")
+	@Column(name="PA_GOAL_ID", columnDefinition="INT")
 	public Integer getPaGoalId() {
 		return paGoalId;
 	}
@@ -262,7 +262,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_GOALPARENT_ID")
+	@Column(name="PA_GOALPARENT_ID", columnDefinition="INT")
 	public Integer getPaGoalparentId() {
 		return paGoalparentId;
 	}
@@ -272,7 +272,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_MEASURE_ID")
+	@Column(name="PA_MEASURE_ID", columnDefinition="INT")
 	public Integer getPaMeasureId() {
 		return paMeasureId;
 	}
@@ -291,7 +291,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -311,7 +311,7 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

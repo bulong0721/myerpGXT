@@ -22,14 +22,14 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private BigDecimal differenceamt;
 	private BigDecimal discountamt;
-	private String isactive;
-	private String ismanual;
-	private String issotrx;
+	private Boolean isactive;
+	private Boolean ismanual;
+	private Boolean issotrx;
 	private Integer line;
 	private BigDecimal openamt;
 	private BigDecimal payamt;
 	private String paymentrule;
-	private String processed;
+	private Boolean processed;
 	private String updated;
 	private Integer updatedby;
 
@@ -41,7 +41,7 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID", nullable=false)
+	@Column(name="C_INVOICE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -71,7 +71,7 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYSELECTION_ID", nullable=false)
+	@Column(name="C_PAYSELECTION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPayselectionId() {
 		return cPayselectionId;
 	}
@@ -81,7 +81,7 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYSELECTIONCHECK_ID")
+	@Column(name="C_PAYSELECTIONCHECK_ID", columnDefinition="INT")
 	public Integer getCPayselectioncheckId() {
 		return cPayselectioncheckId;
 	}
@@ -91,7 +91,7 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_PAYSELECTIONLINE_ID")
+	@Column(name="C_PAYSELECTIONLINE_ID", columnDefinition="INT")
 	public Integer getCPayselectionlineId() {
 		return cPayselectionlineId;
 	}
@@ -111,7 +111,7 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -150,37 +150,37 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmanual() {
+	@Column(nullable=false)
+	public Boolean isIsmanual() {
 		return ismanual;
 	}
 
-	public void setIsmanual(String ismanual) {
+	public void setIsmanual(Boolean ismanual) {
 		this.ismanual = ismanual;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssotrx() {
+	@Column(nullable=false)
+	public Boolean isIssotrx() {
 		return issotrx;
 	}
 
-	public void setIssotrx(String issotrx) {
+	public void setIssotrx(Boolean issotrx) {
 		this.issotrx = issotrx;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -220,12 +220,12 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -240,7 +240,7 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

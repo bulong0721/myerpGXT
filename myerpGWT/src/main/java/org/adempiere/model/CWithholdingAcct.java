@@ -17,7 +17,7 @@ public class CWithholdingAcct extends org.adempiere.common.ADEntityBase {
 	private Integer cWithholdingId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String updated;
 	private Integer updatedby;
 	private Integer withholdingAcct;
@@ -31,7 +31,7 @@ public class CWithholdingAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class CWithholdingAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -51,7 +51,7 @@ public class CWithholdingAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -61,7 +61,7 @@ public class CWithholdingAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_WITHHOLDING_ID")
+	@Column(name="C_WITHHOLDING_ID", columnDefinition="INT")
 	public Integer getCWithholdingId() {
 		return cWithholdingId;
 	}
@@ -81,7 +81,7 @@ public class CWithholdingAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -91,12 +91,12 @@ public class CWithholdingAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -111,7 +111,7 @@ public class CWithholdingAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -121,7 +121,7 @@ public class CWithholdingAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="WITHHOLDING_ACCT", nullable=false)
+	@Column(name="WITHHOLDING_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWithholdingAcct() {
 		return withholdingAcct;
 	}

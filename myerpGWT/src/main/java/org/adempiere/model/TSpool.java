@@ -24,7 +24,7 @@ public class TSpool extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -44,6 +44,7 @@ public class TSpool extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
+	@Column(columnDefinition="INT")
 	public Integer getSeqno() {
 		return seqno;
 	}

@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 public class StringUtil {
 
 	public static final String	EMPTY	= "";
+	public static final String	YES	= "Y";
+	public static final String	NO	= "N";
 
 	/**
 	 * @param text

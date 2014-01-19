@@ -26,10 +26,10 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	private String feature;
 	private BigDecimal forecast;
 	private String help;
-	private String isactive;
-	private String iscritical;
-	private String isqtypercentage;
-	private String issuemethod;
+	private Boolean isactive;
+	private Boolean iscritical;
+	private Boolean isqtypercentage;
+	private Boolean issuemethod;
 	private Integer leadtimeoffset;
 	private Integer line;
 	private Integer mAttributesetinstanceId;
@@ -63,7 +63,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -73,7 +73,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -83,7 +83,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -112,7 +112,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID", nullable=false)
+	@Column(name="C_UOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -151,7 +151,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -208,46 +208,45 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscritical() {
+	@Column(nullable=false)
+	public Boolean isIscritical() {
 		return iscritical;
 	}
 
-	public void setIscritical(String iscritical) {
+	public void setIscritical(Boolean iscritical) {
 		this.iscritical = iscritical;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsqtypercentage() {
+	public Boolean isIsqtypercentage() {
 		return isqtypercentage;
 	}
 
-	public void setIsqtypercentage(String isqtypercentage) {
+	public void setIsqtypercentage(Boolean isqtypercentage) {
 		this.isqtypercentage = isqtypercentage;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssuemethod() {
+	public Boolean isIssuemethod() {
 		return issuemethod;
 	}
 
-	public void setIssuemethod(String issuemethod) {
+	public void setIssuemethod(Boolean issuemethod) {
 		this.issuemethod = issuemethod;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLeadtimeoffset() {
 		return leadtimeoffset;
 	}
@@ -257,7 +256,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -267,7 +266,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -277,7 +276,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_CHANGENOTICE_ID")
+	@Column(name="M_CHANGENOTICE_ID", columnDefinition="INT")
 	public Integer getMChangenoticeId() {
 		return mChangenoticeId;
 	}
@@ -287,7 +286,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID")
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -297,7 +296,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -307,7 +306,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -317,7 +316,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_BOM_ID", nullable=false)
+	@Column(name="PP_ORDER_BOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getPpOrderBomId() {
 		return ppOrderBomId;
 	}
@@ -327,7 +326,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PP_ORDER_BOMLINE_ID")
+	@Column(name="PP_ORDER_BOMLINE_ID", columnDefinition="INT")
 	public Integer getPpOrderBomlineId() {
 		return ppOrderBomlineId;
 	}
@@ -337,7 +336,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_ID", nullable=false)
+	@Column(name="PP_ORDER_ID", columnDefinition="INT", nullable=false)
 	public Integer getPpOrderId() {
 		return ppOrderId;
 	}
@@ -455,7 +454,7 @@ public class PpOrderBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -19,7 +19,7 @@ public class PaMeasurecalc extends org.adempiere.common.ADEntityBase {
 	private String datecolumn;
 	private String description;
 	private String entitytype;
-	private String isactive;
+	private Boolean isactive;
 	private String keycolumn;
 	private String name;
 	private String orgcolumn;
@@ -38,7 +38,7 @@ public class PaMeasurecalc extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class PaMeasurecalc extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -58,7 +58,7 @@ public class PaMeasurecalc extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -88,7 +88,7 @@ public class PaMeasurecalc extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -127,12 +127,12 @@ public class PaMeasurecalc extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -167,7 +167,7 @@ public class PaMeasurecalc extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_MEASURECALC_ID")
+	@Column(name="PA_MEASURECALC_ID", columnDefinition="INT")
 	public Integer getPaMeasurecalcId() {
 		return paMeasurecalcId;
 	}
@@ -207,7 +207,7 @@ public class PaMeasurecalc extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

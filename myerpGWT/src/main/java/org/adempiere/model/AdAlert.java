@@ -22,8 +22,8 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 	private String enforceclientsecurity;
 	private String enforcerolesecurity;
 	private String help;
-	private String isactive;
-	private String isvalid;
+	private Boolean isactive;
+	private Boolean isvalid;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -36,7 +36,7 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ALERT_ID")
+	@Column(name="AD_ALERT_ID", columnDefinition="INT")
 	public Integer getAdAlertId() {
 		return adAlertId;
 	}
@@ -46,7 +46,7 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ALERTPROCESSOR_ID")
+	@Column(name="AD_ALERTPROCESSOR_ID", columnDefinition="INT")
 	public Integer getAdAlertprocessorId() {
 		return adAlertprocessorId;
 	}
@@ -56,7 +56,7 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -66,7 +66,7 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -106,7 +106,7 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -155,22 +155,22 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsvalid() {
+	@Column(nullable=false)
+	public Boolean isIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(String isvalid) {
+	public void setIsvalid(Boolean isvalid) {
 		this.isvalid = isvalid;
 	}
 
@@ -195,7 +195,7 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

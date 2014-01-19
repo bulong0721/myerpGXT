@@ -12,7 +12,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.PropertyResourceBundle;
@@ -201,18 +200,7 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 	}
 
 	public static void main(String[] args) {
-		ProcessContext ctx = new ProcessContext() {
-			@Override
-			public Connection getConnection() {
-				try {
-					Class.forName("com.mysql.jdbc.Driver");
-					return DriverManager.getConnection("jdbc:mysql://localhost:3306/adempiere", "adempiere", "adempiere");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				return null;
-			}
-		};
+		ProcessContext ctx = new ProcessContext();
 		ReportStarter starter = new ReportStarter();
 		ProcessResult pInfo = new ProcessResult();
 		starter.startProcess(ctx, pInfo);

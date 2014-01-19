@@ -18,13 +18,13 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private Integer ddNetworkdistributionId;
 	private BigDecimal deliverytimePromised;
-	private String isactive;
-	private String iscreateplan;
-	private String isissue;
-	private String ismps;
-	private String isphantom;
-	private String isrequireddrp;
-	private String isrequiredmrp;
+	private Boolean isactive;
+	private Boolean iscreateplan;
+	private Boolean isissue;
+	private Boolean ismps;
+	private Boolean isphantom;
+	private Boolean isrequireddrp;
+	private Boolean isrequiredmrp;
 	private Integer mProductId;
 	private Integer mWarehouseId;
 	private BigDecimal orderMax;
@@ -53,7 +53,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -63,7 +63,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -73,7 +73,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKFLOW_ID")
+	@Column(name="AD_WORKFLOW_ID", columnDefinition="INT")
 	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
@@ -93,7 +93,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -103,7 +103,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DD_NETWORKDISTRIBUTION_ID")
+	@Column(name="DD_NETWORKDISTRIBUTION_ID", columnDefinition="INT")
 	public Integer getDdNetworkdistributionId() {
 		return ddNetworkdistributionId;
 	}
@@ -123,77 +123,76 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscreateplan() {
+	@Column(nullable=false)
+	public Boolean isIscreateplan() {
 		return iscreateplan;
 	}
 
-	public void setIscreateplan(String iscreateplan) {
+	public void setIscreateplan(Boolean iscreateplan) {
 		this.iscreateplan = iscreateplan;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsissue() {
+	@Column(nullable=false)
+	public Boolean isIsissue() {
 		return isissue;
 	}
 
-	public void setIsissue(String isissue) {
+	public void setIsissue(Boolean isissue) {
 		this.isissue = isissue;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsmps() {
+	public Boolean isIsmps() {
 		return ismps;
 	}
 
-	public void setIsmps(String ismps) {
+	public void setIsmps(Boolean ismps) {
 		this.ismps = ismps;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsphantom() {
+	@Column(nullable=false)
+	public Boolean isIsphantom() {
 		return isphantom;
 	}
 
-	public void setIsphantom(String isphantom) {
+	public void setIsphantom(Boolean isphantom) {
 		this.isphantom = isphantom;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsrequireddrp() {
+	@Column(nullable=false)
+	public Boolean isIsrequireddrp() {
 		return isrequireddrp;
 	}
 
-	public void setIsrequireddrp(String isrequireddrp) {
+	public void setIsrequireddrp(Boolean isrequireddrp) {
 		this.isrequireddrp = isrequireddrp;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsrequiredmrp() {
+	@Column(nullable=false)
+	public Boolean isIsrequiredmrp() {
 		return isrequiredmrp;
 	}
 
-	public void setIsrequiredmrp(String isrequiredmrp) {
+	public void setIsrequiredmrp(Boolean isrequiredmrp) {
 		this.isrequiredmrp = isrequiredmrp;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -203,7 +202,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -273,7 +272,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PLANNER_ID")
+	@Column(name="PLANNER_ID", columnDefinition="INT")
 	public Integer getPlannerId() {
 		return plannerId;
 	}
@@ -283,7 +282,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_PRODUCT_BOM_ID")
+	@Column(name="PP_PRODUCT_BOM_ID", columnDefinition="INT")
 	public Integer getPpProductBomId() {
 		return ppProductBomId;
 	}
@@ -293,7 +292,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PP_PRODUCT_PLANNING_ID")
+	@Column(name="PP_PRODUCT_PLANNING_ID", columnDefinition="INT")
 	public Integer getPpProductPlanningId() {
 		return ppProductPlanningId;
 	}
@@ -303,7 +302,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCE_ID")
+	@Column(name="S_RESOURCE_ID", columnDefinition="INT")
 	public Integer getSResourceId() {
 		return sResourceId;
 	}
@@ -350,7 +349,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -369,6 +368,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getYield() {
 		return yield;
 	}

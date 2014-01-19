@@ -48,7 +48,7 @@ public interface AdempiereService extends RemoteService {
 	
 	String processCallout(ADFieldModel field, String rowJson);
 	
-	ProcessResult executeProcess(ADProcessModel pModel, String paramJson);
+	ProcessResult executeProcess(ADProcessModel pModel, String rowJson, String paramJson);
 
 	Boolean logout();
 }

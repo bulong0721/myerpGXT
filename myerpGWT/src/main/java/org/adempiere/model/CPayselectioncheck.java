@@ -22,13 +22,13 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private BigDecimal discountamt;
 	private String documentno;
-	private String isactive;
-	private String isgenerateddraft;
-	private String isprinted;
-	private String isreceipt;
+	private Boolean isactive;
+	private Boolean isgenerateddraft;
+	private Boolean isprinted;
+	private Boolean isreceipt;
 	private BigDecimal payamt;
 	private String paymentrule;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal qty;
 	private String updated;
 	private Integer updatedby;
@@ -41,7 +41,7 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BP_BANKACCOUNT_ID")
+	@Column(name="C_BP_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCBpBankaccountId() {
 		return cBpBankaccountId;
 	}
@@ -71,7 +71,7 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -81,7 +81,7 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -91,7 +91,7 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYSELECTION_ID", nullable=false)
+	@Column(name="C_PAYSELECTION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPayselectionId() {
 		return cPayselectionId;
 	}
@@ -101,7 +101,7 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_PAYSELECTIONCHECK_ID")
+	@Column(name="C_PAYSELECTIONCHECK_ID", columnDefinition="INT")
 	public Integer getCPayselectioncheckId() {
 		return cPayselectioncheckId;
 	}
@@ -121,7 +121,7 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -151,42 +151,42 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsgenerateddraft() {
+	@Column(nullable=false)
+	public Boolean isIsgenerateddraft() {
 		return isgenerateddraft;
 	}
 
-	public void setIsgenerateddraft(String isgenerateddraft) {
+	public void setIsgenerateddraft(Boolean isgenerateddraft) {
 		this.isgenerateddraft = isgenerateddraft;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprinted() {
+	@Column(nullable=false)
+	public Boolean isIsprinted() {
 		return isprinted;
 	}
 
-	public void setIsprinted(String isprinted) {
+	public void setIsprinted(Boolean isprinted) {
 		this.isprinted = isprinted;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreceipt() {
+	@Column(nullable=false)
+	public Boolean isIsreceipt() {
 		return isreceipt;
 	}
 
-	public void setIsreceipt(String isreceipt) {
+	public void setIsreceipt(Boolean isreceipt) {
 		this.isreceipt = isreceipt;
 	}
 
@@ -211,12 +211,12 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -241,7 +241,7 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -20,7 +20,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String entitytype;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mark1percent;
 	private Integer mark2percent;
 	private Integer mark3percent;
@@ -38,7 +38,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -58,7 +58,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTCOLOR1_ID", nullable=false)
+	@Column(name="AD_PRINTCOLOR1_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdPrintcolor1Id() {
 		return adPrintcolor1Id;
 	}
@@ -68,7 +68,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTCOLOR2_ID", nullable=false)
+	@Column(name="AD_PRINTCOLOR2_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdPrintcolor2Id() {
 		return adPrintcolor2Id;
 	}
@@ -78,7 +78,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTCOLOR3_ID")
+	@Column(name="AD_PRINTCOLOR3_ID", columnDefinition="INT")
 	public Integer getAdPrintcolor3Id() {
 		return adPrintcolor3Id;
 	}
@@ -88,7 +88,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTCOLOR4_ID")
+	@Column(name="AD_PRINTCOLOR4_ID", columnDefinition="INT")
 	public Integer getAdPrintcolor4Id() {
 		return adPrintcolor4Id;
 	}
@@ -108,7 +108,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -137,17 +137,17 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMark1percent() {
 		return mark1percent;
 	}
@@ -157,7 +157,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMark2percent() {
 		return mark2percent;
 	}
@@ -167,6 +167,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getMark3percent() {
 		return mark3percent;
 	}
@@ -176,6 +177,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getMark4percent() {
 		return mark4percent;
 	}
@@ -195,7 +197,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_COLORSCHEMA_ID")
+	@Column(name="PA_COLORSCHEMA_ID", columnDefinition="INT")
 	public Integer getPaColorschemaId() {
 		return paColorschemaId;
 	}
@@ -215,7 +217,7 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -20,12 +20,12 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String entitytype;
 	private String help;
-	private String isactive;
-	private String isbetafunctionality;
-	private String isdefault;
-	private String issotrx;
+	private Boolean isactive;
+	private Boolean isbetafunctionality;
+	private Boolean isdefault;
+	private Boolean issotrx;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 	private String windowtype;
@@ -40,7 +40,7 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLOR_ID")
+	@Column(name="AD_COLOR_ID", columnDefinition="INT")
 	public Integer getAdColorId() {
 		return adColorId;
 	}
@@ -60,7 +60,7 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_IMAGE_ID")
+	@Column(name="AD_IMAGE_ID", columnDefinition="INT")
 	public Integer getAdImageId() {
 		return adImageId;
 	}
@@ -70,7 +70,7 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -80,7 +80,7 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_WINDOW_ID")
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT")
 	public Integer getAdWindowId() {
 		return adWindowId;
 	}
@@ -100,7 +100,7 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -139,42 +139,42 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsbetafunctionality() {
+	@Column(nullable=false)
+	public Boolean isIsbetafunctionality() {
 		return isbetafunctionality;
 	}
 
-	public void setIsbetafunctionality(String isbetafunctionality) {
+	public void setIsbetafunctionality(Boolean isbetafunctionality) {
 		this.isbetafunctionality = isbetafunctionality;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssotrx() {
+	@Column(nullable=false)
+	public Boolean isIssotrx() {
 		return issotrx;
 	}
 
-	public void setIssotrx(String issotrx) {
+	public void setIssotrx(Boolean issotrx) {
 		this.issotrx = issotrx;
 	}
 
@@ -189,12 +189,11 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -209,7 +208,7 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -229,6 +228,7 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getWinheight() {
 		return winheight;
 	}
@@ -238,6 +238,7 @@ public class AdWindow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getWinwidth() {
 		return winwidth;
 	}

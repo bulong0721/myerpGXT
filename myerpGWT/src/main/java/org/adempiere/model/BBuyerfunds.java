@@ -20,7 +20,7 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 	private BigDecimal committedamt;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal noncommittedamt;
 	private String updated;
 	private Integer updatedby;
@@ -33,7 +33,7 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID", nullable=false)
+	@Column(name="AD_USER_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -63,7 +63,7 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="B_BUYERFUNDS_ID")
+	@Column(name="B_BUYERFUNDS_ID", columnDefinition="INT")
 	public Integer getBBuyerfundsId() {
 		return bBuyerfundsId;
 	}
@@ -73,7 +73,7 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDER_ID")
+	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -83,7 +83,7 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -113,7 +113,7 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -123,12 +123,12 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -153,7 +153,7 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

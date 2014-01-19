@@ -21,7 +21,7 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private String metaAuthor;
 	private String metaContent;
 	private String metaCopyright;
@@ -39,7 +39,7 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -49,7 +49,7 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -59,7 +59,7 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREECMC_ID", nullable=false)
+	@Column(name="AD_TREECMC_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTreecmcId() {
 		return adTreecmcId;
 	}
@@ -69,7 +69,7 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREECMM_ID", nullable=false)
+	@Column(name="AD_TREECMM_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTreecmmId() {
 		return adTreecmmId;
 	}
@@ -79,7 +79,7 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREECMS_ID", nullable=false)
+	@Column(name="AD_TREECMS_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTreecmsId() {
 		return adTreecmsId;
 	}
@@ -89,7 +89,7 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREECMT_ID", nullable=false)
+	@Column(name="AD_TREECMT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTreecmtId() {
 		return adTreecmtId;
 	}
@@ -99,7 +99,7 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="CM_WEBPROJECT_ID")
+	@Column(name="CM_WEBPROJECT_ID", columnDefinition="INT")
 	public Integer getCmWebprojectId() {
 		return cmWebprojectId;
 	}
@@ -119,7 +119,7 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -148,12 +148,12 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -228,7 +228,7 @@ public class CmWebproject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

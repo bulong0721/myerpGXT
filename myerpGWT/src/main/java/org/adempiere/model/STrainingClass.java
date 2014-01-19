@@ -15,7 +15,7 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String enddate;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mProductId;
 	private Integer sTrainingClassId;
 	private Integer sTrainingId;
@@ -31,7 +31,7 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -81,17 +81,17 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -101,7 +101,7 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="S_TRAINING_CLASS_ID")
+	@Column(name="S_TRAINING_CLASS_ID", columnDefinition="INT")
 	public Integer getSTrainingClassId() {
 		return sTrainingClassId;
 	}
@@ -111,7 +111,7 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_TRAINING_ID", nullable=false)
+	@Column(name="S_TRAINING_ID", columnDefinition="INT", nullable=false)
 	public Integer getSTrainingId() {
 		return sTrainingId;
 	}
@@ -141,7 +141,7 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -16,7 +16,7 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	private Integer cAcctschemaId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mWarehouseId;
 	private String updated;
 	private Integer updatedby;
@@ -34,7 +34,7 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -54,7 +54,7 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -74,7 +74,7 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -84,17 +84,17 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -114,7 +114,7 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -124,7 +124,7 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_DIFFERENCES_ACCT", nullable=false)
+	@Column(name="W_DIFFERENCES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWDifferencesAcct() {
 		return wDifferencesAcct;
 	}
@@ -134,7 +134,7 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_INVACTUALADJUST_ACCT", nullable=false)
+	@Column(name="W_INVACTUALADJUST_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWInvactualadjustAcct() {
 		return wInvactualadjustAcct;
 	}
@@ -144,7 +144,7 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_INVENTORY_ACCT", nullable=false)
+	@Column(name="W_INVENTORY_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWInventoryAcct() {
 		return wInventoryAcct;
 	}
@@ -154,7 +154,7 @@ public class MWarehouseAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_REVALUATION_ACCT", nullable=false)
+	@Column(name="W_REVALUATION_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWRevaluationAcct() {
 		return wRevaluationAcct;
 	}

@@ -19,7 +19,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private BigDecimal freightamt;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mFreightId;
 	private Integer mFreightcategoryId;
 	private Integer mShipperId;
@@ -37,7 +37,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -57,7 +57,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_COUNTRY_ID")
+	@Column(name="C_COUNTRY_ID", columnDefinition="INT")
 	public Integer getCCountryId() {
 		return cCountryId;
 	}
@@ -67,7 +67,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -77,7 +77,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_REGION_ID")
+	@Column(name="C_REGION_ID", columnDefinition="INT")
 	public Integer getCRegionId() {
 		return cRegionId;
 	}
@@ -97,7 +97,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -117,17 +117,17 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Id
-	@Column(name="M_FREIGHT_ID")
+	@Column(name="M_FREIGHT_ID", columnDefinition="INT")
 	public Integer getMFreightId() {
 		return mFreightId;
 	}
@@ -137,7 +137,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_FREIGHTCATEGORY_ID", nullable=false)
+	@Column(name="M_FREIGHTCATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getMFreightcategoryId() {
 		return mFreightcategoryId;
 	}
@@ -147,7 +147,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_SHIPPER_ID", nullable=false)
+	@Column(name="M_SHIPPER_ID", columnDefinition="INT", nullable=false)
 	public Integer getMShipperId() {
 		return mShipperId;
 	}
@@ -157,7 +157,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="TO_COUNTRY_ID")
+	@Column(name="TO_COUNTRY_ID", columnDefinition="INT")
 	public Integer getToCountryId() {
 		return toCountryId;
 	}
@@ -167,7 +167,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="TO_REGION_ID")
+	@Column(name="TO_REGION_ID", columnDefinition="INT")
 	public Integer getToRegionId() {
 		return toRegionId;
 	}
@@ -187,7 +187,7 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

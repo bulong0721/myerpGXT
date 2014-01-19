@@ -24,15 +24,15 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	private String docaction;
 	private String docstatus;
 	private String documentno;
-	private String isactive;
-	private String isapproved;
-	private String iscancelled;
-	private String isindispute;
+	private Boolean isactive;
+	private Boolean isapproved;
+	private Boolean iscancelled;
+	private Boolean isindispute;
 	private Integer mInoutId;
 	private Integer mInoutconfirmId;
 	private Integer mInventoryId;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -44,7 +44,7 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -54,7 +54,7 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -73,7 +73,7 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -113,7 +113,7 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -172,47 +172,47 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsapproved() {
+	@Column(nullable=false)
+	public Boolean isIsapproved() {
 		return isapproved;
 	}
 
-	public void setIsapproved(String isapproved) {
+	public void setIsapproved(Boolean isapproved) {
 		this.isapproved = isapproved;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscancelled() {
+	@Column(nullable=false)
+	public Boolean isIscancelled() {
 		return iscancelled;
 	}
 
-	public void setIscancelled(String iscancelled) {
+	public void setIscancelled(Boolean iscancelled) {
 		this.iscancelled = iscancelled;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsindispute() {
+	@Column(nullable=false)
+	public Boolean isIsindispute() {
 		return isindispute;
 	}
 
-	public void setIsindispute(String isindispute) {
+	public void setIsindispute(Boolean isindispute) {
 		this.isindispute = isindispute;
 	}
 
 	@Basic
-	@Column(name="M_INOUT_ID", nullable=false)
+	@Column(name="M_INOUT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMInoutId() {
 		return mInoutId;
 	}
@@ -222,7 +222,7 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_INOUTCONFIRM_ID")
+	@Column(name="M_INOUTCONFIRM_ID", columnDefinition="INT")
 	public Integer getMInoutconfirmId() {
 		return mInoutconfirmId;
 	}
@@ -232,7 +232,7 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INVENTORY_ID")
+	@Column(name="M_INVENTORY_ID", columnDefinition="INT")
 	public Integer getMInventoryId() {
 		return mInventoryId;
 	}
@@ -242,22 +242,21 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -272,7 +271,7 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

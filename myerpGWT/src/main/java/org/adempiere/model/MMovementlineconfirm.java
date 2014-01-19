@@ -18,12 +18,12 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private BigDecimal differenceqty;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mInventorylineId;
 	private Integer mMovementconfirmId;
 	private Integer mMovementlineId;
 	private Integer mMovementlineconfirmId;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal scrappedqty;
 	private BigDecimal targetqty;
 	private String updated;
@@ -37,7 +37,7 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -106,17 +106,17 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_INVENTORYLINE_ID")
+	@Column(name="M_INVENTORYLINE_ID", columnDefinition="INT")
 	public Integer getMInventorylineId() {
 		return mInventorylineId;
 	}
@@ -126,7 +126,7 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_MOVEMENTCONFIRM_ID", nullable=false)
+	@Column(name="M_MOVEMENTCONFIRM_ID", columnDefinition="INT", nullable=false)
 	public Integer getMMovementconfirmId() {
 		return mMovementconfirmId;
 	}
@@ -136,7 +136,7 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_MOVEMENTLINE_ID", nullable=false)
+	@Column(name="M_MOVEMENTLINE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMMovementlineId() {
 		return mMovementlineId;
 	}
@@ -146,7 +146,7 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_MOVEMENTLINECONFIRM_ID")
+	@Column(name="M_MOVEMENTLINECONFIRM_ID", columnDefinition="INT")
 	public Integer getMMovementlineconfirmId() {
 		return mMovementlineconfirmId;
 	}
@@ -156,12 +156,12 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -196,7 +196,7 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

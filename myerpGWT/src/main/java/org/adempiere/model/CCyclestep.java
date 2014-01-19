@@ -17,7 +17,7 @@ public class CCyclestep extends org.adempiere.common.ADEntityBase {
 	private Integer cCyclestepId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private BigDecimal relativeweight;
 	private Integer seqno;
@@ -32,7 +32,7 @@ public class CCyclestep extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class CCyclestep extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -52,7 +52,7 @@ public class CCyclestep extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CYCLE_ID", nullable=false)
+	@Column(name="C_CYCLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCycleId() {
 		return cCycleId;
 	}
@@ -62,7 +62,7 @@ public class CCyclestep extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_CYCLESTEP_ID")
+	@Column(name="C_CYCLESTEP_ID", columnDefinition="INT")
 	public Integer getCCyclestepId() {
 		return cCyclestepId;
 	}
@@ -82,7 +82,7 @@ public class CCyclestep extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -92,12 +92,12 @@ public class CCyclestep extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -122,7 +122,7 @@ public class CCyclestep extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -142,7 +142,7 @@ public class CCyclestep extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -23,9 +23,9 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	private Integer cDunningrunentryId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String note;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal qty;
 	private Integer salesrepId;
 	private String updated;
@@ -39,7 +39,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -49,7 +49,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -59,7 +59,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -79,7 +79,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -89,7 +89,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID", nullable=false)
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -99,7 +99,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -109,7 +109,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DUNNINGLEVEL_ID", nullable=false)
+	@Column(name="C_DUNNINGLEVEL_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDunninglevelId() {
 		return cDunninglevelId;
 	}
@@ -119,7 +119,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DUNNINGRUN_ID", nullable=false)
+	@Column(name="C_DUNNINGRUN_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDunningrunId() {
 		return cDunningrunId;
 	}
@@ -129,7 +129,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_DUNNINGRUNENTRY_ID")
+	@Column(name="C_DUNNINGRUNENTRY_ID", columnDefinition="INT")
 	public Integer getCDunningrunentryId() {
 		return cDunningrunentryId;
 	}
@@ -149,7 +149,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -159,12 +159,12 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -179,12 +179,12 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -199,7 +199,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID", nullable=false)
+	@Column(name="SALESREP_ID", columnDefinition="INT", nullable=false)
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -219,7 +219,7 @@ public class CDunningrunentry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

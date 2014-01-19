@@ -20,7 +20,7 @@ public class AdRule extends org.adempiere.common.ADEntityBase {
 	private String entitytype;
 	private String eventtype;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String ruletype;
 	private String script;
@@ -46,7 +46,7 @@ public class AdRule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -56,7 +56,7 @@ public class AdRule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class AdRule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_RULE_ID")
+	@Column(name="AD_RULE_ID", columnDefinition="INT")
 	public Integer getAdRuleId() {
 		return adRuleId;
 	}
@@ -86,7 +86,7 @@ public class AdRule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -135,12 +135,12 @@ public class AdRule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -185,7 +185,7 @@ public class AdRule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

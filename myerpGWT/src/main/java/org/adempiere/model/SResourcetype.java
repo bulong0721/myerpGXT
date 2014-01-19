@@ -20,10 +20,10 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isdateslot;
-	private String issingleassignment;
-	private String istimeslot;
+	private Boolean isactive;
+	private Boolean isdateslot;
+	private Boolean issingleassignment;
+	private Boolean istimeslot;
 	private Integer mProductCategoryId;
 	private String name;
 	private String onfriday;
@@ -48,7 +48,7 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -58,7 +58,7 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -78,7 +78,7 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXCATEGORY_ID", nullable=false)
+	@Column(name="C_TAXCATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCTaxcategoryId() {
 		return cTaxcategoryId;
 	}
@@ -88,7 +88,7 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID", nullable=false)
+	@Column(name="C_UOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -117,7 +117,7 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -136,47 +136,47 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdateslot() {
+	@Column(nullable=false)
+	public Boolean isIsdateslot() {
 		return isdateslot;
 	}
 
-	public void setIsdateslot(String isdateslot) {
+	public void setIsdateslot(Boolean isdateslot) {
 		this.isdateslot = isdateslot;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssingleassignment() {
+	@Column(nullable=false)
+	public Boolean isIssingleassignment() {
 		return issingleassignment;
 	}
 
-	public void setIssingleassignment(String issingleassignment) {
+	public void setIssingleassignment(Boolean issingleassignment) {
 		this.issingleassignment = issingleassignment;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstimeslot() {
+	@Column(nullable=false)
+	public Boolean isIstimeslot() {
 		return istimeslot;
 	}
 
-	public void setIstimeslot(String istimeslot) {
+	public void setIstimeslot(Boolean istimeslot) {
 		this.istimeslot = istimeslot;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_CATEGORY_ID", nullable=false)
+	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}
@@ -266,7 +266,7 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="S_RESOURCETYPE_ID")
+	@Column(name="S_RESOURCETYPE_ID", columnDefinition="INT")
 	public Integer getSResourcetypeId() {
 		return sResourcetypeId;
 	}
@@ -304,7 +304,7 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

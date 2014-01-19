@@ -18,8 +18,8 @@ public class AdReportviewCol extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String functioncolumn;
-	private String isactive;
-	private String isgroupfunction;
+	private Boolean isactive;
+	private Boolean isgroupfunction;
 	private String updated;
 	private Integer updatedby;
 
@@ -31,7 +31,7 @@ public class AdReportviewCol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class AdReportviewCol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -51,7 +51,7 @@ public class AdReportviewCol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class AdReportviewCol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_REPORTVIEW_COL_ID")
+	@Column(name="AD_REPORTVIEW_COL_ID", columnDefinition="INT")
 	public Integer getAdReportviewColId() {
 		return adReportviewColId;
 	}
@@ -71,7 +71,7 @@ public class AdReportviewCol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REPORTVIEW_ID", nullable=false)
+	@Column(name="AD_REPORTVIEW_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdReportviewId() {
 		return adReportviewId;
 	}
@@ -91,7 +91,7 @@ public class AdReportviewCol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -111,22 +111,22 @@ public class AdReportviewCol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsgroupfunction() {
+	@Column(nullable=false)
+	public Boolean isIsgroupfunction() {
 		return isgroupfunction;
 	}
 
-	public void setIsgroupfunction(String isgroupfunction) {
+	public void setIsgroupfunction(Boolean isgroupfunction) {
 		this.isgroupfunction = isgroupfunction;
 	}
 
@@ -141,7 +141,7 @@ public class AdReportviewCol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

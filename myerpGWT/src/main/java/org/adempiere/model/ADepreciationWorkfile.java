@@ -33,10 +33,10 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String dateacct;
-	private String isactive;
-	private String isdepreciated;
+	private Boolean isactive;
+	private Boolean isdepreciated;
 	private String postingtype;
-	private String processing;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -68,7 +68,7 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID", nullable=false)
+	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -88,7 +88,7 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_LIFE_YEARS", nullable=false)
+	@Column(name="A_ASSET_LIFE_YEARS", columnDefinition="INT", nullable=false)
 	public Integer getAAssetLifeYears() {
 		return aAssetLifeYears;
 	}
@@ -128,7 +128,7 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_CURRENT_PERIOD")
+	@Column(name="A_CURRENT_PERIOD", columnDefinition="INT")
 	public Integer getACurrentPeriod() {
 		return aCurrentPeriod;
 	}
@@ -138,7 +138,7 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_DEPRECIATION_WORKFILE_ID")
+	@Column(name="A_DEPRECIATION_WORKFILE_ID", columnDefinition="INT")
 	public Integer getADepreciationWorkfileId() {
 		return aDepreciationWorkfileId;
 	}
@@ -148,7 +148,7 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_LIFE_PERIOD")
+	@Column(name="A_LIFE_PERIOD", columnDefinition="INT")
 	public Integer getALifePeriod() {
 		return aLifePeriod;
 	}
@@ -168,7 +168,7 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PERIOD_POSTED")
+	@Column(name="A_PERIOD_POSTED", columnDefinition="INT")
 	public Integer getAPeriodPosted() {
 		return aPeriodPosted;
 	}
@@ -208,7 +208,7 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -218,7 +218,7 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -247,7 +247,7 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -266,22 +266,21 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdepreciated() {
+	public Boolean isIsdepreciated() {
 		return isdepreciated;
 	}
 
-	public void setIsdepreciated(String isdepreciated) {
+	public void setIsdepreciated(Boolean isdepreciated) {
 		this.isdepreciated = isdepreciated;
 	}
 
@@ -296,12 +295,11 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -316,7 +314,7 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

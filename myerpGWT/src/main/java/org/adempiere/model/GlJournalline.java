@@ -32,10 +32,10 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private Integer glJournalId;
 	private Integer glJournallineId;
-	private String isactive;
-	private String isgenerated;
+	private Boolean isactive;
+	private Boolean isgenerated;
 	private Integer line;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal qty;
 	private String updated;
 	private Integer updatedby;
@@ -48,7 +48,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_GROUP_ID")
+	@Column(name="A_ASSET_GROUP_ID", columnDefinition="INT")
 	public Integer getAAssetGroupId() {
 		return aAssetGroupId;
 	}
@@ -58,7 +58,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID")
+	@Column(name="A_ASSET_ID", columnDefinition="INT")
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -88,7 +88,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -98,7 +98,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -148,7 +148,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CONVERSIONTYPE_ID", nullable=false)
+	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCConversiontypeId() {
 		return cConversiontypeId;
 	}
@@ -158,7 +158,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -168,7 +168,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID")
+	@Column(name="C_UOM_ID", columnDefinition="INT")
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -178,7 +178,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_VALIDCOMBINATION_ID", nullable=false)
+	@Column(name="C_VALIDCOMBINATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCValidcombinationId() {
 		return cValidcombinationId;
 	}
@@ -198,7 +198,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -237,7 +237,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_JOURNAL_ID", nullable=false)
+	@Column(name="GL_JOURNAL_ID", columnDefinition="INT", nullable=false)
 	public Integer getGlJournalId() {
 		return glJournalId;
 	}
@@ -247,7 +247,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="GL_JOURNALLINE_ID")
+	@Column(name="GL_JOURNALLINE_ID", columnDefinition="INT")
 	public Integer getGlJournallineId() {
 		return glJournallineId;
 	}
@@ -257,27 +257,27 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsgenerated() {
+	@Column(nullable=false)
+	public Boolean isIsgenerated() {
 		return isgenerated;
 	}
 
-	public void setIsgenerated(String isgenerated) {
+	public void setIsgenerated(Boolean isgenerated) {
 		this.isgenerated = isgenerated;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -287,12 +287,12 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -316,7 +316,7 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

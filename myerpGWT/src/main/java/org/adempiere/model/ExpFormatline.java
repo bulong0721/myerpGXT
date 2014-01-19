@@ -21,9 +21,9 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	private Integer expFormatId;
 	private Integer expFormatlineId;
 	private String help;
-	private String isactive;
-	private String ismandatory;
-	private String ispartuniqueindex;
+	private Boolean isactive;
+	private Boolean ismandatory;
+	private Boolean ispartuniqueindex;
 	private String name;
 	private Integer position;
 	private String type;
@@ -39,7 +39,7 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -49,7 +49,7 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -59,7 +59,7 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -79,7 +79,7 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -108,7 +108,7 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="EXP_EMBEDDEDFORMAT_ID")
+	@Column(name="EXP_EMBEDDEDFORMAT_ID", columnDefinition="INT")
 	public Integer getExpEmbeddedformatId() {
 		return expEmbeddedformatId;
 	}
@@ -118,7 +118,7 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="EXP_FORMAT_ID")
+	@Column(name="EXP_FORMAT_ID", columnDefinition="INT")
 	public Integer getExpFormatId() {
 		return expFormatId;
 	}
@@ -128,7 +128,7 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="EXP_FORMATLINE_ID")
+	@Column(name="EXP_FORMATLINE_ID", columnDefinition="INT")
 	public Integer getExpFormatlineId() {
 		return expFormatlineId;
 	}
@@ -148,32 +148,30 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsmandatory() {
+	public Boolean isIsmandatory() {
 		return ismandatory;
 	}
 
-	public void setIsmandatory(String ismandatory) {
+	public void setIsmandatory(Boolean ismandatory) {
 		this.ismandatory = ismandatory;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIspartuniqueindex() {
+	public Boolean isIspartuniqueindex() {
 		return ispartuniqueindex;
 	}
 
-	public void setIspartuniqueindex(String ispartuniqueindex) {
+	public void setIspartuniqueindex(Boolean ispartuniqueindex) {
 		this.ispartuniqueindex = ispartuniqueindex;
 	}
 
@@ -188,6 +186,7 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getPosition() {
 		return position;
 	}
@@ -217,7 +216,7 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

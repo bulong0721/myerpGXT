@@ -35,14 +35,14 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	private String headerright;
 	private String imageisattached;
 	private String imageurl;
-	private String isactive;
-	private String isdefault;
-	private String ismultilineheader;
-	private String ispaintboundarylines;
-	private String ispaintheaderlines;
-	private String ispainthlines;
-	private String ispaintvlines;
-	private String isprintfunctionsymbols;
+	private Boolean isactive;
+	private Boolean isdefault;
+	private Boolean ismultilineheader;
+	private Boolean ispaintboundarylines;
+	private Boolean ispaintheaderlines;
+	private Boolean ispainthlines;
+	private Boolean ispaintvlines;
+	private Boolean isprintfunctionsymbols;
 	private Integer linePrintcolorId;
 	private BigDecimal linestroke;
 	private String linestroketype;
@@ -58,7 +58,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -68,7 +68,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_IMAGE_ID")
+	@Column(name="AD_IMAGE_ID", columnDefinition="INT")
 	public Integer getAdImageId() {
 		return adImageId;
 	}
@@ -78,7 +78,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -88,7 +88,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PRINTTABLEFORMAT_ID")
+	@Column(name="AD_PRINTTABLEFORMAT_ID", columnDefinition="INT")
 	public Integer getAdPrinttableformatId() {
 		return adPrinttableformatId;
 	}
@@ -108,7 +108,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -154,7 +154,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="FUNCT_PRINTFONT_ID")
+	@Column(name="FUNCT_PRINTFONT_ID", columnDefinition="INT")
 	public Integer getFunctPrintfontId() {
 		return functPrintfontId;
 	}
@@ -164,7 +164,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="FUNCTBG_PRINTCOLOR_ID")
+	@Column(name="FUNCTBG_PRINTCOLOR_ID", columnDefinition="INT")
 	public Integer getFunctbgPrintcolorId() {
 		return functbgPrintcolorId;
 	}
@@ -174,7 +174,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="FUNCTFG_PRINTCOLOR_ID")
+	@Column(name="FUNCTFG_PRINTCOLOR_ID", columnDefinition="INT")
 	public Integer getFunctfgPrintcolorId() {
 		return functfgPrintcolorId;
 	}
@@ -184,7 +184,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HDR_PRINTFONT_ID")
+	@Column(name="HDR_PRINTFONT_ID", columnDefinition="INT")
 	public Integer getHdrPrintfontId() {
 		return hdrPrintfontId;
 	}
@@ -194,7 +194,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HDRLINE_PRINTCOLOR_ID")
+	@Column(name="HDRLINE_PRINTCOLOR_ID", columnDefinition="INT")
 	public Integer getHdrlinePrintcolorId() {
 		return hdrlinePrintcolorId;
 	}
@@ -223,7 +223,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HDRTEXTBG_PRINTCOLOR_ID")
+	@Column(name="HDRTEXTBG_PRINTCOLOR_ID", columnDefinition="INT")
 	public Integer getHdrtextbgPrintcolorId() {
 		return hdrtextbgPrintcolorId;
 	}
@@ -233,7 +233,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HDRTEXTFG_PRINTCOLOR_ID")
+	@Column(name="HDRTEXTFG_PRINTCOLOR_ID", columnDefinition="INT")
 	public Integer getHdrtextfgPrintcolorId() {
 		return hdrtextfgPrintcolorId;
 	}
@@ -290,87 +290,87 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmultilineheader() {
+	@Column(nullable=false)
+	public Boolean isIsmultilineheader() {
 		return ismultilineheader;
 	}
 
-	public void setIsmultilineheader(String ismultilineheader) {
+	public void setIsmultilineheader(Boolean ismultilineheader) {
 		this.ismultilineheader = ismultilineheader;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspaintboundarylines() {
+	@Column(nullable=false)
+	public Boolean isIspaintboundarylines() {
 		return ispaintboundarylines;
 	}
 
-	public void setIspaintboundarylines(String ispaintboundarylines) {
+	public void setIspaintboundarylines(Boolean ispaintboundarylines) {
 		this.ispaintboundarylines = ispaintboundarylines;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspaintheaderlines() {
+	@Column(nullable=false)
+	public Boolean isIspaintheaderlines() {
 		return ispaintheaderlines;
 	}
 
-	public void setIspaintheaderlines(String ispaintheaderlines) {
+	public void setIspaintheaderlines(Boolean ispaintheaderlines) {
 		this.ispaintheaderlines = ispaintheaderlines;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspainthlines() {
+	@Column(nullable=false)
+	public Boolean isIspainthlines() {
 		return ispainthlines;
 	}
 
-	public void setIspainthlines(String ispainthlines) {
+	public void setIspainthlines(Boolean ispainthlines) {
 		this.ispainthlines = ispainthlines;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspaintvlines() {
+	@Column(nullable=false)
+	public Boolean isIspaintvlines() {
 		return ispaintvlines;
 	}
 
-	public void setIspaintvlines(String ispaintvlines) {
+	public void setIspaintvlines(Boolean ispaintvlines) {
 		this.ispaintvlines = ispaintvlines;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprintfunctionsymbols() {
+	@Column(nullable=false)
+	public Boolean isIsprintfunctionsymbols() {
 		return isprintfunctionsymbols;
 	}
 
-	public void setIsprintfunctionsymbols(String isprintfunctionsymbols) {
+	public void setIsprintfunctionsymbols(Boolean isprintfunctionsymbols) {
 		this.isprintfunctionsymbols = isprintfunctionsymbols;
 	}
 
 	@Basic
-	@Column(name="LINE_PRINTCOLOR_ID")
+	@Column(name="LINE_PRINTCOLOR_ID", columnDefinition="INT")
 	public Integer getLinePrintcolorId() {
 		return linePrintcolorId;
 	}
@@ -419,7 +419,7 @@ public class AdPrinttableformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

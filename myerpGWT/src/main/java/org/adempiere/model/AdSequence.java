@@ -21,10 +21,10 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	private String decimalpattern;
 	private String description;
 	private Integer incrementno;
-	private String isactive;
-	private String isaudited;
-	private String isautosequence;
-	private String istableid;
+	private Boolean isactive;
+	private Boolean isaudited;
+	private Boolean isautosequence;
+	private Boolean istableid;
 	private String name;
 	private String prefix;
 	private String startnewyear;
@@ -42,7 +42,7 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -52,7 +52,7 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -62,7 +62,7 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_SEQUENCE_ID")
+	@Column(name="AD_SEQUENCE_ID", columnDefinition="INT")
 	public Integer getAdSequenceId() {
 		return adSequenceId;
 	}
@@ -82,7 +82,7 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -92,7 +92,7 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCurrentnext() {
 		return currentnext;
 	}
@@ -102,7 +102,7 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCurrentnextsys() {
 		return currentnextsys;
 	}
@@ -141,7 +141,7 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getIncrementno() {
 		return incrementno;
 	}
@@ -151,42 +151,39 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsaudited() {
+	public Boolean isIsaudited() {
 		return isaudited;
 	}
 
-	public void setIsaudited(String isaudited) {
+	public void setIsaudited(Boolean isaudited) {
 		this.isaudited = isaudited;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsautosequence() {
+	@Column(nullable=false)
+	public Boolean isIsautosequence() {
 		return isautosequence;
 	}
 
-	public void setIsautosequence(String isautosequence) {
+	public void setIsautosequence(Boolean isautosequence) {
 		this.isautosequence = isautosequence;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIstableid() {
+	public Boolean isIstableid() {
 		return istableid;
 	}
 
-	public void setIstableid(String istableid) {
+	public void setIstableid(Boolean istableid) {
 		this.istableid = istableid;
 	}
 
@@ -220,7 +217,7 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getStartno() {
 		return startno;
 	}
@@ -249,7 +246,7 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

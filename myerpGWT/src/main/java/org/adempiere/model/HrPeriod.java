@@ -22,12 +22,12 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	private Integer hrPayrollId;
 	private Integer hrPeriodId;
 	private Integer hrYearId;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String periodaction;
 	private Integer periodno;
 	private String periodstatus;
-	private String processed;
+	private Boolean processed;
 	private String processing;
 	private String startdate;
 	private String updated;
@@ -41,7 +41,7 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID", nullable=false)
+	@Column(name="C_PERIOD_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -71,7 +71,7 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_YEAR_ID", nullable=false)
+	@Column(name="C_YEAR_ID", columnDefinition="INT", nullable=false)
 	public Integer getCYearId() {
 		return cYearId;
 	}
@@ -91,7 +91,7 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -129,7 +129,7 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_PAYROLL_ID", nullable=false)
+	@Column(name="HR_PAYROLL_ID", columnDefinition="INT", nullable=false)
 	public Integer getHrPayrollId() {
 		return hrPayrollId;
 	}
@@ -139,7 +139,7 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="HR_PERIOD_ID")
+	@Column(name="HR_PERIOD_ID", columnDefinition="INT")
 	public Integer getHrPeriodId() {
 		return hrPeriodId;
 	}
@@ -149,7 +149,7 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_YEAR_ID")
+	@Column(name="HR_YEAR_ID", columnDefinition="INT")
 	public Integer getHrYearId() {
 		return hrYearId;
 	}
@@ -159,12 +159,12 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -189,7 +189,7 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getPeriodno() {
 		return periodno;
 	}
@@ -209,12 +209,11 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -249,7 +248,7 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

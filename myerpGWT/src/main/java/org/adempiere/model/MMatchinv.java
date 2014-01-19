@@ -20,15 +20,15 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	private String datetrx;
 	private String description;
 	private String documentno;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mAttributesetinstanceId;
 	private Integer mInoutlineId;
 	private Integer mMatchinvId;
 	private Integer mProductId;
 	private String posted;
-	private String processed;
+	private Boolean processed;
 	private Long processedon;
-	private String processing;
+	private Boolean processing;
 	private BigDecimal qty;
 	private String updated;
 	private Integer updatedby;
@@ -41,7 +41,7 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICELINE_ID", nullable=false)
+	@Column(name="C_INVOICELINE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}
@@ -81,7 +81,7 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -129,17 +129,17 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -149,7 +149,7 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUTLINE_ID", nullable=false)
+	@Column(name="M_INOUTLINE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}
@@ -159,7 +159,7 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_MATCHINV_ID")
+	@Column(name="M_MATCHINV_ID", columnDefinition="INT")
 	public Integer getMMatchinvId() {
 		return mMatchinvId;
 	}
@@ -169,7 +169,7 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -189,12 +189,12 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -208,12 +208,12 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessing() {
+	@Column(nullable=false)
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -238,7 +238,7 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

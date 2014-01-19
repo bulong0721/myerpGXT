@@ -7,7 +7,7 @@ import com.google.gwt.resources.client.ImageResource;
 import com.sencha.gxt.data.shared.IconProvider;
 
 public class ADMenuModel implements IsADRPCModel, ADTreeNode {
-	private String				isactive;
+	private Boolean				isactive;
 	private Integer				adMenuId;
 	private Integer				parentId;
 	private Integer				adFormId;
@@ -51,11 +51,11 @@ public class ADMenuModel implements IsADRPCModel, ADTreeNode {
 		this.name = name;
 	}
 
-	public String getIsactive() {
+	public Boolean getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 

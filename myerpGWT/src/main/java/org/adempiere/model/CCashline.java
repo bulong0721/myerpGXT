@@ -26,10 +26,10 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private BigDecimal discountamt;
-	private String isactive;
-	private String isgenerated;
+	private Boolean isactive;
+	private Boolean isgenerated;
 	private Integer line;
-	private String processed;
+	private Boolean processed;
 	private String updated;
 	private Integer updatedby;
 	private BigDecimal writeoffamt;
@@ -42,7 +42,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -52,7 +52,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -72,7 +72,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BANKACCOUNT_ID")
+	@Column(name="C_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCBankaccountId() {
 		return cBankaccountId;
 	}
@@ -82,7 +82,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CASH_ID", nullable=false)
+	@Column(name="C_CASH_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCashId() {
 		return cCashId;
 	}
@@ -92,7 +92,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_CASHLINE_ID")
+	@Column(name="C_CASHLINE_ID", columnDefinition="INT")
 	public Integer getCCashlineId() {
 		return cCashlineId;
 	}
@@ -102,7 +102,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -112,7 +112,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -122,7 +122,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -132,7 +132,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -162,7 +162,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -190,27 +190,26 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsgenerated() {
+	public Boolean isIsgenerated() {
 		return isgenerated;
 	}
 
-	public void setIsgenerated(String isgenerated) {
+	public void setIsgenerated(Boolean isgenerated) {
 		this.isgenerated = isgenerated;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -220,12 +219,12 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -240,7 +239,7 @@ public class CCashline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

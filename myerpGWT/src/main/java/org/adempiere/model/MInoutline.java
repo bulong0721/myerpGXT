@@ -26,9 +26,9 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isdescription;
-	private String isinvoiced;
+	private Boolean isactive;
+	private Boolean isdescription;
+	private Boolean isinvoiced;
 	private Integer line;
 	private Integer mAttributesetinstanceId;
 	private Integer mInoutId;
@@ -38,7 +38,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	private Integer mRmalineId;
 	private BigDecimal movementqty;
 	private BigDecimal pickedqty;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal qtyentered;
 	private Integer refInoutlineId;
 	private Integer reversallineId;
@@ -57,7 +57,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -67,7 +67,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -87,7 +87,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -97,7 +97,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -107,7 +107,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -117,7 +117,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDERLINE_ID")
+	@Column(name="C_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getCOrderlineId() {
 		return cOrderlineId;
 	}
@@ -127,7 +127,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -137,7 +137,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTPHASE_ID")
+	@Column(name="C_PROJECTPHASE_ID", columnDefinition="INT")
 	public Integer getCProjectphaseId() {
 		return cProjectphaseId;
 	}
@@ -147,7 +147,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTTASK_ID")
+	@Column(name="C_PROJECTTASK_ID", columnDefinition="INT")
 	public Integer getCProjecttaskId() {
 		return cProjecttaskId;
 	}
@@ -157,7 +157,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID", nullable=false)
+	@Column(name="C_UOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -186,7 +186,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -205,37 +205,37 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdescription() {
+	@Column(nullable=false)
+	public Boolean isIsdescription() {
 		return isdescription;
 	}
 
-	public void setIsdescription(String isdescription) {
+	public void setIsdescription(Boolean isdescription) {
 		this.isdescription = isdescription;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinvoiced() {
+	@Column(nullable=false)
+	public Boolean isIsinvoiced() {
 		return isinvoiced;
 	}
 
-	public void setIsinvoiced(String isinvoiced) {
+	public void setIsinvoiced(Boolean isinvoiced) {
 		this.isinvoiced = isinvoiced;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -245,7 +245,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -255,7 +255,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUT_ID", nullable=false)
+	@Column(name="M_INOUT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMInoutId() {
 		return mInoutId;
 	}
@@ -265,7 +265,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_INOUTLINE_ID")
+	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}
@@ -275,7 +275,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID")
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -285,7 +285,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -295,7 +295,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_RMALINE_ID")
+	@Column(name="M_RMALINE_ID", columnDefinition="INT")
 	public Integer getMRmalineId() {
 		return mRmalineId;
 	}
@@ -324,12 +324,12 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -344,7 +344,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REF_INOUTLINE_ID")
+	@Column(name="REF_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getRefInoutlineId() {
 		return refInoutlineId;
 	}
@@ -354,7 +354,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REVERSALLINE_ID")
+	@Column(name="REVERSALLINE_ID", columnDefinition="INT")
 	public Integer getReversallineId() {
 		return reversallineId;
 	}
@@ -392,7 +392,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -402,7 +402,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -412,7 +412,7 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}

@@ -21,7 +21,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	private String duns;
 	private String email;
 	private String fax;
-	private String isactive;
+	private Boolean isactive;
 	private Integer logoId;
 	private Integer mWarehouseId;
 	private Integer paGoalId;
@@ -44,7 +44,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -54,7 +54,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -64,7 +64,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTYPE_ID")
+	@Column(name="AD_ORGTYPE_ID", columnDefinition="INT")
 	public Integer getAdOrgtypeId() {
 		return adOrgtypeId;
 	}
@@ -74,7 +74,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CALENDAR_ID")
+	@Column(name="C_CALENDAR_ID", columnDefinition="INT")
 	public Integer getCCalendarId() {
 		return cCalendarId;
 	}
@@ -84,7 +84,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCATION_ID")
+	@Column(name="C_LOCATION_ID", columnDefinition="INT")
 	public Integer getCLocationId() {
 		return cLocationId;
 	}
@@ -104,7 +104,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -114,7 +114,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DROPSHIP_WAREHOUSE_ID")
+	@Column(name="DROPSHIP_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getDropshipWarehouseId() {
 		return dropshipWarehouseId;
 	}
@@ -154,17 +154,17 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="LOGO_ID")
+	@Column(name="LOGO_ID", columnDefinition="INT")
 	public Integer getLogoId() {
 		return logoId;
 	}
@@ -174,7 +174,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -184,7 +184,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_GOAL_ID")
+	@Column(name="PA_GOAL_ID", columnDefinition="INT")
 	public Integer getPaGoalId() {
 		return paGoalId;
 	}
@@ -194,7 +194,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PARENT_ORG_ID")
+	@Column(name="PARENT_ORG_ID", columnDefinition="INT")
 	public Integer getParentOrgId() {
 		return parentOrgId;
 	}
@@ -234,7 +234,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SUPERVISOR_ID")
+	@Column(name="SUPERVISOR_ID", columnDefinition="INT")
 	public Integer getSupervisorId() {
 		return supervisorId;
 	}
@@ -254,7 +254,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="TRANSFERBANK_ID")
+	@Column(name="TRANSFERBANK_ID", columnDefinition="INT")
 	public Integer getTransferbankId() {
 		return transferbankId;
 	}
@@ -264,7 +264,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="TRANSFERCASHBOOK_ID")
+	@Column(name="TRANSFERCASHBOOK_ID", columnDefinition="INT")
 	public Integer getTransfercashbookId() {
 		return transfercashbookId;
 	}
@@ -284,7 +284,7 @@ public class AdOrginfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -36,8 +36,8 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private BigDecimal discount;
 	private BigDecimal freightamt;
-	private String isactive;
-	private String isdescription;
+	private Boolean isactive;
+	private Boolean isdescription;
 	private Integer line;
 	private BigDecimal linenetamt;
 	private Integer linkOrderlineId;
@@ -52,7 +52,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	private BigDecimal priceentered;
 	private BigDecimal pricelimit;
 	private BigDecimal pricelist;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal qtydelivered;
 	private BigDecimal qtyentered;
 	private BigDecimal qtyinvoiced;
@@ -76,7 +76,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -86,7 +86,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -96,7 +96,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -106,7 +106,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -116,7 +116,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -126,7 +126,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID")
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -136,7 +136,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -146,7 +146,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -156,7 +156,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -166,7 +166,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDER_ID", nullable=false)
+	@Column(name="C_ORDER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -176,7 +176,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ORDERLINE_ID")
+	@Column(name="C_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getCOrderlineId() {
 		return cOrderlineId;
 	}
@@ -186,7 +186,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -196,7 +196,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTPHASE_ID")
+	@Column(name="C_PROJECTPHASE_ID", columnDefinition="INT")
 	public Integer getCProjectphaseId() {
 		return cProjectphaseId;
 	}
@@ -206,7 +206,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTTASK_ID")
+	@Column(name="C_PROJECTTASK_ID", columnDefinition="INT")
 	public Integer getCProjecttaskId() {
 		return cProjecttaskId;
 	}
@@ -216,7 +216,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAX_ID", nullable=false)
+	@Column(name="C_TAX_ID", columnDefinition="INT", nullable=false)
 	public Integer getCTaxId() {
 		return cTaxId;
 	}
@@ -226,7 +226,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID", nullable=false)
+	@Column(name="C_UOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -246,7 +246,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -321,27 +321,27 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdescription() {
+	@Column(nullable=false)
+	public Boolean isIsdescription() {
 		return isdescription;
 	}
 
-	public void setIsdescription(String isdescription) {
+	public void setIsdescription(Boolean isdescription) {
 		this.isdescription = isdescription;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -361,7 +361,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="LINK_ORDERLINE_ID")
+	@Column(name="LINK_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getLinkOrderlineId() {
 		return linkOrderlineId;
 	}
@@ -371,7 +371,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -381,7 +381,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -391,7 +391,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PROMOTION_ID")
+	@Column(name="M_PROMOTION_ID", columnDefinition="INT")
 	public Integer getMPromotionId() {
 		return mPromotionId;
 	}
@@ -401,7 +401,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_SHIPPER_ID")
+	@Column(name="M_SHIPPER_ID", columnDefinition="INT")
 	public Integer getMShipperId() {
 		return mShipperId;
 	}
@@ -411,7 +411,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -421,7 +421,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_COST_COLLECTOR_ID")
+	@Column(name="PP_COST_COLLECTOR_ID", columnDefinition="INT")
 	public Integer getPpCostCollectorId() {
 		return ppCostCollectorId;
 	}
@@ -480,12 +480,12 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -550,7 +550,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REF_ORDERLINE_ID")
+	@Column(name="REF_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getRefOrderlineId() {
 		return refOrderlineId;
 	}
@@ -578,7 +578,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCEASSIGNMENT_ID")
+	@Column(name="S_RESOURCEASSIGNMENT_ID", columnDefinition="INT")
 	public Integer getSResourceassignmentId() {
 		return sResourceassignmentId;
 	}
@@ -598,7 +598,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -608,7 +608,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -618,7 +618,7 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}

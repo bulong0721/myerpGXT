@@ -404,6 +404,8 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 							}
 						} else {
 							ADProcessPanel processPanel = new ADProcessPanel(pair.getOne());
+							ADMapData row = grid.getSelectionModel().getSelectedItem();
+							processPanel.setRowJSONString(row.toString());
 							processPanel.setWindow(WidgetUtil.createWindow("", 600, 400));
 							processPanel.show();
 						}

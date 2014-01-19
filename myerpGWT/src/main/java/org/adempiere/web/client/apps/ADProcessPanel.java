@@ -51,6 +51,7 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 	private Widget					widget;
 	private ADProcessModel			processModel;
 	private ADMapData				paramData;
+	private String					rowJSONString;
 
 	public ADProcessPanel(ADProcessModel process) {
 		super();
@@ -98,6 +99,7 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 			public void onFailure(Throwable caught) {
 				WidgetUtil.unmask(widget);
 			}
+
 			@Override
 			public void onSuccess(ProcessResult result) {
 				WidgetUtil.unmask(widget);
@@ -109,12 +111,16 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 				hide();
 			}
 		};
-		adempiereService.executeProcess(processModel, paramData.toString(), callback);
+		adempiereService.executeProcess(processModel, rowJSONString, paramData.toString(), callback);
 	}
 
 	@Override
 	public void onCancel() {
 		hide();
+	}
+
+	public void setRowJSONString(String json) {
+		this.rowJSONString = json;
 	}
 
 }

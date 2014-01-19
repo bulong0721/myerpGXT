@@ -19,18 +19,18 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 	private String emailfooter;
 	private String emailheader;
 	private String help;
-	private String isactive;
-	private String isdefault;
-	private String ismenuassets;
-	private String ismenucontact;
-	private String ismenuinterests;
-	private String ismenuinvoices;
-	private String ismenuorders;
-	private String ismenupayments;
-	private String ismenuregistrations;
-	private String ismenurequests;
-	private String ismenurfqs;
-	private String ismenushipments;
+	private Boolean isactive;
+	private Boolean isdefault;
+	private Boolean ismenuassets;
+	private Boolean ismenucontact;
+	private Boolean ismenuinterests;
+	private Boolean ismenuinvoices;
+	private Boolean ismenuorders;
+	private Boolean ismenupayments;
+	private Boolean ismenuregistrations;
+	private Boolean ismenurequests;
+	private Boolean ismenurfqs;
+	private Boolean ismenushipments;
 	private Integer mPricelistId;
 	private Integer mWarehouseId;
 	private String name;
@@ -61,7 +61,7 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -71,7 +71,7 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -81,7 +81,7 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENTTERM_ID")
+	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT")
 	public Integer getCPaymenttermId() {
 		return cPaymenttermId;
 	}
@@ -101,7 +101,7 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -150,127 +150,127 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmenuassets() {
+	@Column(nullable=false)
+	public Boolean isIsmenuassets() {
 		return ismenuassets;
 	}
 
-	public void setIsmenuassets(String ismenuassets) {
+	public void setIsmenuassets(Boolean ismenuassets) {
 		this.ismenuassets = ismenuassets;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmenucontact() {
+	@Column(nullable=false)
+	public Boolean isIsmenucontact() {
 		return ismenucontact;
 	}
 
-	public void setIsmenucontact(String ismenucontact) {
+	public void setIsmenucontact(Boolean ismenucontact) {
 		this.ismenucontact = ismenucontact;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmenuinterests() {
+	@Column(nullable=false)
+	public Boolean isIsmenuinterests() {
 		return ismenuinterests;
 	}
 
-	public void setIsmenuinterests(String ismenuinterests) {
+	public void setIsmenuinterests(Boolean ismenuinterests) {
 		this.ismenuinterests = ismenuinterests;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmenuinvoices() {
+	@Column(nullable=false)
+	public Boolean isIsmenuinvoices() {
 		return ismenuinvoices;
 	}
 
-	public void setIsmenuinvoices(String ismenuinvoices) {
+	public void setIsmenuinvoices(Boolean ismenuinvoices) {
 		this.ismenuinvoices = ismenuinvoices;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmenuorders() {
+	@Column(nullable=false)
+	public Boolean isIsmenuorders() {
 		return ismenuorders;
 	}
 
-	public void setIsmenuorders(String ismenuorders) {
+	public void setIsmenuorders(Boolean ismenuorders) {
 		this.ismenuorders = ismenuorders;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmenupayments() {
+	@Column(nullable=false)
+	public Boolean isIsmenupayments() {
 		return ismenupayments;
 	}
 
-	public void setIsmenupayments(String ismenupayments) {
+	public void setIsmenupayments(Boolean ismenupayments) {
 		this.ismenupayments = ismenupayments;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmenuregistrations() {
+	@Column(nullable=false)
+	public Boolean isIsmenuregistrations() {
 		return ismenuregistrations;
 	}
 
-	public void setIsmenuregistrations(String ismenuregistrations) {
+	public void setIsmenuregistrations(Boolean ismenuregistrations) {
 		this.ismenuregistrations = ismenuregistrations;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmenurequests() {
+	@Column(nullable=false)
+	public Boolean isIsmenurequests() {
 		return ismenurequests;
 	}
 
-	public void setIsmenurequests(String ismenurequests) {
+	public void setIsmenurequests(Boolean ismenurequests) {
 		this.ismenurequests = ismenurequests;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmenurfqs() {
+	@Column(nullable=false)
+	public Boolean isIsmenurfqs() {
 		return ismenurfqs;
 	}
 
-	public void setIsmenurfqs(String ismenurfqs) {
+	public void setIsmenurfqs(Boolean ismenurfqs) {
 		this.ismenurfqs = ismenurfqs;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmenushipments() {
+	@Column(nullable=false)
+	public Boolean isIsmenushipments() {
 		return ismenushipments;
 	}
 
-	public void setIsmenushipments(String ismenushipments) {
+	public void setIsmenushipments(Boolean ismenushipments) {
 		this.ismenushipments = ismenushipments;
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_ID", nullable=false)
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT", nullable=false)
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -280,7 +280,7 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -300,7 +300,7 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID", nullable=false)
+	@Column(name="SALESREP_ID", columnDefinition="INT", nullable=false)
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -330,7 +330,7 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -350,7 +350,7 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="W_STORE_ID")
+	@Column(name="W_STORE_ID", columnDefinition="INT")
 	public Integer getWStoreId() {
 		return wStoreId;
 	}

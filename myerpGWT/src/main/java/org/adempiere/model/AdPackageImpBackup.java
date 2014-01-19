@@ -23,7 +23,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	private String colvalue;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String uninstall;
 	private String updated;
 	private Integer updatedby;
@@ -36,7 +36,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -56,7 +56,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PACKAGE_IMP_BACKUP_ID")
+	@Column(name="AD_PACKAGE_IMP_BACKUP_ID", columnDefinition="INT")
 	public Integer getAdPackageImpBackupId() {
 		return adPackageImpBackupId;
 	}
@@ -86,7 +86,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PACKAGE_IMP_DETAIL_ID", nullable=false)
+	@Column(name="AD_PACKAGE_IMP_DETAIL_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdPackageImpDetailId() {
 		return adPackageImpDetailId;
 	}
@@ -96,7 +96,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PACKAGE_IMP_ID", nullable=false)
+	@Column(name="AD_PACKAGE_IMP_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdPackageImpId() {
 		return adPackageImpId;
 	}
@@ -116,7 +116,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_REFERENCE_ID")
+	@Column(name="AD_REFERENCE_ID", columnDefinition="INT")
 	public Integer getAdReferenceId() {
 		return adReferenceId;
 	}
@@ -126,7 +126,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID")
+	@Column(name="AD_TABLE_ID", columnDefinition="INT")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -156,7 +156,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -166,12 +166,12 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -196,7 +196,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

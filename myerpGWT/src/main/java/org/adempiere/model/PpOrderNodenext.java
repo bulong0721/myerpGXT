@@ -18,8 +18,8 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String entitytype;
-	private String isactive;
-	private String isstduserworkflow;
+	private Boolean isactive;
+	private Boolean isstduserworkflow;
 	private Integer ppOrderId;
 	private Integer ppOrderNextId;
 	private Integer ppOrderNodeId;
@@ -37,7 +37,7 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -57,7 +57,7 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_NEXT_ID")
+	@Column(name="AD_WF_NEXT_ID", columnDefinition="INT")
 	public Integer getAdWfNextId() {
 		return adWfNextId;
 	}
@@ -67,7 +67,7 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_NODE_ID", nullable=false)
+	@Column(name="AD_WF_NODE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfNodeId() {
 		return adWfNodeId;
 	}
@@ -87,6 +87,7 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -115,27 +116,26 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsstduserworkflow() {
+	public Boolean isIsstduserworkflow() {
 		return isstduserworkflow;
 	}
 
-	public void setIsstduserworkflow(String isstduserworkflow) {
+	public void setIsstduserworkflow(Boolean isstduserworkflow) {
 		this.isstduserworkflow = isstduserworkflow;
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_ID", nullable=false)
+	@Column(name="PP_ORDER_ID", columnDefinition="INT", nullable=false)
 	public Integer getPpOrderId() {
 		return ppOrderId;
 	}
@@ -145,7 +145,7 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_NEXT_ID")
+	@Column(name="PP_ORDER_NEXT_ID", columnDefinition="INT")
 	public Integer getPpOrderNextId() {
 		return ppOrderNextId;
 	}
@@ -155,7 +155,7 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_ORDER_NODE_ID", nullable=false)
+	@Column(name="PP_ORDER_NODE_ID", columnDefinition="INT", nullable=false)
 	public Integer getPpOrderNodeId() {
 		return ppOrderNodeId;
 	}
@@ -165,7 +165,7 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PP_ORDER_NODENEXT_ID")
+	@Column(name="PP_ORDER_NODENEXT_ID", columnDefinition="INT")
 	public Integer getPpOrderNodenextId() {
 		return ppOrderNodenextId;
 	}
@@ -175,7 +175,7 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -205,7 +205,7 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

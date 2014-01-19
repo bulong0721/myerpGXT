@@ -25,8 +25,8 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	private Integer green;
 	private Integer green1;
 	private BigDecimal imagealpha;
-	private String isactive;
-	private String isdefault;
+	private Boolean isactive;
+	private Boolean isdefault;
 	private Integer linedistance;
 	private Integer linewidth;
 	private String name;
@@ -45,7 +45,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -55,7 +55,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_COLOR_ID")
+	@Column(name="AD_COLOR_ID", columnDefinition="INT")
 	public Integer getAdColorId() {
 		return adColorId;
 	}
@@ -65,7 +65,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_IMAGE_ID")
+	@Column(name="AD_IMAGE_ID", columnDefinition="INT")
 	public Integer getAdImageId() {
 		return adImageId;
 	}
@@ -75,7 +75,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -85,7 +85,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getAlpha() {
 		return alpha;
 	}
@@ -95,7 +95,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ALPHA_1")
+	@Column(name="ALPHA_1", columnDefinition="INT")
 	public Integer getAlpha1() {
 		return alpha1;
 	}
@@ -105,7 +105,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getBlue() {
 		return blue;
 	}
@@ -115,7 +115,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="BLUE_1")
+	@Column(name="BLUE_1", columnDefinition="INT")
 	public Integer getBlue1() {
 		return blue1;
 	}
@@ -145,7 +145,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -155,7 +155,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getGreen() {
 		return green;
 	}
@@ -165,7 +165,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GREEN_1")
+	@Column(name="GREEN_1", columnDefinition="INT")
 	public Integer getGreen1() {
 		return green1;
 	}
@@ -185,26 +185,27 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLinedistance() {
 		return linedistance;
 	}
@@ -214,6 +215,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLinewidth() {
 		return linewidth;
 	}
@@ -233,7 +235,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getRed() {
 		return red;
 	}
@@ -243,7 +245,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="RED_1")
+	@Column(name="RED_1", columnDefinition="INT")
 	public Integer getRed1() {
 		return red1;
 	}
@@ -253,6 +255,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getRepeatdistance() {
 		return repeatdistance;
 	}
@@ -262,6 +265,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getStartpoint() {
 		return startpoint;
 	}
@@ -281,7 +285,7 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

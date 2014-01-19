@@ -20,12 +20,12 @@ public class AdPackageImpInst extends org.adempiere.common.ADEntityBase {
 	private String creatorcontact;
 	private String description;
 	private String email;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String pkStatus;
 	private String pkVersion;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String releaseno;
 	private String uninstall;
 	private String updated;
@@ -41,7 +41,7 @@ public class AdPackageImpInst extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class AdPackageImpInst extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class AdPackageImpInst extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PACKAGE_IMP_INST_ID")
+	@Column(name="AD_PACKAGE_IMP_INST_ID", columnDefinition="INT")
 	public Integer getAdPackageImpInstId() {
 		return adPackageImpInstId;
 	}
@@ -81,6 +81,7 @@ public class AdPackageImpInst extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -140,12 +141,11 @@ public class AdPackageImpInst extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -180,22 +180,20 @@ public class AdPackageImpInst extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -230,6 +228,7 @@ public class AdPackageImpInst extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

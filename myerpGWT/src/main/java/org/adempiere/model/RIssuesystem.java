@@ -16,7 +16,7 @@ public class RIssuesystem extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String dbaddress;
-	private String isactive;
+	private Boolean isactive;
 	private String profileinfo;
 	private Integer rIssuesystemId;
 	private String statisticsinfo;
@@ -32,7 +32,7 @@ public class RIssuesystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID")
+	@Column(name="A_ASSET_ID", columnDefinition="INT")
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -42,7 +42,7 @@ public class RIssuesystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -52,7 +52,7 @@ public class RIssuesystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -72,7 +72,7 @@ public class RIssuesystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -92,12 +92,12 @@ public class RIssuesystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -112,7 +112,7 @@ public class RIssuesystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="R_ISSUESYSTEM_ID")
+	@Column(name="R_ISSUESYSTEM_ID", columnDefinition="INT")
 	public Integer getRIssuesystemId() {
 		return rIssuesystemId;
 	}
@@ -152,7 +152,7 @@ public class RIssuesystem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

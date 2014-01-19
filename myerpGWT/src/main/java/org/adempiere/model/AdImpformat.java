@@ -18,9 +18,9 @@ public class AdImpformat extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String formattype;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private String separatorchar;
 	private String updated;
 	private Integer updatedby;
@@ -33,7 +33,7 @@ public class AdImpformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class AdImpformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_IMPFORMAT_ID")
+	@Column(name="AD_IMPFORMAT_ID", columnDefinition="INT")
 	public Integer getAdImpformatId() {
 		return adImpformatId;
 	}
@@ -53,7 +53,7 @@ public class AdImpformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -63,7 +63,7 @@ public class AdImpformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -83,7 +83,7 @@ public class AdImpformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -112,12 +112,12 @@ public class AdImpformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -132,12 +132,12 @@ public class AdImpformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessing() {
+	@Column(nullable=false)
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -162,7 +162,7 @@ public class AdImpformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

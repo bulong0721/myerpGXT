@@ -19,7 +19,7 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	private Integer cRfqTopicsubscriberId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private String optoutdate;
 	private String subscribedate;
 	private String updated;
@@ -33,7 +33,7 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -63,7 +63,7 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -73,7 +73,7 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID", nullable=false)
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -83,7 +83,7 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RFQ_TOPIC_ID", nullable=false)
+	@Column(name="C_RFQ_TOPIC_ID", columnDefinition="INT", nullable=false)
 	public Integer getCRfqTopicId() {
 		return cRfqTopicId;
 	}
@@ -93,7 +93,7 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_RFQ_TOPICSUBSCRIBER_ID")
+	@Column(name="C_RFQ_TOPICSUBSCRIBER_ID", columnDefinition="INT")
 	public Integer getCRfqTopicsubscriberId() {
 		return cRfqTopicsubscriberId;
 	}
@@ -113,7 +113,7 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -123,12 +123,12 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -161,7 +161,7 @@ public class CRfqTopicsubscriber extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

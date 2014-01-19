@@ -19,13 +19,13 @@ public class AdHousekeeping extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String isexportxmlbackup;
-	private String issaveinhistoric;
+	private Boolean isactive;
+	private Boolean isexportxmlbackup;
+	private Boolean issaveinhistoric;
 	private Integer lastdeleted;
 	private String lastrun;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 	private String value;
@@ -39,7 +39,7 @@ public class AdHousekeeping extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -49,7 +49,7 @@ public class AdHousekeeping extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_HOUSEKEEPING_ID")
+	@Column(name="AD_HOUSEKEEPING_ID", columnDefinition="INT")
 	public Integer getAdHousekeepingId() {
 		return adHousekeepingId;
 	}
@@ -59,7 +59,7 @@ public class AdHousekeeping extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -69,7 +69,7 @@ public class AdHousekeeping extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -98,7 +98,7 @@ public class AdHousekeeping extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -127,36 +127,35 @@ public class AdHousekeeping extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsexportxmlbackup() {
+	public Boolean isIsexportxmlbackup() {
 		return isexportxmlbackup;
 	}
 
-	public void setIsexportxmlbackup(String isexportxmlbackup) {
+	public void setIsexportxmlbackup(Boolean isexportxmlbackup) {
 		this.isexportxmlbackup = isexportxmlbackup;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIssaveinhistoric() {
+	public Boolean isIssaveinhistoric() {
 		return issaveinhistoric;
 	}
 
-	public void setIssaveinhistoric(String issaveinhistoric) {
+	public void setIssaveinhistoric(Boolean issaveinhistoric) {
 		this.issaveinhistoric = issaveinhistoric;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLastdeleted() {
 		return lastdeleted;
 	}
@@ -185,12 +184,11 @@ public class AdHousekeeping extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -205,7 +203,7 @@ public class AdHousekeeping extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

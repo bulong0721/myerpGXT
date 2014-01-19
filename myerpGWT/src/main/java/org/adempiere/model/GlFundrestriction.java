@@ -18,7 +18,7 @@ public class GlFundrestriction extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private Integer glFundId;
 	private Integer glFundrestrictionId;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -31,7 +31,7 @@ public class GlFundrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class GlFundrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -51,7 +51,7 @@ public class GlFundrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ELEMENTVALUE_ID", nullable=false)
+	@Column(name="C_ELEMENTVALUE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCElementvalueId() {
 		return cElementvalueId;
 	}
@@ -71,7 +71,7 @@ public class GlFundrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -90,7 +90,7 @@ public class GlFundrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_FUND_ID", nullable=false)
+	@Column(name="GL_FUND_ID", columnDefinition="INT", nullable=false)
 	public Integer getGlFundId() {
 		return glFundId;
 	}
@@ -100,7 +100,7 @@ public class GlFundrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="GL_FUNDRESTRICTION_ID")
+	@Column(name="GL_FUNDRESTRICTION_ID", columnDefinition="INT")
 	public Integer getGlFundrestrictionId() {
 		return glFundrestrictionId;
 	}
@@ -110,12 +110,12 @@ public class GlFundrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -140,7 +140,7 @@ public class GlFundrestriction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -34,10 +34,10 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	private String generateto;
 	private BigDecimal invoicedamt;
 	private BigDecimal invoicedqty;
-	private String isactive;
-	private String iscommitceiling;
-	private String iscommitment;
-	private String issummary;
+	private Boolean isactive;
+	private Boolean iscommitceiling;
+	private Boolean iscommitment;
+	private Boolean issummary;
 	private Integer mPricelistVersionId;
 	private Integer mWarehouseId;
 	private String name;
@@ -46,8 +46,8 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	private BigDecimal plannedmarginamt;
 	private BigDecimal plannedqty;
 	private String poreference;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private BigDecimal projectbalanceamt;
 	private String projectcategory;
 	private String projectlinelevel;
@@ -65,7 +65,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -75,7 +75,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -85,7 +85,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -95,7 +95,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -105,7 +105,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_LOCATION_ID")
+	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}
@@ -115,7 +115,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNERSR_ID")
+	@Column(name="C_BPARTNERSR_ID", columnDefinition="INT")
 	public Integer getCBpartnersrId() {
 		return cBpartnersrId;
 	}
@@ -125,7 +125,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -135,7 +135,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -145,7 +145,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENTTERM_ID")
+	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT")
 	public Integer getCPaymenttermId() {
 		return cPaymenttermId;
 	}
@@ -155,7 +155,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PHASE_ID")
+	@Column(name="C_PHASE_ID", columnDefinition="INT")
 	public Integer getCPhaseId() {
 		return cPhaseId;
 	}
@@ -165,7 +165,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -175,7 +175,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTTYPE_ID")
+	@Column(name="C_PROJECTTYPE_ID", columnDefinition="INT")
 	public Integer getCProjecttypeId() {
 		return cProjecttypeId;
 	}
@@ -225,7 +225,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -292,47 +292,47 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscommitceiling() {
+	@Column(nullable=false)
+	public Boolean isIscommitceiling() {
 		return iscommitceiling;
 	}
 
-	public void setIscommitceiling(String iscommitceiling) {
+	public void setIscommitceiling(Boolean iscommitceiling) {
 		this.iscommitceiling = iscommitceiling;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscommitment() {
+	@Column(nullable=false)
+	public Boolean isIscommitment() {
 		return iscommitment;
 	}
 
-	public void setIscommitment(String iscommitment) {
+	public void setIscommitment(Boolean iscommitment) {
 		this.iscommitment = iscommitment;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_VERSION_ID")
+	@Column(name="M_PRICELIST_VERSION_ID", columnDefinition="INT")
 	public Integer getMPricelistVersionId() {
 		return mPricelistVersionId;
 	}
@@ -342,7 +342,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID")
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -412,22 +412,21 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -472,7 +471,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID")
+	@Column(name="SALESREP_ID", columnDefinition="INT")
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -492,7 +491,7 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -41,10 +41,10 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String dateacct;
-	private String isactive;
+	private Boolean isactive;
 	private String postingtype;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -56,7 +56,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ACCUMDEPRECIATION_ACCT")
+	@Column(name="A_ACCUMDEPRECIATION_ACCT", columnDefinition="INT")
 	public Integer getAAccumdepreciationAcct() {
 		return aAccumdepreciationAcct;
 	}
@@ -86,7 +86,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ACCT")
+	@Column(name="A_ASSET_ACCT", columnDefinition="INT")
 	public Integer getAAssetAcct() {
 		return aAssetAcct;
 	}
@@ -96,7 +96,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ACCT_ID")
+	@Column(name="A_ASSET_ACCT_ID", columnDefinition="INT")
 	public Integer getAAssetAcctId() {
 		return aAssetAcctId;
 	}
@@ -126,7 +126,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID")
+	@Column(name="A_ASSET_ID", columnDefinition="INT")
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -136,7 +136,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_ASSET_TRANSFER_ID")
+	@Column(name="A_ASSET_TRANSFER_ID", columnDefinition="INT")
 	public Integer getAAssetTransferId() {
 		return aAssetTransferId;
 	}
@@ -146,7 +146,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DEPRECIATION_ACCT")
+	@Column(name="A_DEPRECIATION_ACCT", columnDefinition="INT")
 	public Integer getADepreciationAcct() {
 		return aDepreciationAcct;
 	}
@@ -176,7 +176,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DISPOSAL_LOSS")
+	@Column(name="A_DISPOSAL_LOSS", columnDefinition="INT")
 	public Integer getADisposalLoss() {
 		return aDisposalLoss;
 	}
@@ -206,7 +206,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DISPOSAL_REVENUE")
+	@Column(name="A_DISPOSAL_REVENUE", columnDefinition="INT")
 	public Integer getADisposalRevenue() {
 		return aDisposalRevenue;
 	}
@@ -236,7 +236,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PERIOD_END", nullable=false)
+	@Column(name="A_PERIOD_END", columnDefinition="INT", nullable=false)
 	public Integer getAPeriodEnd() {
 		return aPeriodEnd;
 	}
@@ -246,7 +246,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PERIOD_START", nullable=false)
+	@Column(name="A_PERIOD_START", columnDefinition="INT", nullable=false)
 	public Integer getAPeriodStart() {
 		return aPeriodStart;
 	}
@@ -286,7 +286,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -296,7 +296,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -306,7 +306,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -316,7 +316,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID")
+	@Column(name="C_PERIOD_ID", columnDefinition="INT")
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -336,7 +336,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -356,12 +356,12 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -376,22 +376,22 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessing() {
+	@Column(nullable=false)
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -406,7 +406,7 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

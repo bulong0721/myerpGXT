@@ -19,15 +19,15 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String dimensionunits;
-	private String isactive;
-	private String isdefault;
-	private String islandscape;
+	private Boolean isactive;
+	private Boolean isdefault;
+	private Boolean islandscape;
 	private Integer marginbottom;
 	private Integer marginleft;
 	private Integer marginright;
 	private Integer margintop;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private BigDecimal sizex;
 	private BigDecimal sizey;
 	private String updated;
@@ -41,7 +41,7 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PRINTPAPER_ID")
+	@Column(name="AD_PRINTPAPER_ID", columnDefinition="INT")
 	public Integer getAdPrintpaperId() {
 		return adPrintpaperId;
 	}
@@ -91,7 +91,7 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -120,37 +120,37 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIslandscape() {
+	@Column(nullable=false)
+	public Boolean isIslandscape() {
 		return islandscape;
 	}
 
-	public void setIslandscape(String islandscape) {
+	public void setIslandscape(Boolean islandscape) {
 		this.islandscape = islandscape;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMarginbottom() {
 		return marginbottom;
 	}
@@ -160,7 +160,7 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMarginleft() {
 		return marginleft;
 	}
@@ -170,7 +170,7 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMarginright() {
 		return marginright;
 	}
@@ -180,7 +180,7 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMargintop() {
 		return margintop;
 	}
@@ -200,12 +200,11 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -238,7 +237,7 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

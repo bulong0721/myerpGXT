@@ -25,7 +25,7 @@ public class HrListline extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private Integer hrListlineId;
 	private Integer hrListversionId;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal maxvalue;
 	private BigDecimal minvalue;
 	private String name;
@@ -40,7 +40,7 @@ public class HrListline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class HrListline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -150,7 +150,7 @@ public class HrListline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -160,7 +160,7 @@ public class HrListline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="HR_LISTLINE_ID")
+	@Column(name="HR_LISTLINE_ID", columnDefinition="INT")
 	public Integer getHrListlineId() {
 		return hrListlineId;
 	}
@@ -170,7 +170,7 @@ public class HrListline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_LISTVERSION_ID")
+	@Column(name="HR_LISTVERSION_ID", columnDefinition="INT")
 	public Integer getHrListversionId() {
 		return hrListversionId;
 	}
@@ -180,12 +180,12 @@ public class HrListline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -230,7 +230,7 @@ public class HrListline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

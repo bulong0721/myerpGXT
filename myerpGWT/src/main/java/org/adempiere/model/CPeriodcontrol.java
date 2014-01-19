@@ -17,10 +17,10 @@ public class CPeriodcontrol extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String docbasetype;
-	private String isactive;
+	private Boolean isactive;
 	private String periodaction;
 	private String periodstatus;
-	private String processing;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -32,7 +32,7 @@ public class CPeriodcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class CPeriodcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -52,7 +52,7 @@ public class CPeriodcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID", nullable=false)
+	@Column(name="C_PERIOD_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -62,7 +62,7 @@ public class CPeriodcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_PERIODCONTROL_ID")
+	@Column(name="C_PERIODCONTROL_ID", columnDefinition="INT")
 	public Integer getCPeriodcontrolId() {
 		return cPeriodcontrolId;
 	}
@@ -82,7 +82,7 @@ public class CPeriodcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -102,12 +102,12 @@ public class CPeriodcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -132,12 +132,11 @@ public class CPeriodcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -152,7 +151,7 @@ public class CPeriodcontrol extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

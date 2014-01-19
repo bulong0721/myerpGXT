@@ -16,7 +16,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	private Integer cProjectissueId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mAttributesetinstanceId;
 	private Integer mInoutlineId;
 	private Integer mInventorylineId;
@@ -40,7 +40,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -60,7 +60,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECTISSUE_ID")
+	@Column(name="C_PROJECTISSUE_ID", columnDefinition="INT")
 	public Integer getCProjectissueId() {
 		return cProjectissueId;
 	}
@@ -80,7 +80,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -90,17 +90,17 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID", nullable=false)
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -110,7 +110,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUTLINE_ID")
+	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}
@@ -120,7 +120,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INVENTORYLINE_ID")
+	@Column(name="M_INVENTORYLINE_ID", columnDefinition="INT")
 	public Integer getMInventorylineId() {
 		return mInventorylineId;
 	}
@@ -130,7 +130,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID", nullable=false)
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT", nullable=false)
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -140,7 +140,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_MOVEMENTLINE_ID")
+	@Column(name="M_MOVEMENTLINE_ID", columnDefinition="INT")
 	public Integer getMMovementlineId() {
 		return mMovementlineId;
 	}
@@ -150,7 +150,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -160,7 +160,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCTIONLINE_ID")
+	@Column(name="M_PRODUCTIONLINE_ID", columnDefinition="INT")
 	public Integer getMProductionlineId() {
 		return mProductionlineId;
 	}
@@ -170,7 +170,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_TRANSACTION_ID")
+	@Column(name="M_TRANSACTION_ID", columnDefinition="INT")
 	public Integer getMTransactionId() {
 		return mTransactionId;
 	}
@@ -210,7 +210,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PP_COST_COLLECTOR_ID")
+	@Column(name="PP_COST_COLLECTOR_ID", columnDefinition="INT")
 	public Integer getPpCostCollectorId() {
 		return ppCostCollectorId;
 	}
@@ -230,7 +230,7 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

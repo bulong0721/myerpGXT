@@ -16,8 +16,8 @@ public class KIndexstop extends org.adempiere.common.ADEntityBase {
 	private Integer cmWebprojectId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String ismanual;
+	private Boolean isactive;
+	private Boolean ismanual;
 	private Integer kIndexstopId;
 	private String keyword;
 	private Integer rRequesttypeId;
@@ -32,7 +32,7 @@ public class KIndexstop extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class KIndexstop extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -52,7 +52,7 @@ public class KIndexstop extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID")
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -62,7 +62,7 @@ public class KIndexstop extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_WEBPROJECT_ID")
+	@Column(name="CM_WEBPROJECT_ID", columnDefinition="INT")
 	public Integer getCmWebprojectId() {
 		return cmWebprojectId;
 	}
@@ -82,7 +82,7 @@ public class KIndexstop extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -92,27 +92,27 @@ public class KIndexstop extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmanual() {
+	@Column(nullable=false)
+	public Boolean isIsmanual() {
 		return ismanual;
 	}
 
-	public void setIsmanual(String ismanual) {
+	public void setIsmanual(Boolean ismanual) {
 		this.ismanual = ismanual;
 	}
 
 	@Id
-	@Column(name="K_INDEXSTOP_ID")
+	@Column(name="K_INDEXSTOP_ID", columnDefinition="INT")
 	public Integer getKIndexstopId() {
 		return kIndexstopId;
 	}
@@ -132,7 +132,7 @@ public class KIndexstop extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_REQUESTTYPE_ID")
+	@Column(name="R_REQUESTTYPE_ID", columnDefinition="INT")
 	public Integer getRRequesttypeId() {
 		return rRequesttypeId;
 	}
@@ -152,7 +152,7 @@ public class KIndexstop extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

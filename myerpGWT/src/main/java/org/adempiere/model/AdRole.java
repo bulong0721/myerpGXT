@@ -36,19 +36,19 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isaccessallorgs;
-	private String isactive;
-	private String iscanapproveowndoc;
-	private String iscanexport;
-	private String iscanreport;
-	private String ischangelog;
-	private String isdiscountallowedontotal;
-	private String isdiscountuptolimitprice;
-	private String ismanual;
-	private String ispersonalaccess;
-	private String ispersonallock;
-	private String isshowacct;
-	private String isuseuserorgaccess;
+	private Boolean isaccessallorgs;
+	private Boolean isactive;
+	private Boolean iscanapproveowndoc;
+	private Boolean iscanexport;
+	private Boolean iscanreport;
+	private Boolean ischangelog;
+	private Boolean isdiscountallowedontotal;
+	private Boolean isdiscountuptolimitprice;
+	private Boolean ismanual;
+	private Boolean ispersonalaccess;
+	private Boolean ispersonallock;
+	private Boolean isshowacct;
+	private Boolean isuseuserorgaccess;
 	private Integer maxqueryrecords;
 	private String name;
 	private String overwritepricelimit;
@@ -67,7 +67,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -77,7 +77,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -87,7 +87,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ROLE_ID")
+	@Column(name="AD_ROLE_ID", columnDefinition="INT")
 	public Integer getAdRoleId() {
 		return adRoleId;
 	}
@@ -97,7 +97,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_MENU_ID")
+	@Column(name="AD_TREE_MENU_ID", columnDefinition="INT")
 	public Integer getAdTreeMenuId() {
 		return adTreeMenuId;
 	}
@@ -107,7 +107,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TREE_ORG_ID")
+	@Column(name="AD_TREE_ORG_ID", columnDefinition="INT")
 	public Integer getAdTreeOrgId() {
 		return adTreeOrgId;
 	}
@@ -256,7 +256,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -266,7 +266,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getConfirmqueryrecords() {
 		return confirmqueryrecords;
 	}
@@ -296,7 +296,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -315,137 +315,137 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsaccessallorgs() {
+	@Column(nullable=false)
+	public Boolean isIsaccessallorgs() {
 		return isaccessallorgs;
 	}
 
-	public void setIsaccessallorgs(String isaccessallorgs) {
+	public void setIsaccessallorgs(Boolean isaccessallorgs) {
 		this.isaccessallorgs = isaccessallorgs;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscanapproveowndoc() {
+	@Column(nullable=false)
+	public Boolean isIscanapproveowndoc() {
 		return iscanapproveowndoc;
 	}
 
-	public void setIscanapproveowndoc(String iscanapproveowndoc) {
+	public void setIscanapproveowndoc(Boolean iscanapproveowndoc) {
 		this.iscanapproveowndoc = iscanapproveowndoc;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscanexport() {
+	@Column(nullable=false)
+	public Boolean isIscanexport() {
 		return iscanexport;
 	}
 
-	public void setIscanexport(String iscanexport) {
+	public void setIscanexport(Boolean iscanexport) {
 		this.iscanexport = iscanexport;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscanreport() {
+	@Column(nullable=false)
+	public Boolean isIscanreport() {
 		return iscanreport;
 	}
 
-	public void setIscanreport(String iscanreport) {
+	public void setIscanreport(Boolean iscanreport) {
 		this.iscanreport = iscanreport;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIschangelog() {
+	@Column(nullable=false)
+	public Boolean isIschangelog() {
 		return ischangelog;
 	}
 
-	public void setIschangelog(String ischangelog) {
+	public void setIschangelog(Boolean ischangelog) {
 		this.ischangelog = ischangelog;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdiscountallowedontotal() {
+	@Column(nullable=false)
+	public Boolean isIsdiscountallowedontotal() {
 		return isdiscountallowedontotal;
 	}
 
-	public void setIsdiscountallowedontotal(String isdiscountallowedontotal) {
+	public void setIsdiscountallowedontotal(Boolean isdiscountallowedontotal) {
 		this.isdiscountallowedontotal = isdiscountallowedontotal;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdiscountuptolimitprice() {
+	@Column(nullable=false)
+	public Boolean isIsdiscountuptolimitprice() {
 		return isdiscountuptolimitprice;
 	}
 
-	public void setIsdiscountuptolimitprice(String isdiscountuptolimitprice) {
+	public void setIsdiscountuptolimitprice(Boolean isdiscountuptolimitprice) {
 		this.isdiscountuptolimitprice = isdiscountuptolimitprice;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsmanual() {
+	@Column(nullable=false)
+	public Boolean isIsmanual() {
 		return ismanual;
 	}
 
-	public void setIsmanual(String ismanual) {
+	public void setIsmanual(Boolean ismanual) {
 		this.ismanual = ismanual;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspersonalaccess() {
+	@Column(nullable=false)
+	public Boolean isIspersonalaccess() {
 		return ispersonalaccess;
 	}
 
-	public void setIspersonalaccess(String ispersonalaccess) {
+	public void setIspersonalaccess(Boolean ispersonalaccess) {
 		this.ispersonalaccess = ispersonalaccess;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspersonallock() {
+	@Column(nullable=false)
+	public Boolean isIspersonallock() {
 		return ispersonallock;
 	}
 
-	public void setIspersonallock(String ispersonallock) {
+	public void setIspersonallock(Boolean ispersonallock) {
 		this.ispersonallock = ispersonallock;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsshowacct() {
+	@Column(nullable=false)
+	public Boolean isIsshowacct() {
 		return isshowacct;
 	}
 
-	public void setIsshowacct(String isshowacct) {
+	public void setIsshowacct(Boolean isshowacct) {
 		this.isshowacct = isshowacct;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsuseuserorgaccess() {
+	@Column(nullable=false)
+	public Boolean isIsuseuserorgaccess() {
 		return isuseuserorgaccess;
 	}
 
-	public void setIsuseuserorgaccess(String isuseuserorgaccess) {
+	public void setIsuseuserorgaccess(Boolean isuseuserorgaccess) {
 		this.isuseuserorgaccess = isuseuserorgaccess;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getMaxqueryrecords() {
 		return maxqueryrecords;
 	}
@@ -485,7 +485,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SUPERVISOR_ID")
+	@Column(name="SUPERVISOR_ID", columnDefinition="INT")
 	public Integer getSupervisorId() {
 		return supervisorId;
 	}
@@ -505,7 +505,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -20,9 +20,9 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private BigDecimal creditwatchpercent;
 	private String description;
-	private String isactive;
-	private String isconfidentialinfo;
-	private String isdefault;
+	private Boolean isactive;
+	private Boolean isconfidentialinfo;
+	private Boolean isdefault;
 	private Integer mDiscountschemaId;
 	private Integer mPricelistId;
 	private String name;
@@ -42,7 +42,7 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -52,7 +52,7 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -62,7 +62,7 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTCOLOR_ID")
+	@Column(name="AD_PRINTCOLOR_ID", columnDefinition="INT")
 	public Integer getAdPrintcolorId() {
 		return adPrintcolorId;
 	}
@@ -72,7 +72,7 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BP_GROUP_ID")
+	@Column(name="C_BP_GROUP_ID", columnDefinition="INT")
 	public Integer getCBpGroupId() {
 		return cBpGroupId;
 	}
@@ -82,7 +82,7 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DUNNING_ID")
+	@Column(name="C_DUNNING_ID", columnDefinition="INT")
 	public Integer getCDunningId() {
 		return cDunningId;
 	}
@@ -102,7 +102,7 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -130,37 +130,37 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsconfidentialinfo() {
+	@Column(nullable=false)
+	public Boolean isIsconfidentialinfo() {
 		return isconfidentialinfo;
 	}
 
-	public void setIsconfidentialinfo(String isconfidentialinfo) {
+	public void setIsconfidentialinfo(Boolean isconfidentialinfo) {
 		this.isconfidentialinfo = isconfidentialinfo;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(name="M_DISCOUNTSCHEMA_ID")
+	@Column(name="M_DISCOUNTSCHEMA_ID", columnDefinition="INT")
 	public Integer getMDiscountschemaId() {
 		return mDiscountschemaId;
 	}
@@ -170,7 +170,7 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_ID")
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT")
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -190,7 +190,7 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PO_DISCOUNTSCHEMA_ID")
+	@Column(name="PO_DISCOUNTSCHEMA_ID", columnDefinition="INT")
 	public Integer getPoDiscountschemaId() {
 		return poDiscountschemaId;
 	}
@@ -200,7 +200,7 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PO_PRICELIST_ID")
+	@Column(name="PO_PRICELIST_ID", columnDefinition="INT")
 	public Integer getPoPricelistId() {
 		return poPricelistId;
 	}
@@ -239,7 +239,7 @@ public class CBpGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

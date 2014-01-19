@@ -30,18 +30,18 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	private String help;
 	private String importfields;
 	private Integer includedTabId;
-	private String isactive;
-	private String isadvancedtab;
-	private String isinfotab;
-	private String isinsertrecord;
-	private String isreadonly;
-	private String issinglerow;
-	private String issorttab;
-	private String istranslationtab;
+	private Boolean isactive;
+	private Boolean isadvancedtab;
+	private Boolean isinfotab;
+	private Boolean isinsertrecord;
+	private Boolean isreadonly;
+	private Boolean issinglerow;
+	private Boolean issorttab;
+	private Boolean istranslationtab;
 	private String name;
 	private String orderbyclause;
 	private Integer parentColumnId;
-	private String processing;
+	private Boolean processing;
 	private String readonlylogic;
 	private Integer seqno;
 	private Integer tablevel;
@@ -57,7 +57,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -67,7 +67,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -77,7 +77,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMNSORTORDER_ID")
+	@Column(name="AD_COLUMNSORTORDER_ID", columnDefinition="INT")
 	public Integer getAdColumnsortorderId() {
 		return adColumnsortorderId;
 	}
@@ -87,7 +87,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMNSORTYESNO_ID")
+	@Column(name="AD_COLUMNSORTYESNO_ID", columnDefinition="INT")
 	public Integer getAdColumnsortyesnoId() {
 		return adColumnsortyesnoId;
 	}
@@ -97,7 +97,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_IMAGE_ID")
+	@Column(name="AD_IMAGE_ID", columnDefinition="INT")
 	public Integer getAdImageId() {
 		return adImageId;
 	}
@@ -107,7 +107,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -117,7 +117,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PROCESS_ID")
+	@Column(name="AD_PROCESS_ID", columnDefinition="INT")
 	public Integer getAdProcessId() {
 		return adProcessId;
 	}
@@ -127,7 +127,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_TAB_ID")
+	@Column(name="AD_TAB_ID", columnDefinition="INT")
 	public Integer getAdTabId() {
 		return adTabId;
 	}
@@ -137,7 +137,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -147,7 +147,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WINDOW_ID", nullable=false)
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWindowId() {
 		return adWindowId;
 	}
@@ -177,7 +177,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -246,7 +246,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="INCLUDED_TAB_ID")
+	@Column(name="INCLUDED_TAB_ID", columnDefinition="INT")
 	public Integer getIncludedTabId() {
 		return includedTabId;
 	}
@@ -256,82 +256,81 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsadvancedtab() {
+	@Column(nullable=false)
+	public Boolean isIsadvancedtab() {
 		return isadvancedtab;
 	}
 
-	public void setIsadvancedtab(String isadvancedtab) {
+	public void setIsadvancedtab(Boolean isadvancedtab) {
 		this.isadvancedtab = isadvancedtab;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsinfotab() {
+	public Boolean isIsinfotab() {
 		return isinfotab;
 	}
 
-	public void setIsinfotab(String isinfotab) {
+	public void setIsinfotab(Boolean isinfotab) {
 		this.isinfotab = isinfotab;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinsertrecord() {
+	@Column(nullable=false)
+	public Boolean isIsinsertrecord() {
 		return isinsertrecord;
 	}
 
-	public void setIsinsertrecord(String isinsertrecord) {
+	public void setIsinsertrecord(Boolean isinsertrecord) {
 		this.isinsertrecord = isinsertrecord;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreadonly() {
+	@Column(nullable=false)
+	public Boolean isIsreadonly() {
 		return isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssinglerow() {
+	@Column(nullable=false)
+	public Boolean isIssinglerow() {
 		return issinglerow;
 	}
 
-	public void setIssinglerow(String issinglerow) {
+	public void setIssinglerow(Boolean issinglerow) {
 		this.issinglerow = issinglerow;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssorttab() {
+	@Column(nullable=false)
+	public Boolean isIssorttab() {
 		return issorttab;
 	}
 
-	public void setIssorttab(String issorttab) {
+	public void setIssorttab(Boolean issorttab) {
 		this.issorttab = issorttab;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstranslationtab() {
+	@Column(nullable=false)
+	public Boolean isIstranslationtab() {
 		return istranslationtab;
 	}
 
-	public void setIstranslationtab(String istranslationtab) {
+	public void setIstranslationtab(Boolean istranslationtab) {
 		this.istranslationtab = istranslationtab;
 	}
 
@@ -356,7 +355,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PARENT_COLUMN_ID")
+	@Column(name="PARENT_COLUMN_ID", columnDefinition="INT")
 	public Integer getParentColumnId() {
 		return parentColumnId;
 	}
@@ -366,12 +365,11 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -386,7 +384,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -396,7 +394,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getTablevel() {
 		return tablevel;
 	}
@@ -416,7 +414,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

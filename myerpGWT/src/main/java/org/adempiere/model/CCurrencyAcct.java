@@ -17,7 +17,7 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	private Integer cCurrencyId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer realizedgainAcct;
 	private Integer realizedlossAcct;
 	private Integer unrealizedgainAcct;
@@ -34,7 +34,7 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -54,7 +54,7 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -64,7 +64,7 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -84,7 +84,7 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -94,17 +94,17 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="REALIZEDGAIN_ACCT", nullable=false)
+	@Column(name="REALIZEDGAIN_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getRealizedgainAcct() {
 		return realizedgainAcct;
 	}
@@ -114,7 +114,7 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REALIZEDLOSS_ACCT", nullable=false)
+	@Column(name="REALIZEDLOSS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getRealizedlossAcct() {
 		return realizedlossAcct;
 	}
@@ -124,7 +124,7 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="UNREALIZEDGAIN_ACCT", nullable=false)
+	@Column(name="UNREALIZEDGAIN_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getUnrealizedgainAcct() {
 		return unrealizedgainAcct;
 	}
@@ -134,7 +134,7 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="UNREALIZEDLOSS_ACCT", nullable=false)
+	@Column(name="UNREALIZEDLOSS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getUnrealizedlossAcct() {
 		return unrealizedlossAcct;
 	}
@@ -154,7 +154,7 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

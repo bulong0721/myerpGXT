@@ -20,8 +20,8 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String datatype;
 	private String description;
-	private String isactive;
-	private String isdefault;
+	private Boolean isactive;
+	private Boolean isdefault;
 	private String name;
 	private Integer poWindowId;
 	private String query;
@@ -38,7 +38,7 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_COLUMN_ID")
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -58,7 +58,7 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -68,7 +68,7 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_SEARCHDEFINITION_ID")
+	@Column(name="AD_SEARCHDEFINITION_ID", columnDefinition="INT")
 	public Integer getAdSearchdefinitionId() {
 		return adSearchdefinitionId;
 	}
@@ -78,7 +78,7 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_TABLE_ID", nullable=false)
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -88,7 +88,7 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WINDOW_ID", nullable=false)
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWindowId() {
 		return adWindowId;
 	}
@@ -108,6 +108,7 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -136,22 +137,22 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
@@ -166,7 +167,7 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PO_WINDOW_ID")
+	@Column(name="PO_WINDOW_ID", columnDefinition="INT")
 	public Integer getPoWindowId() {
 		return poWindowId;
 	}
@@ -216,7 +217,7 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

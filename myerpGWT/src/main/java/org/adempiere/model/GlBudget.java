@@ -17,8 +17,8 @@ public class GlBudget extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private Integer glBudgetId;
-	private String isactive;
-	private String isprimary;
+	private Boolean isactive;
+	private Boolean isprimary;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -31,7 +31,7 @@ public class GlBudget extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class GlBudget extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -71,7 +71,7 @@ public class GlBudget extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -90,7 +90,7 @@ public class GlBudget extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="GL_BUDGET_ID")
+	@Column(name="GL_BUDGET_ID", columnDefinition="INT")
 	public Integer getGlBudgetId() {
 		return glBudgetId;
 	}
@@ -100,22 +100,22 @@ public class GlBudget extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprimary() {
+	@Column(nullable=false)
+	public Boolean isIsprimary() {
 		return isprimary;
 	}
 
-	public void setIsprimary(String isprimary) {
+	public void setIsprimary(Boolean isprimary) {
 		this.isprimary = isprimary;
 	}
 
@@ -140,7 +140,7 @@ public class GlBudget extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

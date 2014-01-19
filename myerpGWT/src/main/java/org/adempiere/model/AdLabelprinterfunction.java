@@ -19,8 +19,8 @@ public class AdLabelprinterfunction extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String functionprefix;
 	private String functionsuffix;
-	private String isactive;
-	private String isxyposition;
+	private Boolean isactive;
+	private Boolean isxyposition;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -34,7 +34,7 @@ public class AdLabelprinterfunction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class AdLabelprinterfunction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_LABELPRINTER_ID", nullable=false)
+	@Column(name="AD_LABELPRINTER_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdLabelprinterId() {
 		return adLabelprinterId;
 	}
@@ -54,7 +54,7 @@ public class AdLabelprinterfunction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_LABELPRINTERFUNCTION_ID")
+	@Column(name="AD_LABELPRINTERFUNCTION_ID", columnDefinition="INT")
 	public Integer getAdLabelprinterfunctionId() {
 		return adLabelprinterfunctionId;
 	}
@@ -64,7 +64,7 @@ public class AdLabelprinterfunction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -84,7 +84,7 @@ public class AdLabelprinterfunction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -123,22 +123,22 @@ public class AdLabelprinterfunction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsxyposition() {
+	@Column(nullable=false)
+	public Boolean isIsxyposition() {
 		return isxyposition;
 	}
 
-	public void setIsxyposition(String isxyposition) {
+	public void setIsxyposition(Boolean isxyposition) {
 		this.isxyposition = isxyposition;
 	}
 
@@ -163,7 +163,7 @@ public class AdLabelprinterfunction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

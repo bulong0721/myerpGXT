@@ -17,7 +17,7 @@ public class SResourceunavailable extends org.adempiere.common.ADEntityBase {
 	private String datefrom;
 	private String dateto;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private Integer sResourceId;
 	private Integer sResourceunavailableId;
 	private String updated;
@@ -31,7 +31,7 @@ public class SResourceunavailable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class SResourceunavailable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -61,7 +61,7 @@ public class SResourceunavailable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -99,17 +99,17 @@ public class SResourceunavailable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="S_RESOURCE_ID", nullable=false)
+	@Column(name="S_RESOURCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getSResourceId() {
 		return sResourceId;
 	}
@@ -119,7 +119,7 @@ public class SResourceunavailable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="S_RESOURCEUNAVAILABLE_ID")
+	@Column(name="S_RESOURCEUNAVAILABLE_ID", columnDefinition="INT")
 	public Integer getSResourceunavailableId() {
 		return sResourceunavailableId;
 	}
@@ -139,7 +139,7 @@ public class SResourceunavailable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

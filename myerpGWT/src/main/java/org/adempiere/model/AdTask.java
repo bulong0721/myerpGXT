@@ -19,8 +19,8 @@ public class AdTask extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String entitytype;
 	private String help;
-	private String isactive;
-	private String isserverprocess;
+	private Boolean isactive;
+	private Boolean isserverprocess;
 	private String name;
 	private String osCommand;
 	private String updated;
@@ -44,7 +44,7 @@ public class AdTask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -54,7 +54,7 @@ public class AdTask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -64,7 +64,7 @@ public class AdTask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_TASK_ID")
+	@Column(name="AD_TASK_ID", columnDefinition="INT")
 	public Integer getAdTaskId() {
 		return adTaskId;
 	}
@@ -84,7 +84,7 @@ public class AdTask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -123,22 +123,22 @@ public class AdTask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsserverprocess() {
+	@Column(nullable=false)
+	public Boolean isIsserverprocess() {
 		return isserverprocess;
 	}
 
-	public void setIsserverprocess(String isserverprocess) {
+	public void setIsserverprocess(Boolean isserverprocess) {
 		this.isserverprocess = isserverprocess;
 	}
 
@@ -173,7 +173,7 @@ public class AdTask extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

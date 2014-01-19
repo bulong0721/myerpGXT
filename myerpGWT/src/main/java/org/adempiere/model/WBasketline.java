@@ -16,7 +16,7 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private Integer line;
 	private Integer mProductId;
 	private BigDecimal price;
@@ -35,7 +35,7 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -65,7 +65,7 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -85,17 +85,17 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -105,7 +105,7 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -155,7 +155,7 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -165,7 +165,7 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_BASKET_ID", nullable=false)
+	@Column(name="W_BASKET_ID", columnDefinition="INT", nullable=false)
 	public Integer getWBasketId() {
 		return wBasketId;
 	}
@@ -175,7 +175,7 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="W_BASKETLINE_ID")
+	@Column(name="W_BASKETLINE_ID", columnDefinition="INT")
 	public Integer getWBasketlineId() {
 		return wBasketlineId;
 	}

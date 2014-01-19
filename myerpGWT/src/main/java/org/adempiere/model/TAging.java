@@ -40,9 +40,9 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	private BigDecimal dueamt;
 	private String duedate;
 	private BigDecimal invoicedamt;
-	private String isactive;
-	private String islistinvoices;
-	private String issotrx;
+	private Boolean isactive;
+	private Boolean islistinvoices;
+	private Boolean issotrx;
 	private BigDecimal openamt;
 	private BigDecimal pastdue130;
 	private BigDecimal pastdue17;
@@ -69,7 +69,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -79,7 +79,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -89,7 +89,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -99,7 +99,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -109,7 +109,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BP_GROUP_ID", nullable=false)
+	@Column(name="C_BP_GROUP_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpGroupId() {
 		return cBpGroupId;
 	}
@@ -119,7 +119,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -129,7 +129,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -139,7 +139,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -149,7 +149,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -159,7 +159,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_INVOICEPAYSCHEDULE_ID")
+	@Column(name="C_INVOICEPAYSCHEDULE_ID", columnDefinition="INT")
 	public Integer getCInvoicepayscheduleId() {
 		return cInvoicepayscheduleId;
 	}
@@ -169,7 +169,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -189,7 +189,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -209,6 +209,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDaysdue() {
 		return daysdue;
 	}
@@ -348,32 +349,32 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIslistinvoices() {
+	@Column(nullable=false)
+	public Boolean isIslistinvoices() {
 		return islistinvoices;
 	}
 
-	public void setIslistinvoices(String islistinvoices) {
+	public void setIslistinvoices(Boolean islistinvoices) {
 		this.islistinvoices = islistinvoices;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssotrx() {
+	@Column(nullable=false)
+	public Boolean isIssotrx() {
 		return issotrx;
 	}
 
-	public void setIssotrx(String issotrx) {
+	public void setIssotrx(Boolean issotrx) {
 		this.issotrx = issotrx;
 	}
 
@@ -498,7 +499,7 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

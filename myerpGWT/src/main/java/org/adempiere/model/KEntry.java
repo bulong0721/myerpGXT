@@ -16,8 +16,8 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String descriptionurl;
-	private String isactive;
-	private String ispublic;
+	private Boolean isactive;
+	private Boolean ispublic;
 	private Integer kEntryId;
 	private Integer kSourceId;
 	private Integer kTopicId;
@@ -37,7 +37,7 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -57,7 +57,7 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_SESSION_ID")
+	@Column(name="AD_SESSION_ID", columnDefinition="INT")
 	public Integer getAdSessionId() {
 		return adSessionId;
 	}
@@ -77,7 +77,7 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -97,27 +97,27 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspublic() {
+	@Column(nullable=false)
+	public Boolean isIspublic() {
 		return ispublic;
 	}
 
-	public void setIspublic(String ispublic) {
+	public void setIspublic(Boolean ispublic) {
 		this.ispublic = ispublic;
 	}
 
 	@Id
-	@Column(name="K_ENTRY_ID")
+	@Column(name="K_ENTRY_ID", columnDefinition="INT")
 	public Integer getKEntryId() {
 		return kEntryId;
 	}
@@ -127,7 +127,7 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="K_SOURCE_ID")
+	@Column(name="K_SOURCE_ID", columnDefinition="INT")
 	public Integer getKSourceId() {
 		return kSourceId;
 	}
@@ -137,7 +137,7 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="K_TOPIC_ID", nullable=false)
+	@Column(name="K_TOPIC_ID", columnDefinition="INT", nullable=false)
 	public Integer getKTopicId() {
 		return kTopicId;
 	}
@@ -166,7 +166,7 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getRating() {
 		return rating;
 	}
@@ -196,7 +196,7 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

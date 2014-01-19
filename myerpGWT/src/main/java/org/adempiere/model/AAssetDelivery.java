@@ -20,7 +20,7 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	private String deliveryconfirmation;
 	private String description;
 	private String email;
-	private String isactive;
+	private Boolean isactive;
 	private String lot;
 	private Integer mInoutlineId;
 	private Integer mProductdownloadId;
@@ -43,7 +43,7 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_ASSET_DELIVERY_ID")
+	@Column(name="A_ASSET_DELIVERY_ID", columnDefinition="INT")
 	public Integer getAAssetDeliveryId() {
 		return aAssetDeliveryId;
 	}
@@ -53,7 +53,7 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID", nullable=false)
+	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -63,7 +63,7 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -73,7 +73,7 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -83,7 +83,7 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -103,7 +103,7 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -142,12 +142,12 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -162,7 +162,7 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUTLINE_ID")
+	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}
@@ -172,7 +172,7 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCTDOWNLOAD_ID")
+	@Column(name="M_PRODUCTDOWNLOAD_ID", columnDefinition="INT")
 	public Integer getMProductdownloadId() {
 		return mProductdownloadId;
 	}
@@ -251,7 +251,7 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

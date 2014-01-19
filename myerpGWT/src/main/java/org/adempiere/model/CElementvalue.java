@@ -21,11 +21,11 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isbankaccount;
-	private String isdoccontrolled;
-	private String isforeigncurrency;
-	private String issummary;
+	private Boolean isactive;
+	private Boolean isbankaccount;
+	private Boolean isdoccontrolled;
+	private Boolean isforeigncurrency;
+	private Boolean issummary;
 	private String name;
 	private String postactual;
 	private String postbudget;
@@ -65,7 +65,7 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -75,7 +75,7 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -85,7 +85,7 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BANKACCOUNT_ID")
+	@Column(name="C_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCBankaccountId() {
 		return cBankaccountId;
 	}
@@ -95,7 +95,7 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -105,7 +105,7 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ELEMENT_ID", nullable=false)
+	@Column(name="C_ELEMENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCElementId() {
 		return cElementId;
 	}
@@ -115,7 +115,7 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ELEMENTVALUE_ID")
+	@Column(name="C_ELEMENTVALUE_ID", columnDefinition="INT")
 	public Integer getCElementvalueId() {
 		return cElementvalueId;
 	}
@@ -135,7 +135,7 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -154,52 +154,49 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsbankaccount() {
+	public Boolean isIsbankaccount() {
 		return isbankaccount;
 	}
 
-	public void setIsbankaccount(String isbankaccount) {
+	public void setIsbankaccount(Boolean isbankaccount) {
 		this.isbankaccount = isbankaccount;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdoccontrolled() {
+	public Boolean isIsdoccontrolled() {
 		return isdoccontrolled;
 	}
 
-	public void setIsdoccontrolled(String isdoccontrolled) {
+	public void setIsdoccontrolled(Boolean isdoccontrolled) {
 		this.isdoccontrolled = isdoccontrolled;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsforeigncurrency() {
+	public Boolean isIsforeigncurrency() {
 		return isforeigncurrency;
 	}
 
-	public void setIsforeigncurrency(String isforeigncurrency) {
+	public void setIsforeigncurrency(Boolean isforeigncurrency) {
 		this.isforeigncurrency = isforeigncurrency;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
@@ -264,7 +261,7 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

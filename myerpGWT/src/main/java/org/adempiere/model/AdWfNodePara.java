@@ -21,7 +21,7 @@ public class AdWfNodePara extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String entitytype;
-	private String isactive;
+	private Boolean isactive;
 	private String updated;
 	private Integer updatedby;
 
@@ -33,7 +33,7 @@ public class AdWfNodePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class AdWfNodePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class AdWfNodePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PROCESS_PARA_ID")
+	@Column(name="AD_PROCESS_PARA_ID", columnDefinition="INT")
 	public Integer getAdProcessParaId() {
 		return adProcessParaId;
 	}
@@ -63,7 +63,7 @@ public class AdWfNodePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WF_NODE_ID", nullable=false)
+	@Column(name="AD_WF_NODE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWfNodeId() {
 		return adWfNodeId;
 	}
@@ -73,7 +73,7 @@ public class AdWfNodePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_WF_NODE_PARA_ID")
+	@Column(name="AD_WF_NODE_PARA_ID", columnDefinition="INT")
 	public Integer getAdWfNodeParaId() {
 		return adWfNodeParaId;
 	}
@@ -113,7 +113,7 @@ public class AdWfNodePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -142,12 +142,12 @@ public class AdWfNodePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -162,7 +162,7 @@ public class AdWfNodePara extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

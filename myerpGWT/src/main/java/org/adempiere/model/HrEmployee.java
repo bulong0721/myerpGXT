@@ -23,7 +23,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	private Integer hrJobId;
 	private Integer hrPayrollId;
 	private String imageurl;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String name2;
 	private String nationalcode;
@@ -40,7 +40,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -60,7 +60,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -70,7 +70,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -100,7 +100,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -119,7 +119,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_DEPARTMENT_ID", nullable=false)
+	@Column(name="HR_DEPARTMENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getHrDepartmentId() {
 		return hrDepartmentId;
 	}
@@ -129,7 +129,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="HR_EMPLOYEE_ID")
+	@Column(name="HR_EMPLOYEE_ID", columnDefinition="INT")
 	public Integer getHrEmployeeId() {
 		return hrEmployeeId;
 	}
@@ -139,7 +139,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_JOB_ID", nullable=false)
+	@Column(name="HR_JOB_ID", columnDefinition="INT", nullable=false)
 	public Integer getHrJobId() {
 		return hrJobId;
 	}
@@ -149,7 +149,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_PAYROLL_ID")
+	@Column(name="HR_PAYROLL_ID", columnDefinition="INT")
 	public Integer getHrPayrollId() {
 		return hrPayrollId;
 	}
@@ -169,12 +169,12 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -239,7 +239,7 @@ public class HrEmployee extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

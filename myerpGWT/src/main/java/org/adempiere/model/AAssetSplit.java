@@ -30,10 +30,10 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String dateacct;
-	private String isactive;
+	private Boolean isactive;
 	private String postingtype;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -55,7 +55,7 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ACCT_ID", nullable=false)
+	@Column(name="A_ASSET_ACCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAAssetAcctId() {
 		return aAssetAcctId;
 	}
@@ -75,7 +75,7 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_ASSET_ID", nullable=false)
+	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
 	public Integer getAAssetId() {
 		return aAssetId;
 	}
@@ -95,7 +95,7 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="A_ASSET_SPLIT_ID")
+	@Column(name="A_ASSET_SPLIT_ID", columnDefinition="INT")
 	public Integer getAAssetSplitId() {
 		return aAssetSplitId;
 	}
@@ -105,7 +105,7 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_DEPRECIATION_WORKFILE_ID", nullable=false)
+	@Column(name="A_DEPRECIATION_WORKFILE_ID", columnDefinition="INT", nullable=false)
 	public Integer getADepreciationWorkfileId() {
 		return aDepreciationWorkfileId;
 	}
@@ -175,7 +175,7 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -185,7 +185,7 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -195,7 +195,7 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID", nullable=false)
+	@Column(name="C_PERIOD_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -215,7 +215,7 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -235,12 +235,12 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -255,22 +255,22 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessing() {
+	@Column(nullable=false)
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -285,7 +285,7 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

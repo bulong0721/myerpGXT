@@ -20,10 +20,10 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String help;
 	private String imageurl;
-	private String isactive;
-	private String isselfservice;
+	private Boolean isactive;
+	private Boolean isselfservice;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private String publishstatus;
 	private String updated;
 	private Integer updatedby;
@@ -46,7 +46,7 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -56,7 +56,7 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -86,7 +86,7 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -106,7 +106,7 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -145,22 +145,22 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsselfservice() {
+	@Column(nullable=false)
+	public Boolean isIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(String isselfservice) {
+	public void setIsselfservice(Boolean isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
@@ -175,12 +175,11 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -205,7 +204,7 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -233,6 +232,7 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getVersion() {
 		return version;
 	}
@@ -242,7 +242,7 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="W_ADVERTISEMENT_ID")
+	@Column(name="W_ADVERTISEMENT_ID", columnDefinition="INT")
 	public Integer getWAdvertisementId() {
 		return wAdvertisementId;
 	}
@@ -252,7 +252,7 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_CLICKCOUNT_ID")
+	@Column(name="W_CLICKCOUNT_ID", columnDefinition="INT")
 	public Integer getWClickcountId() {
 		return wClickcountId;
 	}
@@ -262,7 +262,7 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_COUNTERCOUNT_ID")
+	@Column(name="W_COUNTERCOUNT_ID", columnDefinition="INT")
 	public Integer getWCountercountId() {
 		return wCountercountId;
 	}

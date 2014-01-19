@@ -19,14 +19,14 @@ public class CmTemplate extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String elements;
 	private String help;
-	private String isactive;
-	private String isinclude;
-	private String isnews;
-	private String issummary;
-	private String isusead;
-	private String isvalid;
+	private Boolean isactive;
+	private Boolean isinclude;
+	private Boolean isnews;
+	private Boolean issummary;
+	private Boolean isusead;
+	private Boolean isvalid;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private String templatexst;
 	private String updated;
 	private Integer updatedby;
@@ -40,7 +40,7 @@ public class CmTemplate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class CmTemplate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -60,7 +60,7 @@ public class CmTemplate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="CM_TEMPLATE_ID")
+	@Column(name="CM_TEMPLATE_ID", columnDefinition="INT")
 	public Integer getCmTemplateId() {
 		return cmTemplateId;
 	}
@@ -70,7 +70,7 @@ public class CmTemplate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CM_WEBPROJECT_ID")
+	@Column(name="CM_WEBPROJECT_ID", columnDefinition="INT")
 	public Integer getCmWebprojectId() {
 		return cmWebprojectId;
 	}
@@ -90,7 +90,7 @@ public class CmTemplate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -129,62 +129,62 @@ public class CmTemplate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinclude() {
+	@Column(nullable=false)
+	public Boolean isIsinclude() {
 		return isinclude;
 	}
 
-	public void setIsinclude(String isinclude) {
+	public void setIsinclude(Boolean isinclude) {
 		this.isinclude = isinclude;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsnews() {
+	@Column(nullable=false)
+	public Boolean isIsnews() {
 		return isnews;
 	}
 
-	public void setIsnews(String isnews) {
+	public void setIsnews(Boolean isnews) {
 		this.isnews = isnews;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsusead() {
+	@Column(nullable=false)
+	public Boolean isIsusead() {
 		return isusead;
 	}
 
-	public void setIsusead(String isusead) {
+	public void setIsusead(Boolean isusead) {
 		this.isusead = isusead;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsvalid() {
+	@Column(nullable=false)
+	public Boolean isIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(String isvalid) {
+	public void setIsvalid(Boolean isvalid) {
 		this.isvalid = isvalid;
 	}
 
@@ -199,12 +199,11 @@ public class CmTemplate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -229,7 +228,7 @@ public class CmTemplate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

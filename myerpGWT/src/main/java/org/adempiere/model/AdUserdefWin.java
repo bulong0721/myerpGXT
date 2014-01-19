@@ -21,10 +21,10 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String isdefault;
-	private String isreadonly;
-	private String isuserupdateable;
+	private Boolean isactive;
+	private Boolean isdefault;
+	private Boolean isreadonly;
+	private Boolean isuserupdateable;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -37,7 +37,7 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ROLE_ID")
+	@Column(name="AD_ROLE_ID", columnDefinition="INT")
 	public Integer getAdRoleId() {
 		return adRoleId;
 	}
@@ -77,7 +77,7 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID")
+	@Column(name="AD_USER_ID", columnDefinition="INT")
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -87,7 +87,7 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_USERDEF_WIN_ID")
+	@Column(name="AD_USERDEF_WIN_ID", columnDefinition="INT")
 	public Integer getAdUserdefWinId() {
 		return adUserdefWinId;
 	}
@@ -97,7 +97,7 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WINDOW_ID", nullable=false)
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdWindowId() {
 		return adWindowId;
 	}
@@ -117,7 +117,7 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -146,42 +146,42 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreadonly() {
+	@Column(nullable=false)
+	public Boolean isIsreadonly() {
 		return isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsuserupdateable() {
+	@Column(nullable=false)
+	public Boolean isIsuserupdateable() {
 		return isuserupdateable;
 	}
 
-	public void setIsuserupdateable(String isuserupdateable) {
+	public void setIsuserupdateable(Boolean isuserupdateable) {
 		this.isuserupdateable = isuserupdateable;
 	}
 
@@ -206,7 +206,7 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

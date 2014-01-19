@@ -32,12 +32,12 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	private Integer hrPayrollId;
 	private Integer hrPeriodId;
 	private Integer hrProcessId;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String posted;
-	private String processed;
+	private Boolean processed;
 	private Long processedon;
-	private String processing;
+	private Boolean processing;
 	private Integer reversalId;
 	private String updated;
 	private Integer updatedby;
@@ -50,7 +50,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -60,7 +60,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -70,7 +70,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTFORMAT_ID")
+	@Column(name="AD_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getAdPrintformatId() {
 		return adPrintformatId;
 	}
@@ -80,7 +80,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_WORKFLOW_ID")
+	@Column(name="AD_WORKFLOW_ID", columnDefinition="INT")
 	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
@@ -90,7 +90,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -100,7 +100,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -110,7 +110,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID")
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -120,7 +120,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPETARGET_ID", nullable=false)
+	@Column(name="C_DOCTYPETARGET_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDoctypetargetId() {
 		return cDoctypetargetId;
 	}
@@ -130,7 +130,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYSELECTION_ID")
+	@Column(name="C_PAYSELECTION_ID", columnDefinition="INT")
 	public Integer getCPayselectionId() {
 		return cPayselectionId;
 	}
@@ -159,7 +159,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -209,7 +209,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_DEPARTMENT_ID")
+	@Column(name="HR_DEPARTMENT_ID", columnDefinition="INT")
 	public Integer getHrDepartmentId() {
 		return hrDepartmentId;
 	}
@@ -219,7 +219,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_EMPLOYEE_ID")
+	@Column(name="HR_EMPLOYEE_ID", columnDefinition="INT")
 	public Integer getHrEmployeeId() {
 		return hrEmployeeId;
 	}
@@ -229,7 +229,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_JOB_ID")
+	@Column(name="HR_JOB_ID", columnDefinition="INT")
 	public Integer getHrJobId() {
 		return hrJobId;
 	}
@@ -239,7 +239,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_PAYROLL_ID", nullable=false)
+	@Column(name="HR_PAYROLL_ID", columnDefinition="INT", nullable=false)
 	public Integer getHrPayrollId() {
 		return hrPayrollId;
 	}
@@ -249,7 +249,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_PERIOD_ID")
+	@Column(name="HR_PERIOD_ID", columnDefinition="INT")
 	public Integer getHrPeriodId() {
 		return hrPeriodId;
 	}
@@ -259,7 +259,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="HR_PROCESS_ID")
+	@Column(name="HR_PROCESS_ID", columnDefinition="INT")
 	public Integer getHrProcessId() {
 		return hrProcessId;
 	}
@@ -269,12 +269,12 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -299,12 +299,12 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -318,17 +318,16 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="REVERSAL_ID")
+	@Column(name="REVERSAL_ID", columnDefinition="INT")
 	public Integer getReversalId() {
 		return reversalId;
 	}
@@ -348,7 +347,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

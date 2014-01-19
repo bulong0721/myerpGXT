@@ -42,15 +42,15 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private Integer glDistributionId;
 	private String help;
-	private String isactive;
-	private String iscreatereversal;
-	private String isvalid;
+	private Boolean isactive;
+	private Boolean iscreatereversal;
+	private Boolean isvalid;
 	private Integer mProductId;
 	private String name;
 	private Integer orgId;
 	private BigDecimal percenttotal;
 	private String postingtype;
-	private String processing;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 	private Integer user1Id;
@@ -64,7 +64,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ACCOUNT_ID")
+	@Column(name="ACCOUNT_ID", columnDefinition="INT")
 	public Integer getAccountId() {
 		return accountId;
 	}
@@ -74,7 +74,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -84,7 +84,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -94,7 +94,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -234,7 +234,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -244,7 +244,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -254,7 +254,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -264,7 +264,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -274,7 +274,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID")
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -284,7 +284,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCFROM_ID")
+	@Column(name="C_LOCFROM_ID", columnDefinition="INT")
 	public Integer getCLocfromId() {
 		return cLocfromId;
 	}
@@ -294,7 +294,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCTO_ID")
+	@Column(name="C_LOCTO_ID", columnDefinition="INT")
 	public Integer getCLoctoId() {
 		return cLoctoId;
 	}
@@ -304,7 +304,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -314,7 +314,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SALESREGION_ID")
+	@Column(name="C_SALESREGION_ID", columnDefinition="INT")
 	public Integer getCSalesregionId() {
 		return cSalesregionId;
 	}
@@ -334,7 +334,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -353,7 +353,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="GL_DISTRIBUTION_ID")
+	@Column(name="GL_DISTRIBUTION_ID", columnDefinition="INT")
 	public Integer getGlDistributionId() {
 		return glDistributionId;
 	}
@@ -373,37 +373,37 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscreatereversal() {
+	@Column(nullable=false)
+	public Boolean isIscreatereversal() {
 		return iscreatereversal;
 	}
 
-	public void setIscreatereversal(String iscreatereversal) {
+	public void setIscreatereversal(Boolean iscreatereversal) {
 		this.iscreatereversal = iscreatereversal;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsvalid() {
+	@Column(nullable=false)
+	public Boolean isIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(String isvalid) {
+	public void setIsvalid(Boolean isvalid) {
 		this.isvalid = isvalid;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -423,7 +423,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ORG_ID")
+	@Column(name="ORG_ID", columnDefinition="INT")
 	public Integer getOrgId() {
 		return orgId;
 	}
@@ -453,12 +453,11 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -473,7 +472,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -483,7 +482,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -493,7 +492,7 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}

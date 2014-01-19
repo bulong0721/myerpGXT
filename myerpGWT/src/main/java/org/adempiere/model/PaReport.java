@@ -18,7 +18,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private Integer jasperprocessId;
 	private String jasperprocessing;
 	private String listsources;
@@ -28,7 +28,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	private Integer paReportcolumnsetId;
 	private Integer paReportcubeId;
 	private Integer paReportlinesetId;
-	private String processing;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -40,7 +40,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -60,7 +60,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTFORMAT_ID")
+	@Column(name="AD_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getAdPrintformatId() {
 		return adPrintformatId;
 	}
@@ -70,7 +70,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -80,7 +80,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CALENDAR_ID", nullable=false)
+	@Column(name="C_CALENDAR_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCalendarId() {
 		return cCalendarId;
 	}
@@ -100,7 +100,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -119,17 +119,17 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="JASPERPROCESS_ID")
+	@Column(name="JASPERPROCESS_ID", columnDefinition="INT")
 	public Integer getJasperprocessId() {
 		return jasperprocessId;
 	}
@@ -179,7 +179,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="PA_REPORT_ID")
+	@Column(name="PA_REPORT_ID", columnDefinition="INT")
 	public Integer getPaReportId() {
 		return paReportId;
 	}
@@ -189,7 +189,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_REPORTCOLUMNSET_ID", nullable=false)
+	@Column(name="PA_REPORTCOLUMNSET_ID", columnDefinition="INT", nullable=false)
 	public Integer getPaReportcolumnsetId() {
 		return paReportcolumnsetId;
 	}
@@ -199,7 +199,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_REPORTCUBE_ID")
+	@Column(name="PA_REPORTCUBE_ID", columnDefinition="INT")
 	public Integer getPaReportcubeId() {
 		return paReportcubeId;
 	}
@@ -209,7 +209,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PA_REPORTLINESET_ID", nullable=false)
+	@Column(name="PA_REPORTLINESET_ID", columnDefinition="INT", nullable=false)
 	public Integer getPaReportlinesetId() {
 		return paReportlinesetId;
 	}
@@ -219,12 +219,12 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessing() {
+	@Column(nullable=false)
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -239,7 +239,7 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

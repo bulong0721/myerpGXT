@@ -56,9 +56,9 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	private String iErrormsg;
 	private Integer iGljournalId;
 	private String iIsimported;
-	private String isactive;
-	private String iscreatenewbatch;
-	private String iscreatenewjournal;
+	private Boolean isactive;
+	private Boolean iscreatenewbatch;
+	private Boolean iscreatenewjournal;
 	private String isoCode;
 	private String journaldocumentno;
 	private Integer line;
@@ -66,8 +66,8 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	private String orgtrxvalue;
 	private String orgvalue;
 	private String postingtype;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String productvalue;
 	private String projectvalue;
 	private BigDecimal qty;
@@ -86,7 +86,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ACCOUNT_ID")
+	@Column(name="ACCOUNT_ID", columnDefinition="INT")
 	public Integer getAccountId() {
 		return accountId;
 	}
@@ -116,7 +116,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -126,7 +126,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -136,7 +136,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGDOC_ID")
+	@Column(name="AD_ORGDOC_ID", columnDefinition="INT")
 	public Integer getAdOrgdocId() {
 		return adOrgdocId;
 	}
@@ -146,7 +146,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -221,7 +221,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -231,7 +231,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -241,7 +241,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -251,7 +251,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -261,7 +261,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CONVERSIONTYPE_ID")
+	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT")
 	public Integer getCConversiontypeId() {
 		return cConversiontypeId;
 	}
@@ -271,7 +271,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -281,7 +281,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DOCTYPE_ID")
+	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -291,7 +291,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCFROM_ID")
+	@Column(name="C_LOCFROM_ID", columnDefinition="INT")
 	public Integer getCLocfromId() {
 		return cLocfromId;
 	}
@@ -301,7 +301,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCTO_ID")
+	@Column(name="C_LOCTO_ID", columnDefinition="INT")
 	public Integer getCLoctoId() {
 		return cLoctoId;
 	}
@@ -311,7 +311,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID")
+	@Column(name="C_PERIOD_ID", columnDefinition="INT")
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -321,7 +321,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -331,7 +331,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SALESREGION_ID")
+	@Column(name="C_SALESREGION_ID", columnDefinition="INT")
 	public Integer getCSalesregionId() {
 		return cSalesregionId;
 	}
@@ -341,7 +341,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID")
+	@Column(name="C_UOM_ID", columnDefinition="INT")
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -351,7 +351,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_VALIDCOMBINATION_ID")
+	@Column(name="C_VALIDCOMBINATION_ID", columnDefinition="INT")
 	public Integer getCValidcombinationId() {
 		return cValidcombinationId;
 	}
@@ -401,6 +401,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -447,7 +448,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_BUDGET_ID")
+	@Column(name="GL_BUDGET_ID", columnDefinition="INT")
 	public Integer getGlBudgetId() {
 		return glBudgetId;
 	}
@@ -457,7 +458,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_CATEGORY_ID")
+	@Column(name="GL_CATEGORY_ID", columnDefinition="INT")
 	public Integer getGlCategoryId() {
 		return glCategoryId;
 	}
@@ -467,7 +468,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_JOURNAL_ID")
+	@Column(name="GL_JOURNAL_ID", columnDefinition="INT")
 	public Integer getGlJournalId() {
 		return glJournalId;
 	}
@@ -477,7 +478,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_JOURNALBATCH_ID")
+	@Column(name="GL_JOURNALBATCH_ID", columnDefinition="INT")
 	public Integer getGlJournalbatchId() {
 		return glJournalbatchId;
 	}
@@ -487,7 +488,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="GL_JOURNALLINE_ID")
+	@Column(name="GL_JOURNALLINE_ID", columnDefinition="INT")
 	public Integer getGlJournallineId() {
 		return glJournallineId;
 	}
@@ -507,7 +508,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_GLJOURNAL_ID")
+	@Column(name="I_GLJOURNAL_ID", columnDefinition="INT")
 	public Integer getIGljournalId() {
 		return iGljournalId;
 	}
@@ -527,32 +528,29 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIscreatenewbatch() {
+	public Boolean isIscreatenewbatch() {
 		return iscreatenewbatch;
 	}
 
-	public void setIscreatenewbatch(String iscreatenewbatch) {
+	public void setIscreatenewbatch(Boolean iscreatenewbatch) {
 		this.iscreatenewbatch = iscreatenewbatch;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIscreatenewjournal() {
+	public Boolean isIscreatenewjournal() {
 		return iscreatenewjournal;
 	}
 
-	public void setIscreatenewjournal(String iscreatenewjournal) {
+	public void setIscreatenewjournal(Boolean iscreatenewjournal) {
 		this.iscreatenewjournal = iscreatenewjournal;
 	}
 
@@ -577,6 +575,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLine() {
 		return line;
 	}
@@ -586,7 +585,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -626,22 +625,20 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -705,6 +702,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -714,7 +712,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -724,7 +722,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}

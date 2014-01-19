@@ -19,8 +19,8 @@ public class ImpProcessorlog extends org.adempiere.common.ADEntityBase {
 	private String help;
 	private Integer impProcessorId;
 	private Integer impProcessorlogId;
-	private String isactive;
-	private String iserror;
+	private Boolean isactive;
+	private Boolean iserror;
 	private String reference;
 	private String summary;
 	private String textmsg;
@@ -35,7 +35,7 @@ public class ImpProcessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class ImpProcessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -75,7 +75,7 @@ public class ImpProcessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -104,7 +104,7 @@ public class ImpProcessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="IMP_PROCESSOR_ID", nullable=false)
+	@Column(name="IMP_PROCESSOR_ID", columnDefinition="INT", nullable=false)
 	public Integer getImpProcessorId() {
 		return impProcessorId;
 	}
@@ -114,7 +114,7 @@ public class ImpProcessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="IMP_PROCESSORLOG_ID")
+	@Column(name="IMP_PROCESSORLOG_ID", columnDefinition="INT")
 	public Integer getImpProcessorlogId() {
 		return impProcessorlogId;
 	}
@@ -124,22 +124,22 @@ public class ImpProcessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIserror() {
+	@Column(nullable=false)
+	public Boolean isIserror() {
 		return iserror;
 	}
 
-	public void setIserror(String iserror) {
+	public void setIserror(Boolean iserror) {
 		this.iserror = iserror;
 	}
 
@@ -184,7 +184,7 @@ public class ImpProcessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -24,7 +24,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private Integer descriptionPrintformatitemId;
 	private String graphtype;
-	private String isactive;
+	private Boolean isactive;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -37,7 +37,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -47,7 +47,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -57,7 +57,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTFORMAT_ID", nullable=false)
+	@Column(name="AD_PRINTFORMAT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdPrintformatId() {
 		return adPrintformatId;
 	}
@@ -67,7 +67,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PRINTGRAPH_ID")
+	@Column(name="AD_PRINTGRAPH_ID", columnDefinition="INT")
 	public Integer getAdPrintgraphId() {
 		return adPrintgraphId;
 	}
@@ -87,7 +87,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -97,7 +97,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DATA1_PRINTFORMATITEM_ID")
+	@Column(name="DATA1_PRINTFORMATITEM_ID", columnDefinition="INT")
 	public Integer getData1PrintformatitemId() {
 		return data1PrintformatitemId;
 	}
@@ -107,7 +107,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DATA2_PRINTFORMATITEM_ID")
+	@Column(name="DATA2_PRINTFORMATITEM_ID", columnDefinition="INT")
 	public Integer getData2PrintformatitemId() {
 		return data2PrintformatitemId;
 	}
@@ -117,7 +117,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DATA3_PRINTFORMATITEM_ID")
+	@Column(name="DATA3_PRINTFORMATITEM_ID", columnDefinition="INT")
 	public Integer getData3PrintformatitemId() {
 		return data3PrintformatitemId;
 	}
@@ -127,7 +127,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DATA4_PRINTFORMATITEM_ID")
+	@Column(name="DATA4_PRINTFORMATITEM_ID", columnDefinition="INT")
 	public Integer getData4PrintformatitemId() {
 		return data4PrintformatitemId;
 	}
@@ -137,7 +137,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DATA_PRINTFORMATITEM_ID", nullable=false)
+	@Column(name="DATA_PRINTFORMATITEM_ID", columnDefinition="INT", nullable=false)
 	public Integer getDataPrintformatitemId() {
 		return dataPrintformatitemId;
 	}
@@ -156,7 +156,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DESCRIPTION_PRINTFORMATITEM_ID", nullable=false)
+	@Column(name="DESCRIPTION_PRINTFORMATITEM_ID", columnDefinition="INT", nullable=false)
 	public Integer getDescriptionPrintformatitemId() {
 		return descriptionPrintformatitemId;
 	}
@@ -176,12 +176,12 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -206,7 +206,7 @@ public class AdPrintgraph extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

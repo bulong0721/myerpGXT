@@ -38,18 +38,18 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	private String freightcostrule;
 	private Integer invoicePrintformatId;
 	private String invoicerule;
-	private String isactive;
-	private String iscustomer;
-	private String isdiscountprinted;
-	private String isemployee;
-	private String ismanufacturer;
-	private String isonetime;
-	private String ispotaxexempt;
-	private String isprospect;
-	private String issalesrep;
-	private String issummary;
-	private String istaxexempt;
-	private String isvendor;
+	private Boolean isactive;
+	private Boolean iscustomer;
+	private Boolean isdiscountprinted;
+	private Boolean isemployee;
+	private Boolean ismanufacturer;
+	private Boolean isonetime;
+	private Boolean ispotaxexempt;
+	private Boolean isprospect;
+	private Boolean issalesrep;
+	private Boolean issummary;
+	private Boolean istaxexempt;
+	private Boolean isvendor;
 	private Integer logoId;
 	private Integer mDiscountschemaId;
 	private Integer mPricelistId;
@@ -108,7 +108,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -128,7 +128,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -138,7 +138,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGBP_ID")
+	@Column(name="AD_ORGBP_ID", columnDefinition="INT")
 	public Integer getAdOrgbpId() {
 		return adOrgbpId;
 	}
@@ -148,7 +148,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="BPARTNER_PARENT_ID")
+	@Column(name="BPARTNER_PARENT_ID", columnDefinition="INT")
 	public Integer getBpartnerParentId() {
 		return bpartnerParentId;
 	}
@@ -158,7 +158,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BP_GROUP_ID", nullable=false)
+	@Column(name="C_BP_GROUP_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpGroupId() {
 		return cBpGroupId;
 	}
@@ -168,7 +168,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -178,7 +178,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DUNNING_ID")
+	@Column(name="C_DUNNING_ID", columnDefinition="INT")
 	public Integer getCDunningId() {
 		return cDunningId;
 	}
@@ -188,7 +188,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_GREETING_ID")
+	@Column(name="C_GREETING_ID", columnDefinition="INT")
 	public Integer getCGreetingId() {
 		return cGreetingId;
 	}
@@ -198,7 +198,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICESCHEDULE_ID")
+	@Column(name="C_INVOICESCHEDULE_ID", columnDefinition="INT")
 	public Integer getCInvoicescheduleId() {
 		return cInvoicescheduleId;
 	}
@@ -208,7 +208,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENTTERM_ID")
+	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT")
 	public Integer getCPaymenttermId() {
 		return cPaymenttermId;
 	}
@@ -218,7 +218,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_TAXGROUP_ID")
+	@Column(name="C_TAXGROUP_ID", columnDefinition="INT")
 	public Integer getCTaxgroupId() {
 		return cTaxgroupId;
 	}
@@ -238,7 +238,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -277,6 +277,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getDocumentcopies() {
 		return documentcopies;
 	}
@@ -333,7 +334,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="INVOICE_PRINTFORMAT_ID")
+	@Column(name="INVOICE_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getInvoicePrintformatId() {
 		return invoicePrintformatId;
 	}
@@ -353,127 +354,124 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIscustomer() {
+	@Column(nullable=false)
+	public Boolean isIscustomer() {
 		return iscustomer;
 	}
 
-	public void setIscustomer(String iscustomer) {
+	public void setIscustomer(Boolean iscustomer) {
 		this.iscustomer = iscustomer;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdiscountprinted() {
+	public Boolean isIsdiscountprinted() {
 		return isdiscountprinted;
 	}
 
-	public void setIsdiscountprinted(String isdiscountprinted) {
+	public void setIsdiscountprinted(Boolean isdiscountprinted) {
 		this.isdiscountprinted = isdiscountprinted;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsemployee() {
+	@Column(nullable=false)
+	public Boolean isIsemployee() {
 		return isemployee;
 	}
 
-	public void setIsemployee(String isemployee) {
+	public void setIsemployee(Boolean isemployee) {
 		this.isemployee = isemployee;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsmanufacturer() {
+	public Boolean isIsmanufacturer() {
 		return ismanufacturer;
 	}
 
-	public void setIsmanufacturer(String ismanufacturer) {
+	public void setIsmanufacturer(Boolean ismanufacturer) {
 		this.ismanufacturer = ismanufacturer;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsonetime() {
+	@Column(nullable=false)
+	public Boolean isIsonetime() {
 		return isonetime;
 	}
 
-	public void setIsonetime(String isonetime) {
+	public void setIsonetime(Boolean isonetime) {
 		this.isonetime = isonetime;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspotaxexempt() {
+	@Column(nullable=false)
+	public Boolean isIspotaxexempt() {
 		return ispotaxexempt;
 	}
 
-	public void setIspotaxexempt(String ispotaxexempt) {
+	public void setIspotaxexempt(Boolean ispotaxexempt) {
 		this.ispotaxexempt = ispotaxexempt;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsprospect() {
+	@Column(nullable=false)
+	public Boolean isIsprospect() {
 		return isprospect;
 	}
 
-	public void setIsprospect(String isprospect) {
+	public void setIsprospect(Boolean isprospect) {
 		this.isprospect = isprospect;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssalesrep() {
+	@Column(nullable=false)
+	public Boolean isIssalesrep() {
 		return issalesrep;
 	}
 
-	public void setIssalesrep(String issalesrep) {
+	public void setIssalesrep(Boolean issalesrep) {
 		this.issalesrep = issalesrep;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssummary() {
+	@Column(nullable=false)
+	public Boolean isIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(String issummary) {
+	public void setIssummary(Boolean issummary) {
 		this.issummary = issummary;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIstaxexempt() {
+	public Boolean isIstaxexempt() {
 		return istaxexempt;
 	}
 
-	public void setIstaxexempt(String istaxexempt) {
+	public void setIstaxexempt(Boolean istaxexempt) {
 		this.istaxexempt = istaxexempt;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsvendor() {
+	@Column(nullable=false)
+	public Boolean isIsvendor() {
 		return isvendor;
 	}
 
-	public void setIsvendor(String isvendor) {
+	public void setIsvendor(Boolean isvendor) {
 		this.isvendor = isvendor;
 	}
 
 	@Basic
-	@Column(name="LOGO_ID")
+	@Column(name="LOGO_ID", columnDefinition="INT")
 	public Integer getLogoId() {
 		return logoId;
 	}
@@ -483,7 +481,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_DISCOUNTSCHEMA_ID")
+	@Column(name="M_DISCOUNTSCHEMA_ID", columnDefinition="INT")
 	public Integer getMDiscountschemaId() {
 		return mDiscountschemaId;
 	}
@@ -493,7 +491,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRICELIST_ID")
+	@Column(name="M_PRICELIST_ID", columnDefinition="INT")
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}
@@ -533,6 +531,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getNumberemployees() {
 		return numberemployees;
 	}
@@ -562,7 +561,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PO_DISCOUNTSCHEMA_ID")
+	@Column(name="PO_DISCOUNTSCHEMA_ID", columnDefinition="INT")
 	public Integer getPoDiscountschemaId() {
 		return poDiscountschemaId;
 	}
@@ -572,7 +571,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PO_PAYMENTTERM_ID")
+	@Column(name="PO_PAYMENTTERM_ID", columnDefinition="INT")
 	public Integer getPoPaymenttermId() {
 		return poPaymenttermId;
 	}
@@ -582,7 +581,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PO_PRICELIST_ID")
+	@Column(name="PO_PRICELIST_ID", columnDefinition="INT")
 	public Integer getPoPricelistId() {
 		return poPricelistId;
 	}
@@ -631,7 +630,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID")
+	@Column(name="SALESREP_ID", columnDefinition="INT")
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -641,6 +640,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSalesvolume() {
 		return salesvolume;
 	}
@@ -660,6 +660,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getShareofcustomer() {
 		return shareofcustomer;
 	}
@@ -669,6 +670,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getShelflifeminpct() {
 		return shelflifeminpct;
 	}
@@ -747,7 +749,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

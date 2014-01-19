@@ -19,7 +19,7 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mProductId;
 	private String name;
 	private BigDecimal qty;
@@ -35,7 +35,7 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_PRINTCOLOR_ID")
+	@Column(name="AD_PRINTCOLOR_ID", columnDefinition="INT")
 	public Integer getAdPrintcolorId() {
 		return adPrintcolorId;
 	}
@@ -65,7 +65,7 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_POSKEY_ID")
+	@Column(name="C_POSKEY_ID", columnDefinition="INT")
 	public Integer getCPoskeyId() {
 		return cPoskeyId;
 	}
@@ -75,7 +75,7 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_POSKEYLAYOUT_ID", nullable=false)
+	@Column(name="C_POSKEYLAYOUT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPoskeylayoutId() {
 		return cPoskeylayoutId;
 	}
@@ -95,7 +95,7 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -114,17 +114,17 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -154,7 +154,7 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -174,7 +174,7 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

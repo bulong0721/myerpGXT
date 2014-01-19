@@ -26,9 +26,9 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	private String emailFromUid;
 	private String emailInfoTo;
 	private String emailTo;
-	private String isactive;
-	private String isaudited;
-	private String isinfosent;
+	private Boolean isactive;
+	private Boolean isaudited;
+	private Boolean isinfosent;
 	private Integer mWarehouseId;
 	private String name;
 	private String receiveinquiryreply;
@@ -46,7 +46,7 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -56,7 +56,7 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -66,7 +66,7 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_SEQUENCE_ID", nullable=false)
+	@Column(name="AD_SEQUENCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdSequenceId() {
 		return adSequenceId;
 	}
@@ -76,7 +76,7 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BP_EDI_ID")
+	@Column(name="C_BP_EDI_ID", columnDefinition="INT")
 	public Integer getCBpEdiId() {
 		return cBpEdiId;
 	}
@@ -86,7 +86,7 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID", nullable=false)
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -106,7 +106,7 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -205,37 +205,37 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsaudited() {
+	@Column(nullable=false)
+	public Boolean isIsaudited() {
 		return isaudited;
 	}
 
-	public void setIsaudited(String isaudited) {
+	public void setIsaudited(Boolean isaudited) {
 		this.isaudited = isaudited;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsinfosent() {
+	@Column(nullable=false)
+	public Boolean isIsinfosent() {
 		return isinfosent;
 	}
 
-	public void setIsinfosent(String isinfosent) {
+	public void setIsinfosent(Boolean isinfosent) {
 		this.isinfosent = isinfosent;
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -305,7 +305,7 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -19,8 +19,8 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String isphantom;
+	private Boolean isactive;
+	private Boolean isphantom;
 	private Integer leadtimeoffset;
 	private Integer line;
 	private Integer mAttributesetinstanceId;
@@ -42,7 +42,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -52,7 +52,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -92,7 +92,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -121,27 +121,27 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsphantom() {
+	@Column(nullable=false)
+	public Boolean isIsphantom() {
 		return isphantom;
 	}
 
-	public void setIsphantom(String isphantom) {
+	public void setIsphantom(Boolean isphantom) {
 		this.isphantom = isphantom;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLeadtimeoffset() {
 		return leadtimeoffset;
 	}
@@ -151,7 +151,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -161,7 +161,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -171,7 +171,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_BOM_ID", nullable=false)
+	@Column(name="M_BOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getMBomId() {
 		return mBomId;
 	}
@@ -181,7 +181,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_BOMALTERNATIVE_ID")
+	@Column(name="M_BOMALTERNATIVE_ID", columnDefinition="INT")
 	public Integer getMBomalternativeId() {
 		return mBomalternativeId;
 	}
@@ -191,7 +191,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_BOMPRODUCT_ID")
+	@Column(name="M_BOMPRODUCT_ID", columnDefinition="INT")
 	public Integer getMBomproductId() {
 		return mBomproductId;
 	}
@@ -201,7 +201,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_CHANGENOTICE_ID")
+	@Column(name="M_CHANGENOTICE_ID", columnDefinition="INT")
 	public Integer getMChangenoticeId() {
 		return mChangenoticeId;
 	}
@@ -211,7 +211,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCTBOM_ID")
+	@Column(name="M_PRODUCTBOM_ID", columnDefinition="INT")
 	public Integer getMProductbomId() {
 		return mProductbomId;
 	}
@@ -221,7 +221,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCTOPERATION_ID")
+	@Column(name="M_PRODUCTOPERATION_ID", columnDefinition="INT")
 	public Integer getMProductoperationId() {
 		return mProductoperationId;
 	}
@@ -231,6 +231,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -250,7 +251,7 @@ public class MBomproduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

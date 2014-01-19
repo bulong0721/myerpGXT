@@ -18,7 +18,7 @@ public class AdModelvalidator extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String entitytype;
 	private String help;
-	private String isactive;
+	private Boolean isactive;
 	private String modelvalidationclass;
 	private String name;
 	private Integer seqno;
@@ -33,7 +33,7 @@ public class AdModelvalidator extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class AdModelvalidator extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_MODELVALIDATOR_ID")
+	@Column(name="AD_MODELVALIDATOR_ID", columnDefinition="INT")
 	public Integer getAdModelvalidatorId() {
 		return adModelvalidatorId;
 	}
@@ -53,7 +53,7 @@ public class AdModelvalidator extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -73,7 +73,7 @@ public class AdModelvalidator extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -112,12 +112,12 @@ public class AdModelvalidator extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -142,6 +142,7 @@ public class AdModelvalidator extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -161,7 +162,7 @@ public class AdModelvalidator extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

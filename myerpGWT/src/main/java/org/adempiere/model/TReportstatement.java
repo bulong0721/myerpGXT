@@ -32,7 +32,7 @@ public class TReportstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_PINSTANCE_ID")
+	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}
@@ -88,7 +88,7 @@ public class TReportstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="FACT_ACCT_ID")
+	@Column(name="FACT_ACCT_ID", columnDefinition="INT")
 	public Integer getFactAcctId() {
 		return factAcctId;
 	}
@@ -98,7 +98,7 @@ public class TReportstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLevelno() {
 		return levelno;
 	}

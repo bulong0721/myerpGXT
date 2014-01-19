@@ -18,8 +18,8 @@ public class SResourceassignment extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isconfirmed;
+	private Boolean isactive;
+	private Boolean isconfirmed;
 	private String name;
 	private BigDecimal qty;
 	private Integer sResourceId;
@@ -35,7 +35,7 @@ public class SResourceassignment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class SResourceassignment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -84,7 +84,7 @@ public class SResourceassignment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -103,22 +103,22 @@ public class SResourceassignment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsconfirmed() {
+	@Column(nullable=false)
+	public Boolean isIsconfirmed() {
 		return isconfirmed;
 	}
 
-	public void setIsconfirmed(String isconfirmed) {
+	public void setIsconfirmed(Boolean isconfirmed) {
 		this.isconfirmed = isconfirmed;
 	}
 
@@ -142,7 +142,7 @@ public class SResourceassignment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="S_RESOURCE_ID", nullable=false)
+	@Column(name="S_RESOURCE_ID", columnDefinition="INT", nullable=false)
 	public Integer getSResourceId() {
 		return sResourceId;
 	}
@@ -152,7 +152,7 @@ public class SResourceassignment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="S_RESOURCEASSIGNMENT_ID")
+	@Column(name="S_RESOURCEASSIGNMENT_ID", columnDefinition="INT")
 	public Integer getSResourceassignmentId() {
 		return sResourceassignmentId;
 	}
@@ -172,7 +172,7 @@ public class SResourceassignment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

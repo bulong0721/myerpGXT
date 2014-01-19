@@ -149,17 +149,6 @@ public class ADFieldBuilder {
 				gridEditor = createCheckBox(false);
 			if (formStrategy.isCreateFormEditor())
 				formEditor = createCheckBox(true);
-			converter = new Converter<String, Boolean>() {
-				@Override
-				public String convertFieldValue(Boolean value) {
-					return StringUtil.toYesNo(value);
-				}
-
-				@Override
-				public Boolean convertModelValue(String value) {
-					return StringUtil.isYes(value);
-				}
-			};
 			showLabel = false;
 		} else {
 			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);

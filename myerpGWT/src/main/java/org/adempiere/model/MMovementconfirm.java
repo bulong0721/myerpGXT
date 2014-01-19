@@ -20,13 +20,13 @@ public class MMovementconfirm extends org.adempiere.common.ADEntityBase {
 	private String docaction;
 	private String docstatus;
 	private String documentno;
-	private String isactive;
-	private String isapproved;
+	private Boolean isactive;
+	private Boolean isapproved;
 	private Integer mInventoryId;
 	private Integer mMovementId;
 	private Integer mMovementconfirmId;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -38,7 +38,7 @@ public class MMovementconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class MMovementconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class MMovementconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -126,27 +126,27 @@ public class MMovementconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsapproved() {
+	@Column(nullable=false)
+	public Boolean isIsapproved() {
 		return isapproved;
 	}
 
-	public void setIsapproved(String isapproved) {
+	public void setIsapproved(Boolean isapproved) {
 		this.isapproved = isapproved;
 	}
 
 	@Basic
-	@Column(name="M_INVENTORY_ID")
+	@Column(name="M_INVENTORY_ID", columnDefinition="INT")
 	public Integer getMInventoryId() {
 		return mInventoryId;
 	}
@@ -156,7 +156,7 @@ public class MMovementconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_MOVEMENT_ID", nullable=false)
+	@Column(name="M_MOVEMENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMMovementId() {
 		return mMovementId;
 	}
@@ -166,7 +166,7 @@ public class MMovementconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_MOVEMENTCONFIRM_ID")
+	@Column(name="M_MOVEMENTCONFIRM_ID", columnDefinition="INT")
 	public Integer getMMovementconfirmId() {
 		return mMovementconfirmId;
 	}
@@ -176,22 +176,21 @@ public class MMovementconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -206,7 +205,7 @@ public class MMovementconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

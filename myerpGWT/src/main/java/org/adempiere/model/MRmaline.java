@@ -18,13 +18,13 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private Integer line;
 	private Long linenetamt;
 	private Integer mInoutlineId;
 	private Integer mRmaId;
 	private Integer mRmalineId;
-	private String processed;
+	private Boolean processed;
 	private BigDecimal qty;
 	private Long qtydelivered;
 	private BigDecimal qtyinvoiced;
@@ -40,7 +40,7 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -50,7 +50,7 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -69,7 +69,7 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -89,7 +89,7 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -108,17 +108,17 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -137,7 +137,7 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_INOUTLINE_ID")
+	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}
@@ -147,7 +147,7 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_RMA_ID", nullable=false)
+	@Column(name="M_RMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getMRmaId() {
 		return mRmaId;
 	}
@@ -157,7 +157,7 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_RMALINE_ID")
+	@Column(name="M_RMALINE_ID", columnDefinition="INT")
 	public Integer getMRmalineId() {
 		return mRmalineId;
 	}
@@ -167,12 +167,12 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
@@ -205,7 +205,7 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REF_RMALINE_ID")
+	@Column(name="REF_RMALINE_ID", columnDefinition="INT")
 	public Integer getRefRmalineId() {
 		return refRmalineId;
 	}
@@ -225,7 +225,7 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

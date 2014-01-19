@@ -34,7 +34,7 @@ public class CLandedcostallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -44,7 +44,7 @@ public class CLandedcostallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -74,7 +74,7 @@ public class CLandedcostallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICELINE_ID", nullable=false)
+	@Column(name="C_INVOICELINE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}
@@ -84,7 +84,7 @@ public class CLandedcostallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_LANDEDCOSTALLOCATION_ID")
+	@Column(name="C_LANDEDCOSTALLOCATION_ID", columnDefinition="INT")
 	public Integer getCLandedcostallocationId() {
 		return cLandedcostallocationId;
 	}
@@ -104,7 +104,7 @@ public class CLandedcostallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -114,7 +114,7 @@ public class CLandedcostallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -124,7 +124,7 @@ public class CLandedcostallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_COSTELEMENT_ID", nullable=false)
+	@Column(name="M_COSTELEMENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMCostelementId() {
 		return mCostelementId;
 	}
@@ -134,7 +134,7 @@ public class CLandedcostallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -164,7 +164,7 @@ public class CLandedcostallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

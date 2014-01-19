@@ -19,7 +19,7 @@ public class CUomConversion extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private BigDecimal dividerate;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mProductId;
 	private BigDecimal multiplyrate;
 	private String updated;
@@ -33,7 +33,7 @@ public class CUomConversion extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class CUomConversion extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class CUomConversion extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_UOM_CONVERSION_ID")
+	@Column(name="C_UOM_CONVERSION_ID", columnDefinition="INT")
 	public Integer getCUomConversionId() {
 		return cUomConversionId;
 	}
@@ -63,7 +63,7 @@ public class CUomConversion extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID", nullable=false)
+	@Column(name="C_UOM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -73,7 +73,7 @@ public class CUomConversion extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_TO_ID", nullable=false)
+	@Column(name="C_UOM_TO_ID", columnDefinition="INT", nullable=false)
 	public Integer getCUomToId() {
 		return cUomToId;
 	}
@@ -93,7 +93,7 @@ public class CUomConversion extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -113,17 +113,17 @@ public class CUomConversion extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -153,7 +153,7 @@ public class CUomConversion extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -20,8 +20,8 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	private BigDecimal discount;
 	private Integer discountdays;
 	private Integer gracedays;
-	private String isactive;
-	private String isvalid;
+	private Boolean isactive;
+	private Boolean isvalid;
 	private String netday;
 	private Integer netdays;
 	private BigDecimal percentage;
@@ -36,7 +36,7 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -56,7 +56,7 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENTTERM_ID", nullable=false)
+	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPaymenttermId() {
 		return cPaymenttermId;
 	}
@@ -66,7 +66,7 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_PAYSCHEDULE_ID")
+	@Column(name="C_PAYSCHEDULE_ID", columnDefinition="INT")
 	public Integer getCPayscheduleId() {
 		return cPayscheduleId;
 	}
@@ -86,7 +86,7 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -106,7 +106,7 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getDiscountdays() {
 		return discountdays;
 	}
@@ -116,7 +116,7 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getGracedays() {
 		return gracedays;
 	}
@@ -126,22 +126,22 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsvalid() {
+	@Column(nullable=false)
+	public Boolean isIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(String isvalid) {
+	public void setIsvalid(Boolean isvalid) {
 		this.isvalid = isvalid;
 	}
 
@@ -156,7 +156,7 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getNetdays() {
 		return netdays;
 	}
@@ -186,7 +186,7 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

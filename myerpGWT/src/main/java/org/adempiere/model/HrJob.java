@@ -17,8 +17,8 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private Integer hrDepartmentId;
 	private Integer hrJobId;
-	private String isactive;
-	private String isparent;
+	private Boolean isactive;
+	private Boolean isparent;
 	private Integer jobcant;
 	private String name;
 	private Integer nextJobId;
@@ -35,7 +35,7 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -65,7 +65,7 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -84,7 +84,7 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HR_DEPARTMENT_ID")
+	@Column(name="HR_DEPARTMENT_ID", columnDefinition="INT")
 	public Integer getHrDepartmentId() {
 		return hrDepartmentId;
 	}
@@ -94,7 +94,7 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="HR_JOB_ID")
+	@Column(name="HR_JOB_ID", columnDefinition="INT")
 	public Integer getHrJobId() {
 		return hrJobId;
 	}
@@ -104,26 +104,26 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsparent() {
+	public Boolean isIsparent() {
 		return isparent;
 	}
 
-	public void setIsparent(String isparent) {
+	public void setIsparent(Boolean isparent) {
 		this.isparent = isparent;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getJobcant() {
 		return jobcant;
 	}
@@ -143,7 +143,7 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="NEXT_JOB_ID")
+	@Column(name="NEXT_JOB_ID", columnDefinition="INT")
 	public Integer getNextJobId() {
 		return nextJobId;
 	}
@@ -153,7 +153,7 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SUPERVISOR_ID")
+	@Column(name="SUPERVISOR_ID", columnDefinition="INT")
 	public Integer getSupervisorId() {
 		return supervisorId;
 	}
@@ -173,7 +173,7 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

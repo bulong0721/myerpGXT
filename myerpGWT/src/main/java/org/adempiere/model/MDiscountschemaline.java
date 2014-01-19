@@ -21,7 +21,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String group1;
 	private String group2;
-	private String isactive;
+	private Boolean isactive;
 	private BigDecimal limitAddamt;
 	private String limitBase;
 	private BigDecimal limitDiscount;
@@ -59,7 +59,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -69,7 +69,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -79,7 +79,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -89,7 +89,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CONVERSIONTYPE_ID", nullable=false)
+	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT", nullable=false)
 	public Integer getCConversiontypeId() {
 		return cConversiontypeId;
 	}
@@ -129,7 +129,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -157,12 +157,12 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -307,7 +307,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_DISCOUNTSCHEMA_ID", nullable=false)
+	@Column(name="M_DISCOUNTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getMDiscountschemaId() {
 		return mDiscountschemaId;
 	}
@@ -317,7 +317,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_DISCOUNTSCHEMALINE_ID")
+	@Column(name="M_DISCOUNTSCHEMALINE_ID", columnDefinition="INT")
 	public Integer getMDiscountschemalineId() {
 		return mDiscountschemalineId;
 	}
@@ -327,7 +327,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_CATEGORY_ID")
+	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}
@@ -337,7 +337,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -347,7 +347,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -437,7 +437,7 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

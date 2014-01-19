@@ -16,7 +16,7 @@ public class MDistributionrunline extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private Integer line;
 	private Integer mDistributionlistId;
 	private Integer mDistributionrunId;
@@ -35,7 +35,7 @@ public class MDistributionrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class MDistributionrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -65,7 +65,7 @@ public class MDistributionrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -84,17 +84,17 @@ public class MDistributionrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getLine() {
 		return line;
 	}
@@ -104,7 +104,7 @@ public class MDistributionrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_DISTRIBUTIONLIST_ID", nullable=false)
+	@Column(name="M_DISTRIBUTIONLIST_ID", columnDefinition="INT", nullable=false)
 	public Integer getMDistributionlistId() {
 		return mDistributionlistId;
 	}
@@ -114,7 +114,7 @@ public class MDistributionrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_DISTRIBUTIONRUN_ID", nullable=false)
+	@Column(name="M_DISTRIBUTIONRUN_ID", columnDefinition="INT", nullable=false)
 	public Integer getMDistributionrunId() {
 		return mDistributionrunId;
 	}
@@ -124,7 +124,7 @@ public class MDistributionrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_DISTRIBUTIONRUNLINE_ID")
+	@Column(name="M_DISTRIBUTIONRUNLINE_ID", columnDefinition="INT")
 	public Integer getMDistributionrunlineId() {
 		return mDistributionrunlineId;
 	}
@@ -134,7 +134,7 @@ public class MDistributionrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -174,7 +174,7 @@ public class MDistributionrunline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

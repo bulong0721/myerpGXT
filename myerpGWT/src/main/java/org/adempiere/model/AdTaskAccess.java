@@ -17,8 +17,8 @@ public class AdTaskAccess extends org.adempiere.common.ADEntityBase {
 	private Integer adTaskId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String isreadwrite;
+	private Boolean isactive;
+	private Boolean isreadwrite;
 	private String updated;
 	private Integer updatedby;
 
@@ -31,7 +31,7 @@ public class AdTaskAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -41,7 +41,7 @@ public class AdTaskAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -51,7 +51,7 @@ public class AdTaskAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_ROLE_ID")
+	@Column(name="AD_ROLE_ID", columnDefinition="INT")
 	public Integer getAdRoleId() {
 		return adRoleId;
 	}
@@ -61,7 +61,7 @@ public class AdTaskAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_TASK_ID")
+	@Column(name="AD_TASK_ID", columnDefinition="INT")
 	public Integer getAdTaskId() {
 		return adTaskId;
 	}
@@ -81,7 +81,7 @@ public class AdTaskAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -91,22 +91,22 @@ public class AdTaskAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsreadwrite() {
+	@Column(nullable=false)
+	public Boolean isIsreadwrite() {
 		return isreadwrite;
 	}
 
-	public void setIsreadwrite(String isreadwrite) {
+	public void setIsreadwrite(Boolean isreadwrite) {
 		this.isreadwrite = isreadwrite;
 	}
 
@@ -121,7 +121,7 @@ public class AdTaskAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

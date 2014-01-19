@@ -17,8 +17,8 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isownbank;
+	private Boolean isactive;
+	private Boolean isownbank;
 	private String name;
 	private String routingno;
 	private String swiftcode;
@@ -33,7 +33,7 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -43,7 +43,7 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -53,7 +53,7 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BANK_ID")
+	@Column(name="C_BANK_ID", columnDefinition="INT")
 	public Integer getCBankId() {
 		return cBankId;
 	}
@@ -63,7 +63,7 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCATION_ID")
+	@Column(name="C_LOCATION_ID", columnDefinition="INT")
 	public Integer getCLocationId() {
 		return cLocationId;
 	}
@@ -83,7 +83,7 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -102,22 +102,22 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsownbank() {
+	@Column(nullable=false)
+	public Boolean isIsownbank() {
 		return isownbank;
 	}
 
-	public void setIsownbank(String isownbank) {
+	public void setIsownbank(Boolean isownbank) {
 		this.isownbank = isownbank;
 	}
 
@@ -162,7 +162,7 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

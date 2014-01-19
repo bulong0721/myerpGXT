@@ -29,8 +29,8 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String isfullyqualified;
+	private Boolean isactive;
+	private Boolean isfullyqualified;
 	private Integer mProductId;
 	private String updated;
 	private Integer updatedby;
@@ -47,7 +47,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ACCOUNT_ID", nullable=false)
+	@Column(name="ACCOUNT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAccountId() {
 		return accountId;
 	}
@@ -57,7 +57,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -67,7 +67,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID")
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
 	public Integer getAdOrgtrxId() {
 		return adOrgtrxId;
 	}
@@ -97,7 +97,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACCTSCHEMA_ID", nullable=false)
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -107,7 +107,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ACTIVITY_ID")
+	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}
@@ -117,7 +117,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -127,7 +127,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CAMPAIGN_ID")
+	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}
@@ -137,7 +137,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCFROM_ID")
+	@Column(name="C_LOCFROM_ID", columnDefinition="INT")
 	public Integer getCLocfromId() {
 		return cLocfromId;
 	}
@@ -147,7 +147,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_LOCTO_ID")
+	@Column(name="C_LOCTO_ID", columnDefinition="INT")
 	public Integer getCLoctoId() {
 		return cLoctoId;
 	}
@@ -157,7 +157,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PROJECT_ID")
+	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -167,7 +167,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SALESREGION_ID")
+	@Column(name="C_SALESREGION_ID", columnDefinition="INT")
 	public Integer getCSalesregionId() {
 		return cSalesregionId;
 	}
@@ -177,7 +177,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_SUBACCT_ID")
+	@Column(name="C_SUBACCT_ID", columnDefinition="INT")
 	public Integer getCSubacctId() {
 		return cSubacctId;
 	}
@@ -187,7 +187,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_VALIDCOMBINATION_ID")
+	@Column(name="C_VALIDCOMBINATION_ID", columnDefinition="INT")
 	public Integer getCValidcombinationId() {
 		return cValidcombinationId;
 	}
@@ -217,7 +217,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -236,27 +236,27 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsfullyqualified() {
+	@Column(nullable=false)
+	public Boolean isIsfullyqualified() {
 		return isfullyqualified;
 	}
 
-	public void setIsfullyqualified(String isfullyqualified) {
+	public void setIsfullyqualified(Boolean isfullyqualified) {
 		this.isfullyqualified = isfullyqualified;
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -276,7 +276,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -286,7 +286,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER1_ID")
+	@Column(name="USER1_ID", columnDefinition="INT")
 	public Integer getUser1Id() {
 		return user1Id;
 	}
@@ -296,7 +296,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USER2_ID")
+	@Column(name="USER2_ID", columnDefinition="INT")
 	public Integer getUser2Id() {
 		return user2Id;
 	}
@@ -306,7 +306,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USERELEMENT1_ID")
+	@Column(name="USERELEMENT1_ID", columnDefinition="INT")
 	public Integer getUserelement1Id() {
 		return userelement1Id;
 	}
@@ -316,7 +316,7 @@ public class CValidcombination extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="USERELEMENT2_ID")
+	@Column(name="USERELEMENT2_ID", columnDefinition="INT")
 	public Integer getUserelement2Id() {
 		return userelement2Id;
 	}

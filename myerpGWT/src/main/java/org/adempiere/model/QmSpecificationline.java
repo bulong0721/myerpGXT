@@ -15,7 +15,7 @@ public class QmSpecificationline extends org.adempiere.common.ADEntityBase {
 	private String andor;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mAttributeId;
 	private String operation;
 	private Integer qmSpecificationId;
@@ -35,7 +35,7 @@ public class QmSpecificationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class QmSpecificationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -75,7 +75,7 @@ public class QmSpecificationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -85,17 +85,17 @@ public class QmSpecificationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTE_ID", nullable=false)
+	@Column(name="M_ATTRIBUTE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMAttributeId() {
 		return mAttributeId;
 	}
@@ -115,7 +115,7 @@ public class QmSpecificationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="QM_SPECIFICATION_ID")
+	@Column(name="QM_SPECIFICATION_ID", columnDefinition="INT")
 	public Integer getQmSpecificationId() {
 		return qmSpecificationId;
 	}
@@ -125,7 +125,7 @@ public class QmSpecificationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="QM_SPECIFICATIONLINE_ID")
+	@Column(name="QM_SPECIFICATIONLINE_ID", columnDefinition="INT")
 	public Integer getQmSpecificationlineId() {
 		return qmSpecificationlineId;
 	}
@@ -135,6 +135,7 @@ public class QmSpecificationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -154,7 +155,7 @@ public class QmSpecificationline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -19,12 +19,12 @@ public class MDiscountschema extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String discounttype;
 	private BigDecimal flatdiscount;
-	private String isactive;
-	private String isbpartnerflatdiscount;
-	private String isquantitybased;
+	private Boolean isactive;
+	private Boolean isbpartnerflatdiscount;
+	private Boolean isquantitybased;
 	private Integer mDiscountschemaId;
 	private String name;
-	private String processing;
+	private Boolean processing;
 	private String script;
 	private String updated;
 	private Integer updatedby;
@@ -38,7 +38,7 @@ public class MDiscountschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -48,7 +48,7 @@ public class MDiscountschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -68,7 +68,7 @@ public class MDiscountschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -116,37 +116,37 @@ public class MDiscountschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsbpartnerflatdiscount() {
+	@Column(nullable=false)
+	public Boolean isIsbpartnerflatdiscount() {
 		return isbpartnerflatdiscount;
 	}
 
-	public void setIsbpartnerflatdiscount(String isbpartnerflatdiscount) {
+	public void setIsbpartnerflatdiscount(Boolean isbpartnerflatdiscount) {
 		this.isbpartnerflatdiscount = isbpartnerflatdiscount;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsquantitybased() {
+	@Column(nullable=false)
+	public Boolean isIsquantitybased() {
 		return isquantitybased;
 	}
 
-	public void setIsquantitybased(String isquantitybased) {
+	public void setIsquantitybased(Boolean isquantitybased) {
 		this.isquantitybased = isquantitybased;
 	}
 
 	@Id
-	@Column(name="M_DISCOUNTSCHEMA_ID")
+	@Column(name="M_DISCOUNTSCHEMA_ID", columnDefinition="INT")
 	public Integer getMDiscountschemaId() {
 		return mDiscountschemaId;
 	}
@@ -166,12 +166,11 @@ public class MDiscountschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -196,7 +195,7 @@ public class MDiscountschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

@@ -27,12 +27,12 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	private BigDecimal feeamt;
 	private BigDecimal interestpercent;
 	private String invoicecollectiontype;
-	private String isactive;
-	private String issetcreditstop;
-	private String issetpaymentterm;
-	private String isshowalldue;
-	private String isshownotdue;
-	private String isstatement;
+	private Boolean isactive;
+	private Boolean issetcreditstop;
+	private Boolean issetpaymentterm;
+	private Boolean isshowalldue;
+	private Boolean isshownotdue;
+	private Boolean isstatement;
 	private String name;
 	private String note;
 	private String printname;
@@ -47,7 +47,7 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -57,7 +57,7 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -67,7 +67,7 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_DUNNING_ID", nullable=false)
+	@Column(name="C_DUNNING_ID", columnDefinition="INT", nullable=false)
 	public Integer getCDunningId() {
 		return cDunningId;
 	}
@@ -77,7 +77,7 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_DUNNINGLEVEL_ID")
+	@Column(name="C_DUNNINGLEVEL_ID", columnDefinition="INT")
 	public Integer getCDunninglevelId() {
 		return cDunninglevelId;
 	}
@@ -87,7 +87,7 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENTTERM_ID")
+	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT")
 	public Integer getCPaymenttermId() {
 		return cPaymenttermId;
 	}
@@ -127,7 +127,7 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -137,7 +137,7 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getDaysafterdue() {
 		return daysafterdue;
 	}
@@ -147,7 +147,7 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getDaysbetweendunning() {
 		return daysbetweendunning;
 	}
@@ -166,7 +166,7 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DUNNING_PRINTFORMAT_ID")
+	@Column(name="DUNNING_PRINTFORMAT_ID", columnDefinition="INT")
 	public Integer getDunningPrintformatId() {
 		return dunningPrintformatId;
 	}
@@ -204,62 +204,62 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssetcreditstop() {
+	@Column(nullable=false)
+	public Boolean isIssetcreditstop() {
 		return issetcreditstop;
 	}
 
-	public void setIssetcreditstop(String issetcreditstop) {
+	public void setIssetcreditstop(Boolean issetcreditstop) {
 		this.issetcreditstop = issetcreditstop;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssetpaymentterm() {
+	@Column(nullable=false)
+	public Boolean isIssetpaymentterm() {
 		return issetpaymentterm;
 	}
 
-	public void setIssetpaymentterm(String issetpaymentterm) {
+	public void setIssetpaymentterm(Boolean issetpaymentterm) {
 		this.issetpaymentterm = issetpaymentterm;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsshowalldue() {
+	@Column(nullable=false)
+	public Boolean isIsshowalldue() {
 		return isshowalldue;
 	}
 
-	public void setIsshowalldue(String isshowalldue) {
+	public void setIsshowalldue(Boolean isshowalldue) {
 		this.isshowalldue = isshowalldue;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsshownotdue() {
+	@Column(nullable=false)
+	public Boolean isIsshownotdue() {
 		return isshownotdue;
 	}
 
-	public void setIsshownotdue(String isshownotdue) {
+	public void setIsshownotdue(Boolean isshownotdue) {
 		this.isshownotdue = isshownotdue;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsstatement() {
+	@Column(nullable=false)
+	public Boolean isIsstatement() {
 		return isstatement;
 	}
 
-	public void setIsstatement(String isstatement) {
+	public void setIsstatement(Boolean isstatement) {
 		this.isstatement = isstatement;
 	}
 
@@ -304,7 +304,7 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

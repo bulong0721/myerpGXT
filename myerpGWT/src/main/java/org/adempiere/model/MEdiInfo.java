@@ -15,7 +15,7 @@ public class MEdiInfo extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String info;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mEdiId;
 	private Integer mEdiInfoId;
 	private String updated;
@@ -29,7 +29,7 @@ public class MEdiInfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -39,7 +39,7 @@ public class MEdiInfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -59,7 +59,7 @@ public class MEdiInfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -79,17 +79,17 @@ public class MEdiInfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_EDI_ID", nullable=false)
+	@Column(name="M_EDI_ID", columnDefinition="INT", nullable=false)
 	public Integer getMEdiId() {
 		return mEdiId;
 	}
@@ -99,7 +99,7 @@ public class MEdiInfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_EDI_INFO_ID")
+	@Column(name="M_EDI_INFO_ID", columnDefinition="INT")
 	public Integer getMEdiInfoId() {
 		return mEdiInfoId;
 	}
@@ -119,7 +119,7 @@ public class MEdiInfo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

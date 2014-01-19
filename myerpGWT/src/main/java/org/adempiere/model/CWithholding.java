@@ -20,11 +20,11 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private BigDecimal fixamt;
-	private String isactive;
-	private String ispaidto3party;
-	private String ispercentwithholding;
-	private String istaxprorated;
-	private String istaxwithholding;
+	private Boolean isactive;
+	private Boolean ispaidto3party;
+	private Boolean ispercentwithholding;
+	private Boolean istaxprorated;
+	private Boolean istaxwithholding;
 	private BigDecimal maxamt;
 	private BigDecimal minamt;
 	private String name;
@@ -42,7 +42,7 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -52,7 +52,7 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -62,6 +62,7 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getBeneficiary() {
 		return beneficiary;
 	}
@@ -71,7 +72,7 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENTTERM_ID", nullable=false)
+	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPaymenttermId() {
 		return cPaymenttermId;
 	}
@@ -81,7 +82,7 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_WITHHOLDING_ID")
+	@Column(name="C_WITHHOLDING_ID", columnDefinition="INT")
 	public Integer getCWithholdingId() {
 		return cWithholdingId;
 	}
@@ -101,7 +102,7 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -129,52 +130,52 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspaidto3party() {
+	@Column(nullable=false)
+	public Boolean isIspaidto3party() {
 		return ispaidto3party;
 	}
 
-	public void setIspaidto3party(String ispaidto3party) {
+	public void setIspaidto3party(Boolean ispaidto3party) {
 		this.ispaidto3party = ispaidto3party;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspercentwithholding() {
+	@Column(nullable=false)
+	public Boolean isIspercentwithholding() {
 		return ispercentwithholding;
 	}
 
-	public void setIspercentwithholding(String ispercentwithholding) {
+	public void setIspercentwithholding(Boolean ispercentwithholding) {
 		this.ispercentwithholding = ispercentwithholding;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstaxprorated() {
+	@Column(nullable=false)
+	public Boolean isIstaxprorated() {
 		return istaxprorated;
 	}
 
-	public void setIstaxprorated(String istaxprorated) {
+	public void setIstaxprorated(Boolean istaxprorated) {
 		this.istaxprorated = istaxprorated;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIstaxwithholding() {
+	@Column(nullable=false)
+	public Boolean isIstaxwithholding() {
 		return istaxwithholding;
 	}
 
-	public void setIstaxwithholding(String istaxwithholding) {
+	public void setIstaxwithholding(Boolean istaxwithholding) {
 		this.istaxwithholding = istaxwithholding;
 	}
 
@@ -244,7 +245,7 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

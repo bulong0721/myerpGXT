@@ -18,7 +18,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private Integer ddOrderlineId;
 	private String description;
-	private String isactive;
+	private Boolean isactive;
 	private Integer line;
 	private Integer mAttributesetinstanceId;
 	private Integer mAttributesetinstancetoId;
@@ -28,7 +28,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	private Integer mMovementlineId;
 	private Integer mProductId;
 	private BigDecimal movementqty;
-	private String processed;
+	private Boolean processed;
 	private Integer reversallineId;
 	private BigDecimal scrappedqty;
 	private BigDecimal targetqty;
@@ -43,7 +43,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -53,7 +53,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -82,7 +82,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -92,7 +92,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DD_ORDERLINE_ID")
+	@Column(name="DD_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getDdOrderlineId() {
 		return ddOrderlineId;
 	}
@@ -111,16 +111,17 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLine() {
 		return line;
 	}
@@ -130,7 +131,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCE_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstanceId() {
 		return mAttributesetinstanceId;
 	}
@@ -140,7 +141,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_ATTRIBUTESETINSTANCETO_ID")
+	@Column(name="M_ATTRIBUTESETINSTANCETO_ID", columnDefinition="INT")
 	public Integer getMAttributesetinstancetoId() {
 		return mAttributesetinstancetoId;
 	}
@@ -150,7 +151,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATOR_ID", nullable=false)
+	@Column(name="M_LOCATOR_ID", columnDefinition="INT", nullable=false)
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}
@@ -160,7 +161,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_LOCATORTO_ID", nullable=false)
+	@Column(name="M_LOCATORTO_ID", columnDefinition="INT", nullable=false)
 	public Integer getMLocatortoId() {
 		return mLocatortoId;
 	}
@@ -170,7 +171,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_MOVEMENT_ID", nullable=false)
+	@Column(name="M_MOVEMENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMMovementId() {
 		return mMovementId;
 	}
@@ -180,7 +181,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_MOVEMENTLINE_ID")
+	@Column(name="M_MOVEMENTLINE_ID", columnDefinition="INT")
 	public Integer getMMovementlineId() {
 		return mMovementlineId;
 	}
@@ -190,7 +191,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -210,17 +211,17 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getProcessed() {
+	@Column(nullable=false)
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(name="REVERSALLINE_ID")
+	@Column(name="REVERSALLINE_ID", columnDefinition="INT")
 	public Integer getReversallineId() {
 		return reversallineId;
 	}
@@ -258,7 +259,7 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

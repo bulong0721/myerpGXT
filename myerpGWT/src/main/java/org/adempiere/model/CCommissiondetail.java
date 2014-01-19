@@ -24,7 +24,7 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String info;
-	private String isactive;
+	private Boolean isactive;
 	private String reference;
 	private String updated;
 	private Integer updatedby;
@@ -57,7 +57,7 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -67,7 +67,7 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -77,7 +77,7 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_COMMISSIONAMT_ID", nullable=false)
+	@Column(name="C_COMMISSIONAMT_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCommissionamtId() {
 		return cCommissionamtId;
 	}
@@ -87,7 +87,7 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_COMMISSIONDETAIL_ID")
+	@Column(name="C_COMMISSIONDETAIL_ID", columnDefinition="INT")
 	public Integer getCCommissiondetailId() {
 		return cCommissiondetailId;
 	}
@@ -97,7 +97,7 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID", nullable=false)
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -107,7 +107,7 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICELINE_ID")
+	@Column(name="C_INVOICELINE_ID", columnDefinition="INT")
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}
@@ -117,7 +117,7 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_ORDERLINE_ID")
+	@Column(name="C_ORDERLINE_ID", columnDefinition="INT")
 	public Integer getCOrderlineId() {
 		return cOrderlineId;
 	}
@@ -147,7 +147,7 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -167,12 +167,12 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -197,7 +197,7 @@ public class CCommissiondetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

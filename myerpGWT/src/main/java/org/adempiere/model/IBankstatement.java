@@ -48,17 +48,17 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	private String iIsimported;
 	private BigDecimal interestamt;
 	private String invoicedocumentno;
-	private String isactive;
+	private Boolean isactive;
 	private String isoCode;
-	private String isreversal;
+	private Boolean isreversal;
 	private Integer line;
 	private String linedescription;
 	private String matchstatement;
 	private String memo;
 	private String name;
 	private String paymentdocumentno;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String referenceno;
 	private String routingno;
 	private String statementdate;
@@ -78,7 +78,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -88,7 +88,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -118,7 +118,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BANKACCOUNT_ID")
+	@Column(name="C_BANKACCOUNT_ID", columnDefinition="INT")
 	public Integer getCBankaccountId() {
 		return cBankaccountId;
 	}
@@ -128,7 +128,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BANKSTATEMENT_ID")
+	@Column(name="C_BANKSTATEMENT_ID", columnDefinition="INT")
 	public Integer getCBankstatementId() {
 		return cBankstatementId;
 	}
@@ -138,7 +138,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BANKSTATEMENTLINE_ID")
+	@Column(name="C_BANKSTATEMENTLINE_ID", columnDefinition="INT")
 	public Integer getCBankstatementlineId() {
 		return cBankstatementlineId;
 	}
@@ -148,7 +148,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -158,7 +158,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CHARGE_ID")
+	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	public Integer getCChargeId() {
 		return cChargeId;
 	}
@@ -168,7 +168,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -178,7 +178,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_INVOICE_ID")
+	@Column(name="C_INVOICE_ID", columnDefinition="INT")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -188,7 +188,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PAYMENT_ID")
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -227,6 +227,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -389,7 +390,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_BANKSTATEMENT_ID")
+	@Column(name="I_BANKSTATEMENT_ID", columnDefinition="INT")
 	public Integer getIBankstatementId() {
 		return iBankstatementId;
 	}
@@ -438,12 +439,11 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -458,16 +458,16 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsreversal() {
+	public Boolean isIsreversal() {
 		return isreversal;
 	}
 
-	public void setIsreversal(String isreversal) {
+	public void setIsreversal(Boolean isreversal) {
 		this.isreversal = isreversal;
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getLine() {
 		return line;
 	}
@@ -525,22 +525,20 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -621,6 +619,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

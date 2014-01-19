@@ -20,13 +20,13 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	private Integer cReceivableServicesAcct;
 	private String created;
 	private Integer createdby;
-	private String isactive;
+	private Boolean isactive;
 	private Integer notinvoicedreceiptsAcct;
 	private Integer notinvoicedreceivablesAcct;
 	private Integer notinvoicedrevenueAcct;
 	private Integer paydiscountExpAcct;
 	private Integer paydiscountRevAcct;
-	private String processing;
+	private Boolean processing;
 	private Integer unearnedrevenueAcct;
 	private String updated;
 	private Integer updatedby;
@@ -44,7 +44,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -54,7 +54,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -64,7 +64,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -74,7 +74,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_BP_GROUP_ID")
+	@Column(name="C_BP_GROUP_ID", columnDefinition="INT")
 	public Integer getCBpGroupId() {
 		return cBpGroupId;
 	}
@@ -84,7 +84,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PREPAYMENT_ACCT", nullable=false)
+	@Column(name="C_PREPAYMENT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCPrepaymentAcct() {
 		return cPrepaymentAcct;
 	}
@@ -94,7 +94,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RECEIVABLE_ACCT", nullable=false)
+	@Column(name="C_RECEIVABLE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCReceivableAcct() {
 		return cReceivableAcct;
 	}
@@ -104,7 +104,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RECEIVABLE_SERVICES_ACCT")
+	@Column(name="C_RECEIVABLE_SERVICES_ACCT", columnDefinition="INT")
 	public Integer getCReceivableServicesAcct() {
 		return cReceivableServicesAcct;
 	}
@@ -124,7 +124,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -134,17 +134,17 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="NOTINVOICEDRECEIPTS_ACCT", nullable=false)
+	@Column(name="NOTINVOICEDRECEIPTS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getNotinvoicedreceiptsAcct() {
 		return notinvoicedreceiptsAcct;
 	}
@@ -154,7 +154,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="NOTINVOICEDRECEIVABLES_ACCT", nullable=false)
+	@Column(name="NOTINVOICEDRECEIVABLES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getNotinvoicedreceivablesAcct() {
 		return notinvoicedreceivablesAcct;
 	}
@@ -164,7 +164,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="NOTINVOICEDREVENUE_ACCT", nullable=false)
+	@Column(name="NOTINVOICEDREVENUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getNotinvoicedrevenueAcct() {
 		return notinvoicedrevenueAcct;
 	}
@@ -174,7 +174,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PAYDISCOUNT_EXP_ACCT", nullable=false)
+	@Column(name="PAYDISCOUNT_EXP_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPaydiscountExpAcct() {
 		return paydiscountExpAcct;
 	}
@@ -184,7 +184,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PAYDISCOUNT_REV_ACCT", nullable=false)
+	@Column(name="PAYDISCOUNT_REV_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPaydiscountRevAcct() {
 		return paydiscountRevAcct;
 	}
@@ -194,17 +194,16 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="UNEARNEDREVENUE_ACCT", nullable=false)
+	@Column(name="UNEARNEDREVENUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getUnearnedrevenueAcct() {
 		return unearnedrevenueAcct;
 	}
@@ -224,7 +223,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -234,7 +233,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="V_LIABILITY_ACCT", nullable=false)
+	@Column(name="V_LIABILITY_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getVLiabilityAcct() {
 		return vLiabilityAcct;
 	}
@@ -244,7 +243,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="V_LIABILITY_SERVICES_ACCT", nullable=false)
+	@Column(name="V_LIABILITY_SERVICES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getVLiabilityServicesAcct() {
 		return vLiabilityServicesAcct;
 	}
@@ -254,7 +253,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="V_PREPAYMENT_ACCT", nullable=false)
+	@Column(name="V_PREPAYMENT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getVPrepaymentAcct() {
 		return vPrepaymentAcct;
 	}
@@ -264,7 +263,7 @@ public class CBpGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="WRITEOFF_ACCT", nullable=false)
+	@Column(name="WRITEOFF_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWriteoffAcct() {
 		return writeoffAcct;
 	}

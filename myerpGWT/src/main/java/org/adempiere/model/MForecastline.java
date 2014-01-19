@@ -17,7 +17,7 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String datepromised;
-	private String isactive;
+	private Boolean isactive;
 	private Integer mForecastId;
 	private Integer mForecastlineId;
 	private Integer mProductId;
@@ -36,7 +36,7 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -56,7 +56,7 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PERIOD_ID", nullable=false)
+	@Column(name="C_PERIOD_ID", columnDefinition="INT", nullable=false)
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}
@@ -76,7 +76,7 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -96,17 +96,17 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="M_FORECAST_ID", nullable=false)
+	@Column(name="M_FORECAST_ID", columnDefinition="INT", nullable=false)
 	public Integer getMForecastId() {
 		return mForecastId;
 	}
@@ -116,7 +116,7 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="M_FORECASTLINE_ID")
+	@Column(name="M_FORECASTLINE_ID", columnDefinition="INT")
 	public Integer getMForecastlineId() {
 		return mForecastlineId;
 	}
@@ -126,7 +126,7 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID", nullable=false)
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -136,7 +136,7 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_WAREHOUSE_ID", nullable=false)
+	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}
@@ -166,7 +166,7 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="SALESREP_ID")
+	@Column(name="SALESREP_ID", columnDefinition="INT")
 	public Integer getSalesrepId() {
 		return salesrepId;
 	}
@@ -186,7 +186,7 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

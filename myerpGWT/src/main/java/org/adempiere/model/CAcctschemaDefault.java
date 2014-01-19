@@ -39,7 +39,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private Integer eExpenseAcct;
 	private Integer ePrepaymentAcct;
-	private String isactive;
+	private Boolean isactive;
 	private Integer notinvoicedreceiptsAcct;
 	private Integer notinvoicedreceivablesAcct;
 	private Integer notinvoicedrevenueAcct;
@@ -70,7 +70,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	private Integer paydiscountRevAcct;
 	private Integer pjAssetAcct;
 	private Integer pjWipAcct;
-	private String processing;
+	private Boolean processing;
 	private Integer realizedgainAcct;
 	private Integer realizedlossAcct;
 	private Integer tCreditAcct;
@@ -101,7 +101,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -111,7 +111,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -121,7 +121,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_ASSET_ACCT", nullable=false)
+	@Column(name="B_ASSET_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBAssetAcct() {
 		return bAssetAcct;
 	}
@@ -131,7 +131,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_EXPENSE_ACCT", nullable=false)
+	@Column(name="B_EXPENSE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBExpenseAcct() {
 		return bExpenseAcct;
 	}
@@ -141,7 +141,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_INTERESTEXP_ACCT", nullable=false)
+	@Column(name="B_INTERESTEXP_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBInterestexpAcct() {
 		return bInterestexpAcct;
 	}
@@ -151,7 +151,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_INTERESTREV_ACCT", nullable=false)
+	@Column(name="B_INTERESTREV_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBInterestrevAcct() {
 		return bInterestrevAcct;
 	}
@@ -161,7 +161,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_INTRANSIT_ACCT", nullable=false)
+	@Column(name="B_INTRANSIT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBIntransitAcct() {
 		return bIntransitAcct;
 	}
@@ -171,7 +171,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_PAYMENTSELECT_ACCT", nullable=false)
+	@Column(name="B_PAYMENTSELECT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBPaymentselectAcct() {
 		return bPaymentselectAcct;
 	}
@@ -181,7 +181,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_REVALUATIONGAIN_ACCT", nullable=false)
+	@Column(name="B_REVALUATIONGAIN_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBRevaluationgainAcct() {
 		return bRevaluationgainAcct;
 	}
@@ -191,7 +191,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_REVALUATIONLOSS_ACCT", nullable=false)
+	@Column(name="B_REVALUATIONLOSS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBRevaluationlossAcct() {
 		return bRevaluationlossAcct;
 	}
@@ -201,7 +201,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_SETTLEMENTGAIN_ACCT", nullable=false)
+	@Column(name="B_SETTLEMENTGAIN_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBSettlementgainAcct() {
 		return bSettlementgainAcct;
 	}
@@ -211,7 +211,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_SETTLEMENTLOSS_ACCT", nullable=false)
+	@Column(name="B_SETTLEMENTLOSS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBSettlementlossAcct() {
 		return bSettlementlossAcct;
 	}
@@ -221,7 +221,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_UNALLOCATEDCASH_ACCT", nullable=false)
+	@Column(name="B_UNALLOCATEDCASH_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBUnallocatedcashAcct() {
 		return bUnallocatedcashAcct;
 	}
@@ -231,7 +231,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="B_UNIDENTIFIED_ACCT", nullable=false)
+	@Column(name="B_UNIDENTIFIED_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getBUnidentifiedAcct() {
 		return bUnidentifiedAcct;
 	}
@@ -241,7 +241,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="C_ACCTSCHEMA_ID")
+	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -251,7 +251,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_PREPAYMENT_ACCT", nullable=false)
+	@Column(name="C_PREPAYMENT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCPrepaymentAcct() {
 		return cPrepaymentAcct;
 	}
@@ -261,7 +261,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RECEIVABLE_ACCT", nullable=false)
+	@Column(name="C_RECEIVABLE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCReceivableAcct() {
 		return cReceivableAcct;
 	}
@@ -271,7 +271,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_RECEIVABLE_SERVICES_ACCT", nullable=false)
+	@Column(name="C_RECEIVABLE_SERVICES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCReceivableServicesAcct() {
 		return cReceivableServicesAcct;
 	}
@@ -281,7 +281,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CB_ASSET_ACCT", nullable=false)
+	@Column(name="CB_ASSET_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCbAssetAcct() {
 		return cbAssetAcct;
 	}
@@ -291,7 +291,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CB_CASHTRANSFER_ACCT", nullable=false)
+	@Column(name="CB_CASHTRANSFER_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCbCashtransferAcct() {
 		return cbCashtransferAcct;
 	}
@@ -301,7 +301,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CB_DIFFERENCES_ACCT", nullable=false)
+	@Column(name="CB_DIFFERENCES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCbDifferencesAcct() {
 		return cbDifferencesAcct;
 	}
@@ -311,7 +311,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CB_EXPENSE_ACCT", nullable=false)
+	@Column(name="CB_EXPENSE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCbExpenseAcct() {
 		return cbExpenseAcct;
 	}
@@ -321,7 +321,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CB_RECEIPT_ACCT", nullable=false)
+	@Column(name="CB_RECEIPT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getCbReceiptAcct() {
 		return cbReceiptAcct;
 	}
@@ -331,7 +331,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CH_EXPENSE_ACCT", nullable=false)
+	@Column(name="CH_EXPENSE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getChExpenseAcct() {
 		return chExpenseAcct;
 	}
@@ -341,7 +341,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="CH_REVENUE_ACCT", nullable=false)
+	@Column(name="CH_REVENUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getChRevenueAcct() {
 		return chRevenueAcct;
 	}
@@ -361,7 +361,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -371,7 +371,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="E_EXPENSE_ACCT", nullable=false)
+	@Column(name="E_EXPENSE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getEExpenseAcct() {
 		return eExpenseAcct;
 	}
@@ -381,7 +381,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="E_PREPAYMENT_ACCT", nullable=false)
+	@Column(name="E_PREPAYMENT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getEPrepaymentAcct() {
 		return ePrepaymentAcct;
 	}
@@ -391,17 +391,17 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(name="NOTINVOICEDRECEIPTS_ACCT", nullable=false)
+	@Column(name="NOTINVOICEDRECEIPTS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getNotinvoicedreceiptsAcct() {
 		return notinvoicedreceiptsAcct;
 	}
@@ -411,7 +411,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="NOTINVOICEDRECEIVABLES_ACCT", nullable=false)
+	@Column(name="NOTINVOICEDRECEIVABLES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getNotinvoicedreceivablesAcct() {
 		return notinvoicedreceivablesAcct;
 	}
@@ -421,7 +421,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="NOTINVOICEDREVENUE_ACCT", nullable=false)
+	@Column(name="NOTINVOICEDREVENUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getNotinvoicedrevenueAcct() {
 		return notinvoicedrevenueAcct;
 	}
@@ -431,7 +431,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_ASSET_ACCT", nullable=false)
+	@Column(name="P_ASSET_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPAssetAcct() {
 		return pAssetAcct;
 	}
@@ -441,7 +441,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_AVERAGECOSTVARIANCE_ACCT")
+	@Column(name="P_AVERAGECOSTVARIANCE_ACCT", columnDefinition="INT")
 	public Integer getPAveragecostvarianceAcct() {
 		return pAveragecostvarianceAcct;
 	}
@@ -451,7 +451,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_BURDEN_ACCT")
+	@Column(name="P_BURDEN_ACCT", columnDefinition="INT")
 	public Integer getPBurdenAcct() {
 		return pBurdenAcct;
 	}
@@ -461,7 +461,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_COGS_ACCT", nullable=false)
+	@Column(name="P_COGS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPCogsAcct() {
 		return pCogsAcct;
 	}
@@ -471,7 +471,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_COSTADJUSTMENT_ACCT", nullable=false)
+	@Column(name="P_COSTADJUSTMENT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPCostadjustmentAcct() {
 		return pCostadjustmentAcct;
 	}
@@ -481,7 +481,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_COSTOFPRODUCTION_ACCT")
+	@Column(name="P_COSTOFPRODUCTION_ACCT", columnDefinition="INT")
 	public Integer getPCostofproductionAcct() {
 		return pCostofproductionAcct;
 	}
@@ -491,7 +491,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_EXPENSE_ACCT", nullable=false)
+	@Column(name="P_EXPENSE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPExpenseAcct() {
 		return pExpenseAcct;
 	}
@@ -501,7 +501,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_FLOORSTOCK_ACCT")
+	@Column(name="P_FLOORSTOCK_ACCT", columnDefinition="INT")
 	public Integer getPFloorstockAcct() {
 		return pFloorstockAcct;
 	}
@@ -511,7 +511,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_INVENTORYCLEARING_ACCT", nullable=false)
+	@Column(name="P_INVENTORYCLEARING_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPInventoryclearingAcct() {
 		return pInventoryclearingAcct;
 	}
@@ -521,7 +521,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_INVOICEPRICEVARIANCE_ACCT", nullable=false)
+	@Column(name="P_INVOICEPRICEVARIANCE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPInvoicepricevarianceAcct() {
 		return pInvoicepricevarianceAcct;
 	}
@@ -531,7 +531,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_LABOR_ACCT")
+	@Column(name="P_LABOR_ACCT", columnDefinition="INT")
 	public Integer getPLaborAcct() {
 		return pLaborAcct;
 	}
@@ -541,7 +541,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_METHODCHANGEVARIANCE_ACCT")
+	@Column(name="P_METHODCHANGEVARIANCE_ACCT", columnDefinition="INT")
 	public Integer getPMethodchangevarianceAcct() {
 		return pMethodchangevarianceAcct;
 	}
@@ -551,7 +551,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_MIXVARIANCE_ACCT")
+	@Column(name="P_MIXVARIANCE_ACCT", columnDefinition="INT")
 	public Integer getPMixvarianceAcct() {
 		return pMixvarianceAcct;
 	}
@@ -561,7 +561,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_OUTSIDEPROCESSING_ACCT")
+	@Column(name="P_OUTSIDEPROCESSING_ACCT", columnDefinition="INT")
 	public Integer getPOutsideprocessingAcct() {
 		return pOutsideprocessingAcct;
 	}
@@ -571,7 +571,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_OVERHEAD_ACCT")
+	@Column(name="P_OVERHEAD_ACCT", columnDefinition="INT")
 	public Integer getPOverheadAcct() {
 		return pOverheadAcct;
 	}
@@ -581,7 +581,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_PURCHASEPRICEVARIANCE_ACCT", nullable=false)
+	@Column(name="P_PURCHASEPRICEVARIANCE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPPurchasepricevarianceAcct() {
 		return pPurchasepricevarianceAcct;
 	}
@@ -591,7 +591,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_RATEVARIANCE_ACCT")
+	@Column(name="P_RATEVARIANCE_ACCT", columnDefinition="INT")
 	public Integer getPRatevarianceAcct() {
 		return pRatevarianceAcct;
 	}
@@ -601,7 +601,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_REVENUE_ACCT", nullable=false)
+	@Column(name="P_REVENUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPRevenueAcct() {
 		return pRevenueAcct;
 	}
@@ -611,7 +611,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_SCRAP_ACCT")
+	@Column(name="P_SCRAP_ACCT", columnDefinition="INT")
 	public Integer getPScrapAcct() {
 		return pScrapAcct;
 	}
@@ -621,7 +621,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_TRADEDISCOUNTGRANT_ACCT", nullable=false)
+	@Column(name="P_TRADEDISCOUNTGRANT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPTradediscountgrantAcct() {
 		return pTradediscountgrantAcct;
 	}
@@ -631,7 +631,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_TRADEDISCOUNTREC_ACCT", nullable=false)
+	@Column(name="P_TRADEDISCOUNTREC_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPTradediscountrecAcct() {
 		return pTradediscountrecAcct;
 	}
@@ -641,7 +641,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_USAGEVARIANCE_ACCT")
+	@Column(name="P_USAGEVARIANCE_ACCT", columnDefinition="INT")
 	public Integer getPUsagevarianceAcct() {
 		return pUsagevarianceAcct;
 	}
@@ -651,7 +651,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="P_WIP_ACCT")
+	@Column(name="P_WIP_ACCT", columnDefinition="INT")
 	public Integer getPWipAcct() {
 		return pWipAcct;
 	}
@@ -661,7 +661,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PAYDISCOUNT_EXP_ACCT", nullable=false)
+	@Column(name="PAYDISCOUNT_EXP_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPaydiscountExpAcct() {
 		return paydiscountExpAcct;
 	}
@@ -671,7 +671,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PAYDISCOUNT_REV_ACCT", nullable=false)
+	@Column(name="PAYDISCOUNT_REV_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPaydiscountRevAcct() {
 		return paydiscountRevAcct;
 	}
@@ -681,7 +681,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PJ_ASSET_ACCT", nullable=false)
+	@Column(name="PJ_ASSET_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPjAssetAcct() {
 		return pjAssetAcct;
 	}
@@ -691,7 +691,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="PJ_WIP_ACCT", nullable=false)
+	@Column(name="PJ_WIP_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getPjWipAcct() {
 		return pjWipAcct;
 	}
@@ -701,17 +701,16 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
 	@Basic
-	@Column(name="REALIZEDGAIN_ACCT", nullable=false)
+	@Column(name="REALIZEDGAIN_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getRealizedgainAcct() {
 		return realizedgainAcct;
 	}
@@ -721,7 +720,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REALIZEDLOSS_ACCT", nullable=false)
+	@Column(name="REALIZEDLOSS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getRealizedlossAcct() {
 		return realizedlossAcct;
 	}
@@ -731,7 +730,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="T_CREDIT_ACCT", nullable=false)
+	@Column(name="T_CREDIT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getTCreditAcct() {
 		return tCreditAcct;
 	}
@@ -741,7 +740,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="T_DUE_ACCT", nullable=false)
+	@Column(name="T_DUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getTDueAcct() {
 		return tDueAcct;
 	}
@@ -751,7 +750,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="T_EXPENSE_ACCT", nullable=false)
+	@Column(name="T_EXPENSE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getTExpenseAcct() {
 		return tExpenseAcct;
 	}
@@ -761,7 +760,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="T_LIABILITY_ACCT", nullable=false)
+	@Column(name="T_LIABILITY_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getTLiabilityAcct() {
 		return tLiabilityAcct;
 	}
@@ -771,7 +770,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="T_RECEIVABLES_ACCT", nullable=false)
+	@Column(name="T_RECEIVABLES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getTReceivablesAcct() {
 		return tReceivablesAcct;
 	}
@@ -781,7 +780,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="UNEARNEDREVENUE_ACCT", nullable=false)
+	@Column(name="UNEARNEDREVENUE_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getUnearnedrevenueAcct() {
 		return unearnedrevenueAcct;
 	}
@@ -791,7 +790,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="UNREALIZEDGAIN_ACCT", nullable=false)
+	@Column(name="UNREALIZEDGAIN_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getUnrealizedgainAcct() {
 		return unrealizedgainAcct;
 	}
@@ -801,7 +800,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="UNREALIZEDLOSS_ACCT", nullable=false)
+	@Column(name="UNREALIZEDLOSS_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getUnrealizedlossAcct() {
 		return unrealizedlossAcct;
 	}
@@ -821,7 +820,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -831,7 +830,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="V_LIABILITY_ACCT", nullable=false)
+	@Column(name="V_LIABILITY_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getVLiabilityAcct() {
 		return vLiabilityAcct;
 	}
@@ -841,7 +840,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="V_LIABILITY_SERVICES_ACCT", nullable=false)
+	@Column(name="V_LIABILITY_SERVICES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getVLiabilityServicesAcct() {
 		return vLiabilityServicesAcct;
 	}
@@ -851,7 +850,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="V_PREPAYMENT_ACCT", nullable=false)
+	@Column(name="V_PREPAYMENT_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getVPrepaymentAcct() {
 		return vPrepaymentAcct;
 	}
@@ -861,7 +860,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_DIFFERENCES_ACCT", nullable=false)
+	@Column(name="W_DIFFERENCES_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWDifferencesAcct() {
 		return wDifferencesAcct;
 	}
@@ -871,7 +870,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_INVACTUALADJUST_ACCT", nullable=false)
+	@Column(name="W_INVACTUALADJUST_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWInvactualadjustAcct() {
 		return wInvactualadjustAcct;
 	}
@@ -881,7 +880,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_INVENTORY_ACCT", nullable=false)
+	@Column(name="W_INVENTORY_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWInventoryAcct() {
 		return wInventoryAcct;
 	}
@@ -891,7 +890,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_REVALUATION_ACCT", nullable=false)
+	@Column(name="W_REVALUATION_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWRevaluationAcct() {
 		return wRevaluationAcct;
 	}
@@ -901,7 +900,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="WITHHOLDING_ACCT", nullable=false)
+	@Column(name="WITHHOLDING_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWithholdingAcct() {
 		return withholdingAcct;
 	}
@@ -911,7 +910,7 @@ public class CAcctschemaDefault extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="WRITEOFF_ACCT", nullable=false)
+	@Column(name="WRITEOFF_ACCT", columnDefinition="INT", nullable=false)
 	public Integer getWriteoffAcct() {
 		return writeoffAcct;
 	}

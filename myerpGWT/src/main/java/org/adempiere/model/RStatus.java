@@ -16,12 +16,12 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String help;
-	private String isactive;
-	private String isclosed;
-	private String isdefault;
-	private String isfinalclose;
-	private String isopen;
-	private String iswebcanupdate;
+	private Boolean isactive;
+	private Boolean isclosed;
+	private Boolean isdefault;
+	private Boolean isfinalclose;
+	private Boolean isopen;
+	private Boolean iswebcanupdate;
 	private String name;
 	private Integer nextStatusId;
 	private Integer rStatusId;
@@ -41,7 +41,7 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -51,7 +51,7 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -71,7 +71,7 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -100,62 +100,62 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsclosed() {
+	@Column(nullable=false)
+	public Boolean isIsclosed() {
 		return isclosed;
 	}
 
-	public void setIsclosed(String isclosed) {
+	public void setIsclosed(Boolean isclosed) {
 		this.isclosed = isclosed;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsdefault() {
+	@Column(nullable=false)
+	public Boolean isIsdefault() {
 		return isdefault;
 	}
 
-	public void setIsdefault(String isdefault) {
+	public void setIsdefault(Boolean isdefault) {
 		this.isdefault = isdefault;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsfinalclose() {
+	@Column(nullable=false)
+	public Boolean isIsfinalclose() {
 		return isfinalclose;
 	}
 
-	public void setIsfinalclose(String isfinalclose) {
+	public void setIsfinalclose(Boolean isfinalclose) {
 		this.isfinalclose = isfinalclose;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsopen() {
+	@Column(nullable=false)
+	public Boolean isIsopen() {
 		return isopen;
 	}
 
-	public void setIsopen(String isopen) {
+	public void setIsopen(Boolean isopen) {
 		this.isopen = isopen;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIswebcanupdate() {
+	@Column(nullable=false)
+	public Boolean isIswebcanupdate() {
 		return iswebcanupdate;
 	}
 
-	public void setIswebcanupdate(String iswebcanupdate) {
+	public void setIswebcanupdate(Boolean iswebcanupdate) {
 		this.iswebcanupdate = iswebcanupdate;
 	}
 
@@ -170,7 +170,7 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="NEXT_STATUS_ID")
+	@Column(name="NEXT_STATUS_ID", columnDefinition="INT")
 	public Integer getNextStatusId() {
 		return nextStatusId;
 	}
@@ -180,7 +180,7 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="R_STATUS_ID")
+	@Column(name="R_STATUS_ID", columnDefinition="INT")
 	public Integer getRStatusId() {
 		return rStatusId;
 	}
@@ -190,7 +190,7 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_STATUSCATEGORY_ID", nullable=false)
+	@Column(name="R_STATUSCATEGORY_ID", columnDefinition="INT", nullable=false)
 	public Integer getRStatuscategoryId() {
 		return rStatuscategoryId;
 	}
@@ -200,7 +200,7 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getSeqno() {
 		return seqno;
 	}
@@ -210,6 +210,7 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getTimeoutdays() {
 		return timeoutdays;
 	}
@@ -219,7 +220,7 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="UPDATE_STATUS_ID")
+	@Column(name="UPDATE_STATUS_ID", columnDefinition="INT")
 	public Integer getUpdateStatusId() {
 		return updateStatusId;
 	}
@@ -239,7 +240,7 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

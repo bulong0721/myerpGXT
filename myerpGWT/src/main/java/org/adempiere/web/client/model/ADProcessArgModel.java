@@ -11,9 +11,9 @@ public class ADProcessArgModel implements IsADRPCModel, ADFormField {
 	private String				defaultvalue;
 	private String				displaylogic;
 	private Integer				fieldlength;
-	private String				isactive;
-	private String				iscentrallymaintained;
-	private String				ismandatory;
+	private Boolean				isactive;
+	private Boolean				iscentrallymaintained;
+	private Boolean				ismandatory;
 	private String				name;
 	private String				readonlylogic;
 	private Integer				seqno;
@@ -85,27 +85,27 @@ public class ADProcessArgModel implements IsADRPCModel, ADFormField {
 		this.fieldlength = fieldlength;
 	}
 
-	public String getIsactive() {
+	public Boolean getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
-	public String getIscentrallymaintained() {
+	public Boolean getIscentrallymaintained() {
 		return iscentrallymaintained;
 	}
 
-	public void setIscentrallymaintained(String iscentrallymaintained) {
+	public void setIscentrallymaintained(Boolean iscentrallymaintained) {
 		this.iscentrallymaintained = iscentrallymaintained;
 	}
 
-	public String getIsmandatory() {
+	public Boolean getIsmandatory() {
 		return ismandatory;
 	}
 
-	public void setIsmandatory(String ismandatory) {
+	public void setIsmandatory(Boolean ismandatory) {
 		this.ismandatory = ismandatory;
 	}
 

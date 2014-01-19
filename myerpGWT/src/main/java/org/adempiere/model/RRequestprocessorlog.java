@@ -17,8 +17,8 @@ public class RRequestprocessorlog extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String isactive;
-	private String iserror;
+	private Boolean isactive;
+	private Boolean iserror;
 	private Integer rRequestprocessorId;
 	private Integer rRequestprocessorlogId;
 	private String reference;
@@ -36,7 +36,7 @@ public class RRequestprocessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -46,7 +46,7 @@ public class RRequestprocessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -76,7 +76,7 @@ public class RRequestprocessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -95,27 +95,27 @@ public class RRequestprocessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIserror() {
+	@Column(nullable=false)
+	public Boolean isIserror() {
 		return iserror;
 	}
 
-	public void setIserror(String iserror) {
+	public void setIserror(Boolean iserror) {
 		this.iserror = iserror;
 	}
 
 	@Id
-	@Column(name="R_REQUESTPROCESSOR_ID")
+	@Column(name="R_REQUESTPROCESSOR_ID", columnDefinition="INT")
 	public Integer getRRequestprocessorId() {
 		return rRequestprocessorId;
 	}
@@ -125,7 +125,7 @@ public class RRequestprocessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="R_REQUESTPROCESSORLOG_ID")
+	@Column(name="R_REQUESTPROCESSORLOG_ID", columnDefinition="INT")
 	public Integer getRRequestprocessorlogId() {
 		return rRequestprocessorlogId;
 	}
@@ -175,7 +175,7 @@ public class RRequestprocessorlog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

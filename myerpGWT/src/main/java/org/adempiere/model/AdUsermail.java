@@ -17,8 +17,8 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String deliveryconfirmation;
-	private String isactive;
-	private String isdelivered;
+	private Boolean isactive;
+	private Boolean isdelivered;
 	private String mailtext;
 	private String messageid;
 	private Integer rMailtextId;
@@ -35,7 +35,7 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -45,7 +45,7 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -55,7 +55,7 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID", nullable=false)
+	@Column(name="AD_USER_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdUserId() {
 		return adUserId;
 	}
@@ -65,7 +65,7 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_USERMAIL_ID")
+	@Column(name="AD_USERMAIL_ID", columnDefinition="INT")
 	public Integer getAdUsermailId() {
 		return adUsermailId;
 	}
@@ -85,7 +85,7 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -105,22 +105,21 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsdelivered() {
+	public Boolean isIsdelivered() {
 		return isdelivered;
 	}
 
-	public void setIsdelivered(String isdelivered) {
+	public void setIsdelivered(Boolean isdelivered) {
 		this.isdelivered = isdelivered;
 	}
 
@@ -145,7 +144,7 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_MAILTEXT_ID")
+	@Column(name="R_MAILTEXT_ID", columnDefinition="INT")
 	public Integer getRMailtextId() {
 		return rMailtextId;
 	}
@@ -174,7 +173,7 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
@@ -184,7 +183,7 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="W_MAILMSG_ID")
+	@Column(name="W_MAILMSG_ID", columnDefinition="INT")
 	public Integer getWMailmsgId() {
 		return wMailmsgId;
 	}

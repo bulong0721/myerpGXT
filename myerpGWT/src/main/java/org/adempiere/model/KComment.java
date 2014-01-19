@@ -15,8 +15,8 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 	private Integer adSessionId;
 	private String created;
 	private Integer createdby;
-	private String isactive;
-	private String ispublic;
+	private Boolean isactive;
+	private Boolean ispublic;
 	private Integer kCommentId;
 	private Integer kEntryId;
 	private Integer rating;
@@ -32,7 +32,7 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", nullable=false)
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -42,7 +42,7 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", nullable=false)
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -52,7 +52,7 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_SESSION_ID")
+	@Column(name="AD_SESSION_ID", columnDefinition="INT")
 	public Integer getAdSessionId() {
 		return adSessionId;
 	}
@@ -72,7 +72,7 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -82,27 +82,27 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
+	@Column(nullable=false)
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getIspublic() {
+	@Column(nullable=false)
+	public Boolean isIspublic() {
 		return ispublic;
 	}
 
-	public void setIspublic(String ispublic) {
+	public void setIspublic(Boolean ispublic) {
 		this.ispublic = ispublic;
 	}
 
 	@Id
-	@Column(name="K_COMMENT_ID")
+	@Column(name="K_COMMENT_ID", columnDefinition="INT")
 	public Integer getKCommentId() {
 		return kCommentId;
 	}
@@ -112,7 +112,7 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="K_ENTRY_ID", nullable=false)
+	@Column(name="K_ENTRY_ID", columnDefinition="INT", nullable=false)
 	public Integer getKEntryId() {
 		return kEntryId;
 	}
@@ -122,7 +122,7 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getRating() {
 		return rating;
 	}
@@ -152,7 +152,7 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
+	@Column(columnDefinition="INT", nullable=false)
 	public Integer getUpdatedby() {
 		return updatedby;
 	}

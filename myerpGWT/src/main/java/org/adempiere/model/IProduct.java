@@ -33,7 +33,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	private String iIsimported;
 	private Integer iProductId;
 	private String imageurl;
-	private String isactive;
+	private Boolean isactive;
 	private String isoCode;
 	private Integer mProductCategoryId;
 	private Integer mProductId;
@@ -46,8 +46,8 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	private BigDecimal pricelist;
 	private BigDecimal pricepo;
 	private BigDecimal pricestd;
-	private String processed;
-	private String processing;
+	private Boolean processed;
+	private Boolean processing;
 	private String productcategoryValue;
 	private String producttype;
 	private BigDecimal royaltyamt;
@@ -74,7 +74,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID")
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -84,7 +84,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID")
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}
@@ -104,7 +104,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_BPARTNER_ID")
+	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -114,7 +114,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_CURRENCY_ID")
+	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	public Integer getCCurrencyId() {
 		return cCurrencyId;
 	}
@@ -124,7 +124,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="C_UOM_ID")
+	@Column(name="C_UOM_ID", columnDefinition="INT")
 	public Integer getCUomId() {
 		return cUomId;
 	}
@@ -163,6 +163,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getCreatedby() {
 		return createdby;
 	}
@@ -172,7 +173,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="DELIVERYTIME_PROMISED")
+	@Column(name="DELIVERYTIME_PROMISED", columnDefinition="INT")
 	public Integer getDeliverytimePromised() {
 		return deliverytimePromised;
 	}
@@ -269,7 +270,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="I_PRODUCT_ID")
+	@Column(name="I_PRODUCT_ID", columnDefinition="INT")
 	public Integer getIProductId() {
 		return iProductId;
 	}
@@ -289,12 +290,11 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getIsactive() {
+	public Boolean isIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 		this.isactive = isactive;
 	}
 
@@ -309,7 +309,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_CATEGORY_ID")
+	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}
@@ -319,7 +319,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="M_PRODUCT_ID")
+	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
 	public Integer getMProductId() {
 		return mProductId;
 	}
@@ -414,22 +414,20 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessed() {
+	public Boolean isProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(String processed) {
+	public void setProcessed(Boolean processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProcessing() {
+	public Boolean isProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(String processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
@@ -463,6 +461,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getShelfdepth() {
 		return shelfdepth;
 	}
@@ -472,6 +471,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getShelfheight() {
 		return shelfheight;
 	}
@@ -481,6 +481,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getShelfwidth() {
 		return shelfwidth;
 	}
@@ -500,6 +501,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUnitsperpallet() {
 		return unitsperpallet;
 	}
@@ -529,6 +531,7 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(columnDefinition="INT")
 	public Integer getUpdatedby() {
 		return updatedby;
 	}
