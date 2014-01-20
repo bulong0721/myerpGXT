@@ -23,7 +23,7 @@
 		<ui:attributes height="270" margins="{margins4}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="vmarginData">
-		<ui:attributes height="-1" margins="{margins4}" />
+		<ui:attributes height="-1" width="1" margins="{margins4}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="connectionConfig">
 		<ui:attributes text="Connection" />

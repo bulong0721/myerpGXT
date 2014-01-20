@@ -22,6 +22,9 @@
 	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="marginData">
 		<ui:attributes margins="{marginsAdvance}" />
 	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="toolLayoutData">
+		<ui:attributes height="-1" width="1" margins="{marginsSimple}" />
+	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="simpleConfig">
 		<ui:attributes text="Simple" />
 	</ui:with>
@@ -55,7 +58,7 @@
 					</tabs:child>
 				</tabs:TabPanel>
 			</container:child>
-			<container:child>
+			<container:child layoutData="{toolLayoutData}">
 				<widget:ConfirmToolBar ui:field="toolBar" />
 			</container:child>
 		</container:VerticalLayoutContainer>
