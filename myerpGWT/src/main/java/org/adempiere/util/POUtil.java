@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import org.adempiere.common.ADEntityBase;
@@ -18,28 +17,33 @@ import org.adempiere.web.client.util.StringUtil;
 
 public final class POUtil {
 
-	public static <T extends ADEntityBase> T find(EntityManager em, Class<T> clazz, int id) {
-		return em.find(clazz, id);
+	public static <T extends ADEntityBase> T find(PersistContext pCtx, Class<T> clazz, Object id) {
+		EntityManager em = pCtx.begin();
+		try {
+			T entity = em.find(clazz, id);
+			pCtx.commit();
+			return entity;
+		} catch (Exception e) {
+			pCtx.rollback();
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	public static <T extends ADEntityBase> T find(EntityManager em, Class<T> clazz, long id) {
-		return em.find(clazz, id);
-	}
-
-	public static AdTable findByTableName(EntityManager em, String tableName) {
+	public static AdTable findByTableName(PersistContext pCtx, String tableName) {
 		if (StringUtil.isNullOrEmpty(tableName)) {
 			return null;
 		}
 		Map<String, Object> paramMap = toMap("tablename", tableName);
-		return selectOne(em, AdTable.class, "queryTableByTableName", paramMap);
+		return selectOne(pCtx, "queryTableByTableName", AdTable.class, paramMap);
 	}
 
-	public static AdElement findElementByColumn(EntityManager em, String column) {
+	public static AdElement findElementByColumn(PersistContext pCtx, String column) {
 		if (StringUtil.isNullOrEmpty(column)) {
 			return null;
 		}
 		Map<String, Object> paramMap = toMap("columnname", column);
-		return selectOne(em, AdElement.class, "queryElementByColumn", paramMap);
+		return selectOne(pCtx, "queryElementByColumn", AdElement.class, paramMap);
 	}
 
 	public static Map<String, Object> toMap(String pName, Object pValue) {
@@ -48,62 +52,93 @@ public final class POUtil {
 		return paramMap;
 	}
 
-	public static <T extends ADEntityBase> T selectOne(EntityManager em, Class<T> clazz, String queryName, Map<String, Object> paramMap) {
+	public static <T extends ADEntityBase> T selectOne(PersistContext pCtx, String queryName, Class<T> clazz) {
+		return selectOne(pCtx, queryName, clazz, null);
+	}
+
+	public static <T extends ADEntityBase> T selectOne(PersistContext pCtx, String queryName, Class<T> clazz, Map<String, Object> paramMap) {
+		EntityManager em = pCtx.begin();
 		try {
 			TypedQuery<T> query = em.createNamedQuery(queryName, clazz);
-			for (Entry<String, Object> pEntry : paramMap.entrySet()) {
-				query.setParameter(pEntry.getKey(), pEntry.getValue());
+			if (null != paramMap) {
+				for (Entry<String, Object> pEntry : paramMap.entrySet()) {
+					query.setParameter(pEntry.getKey(), pEntry.getValue());
+				}
 			}
-			return query.getSingleResult();
+			T entity = query.getSingleResult();
+			pCtx.commit();
+			return entity;
 		} catch (Exception ex) {
-//			ex.printStackTrace();
+			pCtx.rollback();
+			// ex.printStackTrace();
 			return null;
 		}
 	}
 
-	public static <T extends ADEntityBase> List<T> selectList(EntityManager em, Class<T> clazz, String queryName,
+	public static <T extends ADEntityBase> List<T> selectList(PersistContext pCtx, String queryName, Class<T> clazz) {
+		return selectList(pCtx, queryName, clazz, null);
+	}
+
+	public static <T extends ADEntityBase> List<T> selectList(PersistContext pCtx, String queryName, Class<T> clazz,
 			Map<String, Object> paramMap) {
+		EntityManager em = pCtx.begin();
 		try {
 			TypedQuery<T> query = em.createNamedQuery(queryName, clazz);
-			for (Entry<String, Object> pEntry : paramMap.entrySet()) {
-				query.setParameter(pEntry.getKey(), pEntry.getValue());
+			if (null != paramMap) {
+				for (Entry<String, Object> pEntry : paramMap.entrySet()) {
+					query.setParameter(pEntry.getKey(), pEntry.getValue());
+				}
 			}
-			return query.getResultList();
+			List<T> list = query.getResultList();
+			pCtx.commit();
+			return list;
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			pCtx.rollback();
 			return null;
 		}
 	}
 
-	public static List<AdColumn> queryColumnsByTable(EntityManager em, int tableId) {
-		TypedQuery<AdColumn> query = em.createNamedQuery("queryColumnsByTable", AdColumn.class);
-		query.setParameter("adTableId", tableId);
-		return query.getResultList();
+	public static List<AdColumn> queryColumnsByTable(PersistContext pCtx, int tableId) {
+		Map<String, Object> paramMap = toMap("adTableId", tableId);
+		return selectList(pCtx, "queryColumnsByTable", AdColumn.class, paramMap);
 	}
 
-	public static <T extends ADEntityBase> boolean save(EntityManager em, T entity) {
-		EntityTransaction tx = null;
+	public static <T extends ADEntityBase> boolean save(PersistContext pCtx, T entity) {
 		try {
-			tx = em.getTransaction();
-			tx.begin();
+			EntityManager em = pCtx.begin();
 			initADEntity(entity);
 			em.merge(entity);
-			tx.commit();
+			pCtx.commit();
 			return true;
 		} catch (Exception e) {
-			if (null != tx) {
-				tx.rollback();
-			}
+			pCtx.rollback();
 			e.printStackTrace();
 			return false;
-		} 
+		}
+	}
+
+	public static <T extends ADEntityBase> boolean saveAll(PersistContext pCtx, List<T> list) {
+		try {
+			EntityManager em = pCtx.begin();
+			for (T entity : list) {
+				initADEntity(entity);
+				em.merge(entity);
+			}
+			pCtx.commit();
+			return true;
+		} catch (Exception e) {
+			pCtx.rollback();
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static void initADEntity(ADEntityBase entity) {
 		if (null == entity.getCreatedby()) {
 			entity.setCreatedby(Env.getUser());
 			entity.setCreated(Env.nowString());
-			entity.setIsactive(StringUtil.YES);
+			entity.setIsactive(true);
 		}
 		entity.setUpdatedby(Env.getUser());
 		entity.setUpdated(Env.nowString());
@@ -113,4 +148,5 @@ public final class POUtil {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

@@ -3,9 +3,9 @@ package org.adempiere.web.server;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -28,6 +28,8 @@ import org.adempiere.model.AdTabV;
 import org.adempiere.model.AdTreenodemm;
 import org.adempiere.process.ProcessContext;
 import org.adempiere.util.DTOUtil;
+import org.adempiere.util.POUtil;
+import org.adempiere.util.PersistContext;
 import org.adempiere.util.ProcessUtil;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
@@ -44,16 +46,16 @@ import org.adempiere.web.client.util.StringUtil;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings({ "serial", "rawtypes", "unchecked" })
-public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereService {
+public class AdempiereServiceImpl extends RemoteServiceServlet implements AdempiereService {
+	private PersistContext	pCtx	= new PersistContext();
 
 	@Override
 	public List<ADTreeNode> getAdMenuModels() {
 		try {
-			EntityManager em = getEntityManager();
-			TypedQuery<AdTreenodemm> query = em.createNamedQuery("queryMainMenuNodes", AdTreenodemm.class);
-			List<AdTreenodemm> menuList = query.getResultList();
+			List<AdTreenodemm> menuList = POUtil.selectList(pCtx, "queryMainMenuNodes", AdTreenodemm.class);
 			List<ADTreeNode> resultList = new ArrayList<ADTreeNode>(menuList.size());
 			for (AdTreenodemm nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
@@ -92,16 +94,15 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	public ADWindowModel getADWindowModel(Integer windowId) {
 		ADWindowModel windowModel = new ADWindowModel();
 		try {
-			EntityManager em = getEntityManager();
 			windowModel.setAdWindowId(windowId);
-			TypedQuery<AdTabV> tabQuery = em.createNamedQuery("queryTabvsByWindowId", AdTabV.class);
-			tabQuery.setParameter("adWindowId", windowId);
-			List<ADTabModel> tabList = DTOUtil.toTabModels(tabQuery.getResultList());
+			Map<String, Object> paramMap = POUtil.toMap("adWindowId", windowId);
+			List<AdTabV> tabVList = POUtil.selectList(pCtx, "queryTabvsByWindowId", AdTabV.class, paramMap);
+			List<ADTabModel> tabList = DTOUtil.toTabModels(tabVList);
 			windowModel.setTabList(tabList);
 			for (ADTabModel tabModel : tabList) {
-				TypedQuery<AdFieldV> fieldQuery = em.createNamedQuery("queryFieldvsByTabId", AdFieldV.class);
-				fieldQuery.setParameter("adTabId", tabModel.getAdTabId());
-				List<ADFieldModel> fieldList = DTOUtil.toFieldModels(fieldQuery.getResultList());
+				paramMap = POUtil.toMap("adTabId", tabModel.getAdTabId());
+				List<AdFieldV> fieldVList = POUtil.selectList(pCtx, "queryFieldvsByTabId", AdFieldV.class, paramMap);
+				List<ADFieldModel> fieldList = DTOUtil.toFieldModels(fieldVList);
 				tabModel.setFieldList(fieldList);
 			}
 		} catch (Exception e) {
@@ -119,7 +120,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		String data = "[]";
 		long totalCount = 0;
 		try {
-			EntityManager em = getEntityManager();
+			EntityManager em = pCtx.begin();
 			CriteriaBuilder cb = em.getCriteriaBuilder();
 			Class<?> entityClazz = toClass(entityClass);
 			CriteriaQuery cq = cb.createQuery(entityClazz);
@@ -140,8 +141,10 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 				List oldList = dataQuery.getResultList();
 				data = JSON.toJSONString(oldList, SerializerFeature.WriteClassName);
 			}
+			pCtx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			pCtx.rollback();
 		}
 		ADJSONData jsonData = new ADJSONData(data);
 		jsonData.setTotalCount(totalCount);
@@ -281,7 +284,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 
 	public List<LookupValue> getOptionsFromTable(long adRefId) {
 		try {
-			EntityManager em = getEntityManager();
+			EntityManager em = pCtx.begin();
 			TypedQuery<RefCriteria> qurey = em.createNamedQuery("queryRefTable", RefCriteria.class);
 			qurey.setParameter("adReferenceId", adRefId);
 			RefCriteria criteria = qurey.getSingleResult();
@@ -294,9 +297,12 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			Root<?> root = cq.from(entityClazz);
 			cq.select(cb.construct(LookupValue.class, root.get(disColumn), root.get(keyColumn)));
 			TypedQuery<LookupValue> tq = em.createQuery(cq);
-			return wrapper(tq.getResultList());
+			List<LookupValue> resultList = wrapper(tq.getResultList());
+			pCtx.commit();
+			return resultList;
 		} catch (Exception e) {
 			e.printStackTrace();
+			pCtx.rollback();
 			return Collections.emptyList();
 		}
 	}
@@ -307,7 +313,7 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		}
 		try {
 			String tableName = StringUtil.trimEnd(columnName, "_ID");
-			EntityManager em = getEntityManager();
+			EntityManager em = pCtx.begin();
 			CriteriaBuilder cb = em.getCriteriaBuilder();
 			Class<?> entityClazz = toClass(getEntityClassName(tableName));
 			CriteriaQuery cq = cb.createQuery(entityClazz);
@@ -315,21 +321,27 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 			String keyColumn = StringUtil.toCamelStyle(columnName);
 			cq.select(cb.construct(LookupValue.class, root.get("name"), root.get(keyColumn)));
 			TypedQuery tq = em.createQuery(cq);
-			return wrapper(tq.getResultList());
+			List<LookupValue> resultList = wrapper(tq.getResultList());
+			pCtx.commit();
+			return resultList;
 		} catch (Exception e) {
 			e.printStackTrace();
+			pCtx.rollback();
 		}
 		return Collections.emptyList();
 	}
 
 	public List<LookupValue> getOptionsFromList(long adRefId) {
 		try {
-			EntityManager em = getEntityManager();
+			EntityManager em = pCtx.begin();
 			TypedQuery<LookupValue> qurey = em.createNamedQuery("queryRefList", LookupValue.class);
 			qurey.setParameter("adReferenceId", adRefId);
-			return wrapper(qurey.getResultList());
+			List<LookupValue> lvList = qurey.getResultList();
+			pCtx.commit();
+			return wrapper(lvList);
 		} catch (Exception e) {
 			e.printStackTrace();
+			pCtx.rollback();
 			return Collections.emptyList();
 		}
 	}
@@ -342,10 +354,9 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	public ADProcessModel getADProcessModel(Integer processId) {
 		ADProcessModel processModel = null;
 		try {
-			EntityManager em = getEntityManager();
-			TypedQuery<AdProcess> query = em.createNamedQuery("queryProcessWithParamsByProcessId", AdProcess.class);
-			query.setParameter("adProcessId", processId);
-			processModel = DTOUtil.toProcessModel(query.getSingleResult());
+			Map<String, Object> paramMap = POUtil.toMap("adProcessId", processId);
+			AdProcess process = POUtil.selectOne(pCtx, "queryProcessWithParamsByProcessId", AdProcess.class, paramMap);
+			processModel = DTOUtil.toProcessModel(process);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -354,24 +365,19 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 
 	@Override
 	public ADResultWithError updateData(String text, String tableName) {
-		EntityTransaction tx = null;
 		System.out.println(text);
 		try {
-			EntityManager em = getEntityManager();
+			EntityManager em = pCtx.begin();
 			Class<?> clazz = getEntityClass(tableName);
 			List<?> array = JSON.parseArray(text, clazz);
-			tx = em.getTransaction();
-			tx.begin();
 			for (Object entity : array) {
 				System.out.println(entity.getClass());
 				em.merge(entity);
 			}
-			tx.commit();
+			pCtx.commit();
 			return ADResultWithError.newSuccess();
 		} catch (Exception e) {
-			if (null != tx) {
-				tx.rollback();
-			}
+			pCtx.rollback();
 			e.printStackTrace();
 			return ADResultWithError.newError(e.getMessage());
 		}
@@ -380,11 +386,10 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 	@Override
 	public ADFormModel getADFormModel(Integer formId) {
 		ADFormModel formModel = null;
-		try {
-			EntityManager em = getEntityManager();
-			TypedQuery<AdForm> query = em.createNamedQuery("queryFormByFormId", AdForm.class);
-			query.setParameter("adFormId", formId);
-			formModel = DTOUtil.toFormModel(query.getSingleResult());
+		try {			
+			Map<String, Object> paramMap = POUtil.toMap("adFormId", formId);
+			AdForm form = POUtil.selectOne(pCtx, "queryFormByFormId", AdForm.class, paramMap);
+			formModel = DTOUtil.toFormModel(form);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -421,10 +426,10 @@ public class AdempiereServiceImpl extends JPAServiceBase implements AdempiereSer
 		}
 		return pInfo;
 	}
-	
+
 	public static void main(String[] args) {
-		String json = "{\"adProcessId\":173,\"classname\":\"org.adempiere.process.TableCreateColumns\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":\"Y\",\"iscentrallymaintained\":\"Y\",\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":\"Y\",\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":\"N\",\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":\"Y\",\"iscentrallymaintained\":\"Y\",\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":\"Y\",\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
-		String rowJson = "{\"accesslevel\":\"6\",\"adClientId\":0,\"adOrgId\":0,\"adTableId\":906,\"adWindowId\":113,\"entitytype\":\"D\",\"isactive\":\"Y\",\"iscentrallymaintained\":\"Y\",\"ischangelog\":\"N\",\"isdeleteable\":\"Y\",\"ishighvolume\":\"N\",\"issecurityenabled\":\"N\",\"isview\":\"N\",\"loadseq\":125,\"name\":\"Workflow\",\"replicationtype\":\"L\",\"tablename\":\"AD_Workflow\"}";
+		String json = "{\"adProcessId\":173,\"classname\":\"org.adempiere.process.TableCreateColumns\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
+		String rowJson = "{\"accesslevel\":\"6\",\"adClientId\":0,\"adOrgId\":0,\"adTableId\":906,\"adWindowId\":113,\"entitytype\":\"D\",\"isactive\":true,\"iscentrallymaintained\":true,\"ischangelog\":false,\"isdeleteable\":true,\"ishighvolume\":false,\"issecurityenabled\":false,\"isview\":false,\"loadseq\":125,\"name\":\"Workflow\",\"replicationtype\":\"L\",\"tablename\":\"AD_Workflow\"}";
 		ADProcessModel pModel = JSON.parseObject(json, ADProcessModel.class);
 		ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson, "{}");
 		ProcessResult pInfo = new ProcessResult();
