@@ -12,7 +12,6 @@ import org.adempiere.model.AdElement;
 import org.adempiere.model.AdTable;
 import org.adempiere.util.Env;
 import org.adempiere.util.POUtil;
-import org.adempiere.web.client.util.StringUtil;
 
 public class TableCreateColumns extends ServerProcess {
 	private boolean	putAllTables	= false;
@@ -36,7 +35,7 @@ public class TableCreateColumns extends ServerProcess {
 			if (putAllTables)
 				addTable(md, catalog, schema);
 			else {
-				AdTable table = POUtil.find(context.getEntityManager(), AdTable.class, tableId);
+				AdTable table = POUtil.find(context, AdTable.class, tableId);
 				String tableName = table.getTablename();
 				ResultSet rs = md.getColumns(catalog, schema, tableName, null);
 				addTableColumn(rs, table);
@@ -58,7 +57,7 @@ public class TableCreateColumns extends ServerProcess {
 		while (rs.next()) {
 			String tableName = rs.getString("TABLE_NAME");
 			// Try to find
-			AdTable table = POUtil.findByTableName(context.getEntityManager(), tableName);
+			AdTable table = POUtil.findByTableName(context, tableName);
 			// Create new ?
 			if (table == null) {
 				String tn = tableName.toUpperCase();
@@ -80,7 +79,7 @@ public class TableCreateColumns extends ServerProcess {
 				table.setName(tableName);
 				table.setTablename(tableName);
 				table.setIsview(false);
-				if (!POUtil.save(context.getEntityManager(), table)) {
+				if (!POUtil.save(context, table)) {
 					continue;
 				}
 			}
@@ -91,7 +90,7 @@ public class TableCreateColumns extends ServerProcess {
 
 	private void addTableColumn(ResultSet rs, AdTable table) throws Exception {
 		String tableName = table.getTablename();
-		List<AdColumn> columnList = POUtil.queryColumnsByTable(context.getEntityManager(), table.getAdTableId());
+		List<AdColumn> columnList = POUtil.queryColumnsByTable(context, table.getAdTableId());
 		while (rs.next()) {
 			String tn = rs.getString("TABLE_NAME");
 			if (!tableName.equalsIgnoreCase(tn))
@@ -107,7 +106,7 @@ public class TableCreateColumns extends ServerProcess {
 			column = createColumn(table);
 			column.setEntitytype("D");
 			//
-			AdElement element = POUtil.findElementByColumn(context.getEntityManager(), columnName);
+			AdElement element = POUtil.findElementByColumn(context, columnName);
 			if (element == null) {
 				element = createElement(column);
 				if (columnName.equalsIgnoreCase(table.getTablename() + "_ID")) {
@@ -116,7 +115,7 @@ public class TableCreateColumns extends ServerProcess {
 					element.setPrintname(table.getName());
 				}
 				// TODO
-//				POUtil.save(context.getEntityManager(), element);
+				POUtil.save(context, element);
 			}
 			column.setColumnname(element.getColumnname());
 			column.setName(element.getName());
@@ -190,7 +189,7 @@ public class TableCreateColumns extends ServerProcess {
 				column.setIsupdateable(false);
 			}
 			// Done
-			if (POUtil.save(context.getEntityManager(), column)) {
+			if (POUtil.save(context, column)) {
 				count++;
 			}
 		} // while columns
@@ -199,6 +198,9 @@ public class TableCreateColumns extends ServerProcess {
 
 	private AdElement createElement(AdColumn column) {
 		AdElement element = new AdElement();
+		element.setAdClientId(column.getAdClientId());
+		element.setAdOrgId(column.getAdOrgId());
+		element.setEntitytype("D");
 		return element;
 	}
 
@@ -210,6 +212,7 @@ public class TableCreateColumns extends ServerProcess {
 		column.setEntitytype(table.getEntitytype());
 
 		column.setIsalwaysupdateable(false); // N
+		column.setIsautocomplete(false);
 		column.setIsencrypted(false);
 		column.setIsidentifier(false);
 		column.setIskey(false);

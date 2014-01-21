@@ -20,7 +20,6 @@ public interface ADMapData extends IsADRPCModel {
 
 	public static class ADModelKeyProvider implements ModelKeyProvider<ADMapData> {
 		private List<String>	keyFields;
-		private Long			RecordId	= -1L;
 		private DisplayType		fieldType;
 
 		public ADModelKeyProvider(ADTabModel tabModel) {
@@ -53,9 +52,15 @@ public interface ADMapData extends IsADRPCModel {
 			return result;
 		}
 
-		public void resetKeys(ADMapData item) {
-			for (String keyField : keyFields) {
-				item.setValue(keyField, RecordId--);
+		public void resetKeys(ADMapData item, String table) {
+			if (1 == keyFields.size()) {
+				item.setValue(keyFields.get(0), null);
+			} else {
+				for (String keyField : keyFields) {
+					if (keyField.equalsIgnoreCase(table + "_ID")) {
+						item.setValue(keyField, null);
+					}
+				}
 			}
 		}
 	}

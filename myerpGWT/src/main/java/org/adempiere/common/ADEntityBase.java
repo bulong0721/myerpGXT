@@ -27,17 +27,7 @@ public abstract class ADEntityBase implements Serializable {
 	public void setUpdatedby(Integer updatedby) {
 	}
 
-	public void setIsactive(String isactive) {
+	public void setIsactive(Boolean isactive) {
 	}
 
-	public static Boolean isYes(String value) {
-		if (null == value) {
-			return null;
-		}
-		return "Y".equalsIgnoreCase(value);
-	}
-
-	public static String toYesNo(Boolean value) {
-		return value ? "Y" : "N";
-	}
 }

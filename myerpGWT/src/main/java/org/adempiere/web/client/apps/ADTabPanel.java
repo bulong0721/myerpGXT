@@ -329,7 +329,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			return;
 		}
 		ADMapData newData = (ADMapData) selectedData.deepClone();
-		keyProvider.resetKeys(newData);
+		keyProvider.resetKeys(newData, tabModel.getTablename());
 		store.add(newData);
 	}
 

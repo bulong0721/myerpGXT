@@ -35,7 +35,7 @@
 		<query>SELECT t FROM AdTable t WHERE t.tablename = :tablename</query>
 	</named-query>
 	<named-query name="queryElementByColumn">
-		<query>SELECT e FROM AdElement e WHERE e.columnname = :columnname</query>
+		<query>SELECT e FROM AdElement e WHERE LOWER(e.columnname) = :columnname</query>
 	</named-query>
 	<named-query name="queryColumnsByTable">
 		<query>SELECT c FROM AdColumn c WHERE c.adTableId = :adTableId</query>

@@ -41,6 +41,17 @@ public class StringUtil {
 	public static String toYesNo(Boolean value) {
 		return value ? "Y" : "N";
 	}
+	
+	/**
+	 * @param text
+	 * @return
+	 */
+	public static String toLowerCase(String text) {
+		if (null != text) {
+			return text.toLowerCase();
+		}
+		return text;
+	}
 
 	/**
 	 * @param value
