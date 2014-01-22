@@ -43,6 +43,14 @@ public abstract class ServerProcess implements ProcessCall {
 		return success;
 	}
 
+	protected String getSusscess() {
+		return "";
+	}
+
+	protected String getError(String error) {
+		return error;
+	}
+
 	protected abstract void preProcess(ProcessContext ctx);
 
 	protected abstract String doIt() throws Exception;
