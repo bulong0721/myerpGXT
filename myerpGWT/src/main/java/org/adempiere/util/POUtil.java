@@ -69,7 +69,6 @@ public final class POUtil {
 			pCtx.commit();
 			return entity;
 		} catch (Exception ex) {
-			pCtx.rollback();
 			// ex.printStackTrace();
 			return null;
 		}
@@ -94,7 +93,6 @@ public final class POUtil {
 			return list;
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			pCtx.rollback();
 			return null;
 		}
 	}
@@ -137,11 +135,11 @@ public final class POUtil {
 	public static void initADEntity(ADEntityBase entity) {
 		if (null == entity.getCreatedby()) {
 			entity.setCreatedby(Env.getUser());
-			entity.setCreated(Env.nowString());
+			entity.setCreated(Env.currentTimestamp());
 			entity.setIsactive(true);
 		}
 		entity.setUpdatedby(Env.getUser());
-		entity.setUpdated(Env.nowString());
+		entity.setUpdated(Env.currentTimestamp());
 	}
 
 	public static AdAttachment getAttachment(int formatTableId, long aD_PrintFormatItem_ID) {

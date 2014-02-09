@@ -26,8 +26,10 @@ import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.ClassUtil;
+import org.adempiere.web.client.util.ContextUtil;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.LoggingUtil;
+import org.adempiere.web.client.util.StringUtil;
 import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.TabStatus;
@@ -58,8 +60,10 @@ import com.sencha.gxt.widget.core.client.event.CancelEditEvent;
 import com.sencha.gxt.widget.core.client.event.CancelEditEvent.CancelEditHandler;
 import com.sencha.gxt.widget.core.client.event.CompleteEditEvent;
 import com.sencha.gxt.widget.core.client.event.CompleteEditEvent.CompleteEditHandler;
+import com.sencha.gxt.widget.core.client.grid.CheckBoxSelectionModel;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
+import com.sencha.gxt.widget.core.client.grid.GridSelectionModel;
 import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
 import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
@@ -68,34 +72,36 @@ import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
 
 public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 
-	private static ADTabPanelUiBinder	uiBinder	= GWT.create(ADTabPanelUiBinder.class);
+	private static ADTabPanelUiBinder						uiBinder	= GWT.create(ADTabPanelUiBinder.class);
+	PagingLoader<ADLoadConfig, PagingLoadResult<ADMapData>>	loader		= null;
 
 	interface ADTabPanelUiBinder extends UiBinder<Widget, ADTabPanel> {
 	}
 
-	PagingLoader<ADLoadConfig, PagingLoadResult<ADMapData>>	loader				= null;
-	private AdempiereServiceAsync							adempiereService	= GWT.create(AdempiereService.class);
-	private ADWindowPanel									windowPanel;
-	private ADTabModel										tabModel;
-	private CWindowToolBar									toolBar;
-	private Widget											widget;
-	private ColumnModel<ADMapData>							cm;
-	private ListStore<ADMapData>							store;
-	private ADFormBuilder									tabStrategy;
-	private GridEditing<ADMapData>							gridEditing;
-	private ADModelDriver									adModelDriver;
-	private ADModelKeyProvider								keyProvider;
-	private ADModelKey										parentModelKey;
+	private AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
+	private ADMapData				newRecord;
+	private ADMapData				editRecord;
+	private ADWindowPanel			windowPanel;
+	private ADTabModel				tabModel;
+	private CWindowToolBar			toolBar;
+	private Widget					widget;
+	private ColumnModel<ADMapData>	cm;
+	private ListStore<ADMapData>	store;
+	private ADFormBuilder			tabStrategy;
+	private GridEditing<ADMapData>	gridEditing;
+	private ADModelDriver			adModelDriver;
+	private ADModelKeyProvider		keyProvider;
+	private ADModelKey				parentModelKey;
 	@UiField(provided = true)
-	Grid<ADMapData>											grid;
+	Grid<ADMapData>					grid;
 	@UiField(provided = true)
-	PagingToolBar											pageToolBar;
+	PagingToolBar					pageToolBar;
 	@UiField(provided = true)
-	AdModelEditor											formEditing;
+	AdModelEditor					formEditing;
 	@UiField
-	CardLayoutContainer										layoutContainer;
+	CardLayoutContainer				layoutContainer;
 	@UiField
-	SimplePanel												treePlaceHolder;
+	SimplePanel						treePlaceHolder;
 
 	public ADTabPanel(ADWindowPanel windowPanel, ADTabModel tabModel, CWindowToolBar toolBar) {
 		this.tabStrategy = new ADFormBuilder(tabModel.getFieldList());
@@ -149,14 +155,15 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 		cm = tabStrategy.createColumnModel();
 		grid = new Grid<ADMapData>(store, cm);
 		grid.setLoader(loader);
-		grid.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-		grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedHandler<ADMapData>() {
+		GridSelectionModel<ADMapData> selectModel = new CheckBoxSelectionModel<ADMapData>();
+		selectModel.setSelectionMode(SelectionMode.SINGLE);
+		selectModel.addSelectionChangedHandler(new SelectionChangedHandler<ADMapData>() {
 			@Override
 			public void onSelectionChanged(SelectionChangedEvent<ADMapData> event) {
 				// TODO Auto-generated method stub
-
 			}
 		});
+		grid.setSelectionModel(selectModel);
 		gridEditing = tabStrategy.createGridEditing(grid);
 		gridEditing.addCompleteEditHandler(new CompleteEditHandler<ADMapData>() {
 			@Override
@@ -214,11 +221,19 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			adModelDriver.initialize(formEditing);
 		}
 		if (isGridMode()) {
-			// ADMapData data = adModelDriver.flush();
-			// store.update(data);
+			if (null != editRecord) {
+				ADMapData data = adModelDriver.flush();
+				store.update(data);
+				toolBar.setTabState(this);
+			}
 		} else {
-			ADMapData selectedItem = grid.getSelectionModel().getSelectedItem();
-			adModelDriver.edit(selectedItem);
+			editRecord = grid.getSelectionModel().getSelectedItem();
+			if (null != editRecord) {
+				adModelDriver.edit(editRecord);
+			} else {
+				newRecord();
+				editRecord = newRecord;
+			}
 		}
 	}
 
@@ -228,6 +243,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			public void onSuccess(ADResultWithError result) {
 				if (result.isSuccess()) {
 					store.commitChanges();
+					ADTabPanel.this.newRecord = null;
 					toolBar.setTabState(ADTabPanel.this);
 					Info.display("adempiere", "Update Success.");
 				} else {
@@ -236,7 +252,6 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			}
 		};
 		String json = getModifyRecords();
-		// LoggingUtil.info(json);
 		adempiereService.updateData(json, tabModel.getTablename(), callback);
 	}
 
@@ -289,15 +304,29 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			formEditing.cancelEditing();
 		}
 		store.rejectChanges();
+		if (null != newRecord) {
+			store.remove(newRecord);
+			editRecord = null;
+			newRecord = null;
+		}
 		toolBar.setTabState(this);
 	}
 
 	public void newRecord() {
-		ADMapData data = new ADModelData();
-		store.add(data);
-		if (!isGridMode()) {
-			adModelDriver.edit(data);
+		newRecord = new ADModelData();
+		for (ADFieldModel field : tabModel.getFieldList()) {
+			if (null == field.getDefaultvalue()) {
+				continue;
+			}
+			String fieldName = StringUtil.toCamelStyle(field.getColumnname());
+			newRecord.setValue(fieldName, ContextUtil.getDefaultValue(field));
 		}
+		LoggingUtil.info("xxxxxxxxxxxxxxNewRecord:" + newRecord.toString());
+		store.add(newRecord);
+		if (!isGridMode()) {
+			adModelDriver.edit(newRecord);
+		}
+		toolBar.setTabState(this);
 	}
 
 	public void moveFirst() {
@@ -328,9 +357,10 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			box.show();
 			return;
 		}
-		ADMapData newData = (ADMapData) selectedData.deepClone();
-		keyProvider.resetKeys(newData, tabModel.getTablename());
-		store.add(newData);
+		newRecord = (ADMapData) selectedData.deepClone();
+		keyProvider.resetKeys(newRecord, tabModel.getTablename());
+		store.add(newRecord);
+		toolBar.setTabState(this);
 	}
 
 	public void updateADUserContext() {
@@ -344,6 +374,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 		}
 		parentModelKey = loadCfg.getParentKey();
 		loader.load(loadCfg);
+		newRecord = null;
 		toolBar.setTabState(this);
 	}
 
@@ -355,7 +386,8 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 	public boolean hasChanges() {
 		boolean gridChanges = !store.getModifiedRecords().isEmpty();
 		boolean formChanges = null == adModelDriver ? false : adModelDriver.isDirty();
-		return (gridChanges || formChanges);
+		boolean hasNewRecord = (null != newRecord);
+		return (hasNewRecord || gridChanges || formChanges);
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package org.adempiere.pdf;
+package org.adempiere.util;
 
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;

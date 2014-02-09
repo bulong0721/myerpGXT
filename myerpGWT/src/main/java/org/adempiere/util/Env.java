@@ -16,12 +16,13 @@ public final class Env {
 	}
 
 	public static Integer getUser() {
+		// TODO Auto-generated method stub
 		return 100;
 	}
 
-	public static String nowString() {
+	public static String currentTimestamp() {
 		// TODO Auto-generated method stub
-		return "2014-01-15 15:25:00";
+		return "2014-01-22 15:39:45";
 	}
 
 }

@@ -13,6 +13,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.adempiere.common.ADEntityBase;
 import org.adempiere.common.ADExpression;
 import org.adempiere.common.ADExpression.ADPredicate;
 import org.adempiere.common.ADModelKey;
@@ -372,13 +373,14 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 			List<?> array = JSON.parseArray(text, clazz);
 			for (Object entity : array) {
 				System.out.println(entity.getClass());
+				POUtil.initADEntity((ADEntityBase) entity);
 				em.merge(entity);
 			}
 			pCtx.commit();
 			return ADResultWithError.newSuccess();
 		} catch (Exception e) {
-			pCtx.rollback();
 			e.printStackTrace();
+			pCtx.rollback();
 			return ADResultWithError.newError(e.getMessage());
 		}
 	}

@@ -37,7 +37,8 @@
 			<toolbar:ToolBar>
 				<gxt:Status ui:field="status" text="Navigate or Update record" width="200" />
 				<toolbar:FillToolItem />
-				<gxt:Status ui:field="wordCount" text="1/5" width="100" styleName="{statusStyle.statusPanel}" />
+				<toolbar:SeparatorToolItem />
+				<gxt:Status ui:field="wordCount" text="1 / 5" width="45" styleName="{statusStyle.statusPanel}" />
 			</toolbar:ToolBar>
 		</container:child>
 	</container:VerticalLayoutContainer>

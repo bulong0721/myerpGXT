@@ -42,7 +42,7 @@ public final class ProcessUtil {
 	public static void process(ProcessContext ctx, ProcessResult pi) {
 		AdPinstance instance = null;
 		try {
-			instance = new AdPinstance();
+			instance = createPInstance();
 		} catch (Exception e) {
 			pi.setSummary(e.getLocalizedMessage());
 			pi.setHasError(true);
@@ -59,6 +59,12 @@ public final class ProcessUtil {
 //		}
 		ctx.setAdPinstanceId(instance.getAdPinstanceId());
 		ProcessUtil.startProcess(ctx, pi);
+	}
+
+	private static AdPinstance createPInstance() {
+		//TODO
+		AdPinstance pInstance = new AdPinstance();
+		return pInstance;
 	}
 
 	private static void startProcess(ProcessContext ctx, ProcessResult pi) {
@@ -92,7 +98,7 @@ public final class ProcessUtil {
 				return;
 			}
 			// No Optional SQL procedure ... done
-			if (!isReport && procedureName.length() == 0) {
+			if (!isReport && StringUtil.isNullOrEmpty(procedureName)) {
 				return;
 			}
 			// No Optional Report ... done
@@ -196,9 +202,6 @@ public final class ProcessUtil {
 		boolean success = false;
 		try {
 			success = process.startProcess(ctx, pi);
-			if (success) {
-				ctx.commit();
-			}
 		} catch (Exception e) {
 			pi.setSummary("ProcessError " + e.getLocalizedMessage(), true);
 			return false;
