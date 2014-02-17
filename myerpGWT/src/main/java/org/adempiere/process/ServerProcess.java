@@ -33,11 +33,12 @@ public abstract class ServerProcess implements ProcessCall {
 			msg = doIt();
 		} catch (Throwable e) {
 			success = false;
-			// throw new RuntimeException(e);
+			e.printStackTrace();
+//			throw new AdempiereUserError(e.getMessage());
 		}
 
 		// transaction should rollback if there are error in process
-		if ("@Error@".equals(msg))
+		if (null != msg && msg.startsWith("@Error@"))
 			success = false;
 
 		return success;

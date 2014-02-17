@@ -28,8 +28,8 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 	private List<ADFieldBuilder>				fieldList;
 	private ADMapData							model;
 	private CssFloatLayoutContainer				container;
-	private double								layoutWidth	= 0.49d;
-	private int									labelWidth	= 135;
+	private double								layoutWidth	= 0.485d;
+	private int									labelWidth	= 130;
 
 	@UiConstructor
 	public AdModelEditor(ADFormBuilder tabStrategy) {

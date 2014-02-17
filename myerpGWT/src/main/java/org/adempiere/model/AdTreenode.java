@@ -22,6 +22,7 @@ public class AdTreenode extends org.adempiere.common.ADEntityBase {
 	private Integer seqno;
 	private String updated;
 	private Integer updatedby;
+	private AdMenu	adMenu;
 
 	public AdTreenode() {
 	}
@@ -140,4 +141,15 @@ public class AdTreenode extends org.adempiere.common.ADEntityBase {
 	public void setUpdatedby(Integer updatedby) {
 		this.updatedby = updatedby;
 	}
+	
+	// uni-directional one-to-one association to AdMenu
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "NODE_ID")
+    public AdMenu getAdMenu() {
+    	return this.adMenu;
+    }
+
+    public void setAdMenu(AdMenu adMenu) {
+    	this.adMenu = adMenu;
+    }
 }

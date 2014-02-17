@@ -26,7 +26,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String displaylogic;
 	private String entitytype;
-	private String hastree;
+	private Boolean hastree;
 	private String help;
 	private String importfields;
 	private Integer includedTabId;
@@ -127,6 +127,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="AD_TAB_ID", columnDefinition="INT")
 	public Integer getAdTabId() {
 		return adTabId;
@@ -216,12 +217,12 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getHastree() {
+	@Column(nullable=false)
+	public Boolean getHastree() {
 		return hastree;
 	}
 
-	public void setHastree(String hastree) {
+	public void setHastree(Boolean hastree) {
 		this.hastree = hastree;
 	}
 

@@ -79,7 +79,7 @@ public class TableCreateColumns extends ServerProcess {
 				table.setName(tableName);
 				table.setTablename(tableName);
 				table.setIsview(false);
-				if (!POUtil.save(context, table)) {
+				if (!POUtil.persist(context, table)) {
 					continue;
 				}
 			}
@@ -115,7 +115,7 @@ public class TableCreateColumns extends ServerProcess {
 					element.setPrintname(table.getName());
 				}
 				// TODO
-				POUtil.save(context, element);
+				POUtil.persist(context, element);
 			}
 			column.setColumnname(element.getColumnname());
 			column.setName(element.getName());
@@ -189,7 +189,7 @@ public class TableCreateColumns extends ServerProcess {
 				column.setIsupdateable(false);
 			}
 			// Done
-			if (POUtil.save(context, column)) {
+			if (POUtil.persist(context, column)) {
 				count++;
 			}
 		} // while columns

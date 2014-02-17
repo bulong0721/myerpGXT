@@ -3,18 +3,8 @@ package org.adempiere.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.model.AdFieldV;
-import org.adempiere.model.AdForm;
-import org.adempiere.model.AdProcess;
-import org.adempiere.model.AdProcessPara;
-import org.adempiere.model.AdTabV;
-import org.adempiere.model.AdTreenodemm;
-import org.adempiere.web.client.model.ADFieldModel;
-import org.adempiere.web.client.model.ADFormModel;
-import org.adempiere.web.client.model.ADMenuModel;
-import org.adempiere.web.client.model.ADProcessModel;
-import org.adempiere.web.client.model.ADProcessArgModel;
-import org.adempiere.web.client.model.ADTabModel;
+import org.adempiere.model.*;
+import org.adempiere.web.client.model.*;
 import org.adempiere.web.client.util.StringUtil;
 
 public final class DTOUtil {
@@ -62,7 +52,7 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static ADMenuModel toMenuModel(AdTreenodemm entity) {
+	public static ADMenuModel toMenuModel(AdTreenode entity) {
 		ADMenuModel model = new ADMenuModel();
 		model.setIsactive(entity.isIsactive());
 		model.setAdMenuId(entity.getNodeId());
@@ -206,5 +196,88 @@ public final class DTOUtil {
 			}
 		}
 		return resultList;
+	}
+
+	public static AdTab copyTab(AdTab tab, Integer windowId) {
+		AdTab newTab = new AdTab();
+		newTab.setAdClientId(tab.getAdClientId());
+		newTab.setAdColumnId(tab.getAdColumnId());
+		newTab.setAdColumnsortorderId(tab.getAdColumnsortorderId());
+		newTab.setAdColumnsortyesnoId(tab.getAdColumnsortyesnoId());
+		newTab.setAdImageId(tab.getAdImageId());
+		newTab.setAdOrgId(tab.getAdOrgId());
+		newTab.setAdProcessId(tab.getAdProcessId());
+		newTab.setAdTabId(tab.getAdTabId());
+		newTab.setAdTableId(tab.getAdTableId());
+		newTab.setAdWindowId(windowId);
+		newTab.setCommitwarning(tab.getCommitwarning());
+		newTab.setCreated(tab.getCreated());
+		newTab.setCreatedby(tab.getCreatedby());
+		newTab.setDescription(tab.getDescription());
+		newTab.setDisplaylogic(tab.getDisplaylogic());
+		newTab.setEntitytype(tab.getEntitytype());
+		newTab.setHastree(tab.getHastree());
+		newTab.setHelp(tab.getHelp());
+		newTab.setImportfields(tab.getImportfields());
+		newTab.setIncludedTabId(tab.getIncludedTabId());
+		newTab.setIsactive(tab.isIsactive());
+		newTab.setIsadvancedtab(tab.isIsadvancedtab());
+		newTab.setIsinfotab(tab.isIsinfotab());
+		newTab.setIsinsertrecord(tab.isIsinsertrecord());
+		newTab.setIsreadonly(tab.isIsreadonly());
+		newTab.setIssinglerow(tab.isIssinglerow());
+		newTab.setIssorttab(tab.isIssorttab());
+		newTab.setIstranslationtab(tab.isIstranslationtab());
+		newTab.setName(tab.getName());
+		newTab.setOrderbyclause(tab.getOrderbyclause());
+		newTab.setParentColumnId(tab.getParentColumnId());
+		newTab.setProcessing(tab.isProcessing());
+		newTab.setReadonlylogic(tab.getReadonlylogic());
+		newTab.setSeqno(tab.getSeqno());
+		newTab.setTablevel(tab.getTablevel());
+		newTab.setUpdated(tab.getUpdated());
+		newTab.setUpdatedby(tab.getUpdatedby());
+		newTab.setWhereclause(tab.getWhereclause());
+		return newTab;
+	}
+
+	public static AdField copyField(AdField field, Integer tabId) {
+		AdField newField = new AdField();
+		newField.setAdClientId(field.getAdClientId());
+		newField.setAdColumnId(field.getAdColumnId());
+		newField.setAdFieldId(field.getAdFieldId());
+		newField.setAdFieldgroupId(field.getAdFieldgroupId());
+		newField.setAdOrgId(field.getAdOrgId());
+		newField.setAdReferenceId(field.getAdReferenceId());
+		newField.setAdReferenceValueId(field.getAdReferenceValueId());
+		newField.setAdTabId(tabId);
+		newField.setAdValRuleId(field.getAdValRuleId());
+		newField.setCreated(field.getCreated());
+		newField.setCreatedby(field.getCreatedby());
+		newField.setDefaultvalue(field.getDefaultvalue());
+		newField.setDescription(field.getDescription());
+		newField.setDisplaylength(field.getDisplaylength());
+		newField.setDisplaylogic(field.getDisplaylogic());
+		newField.setEntitytype(field.getEntitytype());
+		newField.setHelp(field.getHelp());
+		newField.setIncludedTabId(field.getIncludedTabId());
+		newField.setInfofactoryclass(field.getInfofactoryclass());
+		newField.setIsactive(field.isIsactive());
+		newField.setIscentrallymaintained(field.isIscentrallymaintained());
+		newField.setIsdisplayed(field.isIsdisplayed());
+		newField.setIsencrypted(field.isIsencrypted());
+		newField.setIsfieldonly(field.isIsfieldonly());
+		newField.setIsheading(field.isIsheading());
+		newField.setIsmandatory(field.isIsmandatory());
+		newField.setIsreadonly(field.isIsreadonly());
+		newField.setIssameline(field.isIssameline());
+		newField.setName(field.getName());
+		newField.setObscuretype(field.getObscuretype());
+		newField.setSeqno(field.getSeqno());
+		newField.setSortno(field.getSortno());
+		newField.setUpdated(field.getUpdated());
+		newField.setUpdatedby(field.getUpdatedby());
+
+		return newField;
 	}
 }

@@ -6,13 +6,17 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceUnitUtil;
 import javax.persistence.TypedQuery;
 
 import org.adempiere.common.ADEntityBase;
 import org.adempiere.model.AdAttachment;
 import org.adempiere.model.AdColumn;
 import org.adempiere.model.AdElement;
+import org.adempiere.model.AdField;
+import org.adempiere.model.AdTab;
 import org.adempiere.model.AdTable;
+import org.adempiere.persist.PersistContext;
 import org.adempiere.web.client.util.StringUtil;
 
 public final class POUtil {
@@ -44,6 +48,11 @@ public final class POUtil {
 		}
 		Map<String, Object> paramMap = toMap("columnname", column);
 		return selectOne(pCtx, "queryElementByColumn", AdElement.class, paramMap);
+	}
+
+	public static Object getIdentifier(PersistContext pCtx, Object entity) {
+		PersistenceUnitUtil puu = pCtx.getUnit().getPersistenceUnitUtil();
+		return puu.getIdentifier(entity);
 	}
 
 	public static Map<String, Object> toMap(String pName, Object pValue) {
@@ -102,26 +111,56 @@ public final class POUtil {
 		return selectList(pCtx, "queryColumnsByTable", AdColumn.class, paramMap);
 	}
 
-	public static <T extends ADEntityBase> boolean save(PersistContext pCtx, T entity) {
+	public static List<AdColumn> queryUnMappedColumns(PersistContext pCtx, int tableId, int tabId) {
+		Map<String, Object> paramMap = toMap("adTableId", tableId);
+		paramMap.put("adTabId", tabId);
+		return selectList(pCtx, "queryUnMappedColumns", AdColumn.class, paramMap);
+	}
+
+	public static List<AdTab> queryTabsByWindow(PersistContext pCtx, int windowId) {
+		Map<String, Object> paramMap = toMap("adWindowId", windowId);
+		return selectList(pCtx, "queryTabsByWindowId", AdTab.class, paramMap);
+	}
+
+	public static List<AdField> queryFieldsByTabId(PersistContext pCtx, int tabId) {
+		Map<String, Object> paramMap = toMap("adTabId", tabId);
+		return selectList(pCtx, "queryFieldsByTabId", AdField.class, paramMap);
+	}
+
+	public static boolean persist(PersistContext pCtx, Object entity) {
 		try {
 			EntityManager em = pCtx.begin();
 			initADEntity(entity);
-			em.merge(entity);
+			em.persist(entity);
 			pCtx.commit();
 			return true;
 		} catch (Exception e) {
-			pCtx.rollback();
 			e.printStackTrace();
+			pCtx.rollback();
 			return false;
 		}
 	}
 
-	public static <T extends ADEntityBase> boolean saveAll(PersistContext pCtx, List<T> list) {
+	public static Object merge(PersistContext pCtx, Object entity) throws Exception {
 		try {
 			EntityManager em = pCtx.begin();
-			for (T entity : list) {
+			initADEntity(entity);
+			Object newEntity = em.merge(entity);
+			pCtx.commit();
+			return newEntity;
+		} catch (Exception e) {
+			e.printStackTrace();
+			pCtx.rollback();
+			throw e;
+		}
+	}
+
+	public static boolean persistAll(PersistContext pCtx, List<?> list) {
+		try {
+			EntityManager em = pCtx.begin();
+			for (Object entity : list) {
 				initADEntity(entity);
-				em.merge(entity);
+				em.persist(entity);
 			}
 			pCtx.commit();
 			return true;
@@ -132,14 +171,17 @@ public final class POUtil {
 		}
 	}
 
-	public static void initADEntity(ADEntityBase entity) {
-		if (null == entity.getCreatedby()) {
-			entity.setCreatedby(Env.getUser());
-			entity.setCreated(Env.currentTimestamp());
-			entity.setIsactive(true);
+	public static void initADEntity(Object entity) {
+		if (entity instanceof ADEntityBase) {
+			ADEntityBase adEntity = (ADEntityBase) entity;
+			if (null == adEntity.getCreatedby()) {
+				adEntity.setCreatedby(Env.getUser());
+				adEntity.setCreated(Env.currentTimestamp());
+				adEntity.setIsactive(true);
+			}
+			adEntity.setUpdatedby(Env.getUser());
+			adEntity.setUpdated(Env.currentTimestamp());
 		}
-		entity.setUpdatedby(Env.getUser());
-		entity.setUpdated(Env.currentTimestamp());
 	}
 
 	public static AdAttachment getAttachment(int formatTableId, long aD_PrintFormatItem_ID) {

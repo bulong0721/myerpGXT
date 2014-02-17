@@ -13,7 +13,6 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.adempiere.common.ADEntityBase;
 import org.adempiere.common.ADExpression;
 import org.adempiere.common.ADExpression.ADPredicate;
 import org.adempiere.common.ADModelKey;
@@ -26,11 +25,11 @@ import org.adempiere.model.AdFieldV;
 import org.adempiere.model.AdForm;
 import org.adempiere.model.AdProcess;
 import org.adempiere.model.AdTabV;
-import org.adempiere.model.AdTreenodemm;
+import org.adempiere.model.AdTreenode;
+import org.adempiere.persist.PersistContext;
 import org.adempiere.process.ProcessContext;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
-import org.adempiere.util.PersistContext;
 import org.adempiere.util.ProcessUtil;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
@@ -56,9 +55,9 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	@Override
 	public List<ADTreeNode> getAdMenuModels() {
 		try {
-			List<AdTreenodemm> menuList = POUtil.selectList(pCtx, "queryMainMenuNodes", AdTreenodemm.class);
+			List<AdTreenode> menuList = POUtil.selectList(pCtx, "queryMainMenuNodes", AdTreenode.class);
 			List<ADTreeNode> resultList = new ArrayList<ADTreeNode>(menuList.size());
-			for (AdTreenodemm nodeMM : menuList) {
+			for (AdTreenode nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
 			return resultList;
@@ -373,7 +372,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 			List<?> array = JSON.parseArray(text, clazz);
 			for (Object entity : array) {
 				System.out.println(entity.getClass());
-				POUtil.initADEntity((ADEntityBase) entity);
+				POUtil.initADEntity(entity);
 				em.merge(entity);
 			}
 			pCtx.commit();
@@ -383,12 +382,13 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 			pCtx.rollback();
 			return ADResultWithError.newError(e.getMessage());
 		}
+
 	}
 
 	@Override
 	public ADFormModel getADFormModel(Integer formId) {
 		ADFormModel formModel = null;
-		try {			
+		try {
 			Map<String, Object> paramMap = POUtil.toMap("adFormId", formId);
 			AdForm form = POUtil.selectOne(pCtx, "queryFormByFormId", AdForm.class, paramMap);
 			formModel = DTOUtil.toFormModel(form);
@@ -419,6 +419,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	public ProcessResult executeProcess(ADProcessModel pModel, String rowJson, String paramJson) {
 		System.out.println("row parameter:" + rowJson);
 		System.out.println("process parameter:" + paramJson);
+		System.out.println("process class:" + pModel.getClassname());
 		ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson, paramJson);
 		ProcessResult pInfo = new ProcessResult();
 		try {
@@ -430,10 +431,15 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	public static void main(String[] args) {
-		String json = "{\"adProcessId\":173,\"classname\":\"org.adempiere.process.TableCreateColumns\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
-		String rowJson = "{\"accesslevel\":\"6\",\"adClientId\":0,\"adOrgId\":0,\"adTableId\":906,\"adWindowId\":113,\"entitytype\":\"D\",\"isactive\":true,\"iscentrallymaintained\":true,\"ischangelog\":false,\"isdeleteable\":true,\"ishighvolume\":false,\"issecurityenabled\":false,\"isview\":false,\"loadseq\":125,\"name\":\"Workflow\",\"replicationtype\":\"L\",\"tablename\":\"AD_Workflow\"}";
+		// String json =
+		// "{\"adProcessId\":173,\"classname\":\"org.adempiere.process.TableCreateColumns\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
+		// String rowJson =
+		// "{\"accesslevel\":\"6\",\"adClientId\":0,\"adOrgId\":0,\"adTableId\":906,\"adWindowId\":113,\"entitytype\":\"D\",\"isactive\":true,\"iscentrallymaintained\":true,\"ischangelog\":false,\"isdeleteable\":true,\"ishighvolume\":false,\"issecurityenabled\":false,\"isview\":false,\"loadseq\":125,\"name\":\"Workflow\",\"replicationtype\":\"L\",\"tablename\":\"AD_Workflow\"}";
+		String json = "{\"adWindowId\":53110,\"classname\":\"org.adempiere.process.WindowCopy\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
+		String rowJson = "{\"adWindowId\":53110}";
+
 		ADProcessModel pModel = JSON.parseObject(json, ADProcessModel.class);
-		ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson, "{}");
+		ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson, "{\"adWindowId\":103}");
 		ProcessResult pInfo = new ProcessResult();
 		try {
 			ProcessUtil.process(ctx, pInfo);

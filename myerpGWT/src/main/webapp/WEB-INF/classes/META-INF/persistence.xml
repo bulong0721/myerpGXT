@@ -151,17 +151,6 @@
 		<class>org.adempiere.model.AdTree</class>
 		<class>org.adempiere.model.AdTreebar</class>
 		<class>org.adempiere.model.AdTreenode</class>
-		<class>org.adempiere.model.AdTreenodebp</class>
-		<class>org.adempiere.model.AdTreenodecmc</class>
-		<class>org.adempiere.model.AdTreenodecmm</class>
-		<class>org.adempiere.model.AdTreenodecms</class>
-		<class>org.adempiere.model.AdTreenodecmt</class>
-		<class>org.adempiere.model.AdTreenodemm</class>
-		<class>org.adempiere.model.AdTreenodepr</class>
-		<class>org.adempiere.model.AdTreenodeu1</class>
-		<class>org.adempiere.model.AdTreenodeu2</class>
-		<class>org.adempiere.model.AdTreenodeu3</class>
-		<class>org.adempiere.model.AdTreenodeu4</class>
 		<class>org.adempiere.model.AdUser</class>
 		<class>org.adempiere.model.AdUserbpaccess</class>
 		<class>org.adempiere.model.AdUserdefField</class>

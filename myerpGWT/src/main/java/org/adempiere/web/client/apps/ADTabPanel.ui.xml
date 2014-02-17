@@ -15,7 +15,7 @@
 		<ui:attributes margins="{margins4}" width="1" height="1" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData" field="treeLayoutData">
-		<ui:attributes margins="{margins4}" width="1" height="1" />
+		<ui:attributes margins="{margins4}" width="200" height="1" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData" field="dataFormLayoutData">
 		<ui:attributes margins="{margins4}" width="1" height="1" />
@@ -40,7 +40,7 @@
 			<container:child layoutData="{gridLayoutData}">
 				<container:HorizontalLayoutContainer scrollMode="AUTO">
 					<container:child layoutData="{treeLayoutData}">
-						<g:SimplePanel ui:field="treePlaceHolder" />
+						<gxt:ContentPanel ui:field="treeContainer" />
 					</container:child>
 					<container:child layoutData="{dataFormLayoutData}">
 						<component:AdModelEditor ui:field="formEditing" />

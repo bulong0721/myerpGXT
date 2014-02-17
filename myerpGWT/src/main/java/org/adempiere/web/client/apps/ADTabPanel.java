@@ -40,7 +40,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.Style.SelectionMode;
 import com.sencha.gxt.data.client.loader.RpcProxy;
@@ -53,9 +52,11 @@ import com.sencha.gxt.data.shared.loader.LoadHandler;
 import com.sencha.gxt.data.shared.loader.LoadResultListStoreBinding;
 import com.sencha.gxt.data.shared.loader.PagingLoadResult;
 import com.sencha.gxt.data.shared.loader.PagingLoader;
+import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
 import com.sencha.gxt.widget.core.client.box.MessageBox;
 import com.sencha.gxt.widget.core.client.container.CardLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData;
 import com.sencha.gxt.widget.core.client.event.CancelEditEvent;
 import com.sencha.gxt.widget.core.client.event.CancelEditEvent.CancelEditHandler;
 import com.sencha.gxt.widget.core.client.event.CompleteEditEvent;
@@ -92,6 +93,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 	private ADModelDriver			adModelDriver;
 	private ADModelKeyProvider		keyProvider;
 	private ADModelKey				parentModelKey;
+	private ADTreePanel				treePanel;
 	@UiField(provided = true)
 	Grid<ADMapData>					grid;
 	@UiField(provided = true)
@@ -100,8 +102,10 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 	AdModelEditor					formEditing;
 	@UiField
 	CardLayoutContainer				layoutContainer;
-	@UiField
-	SimplePanel						treePlaceHolder;
+	@UiField(provided = true)
+	ContentPanel					treeContainer;
+	@UiField(provided = true)
+	HorizontalLayoutData			treeLayoutData;
 
 	public ADTabPanel(ADWindowPanel windowPanel, ADTabModel tabModel, CWindowToolBar toolBar) {
 		this.tabStrategy = new ADFormBuilder(tabModel.getFieldList());
@@ -116,13 +120,13 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 		if (null == widget) {
 			this.onRender();
 			this.widget = uiBinder.createAndBindUi(this);
-			this.createTree();
 			this.toolBar.setTabState(this);
 		}
 		return widget;
 	}
 
 	private void onRender() {
+		createTree();
 		createForm();
 		createGrid();
 	}
@@ -203,10 +207,16 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 	}
 
 	private void createTree() {
+		treeContainer = new ContentPanel();
 		if (tabModel.getHasTree()) {
-			ADTreePanel treepanel = new ADTreePanel(ADMenuModel.TREE_ID);
-			treePlaceHolder.setWidget(treepanel);
-			treePlaceHolder.setWidth("200");
+			treeContainer.setBodyBorder(true);
+			treeContainer.setHeadingText("Tree");
+			treeLayoutData = new HorizontalLayoutData(220d, 1d);
+			treePanel = new ADTreePanel(ADMenuModel.TREE_ID);
+			treePanel.enableDnD();
+			treeContainer.add(treePanel);
+		} else {
+			treeLayoutData = new HorizontalLayoutData(0d, 1);
 		}
 	}
 
@@ -443,6 +453,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 						}
 					}
 				};
+				LoggingUtil.info("xxxxxxxxxProcessId:" + field.getAdProcessId());
 				adempiereService.getProcessWithFormModel(field.getAdProcessId(), callback);
 			}
 		};

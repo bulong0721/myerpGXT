@@ -17,7 +17,7 @@
 		<query>SELECT f FROM AdFieldV f WHERE f.adTabId = :adTabId ORDER BY f.seqno</query>
 	</named-query>
 	<named-query name="queryMainMenuNodes">
-		<query>SELECT m FROM AdTreenodemm m JOIN FETCH m.adMenu</query>
+		<query>SELECT m FROM AdTreenode m JOIN FETCH m.adMenu WHERE m.adTreeId = 10</query>
 	</named-query>
 	<named-query name="queryRefList">
 		<query>SELECT NEW org.adempiere.common.LookupValue(r.name, r.value) FROM AdRefList r WHERE r.adReference.adReferenceId = :adReferenceId</query>
@@ -26,7 +26,7 @@
 		<query>SELECT NEW org.adempiere.common.RefCriteria(r.adTable.tablename, r.keyColumn.columnname, r.displayColumn.columnname, r.isvaluedisplayed, r.orderbyclause, r.whereclause) FROM AdRefTable r WHERE r.adReference.adReferenceId = :adReferenceId</query>
 	</named-query>
 	<named-query name="queryProcessWithParamsByProcessId">
-		<query>SELECT p FROM AdProcess p JOIN FETCH p.adProcessParas WHERE p.adProcessId = :adProcessId</query>
+		<query>SELECT p FROM AdProcess p LEFT JOIN FETCH p.adProcessParas WHERE p.adProcessId = :adProcessId</query>
 	</named-query>
 	<named-query name="queryFormByFormId">
 		<query>SELECT f FROM AdForm f WHERE f.adFormId = :adFormId</query>
@@ -39,5 +39,10 @@
 	</named-query>
 	<named-query name="queryColumnsByTable">
 		<query>SELECT c FROM AdColumn c WHERE c.adTableId = :adTableId</query>
+	</named-query>
+	<named-query name="queryUnMappedColumns">
+		<query>SELECT c FROM AdColumn c WHERE c.adTableId = :adTableId AND c.isactive = true
+			   AND NOT (c.name LIKE 'Created%' OR c.name LIKE 'Updated%')
+			   AND NOT EXISTS (SELECT f.adFieldId FROM AdField f WHERE f.adColumnId=c.adColumnId AND f.adTabId= :adTabId)</query>
 	</named-query>
 </entity-mappings>

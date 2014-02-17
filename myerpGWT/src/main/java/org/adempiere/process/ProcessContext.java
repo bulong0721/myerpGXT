@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.util.Collections;
 import java.util.Map;
 
-import org.adempiere.util.PersistContext;
+import org.adempiere.persist.PersistContext;
 import org.adempiere.web.client.model.ADProcessModel;
 
 @SuppressWarnings("serial")

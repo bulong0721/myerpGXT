@@ -22,7 +22,14 @@ import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.client.loader.RpcProxy;
 import com.sencha.gxt.data.shared.IconProvider;
 import com.sencha.gxt.data.shared.TreeStore;
+import com.sencha.gxt.data.shared.TreeStore.TreeNode;
 import com.sencha.gxt.data.shared.loader.TreeLoader;
+import com.sencha.gxt.dnd.core.client.DND.Feedback;
+import com.sencha.gxt.dnd.core.client.DndDropEvent;
+import com.sencha.gxt.dnd.core.client.DndDropEvent.DndDropHandler;
+import com.sencha.gxt.dnd.core.client.TreeDragSource;
+import com.sencha.gxt.dnd.core.client.TreeDropTarget;
+import com.sencha.gxt.widget.core.client.box.MessageBox;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 import com.sencha.gxt.widget.core.client.tree.Tree;
@@ -35,16 +42,18 @@ public class ADTreePanel implements IsWidget {
 	}
 
 	@UiField(provided = true)
-	StoreFilterField<ADTreeNode>	filter				= new ADTreeNode.NameFilterField();
+	StoreFilterField<ADTreeNode>		filter;
 	@UiField(provided = true)
-	Tree<ADTreeNode, String>		tree;
+	Tree<ADTreeNode, String>			tree;
 	@UiField
-	CheckBox						chkExpandAll;
-	private TreeStore<ADTreeNode>	store;
-	private AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
-	private TreeLoader<ADTreeNode>	loader;
-	private Widget					widget;
-	private int						treeId;
+	CheckBox							chkExpandAll;
+	private TreeStore<ADTreeNode>		store;
+	private AdempiereServiceAsync		adempiereService	= GWT.create(AdempiereService.class);
+	private TreeLoader<ADTreeNode>		loader;
+	private Widget						widget;
+	private int							treeId;
+	private TreeDragSource<ADTreeNode>	dragSource;
+	private TreeDropTarget<ADTreeNode>	dropTarget;
 
 	public ADTreePanel(int treeId) {
 		super();
@@ -54,6 +63,7 @@ public class ADTreePanel implements IsWidget {
 	@Override
 	public Widget asWidget() {
 		if (null == widget) {
+			this.filter = new ADTreeNode.NameFilterField();
 			this.createTree();
 			this.widget = uiBinder.createAndBindUi(this);
 		}
@@ -105,6 +115,41 @@ public class ADTreePanel implements IsWidget {
 
 	public Tree<ADTreeNode, String> getTree() {
 		return tree;
+	}
+
+	public void enableDnD() {
+		this.asWidget();
+		if (null == dragSource) {
+			dragSource = new TreeDragSource<ADTreeNode>(tree);
+
+			dropTarget = new TreeDropTarget<ADTreeNode>(tree);
+			dropTarget.setAllowSelfAsSource(true);
+			dropTarget.setFeedback(Feedback.BOTH);
+			dropTarget.addDropHandler(new DndDropHandler() {
+				@Override
+				public void onDrop(DndDropEvent event) {
+					@SuppressWarnings("unchecked")
+					List<TreeNode<ADTreeNode>> selectedNodes = (List<TreeNode<ADTreeNode>>) event.getData();
+					if (null != selectedNodes) {
+						TreeNode<ADTreeNode> node = selectedNodes.get(0);
+						ADTreeNode parent = tree.getStore().getParent(node.getData());
+						final MessageBox box = new MessageBox("Selected");
+						box.setMessage("parent:" + parent.getName() + " node:" + node.getData().getName());
+						box.show();
+						return;
+					}
+				}
+			});
+		}
+		dragSource.enable();
+		dropTarget.enable();
+	}
+
+	public void disableDnD() {
+		if (null != dragSource) {
+			dragSource.disable();
+			dropTarget.disable();
+		}
 	}
 
 	public void expandAll() {
