@@ -267,8 +267,6 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 				record.addChange(vp, vp.getValue(data));
 			}
 			grid.getView().refresh(false);
-			// ChangesAcceptor ca = new ChangesAcceptor();
-			// adModelDriver.accept(ca);
 			adModelDriver.edit(data);
 		}
 	}
@@ -299,7 +297,6 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			JSOUtil.arraySet(array, index, ((ADModelData) copyWithChange(record)).getJso());
 			index++;
 		}
-		LoggingUtil.info(array.toString());
 		return JSOUtil.toString(array);
 	}
 

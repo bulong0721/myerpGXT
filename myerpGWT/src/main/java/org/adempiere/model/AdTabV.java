@@ -33,17 +33,17 @@ public class AdTabV extends ADEntityBase implements Serializable {
 	private String				hastree;
 	private String				help;
 	private Integer				includedTabId;
-	private String				isadvancedtab;
-	private String				isdeleteable;
-	private String				ishighvolume;
-	private String				isinfotab;
-	private String				isinsertrecord;
-	private String				isreadonly;
-	private String				issecurityenabled;
-	private String				issinglerow;
-	private String				issorttab;
-	private String				istranslationtab;
-	private String				isview;
+	private Boolean				isadvancedtab;
+	private Boolean				isdeleteable;
+	private Boolean				ishighvolume;
+	private Boolean				isinfotab;
+	private Boolean				isinsertrecord;
+	private Boolean				isreadonly;
+	private Boolean				issecurityenabled;
+	private Boolean				issinglerow;
+	private Boolean				issorttab;
+	private Boolean				istranslationtab;
+	private Boolean				isview;
 	private String				name;
 	private String				orderbyclause;
 	private Integer				parentColumnId;
@@ -195,91 +195,91 @@ public class AdTabV extends ADEntityBase implements Serializable {
 		this.includedTabId = includedTabId;
 	}
 
-	public String getIsadvancedtab() {
+	public Boolean getIsadvancedtab() {
 		return this.isadvancedtab;
 	}
 
-	public void setIsadvancedtab(String isadvancedtab) {
+	public void setIsadvancedtab(Boolean isadvancedtab) {
 		this.isadvancedtab = isadvancedtab;
 	}
 
-	public String getIsdeleteable() {
+	public Boolean getIsdeleteable() {
 		return this.isdeleteable;
 	}
 
-	public void setIsdeleteable(String isdeleteable) {
+	public void setIsdeleteable(Boolean isdeleteable) {
 		this.isdeleteable = isdeleteable;
 	}
 
-	public String getIshighvolume() {
+	public Boolean getIshighvolume() {
 		return this.ishighvolume;
 	}
 
-	public void setIshighvolume(String ishighvolume) {
+	public void setIshighvolume(Boolean ishighvolume) {
 		this.ishighvolume = ishighvolume;
 	}
 
-	public String getIsinfotab() {
+	public Boolean getIsinfotab() {
 		return this.isinfotab;
 	}
 
-	public void setIsinfotab(String isinfotab) {
+	public void setIsinfotab(Boolean isinfotab) {
 		this.isinfotab = isinfotab;
 	}
 
-	public String getIsinsertrecord() {
+	public Boolean getIsinsertrecord() {
 		return this.isinsertrecord;
 	}
 
-	public void setIsinsertrecord(String isinsertrecord) {
+	public void setIsinsertrecord(Boolean isinsertrecord) {
 		this.isinsertrecord = isinsertrecord;
 	}
 
-	public String getIsreadonly() {
+	public Boolean getIsreadonly() {
 		return this.isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
-	public String getIssecurityenabled() {
+	public Boolean getIssecurityenabled() {
 		return this.issecurityenabled;
 	}
 
-	public void setIssecurityenabled(String issecurityenabled) {
+	public void setIssecurityenabled(Boolean issecurityenabled) {
 		this.issecurityenabled = issecurityenabled;
 	}
 
-	public String getIssinglerow() {
+	public Boolean getIssinglerow() {
 		return this.issinglerow;
 	}
 
-	public void setIssinglerow(String issinglerow) {
+	public void setIssinglerow(Boolean issinglerow) {
 		this.issinglerow = issinglerow;
 	}
 
-	public String getIssorttab() {
+	public Boolean getIssorttab() {
 		return this.issorttab;
 	}
 
-	public void setIssorttab(String issorttab) {
+	public void setIssorttab(Boolean issorttab) {
 		this.issorttab = issorttab;
 	}
 
-	public String getIstranslationtab() {
+	public Boolean getIstranslationtab() {
 		return this.istranslationtab;
 	}
 
-	public void setIstranslationtab(String istranslationtab) {
+	public void setIstranslationtab(Boolean istranslationtab) {
 		this.istranslationtab = istranslationtab;
 	}
 
-	public String getIsview() {
+	public Boolean getIsview() {
 		return this.isview;
 	}
 
-	public void setIsview(String isview) {
+	public void setIsview(Boolean isview) {
 		this.isview = isview;
 	}
 

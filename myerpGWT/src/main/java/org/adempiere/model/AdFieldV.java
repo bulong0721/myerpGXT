@@ -17,62 +17,63 @@ import org.adempiere.common.ADEntityBase;
 @Entity
 @Table(name = "ad_field_v")
 public class AdFieldV extends ADEntityBase implements Serializable {
-	private static final long	serialVersionUID	= 1L;
-	private Integer				adColumnId;
-	private Integer				adFieldId;
-	private Integer				adProcessId;
-	private Integer				adReferenceId;
-	private Integer				adReferenceValueId;
-	private Integer				adTabId;
-	private Integer				adTableId;
-	private Integer				adValRuleId;
-	private Integer				adWindowId;
-	private String				callout;
-	private String				columnname;
-	private String				columnsql;
-	private String				defaultvalue;
-	private String				description;
-	private Integer				displaylength;
-	private String				displaylogic;
-	private String				fieldgroup;
-	private String				fieldgrouptype;
-	private Integer				fieldlength;
-	private String				help;
-	private Integer				includedTabId;
-	private String				infofactoryclass;
-	private String				isalwaysupdateable;
-	private String				isautocomplete;
-	private String				iscollapsedbydefault;
-	private String				isdisplayed;
-	private String				isencryptedcolumn;
-	private String				isencryptedfield;
-	private String				isfieldonly;
-	private String				isheading;
-	private String				isidentifier;
-	private String				iskey;
-	private String				ismandatory;
-	private String				isparent;
-	private String				isreadonly;
-	private String				issameline;
-	private String				isselectioncolumn;
-	private String				istranslated;
-	private String				isupdateable;
-	private String				mandatorylogic;
-	private String				name;
-	private String				obscuretype;
-	private String				readonlylogic;
-	private Integer				seqno;
-	private Integer				sortno;
-	private String				tablename;
-	private String				validationcode;
-	private String				valuemax;
-	private String				valuemin;
-	private String				vformat;
+	private static final long serialVersionUID = 1L;
+	private Integer adColumnId;
+	private Integer adFieldId;
+	private Integer adProcessId;
+	private Integer adReferenceId;
+	private Integer adReferenceValueId;
+	private Integer adTabId;
+	private Integer adTableId;
+	private Integer adValRuleId;
+	private Integer adWindowId;
+	private String callout;
+	private String columnname;
+	private String columnsql;
+	private String defaultvalue;
+	private String description;
+	private Integer displaylength;
+	private String displaylogic;
+	private String fieldgroup;
+	private String fieldgrouptype;
+	private Integer fieldlength;
+	private String help;
+	private Integer includedTabId;
+	private String infofactoryclass;
+	private Boolean isalwaysupdateable;
+	private Boolean isautocomplete;
+	private Boolean iscollapsedbydefault;
+	private Boolean isdisplayed;
+	private Boolean isencryptedcolumn;
+	private Boolean isencryptedfield;
+	private Boolean isfieldonly;
+	private Boolean isheading;
+	private Boolean isidentifier;
+	private Boolean iskey;
+	private Boolean ismandatory;
+	private Boolean isparent;
+	private Boolean isreadonly;
+	private Boolean issameline;
+	private Boolean isselectioncolumn;
+	private Boolean istranslated;
+	private Boolean isupdateable;
+	private String mandatorylogic;
+	private String name;
+	private String obscuretype;
+	private String readonlylogic;
+	private Integer seqno;
+	private Integer sortno;
+	private String tablename;
+	private String validationcode;
+	private String valuemax;
+	private String valuemin;
+	private String vformat;
 
 	public AdFieldV() {
 	}
 
-	@Column(name = "AD_COLUMN_ID")
+
+	@Column(name="AD_COLUMN_ID")
 	public Integer getAdColumnId() {
 		return this.adColumnId;
 	}
@@ -82,7 +83,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	}
 
 	@Id
-	@Column(name = "AD_FIELD_ID")
+	@Column(name="AD_FIELD_ID")
 	public Integer getAdFieldId() {
 		return this.adFieldId;
 	}
@@ -91,7 +92,8 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.adFieldId = adFieldId;
 	}
 
-	@Column(name = "AD_PROCESS_ID")
+
+	@Column(name="AD_PROCESS_ID")
 	public Integer getAdProcessId() {
 		return this.adProcessId;
 	}
@@ -100,7 +102,8 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.adProcessId = adProcessId;
 	}
 
-	@Column(name = "AD_REFERENCE_ID")
+
+	@Column(name="AD_REFERENCE_ID")
 	public Integer getAdReferenceId() {
 		return this.adReferenceId;
 	}
@@ -109,7 +112,8 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.adReferenceId = adReferenceId;
 	}
 
-	@Column(name = "AD_REFERENCE_VALUE_ID")
+
+	@Column(name="AD_REFERENCE_VALUE_ID")
 	public Integer getAdReferenceValueId() {
 		return this.adReferenceValueId;
 	}
@@ -118,7 +122,8 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.adReferenceValueId = adReferenceValueId;
 	}
 
-	@Column(name = "AD_TAB_ID")
+
+	@Column(name="AD_TAB_ID")
 	public Integer getAdTabId() {
 		return this.adTabId;
 	}
@@ -127,7 +132,8 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.adTabId = adTabId;
 	}
 
-	@Column(name = "AD_TABLE_ID")
+
+	@Column(name="AD_TABLE_ID")
 	public Integer getAdTableId() {
 		return this.adTableId;
 	}
@@ -136,7 +142,8 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.adTableId = adTableId;
 	}
 
-	@Column(name = "AD_VAL_RULE_ID")
+
+	@Column(name="AD_VAL_RULE_ID")
 	public Integer getAdValRuleId() {
 		return this.adValRuleId;
 	}
@@ -145,7 +152,8 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.adValRuleId = adValRuleId;
 	}
 
-	@Column(name = "AD_WINDOW_ID")
+
+	@Column(name="AD_WINDOW_ID")
 	public Integer getAdWindowId() {
 		return this.adWindowId;
 	}
@@ -153,6 +161,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setAdWindowId(Integer adWindowId) {
 		this.adWindowId = adWindowId;
 	}
+
 
 	public String getCallout() {
 		return this.callout;
@@ -162,6 +171,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.callout = callout;
 	}
 
+
 	public String getColumnname() {
 		return this.columnname;
 	}
@@ -170,6 +180,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.columnname = columnname;
 	}
 
+
 	public String getColumnsql() {
 		return this.columnsql;
 	}
@@ -177,6 +188,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setColumnsql(String columnsql) {
 		this.columnsql = columnsql;
 	}
+
 
 	@Lob
 	public String getDefaultvalue() {
@@ -187,6 +199,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.defaultvalue = defaultvalue;
 	}
 
+
 	public String getDescription() {
 		return this.description;
 	}
@@ -194,6 +207,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 
 	public Integer getDisplaylength() {
 		return this.displaylength;
@@ -203,6 +217,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.displaylength = displaylength;
 	}
 
+
 	public String getDisplaylogic() {
 		return this.displaylogic;
 	}
@@ -210,6 +225,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setDisplaylogic(String displaylogic) {
 		this.displaylogic = displaylogic;
 	}
+
 
 	public String getFieldgroup() {
 		return this.fieldgroup;
@@ -219,6 +235,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.fieldgroup = fieldgroup;
 	}
 
+
 	public String getFieldgrouptype() {
 		return this.fieldgrouptype;
 	}
@@ -226,6 +243,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setFieldgrouptype(String fieldgrouptype) {
 		this.fieldgrouptype = fieldgrouptype;
 	}
+
 
 	public Integer getFieldlength() {
 		return this.fieldlength;
@@ -235,6 +253,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.fieldlength = fieldlength;
 	}
 
+
 	public String getHelp() {
 		return this.help;
 	}
@@ -243,7 +262,8 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.help = help;
 	}
 
-	@Column(name = "INCLUDED_TAB_ID")
+
+	@Column(name="INCLUDED_TAB_ID")
 	public Integer getIncludedTabId() {
 		return this.includedTabId;
 	}
@@ -251,6 +271,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setIncludedTabId(Integer includedTabId) {
 		this.includedTabId = includedTabId;
 	}
+
 
 	public String getInfofactoryclass() {
 		return this.infofactoryclass;
@@ -260,141 +281,159 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.infofactoryclass = infofactoryclass;
 	}
 
-	public String getIsalwaysupdateable() {
+
+	public Boolean getIsalwaysupdateable() {
 		return this.isalwaysupdateable;
 	}
 
-	public void setIsalwaysupdateable(String isalwaysupdateable) {
+	public void setIsalwaysupdateable(Boolean isalwaysupdateable) {
 		this.isalwaysupdateable = isalwaysupdateable;
 	}
 
-	public String getIsautocomplete() {
+
+	public Boolean getIsautocomplete() {
 		return this.isautocomplete;
 	}
 
-	public void setIsautocomplete(String isautocomplete) {
+	public void setIsautocomplete(Boolean isautocomplete) {
 		this.isautocomplete = isautocomplete;
 	}
 
-	public String getIscollapsedbydefault() {
+
+	public Boolean getIscollapsedbydefault() {
 		return this.iscollapsedbydefault;
 	}
 
-	public void setIscollapsedbydefault(String iscollapsedbydefault) {
+	public void setIscollapsedbydefault(Boolean iscollapsedbydefault) {
 		this.iscollapsedbydefault = iscollapsedbydefault;
 	}
 
-	public String getIsdisplayed() {
+
+	public Boolean getIsdisplayed() {
 		return this.isdisplayed;
 	}
 
-	public void setIsdisplayed(String isdisplayed) {
+	public void setIsdisplayed(Boolean isdisplayed) {
 		this.isdisplayed = isdisplayed;
 	}
 
-	public String getIsencryptedcolumn() {
+
+	public Boolean getIsencryptedcolumn() {
 		return this.isencryptedcolumn;
 	}
 
-	public void setIsencryptedcolumn(String isencryptedcolumn) {
+	public void setIsencryptedcolumn(Boolean isencryptedcolumn) {
 		this.isencryptedcolumn = isencryptedcolumn;
 	}
 
-	public String getIsencryptedfield() {
+
+	public Boolean getIsencryptedfield() {
 		return this.isencryptedfield;
 	}
 
-	public void setIsencryptedfield(String isencryptedfield) {
+	public void setIsencryptedfield(Boolean isencryptedfield) {
 		this.isencryptedfield = isencryptedfield;
 	}
 
-	public String getIsfieldonly() {
+
+	public Boolean getIsfieldonly() {
 		return this.isfieldonly;
 	}
 
-	public void setIsfieldonly(String isfieldonly) {
+	public void setIsfieldonly(Boolean isfieldonly) {
 		this.isfieldonly = isfieldonly;
 	}
 
-	public String getIsheading() {
+
+	public Boolean getIsheading() {
 		return this.isheading;
 	}
 
-	public void setIsheading(String isheading) {
+	public void setIsheading(Boolean isheading) {
 		this.isheading = isheading;
 	}
 
-	public String getIsidentifier() {
+
+	public Boolean getIsidentifier() {
 		return this.isidentifier;
 	}
 
-	public void setIsidentifier(String isidentifier) {
+	public void setIsidentifier(Boolean isidentifier) {
 		this.isidentifier = isidentifier;
 	}
 
-	public String getIskey() {
+
+	public Boolean getIskey() {
 		return this.iskey;
 	}
 
-	public void setIskey(String iskey) {
+	public void setIskey(Boolean iskey) {
 		this.iskey = iskey;
 	}
 
-	public String getIsmandatory() {
+
+	public Boolean getIsmandatory() {
 		return this.ismandatory;
 	}
 
-	public void setIsmandatory(String ismandatory) {
+	public void setIsmandatory(Boolean ismandatory) {
 		this.ismandatory = ismandatory;
 	}
 
-	public String getIsparent() {
+
+	public Boolean getIsparent() {
 		return this.isparent;
 	}
 
-	public void setIsparent(String isparent) {
+	public void setIsparent(Boolean isparent) {
 		this.isparent = isparent;
 	}
 
-	public String getIsreadonly() {
+
+	public Boolean getIsreadonly() {
 		return this.isreadonly;
 	}
 
-	public void setIsreadonly(String isreadonly) {
+	public void setIsreadonly(Boolean isreadonly) {
 		this.isreadonly = isreadonly;
 	}
 
-	public String getIssameline() {
+
+	public Boolean getIssameline() {
 		return this.issameline;
 	}
 
-	public void setIssameline(String issameline) {
+	public void setIssameline(Boolean issameline) {
 		this.issameline = issameline;
 	}
 
-	public String getIsselectioncolumn() {
+
+	public Boolean getIsselectioncolumn() {
 		return this.isselectioncolumn;
 	}
 
-	public void setIsselectioncolumn(String isselectioncolumn) {
+	public void setIsselectioncolumn(Boolean isselectioncolumn) {
 		this.isselectioncolumn = isselectioncolumn;
 	}
 
-	public String getIstranslated() {
+
+	public Boolean getIstranslated() {
 		return this.istranslated;
 	}
 
-	public void setIstranslated(String istranslated) {
+	public void setIstranslated(Boolean istranslated) {
 		this.istranslated = istranslated;
 	}
 
-	public String getIsupdateable() {
+
+	public Boolean getIsupdateable() {
 		return this.isupdateable;
 	}
 
-	public void setIsupdateable(String isupdateable) {
+	public void setIsupdateable(Boolean isupdateable) {
 		this.isupdateable = isupdateable;
 	}
+
 
 	public String getMandatorylogic() {
 		return this.mandatorylogic;
@@ -404,6 +443,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.mandatorylogic = mandatorylogic;
 	}
 
+
 	public String getName() {
 		return this.name;
 	}
@@ -411,6 +451,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public String getObscuretype() {
 		return this.obscuretype;
@@ -420,6 +461,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.obscuretype = obscuretype;
 	}
 
+
 	public String getReadonlylogic() {
 		return this.readonlylogic;
 	}
@@ -427,6 +469,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setReadonlylogic(String readonlylogic) {
 		this.readonlylogic = readonlylogic;
 	}
+
 
 	public Integer getSeqno() {
 		return this.seqno;
@@ -436,6 +479,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.seqno = seqno;
 	}
 
+
 	public Integer getSortno() {
 		return this.sortno;
 	}
@@ -443,6 +487,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setSortno(Integer sortno) {
 		this.sortno = sortno;
 	}
+
 
 	public String getTablename() {
 		return this.tablename;
@@ -452,6 +497,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.tablename = tablename;
 	}
 
+
 	public String getValidationcode() {
 		return this.validationcode;
 	}
@@ -459,6 +505,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setValidationcode(String validationcode) {
 		this.validationcode = validationcode;
 	}
+
 
 	public String getValuemax() {
 		return this.valuemax;
@@ -468,6 +515,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 		this.valuemax = valuemax;
 	}
 
+
 	public String getValuemin() {
 		return this.valuemin;
 	}
@@ -475,6 +523,7 @@ public class AdFieldV extends ADEntityBase implements Serializable {
 	public void setValuemin(String valuemin) {
 		this.valuemin = valuemin;
 	}
+
 
 	public String getVformat() {
 		return this.vformat;

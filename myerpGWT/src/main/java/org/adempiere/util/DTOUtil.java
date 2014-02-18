@@ -20,15 +20,15 @@ public final class DTOUtil {
 		model.setFieldgroup(entity.getFieldgroup());
 		model.setFieldgrouptype(entity.getFieldgrouptype());
 		model.setFieldlength(entity.getFieldlength());
-		model.setIsdisplayed(StringUtil.isYes(entity.getIsdisplayed()));
-		model.setIsencryptedcolumn(StringUtil.isYes(entity.getIsencryptedcolumn()));
-		model.setIsencryptedfield(StringUtil.isYes(entity.getIsencryptedfield()));
-		model.setIsfieldonly(StringUtil.isYes(entity.getIsfieldonly()));
-		model.setIskey(StringUtil.isYes(entity.getIskey()));
-		model.setIsmandatory(StringUtil.isYes(entity.getIsmandatory()));
-		model.setIsparent(StringUtil.isYes(entity.getIsparent()));
-		model.setIsreadonly(StringUtil.isYes(entity.getIsreadonly()));
-		model.setIsselectioncolumn(StringUtil.isYes(entity.getIsselectioncolumn()));
+		model.setIsdisplayed(entity.getIsdisplayed());
+		model.setIsencryptedcolumn(entity.getIsencryptedcolumn());
+		model.setIsencryptedfield(entity.getIsencryptedfield());
+		model.setIsfieldonly(entity.getIsfieldonly());
+		model.setIskey(entity.getIskey());
+		model.setIsmandatory(entity.getIsmandatory());
+		model.setIsparent(entity.getIsparent());
+		model.setIsreadonly(entity.getIsreadonly());
+		model.setIsselectioncolumn(entity.getIsselectioncolumn());
 		model.setName(entity.getName());
 		model.setReadonlylogic(entity.getReadonlylogic());
 		model.setSeqno(entity.getSeqno());
@@ -157,15 +157,15 @@ public final class DTOUtil {
 		model.setParentColumnId(entity.getParentColumnId());
 		model.setSeqno(entity.getSeqno());
 		model.setTablevel(entity.getTablevel());
-		model.setIsinfotab(StringUtil.isYes(entity.getIsinfotab()));
-		model.setIsreadonly(StringUtil.isYes(entity.getIsreadonly()));
-		model.setIssinglerow(StringUtil.isYes(entity.getIssinglerow()));
+		model.setIsinfotab(entity.getIsinfotab());
+		model.setIsreadonly(entity.getIsreadonly());
+		model.setIssinglerow(entity.getIssinglerow());
 		model.setName(entity.getName());
 		model.setReadonlylogic(entity.getReadonlylogic());
 		model.setTablename(entity.getTablename());
 		model.setHasTree(StringUtil.isYes(entity.getHastree()));
-		model.setIsSortTab(StringUtil.isYes(entity.getIssorttab()));
-		model.setIsHighVolume(StringUtil.isYes(entity.getIshighvolume()));
+		model.setIsSortTab(entity.getIssorttab());
+		model.setIsHighVolume(entity.getIshighvolume());
 		return model;
 	}
 
