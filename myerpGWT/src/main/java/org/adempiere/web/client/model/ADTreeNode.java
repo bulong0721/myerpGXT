@@ -18,6 +18,8 @@ public interface ADTreeNode extends IsADRPCModel {
 	Integer getID();
 
 	Integer getParentID();
+	
+	void setParentID(int parentId);
 
 	boolean hasChildren();
 

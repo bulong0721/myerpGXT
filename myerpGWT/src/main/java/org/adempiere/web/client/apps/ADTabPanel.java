@@ -1,5 +1,6 @@
 package org.adempiere.web.client.apps;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.adempiere.common.ADModelKey;
@@ -42,10 +43,12 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.Style.SelectionMode;
+import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.client.loader.RpcProxy;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.Store;
 import com.sencha.gxt.data.shared.Store.Change;
+import com.sencha.gxt.data.shared.Store.Record;
 import com.sencha.gxt.data.shared.event.StoreDataChangeEvent;
 import com.sencha.gxt.data.shared.event.StoreDataChangeEvent.StoreDataChangeHandler;
 import com.sencha.gxt.data.shared.loader.LoadHandler;
@@ -62,6 +65,7 @@ import com.sencha.gxt.widget.core.client.event.CancelEditEvent.CancelEditHandler
 import com.sencha.gxt.widget.core.client.event.CompleteEditEvent;
 import com.sencha.gxt.widget.core.client.event.CompleteEditEvent.CompleteEditHandler;
 import com.sencha.gxt.widget.core.client.grid.CheckBoxSelectionModel;
+import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.GridSelectionModel;
@@ -231,19 +235,41 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			adModelDriver.initialize(formEditing);
 		}
 		if (isGridMode()) {
-			if (null != editRecord) {
-				ADMapData data = adModelDriver.flush();
-				store.update(data);
-				toolBar.setTabState(this);
-			}
+			mergeFormChanges();
+			toolBar.setTabState(this);
 		} else {
 			editRecord = grid.getSelectionModel().getSelectedItem();
 			if (null != editRecord) {
-				adModelDriver.edit(editRecord);
+				mergeGridChanges();
 			} else {
 				newRecord();
 				editRecord = newRecord;
 			}
+		}
+	}
+
+	private void mergeGridChanges() {
+		ADMapData cloneData = editRecord.deepClone();
+		Collection<Change<ADMapData, ?>> changes = store.getRecord(editRecord).getChanges();
+		for (Change<ADMapData, ?> change : changes) {
+			change.modify(cloneData);
+		}
+		adModelDriver.edit(cloneData);
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void mergeFormChanges() {
+		if (null != editRecord) {
+			ADMapData data = adModelDriver.flush();
+			Record record = store.getRecord(editRecord);
+			for (ColumnConfig<ADMapData, ?> cfg : cm.getColumns()) {
+				ValueProvider<? super ADMapData, ?> vp = cfg.getValueProvider();
+				record.addChange(vp, vp.getValue(data));
+			}
+			grid.getView().refresh(false);
+			// ChangesAcceptor ca = new ChangesAcceptor();
+			// adModelDriver.accept(ca);
+			adModelDriver.edit(data);
 		}
 	}
 
@@ -261,6 +287,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 				}
 			}
 		};
+		this.mergeFormChanges();
 		String json = getModifyRecords();
 		adempiereService.updateData(json, tabModel.getTablename(), callback);
 	}

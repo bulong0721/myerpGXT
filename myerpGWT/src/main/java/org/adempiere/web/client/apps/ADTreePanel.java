@@ -1,6 +1,8 @@
 package org.adempiere.web.client.apps;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.model.ADTreeNode;
@@ -29,7 +31,6 @@ import com.sencha.gxt.dnd.core.client.DndDropEvent;
 import com.sencha.gxt.dnd.core.client.DndDropEvent.DndDropHandler;
 import com.sencha.gxt.dnd.core.client.TreeDragSource;
 import com.sencha.gxt.dnd.core.client.TreeDropTarget;
-import com.sencha.gxt.widget.core.client.box.MessageBox;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 import com.sencha.gxt.widget.core.client.tree.Tree;
@@ -54,6 +55,7 @@ public class ADTreePanel implements IsWidget {
 	private int							treeId;
 	private TreeDragSource<ADTreeNode>	dragSource;
 	private TreeDropTarget<ADTreeNode>	dropTarget;
+	private Set<ADTreeNode>				changes;
 
 	public ADTreePanel(int treeId) {
 		super();
@@ -121,7 +123,6 @@ public class ADTreePanel implements IsWidget {
 		this.asWidget();
 		if (null == dragSource) {
 			dragSource = new TreeDragSource<ADTreeNode>(tree);
-
 			dropTarget = new TreeDropTarget<ADTreeNode>(tree);
 			dropTarget.setAllowSelfAsSource(true);
 			dropTarget.setFeedback(Feedback.BOTH);
@@ -133,16 +134,30 @@ public class ADTreePanel implements IsWidget {
 					if (null != selectedNodes) {
 						TreeNode<ADTreeNode> node = selectedNodes.get(0);
 						ADTreeNode parent = tree.getStore().getParent(node.getData());
-						final MessageBox box = new MessageBox("Selected");
-						box.setMessage("parent:" + parent.getName() + " node:" + node.getData().getName());
-						box.show();
-						return;
+						for (TreeNode<ADTreeNode> selectNode : selectedNodes) {
+							ADTreeNode selectData = selectNode.getData();
+							selectData.setParentID(parent.getID());
+							getChanges().add(selectData);
+						}
 					}
 				}
 			});
 		}
 		dragSource.enable();
 		dropTarget.enable();
+	}
+
+	public Set<ADTreeNode> getChanges() {
+		if (null == changes) {
+			changes = new HashSet<ADTreeNode>();
+		}
+		return changes;
+	}
+	
+	public void acceptChanges() {
+		if (null != changes) {
+			changes.clear();
+		}
 	}
 
 	public void disableDnD() {

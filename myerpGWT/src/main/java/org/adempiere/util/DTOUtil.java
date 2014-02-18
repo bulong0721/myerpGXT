@@ -52,23 +52,32 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static ADMenuModel toMenuModel(AdTreenode entity) {
+	public static ADMenuModel toMenuModel(AdMenu entity) {
 		ADMenuModel model = new ADMenuModel();
 		model.setIsactive(entity.isIsactive());
 		model.setAdMenuId(entity.getNodeId());
 		model.setParentId(entity.getParentId());
 		model.setSeqno(entity.getSeqno());
-		if (null != entity.getAdMenu()) {
-			model.setName(entity.getAdMenu().getName());
-			model.setAdFormId(entity.getAdMenu().getAdFormId());
-			model.setAdProcessId(entity.getAdMenu().getAdProcessId());
-			model.setAdTaskId(entity.getAdMenu().getAdTaskId());
-			model.setAdWindowId(entity.getAdMenu().getAdWindowId());
-			model.setAdWorkbenchId(entity.getAdMenu().getAdWorkbenchId());
-			model.setAdWorkflowId(entity.getAdMenu().getAdWorkflowId());
-			model.setAction(entity.getAdMenu().getAction());
-		}
+		model.setName(entity.getName());
+		model.setAdFormId(entity.getAdFormId());
+		model.setAdProcessId(entity.getAdProcessId());
+		model.setAdTaskId(entity.getAdTaskId());
+		model.setAdWindowId(entity.getAdWindowId());
+		model.setAdWorkbenchId(entity.getAdWorkbenchId());
+		model.setAdWorkflowId(entity.getAdWorkflowId());
+		model.setAction(entity.getAction());
 		return model;
+	}
+	
+	public static List<ADMenuModel> toMenuModels(List<AdMenu> list) {
+		int size = null == list ? 0 : list.size();
+		List<ADMenuModel> resultList = new ArrayList<ADMenuModel>(size);
+		if (null != list) {
+			for (AdMenu entity : list) {
+				resultList.add(toMenuModel(entity));
+			}
+		}
+		return resultList;
 	}
 
 	public static ADProcessModel toProcessModel(AdProcess entity) {

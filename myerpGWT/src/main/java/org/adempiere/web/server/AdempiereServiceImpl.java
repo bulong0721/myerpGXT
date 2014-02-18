@@ -3,7 +3,6 @@ package org.adempiere.web.server;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -23,9 +22,9 @@ import org.adempiere.common.ProcessResult;
 import org.adempiere.common.RefCriteria;
 import org.adempiere.model.AdFieldV;
 import org.adempiere.model.AdForm;
+import org.adempiere.model.AdMenu;
 import org.adempiere.model.AdProcess;
 import org.adempiere.model.AdTabV;
-import org.adempiere.model.AdTreenode;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.process.ProcessContext;
 import org.adempiere.util.DTOUtil;
@@ -55,9 +54,9 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	@Override
 	public List<ADTreeNode> getAdMenuModels() {
 		try {
-			List<AdTreenode> menuList = POUtil.selectList(pCtx, "queryMainMenuNodes", AdTreenode.class);
+			List<AdMenu> menuList = POUtil.queryMainMenuNodes(pCtx);
 			List<ADTreeNode> resultList = new ArrayList<ADTreeNode>(menuList.size());
-			for (AdTreenode nodeMM : menuList) {
+			for (AdMenu nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
 			return resultList;
@@ -95,13 +94,11 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		ADWindowModel windowModel = new ADWindowModel();
 		try {
 			windowModel.setAdWindowId(windowId);
-			Map<String, Object> paramMap = POUtil.toMap("adWindowId", windowId);
-			List<AdTabV> tabVList = POUtil.selectList(pCtx, "queryTabvsByWindowId", AdTabV.class, paramMap);
+			List<AdTabV> tabVList = POUtil.queryTabvsByWindowId(pCtx, windowId);
 			List<ADTabModel> tabList = DTOUtil.toTabModels(tabVList);
 			windowModel.setTabList(tabList);
 			for (ADTabModel tabModel : tabList) {
-				paramMap = POUtil.toMap("adTabId", tabModel.getAdTabId());
-				List<AdFieldV> fieldVList = POUtil.selectList(pCtx, "queryFieldvsByTabId", AdFieldV.class, paramMap);
+				List<AdFieldV> fieldVList = POUtil.queryFieldvsByTabId(pCtx, tabModel.getAdTabId());
 				List<ADFieldModel> fieldList = DTOUtil.toFieldModels(fieldVList);
 				tabModel.setFieldList(fieldList);
 			}
@@ -354,8 +351,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	public ADProcessModel getADProcessModel(Integer processId) {
 		ADProcessModel processModel = null;
 		try {
-			Map<String, Object> paramMap = POUtil.toMap("adProcessId", processId);
-			AdProcess process = POUtil.selectOne(pCtx, "queryProcessWithParamsByProcessId", AdProcess.class, paramMap);
+			AdProcess process = POUtil.queryProcessWithParamsByProcessId(pCtx, processId);
 			processModel = DTOUtil.toProcessModel(process);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -389,8 +385,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	public ADFormModel getADFormModel(Integer formId) {
 		ADFormModel formModel = null;
 		try {
-			Map<String, Object> paramMap = POUtil.toMap("adFormId", formId);
-			AdForm form = POUtil.selectOne(pCtx, "queryFormByFormId", AdForm.class, paramMap);
+			AdForm form = POUtil.queryFormByFormId(pCtx, formId);
 			formModel = DTOUtil.toFormModel(form);
 		} catch (Exception e) {
 			e.printStackTrace();

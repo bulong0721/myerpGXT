@@ -188,4 +188,9 @@ public class ADMenuModel implements IsADRPCModel, ADTreeNode {
 	public Integer getParentID() {
 		return parentId;
 	}
+
+	@Override
+	public void setParentID(int parentId) {
+		this.parentId = parentId;
+	}
 }

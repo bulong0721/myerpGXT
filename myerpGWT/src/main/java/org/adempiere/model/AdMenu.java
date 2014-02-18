@@ -10,12 +10,12 @@ import org.adempiere.persist.AdMenuListener;
 @Entity
 @Table(name = "ad_menu")
 @EntityListeners(AdMenuListener.class)
-public class AdMenu extends org.adempiere.common.ADEntityBase {
+@DiscriminatorValue("10")
+public class AdMenu extends AdTreenode {
 	private static final long	serialVersionUID	= 1L;
 	private String				action;
 	private Integer				adClientId;
 	private Integer				adFormId;
-	private Integer				adMenuId;
 	private Integer				adOrgId;
 	private Integer				adProcessId;
 	private Integer				adTaskId;
@@ -37,9 +37,15 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 
 	public AdMenu() {
 	}
+	
+	@Basic
+	@Column(name = "NODE_ID", columnDefinition = "INT", nullable = false)
+	public Integer getAdMenuId() {
+		return getNodeId();
+	}
 
-	public AdMenu(Integer adMenuId) {
-		this.adMenuId = adMenuId;
+	public void setAdMenuId(Integer adMenuId) {
+//		setNodeId(adMenuId);
 	}
 
 	@Basic
@@ -70,17 +76,6 @@ public class AdMenu extends org.adempiere.common.ADEntityBase {
 
 	public void setAdFormId(Integer adFormId) {
 		this.adFormId = adFormId;
-	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "AD_MENU_ID", columnDefinition = "INT")
-	public Integer getAdMenuId() {
-		return adMenuId;
-	}
-
-	public void setAdMenuId(Integer adMenuId) {
-		this.adMenuId = adMenuId;
 	}
 
 	@Basic

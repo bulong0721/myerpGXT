@@ -5,10 +5,9 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.persistence.EntityManager;
 
 import org.adempiere.common.ADEntityBase;
-import org.adempiere.util.POUtil;
 
 public abstract class AdEntityListener<T extends ADEntityBase> {
-	private ReentrantLock				lock	= new ReentrantLock();
+	private ReentrantLock	lock	= new ReentrantLock();
 
 	protected EntityManager getEntityManager() {
 		try {
@@ -25,23 +24,5 @@ public abstract class AdEntityListener<T extends ADEntityBase> {
 			lock.unlock();
 		}
 	}
-	
-	protected void persist(Object entity) {
-		EntityManager em = getEntityManager();
-		POUtil.initADEntity(entity);
-		em.persist(entity);
-	}
-	
-	protected Object merge(Object entity) {
-		EntityManager em = getEntityManager();
-		POUtil.initADEntity(entity);
-		return em.merge(entity);
-	}
-	
-	protected void remove(Class<?> entityClass, Object pk) {
-		EntityManager em = getEntityManager();
-		Object entity = em.find(entityClass, pk);
-		em.remove(entity);
-	}
-	
+
 }
