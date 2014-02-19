@@ -10,7 +10,6 @@ import javax.persistence.PersistenceUnitUtil;
 import javax.persistence.TypedQuery;
 
 import org.adempiere.common.ADEntityBase;
-import org.adempiere.model.AdAttachment;
 import org.adempiere.model.AdColumn;
 import org.adempiere.model.AdElement;
 import org.adempiere.model.AdField;

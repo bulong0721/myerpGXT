@@ -3,9 +3,20 @@ package org.adempiere.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.model.*;
-import org.adempiere.web.client.model.*;
-import org.adempiere.web.client.util.StringUtil;
+import org.adempiere.model.AdField;
+import org.adempiere.model.AdFieldV;
+import org.adempiere.model.AdForm;
+import org.adempiere.model.AdMenu;
+import org.adempiere.model.AdProcess;
+import org.adempiere.model.AdProcessPara;
+import org.adempiere.model.AdTab;
+import org.adempiere.model.AdTabV;
+import org.adempiere.web.client.model.ADFieldModel;
+import org.adempiere.web.client.model.ADFormModel;
+import org.adempiere.web.client.model.ADMenuModel;
+import org.adempiere.web.client.model.ADProcessArgModel;
+import org.adempiere.web.client.model.ADProcessModel;
+import org.adempiere.web.client.model.ADTabModel;
 
 public final class DTOUtil {
 	public static ADFieldModel toFieldModel(AdFieldV entity) {
@@ -163,7 +174,7 @@ public final class DTOUtil {
 		model.setName(entity.getName());
 		model.setReadonlylogic(entity.getReadonlylogic());
 		model.setTablename(entity.getTablename());
-		model.setHasTree(StringUtil.isYes(entity.getHastree()));
+		model.setHasTree(entity.getHastree());
 		model.setIsSortTab(entity.getIssorttab());
 		model.setIsHighVolume(entity.getIshighvolume());
 		return model;

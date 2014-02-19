@@ -5,8 +5,6 @@ import java.math.BigDecimal;
 public class StringUtil {
 
 	public static final String	EMPTY		= "";
-	public static final String	YES			= "Y";
-	public static final String	NO			= "N";
 	public static final char	WHITESPACE	= ' ';
 
 	/**
@@ -80,18 +78,6 @@ public class StringUtil {
 	}
 
 	/**
-	 * @param value
-	 * @return
-	 */
-	public static boolean isYes(char value) {
-		return 'Y' == value;
-	}
-
-	public static String toYesNo(Boolean value) {
-		return value ? "Y" : "N";
-	}
-
-	/**
 	 * @param text
 	 * @return
 	 */
@@ -100,14 +86,6 @@ public class StringUtil {
 			return text.toLowerCase();
 		}
 		return text;
-	}
-
-	/**
-	 * @param value
-	 * @return
-	 */
-	public static boolean isYes(String value) {
-		return "Y".equalsIgnoreCase(value);
 	}
 
 	public static String convertToCamel(String colName) {

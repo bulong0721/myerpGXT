@@ -30,7 +30,7 @@ public class AdTabV extends ADEntityBase implements Serializable {
 	private String				description;
 	private String				displaylogic;
 	private String				hasassociation;
-	private String				hastree;
+	private Boolean				hastree;
 	private String				help;
 	private Integer				includedTabId;
 	private Boolean				isadvancedtab;
@@ -170,11 +170,11 @@ public class AdTabV extends ADEntityBase implements Serializable {
 		this.hasassociation = hasassociation;
 	}
 
-	public String getHastree() {
+	public Boolean getHastree() {
 		return this.hastree;
 	}
 
-	public void setHastree(String hastree) {
+	public void setHastree(Boolean hastree) {
 		this.hastree = hastree;
 	}
 
