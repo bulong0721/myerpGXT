@@ -15,7 +15,7 @@ import org.adempiere.web.client.presenter.interfaces.IContentView.IContentPresen
 import org.adempiere.web.client.widget.CHistoryWindow;
 import org.adempiere.web.client.widget.CHistoryWindow.History;
 import org.adempiere.web.client.widget.CWindowToolBar;
-import org.adempiere.web.client.widget.CWindowToolBar.WindowStatus;
+import org.adempiere.web.client.widget.CWindowToolBar.ButtonStates;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -27,7 +27,7 @@ import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.event.HideEvent;
 import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 
-public class ADWindowPanel extends ADModalDialog implements  WindowStatus, WindowToolListener {
+public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 
 	private static ADWindowPanelUiBinder	uiBinder	= GWT.create(ADWindowPanelUiBinder.class);
 
@@ -41,7 +41,7 @@ public class ADWindowPanel extends ADModalDialog implements  WindowStatus, Windo
 	private IContentPresenter	contentPresenter;
 	private Widget				widget;
 	private ADWindowModel		windowModel;
-	private ADTabPanel			currentTab;
+	private AbstractTabPanel	currentTab;
 	private IDesktop			desktop;
 	@UiField
 	CWindowToolBar				toolBar;
@@ -62,14 +62,26 @@ public class ADWindowPanel extends ADModalDialog implements  WindowStatus, Windo
 
 	@UiHandler("tabSet")
 	void onTabSelection(ValueChangeEvent<Object> event) {
-		ADTabPanel tabPanel = (ADTabPanel) tabSet.getActiveTag();
+		AbstractTabPanel tabPanel = (AbstractTabPanel) tabSet.getActiveTag();
+		windowModel.setActiveTabId(tabPanel.getTabModel().getAdTabId());
+		toolBar.refreshStates(computeButtonStates());
+		currentTab = tabPanel;
 		if (tabPanel.isParentSelectChanges()) {
 			tabPanel.loadData();
+		} else{
+			tabPanel.refreshToolBar();
 		}
-		windowModel.setActiveTabId(tabPanel.getTabModel().getAdTabId());
-		toolBar.setWindowState(this);
-		toolBar.setTabState(tabPanel);
-		currentTab = tabPanel;
+	}
+
+	protected ButtonStates computeButtonStates() {
+		ButtonStates btnStates = toolBar.getButtonStates();
+		btnStates.enableParentRecord = false;
+		btnStates.enableDetailRecord = false;
+		if (getTotalCount() > 1) {
+			btnStates.enableParentRecord = getCurrentIndex() > 0;
+			btnStates.enableDetailRecord = getCurrentIndex() + 1 < getTotalCount();
+		}
+		return btnStates;
 	}
 
 	private int getMaxLevel(List<ADTabModel> tabs) {
@@ -85,7 +97,7 @@ public class ADWindowPanel extends ADModalDialog implements  WindowStatus, Windo
 	private void initWindow() {
 		tabSet.setMaxLevel(getMaxLevel(windowModel.getTabList()));
 		for (ADTabModel tabModel : windowModel.getTabList()) {
-			ADTabPanel tabPanel = new ADTabPanel(ADWindowPanel.this, tabModel, toolBar);
+			AbstractTabPanel tabPanel = createTabPanel(tabModel);
 			TabItemConfig itemCfg = new TabItemConfig(tabModel.getName(), tabPanel, tabModel.getTablevel());
 			tabSet.add(tabPanel, itemCfg);
 			if (null == currentTab) {
@@ -100,7 +112,19 @@ public class ADWindowPanel extends ADModalDialog implements  WindowStatus, Windo
 		}
 	}
 
-	public ADTabPanel getParentTab(ADTabPanel tabPanel) {
+	/**
+	 * @param tabModel
+	 * @return
+	 */
+	private AbstractTabPanel createTabPanel(ADTabModel tabModel) {
+		if (tabModel.getIsSortTab()) {
+			return new SequenceTabPanel(ADWindowPanel.this, tabModel, toolBar);
+		} else {
+			return new SimpleTabPanel(ADWindowPanel.this, tabModel, toolBar);
+		}
+	}
+
+	public SimpleTabPanel getParentTab(AbstractTabPanel tabPanel) {
 		int index = tabSet.getIndex(Widget.asWidgetOrNull(tabPanel));
 		int level = tabPanel.getTabModel().getTablevel();
 		if (0 >= index || 0 >= level) {
@@ -108,27 +132,18 @@ public class ADWindowPanel extends ADModalDialog implements  WindowStatus, Windo
 		}
 		for (int i = index - 1; i >= 0; i--) {
 			int rhs = windowModel.getTabList().get(i).getTablevel();
-			if (rhs == level - 1) {
-				return (ADTabPanel) tabSet.getTagByIndex(i);
+			Object tabpanel = tabSet.getTagByIndex(i);
+			if (rhs == level - 1 && tabpanel instanceof SimpleTabPanel) {
+				return (SimpleTabPanel) tabpanel;
 			}
 		}
 		return null;
 	}
 
-	// public Long getAdWindowId() {
-	// return adWindowId;
-	// }
-	//
-	// public void setAdWindowId(Long adWindowId) {
-	// this.adWindowId = adWindowId;
-	// }
-
-	@Override
 	public int getTotalCount() {
 		return tabSet.getWidgetCount();
 	}
 
-	@Override
 	public int getCurrentIndex() {
 		return tabSet.getActiveIndex();
 	}

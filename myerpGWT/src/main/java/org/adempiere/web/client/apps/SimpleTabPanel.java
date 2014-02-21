@@ -24,8 +24,6 @@ import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADResultPair;
 import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADTabModel;
-import org.adempiere.web.client.service.AdempiereService;
-import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.ClassUtil;
 import org.adempiere.web.client.util.ContextUtil;
 import org.adempiere.web.client.util.JSOUtil;
@@ -33,14 +31,13 @@ import org.adempiere.web.client.util.LoggingUtil;
 import org.adempiere.web.client.util.StringUtil;
 import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.CWindowToolBar;
-import org.adempiere.web.client.widget.CWindowToolBar.TabStatus;
+import org.adempiere.web.client.widget.CWindowToolBar.ButtonStates;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.Style.SelectionMode;
 import com.sencha.gxt.core.client.ValueProvider;
@@ -68,35 +65,28 @@ import com.sencha.gxt.widget.core.client.grid.CheckBoxSelectionModel;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
-import com.sencha.gxt.widget.core.client.grid.GridSelectionModel;
 import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
 import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent.SelectionChangedHandler;
 import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
 
-public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
+public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 
-	private static ADTabPanelUiBinder						uiBinder	= GWT.create(ADTabPanelUiBinder.class);
+	private static SimpleTabPanelUiBinder					uiBinder	= GWT.create(SimpleTabPanelUiBinder.class);
 	PagingLoader<ADLoadConfig, PagingLoadResult<ADMapData>>	loader		= null;
 
-	interface ADTabPanelUiBinder extends UiBinder<Widget, ADTabPanel> {
+	interface SimpleTabPanelUiBinder extends UiBinder<Widget, SimpleTabPanel> {
 	}
 
-	private AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
 	private ADMapData				newRecord;
 	private ADMapData				editRecord;
-	private ADWindowPanel			windowPanel;
-	private ADTabModel				tabModel;
-	private CWindowToolBar			toolBar;
-	private Widget					widget;
 	private ColumnModel<ADMapData>	cm;
 	private ListStore<ADMapData>	store;
 	private ADFormBuilder			tabStrategy;
 	private GridEditing<ADMapData>	gridEditing;
 	private ADModelDriver			adModelDriver;
 	private ADModelKeyProvider		keyProvider;
-	private ADModelKey				parentModelKey;
 	private ADTreePanel				treePanel;
 	@UiField(provided = true)
 	Grid<ADMapData>					grid;
@@ -111,12 +101,10 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 	@UiField(provided = true)
 	HorizontalLayoutData			treeLayoutData;
 
-	public ADTabPanel(ADWindowPanel windowPanel, ADTabModel tabModel, CWindowToolBar toolBar) {
+	public SimpleTabPanel(ADWindowPanel windowPanel, ADTabModel tabModel, CWindowToolBar toolBar) {
+		super(windowPanel, tabModel, toolBar);
 		this.tabStrategy = new ADFormBuilder(tabModel.getFieldList());
 		this.tabStrategy.setFieldButtonListener(this);
-		this.windowPanel = windowPanel;
-		this.tabModel = tabModel;
-		this.toolBar = toolBar;
 	}
 
 	@Override
@@ -124,7 +112,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 		if (null == widget) {
 			this.onRender();
 			this.widget = uiBinder.createAndBindUi(this);
-			this.toolBar.setTabState(this);
+			refreshToolBar();
 		}
 		return widget;
 	}
@@ -133,6 +121,34 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 		createTree();
 		createForm();
 		createGrid();
+	}
+	
+	@Override
+	protected ButtonStates computeToolBarState() {
+		ButtonStates btnStates = toolBar.getButtonStates();
+		btnStates.enableFirst = false;
+		btnStates.enableNext = false;
+		btnStates.enablePrevious = false;
+		btnStates.enableLast = false;
+		if (getTotalCount() > 1) {
+			btnStates.enableFirst = getCurrentIndex() > 0;
+			btnStates.enableNext = getCurrentIndex() + 1 < getTotalCount();
+			btnStates.enablePrevious = getCurrentIndex() > 0;
+			btnStates.enableLast = getCurrentIndex() + 1 < getTotalCount();
+		}
+		btnStates.enableUndoChange = hasChanges();
+		btnStates.enableSave = hasChanges();
+		btnStates.enableNew = !hasChanges();
+		btnStates.enableCopy = !hasChanges();
+		btnStates.enableDelete = !hasChanges();
+		btnStates.enableDeleteSelection = !hasChanges();
+		btnStates.enableRefresh = !hasChanges();
+		btnStates.enableAttachment = !hasChanges();
+		btnStates.enableChat = !hasChanges();
+		btnStates.enableHistoryRecords = !hasChanges();
+		btnStates.enablePrint = !hasChanges();
+		btnStates.enablePrintView = !hasChanges();
+		return btnStates;
 	}
 
 	private void createGrid() {
@@ -153,42 +169,38 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			@Override
 			public void onDataChange(StoreDataChangeEvent<ADMapData> event) {
 				grid.getSelectionModel().select(0, false);
-				toolBar.setTabState(ADTabPanel.this);
+				SimpleTabPanel.this.refreshToolBar();
 				grid.setLoadMask(true);
 			}
 		});
 		final LoadHandler<ADLoadConfig, PagingLoadResult<ADMapData>> loadHandler;
 		loadHandler = new LoadResultListStoreBinding<ADLoadConfig, ADMapData, PagingLoadResult<ADMapData>>(store);
-		loader.addLoadHandler(loadHandler);
-		cm = tabStrategy.createColumnModel();
-		grid = new Grid<ADMapData>(store, cm);
-		grid.setLoader(loader);
-		GridSelectionModel<ADMapData> selectModel = new CheckBoxSelectionModel<ADMapData>();
-		selectModel.setSelectionMode(SelectionMode.SINGLE);
+		CheckBoxSelectionModel<ADMapData> selectModel = new CheckBoxSelectionModel<ADMapData>();
+		selectModel.setSelectionMode(SelectionMode.MULTI);
 		selectModel.addSelectionChangedHandler(new SelectionChangedHandler<ADMapData>() {
 			@Override
 			public void onSelectionChanged(SelectionChangedEvent<ADMapData> event) {
 				// TODO Auto-generated method stub
 			}
 		});
+		loader.addLoadHandler(loadHandler);
+		cm = tabStrategy.createColumnModel(selectModel);
+		grid = new Grid<ADMapData>(store, cm);
+		grid.setLoader(loader);
 		grid.setSelectionModel(selectModel);
 		gridEditing = tabStrategy.createGridEditing(grid);
 		gridEditing.addCompleteEditHandler(new CompleteEditHandler<ADMapData>() {
 			@Override
 			public void onCompleteEdit(CompleteEditEvent<ADMapData> event) {
-				toolBar.setTabState(ADTabPanel.this);
+				SimpleTabPanel.this.refreshToolBar();
 			}
 		});
 		gridEditing.addCancelEditHandler(new CancelEditHandler<ADMapData>() {
 			@Override
 			public void onCancelEdit(CancelEditEvent<ADMapData> event) {
-				toolBar.setTabState(ADTabPanel.this);
+				SimpleTabPanel.this.refreshToolBar();
 			}
 		});
-	}
-
-	public ADTabModel getTabModel() {
-		return tabModel;
 	}
 
 	public ADModelKey getSelectedKey() {
@@ -236,7 +248,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 		}
 		if (isGridMode()) {
 			mergeFormChanges();
-			toolBar.setTabState(this);
+			refreshToolBar();
 		} else {
 			editRecord = grid.getSelectionModel().getSelectedItem();
 			if (null != editRecord) {
@@ -277,8 +289,8 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			public void onSuccess(ADResultWithError result) {
 				if (result.isSuccess()) {
 					store.commitChanges();
-					ADTabPanel.this.newRecord = null;
-					toolBar.setTabState(ADTabPanel.this);
+					SimpleTabPanel.this.newRecord = null;
+					SimpleTabPanel.this.refreshToolBar();
 					Info.display("adempiere", "Update Success.");
 				} else {
 					Info.display("adempiere", "Update Failed:" + result.getErrorMessage());
@@ -343,7 +355,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 			editRecord = null;
 			newRecord = null;
 		}
-		toolBar.setTabState(this);
+		refreshToolBar();
 	}
 
 	public void newRecord() {
@@ -360,27 +372,27 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 		if (!isGridMode()) {
 			adModelDriver.edit(newRecord);
 		}
-		toolBar.setTabState(this);
+		refreshToolBar();
 	}
 
 	public void moveFirst() {
 		grid.getSelectionModel().select(0, false);
-		toolBar.setTabState(this);
+		refreshToolBar();
 	}
 
 	public void moveLast() {
 		grid.getSelectionModel().select(store.size() - 1, false);
-		toolBar.setTabState(this);
+		refreshToolBar();
 	}
 
 	public void moveNext() {
 		grid.getSelectionModel().selectNext(false);
-		toolBar.setTabState(this);
+		refreshToolBar();
 	}
 
 	public void movePrevious() {
 		grid.getSelectionModel().selectPrevious(false);
-		toolBar.setTabState(this);
+		refreshToolBar();
 	}
 
 	public void copyRecord() {
@@ -394,13 +406,14 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 		newRecord = (ADMapData) selectedData.deepClone();
 		keyProvider.resetKeys(newRecord, tabModel.getTablename());
 		store.add(newRecord);
-		toolBar.setTabState(this);
+		refreshToolBar();
 	}
 
 	public void updateADUserContext() {
 
 	}
 
+	@Override
 	public void loadData(ADLoadConfig loadCfg) {
 		loadCfg.setTableName(tabModel.getTablename());
 		if (0 != tabModel.getTablevel() && null == loadCfg.getParentKey()) {
@@ -409,11 +422,7 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 		parentModelKey = loadCfg.getParentKey();
 		loader.load(loadCfg);
 		newRecord = null;
-		toolBar.setTabState(this);
-	}
-
-	public ADModelKey getParentModelKey() {
-		return parentModelKey;
+		refreshToolBar();
 	}
 
 	@Override
@@ -495,22 +504,6 @@ public class ADTabPanel implements IsWidget, ActionListener, TabStatus {
 		};
 		ADMapData row = grid.getSelectionModel().getSelectedItem();
 		adempiereService.processCallout(field, row.toString(), callback);
-	}
-
-	public void loadData() {
-		ADLoadConfig loadCfg = new ADLoadConfig();
-		loadData(loadCfg);
-	}
-
-	public boolean isParentSelectChanges() {
-		if (0 == tabModel.getTablevel()) {
-			return false;
-		}
-		ADModelKey parentKey = windowPanel.getParentTab(this).getSelectedKey();
-		if (null == parentKey) {
-			return false;
-		}
-		return !parentKey.equals(this.parentModelKey);
 	}
 
 }

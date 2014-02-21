@@ -45,4 +45,7 @@
 			   AND NOT (c.name LIKE 'Created%' OR c.name LIKE 'Updated%')
 			   AND NOT EXISTS (SELECT f.adFieldId FROM AdField f WHERE f.adColumnId=c.adColumnId AND f.adTabId= :adTabId)</query>
 	</named-query>
+	<named-query name="querySeqByTabId">
+		<query>SELECT NEW org.adempiere.web.client.model.ADSequenceModel(f.adFieldId, f.name, f.seqno) FROM AdField f WHERE f.adTabId = :adTabId ORDER BY f.seqno</query>
+	</named-query>
 </entity-mappings>

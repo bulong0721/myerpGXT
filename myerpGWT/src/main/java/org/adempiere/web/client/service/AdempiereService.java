@@ -13,6 +13,7 @@ import org.adempiere.web.client.model.ADLoadConfig;
 import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADResultPair;
 import org.adempiere.web.client.model.ADResultWithError;
+import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.model.ADTreeNode;
 
@@ -25,6 +26,10 @@ public interface AdempiereService extends RemoteService {
 	List<ADTreeNode> getAdMenuModels();
 
 	List<LookupValue> getOptions(String columnName, int type, Integer adRefId);
+	
+	List<ADSequenceModel> getSequences(ADLoadConfig loadCfg);
+	
+	boolean updateSequences(List<ADSequenceModel> seqList, String tableName);
 
 	ADWindowModel getADWindowModel(Integer windowId);
 	

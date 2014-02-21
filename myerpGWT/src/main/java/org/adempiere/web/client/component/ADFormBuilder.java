@@ -10,6 +10,7 @@ import org.adempiere.web.client.util.StringUtil;
 
 import com.sencha.gxt.data.shared.Converter;
 import com.sencha.gxt.widget.core.client.form.Field;
+import com.sencha.gxt.widget.core.client.grid.CheckBoxSelectionModel;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
@@ -94,8 +95,11 @@ public class ADFormBuilder {
 		this.fieldButtonListener = fieldButtonListener;
 	}
 
-	public ColumnModel<ADMapData> createColumnModel() {
+	public ColumnModel<ADMapData> createColumnModel(CheckBoxSelectionModel<ADMapData> chkSm) {
 		List<ColumnConfig<ADMapData, ?>> columnList = new ArrayList<ColumnConfig<ADMapData, ?>>();
+		if (null != chkSm) {
+			columnList.add(chkSm.getColumn());
+		}
 		for (ADFieldBuilder strategy : getFieldStrategies()) {
 			columnList.add(strategy.getColumnCfg());
 		}

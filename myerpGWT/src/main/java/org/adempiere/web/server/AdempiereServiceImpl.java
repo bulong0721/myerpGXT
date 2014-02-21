@@ -37,6 +37,7 @@ import org.adempiere.web.client.model.ADLoadConfig;
 import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADResultPair;
 import org.adempiere.web.client.model.ADResultWithError;
+import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.model.ADTreeNode;
 import org.adempiere.web.client.model.ADWindowModel;
@@ -441,6 +442,22 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<ADSequenceModel> getSequences(ADLoadConfig loadCfg) {
+		if ("ad_field".equalsIgnoreCase(loadCfg.getTableName())) {
+			int adTabId = loadCfg.getParentKey().getKeyValue();
+			List<ADSequenceModel> resultList = POUtil.querySeqByTabId(pCtx, adTabId);
+			return new ArrayList<ADSequenceModel>(resultList);
+		}
+		return Collections.EMPTY_LIST;
+	}
+
+	@Override
+	public boolean updateSequences(List<ADSequenceModel> seqList, String tableName) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

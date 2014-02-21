@@ -21,26 +21,26 @@ public class CWindowToolBar implements IsWidget {
 	}
 
 	@UiField
-	ToolBar					toolBar;
+	ToolBar						toolBar;
 	@UiField(provided = true)
-	IconButton				btnUndoChange;
+	IconButton					btnUndoChange;
 	@UiField(provided = true)
-	IconButton				btnHelp, btnNew, btnCopy, btnDelete, btnDeleteSelection, btnSave;
+	IconButton					btnHelp, btnNew, btnCopy, btnDelete, btnDeleteSelection, btnSave;
 	@UiField(provided = true)
-	IconButton				btnRefresh, btnFind, btnChat, btnAttachment;
+	IconButton					btnRefresh, btnFind, btnChat, btnAttachment;
 	@UiField(provided = true)
-	IconButton				btnGridToggle;
+	IconButton					btnGridToggle;
 	@UiField(provided = true)
-	IconButton				btnHistoryRecords, btnParentRecord, btnDetailRecord;
+	IconButton					btnHistoryRecords, btnParentRecord, btnDetailRecord;
 	@UiField(provided = true)
-	IconButton				btnFirst, btnPrevious, btnNext, btnLast;
+	IconButton					btnFirst, btnPrevious, btnNext, btnLast;
 	@UiField(provided = true)
-	IconButton				btnReport, btnPrintView, btnPrint;
+	IconButton					btnReport, btnPrintView, btnPrint;
 	@UiField(provided = true)
-	IconButton				btnActiveWorkflows, btnRequests;
+	IconButton					btnActiveWorkflows, btnRequests;
 
 	private WindowToolListener	listener;
-	private Widget			widget;
+	private Widget				widget;
 
 	public void addToolbarListener(WindowToolListener listener) {
 		this.listener = listener;
@@ -180,54 +180,105 @@ public class CWindowToolBar implements IsWidget {
 		btnRequests = WidgetUtil.createIconButton("images/icons/Request24.png");
 	}
 
-	public void setWindowState(WindowStatus ws) {
-		this.btnParentRecord.setEnabled(false);
-		this.btnDetailRecord.setEnabled(false);
-		if (ws.getTotalCount() > 1) {
-			this.btnParentRecord.setEnabled(ws.getCurrentIndex() > 0);
-			this.btnDetailRecord.setEnabled(ws.getCurrentIndex() + 1 < ws.getTotalCount());
+	public ButtonStates getButtonStates() {
+		ButtonStates btnStates = new ButtonStates();
+		btnStates.enableUndoChange = btnUndoChange.isEnabled();
+		btnStates.enableHelp = btnHelp.isEnabled();
+		btnStates.enableNew = btnNew.isEnabled();
+		btnStates.enableCopy = btnCopy.isEnabled();
+		btnStates.enableDelete = btnDelete.isEnabled();
+		btnStates.enableDeleteSelection = btnDeleteSelection.isEnabled();
+		btnStates.enableSave = btnSave.isEnabled();
+		btnStates.enableRefresh = btnRefresh.isEnabled();
+		btnStates.enableFind = btnFind.isEnabled();
+		btnStates.enableChat = btnChat.isEnabled();
+		btnStates.enableAttachment = btnAttachment.isEnabled();
+		btnStates.enableGridToggle = btnGridToggle.isEnabled();
+		btnStates.enableHistoryRecords = btnHistoryRecords.isEnabled();
+		btnStates.enableParentRecord = btnParentRecord.isEnabled();
+		btnStates.enableDetailRecord = btnDetailRecord.isEnabled();
+		btnStates.enableFirst = btnFirst.isEnabled();
+		btnStates.enablePrevious = btnPrevious.isEnabled();
+		btnStates.enableNext = btnNext.isEnabled();
+		btnStates.enableLast = btnLast.isEnabled();
+		btnStates.enableReport = btnReport.isEnabled();
+		btnStates.enablePrintView = btnPrintView.isEnabled();
+		btnStates.enablePrint = btnPrint.isEnabled();
+		btnStates.enableActiveWorkflows = btnActiveWorkflows.isEnabled();
+		btnStates.enableRequests = btnRequests.isEnabled();
+		return btnStates;
+	}
+
+	public void refreshStates(ButtonStates btnStates) {
+		btnUndoChange.setEnabled(btnStates.enableUndoChange);
+		btnHelp.setEnabled(btnStates.enableHelp);
+		btnNew.setEnabled(btnStates.enableNew);
+		btnCopy.setEnabled(btnStates.enableCopy);
+		btnDelete.setEnabled(btnStates.enableDelete);
+		btnDeleteSelection.setEnabled(btnStates.enableDeleteSelection);
+		btnSave.setEnabled(btnStates.enableSave);
+		btnRefresh.setEnabled(btnStates.enableRefresh);
+		btnFind.setEnabled(btnStates.enableFind);
+		btnChat.setEnabled(btnStates.enableChat);
+		btnAttachment.setEnabled(btnStates.enableAttachment);
+		btnGridToggle.setEnabled(btnStates.enableGridToggle);
+		btnHistoryRecords.setEnabled(btnStates.enableHistoryRecords);
+		btnParentRecord.setEnabled(btnStates.enableParentRecord);
+		btnDetailRecord.setEnabled(btnStates.enableDetailRecord);
+		btnFirst.setEnabled(btnStates.enableFirst);
+		btnPrevious.setEnabled(btnStates.enablePrevious);
+		btnNext.setEnabled(btnStates.enableNext);
+		btnLast.setEnabled(btnStates.enableLast);
+		btnReport.setEnabled(btnStates.enableReport);
+		btnPrintView.setEnabled(btnStates.enablePrintView);
+		btnPrint.setEnabled(btnStates.enablePrint);
+		btnActiveWorkflows.setEnabled(btnStates.enableActiveWorkflows);
+		btnRequests.setEnabled(btnStates.enableRequests);
+	}
+
+	public static class ButtonStates {
+		public boolean	enableUndoChange;
+		public boolean	enableHelp, enableNew, enableCopy, enableDelete, enableDeleteSelection, enableSave;
+		public boolean	enableRefresh, enableFind, enableChat, enableAttachment;
+		public boolean	enableGridToggle;
+		public boolean	enableHistoryRecords, enableParentRecord, enableDetailRecord;
+		public boolean	enableFirst, enablePrevious, enableNext, enableLast;
+		public boolean	enableReport, enablePrintView, enablePrint;
+		public boolean	enableActiveWorkflows, enableRequests;
+
+		public static ButtonStates newAllEnable() {
+			ButtonStates btnStates = new ButtonStates();
+			btnStates.enableUndoChange = true;
+			btnStates.enableHelp = true;
+			btnStates.enableNew = true;
+			btnStates.enableCopy = true;
+			btnStates.enableDelete = true;
+			btnStates.enableDeleteSelection = true;
+			btnStates.enableSave = true;
+			btnStates.enableRefresh = true;
+			btnStates.enableFind = true;
+			btnStates.enableChat = true;
+			btnStates.enableAttachment = true;
+			btnStates.enableGridToggle = true;
+			btnStates.enableHistoryRecords = true;
+			btnStates.enableParentRecord = true;
+			btnStates.enableDetailRecord = true;
+			btnStates.enableFirst = true;
+			btnStates.enablePrevious = true;
+			btnStates.enableNext = true;
+			btnStates.enableLast = true;
+			btnStates.enableReport = true;
+			btnStates.enablePrintView = true;
+			btnStates.enablePrint = true;
+			btnStates.enableActiveWorkflows = true;
+			btnStates.enableRequests = true;
+			return btnStates;
 		}
-	}
 
-	public void setTabState(TabStatus ts) {
-		this.btnFirst.setEnabled(false);
-		this.btnNext.setEnabled(false);
-		this.btnPrevious.setEnabled(false);
-		this.btnLast.setEnabled(false);
-		if (ts.getTotalCount() > 1) {
-			this.btnFirst.setEnabled(ts.getCurrentIndex() > 0);
-			this.btnNext.setEnabled(ts.getCurrentIndex() + 1 < ts.getTotalCount());
-			this.btnPrevious.setEnabled(ts.getCurrentIndex() > 0);
-			this.btnLast.setEnabled(ts.getCurrentIndex() + 1 < ts.getTotalCount());
+		public static ButtonStates newAllDisable() {
+			ButtonStates btnStates = new ButtonStates();
+			return btnStates;
 		}
-
-		this.btnUndoChange.setEnabled(ts.hasChanges());
-		this.btnSave.setEnabled(ts.hasChanges());
-
-		this.btnNew.setEnabled(!ts.hasChanges());
-		this.btnCopy.setEnabled(!ts.hasChanges());
-		this.btnDelete.setEnabled(!ts.hasChanges());
-		this.btnDeleteSelection.setEnabled(!ts.hasChanges());
-		this.btnRefresh.setEnabled(!ts.hasChanges());
-		this.btnAttachment.setEnabled(!ts.hasChanges());
-		this.btnChat.setEnabled(!ts.hasChanges());
-		this.btnHistoryRecords.setEnabled(!ts.hasChanges());
-		this.btnPrint.setEnabled(!ts.hasChanges());
-		this.btnPrintView.setEnabled(!ts.hasChanges());
-	}
-
-	public static interface WindowStatus {
-		int getTotalCount();
-
-		int getCurrentIndex();
-	}
-
-	public static interface TabStatus {
-		boolean hasChanges();
-
-		int getTotalCount();
-
-		int getCurrentIndex();
 	}
 
 }

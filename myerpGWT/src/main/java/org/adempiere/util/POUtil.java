@@ -21,6 +21,7 @@ import org.adempiere.model.AdTab;
 import org.adempiere.model.AdTabV;
 import org.adempiere.model.AdTable;
 import org.adempiere.persist.PersistContext;
+import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.util.StringUtil;
 
 public final class POUtil {
@@ -98,7 +99,7 @@ public final class POUtil {
 	 * @return
 	 */
 	@SuppressWarnings("unused")
-	private static <T extends ADEntityBase> T selectOne(PersistContext pCtx, String queryName, Class<T> clazz) {
+	private static <T> T selectOne(PersistContext pCtx, String queryName, Class<T> clazz) {
 		return selectOne(pCtx, queryName, clazz, null);
 	}
 
@@ -109,7 +110,7 @@ public final class POUtil {
 	 * @param paramMap
 	 * @return
 	 */
-	private static <T extends ADEntityBase> T selectOne(PersistContext pCtx, String queryName, Class<T> clazz, Map<String, Object> paramMap) {
+	private static <T> T selectOne(PersistContext pCtx, String queryName, Class<T> clazz, Map<String, Object> paramMap) {
 		EntityManager em = pCtx.begin();
 		try {
 			TypedQuery<T> query = em.createNamedQuery(queryName, clazz);
@@ -133,7 +134,7 @@ public final class POUtil {
 	 * @param clazz
 	 * @return
 	 */
-	private static <T extends ADEntityBase> List<T> selectList(PersistContext pCtx, String queryName, Class<T> clazz) {
+	private static <T> List<T> selectList(PersistContext pCtx, String queryName, Class<T> clazz) {
 		return selectList(pCtx, queryName, clazz, null);
 	}
 
@@ -144,7 +145,7 @@ public final class POUtil {
 	 * @param paramMap
 	 * @return
 	 */
-	private static <T extends ADEntityBase> List<T> selectList(PersistContext pCtx, String queryName, Class<T> clazz,
+	private static <T> List<T> selectList(PersistContext pCtx, String queryName, Class<T> clazz,
 			Map<String, Object> paramMap) {
 		EntityManager em = pCtx.begin();
 		try {
@@ -203,6 +204,16 @@ public final class POUtil {
 	public static List<AdField> queryFieldsByTabId(PersistContext pCtx, int tabId) {
 		Map<String, Object> paramMap = toMap("adTabId", tabId);
 		return selectList(pCtx, "queryFieldsByTabId", AdField.class, paramMap);
+	}
+	
+	/**
+	 * @param pCtx
+	 * @param tabId
+	 * @return
+	 */
+	public static List<ADSequenceModel> querySeqByTabId(PersistContext pCtx, int tabId) {
+		Map<String, Object> paramMap = toMap("adTabId", tabId);
+		return selectList(pCtx, "querySeqByTabId", ADSequenceModel.class, paramMap);
 	}
 
 	/**
