@@ -12,7 +12,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer adClientId;
 	private Integer adOrgId;
-	private String autolock;
+	private Boolean autolock;
 	private Integer cCashbookId;
 	private Integer cCashbpartnerId;
 	private Integer cTemplatebpartnerId;
@@ -33,7 +33,7 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	private String help;
 	private Boolean isactive;
 	private String lastlocktime;
-	private String locked;
+	private Boolean locked;
 	private Integer locktime;
 	private Integer mWarehouseId;
 	private String name;
@@ -75,12 +75,12 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAutolock() {
+	@Column(nullable=false)
+	public Boolean isAutolock() {
 		return autolock;
 	}
 
-	public void setAutolock(String autolock) {
+	public void setAutolock(Boolean autolock) {
 		this.autolock = autolock;
 	}
 
@@ -282,12 +282,11 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getLocked() {
+	public Boolean isLocked() {
 		return locked;
 	}
 
-	public void setLocked(String locked) {
+	public void setLocked(Boolean locked) {
 		this.locked = locked;
 	}
 
@@ -363,6 +362,8 @@ public class UPosterminal extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="U_POSTERMINAL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_52006", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "U_POSTerminal", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_52006")
 	public Integer getUPosterminalId() {
 		return uPosterminalId;
 	}

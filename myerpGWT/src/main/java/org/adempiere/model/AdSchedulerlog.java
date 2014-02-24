@@ -67,6 +67,8 @@ public class AdSchedulerlog extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_SCHEDULERLOG_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_862", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_SchedulerLog", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_862")
 	public Integer getAdSchedulerlogId() {
 		return adSchedulerlogId;
 	}

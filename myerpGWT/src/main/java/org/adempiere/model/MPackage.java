@@ -124,6 +124,8 @@ public class MPackage extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PACKAGE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_839", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Package", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_839")
 	public Integer getMPackageId() {
 		return mPackageId;
 	}

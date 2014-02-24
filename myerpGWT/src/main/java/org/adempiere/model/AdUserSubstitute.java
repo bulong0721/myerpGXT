@@ -64,6 +64,8 @@ public class AdUserSubstitute extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_USER_SUBSTITUTE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_817", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_User_Substitute", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_817")
 	public Integer getAdUserSubstituteId() {
 		return adUserSubstituteId;
 	}

@@ -54,6 +54,8 @@ public class CPaymentbatch extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PAYMENTBATCH_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_348", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_PaymentBatch", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_348")
 	public Integer getCPaymentbatchId() {
 		return cPaymentbatchId;
 	}

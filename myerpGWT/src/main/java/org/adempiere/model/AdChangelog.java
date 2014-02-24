@@ -26,9 +26,9 @@ public class AdChangelog extends org.adempiere.common.ADEntityBase {
 	private String newvalue;
 	private String oldvalue;
 	private Integer recordId;
-	private String redo;
+	private Boolean redo;
 	private String trxname;
-	private String undo;
+	private Boolean undo;
 	private String updated;
 	private Integer updatedby;
 
@@ -44,6 +44,8 @@ public class AdChangelog extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_CHANGELOG_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_735", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_ChangeLog", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_735")
 	public Integer getAdChangelogId() {
 		return adChangelogId;
 	}
@@ -192,12 +194,11 @@ public class AdChangelog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getRedo() {
+	public Boolean isRedo() {
 		return redo;
 	}
 
-	public void setRedo(String redo) {
+	public void setRedo(Boolean redo) {
 		this.redo = redo;
 	}
 
@@ -212,12 +213,11 @@ public class AdChangelog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getUndo() {
+	public Boolean isUndo() {
 		return undo;
 	}
 
-	public void setUndo(String undo) {
+	public void setUndo(Boolean undo) {
 		this.undo = undo;
 	}
 

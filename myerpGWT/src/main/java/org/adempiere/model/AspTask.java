@@ -81,6 +81,8 @@ public class AspTask extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="ASP_TASK_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53069", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "ASP_Task", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53069")
 	public Integer getAspTaskId() {
 		return aspTaskId;
 	}

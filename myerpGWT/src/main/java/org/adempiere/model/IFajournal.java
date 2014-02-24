@@ -60,7 +60,7 @@ public class IFajournal extends org.adempiere.common.ADEntityBase {
 	private String iErrormsg;
 	private Integer iFajournalId;
 	private String iIsimported;
-	private Boolean isactive;
+	private String isactive;
 	private String isdepreciated;
 	private String isoCode;
 	private String journaldocumentno;
@@ -69,8 +69,8 @@ public class IFajournal extends org.adempiere.common.ADEntityBase {
 	private String orgtrxvalue;
 	private String orgvalue;
 	private String postingtype;
-	private Boolean processed;
-	private Boolean processing;
+	private String processed;
+	private String processing;
 	private String productvalue;
 	private String projectvalue;
 	private BigDecimal qty;
@@ -556,6 +556,8 @@ public class IFajournal extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="I_FAJOURNAL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53137", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_FAJournal", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53137")
 	public Integer getIFajournalId() {
 		return iFajournalId;
 	}
@@ -575,12 +577,12 @@ public class IFajournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 
@@ -665,20 +667,22 @@ public class IFajournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isProcessed() {
+	@Column(length=1)
+	public String getProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(Boolean processed) {
+	public void setProcessed(String processed) {
 		this.processed = processed;
 	}
 
 	@Basic
-	public Boolean isProcessing() {
+	@Column(length=1)
+	public String getProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(Boolean processing) {
+	public void setProcessing(String processing) {
 		this.processing = processing;
 	}
 

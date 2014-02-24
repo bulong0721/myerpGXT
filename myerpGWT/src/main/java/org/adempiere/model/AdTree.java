@@ -54,6 +54,8 @@ public class AdTree extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_TREE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_203", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Tree", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_203")
 	public Integer getAdTreeId() {
 		return adTreeId;
 	}

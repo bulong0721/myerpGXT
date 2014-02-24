@@ -351,6 +351,8 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="W_STORE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1112", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "W_Store", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1112")
 	public Integer getWStoreId() {
 		return wStoreId;
 	}

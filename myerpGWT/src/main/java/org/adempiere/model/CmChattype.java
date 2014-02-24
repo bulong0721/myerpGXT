@@ -62,6 +62,8 @@ public class CmChattype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_CHATTYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1256", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_ChatType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1256")
 	public Integer getCmChattypeId() {
 		return cmChattypeId;
 	}

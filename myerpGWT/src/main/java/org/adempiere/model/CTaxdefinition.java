@@ -128,6 +128,8 @@ public class CTaxdefinition extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_TAXDEFINITION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53084", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_TaxDefinition", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53084")
 	public Integer getCTaxdefinitionId() {
 		return cTaxdefinitionId;
 	}

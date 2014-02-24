@@ -20,7 +20,7 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	private Integer cOrderId;
 	private Integer cRfqId;
 	private Integer cRfqresponseId;
-	private String checkcomplete;
+	private Boolean checkcomplete;
 	private String created;
 	private Integer createdby;
 	private String dateinvited;
@@ -131,6 +131,8 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_RFQRESPONSE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_849", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_RfQResponse", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_849")
 	public Integer getCRfqresponseId() {
 		return cRfqresponseId;
 	}
@@ -140,12 +142,11 @@ public class CRfqresponse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCheckcomplete() {
+	public Boolean isCheckcomplete() {
 		return checkcomplete;
 	}
 
-	public void setCheckcomplete(String checkcomplete) {
+	public void setCheckcomplete(Boolean checkcomplete) {
 		this.checkcomplete = checkcomplete;
 	}
 

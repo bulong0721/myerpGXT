@@ -24,7 +24,7 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	private Boolean isdefault;
 	private Boolean isemailwhendue;
 	private Boolean isemailwhenoverdue;
-	private Boolean isindexed;
+	private String isindexed;
 	private Boolean isinvoiced;
 	private Boolean isselfservice;
 	private String name;
@@ -180,12 +180,12 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsindexed() {
+	@Column(nullable=false, length=1)
+	public String getIsindexed() {
 		return isindexed;
 	}
 
-	public void setIsindexed(Boolean isindexed) {
+	public void setIsindexed(String isindexed) {
 		this.isindexed = isindexed;
 	}
 
@@ -220,6 +220,8 @@ public class RRequesttype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_REQUESTTYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_625", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_RequestType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_625")
 	public Integer getRRequesttypeId() {
 		return rRequesttypeId;
 	}

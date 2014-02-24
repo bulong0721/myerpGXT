@@ -100,6 +100,8 @@ public class PaReportlineset extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_REPORTLINESET_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_499", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_ReportLineSet", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_499")
 	public Integer getPaReportlinesetId() {
 		return paReportlinesetId;
 	}

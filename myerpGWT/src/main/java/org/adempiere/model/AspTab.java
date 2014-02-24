@@ -13,7 +13,7 @@ public class AspTab extends org.adempiere.common.ADEntityBase {
 	private Integer adClientId;
 	private Integer adOrgId;
 	private Integer adTabId;
-	private String allfields;
+	private Boolean allfields;
 	private String aspStatus;
 	private Integer aspTabId;
 	private Integer aspWindowId;
@@ -62,12 +62,11 @@ public class AspTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getAllfields() {
+	public Boolean isAllfields() {
 		return allfields;
 	}
 
-	public void setAllfields(String allfields) {
+	public void setAllfields(Boolean allfields) {
 		this.allfields = allfields;
 	}
 
@@ -83,6 +82,8 @@ public class AspTab extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="ASP_TAB_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53064", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "ASP_Tab", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53064")
 	public Integer getAspTabId() {
 		return aspTabId;
 	}

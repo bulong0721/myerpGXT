@@ -20,7 +20,7 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	private BigDecimal deliverytimePromised;
 	private Boolean isactive;
 	private Boolean iscreateplan;
-	private Boolean isissue;
+	private String isissue;
 	private Boolean ismps;
 	private Boolean isphantom;
 	private Boolean isrequireddrp;
@@ -143,12 +143,12 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsissue() {
+	@Column(nullable=false, length=1)
+	public String getIsissue() {
 		return isissue;
 	}
 
-	public void setIsissue(Boolean isissue) {
+	public void setIsissue(String isissue) {
 		this.isissue = isissue;
 	}
 
@@ -293,6 +293,8 @@ public class PpProductPlanning extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PP_PRODUCT_PLANNING_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53017", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_Product_Planning", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53017")
 	public Integer getPpProductPlanningId() {
 		return ppProductPlanningId;
 	}

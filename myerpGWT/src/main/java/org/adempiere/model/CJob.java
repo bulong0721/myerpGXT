@@ -53,6 +53,8 @@ public class CJob extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_JOB_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1125", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Job", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1125")
 	public Integer getCJobId() {
 		return cJobId;
 	}

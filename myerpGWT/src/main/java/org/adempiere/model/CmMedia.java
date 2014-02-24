@@ -19,7 +19,7 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String directdeploy;
+	private Boolean directdeploy;
 	private String help;
 	private Boolean isactive;
 	private Boolean issummary;
@@ -67,6 +67,8 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_MEDIA_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1238", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_Media", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1238")
 	public Integer getCmMediaId() {
 		return cmMediaId;
 	}
@@ -125,12 +127,11 @@ public class CmMedia extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getDirectdeploy() {
+	public Boolean isDirectdeploy() {
 		return directdeploy;
 	}
 
-	public void setDirectdeploy(String directdeploy) {
+	public void setDirectdeploy(Boolean directdeploy) {
 		this.directdeploy = directdeploy;
 	}
 

@@ -115,6 +115,8 @@ public class MProductoperation extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PRODUCTOPERATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1132", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_ProductOperation", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1132")
 	public Integer getMProductoperationId() {
 		return mProductoperationId;
 	}

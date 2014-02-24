@@ -27,7 +27,7 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	private Boolean isindexed;
 	private Boolean issecure;
 	private Boolean issummary;
-	private Boolean isvalid;
+	private String isvalid;
 	private String metaAuthor;
 	private String metaContent;
 	private String metaCopyright;
@@ -74,6 +74,8 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_CONTAINER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1236", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_Container", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1236")
 	public Integer getCmContainerId() {
 		return cmContainerId;
 	}
@@ -220,12 +222,12 @@ public class CmContainer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsvalid() {
+	@Column(nullable=false, length=1)
+	public String getIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(Boolean isvalid) {
+	public void setIsvalid(String isvalid) {
 		this.isvalid = isvalid;
 	}
 

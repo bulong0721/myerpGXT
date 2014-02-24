@@ -13,7 +13,7 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	private Integer adClientId;
 	private Integer adOrgId;
 	private Integer adOrgonlyId;
-	private String autoperiodcontrol;
+	private Boolean autoperiodcontrol;
 	private Integer cAcctschemaId;
 	private Integer cCurrencyId;
 	private Integer cPeriodId;
@@ -24,8 +24,8 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String gaap;
-	private String hasalias;
-	private String hascombination;
+	private Boolean hasalias;
+	private Boolean hascombination;
 	private Boolean isaccrual;
 	private Boolean isactive;
 	private Boolean isadjustcogs;
@@ -83,17 +83,19 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAutoperiodcontrol() {
+	@Column(nullable=false)
+	public Boolean isAutoperiodcontrol() {
 		return autoperiodcontrol;
 	}
 
-	public void setAutoperiodcontrol(String autoperiodcontrol) {
+	public void setAutoperiodcontrol(Boolean autoperiodcontrol) {
 		this.autoperiodcontrol = autoperiodcontrol;
 	}
 
 	@Id
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_177", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_AcctSchema", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_177")
 	public Integer getCAcctschemaId() {
 		return cAcctschemaId;
 	}
@@ -192,22 +194,22 @@ public class CAcctschema extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getHasalias() {
+	@Column(nullable=false)
+	public Boolean isHasalias() {
 		return hasalias;
 	}
 
-	public void setHasalias(String hasalias) {
+	public void setHasalias(Boolean hasalias) {
 		this.hasalias = hasalias;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getHascombination() {
+	@Column(nullable=false)
+	public Boolean isHascombination() {
 		return hascombination;
 	}
 
-	public void setHascombination(String hascombination) {
+	public void setHascombination(Boolean hascombination) {
 		this.hascombination = hascombination;
 	}
 

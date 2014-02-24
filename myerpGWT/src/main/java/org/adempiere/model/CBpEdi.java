@@ -31,10 +31,10 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	private Boolean isinfosent;
 	private Integer mWarehouseId;
 	private String name;
-	private String receiveinquiryreply;
-	private String receiveorderreply;
-	private String sendinquiry;
-	private String sendorder;
+	private Boolean receiveinquiryreply;
+	private Boolean receiveorderreply;
+	private Boolean sendinquiry;
+	private Boolean sendorder;
 	private String updated;
 	private Integer updatedby;
 
@@ -77,6 +77,8 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_BP_EDI_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_303", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_BP_EDI", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_303")
 	public Integer getCBpEdiId() {
 		return cBpEdiId;
 	}
@@ -255,42 +257,42 @@ public class CBpEdi extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getReceiveinquiryreply() {
+	@Column(nullable=false)
+	public Boolean isReceiveinquiryreply() {
 		return receiveinquiryreply;
 	}
 
-	public void setReceiveinquiryreply(String receiveinquiryreply) {
+	public void setReceiveinquiryreply(Boolean receiveinquiryreply) {
 		this.receiveinquiryreply = receiveinquiryreply;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getReceiveorderreply() {
+	@Column(nullable=false)
+	public Boolean isReceiveorderreply() {
 		return receiveorderreply;
 	}
 
-	public void setReceiveorderreply(String receiveorderreply) {
+	public void setReceiveorderreply(Boolean receiveorderreply) {
 		this.receiveorderreply = receiveorderreply;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getSendinquiry() {
+	@Column(nullable=false)
+	public Boolean isSendinquiry() {
 		return sendinquiry;
 	}
 
-	public void setSendinquiry(String sendinquiry) {
+	public void setSendinquiry(Boolean sendinquiry) {
 		this.sendinquiry = sendinquiry;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getSendorder() {
+	@Column(nullable=false)
+	public Boolean isSendorder() {
 		return sendorder;
 	}
 
-	public void setSendorder(String sendorder) {
+	public void setSendorder(Boolean sendorder) {
 		this.sendorder = sendorder;
 	}
 

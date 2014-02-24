@@ -126,6 +126,8 @@ public class MProductpricevendorbreak extends org.adempiere.common.ADEntityBase 
 
 	@Id
 	@Column(name="M_PRODUCTPRICEVENDORBREAK_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53273", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_ProductPriceVendorBreak", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53273")
 	public Integer getMProductpricevendorbreakId() {
 		return mProductpricevendorbreakId;
 	}

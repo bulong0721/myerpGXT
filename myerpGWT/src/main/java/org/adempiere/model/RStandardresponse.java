@@ -90,6 +90,8 @@ public class RStandardresponse extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_STANDARDRESPONSE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1109", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_StandardResponse", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1109")
 	public Integer getRStandardresponseId() {
 		return rStandardresponseId;
 	}

@@ -104,6 +104,8 @@ public class MDemandline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_DEMANDLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_946", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_DemandLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_946")
 	public Integer getMDemandlineId() {
 		return mDemandlineId;
 	}

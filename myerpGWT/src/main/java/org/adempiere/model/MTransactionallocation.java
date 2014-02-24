@@ -17,9 +17,9 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	private String allocationstrategytype;
 	private String created;
 	private Integer createdby;
-	private Boolean isactive;
-	private Boolean isallocated;
-	private Boolean ismanual;
+	private String isactive;
+	private String isallocated;
+	private String ismanual;
 	private Integer mAttributesetinstanceId;
 	private Integer mInoutlineId;
 	private Integer mInventorylineId;
@@ -93,32 +93,32 @@ public class MTransactionallocation extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsallocated() {
+	@Column(nullable=false, length=1)
+	public String getIsallocated() {
 		return isallocated;
 	}
 
-	public void setIsallocated(Boolean isallocated) {
+	public void setIsallocated(String isallocated) {
 		this.isallocated = isallocated;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmanual() {
+	@Column(nullable=false, length=1)
+	public String getIsmanual() {
 		return ismanual;
 	}
 
-	public void setIsmanual(Boolean ismanual) {
+	public void setIsmanual(String ismanual) {
 		this.ismanual = ismanual;
 	}
 

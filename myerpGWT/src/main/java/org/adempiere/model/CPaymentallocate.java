@@ -97,6 +97,8 @@ public class CPaymentallocate extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PAYMENTALLOCATE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1172", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_PaymentAllocate", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1172")
 	public Integer getCPaymentallocateId() {
 		return cPaymentallocateId;
 	}

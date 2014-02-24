@@ -42,6 +42,8 @@ public class AAssetUse extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_ASSET_USE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53158", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Use", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53158")
 	public Integer getAAssetUseId() {
 		return aAssetUseId;
 	}

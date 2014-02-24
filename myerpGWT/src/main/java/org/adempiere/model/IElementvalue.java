@@ -24,17 +24,17 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	private String elementname;
 	private Integer iElementvalueId;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Boolean isactive;
 	private Boolean isdoccontrolled;
 	private Boolean issummary;
 	private String name;
 	private Integer parentelementvalueId;
 	private String parentvalue;
-	private String postactual;
-	private String postbudget;
-	private String postencumbrance;
-	private String poststatistical;
+	private Boolean postactual;
+	private Boolean postbudget;
+	private Boolean postencumbrance;
+	private Boolean poststatistical;
 	private Boolean processed;
 	private Boolean processing;
 	private String updated;
@@ -169,6 +169,8 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="I_ELEMENTVALUE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_634", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_ElementValue", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_634")
 	public Integer getIElementvalueId() {
 		return iElementvalueId;
 	}
@@ -188,12 +190,12 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 
@@ -255,42 +257,38 @@ public class IElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getPostactual() {
+	public Boolean isPostactual() {
 		return postactual;
 	}
 
-	public void setPostactual(String postactual) {
+	public void setPostactual(Boolean postactual) {
 		this.postactual = postactual;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getPostbudget() {
+	public Boolean isPostbudget() {
 		return postbudget;
 	}
 
-	public void setPostbudget(String postbudget) {
+	public void setPostbudget(Boolean postbudget) {
 		this.postbudget = postbudget;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getPostencumbrance() {
+	public Boolean isPostencumbrance() {
 		return postencumbrance;
 	}
 
-	public void setPostencumbrance(String postencumbrance) {
+	public void setPostencumbrance(Boolean postencumbrance) {
 		this.postencumbrance = postencumbrance;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getPoststatistical() {
+	public Boolean isPoststatistical() {
 		return poststatistical;
 	}
 
-	public void setPoststatistical(String poststatistical) {
+	public void setPoststatistical(Boolean poststatistical) {
 		this.poststatistical = poststatistical;
 	}
 

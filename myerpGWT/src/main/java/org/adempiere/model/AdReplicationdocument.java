@@ -53,6 +53,8 @@ public class AdReplicationdocument extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_REPLICATIONDOCUMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53088", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_ReplicationDocument", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53088")
 	public Integer getAdReplicationdocumentId() {
 		return adReplicationdocumentId;
 	}

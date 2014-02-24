@@ -56,6 +56,8 @@ public class AdColor extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_COLOR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_533", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Color", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_533")
 	public Integer getAdColorId() {
 		return adColorId;
 	}

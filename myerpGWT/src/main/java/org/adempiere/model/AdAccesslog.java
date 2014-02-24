@@ -36,6 +36,8 @@ public class AdAccesslog extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_ACCESSLOG_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_942", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_AccessLog", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_942")
 	public Integer getAdAccesslogId() {
 		return adAccesslogId;
 	}

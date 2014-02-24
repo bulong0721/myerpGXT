@@ -42,6 +42,8 @@ public class AdClientshare extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_CLIENTSHARE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1188", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_ClientShare", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1188")
 	public Integer getAdClientshareId() {
 		return adClientshareId;
 	}

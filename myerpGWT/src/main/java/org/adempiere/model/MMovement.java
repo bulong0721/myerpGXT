@@ -44,7 +44,7 @@ public class MMovement extends org.adempiere.common.ADEntityBase {
 	private Integer mShipperId;
 	private String movementdate;
 	private String poreference;
-	private String posted;
+	private Boolean posted;
 	private String priorityrule;
 	private Boolean processed;
 	private Long processedon;
@@ -350,6 +350,8 @@ public class MMovement extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_MOVEMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_246", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Movement", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_246")
 	public Integer getMMovementId() {
 		return mMovementId;
 	}
@@ -389,12 +391,12 @@ public class MMovement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 

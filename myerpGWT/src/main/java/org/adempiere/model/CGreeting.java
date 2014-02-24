@@ -52,6 +52,8 @@ public class CGreeting extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_GREETING_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_283", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Greeting", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_283")
 	public Integer getCGreetingId() {
 		return cGreetingId;
 	}

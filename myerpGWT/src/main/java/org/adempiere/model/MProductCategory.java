@@ -138,6 +138,8 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_115", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Product_Category", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_115")
 	public Integer getMProductCategoryId() {
 		return mProductCategoryId;
 	}

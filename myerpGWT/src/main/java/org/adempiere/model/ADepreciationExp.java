@@ -23,10 +23,10 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	private String dateacct;
 	private String description;
 	private BigDecimal expense;
-	private Boolean isactive;
-	private Boolean isdepreciated;
+	private String isactive;
+	private String isdepreciated;
 	private String postingtype;
-	private Boolean processed;
+	private String processed;
 	private String updated;
 	private Integer updatedby;
 
@@ -59,6 +59,8 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_DEPRECIATION_EXP_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53135", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Exp", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53135")
 	public Integer getADepreciationExpId() {
 		return aDepreciationExpId;
 	}
@@ -157,22 +159,22 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdepreciated() {
+	@Column(nullable=false, length=1)
+	public String getIsdepreciated() {
 		return isdepreciated;
 	}
 
-	public void setIsdepreciated(Boolean isdepreciated) {
+	public void setIsdepreciated(String isdepreciated) {
 		this.isdepreciated = isdepreciated;
 	}
 
@@ -187,12 +189,12 @@ public class ADepreciationExp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isProcessed() {
+	@Column(nullable=false, length=1)
+	public String getProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(Boolean processed) {
+	public void setProcessed(String processed) {
 		this.processed = processed;
 	}
 

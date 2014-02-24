@@ -73,6 +73,8 @@ public class CTaxdeclarationacct extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_TAXDECLARATIONACCT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1181", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_TaxDeclarationAcct", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1181")
 	public Integer getCTaxdeclarationacctId() {
 		return cTaxdeclarationacctId;
 	}

@@ -13,7 +13,7 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer adClientId;
 	private Integer adOrgId;
-	private String allowuomfractions;
+	private Boolean allowuomfractions;
 	private Integer cTaxcategoryId;
 	private Integer cUomId;
 	private BigDecimal chargeableqty;
@@ -26,13 +26,13 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	private Boolean istimeslot;
 	private Integer mProductCategoryId;
 	private String name;
-	private String onfriday;
-	private String onmonday;
-	private String onsaturday;
-	private String onsunday;
-	private String onthursday;
-	private String ontuesday;
-	private String onwednesday;
+	private Boolean onfriday;
+	private Boolean onmonday;
+	private Boolean onsaturday;
+	private Boolean onsunday;
+	private Boolean onthursday;
+	private Boolean ontuesday;
+	private Boolean onwednesday;
 	private Integer sResourcetypeId;
 	private String timeslotend;
 	private String timeslotstart;
@@ -68,12 +68,12 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAllowuomfractions() {
+	@Column(nullable=false)
+	public Boolean isAllowuomfractions() {
 		return allowuomfractions;
 	}
 
-	public void setAllowuomfractions(String allowuomfractions) {
+	public void setAllowuomfractions(Boolean allowuomfractions) {
 		this.allowuomfractions = allowuomfractions;
 	}
 
@@ -196,77 +196,79 @@ public class SResourcetype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOnfriday() {
+	@Column(nullable=false)
+	public Boolean isOnfriday() {
 		return onfriday;
 	}
 
-	public void setOnfriday(String onfriday) {
+	public void setOnfriday(Boolean onfriday) {
 		this.onfriday = onfriday;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOnmonday() {
+	@Column(nullable=false)
+	public Boolean isOnmonday() {
 		return onmonday;
 	}
 
-	public void setOnmonday(String onmonday) {
+	public void setOnmonday(Boolean onmonday) {
 		this.onmonday = onmonday;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOnsaturday() {
+	@Column(nullable=false)
+	public Boolean isOnsaturday() {
 		return onsaturday;
 	}
 
-	public void setOnsaturday(String onsaturday) {
+	public void setOnsaturday(Boolean onsaturday) {
 		this.onsaturday = onsaturday;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOnsunday() {
+	@Column(nullable=false)
+	public Boolean isOnsunday() {
 		return onsunday;
 	}
 
-	public void setOnsunday(String onsunday) {
+	public void setOnsunday(Boolean onsunday) {
 		this.onsunday = onsunday;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOnthursday() {
+	@Column(nullable=false)
+	public Boolean isOnthursday() {
 		return onthursday;
 	}
 
-	public void setOnthursday(String onthursday) {
+	public void setOnthursday(Boolean onthursday) {
 		this.onthursday = onthursday;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOntuesday() {
+	@Column(nullable=false)
+	public Boolean isOntuesday() {
 		return ontuesday;
 	}
 
-	public void setOntuesday(String ontuesday) {
+	public void setOntuesday(Boolean ontuesday) {
 		this.ontuesday = ontuesday;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOnwednesday() {
+	@Column(nullable=false)
+	public Boolean isOnwednesday() {
 		return onwednesday;
 	}
 
-	public void setOnwednesday(String onwednesday) {
+	public void setOnwednesday(Boolean onwednesday) {
 		this.onwednesday = onwednesday;
 	}
 
 	@Id
 	@Column(name="S_RESOURCETYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_552", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "S_ResourceType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_552")
 	public Integer getSResourcetypeId() {
 		return sResourcetypeId;
 	}

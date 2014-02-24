@@ -22,7 +22,7 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private Integer deliverytimeActual;
 	private Integer deliverytimePromised;
-	private String discontinued;
+	private Boolean discontinued;
 	private String discontinuedat;
 	private String discontinuedby;
 	private Boolean isactive;
@@ -152,12 +152,11 @@ public class MProductPo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getDiscontinued() {
+	public Boolean isDiscontinued() {
 		return discontinued;
 	}
 
-	public void setDiscontinued(String discontinued) {
+	public void setDiscontinued(Boolean discontinued) {
 		this.discontinued = discontinued;
 	}
 

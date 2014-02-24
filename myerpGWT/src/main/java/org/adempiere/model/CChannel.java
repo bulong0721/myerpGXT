@@ -61,6 +61,8 @@ public class CChannel extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_CHANNEL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_235", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Channel", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_235")
 	public Integer getCChannelId() {
 		return cChannelId;
 	}

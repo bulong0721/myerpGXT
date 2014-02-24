@@ -20,9 +20,9 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private Boolean isactive;
 	private Integer jasperprocessId;
-	private String jasperprocessing;
-	private String listsources;
-	private String listtrx;
+	private Boolean jasperprocessing;
+	private Boolean listsources;
+	private Boolean listtrx;
 	private String name;
 	private Integer paReportId;
 	private Integer paReportcolumnsetId;
@@ -139,32 +139,31 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getJasperprocessing() {
+	public Boolean isJasperprocessing() {
 		return jasperprocessing;
 	}
 
-	public void setJasperprocessing(String jasperprocessing) {
+	public void setJasperprocessing(Boolean jasperprocessing) {
 		this.jasperprocessing = jasperprocessing;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getListsources() {
+	@Column(nullable=false)
+	public Boolean isListsources() {
 		return listsources;
 	}
 
-	public void setListsources(String listsources) {
+	public void setListsources(Boolean listsources) {
 		this.listsources = listsources;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getListtrx() {
+	@Column(nullable=false)
+	public Boolean isListtrx() {
 		return listtrx;
 	}
 
-	public void setListtrx(String listtrx) {
+	public void setListtrx(Boolean listtrx) {
 		this.listtrx = listtrx;
 	}
 
@@ -180,6 +179,8 @@ public class PaReport extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_REPORT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_495", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_Report", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_495")
 	public Integer getPaReportId() {
 		return paReportId;
 	}

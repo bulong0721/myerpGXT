@@ -25,8 +25,8 @@ public class TBomline extends org.adempiere.common.ADEntityBase {
 	private BigDecimal futurecostprice;
 	private BigDecimal futurecostpricell;
 	private String implosion;
-	private Boolean isactive;
-	private Boolean iscostfrozen;
+	private String isactive;
+	private String iscostfrozen;
 	private Integer levelno;
 	private String levels;
 	private Integer mCostelementId;
@@ -184,20 +184,22 @@ public class TBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIsactive() {
+	@Column(length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	public Boolean isIscostfrozen() {
+	@Column(length=1)
+	public String getIscostfrozen() {
 		return iscostfrozen;
 	}
 
-	public void setIscostfrozen(Boolean iscostfrozen) {
+	public void setIscostfrozen(String iscostfrozen) {
 		this.iscostfrozen = iscostfrozen;
 	}
 
@@ -302,6 +304,8 @@ public class TBomline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="T_BOMLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53042", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "T_BOMLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53042")
 	public Integer getTBomlineId() {
 		return tBomlineId;
 	}

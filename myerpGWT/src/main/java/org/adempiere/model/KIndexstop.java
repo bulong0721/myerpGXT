@@ -113,6 +113,8 @@ public class KIndexstop extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="K_INDEXSTOP_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1287", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_IndexStop", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1287")
 	public Integer getKIndexstopId() {
 		return kIndexstopId;
 	}

@@ -44,6 +44,8 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_ASSET_DELIVERY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_668", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Delivery", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_668")
 	public Integer getAAssetDeliveryId() {
 		return aAssetDeliveryId;
 	}

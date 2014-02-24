@@ -72,6 +72,8 @@ public class AdTableScriptvalidator extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_TABLE_SCRIPTVALIDATOR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53076", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Table_ScriptValidator", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53076")
 	public Integer getAdTableScriptvalidatorId() {
 		return adTableScriptvalidatorId;
 	}

@@ -128,7 +128,7 @@ public class ADFieldBuilder {
 				}
 			};
 		} else if (fieldType.isButton()) {
-			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
+			valueProvider = new ADModelValueProvider<Boolean>(propertyName, fieldType);
 			showLabel = false;
 		} else if (fieldType.isText()) {
 			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);

@@ -120,6 +120,8 @@ public class SResourceunavailable extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="S_RESOURCEUNAVAILABLE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_554", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "S_ResourceUnAvailable", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_554")
 	public Integer getSResourceunavailableId() {
 		return sResourceunavailableId;
 	}

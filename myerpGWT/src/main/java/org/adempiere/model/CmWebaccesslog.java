@@ -24,7 +24,7 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	private BigDecimal filesize;
 	private String hyphen;
 	private String ipAddress;
-	private Boolean isactive;
+	private String isactive;
 	private String logtype;
 	private String pageurl;
 	private String protocol;
@@ -107,6 +107,8 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_WEBACCESSLOG_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1280", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_WebAccessLog", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1280")
 	public Integer getCmWebaccesslogId() {
 		return cmWebaccesslogId;
 	}
@@ -175,12 +177,12 @@ public class CmWebaccesslog extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 

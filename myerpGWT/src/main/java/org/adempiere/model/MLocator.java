@@ -95,6 +95,8 @@ public class MLocator extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_113", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Locator", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_113")
 	public Integer getMLocatorId() {
 		return mLocatorId;
 	}

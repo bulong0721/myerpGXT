@@ -102,6 +102,8 @@ public class CPos extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_POS_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_995", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_POS", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_995")
 	public Integer getCPosId() {
 		return cPosId;
 	}

@@ -74,6 +74,8 @@ public class CmNewsitem extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_NEWSITEM_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1253", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_NewsItem", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1253")
 	public Integer getCmNewsitemId() {
 		return cmNewsitemId;
 	}

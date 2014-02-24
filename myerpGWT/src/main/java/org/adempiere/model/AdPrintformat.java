@@ -21,7 +21,7 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	private Integer adTableId;
 	private String args;
 	private String classname;
-	private String createcopy;
+	private Boolean createcopy;
 	private String created;
 	private Integer createdby;
 	private String description;
@@ -87,6 +87,8 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_PRINTFORMAT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_579", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_PrintFormat", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_579")
 	public Integer getAdPrintformatId() {
 		return adPrintformatId;
 	}
@@ -156,12 +158,11 @@ public class AdPrintformat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatecopy() {
+	public Boolean isCreatecopy() {
 		return createcopy;
 	}
 
-	public void setCreatecopy(String createcopy) {
+	public void setCreatecopy(Boolean createcopy) {
 		this.createcopy = createcopy;
 	}
 

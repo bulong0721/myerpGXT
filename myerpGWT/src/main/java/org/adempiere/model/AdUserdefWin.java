@@ -88,6 +88,8 @@ public class AdUserdefWin extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_USERDEF_WIN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_542", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_UserDef_Win", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_542")
 	public Integer getAdUserdefWinId() {
 		return adUserdefWinId;
 	}

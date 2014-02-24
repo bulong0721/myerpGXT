@@ -77,6 +77,8 @@ public class CRfqresponseline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_RFQRESPONSELINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_848", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_RfQResponseLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_848")
 	public Integer getCRfqresponselineId() {
 		return cRfqresponselineId;
 	}

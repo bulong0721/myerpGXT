@@ -24,7 +24,7 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private Boolean isactive;
-	private String uninstall;
+	private Boolean uninstall;
 	private String updated;
 	private Integer updatedby;
 
@@ -67,6 +67,8 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_PACKAGE_IMP_BACKUP_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_50001", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Package_Imp_Backup", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_50001")
 	public Integer getAdPackageImpBackupId() {
 		return adPackageImpBackupId;
 	}
@@ -176,12 +178,11 @@ public class AdPackageImpBackup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getUninstall() {
+	public Boolean isUninstall() {
 		return uninstall;
 	}
 
-	public void setUninstall(String uninstall) {
+	public void setUninstall(Boolean uninstall) {
 		this.uninstall = uninstall;
 	}
 

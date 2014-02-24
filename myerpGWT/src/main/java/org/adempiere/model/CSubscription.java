@@ -66,6 +66,8 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_SUBSCRIPTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_844", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Subscription", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_844")
 	public Integer getCSubscriptionId() {
 		return cSubscriptionId;
 	}

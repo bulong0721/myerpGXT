@@ -56,6 +56,8 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_CONVERSION_RATE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_40", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Conversion_Rate", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_40")
 	public Integer getCConversionRateId() {
 		return cConversionRateId;
 	}

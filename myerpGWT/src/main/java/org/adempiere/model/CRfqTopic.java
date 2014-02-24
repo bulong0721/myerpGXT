@@ -62,6 +62,8 @@ public class CRfqTopic extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_RFQ_TOPIC_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_846", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_RfQ_Topic", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_846")
 	public Integer getCRfqTopicId() {
 		return cRfqTopicId;
 	}

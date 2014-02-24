@@ -41,6 +41,8 @@ public class AdError extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_ERROR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_317", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Error", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_317")
 	public Integer getAdErrorId() {
 		return adErrorId;
 	}

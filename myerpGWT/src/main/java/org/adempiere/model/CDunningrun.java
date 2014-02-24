@@ -22,7 +22,7 @@ public class CDunningrun extends org.adempiere.common.ADEntityBase {
 	private Boolean isactive;
 	private Boolean processed;
 	private Boolean processing;
-	private String sendit;
+	private Boolean sendit;
 	private String updated;
 	private Integer updatedby;
 
@@ -75,6 +75,8 @@ public class CDunningrun extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_DUNNINGRUN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_622", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_DunningRun", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_622")
 	public Integer getCDunningrunId() {
 		return cDunningrunId;
 	}
@@ -152,12 +154,11 @@ public class CDunningrun extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getSendit() {
+	public Boolean isSendit() {
 		return sendit;
 	}
 
-	public void setSendit(String sendit) {
+	public void setSendit(Boolean sendit) {
 		this.sendit = sendit;
 	}
 

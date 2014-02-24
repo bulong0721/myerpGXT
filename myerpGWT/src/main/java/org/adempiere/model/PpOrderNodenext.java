@@ -166,6 +166,8 @@ public class PpOrderNodenext extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PP_ORDER_NODENEXT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53020", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_Order_NodeNext", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53020")
 	public Integer getPpOrderNodenextId() {
 		return ppOrderNodenextId;
 	}

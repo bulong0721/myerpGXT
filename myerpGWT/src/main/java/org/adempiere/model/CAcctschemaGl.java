@@ -28,9 +28,9 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	private Integer suspenseerrorAcct;
 	private String updated;
 	private Integer updatedby;
-	private String usecurrencybalancing;
-	private String usesuspensebalancing;
-	private String usesuspenseerror;
+	private Boolean usecurrencybalancing;
+	private Boolean usesuspensebalancing;
+	private Boolean usesuspenseerror;
 
 	public CAcctschemaGl() {
 	}
@@ -220,32 +220,32 @@ public class CAcctschemaGl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getUsecurrencybalancing() {
+	@Column(nullable=false)
+	public Boolean isUsecurrencybalancing() {
 		return usecurrencybalancing;
 	}
 
-	public void setUsecurrencybalancing(String usecurrencybalancing) {
+	public void setUsecurrencybalancing(Boolean usecurrencybalancing) {
 		this.usecurrencybalancing = usecurrencybalancing;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getUsesuspensebalancing() {
+	@Column(nullable=false)
+	public Boolean isUsesuspensebalancing() {
 		return usesuspensebalancing;
 	}
 
-	public void setUsesuspensebalancing(String usesuspensebalancing) {
+	public void setUsesuspensebalancing(Boolean usesuspensebalancing) {
 		this.usesuspensebalancing = usesuspensebalancing;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getUsesuspenseerror() {
+	@Column(nullable=false)
+	public Boolean isUsesuspenseerror() {
 		return usesuspenseerror;
 	}
 
-	public void setUsesuspenseerror(String usesuspenseerror) {
+	public void setUsesuspenseerror(Boolean usesuspenseerror) {
 		this.usesuspenseerror = usesuspenseerror;
 	}
 }

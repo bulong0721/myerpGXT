@@ -61,6 +61,8 @@ public class AspForm extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="ASP_FORM_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53068", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "ASP_Form", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53068")
 	public Integer getAspFormId() {
 		return aspFormId;
 	}

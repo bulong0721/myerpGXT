@@ -97,6 +97,8 @@ public class CBankstatementloader extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_BANKSTATEMENTLOADER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_815", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_BankStatementLoader", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_815")
 	public Integer getCBankstatementloaderId() {
 		return cBankstatementloaderId;
 	}

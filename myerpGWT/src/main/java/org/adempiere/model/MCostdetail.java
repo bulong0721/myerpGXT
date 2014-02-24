@@ -235,6 +235,8 @@ public class MCostdetail extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_COSTDETAIL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1152", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_CostDetail", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1152")
 	public Integer getMCostdetailId() {
 		return mCostdetailId;
 	}

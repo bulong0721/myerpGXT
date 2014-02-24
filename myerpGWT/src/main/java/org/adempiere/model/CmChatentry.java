@@ -97,6 +97,8 @@ public class CmChatentry extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_CHATENTRY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1259", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_ChatEntry", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1259")
 	public Integer getCmChatentryId() {
 		return cmChatentryId;
 	}

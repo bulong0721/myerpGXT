@@ -70,6 +70,8 @@ public class CBpartnerLocation extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_208", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_BPartner_Location", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_208")
 	public Integer getCBpartnerLocationId() {
 		return cBpartnerLocationId;
 	}

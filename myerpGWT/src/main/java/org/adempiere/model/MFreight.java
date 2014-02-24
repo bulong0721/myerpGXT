@@ -128,6 +128,8 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_FREIGHT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_751", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Freight", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_751")
 	public Integer getMFreightId() {
 		return mFreightId;
 	}

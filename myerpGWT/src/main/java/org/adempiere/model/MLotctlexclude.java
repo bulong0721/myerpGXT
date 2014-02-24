@@ -111,6 +111,8 @@ public class MLotctlexclude extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_LOTCTLEXCLUDE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1168", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_LotCtlExclude", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1168")
 	public Integer getMLotctlexcludeId() {
 		return mLotctlexcludeId;
 	}

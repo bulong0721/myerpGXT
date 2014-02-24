@@ -14,7 +14,7 @@ public class CInvoiceline extends org.adempiere.common.ADEntityBase {
 	private Integer aAssetGroupId;
 	private Integer aAssetId;
 	private String aCapvsexp;
-	private String aCreateasset;
+	private Boolean aCreateasset;
 	private String aProcessed;
 	private Integer adClientId;
 	private Integer adOrgId;
@@ -98,12 +98,12 @@ public class CInvoiceline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_CREATEASSET", length=1)
-	public String getACreateasset() {
+	@Column(name="A_CREATEASSET")
+	public Boolean isACreateasset() {
 		return aCreateasset;
 	}
 
-	public void setACreateasset(String aCreateasset) {
+	public void setACreateasset(Boolean aCreateasset) {
 		this.aCreateasset = aCreateasset;
 	}
 
@@ -189,6 +189,8 @@ public class CInvoiceline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_INVOICELINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_260", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_InvoiceLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_260")
 	public Integer getCInvoicelineId() {
 		return cInvoicelineId;
 	}

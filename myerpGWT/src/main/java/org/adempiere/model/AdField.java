@@ -74,6 +74,8 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_FIELD_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_4", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Field", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_4")
 	public Integer getAdFieldId() {
 		return adFieldId;
 	}
@@ -301,6 +303,7 @@ public class AdField extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(length=1)
 	public Boolean isIsmandatory() {
 		return ismandatory;
 	}

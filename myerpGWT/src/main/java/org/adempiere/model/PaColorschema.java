@@ -198,6 +198,8 @@ public class PaColorschema extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_COLORSCHEMA_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1194", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_ColorSchema", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1194")
 	public Integer getPaColorschemaId() {
 		return paColorschemaId;
 	}

@@ -14,7 +14,7 @@ public class AAssetInfoTax extends org.adempiere.common.ADEntityBase {
 	private Integer aAssetInfoTaxId;
 	private String aFinanceMeth;
 	private Integer aInvestmentCr;
-	private String aNewUsed;
+	private Boolean aNewUsed;
 	private String aState;
 	private String aTaxEntity;
 	private Integer adClientId;
@@ -45,6 +45,8 @@ public class AAssetInfoTax extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_ASSET_INFO_TAX_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53151", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Info_Tax", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53151")
 	public Integer getAAssetInfoTaxId() {
 		return aAssetInfoTaxId;
 	}
@@ -74,12 +76,12 @@ public class AAssetInfoTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_NEW_USED", length=1)
-	public String getANewUsed() {
+	@Column(name="A_NEW_USED")
+	public Boolean isANewUsed() {
 		return aNewUsed;
 	}
 
-	public void setANewUsed(String aNewUsed) {
+	public void setANewUsed(Boolean aNewUsed) {
 		this.aNewUsed = aNewUsed;
 	}
 

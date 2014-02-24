@@ -18,7 +18,7 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String deliveryconfirmation;
 	private Boolean isactive;
-	private Boolean isdelivered;
+	private String isdelivered;
 	private String mailtext;
 	private String messageid;
 	private Integer rMailtextId;
@@ -66,6 +66,8 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_USERMAIL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1116", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_UserMail", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1116")
 	public Integer getAdUsermailId() {
 		return adUsermailId;
 	}
@@ -115,11 +117,12 @@ public class AdUsermail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIsdelivered() {
+	@Column(length=1)
+	public String getIsdelivered() {
 		return isdelivered;
 	}
 
-	public void setIsdelivered(Boolean isdelivered) {
+	public void setIsdelivered(String isdelivered) {
 		this.isdelivered = isdelivered;
 	}
 

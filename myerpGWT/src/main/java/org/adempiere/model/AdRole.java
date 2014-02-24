@@ -16,19 +16,19 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	private Integer adRoleId;
 	private Integer adTreeMenuId;
 	private Integer adTreeOrgId;
-	private String allowInfoAccount;
-	private String allowInfoAsset;
-	private String allowInfoBpartner;
-	private String allowInfoCashjournal;
-	private String allowInfoCrp;
-	private String allowInfoInout;
-	private String allowInfoInvoice;
-	private String allowInfoMrp;
-	private String allowInfoOrder;
-	private String allowInfoPayment;
-	private String allowInfoProduct;
-	private String allowInfoResource;
-	private String allowInfoSchedule;
+	private Boolean allowInfoAccount;
+	private Boolean allowInfoAsset;
+	private Boolean allowInfoBpartner;
+	private Boolean allowInfoCashjournal;
+	private Boolean allowInfoCrp;
+	private Boolean allowInfoInout;
+	private Boolean allowInfoInvoice;
+	private Boolean allowInfoMrp;
+	private Boolean allowInfoOrder;
+	private Boolean allowInfoPayment;
+	private Boolean allowInfoProduct;
+	private Boolean allowInfoResource;
+	private Boolean allowInfoSchedule;
 	private BigDecimal amtapproval;
 	private Integer cCurrencyId;
 	private Integer confirmqueryrecords;
@@ -42,8 +42,8 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	private Boolean iscanexport;
 	private Boolean iscanreport;
 	private Boolean ischangelog;
-	private Boolean isdiscountallowedontotal;
-	private Boolean isdiscountuptolimitprice;
+	private String isdiscountallowedontotal;
+	private String isdiscountuptolimitprice;
 	private Boolean ismanual;
 	private Boolean ispersonalaccess;
 	private Boolean ispersonallock;
@@ -51,7 +51,7 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	private Boolean isuseuserorgaccess;
 	private Integer maxqueryrecords;
 	private String name;
-	private String overwritepricelimit;
+	private Boolean overwritepricelimit;
 	private String preferencetype;
 	private Integer supervisorId;
 	private String updated;
@@ -88,6 +88,8 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_ROLE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_37", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Role", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_37")
 	public Integer getAdRoleId() {
 		return adRoleId;
 	}
@@ -117,132 +119,132 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_ACCOUNT", nullable=false, length=1)
-	public String getAllowInfoAccount() {
+	@Column(name="ALLOW_INFO_ACCOUNT", nullable=false)
+	public Boolean isAllowInfoAccount() {
 		return allowInfoAccount;
 	}
 
-	public void setAllowInfoAccount(String allowInfoAccount) {
+	public void setAllowInfoAccount(Boolean allowInfoAccount) {
 		this.allowInfoAccount = allowInfoAccount;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_ASSET", nullable=false, length=1)
-	public String getAllowInfoAsset() {
+	@Column(name="ALLOW_INFO_ASSET", nullable=false)
+	public Boolean isAllowInfoAsset() {
 		return allowInfoAsset;
 	}
 
-	public void setAllowInfoAsset(String allowInfoAsset) {
+	public void setAllowInfoAsset(Boolean allowInfoAsset) {
 		this.allowInfoAsset = allowInfoAsset;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_BPARTNER", nullable=false, length=1)
-	public String getAllowInfoBpartner() {
+	@Column(name="ALLOW_INFO_BPARTNER", nullable=false)
+	public Boolean isAllowInfoBpartner() {
 		return allowInfoBpartner;
 	}
 
-	public void setAllowInfoBpartner(String allowInfoBpartner) {
+	public void setAllowInfoBpartner(Boolean allowInfoBpartner) {
 		this.allowInfoBpartner = allowInfoBpartner;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_CASHJOURNAL", nullable=false, length=1)
-	public String getAllowInfoCashjournal() {
+	@Column(name="ALLOW_INFO_CASHJOURNAL", nullable=false)
+	public Boolean isAllowInfoCashjournal() {
 		return allowInfoCashjournal;
 	}
 
-	public void setAllowInfoCashjournal(String allowInfoCashjournal) {
+	public void setAllowInfoCashjournal(Boolean allowInfoCashjournal) {
 		this.allowInfoCashjournal = allowInfoCashjournal;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_CRP", nullable=false, length=1)
-	public String getAllowInfoCrp() {
+	@Column(name="ALLOW_INFO_CRP", nullable=false)
+	public Boolean isAllowInfoCrp() {
 		return allowInfoCrp;
 	}
 
-	public void setAllowInfoCrp(String allowInfoCrp) {
+	public void setAllowInfoCrp(Boolean allowInfoCrp) {
 		this.allowInfoCrp = allowInfoCrp;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_INOUT", nullable=false, length=1)
-	public String getAllowInfoInout() {
+	@Column(name="ALLOW_INFO_INOUT", nullable=false)
+	public Boolean isAllowInfoInout() {
 		return allowInfoInout;
 	}
 
-	public void setAllowInfoInout(String allowInfoInout) {
+	public void setAllowInfoInout(Boolean allowInfoInout) {
 		this.allowInfoInout = allowInfoInout;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_INVOICE", nullable=false, length=1)
-	public String getAllowInfoInvoice() {
+	@Column(name="ALLOW_INFO_INVOICE", nullable=false)
+	public Boolean isAllowInfoInvoice() {
 		return allowInfoInvoice;
 	}
 
-	public void setAllowInfoInvoice(String allowInfoInvoice) {
+	public void setAllowInfoInvoice(Boolean allowInfoInvoice) {
 		this.allowInfoInvoice = allowInfoInvoice;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_MRP", nullable=false, length=1)
-	public String getAllowInfoMrp() {
+	@Column(name="ALLOW_INFO_MRP", nullable=false)
+	public Boolean isAllowInfoMrp() {
 		return allowInfoMrp;
 	}
 
-	public void setAllowInfoMrp(String allowInfoMrp) {
+	public void setAllowInfoMrp(Boolean allowInfoMrp) {
 		this.allowInfoMrp = allowInfoMrp;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_ORDER", nullable=false, length=1)
-	public String getAllowInfoOrder() {
+	@Column(name="ALLOW_INFO_ORDER", nullable=false)
+	public Boolean isAllowInfoOrder() {
 		return allowInfoOrder;
 	}
 
-	public void setAllowInfoOrder(String allowInfoOrder) {
+	public void setAllowInfoOrder(Boolean allowInfoOrder) {
 		this.allowInfoOrder = allowInfoOrder;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_PAYMENT", nullable=false, length=1)
-	public String getAllowInfoPayment() {
+	@Column(name="ALLOW_INFO_PAYMENT", nullable=false)
+	public Boolean isAllowInfoPayment() {
 		return allowInfoPayment;
 	}
 
-	public void setAllowInfoPayment(String allowInfoPayment) {
+	public void setAllowInfoPayment(Boolean allowInfoPayment) {
 		this.allowInfoPayment = allowInfoPayment;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_PRODUCT", nullable=false, length=1)
-	public String getAllowInfoProduct() {
+	@Column(name="ALLOW_INFO_PRODUCT", nullable=false)
+	public Boolean isAllowInfoProduct() {
 		return allowInfoProduct;
 	}
 
-	public void setAllowInfoProduct(String allowInfoProduct) {
+	public void setAllowInfoProduct(Boolean allowInfoProduct) {
 		this.allowInfoProduct = allowInfoProduct;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_RESOURCE", nullable=false, length=1)
-	public String getAllowInfoResource() {
+	@Column(name="ALLOW_INFO_RESOURCE", nullable=false)
+	public Boolean isAllowInfoResource() {
 		return allowInfoResource;
 	}
 
-	public void setAllowInfoResource(String allowInfoResource) {
+	public void setAllowInfoResource(Boolean allowInfoResource) {
 		this.allowInfoResource = allowInfoResource;
 	}
 
 	@Basic
-	@Column(name="ALLOW_INFO_SCHEDULE", nullable=false, length=1)
-	public String getAllowInfoSchedule() {
+	@Column(name="ALLOW_INFO_SCHEDULE", nullable=false)
+	public Boolean isAllowInfoSchedule() {
 		return allowInfoSchedule;
 	}
 
-	public void setAllowInfoSchedule(String allowInfoSchedule) {
+	public void setAllowInfoSchedule(Boolean allowInfoSchedule) {
 		this.allowInfoSchedule = allowInfoSchedule;
 	}
 
@@ -375,22 +377,22 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdiscountallowedontotal() {
+	@Column(nullable=false, length=1)
+	public String getIsdiscountallowedontotal() {
 		return isdiscountallowedontotal;
 	}
 
-	public void setIsdiscountallowedontotal(Boolean isdiscountallowedontotal) {
+	public void setIsdiscountallowedontotal(String isdiscountallowedontotal) {
 		this.isdiscountallowedontotal = isdiscountallowedontotal;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdiscountuptolimitprice() {
+	@Column(nullable=false, length=1)
+	public String getIsdiscountuptolimitprice() {
 		return isdiscountuptolimitprice;
 	}
 
-	public void setIsdiscountuptolimitprice(Boolean isdiscountuptolimitprice) {
+	public void setIsdiscountuptolimitprice(String isdiscountuptolimitprice) {
 		this.isdiscountuptolimitprice = isdiscountuptolimitprice;
 	}
 
@@ -465,12 +467,12 @@ public class AdRole extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwritepricelimit() {
+	@Column(nullable=false)
+	public Boolean isOverwritepricelimit() {
 		return overwritepricelimit;
 	}
 
-	public void setOverwritepricelimit(String overwritepricelimit) {
+	public void setOverwritepricelimit(Boolean overwritepricelimit) {
 		this.overwritepricelimit = overwritepricelimit;
 	}
 

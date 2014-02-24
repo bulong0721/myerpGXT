@@ -52,6 +52,8 @@ public class CBankstatementmatcher extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_BANKSTATEMENTMATCHER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_833", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_BankStatementMatcher", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_833")
 	public Integer getCBankstatementmatcherId() {
 		return cBankstatementmatcherId;
 	}

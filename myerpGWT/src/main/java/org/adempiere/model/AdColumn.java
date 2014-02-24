@@ -78,6 +78,8 @@ public class AdColumn extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_3", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Column", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_3")
 	public Integer getAdColumnId() {
 		return adColumnId;
 	}
@@ -500,7 +502,7 @@ public class AdColumn extends org.adempiere.common.ADEntityBase {
 	public void setVformat(String vformat) {
 		this.vformat = vformat;
 	}
-
+	
 	public void setAdReferenceId(DisplayType type) {
 		this.adReferenceId = type.getValue();
 	}

@@ -197,6 +197,8 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="W_COUNTER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_340", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "W_Counter", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_340")
 	public Integer getWCounterId() {
 		return wCounterId;
 	}

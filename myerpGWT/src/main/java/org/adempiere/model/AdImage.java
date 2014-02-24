@@ -43,6 +43,8 @@ public class AdImage extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_IMAGE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_537", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Image", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_537")
 	public Integer getAdImageId() {
 		return adImageId;
 	}

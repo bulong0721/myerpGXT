@@ -52,6 +52,8 @@ public class CCashbook extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_CASHBOOK_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_345", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_CashBook", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_345")
 	public Integer getCCashbookId() {
 		return cCashbookId;
 	}

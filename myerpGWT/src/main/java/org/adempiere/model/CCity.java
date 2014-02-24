@@ -65,6 +65,8 @@ public class CCity extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_CITY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_56", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_City", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_56")
 	public Integer getCCityId() {
 		return cCityId;
 	}

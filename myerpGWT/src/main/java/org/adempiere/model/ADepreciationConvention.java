@@ -20,7 +20,7 @@ public class ADepreciationConvention extends org.adempiere.common.ADEntityBase {
 	private Boolean isactive;
 	private String name;
 	private Boolean processed;
-	private Boolean processing;
+	private String processing;
 	private String textmsg;
 	private String updated;
 	private Integer updatedby;
@@ -34,6 +34,8 @@ public class ADepreciationConvention extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_DEPRECIATION_CONVENTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53145", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Convention", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53145")
 	public Integer getADepreciationConventionId() {
 		return aDepreciationConventionId;
 	}
@@ -133,11 +135,12 @@ public class ADepreciationConvention extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isProcessing() {
+	@Column(length=1)
+	public String getProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(Boolean processing) {
+	public void setProcessing(String processing) {
 		this.processing = processing;
 	}
 

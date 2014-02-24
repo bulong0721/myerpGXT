@@ -101,6 +101,8 @@ public class MFreightcategory extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_FREIGHTCATEGORY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_750", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_FreightCategory", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_750")
 	public Integer getMFreightcategoryId() {
 		return mFreightcategoryId;
 	}

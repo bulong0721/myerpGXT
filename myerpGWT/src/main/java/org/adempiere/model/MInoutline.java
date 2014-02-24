@@ -266,6 +266,8 @@ public class MInoutline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_257", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_InOutLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_257")
 	public Integer getMInoutlineId() {
 		return mInoutlineId;
 	}

@@ -21,7 +21,7 @@ public class MPricelistVersion extends org.adempiere.common.ADEntityBase {
 	private Integer mPricelistVersionBaseId;
 	private Integer mPricelistVersionId;
 	private String name;
-	private String proccreate;
+	private Boolean proccreate;
 	private String updated;
 	private Integer updatedby;
 	private String validfrom;
@@ -124,6 +124,8 @@ public class MPricelistVersion extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PRICELIST_VERSION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_210", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_PriceList_Version", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_210")
 	public Integer getMPricelistVersionId() {
 		return mPricelistVersionId;
 	}
@@ -143,12 +145,11 @@ public class MPricelistVersion extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getProccreate() {
+	public Boolean isProccreate() {
 		return proccreate;
 	}
 
-	public void setProccreate(String proccreate) {
+	public void setProccreate(Boolean proccreate) {
 		this.proccreate = proccreate;
 	}
 

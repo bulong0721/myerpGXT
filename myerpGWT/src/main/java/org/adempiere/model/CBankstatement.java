@@ -18,7 +18,7 @@ public class CBankstatement extends org.adempiere.common.ADEntityBase {
 	private Integer cBankstatementId;
 	private String created;
 	private Integer createdby;
-	private String createfrom;
+	private Boolean createfrom;
 	private String description;
 	private String docaction;
 	private String docstatus;
@@ -28,9 +28,9 @@ public class CBankstatement extends org.adempiere.common.ADEntityBase {
 	private Boolean isactive;
 	private Boolean isapproved;
 	private Boolean ismanual;
-	private String matchstatement;
+	private Boolean matchstatement;
 	private String name;
-	private String posted;
+	private Boolean posted;
 	private Boolean processed;
 	private Long processedon;
 	private Boolean processing;
@@ -87,6 +87,8 @@ public class CBankstatement extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_BANKSTATEMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_329", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_BankStatement", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_329")
 	public Integer getCBankstatementId() {
 		return cBankstatementId;
 	}
@@ -116,12 +118,11 @@ public class CBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatefrom() {
+	public Boolean isCreatefrom() {
 		return createfrom;
 	}
 
-	public void setCreatefrom(String createfrom) {
+	public void setCreatefrom(Boolean createfrom) {
 		this.createfrom = createfrom;
 	}
 
@@ -214,12 +215,11 @@ public class CBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getMatchstatement() {
+	public Boolean isMatchstatement() {
 		return matchstatement;
 	}
 
-	public void setMatchstatement(String matchstatement) {
+	public void setMatchstatement(Boolean matchstatement) {
 		this.matchstatement = matchstatement;
 	}
 
@@ -234,12 +234,12 @@ public class CBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 

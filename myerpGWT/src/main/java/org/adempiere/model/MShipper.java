@@ -101,6 +101,8 @@ public class MShipper extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_SHIPPER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_167", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Shipper", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_167")
 	public Integer getMShipperId() {
 		return mShipperId;
 	}

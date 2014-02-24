@@ -121,6 +121,8 @@ public class PaRatio extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_RATIO_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1198", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_Ratio", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1198")
 	public Integer getPaRatioId() {
 		return paRatioId;
 	}

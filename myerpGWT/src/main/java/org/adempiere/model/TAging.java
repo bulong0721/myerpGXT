@@ -40,9 +40,9 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	private BigDecimal dueamt;
 	private String duedate;
 	private BigDecimal invoicedamt;
-	private Boolean isactive;
-	private Boolean islistinvoices;
-	private Boolean issotrx;
+	private String isactive;
+	private String islistinvoices;
+	private String issotrx;
 	private BigDecimal openamt;
 	private BigDecimal pastdue130;
 	private BigDecimal pastdue17;
@@ -349,32 +349,32 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIslistinvoices() {
+	@Column(nullable=false, length=1)
+	public String getIslistinvoices() {
 		return islistinvoices;
 	}
 
-	public void setIslistinvoices(Boolean islistinvoices) {
+	public void setIslistinvoices(String islistinvoices) {
 		this.islistinvoices = islistinvoices;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIssotrx() {
+	@Column(nullable=false, length=1)
+	public String getIssotrx() {
 		return issotrx;
 	}
 
-	public void setIssotrx(Boolean issotrx) {
+	public void setIssotrx(String issotrx) {
 		this.issotrx = issotrx;
 	}
 

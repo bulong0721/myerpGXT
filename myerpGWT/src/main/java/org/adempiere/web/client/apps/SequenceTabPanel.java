@@ -1,9 +1,11 @@
 package org.adempiere.web.client.apps;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.widget.CWindowToolBar;
@@ -23,6 +25,7 @@ import com.sencha.gxt.data.shared.event.StoreAddEvent;
 import com.sencha.gxt.data.shared.event.StoreAddEvent.StoreAddHandler;
 import com.sencha.gxt.widget.core.client.form.DualListField;
 import com.sencha.gxt.widget.core.client.form.DualListField.Mode;
+import com.sencha.gxt.widget.core.client.info.Info;
 
 public class SequenceTabPanel extends AbstractTabPanel {
 
@@ -102,8 +105,48 @@ public class SequenceTabPanel extends AbstractTabPanel {
 
 	@Override
 	public void saveOrUpdateRecord() {
-		// TODO Auto-generated method stub
+		AsyncCallback<ADResultWithError> callback = new AsyncSuccessCallback<ADResultWithError>() {
+			@Override
+			public void onSuccess(ADResultWithError result) {
+				if (result.isSuccess()) {
+					SequenceTabPanel.this.commitChanges();
+					SequenceTabPanel.this.refreshToolBar();
+					Info.display("adempiere", "Update Success.");
+				} else {
+					Info.display("adempiere", "Update Failed:" + result.getErrorMessage());
+				}
+			}
 
+		};
+		adempiereService.updateSequences(getResult(), tabModel.getTablename(), callback);
+	}
+
+	/**
+	 * 
+	 */
+	public void commitChanges() {
+		fromStore.commitChanges();
+		toStore.commitChanges();
+		leftString = getSeqString(fromStore);
+		rightString = getSeqString(toStore);
+	}
+
+	/**
+	 * @return
+	 */
+	public List<ADSequenceModel> getResult() {
+		List<ADSequenceModel> seqList = new ArrayList<ADSequenceModel>();
+		for (int i = 0; i < fromStore.size(); i++) {
+			ADSequenceModel seqModel = fromStore.get(i);
+			seqModel.setSeqNo(0);
+			seqList.add(seqModel);
+		}
+		for (int i = 0; i < toStore.size(); i++) {
+			ADSequenceModel seqModel = toStore.get(i);
+			seqModel.setSeqNo((i + 1) * 10);
+			seqList.add(seqModel);
+		}
+		return seqList;
 	}
 
 	@Override

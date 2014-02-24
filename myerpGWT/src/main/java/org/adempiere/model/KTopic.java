@@ -123,6 +123,8 @@ public class KTopic extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="K_TOPIC_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_776", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Topic", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_776")
 	public Integer getKTopicId() {
 		return kTopicId;
 	}

@@ -101,6 +101,8 @@ public class GlFundrestriction extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="GL_FUNDRESTRICTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1185", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "GL_FundRestriction", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1185")
 	public Integer getGlFundrestrictionId() {
 		return glFundrestrictionId;
 	}

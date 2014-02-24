@@ -53,6 +53,8 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_REGISTRATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_826", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Registration", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_826")
 	public Integer getARegistrationId() {
 		return aRegistrationId;
 	}

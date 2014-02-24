@@ -65,6 +65,8 @@ public class AdTask extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_TASK_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_22", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Task", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_22")
 	public Integer getAdTaskId() {
 		return adTaskId;
 	}

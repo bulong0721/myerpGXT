@@ -32,8 +32,8 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	private Integer aPeriodEnd;
 	private Integer aPeriodStart;
 	private BigDecimal aSplitPercent;
-	private String aTransferBalance;
-	private String aTransferBalanceIs;
+	private Boolean aTransferBalance;
+	private Boolean aTransferBalanceIs;
 	private Integer adClientId;
 	private Integer adOrgId;
 	private Integer cAcctschemaId;
@@ -137,6 +137,8 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_ASSET_TRANSFER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53148", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Transfer", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53148")
 	public Integer getAAssetTransferId() {
 		return aAssetTransferId;
 	}
@@ -266,22 +268,22 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_TRANSFER_BALANCE", nullable=false, length=1)
-	public String getATransferBalance() {
+	@Column(name="A_TRANSFER_BALANCE", nullable=false)
+	public Boolean isATransferBalance() {
 		return aTransferBalance;
 	}
 
-	public void setATransferBalance(String aTransferBalance) {
+	public void setATransferBalance(Boolean aTransferBalance) {
 		this.aTransferBalance = aTransferBalance;
 	}
 
 	@Basic
-	@Column(name="A_TRANSFER_BALANCE_IS", nullable=false, length=1)
-	public String getATransferBalanceIs() {
+	@Column(name="A_TRANSFER_BALANCE_IS", nullable=false)
+	public Boolean isATransferBalanceIs() {
 		return aTransferBalanceIs;
 	}
 
-	public void setATransferBalanceIs(String aTransferBalanceIs) {
+	public void setATransferBalanceIs(Boolean aTransferBalanceIs) {
 		this.aTransferBalanceIs = aTransferBalanceIs;
 	}
 

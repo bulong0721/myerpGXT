@@ -31,19 +31,19 @@ public class GlDistributionline extends org.adempiere.common.ADEntityBase {
 	private Integer line;
 	private Integer mProductId;
 	private Integer orgId;
-	private String overwriteacct;
-	private String overwriteactivity;
-	private String overwritebpartner;
-	private String overwritecampaign;
-	private String overwritelocfrom;
-	private String overwritelocto;
-	private String overwriteorg;
-	private String overwriteorgtrx;
-	private String overwriteproduct;
-	private String overwriteproject;
-	private String overwritesalesregion;
-	private String overwriteuser1;
-	private String overwriteuser2;
+	private Boolean overwriteacct;
+	private Boolean overwriteactivity;
+	private Boolean overwritebpartner;
+	private Boolean overwritecampaign;
+	private Boolean overwritelocfrom;
+	private Boolean overwritelocto;
+	private Boolean overwriteorg;
+	private Boolean overwriteorgtrx;
+	private Boolean overwriteproduct;
+	private Boolean overwriteproject;
+	private Boolean overwritesalesregion;
+	private Boolean overwriteuser1;
+	private Boolean overwriteuser2;
 	private BigDecimal percent;
 	private String updated;
 	private Integer updatedby;
@@ -208,6 +208,8 @@ public class GlDistributionline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="GL_DISTRIBUTIONLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_924", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "GL_DistributionLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_924")
 	public Integer getGlDistributionlineId() {
 		return glDistributionlineId;
 	}
@@ -257,132 +259,132 @@ public class GlDistributionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwriteacct() {
+	@Column(nullable=false)
+	public Boolean isOverwriteacct() {
 		return overwriteacct;
 	}
 
-	public void setOverwriteacct(String overwriteacct) {
+	public void setOverwriteacct(Boolean overwriteacct) {
 		this.overwriteacct = overwriteacct;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwriteactivity() {
+	@Column(nullable=false)
+	public Boolean isOverwriteactivity() {
 		return overwriteactivity;
 	}
 
-	public void setOverwriteactivity(String overwriteactivity) {
+	public void setOverwriteactivity(Boolean overwriteactivity) {
 		this.overwriteactivity = overwriteactivity;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwritebpartner() {
+	@Column(nullable=false)
+	public Boolean isOverwritebpartner() {
 		return overwritebpartner;
 	}
 
-	public void setOverwritebpartner(String overwritebpartner) {
+	public void setOverwritebpartner(Boolean overwritebpartner) {
 		this.overwritebpartner = overwritebpartner;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwritecampaign() {
+	@Column(nullable=false)
+	public Boolean isOverwritecampaign() {
 		return overwritecampaign;
 	}
 
-	public void setOverwritecampaign(String overwritecampaign) {
+	public void setOverwritecampaign(Boolean overwritecampaign) {
 		this.overwritecampaign = overwritecampaign;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwritelocfrom() {
+	@Column(nullable=false)
+	public Boolean isOverwritelocfrom() {
 		return overwritelocfrom;
 	}
 
-	public void setOverwritelocfrom(String overwritelocfrom) {
+	public void setOverwritelocfrom(Boolean overwritelocfrom) {
 		this.overwritelocfrom = overwritelocfrom;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwritelocto() {
+	@Column(nullable=false)
+	public Boolean isOverwritelocto() {
 		return overwritelocto;
 	}
 
-	public void setOverwritelocto(String overwritelocto) {
+	public void setOverwritelocto(Boolean overwritelocto) {
 		this.overwritelocto = overwritelocto;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwriteorg() {
+	@Column(nullable=false)
+	public Boolean isOverwriteorg() {
 		return overwriteorg;
 	}
 
-	public void setOverwriteorg(String overwriteorg) {
+	public void setOverwriteorg(Boolean overwriteorg) {
 		this.overwriteorg = overwriteorg;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwriteorgtrx() {
+	@Column(nullable=false)
+	public Boolean isOverwriteorgtrx() {
 		return overwriteorgtrx;
 	}
 
-	public void setOverwriteorgtrx(String overwriteorgtrx) {
+	public void setOverwriteorgtrx(Boolean overwriteorgtrx) {
 		this.overwriteorgtrx = overwriteorgtrx;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwriteproduct() {
+	@Column(nullable=false)
+	public Boolean isOverwriteproduct() {
 		return overwriteproduct;
 	}
 
-	public void setOverwriteproduct(String overwriteproduct) {
+	public void setOverwriteproduct(Boolean overwriteproduct) {
 		this.overwriteproduct = overwriteproduct;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwriteproject() {
+	@Column(nullable=false)
+	public Boolean isOverwriteproject() {
 		return overwriteproject;
 	}
 
-	public void setOverwriteproject(String overwriteproject) {
+	public void setOverwriteproject(Boolean overwriteproject) {
 		this.overwriteproject = overwriteproject;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwritesalesregion() {
+	@Column(nullable=false)
+	public Boolean isOverwritesalesregion() {
 		return overwritesalesregion;
 	}
 
-	public void setOverwritesalesregion(String overwritesalesregion) {
+	public void setOverwritesalesregion(Boolean overwritesalesregion) {
 		this.overwritesalesregion = overwritesalesregion;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwriteuser1() {
+	@Column(nullable=false)
+	public Boolean isOverwriteuser1() {
 		return overwriteuser1;
 	}
 
-	public void setOverwriteuser1(String overwriteuser1) {
+	public void setOverwriteuser1(Boolean overwriteuser1) {
 		this.overwriteuser1 = overwriteuser1;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getOverwriteuser2() {
+	@Column(nullable=false)
+	public Boolean isOverwriteuser2() {
 		return overwriteuser2;
 	}
 
-	public void setOverwriteuser2(String overwriteuser2) {
+	public void setOverwriteuser2(Boolean overwriteuser2) {
 		this.overwriteuser2 = overwriteuser2;
 	}
 

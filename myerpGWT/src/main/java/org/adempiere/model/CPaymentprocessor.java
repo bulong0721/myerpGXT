@@ -11,16 +11,16 @@ import javax.persistence.*;
 @Table(name="c_paymentprocessor")
 public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private String acceptamex;
-	private String acceptatm;
-	private String acceptcheck;
-	private String acceptcorporate;
-	private String acceptdiners;
-	private String acceptdirectdebit;
-	private String acceptdirectdeposit;
-	private String acceptdiscover;
-	private String acceptmc;
-	private String acceptvisa;
+	private Boolean acceptamex;
+	private Boolean acceptatm;
+	private Boolean acceptcheck;
+	private Boolean acceptcorporate;
+	private Boolean acceptdiners;
+	private Boolean acceptdirectdebit;
+	private Boolean acceptdirectdeposit;
+	private Boolean acceptdiscover;
+	private Boolean acceptmc;
+	private Boolean acceptvisa;
 	private Integer adClientId;
 	private Integer adOrgId;
 	private Integer adSequenceId;
@@ -44,7 +44,7 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	private String proxylogon;
 	private String proxypassword;
 	private Integer proxyport;
-	private String requirevv;
+	private Boolean requirevv;
 	private String updated;
 	private Integer updatedby;
 	private String userid;
@@ -58,102 +58,102 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAcceptamex() {
+	@Column(nullable=false)
+	public Boolean isAcceptamex() {
 		return acceptamex;
 	}
 
-	public void setAcceptamex(String acceptamex) {
+	public void setAcceptamex(Boolean acceptamex) {
 		this.acceptamex = acceptamex;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAcceptatm() {
+	@Column(nullable=false)
+	public Boolean isAcceptatm() {
 		return acceptatm;
 	}
 
-	public void setAcceptatm(String acceptatm) {
+	public void setAcceptatm(Boolean acceptatm) {
 		this.acceptatm = acceptatm;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAcceptcheck() {
+	@Column(nullable=false)
+	public Boolean isAcceptcheck() {
 		return acceptcheck;
 	}
 
-	public void setAcceptcheck(String acceptcheck) {
+	public void setAcceptcheck(Boolean acceptcheck) {
 		this.acceptcheck = acceptcheck;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAcceptcorporate() {
+	@Column(nullable=false)
+	public Boolean isAcceptcorporate() {
 		return acceptcorporate;
 	}
 
-	public void setAcceptcorporate(String acceptcorporate) {
+	public void setAcceptcorporate(Boolean acceptcorporate) {
 		this.acceptcorporate = acceptcorporate;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAcceptdiners() {
+	@Column(nullable=false)
+	public Boolean isAcceptdiners() {
 		return acceptdiners;
 	}
 
-	public void setAcceptdiners(String acceptdiners) {
+	public void setAcceptdiners(Boolean acceptdiners) {
 		this.acceptdiners = acceptdiners;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAcceptdirectdebit() {
+	@Column(nullable=false)
+	public Boolean isAcceptdirectdebit() {
 		return acceptdirectdebit;
 	}
 
-	public void setAcceptdirectdebit(String acceptdirectdebit) {
+	public void setAcceptdirectdebit(Boolean acceptdirectdebit) {
 		this.acceptdirectdebit = acceptdirectdebit;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAcceptdirectdeposit() {
+	@Column(nullable=false)
+	public Boolean isAcceptdirectdeposit() {
 		return acceptdirectdeposit;
 	}
 
-	public void setAcceptdirectdeposit(String acceptdirectdeposit) {
+	public void setAcceptdirectdeposit(Boolean acceptdirectdeposit) {
 		this.acceptdirectdeposit = acceptdirectdeposit;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAcceptdiscover() {
+	@Column(nullable=false)
+	public Boolean isAcceptdiscover() {
 		return acceptdiscover;
 	}
 
-	public void setAcceptdiscover(String acceptdiscover) {
+	public void setAcceptdiscover(Boolean acceptdiscover) {
 		this.acceptdiscover = acceptdiscover;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAcceptmc() {
+	@Column(nullable=false)
+	public Boolean isAcceptmc() {
 		return acceptmc;
 	}
 
-	public void setAcceptmc(String acceptmc) {
+	public void setAcceptmc(Boolean acceptmc) {
 		this.acceptmc = acceptmc;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAcceptvisa() {
+	@Column(nullable=false)
+	public Boolean isAcceptvisa() {
 		return acceptvisa;
 	}
 
-	public void setAcceptvisa(String acceptvisa) {
+	public void setAcceptvisa(Boolean acceptvisa) {
 		this.acceptvisa = acceptvisa;
 	}
 
@@ -209,6 +209,8 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PAYMENTPROCESSOR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_335", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_PaymentProcessor", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_335")
 	public Integer getCPaymentprocessorId() {
 		return cPaymentprocessorId;
 	}
@@ -386,12 +388,12 @@ public class CPaymentprocessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getRequirevv() {
+	@Column(nullable=false)
+	public Boolean isRequirevv() {
 		return requirevv;
 	}
 
-	public void setRequirevv(String requirevv) {
+	public void setRequirevv(Boolean requirevv) {
 		this.requirevv = requirevv;
 	}
 

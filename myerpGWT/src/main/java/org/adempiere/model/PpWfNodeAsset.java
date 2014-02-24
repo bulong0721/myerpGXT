@@ -101,6 +101,8 @@ public class PpWfNodeAsset extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PP_WF_NODE_ASSET_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53014", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_WF_Node_Asset", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53014")
 	public Integer getPpWfNodeAssetId() {
 		return ppWfNodeAssetId;
 	}

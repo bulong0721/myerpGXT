@@ -25,13 +25,13 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	private Integer cProjecttypeId;
 	private BigDecimal committedamt;
 	private BigDecimal committedqty;
-	private String copyfrom;
+	private Boolean copyfrom;
 	private String created;
 	private Integer createdby;
 	private String datecontract;
 	private String datefinish;
 	private String description;
-	private String generateto;
+	private Boolean generateto;
 	private BigDecimal invoicedamt;
 	private BigDecimal invoicedqty;
 	private Boolean isactive;
@@ -166,6 +166,8 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_109", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Project", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_109")
 	public Integer getCProjectId() {
 		return cProjectId;
 	}
@@ -205,12 +207,11 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCopyfrom() {
+	public Boolean isCopyfrom() {
 		return copyfrom;
 	}
 
-	public void setCopyfrom(String copyfrom) {
+	public void setCopyfrom(Boolean copyfrom) {
 		this.copyfrom = copyfrom;
 	}
 
@@ -262,12 +263,11 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getGenerateto() {
+	public Boolean isGenerateto() {
 		return generateto;
 	}
 
-	public void setGenerateto(String generateto) {
+	public void setGenerateto(Boolean generateto) {
 		this.generateto = generateto;
 	}
 

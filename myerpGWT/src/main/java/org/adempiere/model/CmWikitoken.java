@@ -17,7 +17,7 @@ public class CmWikitoken extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private Boolean isactive;
+	private String isactive;
 	private String macro;
 	private String name;
 	private String selectclause;
@@ -65,6 +65,8 @@ public class CmWikitoken extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_WIKITOKEN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1292", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_WikiToken", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1292")
 	public Integer getCmWikitokenId() {
 		return cmWikitokenId;
 	}
@@ -103,12 +105,12 @@ public class CmWikitoken extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 

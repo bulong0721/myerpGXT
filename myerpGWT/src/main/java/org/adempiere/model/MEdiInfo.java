@@ -100,6 +100,8 @@ public class MEdiInfo extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_EDI_INFO_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_305", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_EDI_Info", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_305")
 	public Integer getMEdiInfoId() {
 		return mEdiInfoId;
 	}

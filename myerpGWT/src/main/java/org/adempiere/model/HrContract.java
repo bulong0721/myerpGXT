@@ -116,6 +116,8 @@ public class HrContract extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="HR_CONTRACT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53104", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "HR_Contract", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53104")
 	public Integer getHrContractId() {
 		return hrContractId;
 	}

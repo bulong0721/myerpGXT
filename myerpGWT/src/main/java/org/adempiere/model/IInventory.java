@@ -19,7 +19,7 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String iErrormsg;
 	private Integer iInventoryId;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Boolean isactive;
 	private String locatorvalue;
 	private String lot;
@@ -120,6 +120,8 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="I_INVENTORY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_727", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_Inventory", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_727")
 	public Integer getIInventoryId() {
 		return iInventoryId;
 	}
@@ -129,12 +131,12 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 

@@ -103,6 +103,8 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="K_COMMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_782", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Comment", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_782")
 	public Integer getKCommentId() {
 		return kCommentId;
 	}

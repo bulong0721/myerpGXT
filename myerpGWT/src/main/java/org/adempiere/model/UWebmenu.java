@@ -16,7 +16,7 @@ public class UWebmenu extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String hassubmenu;
+	private Boolean hassubmenu;
 	private String help;
 	private String imagelink;
 	private Boolean isactive;
@@ -98,12 +98,12 @@ public class UWebmenu extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getHassubmenu() {
+	@Column(nullable=false)
+	public Boolean isHassubmenu() {
 		return hassubmenu;
 	}
 
-	public void setHassubmenu(String hassubmenu) {
+	public void setHassubmenu(Boolean hassubmenu) {
 		this.hassubmenu = hassubmenu;
 	}
 
@@ -199,6 +199,8 @@ public class UWebmenu extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="U_WEBMENU_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_52005", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "U_WebMenu", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_52005")
 	public Integer getUWebmenuId() {
 		return uWebmenuId;
 	}

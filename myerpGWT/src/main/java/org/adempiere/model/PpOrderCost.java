@@ -227,6 +227,8 @@ public class PpOrderCost extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PP_ORDER_COST_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53021", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_Order_Cost", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53021")
 	public Integer getPpOrderCostId() {
 		return ppOrderCostId;
 	}

@@ -23,7 +23,7 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	private BigDecimal discountamt;
 	private String documentno;
 	private Boolean isactive;
-	private Boolean isgenerateddraft;
+	private String isgenerateddraft;
 	private Boolean isprinted;
 	private Boolean isreceipt;
 	private BigDecimal payamt;
@@ -102,6 +102,8 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PAYSELECTIONCHECK_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_621", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_PaySelectionCheck", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_621")
 	public Integer getCPayselectioncheckId() {
 		return cPayselectioncheckId;
 	}
@@ -161,12 +163,12 @@ public class CPayselectioncheck extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsgenerateddraft() {
+	@Column(nullable=false, length=1)
+	public String getIsgenerateddraft() {
 		return isgenerateddraft;
 	}
 
-	public void setIsgenerateddraft(Boolean isgenerateddraft) {
+	public void setIsgenerateddraft(String isgenerateddraft) {
 		this.isgenerateddraft = isgenerateddraft;
 	}
 

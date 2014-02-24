@@ -58,6 +58,8 @@ public class CmMediaServer extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_MEDIA_SERVER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1240", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_Media_Server", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1240")
 	public Integer getCmMediaServerId() {
 		return cmMediaServerId;
 	}

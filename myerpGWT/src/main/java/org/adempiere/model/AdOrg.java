@@ -42,6 +42,8 @@ public class AdOrg extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_ORG_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_36", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Org", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_36")
 	public Integer getAdOrgId() {
 		return adOrgId;
 	}

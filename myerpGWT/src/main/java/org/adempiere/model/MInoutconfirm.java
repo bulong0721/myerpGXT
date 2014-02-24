@@ -19,7 +19,7 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	private String confirmtype;
 	private String created;
 	private Integer createdby;
-	private String createpackage;
+	private Boolean createpackage;
 	private String description;
 	private String docaction;
 	private String docstatus;
@@ -123,12 +123,11 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatepackage() {
+	public Boolean isCreatepackage() {
 		return createpackage;
 	}
 
-	public void setCreatepackage(String createpackage) {
+	public void setCreatepackage(Boolean createpackage) {
 		this.createpackage = createpackage;
 	}
 
@@ -223,6 +222,8 @@ public class MInoutconfirm extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_INOUTCONFIRM_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_954", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_InOutConfirm", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_954")
 	public Integer getMInoutconfirmId() {
 		return mInoutconfirmId;
 	}

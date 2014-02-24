@@ -24,10 +24,10 @@ public class AdIssue extends org.adempiere.common.ADEntityBase {
 	private String dbaddress;
 	private String errortrace;
 	private Boolean isactive;
-	private Boolean isreproducible;
-	private Boolean issuesource;
+	private String isreproducible;
+	private String issuesource;
 	private String issuesummary;
-	private Boolean isvanillasystem;
+	private String isvanillasystem;
 	private String javainfo;
 	private Integer lineno;
 	private String localHost;
@@ -99,6 +99,8 @@ public class AdIssue extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_ISSUE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1191", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Issue", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1191")
 	public Integer getAdIssueId() {
 		return adIssueId;
 	}
@@ -206,20 +208,22 @@ public class AdIssue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIsreproducible() {
+	@Column(length=1)
+	public String getIsreproducible() {
 		return isreproducible;
 	}
 
-	public void setIsreproducible(Boolean isreproducible) {
+	public void setIsreproducible(String isreproducible) {
 		this.isreproducible = isreproducible;
 	}
 
 	@Basic
-	public Boolean isIssuesource() {
+	@Column(length=1)
+	public String getIssuesource() {
 		return issuesource;
 	}
 
-	public void setIssuesource(Boolean issuesource) {
+	public void setIssuesource(String issuesource) {
 		this.issuesource = issuesource;
 	}
 
@@ -234,11 +238,12 @@ public class AdIssue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIsvanillasystem() {
+	@Column(length=1)
+	public String getIsvanillasystem() {
 		return isvanillasystem;
 	}
 
-	public void setIsvanillasystem(Boolean isvanillasystem) {
+	public void setIsvanillasystem(String isvanillasystem) {
 		this.isvanillasystem = isvanillasystem;
 	}
 

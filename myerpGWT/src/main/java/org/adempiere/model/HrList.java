@@ -106,6 +106,8 @@ public class HrList extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="HR_LIST_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53118", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "HR_List", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53118")
 	public Integer getHrListId() {
 		return hrListId;
 	}

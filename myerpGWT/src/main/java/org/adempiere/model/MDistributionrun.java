@@ -123,6 +123,8 @@ public class MDistributionrun extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_DISTRIBUTIONRUN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_937", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_DistributionRun", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_937")
 	public Integer getMDistributionrunId() {
 		return mDistributionrunId;
 	}

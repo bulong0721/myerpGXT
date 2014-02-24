@@ -43,6 +43,8 @@ public class ADepreciationTableHeader extends org.adempiere.common.ADEntityBase 
 
 	@Id
 	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53134", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Table_Header", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53134")
 	public Integer getADepreciationTableHeaderId() {
 		return aDepreciationTableHeaderId;
 	}

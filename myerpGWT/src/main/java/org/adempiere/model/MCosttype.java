@@ -100,6 +100,8 @@ public class MCosttype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_COSTTYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1091", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_CostType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1091")
 	public Integer getMCosttypeId() {
 		return mCosttypeId;
 	}

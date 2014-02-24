@@ -16,7 +16,7 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 	private Integer adTaskinstanceId;
 	private String created;
 	private Integer createdby;
-	private Boolean isactive;
+	private String isactive;
 	private String updated;
 	private Integer updatedby;
 
@@ -59,6 +59,8 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_TASKINSTANCE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_24", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_TaskInstance", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_24")
 	public Integer getAdTaskinstanceId() {
 		return adTaskinstanceId;
 	}
@@ -88,12 +90,12 @@ public class AdTaskinstance extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 

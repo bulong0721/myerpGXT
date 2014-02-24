@@ -89,6 +89,8 @@ public class MPromotiongroup extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PROMOTIONGROUP_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53327", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_PromotionGroup", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53327")
 	public Integer getMPromotiongroupId() {
 		return mPromotiongroupId;
 	}

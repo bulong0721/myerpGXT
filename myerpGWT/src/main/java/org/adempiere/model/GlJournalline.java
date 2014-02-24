@@ -13,8 +13,8 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aAssetGroupId;
 	private Integer aAssetId;
-	private String aCreateasset;
-	private String aProcessed;
+	private Boolean aCreateasset;
+	private Boolean aProcessed;
 	private Integer adClientId;
 	private Integer adOrgId;
 	private BigDecimal amtacctcr;
@@ -68,22 +68,22 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_CREATEASSET", length=1)
-	public String getACreateasset() {
+	@Column(name="A_CREATEASSET")
+	public Boolean isACreateasset() {
 		return aCreateasset;
 	}
 
-	public void setACreateasset(String aCreateasset) {
+	public void setACreateasset(Boolean aCreateasset) {
 		this.aCreateasset = aCreateasset;
 	}
 
 	@Basic
-	@Column(name="A_PROCESSED", length=1)
-	public String getAProcessed() {
+	@Column(name="A_PROCESSED")
+	public Boolean isAProcessed() {
 		return aProcessed;
 	}
 
-	public void setAProcessed(String aProcessed) {
+	public void setAProcessed(Boolean aProcessed) {
 		this.aProcessed = aProcessed;
 	}
 
@@ -248,6 +248,8 @@ public class GlJournalline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="GL_JOURNALLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_193", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "GL_JournalLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_193")
 	public Integer getGlJournallineId() {
 		return glJournallineId;
 	}

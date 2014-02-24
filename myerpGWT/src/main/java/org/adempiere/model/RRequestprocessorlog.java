@@ -126,6 +126,8 @@ public class RRequestprocessorlog extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_REQUESTPROCESSORLOG_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_834", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_RequestProcessorLog", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_834")
 	public Integer getRRequestprocessorlogId() {
 		return rRequestprocessorlogId;
 	}

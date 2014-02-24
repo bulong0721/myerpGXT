@@ -66,12 +66,12 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	private Boolean isreconciled;
 	private Boolean isselfservice;
 	private String micr;
-	private String oprocessing;
+	private Boolean oprocessing;
 	private String origTrxid;
 	private BigDecimal overunderamt;
 	private BigDecimal payamt;
 	private String ponum;
-	private String posted;
+	private Boolean posted;
 	private Boolean processed;
 	private Long processedon;
 	private Boolean processing;
@@ -79,7 +79,7 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	private String rAuthcodeDc;
 	private String rAvsaddr;
 	private String rAvszip;
-	private String rCvv2match;
+	private Boolean rCvv2match;
 	private String rInfo;
 	private String rPnref;
 	private String rPnrefDc;
@@ -358,6 +358,8 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_262", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Payment", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_262")
 	public Integer getCPaymentId() {
 		return cPaymentId;
 	}
@@ -654,12 +656,11 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getOprocessing() {
+	public Boolean isOprocessing() {
 		return oprocessing;
 	}
 
-	public void setOprocessing(String oprocessing) {
+	public void setOprocessing(Boolean oprocessing) {
 		this.oprocessing = oprocessing;
 	}
 
@@ -703,12 +704,12 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 
@@ -781,12 +782,12 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_CVV2MATCH", length=1)
-	public String getRCvv2match() {
+	@Column(name="R_CVV2MATCH")
+	public Boolean isRCvv2match() {
 		return rCvv2match;
 	}
 
-	public void setRCvv2match(String rCvv2match) {
+	public void setRCvv2match(Boolean rCvv2match) {
 		this.rCvv2match = rCvv2match;
 	}
 

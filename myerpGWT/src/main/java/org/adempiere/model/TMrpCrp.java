@@ -16,7 +16,7 @@ public class TMrpCrp extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private Boolean isactive;
+	private String isactive;
 	private Integer seqno;
 	private Integer tMrpCrpId;
 	private String updated;
@@ -90,11 +90,12 @@ public class TMrpCrp extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIsactive() {
+	@Column(length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 
@@ -110,6 +111,8 @@ public class TMrpCrp extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="T_MRP_CRP_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53041", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "T_MRP_CRP", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53041")
 	public Integer getTMrpCrpId() {
 		return tMrpCrpId;
 	}

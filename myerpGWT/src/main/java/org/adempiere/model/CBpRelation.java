@@ -58,6 +58,8 @@ public class CBpRelation extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_BP_RELATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_853", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_BP_Relation", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_853")
 	public Integer getCBpRelationId() {
 		return cBpRelationId;
 	}

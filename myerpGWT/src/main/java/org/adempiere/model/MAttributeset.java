@@ -204,6 +204,8 @@ public class MAttributeset extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_ATTRIBUTESET_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_689", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_AttributeSet", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_689")
 	public Integer getMAttributesetId() {
 		return mAttributesetId;
 	}

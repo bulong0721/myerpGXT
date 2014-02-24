@@ -52,6 +52,8 @@ public class CConversiontype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_810", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_ConversionType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_810")
 	public Integer getCConversiontypeId() {
 		return cConversiontypeId;
 	}

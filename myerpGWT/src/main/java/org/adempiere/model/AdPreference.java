@@ -52,6 +52,8 @@ public class AdPreference extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_PREFERENCE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_158", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Preference", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_158")
 	public Integer getAdPreferenceId() {
 		return adPreferenceId;
 	}

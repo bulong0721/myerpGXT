@@ -69,6 +69,8 @@ public class CAcctprocessor extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_ACCTPROCESSOR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_870", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_AcctProcessor", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_870")
 	public Integer getCAcctprocessorId() {
 		return cAcctprocessorId;
 	}

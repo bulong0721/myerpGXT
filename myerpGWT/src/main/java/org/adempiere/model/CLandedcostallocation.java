@@ -85,6 +85,8 @@ public class CLandedcostallocation extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_LANDEDCOSTALLOCATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1082", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_LandedCostAllocation", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1082")
 	public Integer getCLandedcostallocationId() {
 		return cLandedcostallocationId;
 	}

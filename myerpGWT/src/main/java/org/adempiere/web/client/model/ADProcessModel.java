@@ -9,7 +9,7 @@ public class ADProcessModel implements IsADRPCModel {
 	private Integer					adReportviewId;
 	private Integer					adWorkflowId;
 	private String					classname;
-	private String					copyfromprocess;
+	private Boolean					copyfromprocess;
 	private Boolean					isactive;
 	private Boolean					isdirectprint;
 	private Boolean					isreport;
@@ -102,11 +102,11 @@ public class ADProcessModel implements IsADRPCModel {
 		this.classname = classname;
 	}
 
-	public String getCopyfromprocess() {
+	public Boolean getCopyfromprocess() {
 		return copyfromprocess;
 	}
 
-	public void setCopyfromprocess(String copyfromprocess) {
+	public void setCopyfromprocess(Boolean copyfromprocess) {
 		this.copyfromprocess = copyfromprocess;
 	}
 

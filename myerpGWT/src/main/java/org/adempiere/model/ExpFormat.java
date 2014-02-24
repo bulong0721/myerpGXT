@@ -21,8 +21,8 @@ public class ExpFormat extends org.adempiere.common.ADEntityBase {
 	private Boolean isactive;
 	private String name;
 	private Boolean processing;
-	private String testexportmodel;
-	private String testimportmodel;
+	private Boolean testexportmodel;
+	private Boolean testimportmodel;
 	private String updated;
 	private Integer updatedby;
 	private String value;
@@ -97,6 +97,8 @@ public class ExpFormat extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="EXP_FORMAT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53089", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "EXP_Format", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53089")
 	public Integer getExpFormatId() {
 		return expFormatId;
 	}
@@ -145,22 +147,20 @@ public class ExpFormat extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getTestexportmodel() {
+	public Boolean isTestexportmodel() {
 		return testexportmodel;
 	}
 
-	public void setTestexportmodel(String testexportmodel) {
+	public void setTestexportmodel(Boolean testexportmodel) {
 		this.testexportmodel = testexportmodel;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getTestimportmodel() {
+	public Boolean isTestimportmodel() {
 		return testimportmodel;
 	}
 
-	public void setTestimportmodel(String testimportmodel) {
+	public void setTestimportmodel(Boolean testimportmodel) {
 		this.testimportmodel = testimportmodel;
 	}
 

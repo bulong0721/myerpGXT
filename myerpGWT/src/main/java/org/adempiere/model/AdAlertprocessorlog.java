@@ -47,6 +47,8 @@ public class AdAlertprocessorlog extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_ALERTPROCESSORLOG_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_874", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_AlertProcessorLog", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_874")
 	public Integer getAdAlertprocessorlogId() {
 		return adAlertprocessorlogId;
 	}

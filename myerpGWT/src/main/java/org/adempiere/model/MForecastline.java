@@ -117,6 +117,8 @@ public class MForecastline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_FORECASTLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_949", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_ForecastLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_949")
 	public Integer getMForecastlineId() {
 		return mForecastlineId;
 	}

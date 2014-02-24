@@ -37,7 +37,7 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	private String groupvalue;
 	private Integer iBpartnerId;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private String interestareaname;
 	private Boolean isactive;
 	private Boolean iscustomer;
@@ -317,6 +317,8 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="I_BPARTNER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_633", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_BPartner", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_633")
 	public Integer getIBpartnerId() {
 		return iBpartnerId;
 	}
@@ -336,12 +338,12 @@ public class IBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 

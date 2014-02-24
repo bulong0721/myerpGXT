@@ -110,6 +110,8 @@ public class STimetype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="S_TIMETYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_736", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "S_TimeType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_736")
 	public Integer getSTimetypeId() {
 		return sTimetypeId;
 	}

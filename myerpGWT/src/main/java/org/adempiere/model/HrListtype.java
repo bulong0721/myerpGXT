@@ -80,6 +80,8 @@ public class HrListtype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="HR_LISTTYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53117", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "HR_ListType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53117")
 	public Integer getHrListtypeId() {
 		return hrListtypeId;
 	}

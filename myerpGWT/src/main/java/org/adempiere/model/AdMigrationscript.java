@@ -25,7 +25,7 @@ public class AdMigrationscript extends org.adempiere.common.ADEntityBase {
 	private String reference;
 	private String releaseno;
 	private byte[] script;
-	private String scriptroll;
+	private Boolean scriptroll;
 	private String status;
 	private String updated;
 	private Integer updatedby;
@@ -50,6 +50,8 @@ public class AdMigrationscript extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_MIGRATIONSCRIPT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53081", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_MigrationScript", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53081")
 	public Integer getAdMigrationscriptId() {
 		return adMigrationscriptId;
 	}
@@ -189,12 +191,11 @@ public class AdMigrationscript extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getScriptroll() {
+	public Boolean isScriptroll() {
 		return scriptroll;
 	}
 
-	public void setScriptroll(String scriptroll) {
+	public void setScriptroll(Boolean scriptroll) {
 		this.scriptroll = scriptroll;
 	}
 

@@ -28,7 +28,7 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	private Boolean ismodified;
 	private Boolean issecure;
 	private Boolean issummary;
-	private Boolean isvalid;
+	private String isvalid;
 	private String metaAuthor;
 	private String metaContent;
 	private String metaCopyright;
@@ -76,6 +76,8 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_CSTAGE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1247", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_CStage", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1247")
 	public Integer getCmCstageId() {
 		return cmCstageId;
 	}
@@ -232,11 +234,12 @@ public class CmCstage extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIsvalid() {
+	@Column(length=1)
+	public String getIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(Boolean isvalid) {
+	public void setIsvalid(String isvalid) {
 		this.isvalid = isvalid;
 	}
 

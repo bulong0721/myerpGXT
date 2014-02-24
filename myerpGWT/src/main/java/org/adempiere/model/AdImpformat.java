@@ -44,6 +44,8 @@ public class AdImpformat extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_IMPFORMAT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_318", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_ImpFormat", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_318")
 	public Integer getAdImpformatId() {
 		return adImpformatId;
 	}

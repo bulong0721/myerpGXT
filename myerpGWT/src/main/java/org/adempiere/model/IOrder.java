@@ -52,7 +52,7 @@ public class IOrder extends org.adempiere.common.ADEntityBase {
 	private String email;
 	private BigDecimal freightamt;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Integer iOrderId;
 	private Boolean isactive;
 	private Boolean issotrx;
@@ -493,17 +493,19 @@ public class IOrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 
 	@Id
 	@Column(name="I_ORDER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_746", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_Order", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_746")
 	public Integer getIOrderId() {
 		return iOrderId;
 	}

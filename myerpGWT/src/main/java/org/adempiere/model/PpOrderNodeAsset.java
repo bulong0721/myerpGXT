@@ -102,6 +102,8 @@ public class PpOrderNodeAsset extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PP_ORDER_NODE_ASSET_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53028", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_Order_Node_Asset", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53028")
 	public Integer getPpOrderNodeAssetId() {
 		return ppOrderNodeAssetId;
 	}

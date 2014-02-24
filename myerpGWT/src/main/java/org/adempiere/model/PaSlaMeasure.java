@@ -136,6 +136,8 @@ public class PaSlaMeasure extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_SLA_MEASURE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_990", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_SLA_Measure", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_990")
 	public Integer getPaSlaMeasureId() {
 		return paSlaMeasureId;
 	}

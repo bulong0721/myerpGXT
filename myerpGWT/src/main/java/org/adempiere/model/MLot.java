@@ -122,6 +122,8 @@ public class MLot extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_LOT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_686", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Lot", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_686")
 	public Integer getMLotId() {
 		return mLotId;
 	}

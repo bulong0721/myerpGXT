@@ -65,6 +65,8 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_ELEMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_42", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Element", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_42")
 	public Integer getCElementId() {
 		return cElementId;
 	}

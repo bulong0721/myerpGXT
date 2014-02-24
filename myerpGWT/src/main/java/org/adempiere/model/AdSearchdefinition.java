@@ -69,6 +69,8 @@ public class AdSearchdefinition extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_SEARCHDEFINITION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53298", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_SearchDefinition", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53298")
 	public Integer getAdSearchdefinitionId() {
 		return adSearchdefinitionId;
 	}

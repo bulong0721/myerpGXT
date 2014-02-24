@@ -100,6 +100,8 @@ public class MRmatype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_RMATYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_960", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_RMAType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_960")
 	public Integer getMRmatypeId() {
 		return mRmatypeId;
 	}

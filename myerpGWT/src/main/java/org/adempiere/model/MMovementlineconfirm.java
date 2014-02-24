@@ -147,6 +147,8 @@ public class MMovementlineconfirm extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_MOVEMENTLINECONFIRM_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_982", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_MovementLineConfirm", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_982")
 	public Integer getMMovementlineconfirmId() {
 		return mMovementlineconfirmId;
 	}

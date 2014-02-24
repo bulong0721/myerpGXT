@@ -114,6 +114,8 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_76", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Warehouse", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_76")
 	public Integer getMWarehouseId() {
 		return mWarehouseId;
 	}

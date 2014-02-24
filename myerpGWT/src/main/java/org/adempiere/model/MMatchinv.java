@@ -25,7 +25,7 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	private Integer mInoutlineId;
 	private Integer mMatchinvId;
 	private Integer mProductId;
-	private String posted;
+	private Boolean posted;
 	private Boolean processed;
 	private Long processedon;
 	private Boolean processing;
@@ -160,6 +160,8 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_MATCHINV_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_526", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_MatchInv", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_526")
 	public Integer getMMatchinvId() {
 		return mMatchinvId;
 	}
@@ -179,12 +181,12 @@ public class MMatchinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 

@@ -27,10 +27,10 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	private Boolean isforeigncurrency;
 	private Boolean issummary;
 	private String name;
-	private String postactual;
-	private String postbudget;
-	private String postencumbrance;
-	private String poststatistical;
+	private Boolean postactual;
+	private Boolean postbudget;
+	private Boolean postencumbrance;
+	private Boolean poststatistical;
 	private String updated;
 	private Integer updatedby;
 	private String validfrom;
@@ -116,6 +116,8 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_ELEMENTVALUE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_59", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_ElementValue", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_59")
 	public Integer getCElementvalueId() {
 		return cElementvalueId;
 	}
@@ -211,42 +213,42 @@ public class CElementvalue extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPostactual() {
+	@Column(nullable=false)
+	public Boolean isPostactual() {
 		return postactual;
 	}
 
-	public void setPostactual(String postactual) {
+	public void setPostactual(Boolean postactual) {
 		this.postactual = postactual;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPostbudget() {
+	@Column(nullable=false)
+	public Boolean isPostbudget() {
 		return postbudget;
 	}
 
-	public void setPostbudget(String postbudget) {
+	public void setPostbudget(Boolean postbudget) {
 		this.postbudget = postbudget;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPostencumbrance() {
+	@Column(nullable=false)
+	public Boolean isPostencumbrance() {
 		return postencumbrance;
 	}
 
-	public void setPostencumbrance(String postencumbrance) {
+	public void setPostencumbrance(Boolean postencumbrance) {
 		this.postencumbrance = postencumbrance;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPoststatistical() {
+	@Column(nullable=false)
+	public Boolean isPoststatistical() {
 		return poststatistical;
 	}
 
-	public void setPoststatistical(String poststatistical) {
+	public void setPoststatistical(Boolean poststatistical) {
 		this.poststatistical = poststatistical;
 	}
 

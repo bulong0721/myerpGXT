@@ -48,7 +48,7 @@ public class IPayment extends org.adempiere.common.ADEntityBase {
 	private String doctypename;
 	private String documentno;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Integer iPaymentId;
 	private String invoicedocumentno;
 	private Boolean isactive;
@@ -454,17 +454,19 @@ public class IPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 
 	@Id
 	@Column(name="I_PAYMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_752", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_Payment", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_752")
 	public Integer getIPaymentId() {
 		return iPaymentId;
 	}

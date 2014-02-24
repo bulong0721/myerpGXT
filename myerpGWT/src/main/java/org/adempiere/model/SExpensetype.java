@@ -144,6 +144,8 @@ public class SExpensetype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="S_EXPENSETYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_553", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "S_ExpenseType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_553")
 	public Integer getSExpensetypeId() {
 		return sExpensetypeId;
 	}

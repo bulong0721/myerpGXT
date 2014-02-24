@@ -62,6 +62,8 @@ public class CRegion extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_REGION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_62", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Region", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_62")
 	public Integer getCRegionId() {
 		return cRegionId;
 	}

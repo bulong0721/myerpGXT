@@ -99,6 +99,8 @@ public class CBankaccount extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_BANKACCOUNT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_213", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_BankAccount", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_213")
 	public Integer getCBankaccountId() {
 		return cBankaccountId;
 	}

@@ -55,6 +55,8 @@ public class AdFind extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_FIND_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_341", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Find", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_341")
 	public Integer getAdFindId() {
 		return adFindId;
 	}

@@ -20,7 +20,7 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String elementvalue;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Integer iReportlineId;
 	private Boolean isactive;
 	private Boolean isprinted;
@@ -147,17 +147,19 @@ public class IReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 
 	@Id
 	@Column(name="I_REPORTLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_635", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_ReportLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_635")
 	public Integer getIReportlineId() {
 		return iReportlineId;
 	}

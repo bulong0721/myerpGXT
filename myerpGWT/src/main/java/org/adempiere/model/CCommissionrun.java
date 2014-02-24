@@ -66,6 +66,8 @@ public class CCommissionrun extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_COMMISSIONRUN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_481", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_CommissionRun", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_481")
 	public Integer getCCommissionrunId() {
 		return cCommissionrunId;
 	}

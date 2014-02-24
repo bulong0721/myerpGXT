@@ -52,6 +52,8 @@ public class AspModule extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="ASP_MODULE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53071", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "ASP_Module", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53071")
 	public Integer getAspModuleId() {
 		return aspModuleId;
 	}

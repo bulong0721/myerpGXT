@@ -48,7 +48,7 @@ public class AdWorkflow extends org.adempiere.common.ADEntityBase {
 	private BigDecimal unitscycles;
 	private String updated;
 	private Integer updatedby;
-	private String validateworkflow;
+	private Boolean validateworkflow;
 	private String validfrom;
 	private String validto;
 	private String value;
@@ -127,6 +127,8 @@ public class AdWorkflow extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_WORKFLOW_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_29", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Workflow", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_29")
 	public Integer getAdWorkflowId() {
 		return adWorkflowId;
 	}
@@ -432,12 +434,11 @@ public class AdWorkflow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getValidateworkflow() {
+	public Boolean isValidateworkflow() {
 		return validateworkflow;
 	}
 
-	public void setValidateworkflow(String validateworkflow) {
+	public void setValidateworkflow(Boolean validateworkflow) {
 		this.validateworkflow = validateworkflow;
 	}
 

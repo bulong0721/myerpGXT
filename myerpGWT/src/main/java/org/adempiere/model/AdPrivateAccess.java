@@ -17,7 +17,7 @@ public class AdPrivateAccess extends org.adempiere.common.ADEntityBase {
 	private Integer adUserId;
 	private String created;
 	private Integer createdby;
-	private Boolean isactive;
+	private String isactive;
 	private Integer recordId;
 	private String updated;
 	private Integer updatedby;
@@ -92,12 +92,12 @@ public class AdPrivateAccess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 

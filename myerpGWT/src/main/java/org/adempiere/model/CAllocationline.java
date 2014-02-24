@@ -93,6 +93,8 @@ public class CAllocationline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_ALLOCATIONLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_327", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_AllocationLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_327")
 	public Integer getCAllocationlineId() {
 		return cAllocationlineId;
 	}

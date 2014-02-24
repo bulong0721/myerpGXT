@@ -89,6 +89,8 @@ public class AdWfProcess extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_WF_PROCESS_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_820", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_WF_Process", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_820")
 	public Integer getAdWfProcessId() {
 		return adWfProcessId;
 	}

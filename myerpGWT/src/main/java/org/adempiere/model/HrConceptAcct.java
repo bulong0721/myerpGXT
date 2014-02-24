@@ -96,6 +96,8 @@ public class HrConceptAcct extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="HR_CONCEPT_ACCT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53110", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "HR_Concept_Acct", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53110")
 	public Integer getHrConceptAcctId() {
 		return hrConceptAcctId;
 	}

@@ -366,6 +366,8 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="FACT_ACCT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_182", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "Fact_Acct", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_182")
 	public Integer getFactAcctId() {
 		return factAcctId;
 	}

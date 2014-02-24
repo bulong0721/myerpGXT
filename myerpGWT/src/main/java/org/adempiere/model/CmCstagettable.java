@@ -65,6 +65,8 @@ public class CmCstagettable extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_CSTAGETTABLE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1265", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_CStageTTable", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1265")
 	public Integer getCmCstagettableId() {
 		return cmCstagettableId;
 	}

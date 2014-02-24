@@ -318,6 +318,8 @@ public class MDiscountschemaline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_DISCOUNTSCHEMALINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_531", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_DiscountSchemaLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_531")
 	public Integer getMDiscountschemalineId() {
 		return mDiscountschemalineId;
 	}

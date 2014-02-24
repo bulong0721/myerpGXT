@@ -83,6 +83,8 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_WITHHOLDING_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_220", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Withholding", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_220")
 	public Integer getCWithholdingId() {
 		return cWithholdingId;
 	}

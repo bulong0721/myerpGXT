@@ -52,6 +52,8 @@ public class CProjecttype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PROJECTTYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_730", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_ProjectType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_730")
 	public Integer getCProjecttypeId() {
 		return cProjecttypeId;
 	}

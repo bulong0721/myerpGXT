@@ -22,7 +22,7 @@ public class CProjectphase extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String enddate;
-	private String generateorder;
+	private Boolean generateorder;
 	private String help;
 	private Boolean isactive;
 	private Boolean iscommitceiling;
@@ -97,6 +97,8 @@ public class CProjectphase extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PROJECTPHASE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_731", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_ProjectPhase", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_731")
 	public Integer getCProjectphaseId() {
 		return cProjectphaseId;
 	}
@@ -154,12 +156,11 @@ public class CProjectphase extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getGenerateorder() {
+	public Boolean isGenerateorder() {
 		return generateorder;
 	}
 
-	public void setGenerateorder(String generateorder) {
+	public void setGenerateorder(Boolean generateorder) {
 		this.generateorder = generateorder;
 	}
 

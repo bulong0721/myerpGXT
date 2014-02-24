@@ -61,6 +61,8 @@ public class CNonbusinessday extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_NONBUSINESSDAY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_61", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_NonBusinessDay", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_61")
 	public Integer getCNonbusinessdayId() {
 		return cNonbusinessdayId;
 	}

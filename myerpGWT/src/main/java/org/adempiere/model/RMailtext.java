@@ -144,6 +144,8 @@ public class RMailtext extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_MAILTEXT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_353", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_MailText", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_353")
 	public Integer getRMailtextId() {
 		return rMailtextId;
 	}

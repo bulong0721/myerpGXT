@@ -36,8 +36,10 @@ public interface ADMapData extends IsADRPCModel {
 		@Override
 		public String getKey(ADMapData item) {
 			String result = "";
-			for (String keyField : keyFields) {
-				result += item.getValue(keyField, fieldType) + "_";
+			if (null != item) {
+				for (String keyField : keyFields) {
+					result += item.getValue(keyField, fieldType) + "_";
+				}
 			}
 			return result;
 		}

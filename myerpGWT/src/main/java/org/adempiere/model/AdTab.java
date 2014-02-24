@@ -28,7 +28,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	private String entitytype;
 	private Boolean hastree;
 	private String help;
-	private String importfields;
+	private Boolean importfields;
 	private Integer includedTabId;
 	private Boolean isactive;
 	private Boolean isadvancedtab;
@@ -127,8 +127,9 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="AD_TAB_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_19", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Tab", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_19")
 	public Integer getAdTabId() {
 		return adTabId;
 	}
@@ -218,7 +219,7 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean getHastree() {
+	public Boolean isHastree() {
 		return hastree;
 	}
 
@@ -237,12 +238,11 @@ public class AdTab extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getImportfields() {
+	public Boolean isImportfields() {
 		return importfields;
 	}
 
-	public void setImportfields(String importfields) {
+	public void setImportfields(Boolean importfields) {
 		this.importfields = importfields;
 	}
 

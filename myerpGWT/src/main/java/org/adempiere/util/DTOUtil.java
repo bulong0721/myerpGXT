@@ -99,7 +99,7 @@ public final class DTOUtil {
 		model.setAdReportviewId(entity.getAdReportviewId());
 		model.setAdWorkflowId(entity.getAdWorkflowId());
 		model.setClassname(entity.getClassname());
-		model.setCopyfromprocess(entity.getCopyfromprocess());
+		model.setCopyfromprocess(entity.isCopyfromprocess());
 		model.setIsactive(entity.isIsactive());
 		model.setIsdirectprint(entity.isIsdirectprint());
 		model.setIsreport(entity.isIsreport());
@@ -236,9 +236,9 @@ public final class DTOUtil {
 		newTab.setDescription(tab.getDescription());
 		newTab.setDisplaylogic(tab.getDisplaylogic());
 		newTab.setEntitytype(tab.getEntitytype());
-		newTab.setHastree(tab.getHastree());
+		newTab.setHastree(tab.isHastree());
 		newTab.setHelp(tab.getHelp());
-		newTab.setImportfields(tab.getImportfields());
+		newTab.setImportfields(tab.isImportfields());
 		newTab.setIncludedTabId(tab.getIncludedTabId());
 		newTab.setIsactive(tab.isIsactive());
 		newTab.setIsadvancedtab(tab.isIsadvancedtab());

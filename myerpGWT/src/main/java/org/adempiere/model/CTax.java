@@ -30,7 +30,7 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	private String name;
 	private Integer parentTaxId;
 	private BigDecimal rate;
-	private String requirestaxcertificate;
+	private Boolean requirestaxcertificate;
 	private String sopotype;
 	private String taxindicator;
 	private Integer toCountryId;
@@ -98,6 +98,8 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_TAX_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_174", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Tax", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_174")
 	public Integer getCTaxId() {
 		return cTaxId;
 	}
@@ -236,12 +238,12 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getRequirestaxcertificate() {
+	@Column(nullable=false)
+	public Boolean isRequirestaxcertificate() {
 		return requirestaxcertificate;
 	}
 
-	public void setRequirestaxcertificate(String requirestaxcertificate) {
+	public void setRequirestaxcertificate(Boolean requirestaxcertificate) {
 		this.requirestaxcertificate = requirestaxcertificate;
 	}
 

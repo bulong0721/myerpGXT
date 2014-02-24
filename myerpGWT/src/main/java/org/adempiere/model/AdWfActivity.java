@@ -94,6 +94,8 @@ public class AdWfActivity extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_WF_ACTIVITY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_819", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_WF_Activity", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_819")
 	public Integer getAdWfActivityId() {
 		return adWfActivityId;
 	}

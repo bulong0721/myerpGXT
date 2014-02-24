@@ -57,6 +57,8 @@ public class CCampaign extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_234", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Campaign", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_234")
 	public Integer getCCampaignId() {
 		return cCampaignId;
 	}

@@ -126,6 +126,8 @@ public class MDiscountschemabreak extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_DISCOUNTSCHEMABREAK_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_530", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_DiscountSchemaBreak", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_530")
 	public Integer getMDiscountschemabreakId() {
 		return mDiscountschemabreakId;
 	}

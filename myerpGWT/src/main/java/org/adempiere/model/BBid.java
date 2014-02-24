@@ -65,6 +65,8 @@ public class BBid extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="B_BID_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_861", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "B_Bid", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_861")
 	public Integer getBBidId() {
 		return bBidId;
 	}

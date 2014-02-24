@@ -126,6 +126,8 @@ public class QmSpecificationline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="QM_SPECIFICATIONLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53038", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "QM_SpecificationLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53038")
 	public Integer getQmSpecificationlineId() {
 		return qmSpecificationlineId;
 	}

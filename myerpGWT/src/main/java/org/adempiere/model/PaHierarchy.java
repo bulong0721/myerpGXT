@@ -198,6 +198,8 @@ public class PaHierarchy extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_HIERARCHY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1182", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_Hierarchy", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1182")
 	public Integer getPaHierarchyId() {
 		return paHierarchyId;
 	}

@@ -102,6 +102,8 @@ public class AdPackageExpCommon extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_PACKAGE_EXP_COMMON_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_50007", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Package_Exp_Common", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_50007")
 	public Integer getAdPackageExpCommonId() {
 		return adPackageExpCommonId;
 	}

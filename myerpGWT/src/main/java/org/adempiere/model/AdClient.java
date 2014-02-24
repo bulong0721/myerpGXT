@@ -19,7 +19,7 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String documentdir;
-	private String emailtest;
+	private Boolean emailtest;
 	private Boolean isactive;
 	private Boolean iscostimmediate;
 	private Boolean ismultilingualdocument;
@@ -37,8 +37,8 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	private String requestuser;
 	private String requestuserpw;
 	private String smtphost;
-	private String storearchiveonfilesystem;
-	private String storeattachmentsonfilesystem;
+	private Boolean storearchiveonfilesystem;
+	private Boolean storeattachmentsonfilesystem;
 	private String unixarchivepath;
 	private String unixattachmentpath;
 	private String updated;
@@ -56,6 +56,8 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_2", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Client", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_2")
 	public Integer getAdClientId() {
 		return adClientId;
 	}
@@ -144,12 +146,11 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getEmailtest() {
+	public Boolean isEmailtest() {
 		return emailtest;
 	}
 
-	public void setEmailtest(String emailtest) {
+	public void setEmailtest(Boolean emailtest) {
 		this.emailtest = emailtest;
 	}
 
@@ -322,22 +323,22 @@ public class AdClient extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getStorearchiveonfilesystem() {
+	@Column(nullable=false)
+	public Boolean isStorearchiveonfilesystem() {
 		return storearchiveonfilesystem;
 	}
 
-	public void setStorearchiveonfilesystem(String storearchiveonfilesystem) {
+	public void setStorearchiveonfilesystem(Boolean storearchiveonfilesystem) {
 		this.storearchiveonfilesystem = storearchiveonfilesystem;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getStoreattachmentsonfilesystem() {
+	@Column(nullable=false)
+	public Boolean isStoreattachmentsonfilesystem() {
 		return storeattachmentsonfilesystem;
 	}
 
-	public void setStoreattachmentsonfilesystem(String storeattachmentsonfilesystem) {
+	public void setStoreattachmentsonfilesystem(Boolean storeattachmentsonfilesystem) {
 		this.storeattachmentsonfilesystem = storeattachmentsonfilesystem;
 	}
 

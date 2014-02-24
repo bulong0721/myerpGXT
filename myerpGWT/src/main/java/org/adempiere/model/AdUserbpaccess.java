@@ -62,6 +62,8 @@ public class AdUserbpaccess extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_USERBPACCESS_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1174", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_UserBPAccess", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1174")
 	public Integer getAdUserbpaccessId() {
 		return adUserbpaccessId;
 	}

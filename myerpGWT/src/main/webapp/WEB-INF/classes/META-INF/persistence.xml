@@ -669,7 +669,7 @@
 		<class>org.adempiere.model.AdFieldV</class>
 		<class>org.adempiere.model.AdUserRolesV</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/adempierenew" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/adempierenew1" />
 			<property name="javax.persistence.jdbc.user" value="adempiere" />
 			<property name="javax.persistence.jdbc.password" value="adempiere" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

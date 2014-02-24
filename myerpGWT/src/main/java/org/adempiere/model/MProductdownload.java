@@ -101,6 +101,8 @@ public class MProductdownload extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PRODUCTDOWNLOAD_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1111", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_ProductDownload", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1111")
 	public Integer getMProductdownloadId() {
 		return mProductdownloadId;
 	}

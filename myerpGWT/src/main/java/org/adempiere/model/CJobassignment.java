@@ -73,6 +73,8 @@ public class CJobassignment extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_JOBASSIGNMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1127", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_JobAssignment", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1127")
 	public Integer getCJobassignmentId() {
 		return cJobassignmentId;
 	}

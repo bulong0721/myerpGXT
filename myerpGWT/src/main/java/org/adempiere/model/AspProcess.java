@@ -71,6 +71,8 @@ public class AspProcess extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="ASP_PROCESS_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53066", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "ASP_Process", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53066")
 	public Integer getAspProcessId() {
 		return aspProcessId;
 	}

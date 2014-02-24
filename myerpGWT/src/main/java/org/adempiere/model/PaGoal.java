@@ -253,6 +253,8 @@ public class PaGoal extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_GOAL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_488", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_Goal", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_488")
 	public Integer getPaGoalId() {
 		return paGoalId;
 	}

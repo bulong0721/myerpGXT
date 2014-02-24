@@ -81,6 +81,8 @@ public class AspWindow extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="ASP_WINDOW_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53063", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "ASP_Window", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53063")
 	public Integer getAspWindowId() {
 		return aspWindowId;
 	}

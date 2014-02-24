@@ -55,6 +55,8 @@ public class AdReference extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_REFERENCE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_14", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Reference", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_14")
 	public Integer getAdReferenceId() {
 		return adReferenceId;
 	}

@@ -177,6 +177,8 @@ public class COrderline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_ORDERLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_233", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_OrderLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_233")
 	public Integer getCOrderlineId() {
 		return cOrderlineId;
 	}

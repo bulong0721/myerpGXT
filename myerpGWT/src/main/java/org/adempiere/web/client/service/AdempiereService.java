@@ -24,12 +24,14 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface AdempiereService extends RemoteService {
 
 	List<ADTreeNode> getAdMenuModels();
+	
+	List<ADTreeNode> getTreeNodes(int adTreeId, ADTreeNode loadCfg);
 
 	List<LookupValue> getOptions(String columnName, int type, Integer adRefId);
 	
 	List<ADSequenceModel> getSequences(ADLoadConfig loadCfg);
 	
-	boolean updateSequences(List<ADSequenceModel> seqList, String tableName);
+	ADResultWithError updateSequences(List<ADSequenceModel> seqList, String tableName);
 
 	ADWindowModel getADWindowModel(Integer windowId);
 	

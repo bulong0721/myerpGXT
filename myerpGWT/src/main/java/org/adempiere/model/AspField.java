@@ -61,6 +61,8 @@ public class AspField extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="ASP_FIELD_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53065", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "ASP_Field", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53065")
 	public Integer getAspFieldId() {
 		return aspFieldId;
 	}

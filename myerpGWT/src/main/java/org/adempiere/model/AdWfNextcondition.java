@@ -66,6 +66,8 @@ public class AdWfNextcondition extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_WF_NEXTCONDITION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_923", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_WF_NextCondition", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_923")
 	public Integer getAdWfNextconditionId() {
 		return adWfNextconditionId;
 	}

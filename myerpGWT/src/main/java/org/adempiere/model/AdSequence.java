@@ -22,12 +22,12 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private Integer incrementno;
 	private Boolean isactive;
-	private Boolean isaudited;
+	private String isaudited;
 	private Boolean isautosequence;
 	private Boolean istableid;
 	private String name;
 	private String prefix;
-	private String startnewyear;
+	private Boolean startnewyear;
 	private Integer startno;
 	private String suffix;
 	private String updated;
@@ -63,6 +63,8 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_SEQUENCE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_16", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Sequence", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_16")
 	public Integer getAdSequenceId() {
 		return adSequenceId;
 	}
@@ -160,11 +162,12 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIsaudited() {
+	@Column(length=1)
+	public String getIsaudited() {
 		return isaudited;
 	}
 
-	public void setIsaudited(Boolean isaudited) {
+	public void setIsaudited(String isaudited) {
 		this.isaudited = isaudited;
 	}
 
@@ -207,12 +210,11 @@ public class AdSequence extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getStartnewyear() {
+	public Boolean isStartnewyear() {
 		return startnewyear;
 	}
 
-	public void setStartnewyear(String startnewyear) {
+	public void setStartnewyear(Boolean startnewyear) {
 		this.startnewyear = startnewyear;
 	}
 

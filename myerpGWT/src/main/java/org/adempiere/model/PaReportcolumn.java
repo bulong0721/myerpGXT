@@ -33,7 +33,7 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	private String formatpattern;
 	private Integer glBudgetId;
 	private Boolean isactive;
-	private Boolean isadhocconversion;
+	private String isadhocconversion;
 	private Boolean isincludenullsactivity;
 	private Boolean isincludenullsbpartner;
 	private Boolean isincludenullscampaign;
@@ -301,11 +301,12 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIsadhocconversion() {
+	@Column(length=1)
+	public String getIsadhocconversion() {
 		return isadhocconversion;
 	}
 
-	public void setIsadhocconversion(Boolean isadhocconversion) {
+	public void setIsadhocconversion(String isadhocconversion) {
 		this.isadhocconversion = isadhocconversion;
 	}
 
@@ -491,6 +492,8 @@ public class PaReportcolumn extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_REPORTCOLUMN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_496", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_ReportColumn", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_496")
 	public Integer getPaReportcolumnId() {
 		return paReportcolumnId;
 	}

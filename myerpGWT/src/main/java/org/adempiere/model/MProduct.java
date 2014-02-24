@@ -22,7 +22,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String description;
 	private String descriptionurl;
-	private String discontinued;
+	private Boolean discontinued;
 	private String discontinuedat;
 	private String discontinuedby;
 	private String documentnote;
@@ -44,7 +44,7 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	private Boolean issold;
 	private Boolean isstocked;
 	private Boolean issummary;
-	private Boolean istoformule;
+	private String istoformule;
 	private Boolean isverified;
 	private Boolean iswebstorefeatured;
 	private Integer lowlevel;
@@ -192,12 +192,11 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getDiscontinued() {
+	public Boolean isDiscontinued() {
 		return discontinued;
 	}
 
-	public void setDiscontinued(String discontinued) {
+	public void setDiscontinued(Boolean discontinued) {
 		this.discontinued = discontinued;
 	}
 
@@ -408,11 +407,12 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIstoformule() {
+	@Column(length=1)
+	public String getIstoformule() {
 		return istoformule;
 	}
 
-	public void setIstoformule(Boolean istoformule) {
+	public void setIstoformule(String istoformule) {
 		this.istoformule = istoformule;
 	}
 
@@ -498,6 +498,8 @@ public class MProduct extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_114", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Product", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_114")
 	public Integer getMProductId() {
 		return mProductId;
 	}

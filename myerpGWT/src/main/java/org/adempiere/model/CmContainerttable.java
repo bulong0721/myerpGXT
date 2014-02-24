@@ -65,6 +65,8 @@ public class CmContainerttable extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_CONTAINERTTABLE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1264", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_ContainerTTable", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1264")
 	public Integer getCmContainerttableId() {
 		return cmContainerttableId;
 	}

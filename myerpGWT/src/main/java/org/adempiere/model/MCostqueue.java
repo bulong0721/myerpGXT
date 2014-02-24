@@ -136,6 +136,8 @@ public class MCostqueue extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_COSTQUEUE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1178", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_CostQueue", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1178")
 	public Integer getMCostqueueId() {
 		return mCostqueueId;
 	}

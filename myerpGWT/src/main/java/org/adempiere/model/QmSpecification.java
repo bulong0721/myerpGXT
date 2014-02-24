@@ -146,6 +146,8 @@ public class QmSpecification extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="QM_SPECIFICATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53037", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "QM_Specification", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53037")
 	public Integer getQmSpecificationId() {
 		return qmSpecificationId;
 	}

@@ -62,6 +62,8 @@ public class AdPrintpaper extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_PRINTPAPER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_578", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_PrintPaper", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_578")
 	public Integer getAdPrintpaperId() {
 		return adPrintpaperId;
 	}

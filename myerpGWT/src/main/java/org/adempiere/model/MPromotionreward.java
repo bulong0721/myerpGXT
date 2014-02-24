@@ -158,6 +158,8 @@ public class MPromotionreward extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PROMOTIONREWARD_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53328", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_PromotionReward", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53328")
 	public Integer getMPromotionrewardId() {
 		return mPromotionrewardId;
 	}

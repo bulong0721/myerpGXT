@@ -105,6 +105,8 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_RECURRING_RUN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_728", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Recurring_Run", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_728")
 	public Integer getCRecurringRunId() {
 		return cRecurringRunId;
 	}

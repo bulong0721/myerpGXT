@@ -58,6 +58,8 @@ public class CRemuneration extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_REMUNERATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1128", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Remuneration", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1128")
 	public Integer getCRemunerationId() {
 		return cRemunerationId;
 	}

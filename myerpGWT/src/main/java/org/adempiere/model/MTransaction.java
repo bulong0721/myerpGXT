@@ -171,6 +171,8 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_TRANSACTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_252", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Transaction", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_252")
 	public Integer getMTransactionId() {
 		return mTransactionId;
 	}

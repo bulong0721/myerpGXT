@@ -49,6 +49,8 @@ public class AdAlertrule extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_ALERTRULE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_748", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_AlertRule", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_748")
 	public Integer getAdAlertruleId() {
 		return adAlertruleId;
 	}

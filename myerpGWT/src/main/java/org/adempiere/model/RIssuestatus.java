@@ -99,6 +99,8 @@ public class RIssuestatus extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_ISSUESTATUS_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1201", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_IssueStatus", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1201")
 	public Integer getRIssuestatusId() {
 		return rIssuestatusId;
 	}

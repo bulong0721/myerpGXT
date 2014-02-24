@@ -51,6 +51,8 @@ public class CPoskeylayout extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_POSKEYLAYOUT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_996", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_POSKeyLayout", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_996")
 	public Integer getCPoskeylayoutId() {
 		return cPoskeylayoutId;
 	}

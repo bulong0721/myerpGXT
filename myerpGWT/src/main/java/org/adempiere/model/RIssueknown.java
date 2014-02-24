@@ -148,6 +148,8 @@ public class RIssueknown extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_ISSUEKNOWN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1202", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_IssueKnown", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1202")
 	public Integer getRIssueknownId() {
 		return rIssueknownId;
 	}

@@ -67,6 +67,8 @@ public class CPayschedule extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PAYSCHEDULE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_677", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_PaySchedule", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_677")
 	public Integer getCPayscheduleId() {
 		return cPayscheduleId;
 	}

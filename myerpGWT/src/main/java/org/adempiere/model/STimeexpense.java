@@ -208,6 +208,8 @@ public class STimeexpense extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="S_TIMEEXPENSE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_558", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "S_TimeExpense", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_558")
 	public Integer getSTimeexpenseId() {
 		return sTimeexpenseId;
 	}

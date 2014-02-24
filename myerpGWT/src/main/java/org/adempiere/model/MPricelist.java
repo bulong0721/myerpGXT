@@ -17,11 +17,11 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String enforcepricelimit;
+	private Boolean enforcepricelimit;
 	private Boolean isactive;
 	private Boolean isdefault;
-	private Boolean ismandatory;
-	private Boolean ispresentforproduct;
+	private String ismandatory;
+	private String ispresentforproduct;
 	private Boolean issopricelist;
 	private Boolean istaxincluded;
 	private Integer mPricelistId;
@@ -107,12 +107,12 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getEnforcepricelimit() {
+	@Column(nullable=false)
+	public Boolean isEnforcepricelimit() {
 		return enforcepricelimit;
 	}
 
-	public void setEnforcepricelimit(String enforcepricelimit) {
+	public void setEnforcepricelimit(Boolean enforcepricelimit) {
 		this.enforcepricelimit = enforcepricelimit;
 	}
 
@@ -137,20 +137,22 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIsmandatory() {
+	@Column(length=1)
+	public String getIsmandatory() {
 		return ismandatory;
 	}
 
-	public void setIsmandatory(Boolean ismandatory) {
+	public void setIsmandatory(String ismandatory) {
 		this.ismandatory = ismandatory;
 	}
 
 	@Basic
-	public Boolean isIspresentforproduct() {
+	@Column(length=1)
+	public String getIspresentforproduct() {
 		return ispresentforproduct;
 	}
 
-	public void setIspresentforproduct(Boolean ispresentforproduct) {
+	public void setIspresentforproduct(String ispresentforproduct) {
 		this.ispresentforproduct = ispresentforproduct;
 	}
 
@@ -176,6 +178,8 @@ public class MPricelist extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PRICELIST_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_168", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_PriceList", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_168")
 	public Integer getMPricelistId() {
 		return mPricelistId;
 	}

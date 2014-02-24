@@ -42,6 +42,8 @@ public class AdFieldgroup extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_FIELDGROUP_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_351", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_FieldGroup", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_351")
 	public Integer getAdFieldgroupId() {
 		return adFieldgroupId;
 	}

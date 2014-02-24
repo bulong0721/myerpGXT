@@ -20,7 +20,7 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	private Integer glBudgetId;
 	private Boolean isactive;
 	private Boolean isprinted;
-	private Boolean issummary;
+	private String issummary;
 	private String linetype;
 	private String name;
 	private Integer oper1Id;
@@ -142,12 +142,12 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIssummary() {
+	@Column(nullable=false, length=1)
+	public String getIssummary() {
 		return issummary;
 	}
 
-	public void setIssummary(Boolean issummary) {
+	public void setIssummary(String issummary) {
 		this.issummary = issummary;
 	}
 
@@ -193,6 +193,8 @@ public class PaReportline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_REPORTLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_498", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_ReportLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_498")
 	public Integer getPaReportlineId() {
 		return paReportlineId;
 	}

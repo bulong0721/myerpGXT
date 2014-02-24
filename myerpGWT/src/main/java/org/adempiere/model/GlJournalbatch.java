@@ -17,7 +17,7 @@ public class GlJournalbatch extends org.adempiere.common.ADEntityBase {
 	private Integer cDoctypeId;
 	private Integer cPeriodId;
 	private BigDecimal controlamt;
-	private String copyfrom;
+	private Boolean copyfrom;
 	private String created;
 	private Integer createdby;
 	private String dateacct;
@@ -106,12 +106,11 @@ public class GlJournalbatch extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCopyfrom() {
+	public Boolean isCopyfrom() {
 		return copyfrom;
 	}
 
-	public void setCopyfrom(String copyfrom) {
+	public void setCopyfrom(Boolean copyfrom) {
 		this.copyfrom = copyfrom;
 	}
 
@@ -205,6 +204,8 @@ public class GlJournalbatch extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="GL_JOURNALBATCH_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_131", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "GL_JournalBatch", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_131")
 	public Integer getGlJournalbatchId() {
 		return glJournalbatchId;
 	}

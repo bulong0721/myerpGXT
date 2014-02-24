@@ -51,6 +51,8 @@ public class AspClientlevel extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="ASP_CLIENTLEVEL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53073", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "ASP_ClientLevel", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53073")
 	public Integer getAspClientlevelId() {
 		return aspClientlevelId;
 	}

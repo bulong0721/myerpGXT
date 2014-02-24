@@ -1,5 +1,6 @@
 package org.adempiere.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import org.adempiere.model.AdProcess;
 import org.adempiere.model.AdTab;
 import org.adempiere.model.AdTabV;
 import org.adempiere.model.AdTable;
+import org.adempiere.model.AdTreenode;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.util.StringUtil;
@@ -145,8 +147,7 @@ public final class POUtil {
 	 * @param paramMap
 	 * @return
 	 */
-	private static <T> List<T> selectList(PersistContext pCtx, String queryName, Class<T> clazz,
-			Map<String, Object> paramMap) {
+	private static <T> List<T> selectList(PersistContext pCtx, String queryName, Class<T> clazz, Map<String, Object> paramMap) {
 		EntityManager em = pCtx.begin();
 		try {
 			TypedQuery<T> query = em.createNamedQuery(queryName, clazz);
@@ -205,7 +206,7 @@ public final class POUtil {
 		Map<String, Object> paramMap = toMap("adTabId", tabId);
 		return selectList(pCtx, "queryFieldsByTabId", AdField.class, paramMap);
 	}
-	
+
 	/**
 	 * @param pCtx
 	 * @param tabId
@@ -214,6 +215,27 @@ public final class POUtil {
 	public static List<ADSequenceModel> querySeqByTabId(PersistContext pCtx, int tabId) {
 		Map<String, Object> paramMap = toMap("adTabId", tabId);
 		return selectList(pCtx, "querySeqByTabId", ADSequenceModel.class, paramMap);
+	}
+
+	public static boolean updateFieldSequece(PersistContext pCtx, List<ADSequenceModel> seqList) {		
+		try {
+			List<AdField> fieldList = new ArrayList<AdField>(seqList.size());
+			for (ADSequenceModel seqModel : seqList) {
+				AdField field = find(pCtx, AdField.class, seqModel.getSeqID());
+				if (0 == seqModel.getSeqNo()) {
+					field.setIsdisplayed(false);
+					field.setSeqno(0);
+				} else {
+					field.setIsdisplayed(true);
+					field.setSeqno(seqModel.getSeqNo());
+				}
+				fieldList.add(field);
+			}
+			return POUtil.mergeAll(pCtx, fieldList);
+		} catch (Exception ex) {
+
+		}
+		return false;
 	}
 
 	/**
@@ -275,6 +297,27 @@ public final class POUtil {
 			return false;
 		}
 	}
+	
+	/**
+	 * @param pCtx
+	 * @param list
+	 * @return
+	 */
+	public static boolean mergeAll(PersistContext pCtx, List<?> list) {
+		try {
+			EntityManager em = pCtx.begin();
+			for (Object entity : list) {
+				initADEntity(entity);
+				em.merge(entity);
+			}
+			pCtx.commit();
+			return true;
+		} catch (Exception e) {
+			pCtx.rollback();
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	/**
 	 * @param entity
@@ -320,6 +363,17 @@ public final class POUtil {
 	public static List<AdMenu> queryMainMenuNodes(PersistContext pCtx) {
 		List<AdMenu> menuList = selectList(pCtx, "queryMainMenuNodes", AdMenu.class);
 		return menuList;
+	}
+	
+	public static <T extends AdTreenode> List<T> queryRootNodes(PersistContext pCtx, Class<T> clazz, int adTreeId, int adUserId) {
+		Map<String, Object> paramMap = toMap("adTreeId", adTreeId);
+		paramMap.put("adUserId", adUserId);
+		return selectList(pCtx, "queryRootNodes", clazz, paramMap);
+	}
+
+	public static <T extends AdTreenode> List<T> querySubNodes(PersistContext pCtx, Class<T> clazz, int parentId) {
+		Map<String, Object> paramMap = toMap("parentId", parentId);
+		return selectList(pCtx, "queryRootNodes", clazz, paramMap);
 	}
 
 	/**

@@ -354,6 +354,8 @@ public class PaReportsource extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_REPORTSOURCE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_500", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_ReportSource", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_500")
 	public Integer getPaReportsourceId() {
 		return paReportsourceId;
 	}

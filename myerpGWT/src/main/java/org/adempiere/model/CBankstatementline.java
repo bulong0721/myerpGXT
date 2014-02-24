@@ -23,7 +23,7 @@ public class CBankstatementline extends org.adempiere.common.ADEntityBase {
 	private BigDecimal chargeamt;
 	private String created;
 	private Integer createdby;
-	private String createpayment;
+	private Boolean createpayment;
 	private String dateacct;
 	private String description;
 	private BigDecimal eftamt;
@@ -42,7 +42,7 @@ public class CBankstatementline extends org.adempiere.common.ADEntityBase {
 	private Boolean ismanual;
 	private Boolean isreversal;
 	private Integer line;
-	private String matchstatement;
+	private Boolean matchstatement;
 	private String memo;
 	private Boolean processed;
 	private String referenceno;
@@ -92,6 +92,8 @@ public class CBankstatementline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_BANKSTATEMENTLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_330", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_BankStatementLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_330")
 	public Integer getCBankstatementlineId() {
 		return cBankstatementlineId;
 	}
@@ -181,12 +183,11 @@ public class CBankstatementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatepayment() {
+	public Boolean isCreatepayment() {
 		return createpayment;
 	}
 
-	public void setCreatepayment(String createpayment) {
+	public void setCreatepayment(Boolean createpayment) {
 		this.createpayment = createpayment;
 	}
 
@@ -366,12 +367,11 @@ public class CBankstatementline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getMatchstatement() {
+	public Boolean isMatchstatement() {
 		return matchstatement;
 	}
 
-	public void setMatchstatement(String matchstatement) {
+	public void setMatchstatement(Boolean matchstatement) {
 		this.matchstatement = matchstatement;
 	}
 

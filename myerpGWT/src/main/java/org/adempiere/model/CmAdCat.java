@@ -52,6 +52,8 @@ public class CmAdCat extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_AD_CAT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1237", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_Ad_Cat", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1237")
 	public Integer getCmAdCatId() {
 		return cmAdCatId;
 	}

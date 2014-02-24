@@ -16,13 +16,13 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	private Integer adTableId;
 	private Integer adValRuleId;
 	private Integer adWindowId;
-	private String copycolumnsfromtable;
+	private Boolean copycolumnsfromtable;
 	private String created;
 	private Integer createdby;
 	private String description;
 	private String entitytype;
 	private String help;
-	private String importtable;
+	private Boolean importtable;
 	private Boolean isactive;
 	private Boolean iscentrallymaintained;
 	private Boolean ischangelog;
@@ -77,6 +77,8 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_TABLE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_21", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Table", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_21")
 	public Integer getAdTableId() {
 		return adTableId;
 	}
@@ -106,12 +108,11 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCopycolumnsfromtable() {
+	public Boolean isCopycolumnsfromtable() {
 		return copycolumnsfromtable;
 	}
 
-	public void setCopycolumnsfromtable(String copycolumnsfromtable) {
+	public void setCopycolumnsfromtable(Boolean copycolumnsfromtable) {
 		this.copycolumnsfromtable = copycolumnsfromtable;
 	}
 
@@ -165,12 +166,11 @@ public class AdTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getImporttable() {
+	public Boolean isImporttable() {
 		return importtable;
 	}
 
-	public void setImporttable(String importtable) {
+	public void setImporttable(Boolean importtable) {
 		this.importtable = importtable;
 	}
 

@@ -12,7 +12,7 @@ public class AdPackageImpProc extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer adClientId;
 	private Integer adOrgId;
-	private String adOverrideDict;
+	private Boolean adOverrideDict;
 	private String adPackageDir;
 	private Integer adPackageImpProcId;
 	private String adPackageSource;
@@ -52,12 +52,12 @@ public class AdPackageImpProc extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_OVERRIDE_DICT", length=1)
-	public String getAdOverrideDict() {
+	@Column(name="AD_OVERRIDE_DICT")
+	public Boolean isAdOverrideDict() {
 		return adOverrideDict;
 	}
 
-	public void setAdOverrideDict(String adOverrideDict) {
+	public void setAdOverrideDict(Boolean adOverrideDict) {
 		this.adOverrideDict = adOverrideDict;
 	}
 
@@ -73,6 +73,8 @@ public class AdPackageImpProc extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_PACKAGE_IMP_PROC_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_50008", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Package_Imp_Proc", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_50008")
 	public Integer getAdPackageImpProcId() {
 		return adPackageImpProcId;
 	}

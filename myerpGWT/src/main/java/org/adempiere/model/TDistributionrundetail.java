@@ -18,7 +18,7 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	private Integer cBpartnerLocationId;
 	private String created;
 	private Integer createdby;
-	private Boolean isactive;
+	private String isactive;
 	private Integer mDistributionlistId;
 	private Integer mDistributionlistlineId;
 	private Integer mDistributionrunId;
@@ -101,12 +101,12 @@ public class TDistributionrundetail extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 

@@ -141,6 +141,8 @@ public class WClickcount extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="W_CLICKCOUNT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_682", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "W_ClickCount", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_682")
 	public Integer getWClickcountId() {
 		return wClickcountId;
 	}

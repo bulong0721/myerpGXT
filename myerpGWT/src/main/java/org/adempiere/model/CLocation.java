@@ -119,6 +119,8 @@ public class CLocation extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_LOCATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_60", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Location", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_60")
 	public Integer getCLocationId() {
 		return cLocationId;
 	}

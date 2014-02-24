@@ -20,11 +20,11 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	private String conversiontypevalue;
 	private String created;
 	private Integer createdby;
-	private String createreciprocalrate;
+	private Boolean createreciprocalrate;
 	private BigDecimal dividerate;
 	private Integer iConversionRateId;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Boolean isactive;
 	private String isoCode;
 	private String isoCodeTo;
@@ -134,12 +134,11 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatereciprocalrate() {
+	public Boolean isCreatereciprocalrate() {
 		return createreciprocalrate;
 	}
 
-	public void setCreatereciprocalrate(String createreciprocalrate) {
+	public void setCreatereciprocalrate(Boolean createreciprocalrate) {
 		this.createreciprocalrate = createreciprocalrate;
 	}
 
@@ -154,6 +153,8 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="I_CONVERSION_RATE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_816", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_Conversion_Rate", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_816")
 	public Integer getIConversionRateId() {
 		return iConversionRateId;
 	}
@@ -173,12 +174,12 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED")
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 

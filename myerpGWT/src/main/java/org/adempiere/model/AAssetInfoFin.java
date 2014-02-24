@@ -18,7 +18,7 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	private String aExpiredDate;
 	private String aFinanceMeth;
 	private BigDecimal aMonthlyPayment;
-	private String aPurchaseOption;
+	private Boolean aPurchaseOption;
 	private Integer aPurchaseOptionCredit;
 	private BigDecimal aPurchaseOptionCreditPer;
 	private BigDecimal aPurchasePrice;
@@ -51,6 +51,8 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_ASSET_INFO_FIN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53152", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Info_Fin", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53152")
 	public Integer getAAssetInfoFinId() {
 		return aAssetInfoFinId;
 	}
@@ -110,12 +112,12 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_PURCHASE_OPTION", length=1)
-	public String getAPurchaseOption() {
+	@Column(name="A_PURCHASE_OPTION")
+	public Boolean isAPurchaseOption() {
 		return aPurchaseOption;
 	}
 
-	public void setAPurchaseOption(String aPurchaseOption) {
+	public void setAPurchaseOption(Boolean aPurchaseOption) {
 		this.aPurchaseOption = aPurchaseOption;
 	}
 

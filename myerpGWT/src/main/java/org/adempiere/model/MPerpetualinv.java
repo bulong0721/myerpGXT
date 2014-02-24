@@ -12,7 +12,7 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer adClientId;
 	private Integer adOrgId;
-	private String counthighmovement;
+	private Boolean counthighmovement;
 	private String created;
 	private Integer createdby;
 	private String datelastrun;
@@ -58,12 +58,12 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getCounthighmovement() {
+	@Column(nullable=false)
+	public Boolean isCounthighmovement() {
 		return counthighmovement;
 	}
 
-	public void setCounthighmovement(String counthighmovement) {
+	public void setCounthighmovement(Boolean counthighmovement) {
 		this.counthighmovement = counthighmovement;
 	}
 
@@ -127,6 +127,8 @@ public class MPerpetualinv extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PERPETUALINV_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_269", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_PerpetualInv", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_269")
 	public Integer getMPerpetualinvId() {
 		return mPerpetualinvId;
 	}

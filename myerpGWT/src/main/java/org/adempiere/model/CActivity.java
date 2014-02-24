@@ -53,6 +53,8 @@ public class CActivity extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_239", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Activity", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_239")
 	public Integer getCActivityId() {
 		return cActivityId;
 	}

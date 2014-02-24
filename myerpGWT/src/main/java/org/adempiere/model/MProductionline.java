@@ -136,6 +136,8 @@ public class MProductionline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PRODUCTIONLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_249", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_ProductionLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_249")
 	public Integer getMProductionlineId() {
 		return mProductionlineId;
 	}

@@ -77,6 +77,8 @@ public class CAcctprocessorlog extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_ACCTPROCESSORLOG_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_869", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_AcctProcessorLog", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_869")
 	public Integer getCAcctprocessorlogId() {
 		return cAcctprocessorlogId;
 	}

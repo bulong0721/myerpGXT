@@ -15,19 +15,19 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	private Integer adClientId;
 	private Integer adOrgId;
 	private Integer adOrgtrxId;
-	private String anyacct;
-	private String anyactivity;
-	private String anybpartner;
-	private String anycampaign;
-	private String anylocfrom;
-	private String anylocto;
-	private String anyorg;
-	private String anyorgtrx;
-	private String anyproduct;
-	private String anyproject;
-	private String anysalesregion;
-	private String anyuser1;
-	private String anyuser2;
+	private Boolean anyacct;
+	private Boolean anyactivity;
+	private Boolean anybpartner;
+	private Boolean anycampaign;
+	private Boolean anylocfrom;
+	private Boolean anylocto;
+	private Boolean anyorg;
+	private Boolean anyorgtrx;
+	private Boolean anyproduct;
+	private Boolean anyproject;
+	private Boolean anysalesregion;
+	private Boolean anyuser1;
+	private Boolean anyuser2;
 	private Integer cAcctschemaId;
 	private Integer cActivityId;
 	private Integer cBpartnerId;
@@ -104,132 +104,132 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnyacct() {
+	@Column(nullable=false)
+	public Boolean isAnyacct() {
 		return anyacct;
 	}
 
-	public void setAnyacct(String anyacct) {
+	public void setAnyacct(Boolean anyacct) {
 		this.anyacct = anyacct;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnyactivity() {
+	@Column(nullable=false)
+	public Boolean isAnyactivity() {
 		return anyactivity;
 	}
 
-	public void setAnyactivity(String anyactivity) {
+	public void setAnyactivity(Boolean anyactivity) {
 		this.anyactivity = anyactivity;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnybpartner() {
+	@Column(nullable=false)
+	public Boolean isAnybpartner() {
 		return anybpartner;
 	}
 
-	public void setAnybpartner(String anybpartner) {
+	public void setAnybpartner(Boolean anybpartner) {
 		this.anybpartner = anybpartner;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnycampaign() {
+	@Column(nullable=false)
+	public Boolean isAnycampaign() {
 		return anycampaign;
 	}
 
-	public void setAnycampaign(String anycampaign) {
+	public void setAnycampaign(Boolean anycampaign) {
 		this.anycampaign = anycampaign;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnylocfrom() {
+	@Column(nullable=false)
+	public Boolean isAnylocfrom() {
 		return anylocfrom;
 	}
 
-	public void setAnylocfrom(String anylocfrom) {
+	public void setAnylocfrom(Boolean anylocfrom) {
 		this.anylocfrom = anylocfrom;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnylocto() {
+	@Column(nullable=false)
+	public Boolean isAnylocto() {
 		return anylocto;
 	}
 
-	public void setAnylocto(String anylocto) {
+	public void setAnylocto(Boolean anylocto) {
 		this.anylocto = anylocto;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnyorg() {
+	@Column(nullable=false)
+	public Boolean isAnyorg() {
 		return anyorg;
 	}
 
-	public void setAnyorg(String anyorg) {
+	public void setAnyorg(Boolean anyorg) {
 		this.anyorg = anyorg;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnyorgtrx() {
+	@Column(nullable=false)
+	public Boolean isAnyorgtrx() {
 		return anyorgtrx;
 	}
 
-	public void setAnyorgtrx(String anyorgtrx) {
+	public void setAnyorgtrx(Boolean anyorgtrx) {
 		this.anyorgtrx = anyorgtrx;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnyproduct() {
+	@Column(nullable=false)
+	public Boolean isAnyproduct() {
 		return anyproduct;
 	}
 
-	public void setAnyproduct(String anyproduct) {
+	public void setAnyproduct(Boolean anyproduct) {
 		this.anyproduct = anyproduct;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnyproject() {
+	@Column(nullable=false)
+	public Boolean isAnyproject() {
 		return anyproject;
 	}
 
-	public void setAnyproject(String anyproject) {
+	public void setAnyproject(Boolean anyproject) {
 		this.anyproject = anyproject;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnysalesregion() {
+	@Column(nullable=false)
+	public Boolean isAnysalesregion() {
 		return anysalesregion;
 	}
 
-	public void setAnysalesregion(String anysalesregion) {
+	public void setAnysalesregion(Boolean anysalesregion) {
 		this.anysalesregion = anysalesregion;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnyuser1() {
+	@Column(nullable=false)
+	public Boolean isAnyuser1() {
 		return anyuser1;
 	}
 
-	public void setAnyuser1(String anyuser1) {
+	public void setAnyuser1(Boolean anyuser1) {
 		this.anyuser1 = anyuser1;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAnyuser2() {
+	@Column(nullable=false)
+	public Boolean isAnyuser2() {
 		return anyuser2;
 	}
 
-	public void setAnyuser2(String anyuser2) {
+	public void setAnyuser2(Boolean anyuser2) {
 		this.anyuser2 = anyuser2;
 	}
 
@@ -354,6 +354,8 @@ public class GlDistribution extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="GL_DISTRIBUTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_925", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "GL_Distribution", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_925")
 	public Integer getGlDistributionId() {
 		return glDistributionId;
 	}

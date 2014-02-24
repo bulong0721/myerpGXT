@@ -66,6 +66,8 @@ public class AdPrintlabel extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_PRINTLABEL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_725", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_PrintLabel", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_725")
 	public Integer getAdPrintlabelId() {
 		return adPrintlabelId;
 	}

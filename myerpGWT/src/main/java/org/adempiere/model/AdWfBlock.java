@@ -51,6 +51,8 @@ public class AdWfBlock extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_WF_BLOCK_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_822", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_WF_Block", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_822")
 	public Integer getAdWfBlockId() {
 		return adWfBlockId;
 	}

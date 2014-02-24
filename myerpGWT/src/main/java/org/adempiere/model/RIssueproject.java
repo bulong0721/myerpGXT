@@ -134,6 +134,8 @@ public class RIssueproject extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_ISSUEPROJECT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1205", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_IssueProject", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1205")
 	public Integer getRIssueprojectId() {
 		return rIssueprojectId;
 	}

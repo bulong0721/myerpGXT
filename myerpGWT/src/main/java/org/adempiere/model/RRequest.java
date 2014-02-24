@@ -555,6 +555,8 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_REQUEST_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_354", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_Request", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_354")
 	public Integer getRRequestId() {
 		return rRequestId;
 	}

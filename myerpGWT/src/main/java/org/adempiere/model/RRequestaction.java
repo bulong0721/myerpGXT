@@ -30,9 +30,9 @@ public class RRequestaction extends org.adempiere.common.ADEntityBase {
 	private String datestartplan;
 	private String enddate;
 	private Boolean isactive;
-	private Boolean isescalated;
-	private Boolean isinvoiced;
-	private Boolean isselfservice;
+	private String isescalated;
+	private String isinvoiced;
+	private String isselfservice;
 	private Integer mInoutId;
 	private Integer mProductId;
 	private Integer mProductspentId;
@@ -251,29 +251,32 @@ public class RRequestaction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIsescalated() {
+	@Column(length=1)
+	public String getIsescalated() {
 		return isescalated;
 	}
 
-	public void setIsescalated(Boolean isescalated) {
+	public void setIsescalated(String isescalated) {
 		this.isescalated = isescalated;
 	}
 
 	@Basic
-	public Boolean isIsinvoiced() {
+	@Column(length=1)
+	public String getIsinvoiced() {
 		return isinvoiced;
 	}
 
-	public void setIsinvoiced(Boolean isinvoiced) {
+	public void setIsinvoiced(String isinvoiced) {
 		this.isinvoiced = isinvoiced;
 	}
 
 	@Basic
-	public Boolean isIsselfservice() {
+	@Column(length=1)
+	public String getIsselfservice() {
 		return isselfservice;
 	}
 
-	public void setIsselfservice(Boolean isselfservice) {
+	public void setIsselfservice(String isselfservice) {
 		this.isselfservice = isselfservice;
 	}
 
@@ -405,6 +408,8 @@ public class RRequestaction extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_REQUESTACTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_355", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_RequestAction", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_355")
 	public Integer getRRequestactionId() {
 		return rRequestactionId;
 	}

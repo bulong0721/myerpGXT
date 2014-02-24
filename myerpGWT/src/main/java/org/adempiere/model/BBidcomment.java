@@ -63,6 +63,8 @@ public class BBidcomment extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="B_BIDCOMMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_860", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "B_BidComment", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_860")
 	public Integer getBBidcommentId() {
 		return bBidcommentId;
 	}

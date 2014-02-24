@@ -100,6 +100,8 @@ public class RIssueuser extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_ISSUEUSER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1204", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_IssueUser", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1204")
 	public Integer getRIssueuserId() {
 		return rIssueuserId;
 	}

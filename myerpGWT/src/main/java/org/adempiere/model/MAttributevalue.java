@@ -101,6 +101,8 @@ public class MAttributevalue extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_ATTRIBUTEVALUE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_687", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_AttributeValue", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_687")
 	public Integer getMAttributevalueId() {
 		return mAttributevalueId;
 	}

@@ -111,6 +111,8 @@ public class MSernoctlexclude extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_SERNOCTLEXCLUDE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1171", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_SerNoCtlExclude", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1171")
 	public Integer getMSernoctlexcludeId() {
 		return mSernoctlexcludeId;
 	}

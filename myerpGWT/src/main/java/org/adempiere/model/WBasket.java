@@ -17,7 +17,7 @@ public class WBasket extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String email;
-	private Boolean isactive;
+	private String isactive;
 	private Integer mPricelistId;
 	private String sessionId;
 	private String updated;
@@ -102,12 +102,12 @@ public class WBasket extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 
@@ -153,6 +153,8 @@ public class WBasket extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="W_BASKET_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_339", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "W_Basket", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_339")
 	public Integer getWBasketId() {
 		return wBasketId;
 	}

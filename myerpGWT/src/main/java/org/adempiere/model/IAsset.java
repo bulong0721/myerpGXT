@@ -68,7 +68,7 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	private String help;
 	private Integer iAssetId;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Boolean isactive;
 	private Boolean isdepreciated;
 	private Boolean isdisposed;
@@ -648,6 +648,8 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="I_ASSET_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53159", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_Asset", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53159")
 	public Integer getIAssetId() {
 		return iAssetId;
 	}
@@ -667,12 +669,12 @@ public class IAsset extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED")
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 

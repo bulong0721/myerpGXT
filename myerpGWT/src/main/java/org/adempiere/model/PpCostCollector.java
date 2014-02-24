@@ -39,7 +39,7 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	private Integer mWarehouseId;
 	private String movementdate;
 	private BigDecimal movementqty;
-	private String posted;
+	private Boolean posted;
 	private Integer ppCostCollectorId;
 	private Integer ppOrderBomlineId;
 	private Integer ppOrderId;
@@ -342,17 +342,19 @@ public class PpCostCollector extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 
 	@Id
 	@Column(name="PP_COST_COLLECTOR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53032", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_Cost_Collector", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53032")
 	public Integer getPpCostCollectorId() {
 		return ppCostCollectorId;
 	}

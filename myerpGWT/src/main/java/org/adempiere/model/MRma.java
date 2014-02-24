@@ -24,7 +24,7 @@ public class MRma extends org.adempiere.common.ADEntityBase {
 	private String docaction;
 	private String docstatus;
 	private String documentno;
-	private String generateto;
+	private Boolean generateto;
 	private String help;
 	private Integer inoutId;
 	private Boolean isactive;
@@ -176,12 +176,11 @@ public class MRma extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getGenerateto() {
+	public Boolean isGenerateto() {
 		return generateto;
 	}
 
-	public void setGenerateto(String generateto) {
+	public void setGenerateto(Boolean generateto) {
 		this.generateto = generateto;
 	}
 
@@ -237,6 +236,8 @@ public class MRma extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_RMA_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_836", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_RMA", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_836")
 	public Integer getMRmaId() {
 		return mRmaId;
 	}

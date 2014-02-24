@@ -95,6 +95,8 @@ public class HrJob extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="HR_JOB_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53108", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "HR_Job", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53108")
 	public Integer getHrJobId() {
 		return hrJobId;
 	}

@@ -25,21 +25,21 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	private String docaction;
 	private String docstatus;
 	private String documentno;
-	private String generatelist;
+	private Boolean generatelist;
 	private Boolean isactive;
 	private Boolean isapproved;
 	private Integer mInventoryId;
 	private Integer mPerpetualinvId;
 	private Integer mWarehouseId;
 	private String movementdate;
-	private String posted;
+	private Boolean posted;
 	private Boolean processed;
 	private Long processedon;
 	private Boolean processing;
 	private Integer reversalId;
 	private String updated;
 	private Integer updatedby;
-	private String updateqty;
+	private Boolean updateqty;
 	private Integer user1Id;
 	private Integer user2Id;
 
@@ -189,12 +189,11 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getGeneratelist() {
+	public Boolean isGeneratelist() {
 		return generatelist;
 	}
 
-	public void setGeneratelist(String generatelist) {
+	public void setGeneratelist(Boolean generatelist) {
 		this.generatelist = generatelist;
 	}
 
@@ -220,6 +219,8 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_INVENTORY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_244", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Inventory", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_244")
 	public Integer getMInventoryId() {
 		return mInventoryId;
 	}
@@ -259,12 +260,12 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 
@@ -327,12 +328,11 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getUpdateqty() {
+	public Boolean isUpdateqty() {
 		return updateqty;
 	}
 
-	public void setUpdateqty(String updateqty) {
+	public void setUpdateqty(Boolean updateqty) {
 		this.updateqty = updateqty;
 	}
 

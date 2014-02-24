@@ -118,6 +118,8 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="K_ENTRY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_781", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Entry", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_781")
 	public Integer getKEntryId() {
 		return kEntryId;
 	}

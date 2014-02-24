@@ -15,12 +15,12 @@ public class CDunning extends org.adempiere.common.ADEntityBase {
 	private Integer cDunningId;
 	private String created;
 	private Integer createdby;
-	private String createlevelssequentially;
+	private Boolean createlevelssequentially;
 	private String description;
 	private Boolean isactive;
 	private Boolean isdefault;
 	private String name;
-	private String senddunningletter;
+	private Boolean senddunningletter;
 	private String updated;
 	private Integer updatedby;
 
@@ -53,6 +53,8 @@ public class CDunning extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_DUNNING_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_217", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Dunning", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_217")
 	public Integer getCDunningId() {
 		return cDunningId;
 	}
@@ -82,12 +84,12 @@ public class CDunning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getCreatelevelssequentially() {
+	@Column(nullable=false)
+	public Boolean isCreatelevelssequentially() {
 		return createlevelssequentially;
 	}
 
-	public void setCreatelevelssequentially(String createlevelssequentially) {
+	public void setCreatelevelssequentially(Boolean createlevelssequentially) {
 		this.createlevelssequentially = createlevelssequentially;
 	}
 
@@ -131,12 +133,12 @@ public class CDunning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getSenddunningletter() {
+	@Column(nullable=false)
+	public Boolean isSenddunningletter() {
 		return senddunningletter;
 	}
 
-	public void setSenddunningletter(String senddunningletter) {
+	public void setSenddunningletter(Boolean senddunningletter) {
 		this.senddunningletter = senddunningletter;
 	}
 

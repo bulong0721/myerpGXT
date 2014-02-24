@@ -27,7 +27,7 @@ public class MMatchpo extends org.adempiere.common.ADEntityBase {
 	private Integer mInoutlineId;
 	private Integer mMatchpoId;
 	private Integer mProductId;
-	private String posted;
+	private Boolean posted;
 	private BigDecimal pricematchdifference;
 	private Boolean processed;
 	private Long processedon;
@@ -182,6 +182,8 @@ public class MMatchpo extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_MATCHPO_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_527", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_MatchPO", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_527")
 	public Integer getMMatchpoId() {
 		return mMatchpoId;
 	}
@@ -201,12 +203,12 @@ public class MMatchpo extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 

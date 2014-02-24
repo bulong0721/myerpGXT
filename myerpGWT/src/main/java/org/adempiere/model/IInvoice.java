@@ -37,7 +37,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	private String chargename;
 	private String city;
 	private String contactname;
-	private String countrycode;
+	private Boolean countrycode;
 	private String created;
 	private Integer createdby;
 	private String dateacct;
@@ -48,7 +48,7 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	private String email;
 	private String iErrormsg;
 	private Integer iInvoiceId;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Boolean isactive;
 	private Boolean issotrx;
 	private String linedescription;
@@ -341,12 +341,11 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=2)
-	public String getCountrycode() {
+	public Boolean isCountrycode() {
 		return countrycode;
 	}
 
-	public void setCountrycode(String countrycode) {
+	public void setCountrycode(Boolean countrycode) {
 		this.countrycode = countrycode;
 	}
 
@@ -439,6 +438,8 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="I_INVOICE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_753", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_Invoice", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_753")
 	public Integer getIInvoiceId() {
 		return iInvoiceId;
 	}
@@ -448,12 +449,12 @@ public class IInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 

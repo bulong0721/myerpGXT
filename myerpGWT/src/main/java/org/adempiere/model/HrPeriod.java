@@ -140,6 +140,8 @@ public class HrPeriod extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="HR_PERIOD_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53113", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "HR_Period", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53113")
 	public Integer getHrPeriodId() {
 		return hrPeriodId;
 	}

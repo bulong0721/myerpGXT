@@ -35,7 +35,7 @@ public class ADMenuModel implements IsADRPCModel, ADTreeNode {
 	/** Workbench = B */
 	public static final String	ACTION_Workbench	= "B";
 
-	public static final int		TREE_ID				= 20;
+	public static final int		TREE_ID				= 10;
 
 	/*
 	 * (non-Javadoc)

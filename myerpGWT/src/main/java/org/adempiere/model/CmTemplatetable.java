@@ -74,6 +74,8 @@ public class CmTemplatetable extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_TEMPLATETABLE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1263", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_TemplateTable", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1263")
 	public Integer getCmTemplatetableId() {
 		return cmTemplatetableId;
 	}

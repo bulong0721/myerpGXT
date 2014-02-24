@@ -92,6 +92,8 @@ public class ImpProcessorType extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="IMP_PROCESSOR_TYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53097", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "IMP_Processor_Type", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53097")
 	public Integer getImpProcessorTypeId() {
 		return impProcessorTypeId;
 	}

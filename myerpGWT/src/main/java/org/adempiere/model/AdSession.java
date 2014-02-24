@@ -65,6 +65,8 @@ public class AdSession extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_SESSION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_721", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Session", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_721")
 	public Integer getAdSessionId() {
 		return adSessionId;
 	}

@@ -61,6 +61,8 @@ public class CTaxpostal extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_TAXPOSTAL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_918", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_TaxPostal", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_918")
 	public Integer getCTaxpostalId() {
 		return cTaxpostalId;
 	}

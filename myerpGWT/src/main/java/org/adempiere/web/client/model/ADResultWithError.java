@@ -1,9 +1,16 @@
 package org.adempiere.web.client.model;
 
-
 public class ADResultWithError implements IsADRPCModel {
-	private boolean				isSuccess;
-	private String				errorMessage;
+	private boolean	isSuccess;
+	private String	errorMessage;
+	
+	public ADResultWithError() {
+	}
+
+	public ADResultWithError(boolean isSuccess, String errorMessage) {
+		this.isSuccess = isSuccess;
+		this.errorMessage = errorMessage;
+	}
 
 	public static ADResultWithError newSuccess() {
 		ADResultWithError rs = new ADResultWithError();

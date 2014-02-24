@@ -20,7 +20,7 @@ public class CmContainerElement extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String help;
 	private Boolean isactive;
-	private Boolean isvalid;
+	private String isvalid;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -54,6 +54,8 @@ public class CmContainerElement extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_CONTAINER_ELEMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1241", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_Container_Element", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1241")
 	public Integer getCmContainerElementId() {
 		return cmContainerElementId;
 	}
@@ -132,12 +134,12 @@ public class CmContainerElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsvalid() {
+	@Column(nullable=false, length=1)
+	public String getIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(Boolean isvalid) {
+	public void setIsvalid(String isvalid) {
 		this.isvalid = isvalid;
 	}
 

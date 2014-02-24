@@ -22,7 +22,7 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	private String dataformat;
 	private String datatype;
 	private String decimalpoint;
-	private String divideby100;
+	private Boolean divideby100;
 	private Integer endno;
 	private Boolean isactive;
 	private String name;
@@ -71,6 +71,8 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_IMPFORMAT_ROW_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_319", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_ImpFormat_Row", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_319")
 	public Integer getAdImpformatRowId() {
 		return adImpformatRowId;
 	}
@@ -160,12 +162,12 @@ public class AdImpformatRow extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getDivideby100() {
+	@Column(nullable=false)
+	public Boolean isDivideby100() {
 		return divideby100;
 	}
 
-	public void setDivideby100(String divideby100) {
+	public void setDivideby100(Boolean divideby100) {
 		this.divideby100 = divideby100;
 	}
 

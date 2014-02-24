@@ -111,6 +111,8 @@ public class MAttributesetexclude extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_ATTRIBUTESETEXCLUDE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1167", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_AttributeSetExclude", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1167")
 	public Integer getMAttributesetexcludeId() {
 		return mAttributesetexcludeId;
 	}

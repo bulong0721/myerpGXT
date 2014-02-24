@@ -21,9 +21,9 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String enforcepricelimit;
+	private Boolean enforcepricelimit;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Integer iPricelistId;
 	private Boolean isactive;
 	private String isoCode;
@@ -151,12 +151,11 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getEnforcepricelimit() {
+	public Boolean isEnforcepricelimit() {
 		return enforcepricelimit;
 	}
 
-	public void setEnforcepricelimit(String enforcepricelimit) {
+	public void setEnforcepricelimit(Boolean enforcepricelimit) {
 		this.enforcepricelimit = enforcepricelimit;
 	}
 
@@ -171,17 +170,19 @@ public class IPricelist extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 
 	@Id
 	@Column(name="I_PRICELIST_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53274", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_PriceList", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53274")
 	public Integer getIPricelistId() {
 		return iPricelistId;
 	}

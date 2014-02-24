@@ -129,6 +129,8 @@ public class ExpFormatline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="EXP_FORMATLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53090", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "EXP_FormatLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53090")
 	public Integer getExpFormatlineId() {
 		return expFormatlineId;
 	}

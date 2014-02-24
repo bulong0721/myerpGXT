@@ -23,7 +23,7 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	private BigDecimal deliverytimePromised;
 	private String forecastvalue;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Integer iProductplanningId;
 	private Boolean isactive;
 	private Boolean iscreateplan;
@@ -190,17 +190,19 @@ public class IProductplanning extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 
 	@Id
 	@Column(name="I_PRODUCTPLANNING_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53369", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_ProductPlanning", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53369")
 	public Integer getIProductplanningId() {
 		return iProductplanningId;
 	}

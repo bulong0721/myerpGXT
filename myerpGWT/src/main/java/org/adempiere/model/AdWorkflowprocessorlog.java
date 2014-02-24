@@ -67,6 +67,8 @@ public class AdWorkflowprocessorlog extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_WORKFLOWPROCESSORLOG_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_871", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_WorkflowProcessorLog", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_871")
 	public Integer getAdWorkflowprocessorlogId() {
 		return adWorkflowprocessorlogId;
 	}

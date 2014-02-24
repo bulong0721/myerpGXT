@@ -54,6 +54,8 @@ public class AdReplicationstrategy extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_REPLICATIONSTRATEGY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_771", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_ReplicationStrategy", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_771")
 	public Integer getAdReplicationstrategyId() {
 		return adReplicationstrategyId;
 	}

@@ -55,7 +55,7 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	private Integer glJournallineId;
 	private String iErrormsg;
 	private Integer iGljournalId;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Boolean isactive;
 	private Boolean iscreatenewbatch;
 	private Boolean iscreatenewjournal;
@@ -509,6 +509,8 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="I_GLJOURNAL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_754", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_GLJournal", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_754")
 	public Integer getIGljournalId() {
 		return iGljournalId;
 	}
@@ -518,12 +520,12 @@ public class IGljournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 

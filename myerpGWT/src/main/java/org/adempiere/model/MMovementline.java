@@ -182,6 +182,8 @@ public class MMovementline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_MOVEMENTLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_247", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_MovementLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_247")
 	public Integer getMMovementlineId() {
 		return mMovementlineId;
 	}

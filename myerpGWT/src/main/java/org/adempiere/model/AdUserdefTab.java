@@ -66,6 +66,8 @@ public class AdUserdefTab extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_USERDEF_TAB_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_541", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_UserDef_Tab", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_541")
 	public Integer getAdUserdefTabId() {
 		return adUserdefTabId;
 	}

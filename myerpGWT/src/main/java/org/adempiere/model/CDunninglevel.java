@@ -16,8 +16,8 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	private Integer cDunningId;
 	private Integer cDunninglevelId;
 	private Integer cPaymenttermId;
-	private String chargefee;
-	private String chargeinterest;
+	private Boolean chargefee;
+	private Boolean chargeinterest;
 	private String created;
 	private Integer createdby;
 	private Integer daysafterdue;
@@ -78,6 +78,8 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_DUNNINGLEVEL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_258", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_DunningLevel", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_258")
 	public Integer getCDunninglevelId() {
 		return cDunninglevelId;
 	}
@@ -97,22 +99,22 @@ public class CDunninglevel extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getChargefee() {
+	@Column(nullable=false)
+	public Boolean isChargefee() {
 		return chargefee;
 	}
 
-	public void setChargefee(String chargefee) {
+	public void setChargefee(Boolean chargefee) {
 		this.chargefee = chargefee;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getChargeinterest() {
+	@Column(nullable=false)
+	public Boolean isChargeinterest() {
 		return chargeinterest;
 	}
 
-	public void setChargeinterest(String chargeinterest) {
+	public void setChargeinterest(Boolean chargeinterest) {
 		this.chargeinterest = chargeinterest;
 	}
 

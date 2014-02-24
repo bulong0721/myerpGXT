@@ -91,6 +91,8 @@ public class KSynonym extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="K_SYNONYM_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_777", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Synonym", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_777")
 	public Integer getKSynonymId() {
 		return kSynonymId;
 	}

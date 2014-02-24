@@ -55,6 +55,8 @@ public class AdLabelprinterfunction extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_LABELPRINTERFUNCTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_793", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_LabelPrinterFunction", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_793")
 	public Integer getAdLabelprinterfunctionId() {
 		return adLabelprinterfunctionId;
 	}

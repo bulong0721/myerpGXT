@@ -74,6 +74,8 @@ public class AdWfResponsible extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_WF_RESPONSIBLE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_821", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_WF_Responsible", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_821")
 	public Integer getAdWfResponsibleId() {
 		return adWfResponsibleId;
 	}

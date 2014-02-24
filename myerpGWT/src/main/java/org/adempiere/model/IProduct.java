@@ -24,13 +24,13 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	private Integer deliverytimePromised;
 	private String description;
 	private String descriptionurl;
-	private String discontinued;
+	private Boolean discontinued;
 	private String discontinuedat;
 	private String discontinuedby;
 	private String documentnote;
 	private String help;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Integer iProductId;
 	private String imageurl;
 	private Boolean isactive;
@@ -202,12 +202,11 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getDiscontinued() {
+	public Boolean isDiscontinued() {
 		return discontinued;
 	}
 
-	public void setDiscontinued(String discontinued) {
+	public void setDiscontinued(Boolean discontinued) {
 		this.discontinued = discontinued;
 	}
 
@@ -260,17 +259,19 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 
 	@Id
 	@Column(name="I_PRODUCT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_632", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_Product", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_632")
 	public Integer getIProductId() {
 		return iProductId;
 	}

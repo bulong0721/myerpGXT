@@ -54,6 +54,8 @@ public class AdPinstance extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_197", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_PInstance", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_197")
 	public Integer getAdPinstanceId() {
 		return adPinstanceId;
 	}

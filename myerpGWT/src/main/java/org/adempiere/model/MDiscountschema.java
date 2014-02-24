@@ -147,6 +147,8 @@ public class MDiscountschema extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_DISCOUNTSCHEMA_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_529", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_DiscountSchema", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_529")
 	public Integer getMDiscountschemaId() {
 		return mDiscountschemaId;
 	}

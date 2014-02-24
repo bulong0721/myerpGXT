@@ -92,6 +92,8 @@ public class MDemanddetail extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_DEMANDDETAIL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_948", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_DemandDetail", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_948")
 	public Integer getMDemanddetailId() {
 		return mDemanddetailId;
 	}

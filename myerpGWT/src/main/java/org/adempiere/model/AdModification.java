@@ -44,6 +44,8 @@ public class AdModification extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_MODIFICATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1269", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Modification", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1269")
 	public Integer getAdModificationId() {
 		return adModificationId;
 	}

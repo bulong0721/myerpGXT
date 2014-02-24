@@ -126,6 +126,8 @@ public class KIndex extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="K_INDEX_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1286", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Index", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1286")
 	public Integer getKIndexId() {
 		return kIndexId;
 	}

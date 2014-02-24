@@ -198,6 +198,8 @@ public class RRequestprocessor extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_REQUESTPROCESSOR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_357", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_RequestProcessor", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_357")
 	public Integer getRRequestprocessorId() {
 		return rRequestprocessorId;
 	}

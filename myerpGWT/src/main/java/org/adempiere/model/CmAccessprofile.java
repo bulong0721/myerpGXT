@@ -52,6 +52,8 @@ public class CmAccessprofile extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_ACCESSPROFILE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1270", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_AccessProfile", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1270")
 	public Integer getCmAccessprofileId() {
 		return cmAccessprofileId;
 	}

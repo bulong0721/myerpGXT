@@ -18,7 +18,7 @@ public class CInvoiceschedule extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String eveninvoiceweek;
+	private Boolean eveninvoiceweek;
 	private Integer invoiceday;
 	private Integer invoicedaycutoff;
 	private String invoicefrequency;
@@ -69,6 +69,8 @@ public class CInvoiceschedule extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_INVOICESCHEDULE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_231", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_InvoiceSchedule", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_231")
 	public Integer getCInvoicescheduleId() {
 		return cInvoicescheduleId;
 	}
@@ -107,12 +109,11 @@ public class CInvoiceschedule extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getEveninvoiceweek() {
+	public Boolean isEveninvoiceweek() {
 		return eveninvoiceweek;
 	}
 
-	public void setEveninvoiceweek(String eveninvoiceweek) {
+	public void setEveninvoiceweek(Boolean eveninvoiceweek) {
 		this.eveninvoiceweek = eveninvoiceweek;
 	}
 

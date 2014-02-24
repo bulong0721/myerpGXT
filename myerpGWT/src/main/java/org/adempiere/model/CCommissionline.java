@@ -20,7 +20,7 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	private Integer cCommissionId;
 	private Integer cCommissionlineId;
 	private Integer cSalesregionId;
-	private String commissionorders;
+	private Boolean commissionorders;
 	private String created;
 	private Integer createdby;
 	private String description;
@@ -115,6 +115,8 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_COMMISSIONLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_368", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_CommissionLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_368")
 	public Integer getCCommissionlineId() {
 		return cCommissionlineId;
 	}
@@ -134,12 +136,12 @@ public class CCommissionline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getCommissionorders() {
+	@Column(nullable=false)
+	public Boolean isCommissionorders() {
 		return commissionorders;
 	}
 
-	public void setCommissionorders(String commissionorders) {
+	public void setCommissionorders(Boolean commissionorders) {
 		this.commissionorders = commissionorders;
 	}
 

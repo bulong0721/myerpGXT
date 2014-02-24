@@ -23,7 +23,7 @@ public class PpOrder extends org.adempiere.common.ADEntityBase {
 	private Integer cOrderlineId;
 	private Integer cProjectId;
 	private Integer cUomId;
-	private String copyfrom;
+	private Boolean copyfrom;
 	private String created;
 	private Integer createdby;
 	private String dateconfirm;
@@ -53,7 +53,7 @@ public class PpOrder extends org.adempiere.common.ADEntityBase {
 	private Integer mWarehouseId;
 	private String ordertype;
 	private Integer plannerId;
-	private String posted;
+	private Boolean posted;
 	private Integer ppOrderId;
 	private Integer ppProductBomId;
 	private String priorityrule;
@@ -204,12 +204,11 @@ public class PpOrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCopyfrom() {
+	public Boolean isCopyfrom() {
 		return copyfrom;
 	}
 
-	public void setCopyfrom(String copyfrom) {
+	public void setCopyfrom(Boolean copyfrom) {
 		this.copyfrom = copyfrom;
 	}
 
@@ -496,17 +495,18 @@ public class PpOrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getPosted() {
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 
 	@Id
 	@Column(name="PP_ORDER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53024", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_Order", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53024")
 	public Integer getPpOrderId() {
 		return ppOrderId;
 	}

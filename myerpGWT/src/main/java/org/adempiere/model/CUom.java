@@ -56,6 +56,8 @@ public class CUom extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_UOM_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_44", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_UOM", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_44")
 	public Integer getCUomId() {
 		return cUomId;
 	}

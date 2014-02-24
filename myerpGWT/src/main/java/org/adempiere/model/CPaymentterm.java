@@ -13,7 +13,7 @@ public class CPaymentterm extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer adClientId;
 	private Integer adOrgId;
-	private String afterdelivery;
+	private Boolean afterdelivery;
 	private Integer cPaymenttermId;
 	private String created;
 	private Integer createdby;
@@ -68,17 +68,19 @@ public class CPaymentterm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getAfterdelivery() {
+	@Column(nullable=false)
+	public Boolean isAfterdelivery() {
 		return afterdelivery;
 	}
 
-	public void setAfterdelivery(String afterdelivery) {
+	public void setAfterdelivery(Boolean afterdelivery) {
 		this.afterdelivery = afterdelivery;
 	}
 
 	@Id
 	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_161", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_PaymentTerm", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_161")
 	public Integer getCPaymenttermId() {
 		return cPaymenttermId;
 	}

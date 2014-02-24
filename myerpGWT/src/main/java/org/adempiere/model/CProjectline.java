@@ -25,7 +25,7 @@ public class CProjectline extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String dopricing;
+	private Boolean dopricing;
 	private BigDecimal invoicedamt;
 	private BigDecimal invoicedqty;
 	private Boolean isactive;
@@ -110,6 +110,8 @@ public class CProjectline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PROJECTLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_371", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_ProjectLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_371")
 	public Integer getCProjectlineId() {
 		return cProjectlineId;
 	}
@@ -186,12 +188,11 @@ public class CProjectline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getDopricing() {
+	public Boolean isDopricing() {
 		return dopricing;
 	}
 
-	public void setDopricing(String dopricing) {
+	public void setDopricing(Boolean dopricing) {
 		this.dopricing = dopricing;
 	}
 

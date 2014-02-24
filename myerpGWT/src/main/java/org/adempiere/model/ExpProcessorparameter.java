@@ -93,6 +93,8 @@ public class ExpProcessorparameter extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="EXP_PROCESSORPARAMETER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53092", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "EXP_ProcessorParameter", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53092")
 	public Integer getExpProcessorparameterId() {
 		return expProcessorparameterId;
 	}

@@ -20,11 +20,11 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	private Integer cOrderId;
 	private Integer cRfqId;
 	private Integer cRfqTopicId;
-	private String copylines;
+	private Boolean copylines;
 	private String created;
 	private Integer createdby;
-	private String createpo;
-	private String createso;
+	private Boolean createpo;
+	private Boolean createso;
 	private String dateresponse;
 	private String dateworkcomplete;
 	private String dateworkstart;
@@ -42,9 +42,9 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	private String name;
 	private Boolean processed;
 	private Boolean processing;
-	private String publishrfq;
+	private Boolean publishrfq;
 	private String quotetype;
-	private String rankrfq;
+	private Boolean rankrfq;
 	private Integer salesrepId;
 	private String updated;
 	private Integer updatedby;
@@ -128,6 +128,8 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_RFQ_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_852", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_RfQ", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_852")
 	public Integer getCRfqId() {
 		return cRfqId;
 	}
@@ -147,12 +149,11 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCopylines() {
+	public Boolean isCopylines() {
 		return copylines;
 	}
 
-	public void setCopylines(String copylines) {
+	public void setCopylines(Boolean copylines) {
 		this.copylines = copylines;
 	}
 
@@ -177,22 +178,20 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatepo() {
+	public Boolean isCreatepo() {
 		return createpo;
 	}
 
-	public void setCreatepo(String createpo) {
+	public void setCreatepo(Boolean createpo) {
 		this.createpo = createpo;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreateso() {
+	public Boolean isCreateso() {
 		return createso;
 	}
 
-	public void setCreateso(String createso) {
+	public void setCreateso(Boolean createso) {
 		this.createso = createso;
 	}
 
@@ -362,12 +361,11 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getPublishrfq() {
+	public Boolean isPublishrfq() {
 		return publishrfq;
 	}
 
-	public void setPublishrfq(String publishrfq) {
+	public void setPublishrfq(Boolean publishrfq) {
 		this.publishrfq = publishrfq;
 	}
 
@@ -382,12 +380,11 @@ public class CRfq extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getRankrfq() {
+	public Boolean isRankrfq() {
 		return rankrfq;
 	}
 
-	public void setRankrfq(String rankrfq) {
+	public void setRankrfq(Boolean rankrfq) {
 		this.rankrfq = rankrfq;
 	}
 

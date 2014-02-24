@@ -20,7 +20,7 @@ public class CmCstageElement extends org.adempiere.common.ADEntityBase {
 	private String description;
 	private String help;
 	private Boolean isactive;
-	private Boolean isvalid;
+	private String isvalid;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -54,6 +54,8 @@ public class CmCstageElement extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_CSTAGE_ELEMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1248", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_CStage_Element", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1248")
 	public Integer getCmCstageElementId() {
 		return cmCstageElementId;
 	}
@@ -132,12 +134,12 @@ public class CmCstageElement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsvalid() {
+	@Column(nullable=false, length=1)
+	public String getIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(Boolean isvalid) {
+	public void setIsvalid(String isvalid) {
 		this.isvalid = isvalid;
 	}
 

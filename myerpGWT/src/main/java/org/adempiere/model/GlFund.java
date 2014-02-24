@@ -123,6 +123,8 @@ public class GlFund extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="GL_FUND_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1184", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "GL_Fund", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1184")
 	public Integer getGlFundId() {
 		return glFundId;
 	}

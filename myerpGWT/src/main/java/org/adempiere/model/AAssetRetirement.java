@@ -20,7 +20,7 @@ public class AAssetRetirement extends org.adempiere.common.ADEntityBase {
 	private Integer cInvoicelineId;
 	private String created;
 	private Integer createdby;
-	private Boolean isactive;
+	private String isactive;
 	private String updated;
 	private Integer updatedby;
 
@@ -43,6 +43,8 @@ public class AAssetRetirement extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_ASSET_RETIREMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_667", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Retirement", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_667")
 	public Integer getAAssetRetirementId() {
 		return aAssetRetirementId;
 	}
@@ -122,12 +124,12 @@ public class AAssetRetirement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 

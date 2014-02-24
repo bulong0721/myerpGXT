@@ -62,6 +62,8 @@ public class AdReportviewCol extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_REPORTVIEW_COL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_365", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_ReportView_Col", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_365")
 	public Integer getAdReportviewColId() {
 		return adReportviewColId;
 	}

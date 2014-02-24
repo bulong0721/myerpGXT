@@ -114,6 +114,8 @@ public class MSernoctl extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_SERNOCTL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_684", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_SerNoCtl", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_684")
 	public Integer getMSernoctlId() {
 		return mSernoctlId;
 	}

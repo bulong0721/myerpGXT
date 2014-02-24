@@ -111,6 +111,8 @@ public class RInterestarea extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_INTERESTAREA_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_626", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_InterestArea", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_626")
 	public Integer getRInterestareaId() {
 		return rInterestareaId;
 	}

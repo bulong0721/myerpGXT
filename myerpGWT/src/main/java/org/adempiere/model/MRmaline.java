@@ -158,6 +158,8 @@ public class MRmaline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_RMALINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_835", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_RMALine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_835")
 	public Integer getMRmalineId() {
 		return mRmalineId;
 	}

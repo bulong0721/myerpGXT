@@ -28,14 +28,14 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	private Integer documentcopies;
 	private String documentnote;
 	private Integer glCategoryId;
-	private String hascharges;
-	private String hasproforma;
+	private Boolean hascharges;
+	private Boolean hasproforma;
 	private Boolean isactive;
 	private Boolean iscreatecounter;
 	private Boolean isdefault;
 	private Boolean isdefaultcounterdoc;
 	private Boolean isdocnocontrolled;
-	private Boolean isindexed;
+	private String isindexed;
 	private Boolean isintransit;
 	private Boolean isoverwritedateoncomplete;
 	private Boolean isoverwriteseqoncomplete;
@@ -88,6 +88,8 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_133", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_DocType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_133")
 	public Integer getCDoctypeId() {
 		return cDoctypeId;
 	}
@@ -236,22 +238,21 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getHascharges() {
+	@Column(nullable=false)
+	public Boolean isHascharges() {
 		return hascharges;
 	}
 
-	public void setHascharges(String hascharges) {
+	public void setHascharges(Boolean hascharges) {
 		this.hascharges = hascharges;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getHasproforma() {
+	public Boolean isHasproforma() {
 		return hasproforma;
 	}
 
-	public void setHasproforma(String hasproforma) {
+	public void setHasproforma(Boolean hasproforma) {
 		this.hasproforma = hasproforma;
 	}
 
@@ -306,12 +307,12 @@ public class CDoctype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsindexed() {
+	@Column(nullable=false, length=1)
+	public String getIsindexed() {
 		return isindexed;
 	}
 
-	public void setIsindexed(Boolean isindexed) {
+	public void setIsindexed(String isindexed) {
 		this.isindexed = isindexed;
 	}
 

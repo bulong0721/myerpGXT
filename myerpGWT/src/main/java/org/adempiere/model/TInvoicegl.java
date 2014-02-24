@@ -30,8 +30,8 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	private String datereval;
 	private Integer factAcctId;
 	private BigDecimal grandtotal;
-	private Boolean isactive;
-	private Boolean isallcurrencies;
+	private String isactive;
+	private String isallcurrencies;
 	private BigDecimal openamt;
 	private BigDecimal percent;
 	private String updated;
@@ -227,22 +227,22 @@ public class TInvoicegl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsallcurrencies() {
+	@Column(nullable=false, length=1)
+	public String getIsallcurrencies() {
 		return isallcurrencies;
 	}
 
-	public void setIsallcurrencies(Boolean isallcurrencies) {
+	public void setIsallcurrencies(String isallcurrencies) {
 		this.isallcurrencies = isallcurrencies;
 	}
 

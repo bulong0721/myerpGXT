@@ -100,6 +100,8 @@ public class KCategoryvalue extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="K_CATEGORYVALUE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_783", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_CategoryValue", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_783")
 	public Integer getKCategoryvalueId() {
 		return kCategoryvalueId;
 	}

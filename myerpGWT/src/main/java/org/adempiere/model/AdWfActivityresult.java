@@ -63,6 +63,8 @@ public class AdWfActivityresult extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_WF_ACTIVITYRESULT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_825", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_WF_ActivityResult", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_825")
 	public Integer getAdWfActivityresultId() {
 		return adWfActivityresultId;
 	}

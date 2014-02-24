@@ -141,6 +141,8 @@ public class WCountercount extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="W_COUNTERCOUNT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_681", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "W_CounterCount", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_681")
 	public Integer getWCountercountId() {
 		return wCountercountId;
 	}

@@ -18,13 +18,13 @@ public class CCommission extends org.adempiere.common.ADEntityBase {
 	private Integer cCurrencyId;
 	private String created;
 	private Integer createdby;
-	private String createfrom;
+	private Boolean createfrom;
 	private String datelastrun;
 	private String description;
 	private String docbasistype;
 	private String frequencytype;
 	private Boolean isactive;
-	private String listdetails;
+	private Boolean listdetails;
 	private String name;
 	private Boolean processing;
 	private String updated;
@@ -79,6 +79,8 @@ public class CCommission extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_COMMISSION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_366", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Commission", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_366")
 	public Integer getCCommissionId() {
 		return cCommissionId;
 	}
@@ -118,12 +120,11 @@ public class CCommission extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatefrom() {
+	public Boolean isCreatefrom() {
 		return createfrom;
 	}
 
-	public void setCreatefrom(String createfrom) {
+	public void setCreatefrom(Boolean createfrom) {
 		this.createfrom = createfrom;
 	}
 
@@ -176,12 +177,12 @@ public class CCommission extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getListdetails() {
+	@Column(nullable=false)
+	public Boolean isListdetails() {
 		return listdetails;
 	}
 
-	public void setListdetails(String listdetails) {
+	public void setListdetails(Boolean listdetails) {
 		this.listdetails = listdetails;
 	}
 

@@ -101,6 +101,8 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="U_WEB_PROPERTIES_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_52003", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "U_Web_Properties", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_52003")
 	public Integer getUWebPropertiesId() {
 		return uWebPropertiesId;
 	}

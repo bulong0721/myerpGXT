@@ -11,6 +11,7 @@ import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
+import org.adempiere.web.client.util.LoggingUtil;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -153,7 +154,7 @@ public class ADTreePanel implements IsWidget {
 		}
 		return changes;
 	}
-	
+
 	public void acceptChanges() {
 		if (null != changes) {
 			changes.clear();

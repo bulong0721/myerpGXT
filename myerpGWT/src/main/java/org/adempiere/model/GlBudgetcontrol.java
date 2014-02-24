@@ -125,6 +125,8 @@ public class GlBudgetcontrol extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="GL_BUDGETCONTROL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1183", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "GL_BudgetControl", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1183")
 	public Integer getGlBudgetcontrolId() {
 		return glBudgetcontrolId;
 	}

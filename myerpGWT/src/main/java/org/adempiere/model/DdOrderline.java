@@ -209,6 +209,8 @@ public class DdOrderline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="DD_ORDERLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53035", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "DD_OrderLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53035")
 	public Integer getDdOrderlineId() {
 		return ddOrderlineId;
 	}

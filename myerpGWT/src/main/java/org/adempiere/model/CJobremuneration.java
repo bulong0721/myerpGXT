@@ -63,6 +63,8 @@ public class CJobremuneration extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_JOBREMUNERATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1129", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_JobRemuneration", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1129")
 	public Integer getCJobremunerationId() {
 		return cJobremunerationId;
 	}

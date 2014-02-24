@@ -63,6 +63,8 @@ public class CSubacct extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_SUBACCT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1186", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_SubAcct", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1186")
 	public Integer getCSubacctId() {
 		return cSubacctId;
 	}

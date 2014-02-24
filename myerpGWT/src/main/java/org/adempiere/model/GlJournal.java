@@ -35,11 +35,11 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	private Boolean isactive;
 	private Boolean isapproved;
 	private Boolean isprinted;
-	private String posted;
+	private Boolean posted;
 	private String postingtype;
 	private Boolean processed;
 	private Long processedon;
-	private Boolean processing;
+	private String processing;
 	private Integer reversalId;
 	private BigDecimal totalcr;
 	private BigDecimal totaldr;
@@ -244,6 +244,8 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="GL_JOURNAL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_130", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "GL_Journal", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_130")
 	public Integer getGlJournalId() {
 		return glJournalId;
 	}
@@ -293,12 +295,12 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 
@@ -331,11 +333,12 @@ public class GlJournal extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isProcessing() {
+	@Column(length=1)
+	public String getProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(Boolean processing) {
+	public void setProcessing(String processing) {
 		this.processing = processing;
 	}
 

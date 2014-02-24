@@ -127,6 +127,8 @@ public class MOperationresource extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_OPERATIONRESOURCE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1134", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_OperationResource", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1134")
 	public Integer getMOperationresourceId() {
 		return mOperationresourceId;
 	}

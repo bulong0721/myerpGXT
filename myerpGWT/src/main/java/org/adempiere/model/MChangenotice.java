@@ -18,10 +18,10 @@ public class MChangenotice extends org.adempiere.common.ADEntityBase {
 	private String detailinfo;
 	private String help;
 	private Boolean isactive;
-	private Boolean isapproved;
+	private String isapproved;
 	private Integer mChangenoticeId;
 	private String name;
-	private Boolean processed;
+	private String processed;
 	private Boolean processing;
 	private String updated;
 	private Integer updatedby;
@@ -113,17 +113,19 @@ public class MChangenotice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsapproved() {
+	@Column(nullable=false, length=1)
+	public String getIsapproved() {
 		return isapproved;
 	}
 
-	public void setIsapproved(Boolean isapproved) {
+	public void setIsapproved(String isapproved) {
 		this.isapproved = isapproved;
 	}
 
 	@Id
 	@Column(name="M_CHANGENOTICE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1136", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_ChangeNotice", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1136")
 	public Integer getMChangenoticeId() {
 		return mChangenoticeId;
 	}
@@ -143,12 +145,12 @@ public class MChangenotice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isProcessed() {
+	@Column(nullable=false, length=1)
+	public String getProcessed() {
 		return processed;
 	}
 
-	public void setProcessed(Boolean processed) {
+	public void setProcessed(String processed) {
 		this.processed = processed;
 	}
 

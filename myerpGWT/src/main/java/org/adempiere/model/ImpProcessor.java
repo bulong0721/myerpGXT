@@ -29,7 +29,7 @@ public class ImpProcessor extends org.adempiere.common.ADEntityBase {
 	private String name;
 	private String passwordinfo;
 	private Integer port;
-	private Boolean processing;
+	private String processing;
 	private String updated;
 	private Integer updatedby;
 	private String value;
@@ -158,6 +158,8 @@ public class ImpProcessor extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="IMP_PROCESSOR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53094", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "IMP_Processor", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53094")
 	public Integer getImpProcessorId() {
 		return impProcessorId;
 	}
@@ -226,11 +228,12 @@ public class ImpProcessor extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isProcessing() {
+	@Column(length=1)
+	public String getProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(Boolean processing) {
+	public void setProcessing(String processing) {
 		this.processing = processing;
 	}
 

@@ -65,6 +65,8 @@ public class BTopictype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="B_TOPICTYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_865", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "B_TopicType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_865")
 	public Integer getBTopictypeId() {
 		return bTopictypeId;
 	}

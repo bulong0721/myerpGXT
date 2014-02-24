@@ -132,6 +132,8 @@ public class PaSlaCriteria extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_SLA_CRITERIA_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_991", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_SLA_Criteria", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_991")
 	public Integer getPaSlaCriteriaId() {
 		return paSlaCriteriaId;
 	}

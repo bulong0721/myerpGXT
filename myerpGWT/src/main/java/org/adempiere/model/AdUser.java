@@ -88,6 +88,8 @@ public class AdUser extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_USER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_25", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_User", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_25")
 	public Integer getAdUserId() {
 		return adUserId;
 	}

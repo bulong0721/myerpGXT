@@ -26,7 +26,7 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private String fieldalignmenttype;
 	private String formatpattern;
-	private String imageisattached;
+	private Boolean imageisattached;
 	private String imageurl;
 	private Boolean isactive;
 	private Boolean isaveraged;
@@ -151,6 +151,8 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_PRINTFORMATITEM_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_575", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_PrintFormatItem", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_575")
 	public Integer getAdPrintformatitemId() {
 		return adPrintformatitemId;
 	}
@@ -240,12 +242,12 @@ public class AdPrintformatitem extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getImageisattached() {
+	@Column(nullable=false)
+	public Boolean isImageisattached() {
 		return imageisattached;
 	}
 
-	public void setImageisattached(String imageisattached) {
+	public void setImageisattached(Boolean imageisattached) {
 		this.imageisattached = imageisattached;
 	}
 

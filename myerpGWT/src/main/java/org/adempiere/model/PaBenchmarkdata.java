@@ -133,6 +133,8 @@ public class PaBenchmarkdata extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_BENCHMARKDATA_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1197", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_BenchmarkData", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1197")
 	public Integer getPaBenchmarkdataId() {
 		return paBenchmarkdataId;
 	}

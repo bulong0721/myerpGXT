@@ -22,7 +22,7 @@ public class AdEntitytype extends org.adempiere.common.ADEntityBase {
 	private Boolean isactive;
 	private String modelpackage;
 	private String name;
-	private Boolean processing;
+	private String processing;
 	private String updated;
 	private Integer updatedby;
 	private String version;
@@ -152,11 +152,12 @@ public class AdEntitytype extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isProcessing() {
+	@Column(length=1)
+	public String getProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(Boolean processing) {
+	public void setProcessing(String processing) {
 		this.processing = processing;
 	}
 

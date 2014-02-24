@@ -32,10 +32,10 @@ public class CInvoice extends org.adempiere.common.ADEntityBase {
 	private Integer cPaymenttermId;
 	private Integer cProjectId;
 	private BigDecimal chargeamt;
-	private String copyfrom;
+	private Boolean copyfrom;
 	private String created;
 	private Integer createdby;
-	private String createfrom;
+	private Boolean createfrom;
 	private String dateacct;
 	private String dateinvoiced;
 	private String dateordered;
@@ -45,7 +45,7 @@ public class CInvoice extends org.adempiere.common.ADEntityBase {
 	private String docstatus;
 	private String documentno;
 	private String dunninggrace;
-	private String generateto;
+	private Boolean generateto;
 	private BigDecimal grandtotal;
 	private String invoicecollectiontype;
 	private Boolean isactive;
@@ -63,14 +63,14 @@ public class CInvoice extends org.adempiere.common.ADEntityBase {
 	private Integer mRmaId;
 	private String paymentrule;
 	private String poreference;
-	private String posted;
+	private Boolean posted;
 	private Boolean processed;
 	private Long processedon;
 	private Boolean processing;
 	private Integer refInvoiceId;
 	private Integer reversalId;
 	private Integer salesrepId;
-	private String sendemail;
+	private Boolean sendemail;
 	private BigDecimal totallines;
 	private String updated;
 	private Integer updatedby;
@@ -236,6 +236,8 @@ public class CInvoice extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_INVOICE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_241", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Invoice", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_241")
 	public Integer getCInvoiceId() {
 		return cInvoiceId;
 	}
@@ -294,12 +296,11 @@ public class CInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCopyfrom() {
+	public Boolean isCopyfrom() {
 		return copyfrom;
 	}
 
-	public void setCopyfrom(String copyfrom) {
+	public void setCopyfrom(Boolean copyfrom) {
 		this.copyfrom = copyfrom;
 	}
 
@@ -324,12 +325,11 @@ public class CInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatefrom() {
+	public Boolean isCreatefrom() {
 		return createfrom;
 	}
 
-	public void setCreatefrom(String createfrom) {
+	public void setCreatefrom(Boolean createfrom) {
 		this.createfrom = createfrom;
 	}
 
@@ -420,12 +420,11 @@ public class CInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getGenerateto() {
+	public Boolean isGenerateto() {
 		return generateto;
 	}
 
-	public void setGenerateto(String generateto) {
+	public void setGenerateto(Boolean generateto) {
 		this.generateto = generateto;
 	}
 
@@ -600,12 +599,12 @@ public class CInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 
@@ -668,12 +667,12 @@ public class CInvoice extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getSendemail() {
+	@Column(nullable=false)
+	public Boolean isSendemail() {
 		return sendemail;
 	}
 
-	public void setSendemail(String sendemail) {
+	public void setSendemail(Boolean sendemail) {
 		this.sendemail = sendemail;
 	}
 

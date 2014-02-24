@@ -78,6 +78,8 @@ public class CUserremuneration extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_USERREMUNERATION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1130", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_UserRemuneration", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1130")
 	public Integer getCUserremunerationId() {
 		return cUserremunerationId;
 	}

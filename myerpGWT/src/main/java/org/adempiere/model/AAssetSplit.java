@@ -23,7 +23,7 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	private BigDecimal aQtyCurrent;
 	private BigDecimal aQtySplit;
 	private String aSplitType;
-	private String aTransferBalanceIs;
+	private Boolean aTransferBalanceIs;
 	private Integer adClientId;
 	private Integer adOrgId;
 	private Integer cPeriodId;
@@ -96,6 +96,8 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_ASSET_SPLIT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53142", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Split", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53142")
 	public Integer getAAssetSplitId() {
 		return aAssetSplitId;
 	}
@@ -165,12 +167,12 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_TRANSFER_BALANCE_IS", nullable=false, length=1)
-	public String getATransferBalanceIs() {
+	@Column(name="A_TRANSFER_BALANCE_IS", nullable=false)
+	public Boolean isATransferBalanceIs() {
 		return aTransferBalanceIs;
 	}
 
-	public void setATransferBalanceIs(String aTransferBalanceIs) {
+	public void setATransferBalanceIs(Boolean aTransferBalanceIs) {
 		this.aTransferBalanceIs = aTransferBalanceIs;
 	}
 

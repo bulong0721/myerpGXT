@@ -70,6 +70,8 @@ public class CProjecttask extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PROJECTTASK_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_739", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_ProjectTask", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_739")
 	public Integer getCProjecttaskId() {
 		return cProjecttaskId;
 	}

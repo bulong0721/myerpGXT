@@ -106,6 +106,8 @@ public class AdWorkbenchwindow extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_WORKBENCHWINDOW_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_544", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_WorkbenchWindow", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_544")
 	public Integer getAdWorkbenchwindowId() {
 		return adWorkbenchwindowId;
 	}

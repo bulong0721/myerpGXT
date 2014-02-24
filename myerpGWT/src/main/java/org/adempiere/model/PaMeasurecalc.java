@@ -168,6 +168,8 @@ public class PaMeasurecalc extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_MEASURECALC_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_490", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_MeasureCalc", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_490")
 	public Integer getPaMeasurecalcId() {
 		return paMeasurecalcId;
 	}

@@ -209,6 +209,8 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="S_RESOURCE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_559", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "S_Resource", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_559")
 	public Integer getSResourceId() {
 		return sResourceId;
 	}

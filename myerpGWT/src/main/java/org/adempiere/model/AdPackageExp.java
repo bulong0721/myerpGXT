@@ -60,6 +60,8 @@ public class AdPackageExp extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_PACKAGE_EXP_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_50005", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Package_Exp", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_50005")
 	public Integer getAdPackageExpId() {
 		return adPackageExpId;
 	}

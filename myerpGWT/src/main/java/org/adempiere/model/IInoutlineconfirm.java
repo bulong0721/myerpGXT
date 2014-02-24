@@ -21,7 +21,7 @@ public class IInoutlineconfirm extends org.adempiere.common.ADEntityBase {
 	private BigDecimal differenceqty;
 	private String iErrormsg;
 	private Integer iInoutlineconfirmId;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private Boolean isactive;
 	private Integer mInoutlineconfirmId;
 	private Boolean processed;
@@ -126,6 +126,8 @@ public class IInoutlineconfirm extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="I_INOUTLINECONFIRM_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_987", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_InOutLineConfirm", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_987")
 	public Integer getIInoutlineconfirmId() {
 		return iInoutlineconfirmId;
 	}
@@ -135,12 +137,12 @@ public class IInoutlineconfirm extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 

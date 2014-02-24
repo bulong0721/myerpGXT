@@ -27,7 +27,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	private String chargename;
 	private String created;
 	private Integer createdby;
-	private String createpayment;
+	private Boolean createpayment;
 	private String dateacct;
 	private String description;
 	private BigDecimal eftamt;
@@ -45,7 +45,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	private String eftvalutadate;
 	private Integer iBankstatementId;
 	private String iErrormsg;
-	private String iIsimported;
+	private Boolean iIsimported;
 	private BigDecimal interestamt;
 	private String invoicedocumentno;
 	private Boolean isactive;
@@ -53,7 +53,7 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	private Boolean isreversal;
 	private Integer line;
 	private String linedescription;
-	private String matchstatement;
+	private Boolean matchstatement;
 	private String memo;
 	private String name;
 	private String paymentdocumentno;
@@ -237,12 +237,11 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatepayment() {
+	public Boolean isCreatepayment() {
 		return createpayment;
 	}
 
-	public void setCreatepayment(String createpayment) {
+	public void setCreatepayment(Boolean createpayment) {
 		this.createpayment = createpayment;
 	}
 
@@ -391,6 +390,8 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="I_BANKSTATEMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_755", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_BankStatement", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_755")
 	public Integer getIBankstatementId() {
 		return iBankstatementId;
 	}
@@ -410,12 +411,12 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="I_ISIMPORTED", nullable=false, length=1)
-	public String getIIsimported() {
+	@Column(name="I_ISIMPORTED", nullable=false)
+	public Boolean isIIsimported() {
 		return iIsimported;
 	}
 
-	public void setIIsimported(String iIsimported) {
+	public void setIIsimported(Boolean iIsimported) {
 		this.iIsimported = iIsimported;
 	}
 
@@ -486,12 +487,11 @@ public class IBankstatement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getMatchstatement() {
+	public Boolean isMatchstatement() {
 		return matchstatement;
 	}
 
-	public void setMatchstatement(String matchstatement) {
+	public void setMatchstatement(Boolean matchstatement) {
 		this.matchstatement = matchstatement;
 	}
 

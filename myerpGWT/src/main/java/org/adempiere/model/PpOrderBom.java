@@ -15,7 +15,7 @@ public class PpOrderBom extends org.adempiere.common.ADEntityBase {
 	private String bomtype;
 	private String bomuse;
 	private Integer cUomId;
-	private String copyfrom;
+	private Boolean copyfrom;
 	private String created;
 	private Integer createdby;
 	private String description;
@@ -94,12 +94,11 @@ public class PpOrderBom extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCopyfrom() {
+	public Boolean isCopyfrom() {
 		return copyfrom;
 	}
 
-	public void setCopyfrom(String copyfrom) {
+	public void setCopyfrom(Boolean copyfrom) {
 		this.copyfrom = copyfrom;
 	}
 
@@ -204,6 +203,8 @@ public class PpOrderBom extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PP_ORDER_BOM_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53023", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_Order_BOM", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53023")
 	public Integer getPpOrderBomId() {
 		return ppOrderBomId;
 	}

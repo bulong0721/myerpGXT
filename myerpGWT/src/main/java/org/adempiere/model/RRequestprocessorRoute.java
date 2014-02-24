@@ -113,6 +113,8 @@ public class RRequestprocessorRoute extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_REQUESTPROCESSOR_ROUTE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_528", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_RequestProcessor_Route", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_528")
 	public Integer getRRequestprocessorRouteId() {
 		return rRequestprocessorRouteId;
 	}

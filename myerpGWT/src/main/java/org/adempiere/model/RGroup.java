@@ -143,6 +143,8 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_GROUP_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1107", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_Group", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1107")
 	public Integer getRGroupId() {
 		return rGroupId;
 	}

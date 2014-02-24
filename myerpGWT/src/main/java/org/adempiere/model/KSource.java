@@ -90,6 +90,8 @@ public class KSource extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="K_SOURCE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_778", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Source", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_778")
 	public Integer getKSourceId() {
 		return kSourceId;
 	}

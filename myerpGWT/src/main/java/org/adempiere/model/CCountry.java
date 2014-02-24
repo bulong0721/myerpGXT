@@ -13,7 +13,7 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	private Integer adClientId;
 	private String adLanguage;
 	private Integer adOrgId;
-	private String allowcitiesoutoflist;
+	private Boolean allowcitiesoutoflist;
 	private Integer cCountryId;
 	private Integer cCurrencyId;
 	private String capturesequence;
@@ -28,8 +28,8 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	private String expressionphone;
 	private String expressionpostal;
 	private String expressionpostalAdd;
-	private String haspostalAdd;
-	private String hasregion;
+	private Boolean haspostalAdd;
+	private Boolean hasregion;
 	private Boolean isactive;
 	private Boolean isaddresslineslocalreverse;
 	private Boolean isaddresslinesreverse;
@@ -82,17 +82,18 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getAllowcitiesoutoflist() {
+	public Boolean isAllowcitiesoutoflist() {
 		return allowcitiesoutoflist;
 	}
 
-	public void setAllowcitiesoutoflist(String allowcitiesoutoflist) {
+	public void setAllowcitiesoutoflist(Boolean allowcitiesoutoflist) {
 		this.allowcitiesoutoflist = allowcitiesoutoflist;
 	}
 
 	@Id
 	@Column(name="C_COUNTRY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_57", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Country", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_57")
 	public Integer getCCountryId() {
 		return cCountryId;
 	}
@@ -231,22 +232,22 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="HASPOSTAL_ADD", nullable=false, length=1)
-	public String getHaspostalAdd() {
+	@Column(name="HASPOSTAL_ADD", nullable=false)
+	public Boolean isHaspostalAdd() {
 		return haspostalAdd;
 	}
 
-	public void setHaspostalAdd(String haspostalAdd) {
+	public void setHaspostalAdd(Boolean haspostalAdd) {
 		this.haspostalAdd = haspostalAdd;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getHasregion() {
+	@Column(nullable=false)
+	public Boolean isHasregion() {
 		return hasregion;
 	}
 
-	public void setHasregion(String hasregion) {
+	public void setHasregion(Boolean hasregion) {
 		this.hasregion = hasregion;
 	}
 

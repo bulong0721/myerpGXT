@@ -12,7 +12,7 @@ public class DdNetworkdistribution extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer adClientId;
 	private Integer adOrgId;
-	private String copyfrom;
+	private Boolean copyfrom;
 	private String created;
 	private Integer createdby;
 	private Integer ddNetworkdistributionId;
@@ -22,7 +22,7 @@ public class DdNetworkdistribution extends org.adempiere.common.ADEntityBase {
 	private Boolean isactive;
 	private Integer mChangenoticeId;
 	private String name;
-	private Boolean processing;
+	private String processing;
 	private String revision;
 	private String updated;
 	private Integer updatedby;
@@ -58,12 +58,11 @@ public class DdNetworkdistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCopyfrom() {
+	public Boolean isCopyfrom() {
 		return copyfrom;
 	}
 
-	public void setCopyfrom(String copyfrom) {
+	public void setCopyfrom(Boolean copyfrom) {
 		this.copyfrom = copyfrom;
 	}
 
@@ -89,6 +88,8 @@ public class DdNetworkdistribution extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="DD_NETWORKDISTRIBUTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53077", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "DD_NetworkDistribution", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53077")
 	public Integer getDdNetworkdistributionId() {
 		return ddNetworkdistributionId;
 	}
@@ -157,11 +158,12 @@ public class DdNetworkdistribution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isProcessing() {
+	@Column(length=1)
+	public String getProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(Boolean processing) {
+	public void setProcessing(String processing) {
 		this.processing = processing;
 	}
 

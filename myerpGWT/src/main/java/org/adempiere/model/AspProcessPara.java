@@ -71,6 +71,8 @@ public class AspProcessPara extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="ASP_PROCESS_PARA_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53067", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "ASP_Process_Para", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53067")
 	public Integer getAspProcessParaId() {
 		return aspProcessParaId;
 	}

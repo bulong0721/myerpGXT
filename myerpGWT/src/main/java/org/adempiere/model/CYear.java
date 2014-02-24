@@ -62,6 +62,8 @@ public class CYear extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_YEAR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_65", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Year", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_65")
 	public Integer getCYearId() {
 		return cYearId;
 	}

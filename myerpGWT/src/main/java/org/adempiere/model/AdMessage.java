@@ -43,6 +43,8 @@ public class AdMessage extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_MESSAGE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_9", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Message", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_9")
 	public Integer getAdMessageId() {
 		return adMessageId;
 	}

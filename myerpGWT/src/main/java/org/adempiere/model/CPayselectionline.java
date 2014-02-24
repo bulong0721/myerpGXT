@@ -92,6 +92,8 @@ public class CPayselectionline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PAYSELECTIONLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_364", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_PaySelectionLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_364")
 	public Integer getCPayselectionlineId() {
 		return cPayselectionlineId;
 	}

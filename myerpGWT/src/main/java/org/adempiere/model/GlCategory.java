@@ -102,6 +102,8 @@ public class GlCategory extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="GL_CATEGORY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_124", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "GL_Category", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_124")
 	public Integer getGlCategoryId() {
 		return glCategoryId;
 	}

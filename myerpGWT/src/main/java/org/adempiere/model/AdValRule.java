@@ -53,6 +53,8 @@ public class AdValRule extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_VAL_RULE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_26", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Val_Rule", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_26")
 	public Integer getAdValRuleId() {
 		return adValRuleId;
 	}

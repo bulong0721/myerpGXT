@@ -37,6 +37,8 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_DEPRECIATION_BUILD_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53149", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Build", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53149")
 	public Integer getADepreciationBuildId() {
 		return aDepreciationBuildId;
 	}

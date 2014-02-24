@@ -102,6 +102,8 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="S_TRAINING_CLASS_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_637", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "S_Training_Class", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_637")
 	public Integer getSTrainingClassId() {
 		return sTrainingClassId;
 	}

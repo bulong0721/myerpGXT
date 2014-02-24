@@ -34,7 +34,7 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	private Integer hrProcessId;
 	private Boolean isactive;
 	private String name;
-	private String posted;
+	private Boolean posted;
 	private Boolean processed;
 	private Long processedon;
 	private Boolean processing;
@@ -260,6 +260,8 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="HR_PROCESS_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53111", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "HR_Process", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53111")
 	public Integer getHrProcessId() {
 		return hrProcessId;
 	}
@@ -289,12 +291,12 @@ public class HrProcess extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 

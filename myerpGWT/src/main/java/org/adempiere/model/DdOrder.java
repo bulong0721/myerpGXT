@@ -25,11 +25,11 @@ public class DdOrder extends org.adempiere.common.ADEntityBase {
 	private Integer cOrderId;
 	private Integer cProjectId;
 	private BigDecimal chargeamt;
-	private String createconfirm;
+	private Boolean createconfirm;
 	private String created;
 	private Integer createdby;
-	private String createfrom;
-	private String createpackage;
+	private Boolean createfrom;
+	private Boolean createpackage;
 	private String dateordered;
 	private String dateprinted;
 	private String datepromised;
@@ -43,7 +43,7 @@ public class DdOrder extends org.adempiere.common.ADEntityBase {
 	private String documentno;
 	private BigDecimal freightamt;
 	private String freightcostrule;
-	private String generateto;
+	private Boolean generateto;
 	private Boolean isactive;
 	private Boolean isapproved;
 	private Boolean isdelivered;
@@ -58,14 +58,14 @@ public class DdOrder extends org.adempiere.common.ADEntityBase {
 	private Integer nopackages;
 	private String pickdate;
 	private String poreference;
-	private String posted;
+	private Boolean posted;
 	private String priorityrule;
 	private Boolean processed;
 	private Long processedon;
 	private Boolean processing;
 	private Integer refOrderId;
 	private Integer salesrepId;
-	private String sendemail;
+	private Boolean sendemail;
 	private String shipdate;
 	private String trackingno;
 	private String updated;
@@ -222,12 +222,11 @@ public class DdOrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreateconfirm() {
+	public Boolean isCreateconfirm() {
 		return createconfirm;
 	}
 
-	public void setCreateconfirm(String createconfirm) {
+	public void setCreateconfirm(Boolean createconfirm) {
 		this.createconfirm = createconfirm;
 	}
 
@@ -252,22 +251,20 @@ public class DdOrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatefrom() {
+	public Boolean isCreatefrom() {
 		return createfrom;
 	}
 
-	public void setCreatefrom(String createfrom) {
+	public void setCreatefrom(Boolean createfrom) {
 		this.createfrom = createfrom;
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatepackage() {
+	public Boolean isCreatepackage() {
 		return createpackage;
 	}
 
-	public void setCreatepackage(String createpackage) {
+	public void setCreatepackage(Boolean createpackage) {
 		this.createpackage = createpackage;
 	}
 
@@ -311,6 +308,8 @@ public class DdOrder extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="DD_ORDER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53034", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "DD_Order", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53034")
 	public Integer getDdOrderId() {
 		return ddOrderId;
 	}
@@ -398,12 +397,11 @@ public class DdOrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getGenerateto() {
+	public Boolean isGenerateto() {
 		return generateto;
 	}
 
-	public void setGenerateto(String generateto) {
+	public void setGenerateto(Boolean generateto) {
 		this.generateto = generateto;
 	}
 
@@ -544,12 +542,12 @@ public class DdOrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 
@@ -612,12 +610,12 @@ public class DdOrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getSendemail() {
+	@Column(nullable=false)
+	public Boolean isSendemail() {
 		return sendemail;
 	}
 
-	public void setSendemail(String sendemail) {
+	public void setSendemail(Boolean sendemail) {
 		this.sendemail = sendemail;
 	}
 

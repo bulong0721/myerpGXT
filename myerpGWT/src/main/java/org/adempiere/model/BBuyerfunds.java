@@ -64,6 +64,8 @@ public class BBuyerfunds extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="B_BUYERFUNDS_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_858", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "B_BuyerFunds", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_858")
 	public Integer getBBuyerfundsId() {
 		return bBuyerfundsId;
 	}

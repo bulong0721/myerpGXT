@@ -114,6 +114,8 @@ public class MLotctl extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_LOTCTL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_685", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_LotCtl", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_685")
 	public Integer getMLotctlId() {
 		return mLotctlId;
 	}

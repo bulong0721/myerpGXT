@@ -166,6 +166,8 @@ public class PaGoalrestriction extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_GOALRESTRICTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1195", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_GoalRestriction", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1195")
 	public Integer getPaGoalrestrictionId() {
 		return paGoalrestrictionId;
 	}

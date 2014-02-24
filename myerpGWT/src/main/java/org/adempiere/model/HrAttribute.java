@@ -146,6 +146,8 @@ public class HrAttribute extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="HR_ATTRIBUTE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53106", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "HR_Attribute", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53106")
 	public Integer getHrAttributeId() {
 		return hrAttributeId;
 	}

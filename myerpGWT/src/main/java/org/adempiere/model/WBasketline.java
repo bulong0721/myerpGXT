@@ -16,7 +16,7 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private Boolean isactive;
+	private String isactive;
 	private Integer line;
 	private Integer mProductId;
 	private BigDecimal price;
@@ -85,12 +85,12 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 
@@ -176,6 +176,8 @@ public class WBasketline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="W_BASKETLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_678", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "W_BasketLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_678")
 	public Integer getWBasketlineId() {
 		return wBasketlineId;
 	}

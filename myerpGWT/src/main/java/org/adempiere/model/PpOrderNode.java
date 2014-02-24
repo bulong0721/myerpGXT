@@ -503,6 +503,8 @@ public class PpOrderNode extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PP_ORDER_NODE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53019", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_Order_Node", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53019")
 	public Integer getPpOrderNodeId() {
 		return ppOrderNodeId;
 	}

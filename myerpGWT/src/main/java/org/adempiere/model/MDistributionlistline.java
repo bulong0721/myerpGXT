@@ -124,6 +124,8 @@ public class MDistributionlistline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_DISTRIBUTIONLISTLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_840", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_DistributionListLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_840")
 	public Integer getMDistributionlistlineId() {
 		return mDistributionlistlineId;
 	}

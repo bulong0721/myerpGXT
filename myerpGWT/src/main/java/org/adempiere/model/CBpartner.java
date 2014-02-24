@@ -68,7 +68,7 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	private String referenceno;
 	private Integer salesrepId;
 	private Integer salesvolume;
-	private String sendemail;
+	private Boolean sendemail;
 	private Integer shareofcustomer;
 	private Integer shelflifeminpct;
 	private BigDecimal soCreditlimit;
@@ -169,6 +169,8 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_206", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_BPartner", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_206")
 	public Integer getCBpartnerId() {
 		return cBpartnerId;
 	}
@@ -650,12 +652,12 @@ public class CBpartner extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getSendemail() {
+	@Column(nullable=false)
+	public Boolean isSendemail() {
 		return sendemail;
 	}
 
-	public void setSendemail(String sendemail) {
+	public void setSendemail(Boolean sendemail) {
 		this.sendemail = sendemail;
 	}
 

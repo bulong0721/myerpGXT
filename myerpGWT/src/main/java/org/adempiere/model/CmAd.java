@@ -95,6 +95,8 @@ public class CmAd extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_AD_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1239", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_Ad", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1239")
 	public Integer getCmAdId() {
 		return cmAdId;
 	}

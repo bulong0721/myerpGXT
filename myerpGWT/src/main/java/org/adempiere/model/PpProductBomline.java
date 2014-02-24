@@ -27,7 +27,7 @@ public class PpProductBomline extends org.adempiere.common.ADEntityBase {
 	private Boolean isactive;
 	private Boolean iscritical;
 	private Boolean isqtypercentage;
-	private Boolean issuemethod;
+	private String issuemethod;
 	private Integer leadtimeoffset;
 	private Integer line;
 	private Integer mAttributesetinstanceId;
@@ -205,12 +205,12 @@ public class PpProductBomline extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIssuemethod() {
+	@Column(nullable=false, length=1)
+	public String getIssuemethod() {
 		return issuemethod;
 	}
 
-	public void setIssuemethod(Boolean issuemethod) {
+	public void setIssuemethod(String issuemethod) {
 		this.issuemethod = issuemethod;
 	}
 
@@ -276,6 +276,8 @@ public class PpProductBomline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PP_PRODUCT_BOMLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53016", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_Product_BOMLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53016")
 	public Integer getPpProductBomlineId() {
 		return ppProductBomlineId;
 	}

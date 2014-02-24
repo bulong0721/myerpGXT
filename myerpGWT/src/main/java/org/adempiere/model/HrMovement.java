@@ -277,6 +277,8 @@ public class HrMovement extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="HR_MOVEMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53121", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "HR_Movement", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53121")
 	public Integer getHrMovementId() {
 		return hrMovementId;
 	}

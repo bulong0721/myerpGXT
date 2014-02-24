@@ -22,7 +22,7 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	private Boolean isdepreciated;
 	private Boolean isoneassetperuom;
 	private Boolean isowned;
-	private Boolean istrackissues;
+	private String istrackissues;
 	private String name;
 	private String updated;
 	private Integer updatedby;
@@ -36,6 +36,8 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_ASSET_GROUP_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_669", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Group", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_669")
 	public Integer getAAssetGroupId() {
 		return aAssetGroupId;
 	}
@@ -154,11 +156,12 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isIstrackissues() {
+	@Column(length=1)
+	public String getIstrackissues() {
 		return istrackissues;
 	}
 
-	public void setIstrackissues(Boolean istrackissues) {
+	public void setIstrackissues(String istrackissues) {
 		this.istrackissues = istrackissues;
 	}
 

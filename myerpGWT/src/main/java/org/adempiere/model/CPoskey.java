@@ -66,6 +66,8 @@ public class CPoskey extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_POSKEY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_997", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_POSKey", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_997")
 	public Integer getCPoskeyId() {
 		return cPoskeyId;
 	}

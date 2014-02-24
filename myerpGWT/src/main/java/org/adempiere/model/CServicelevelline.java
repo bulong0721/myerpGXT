@@ -64,6 +64,8 @@ public class CServicelevelline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_SERVICELEVELLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_265", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_ServiceLevelLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_265")
 	public Integer getCServicelevellineId() {
 		return cServicelevellineId;
 	}

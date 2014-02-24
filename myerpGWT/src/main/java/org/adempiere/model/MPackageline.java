@@ -112,6 +112,8 @@ public class MPackageline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PACKAGELINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_838", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_PackageLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_838")
 	public Integer getMPackagelineId() {
 		return mPackagelineId;
 	}

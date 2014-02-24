@@ -19,8 +19,8 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 	private String created;
 	private Integer createdby;
 	private String description;
-	private String enforceclientsecurity;
-	private String enforcerolesecurity;
+	private Boolean enforceclientsecurity;
+	private Boolean enforcerolesecurity;
 	private String help;
 	private Boolean isactive;
 	private Boolean isvalid;
@@ -37,6 +37,8 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_ALERT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_749", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Alert", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_749")
 	public Integer getAdAlertId() {
 		return adAlertId;
 	}
@@ -125,22 +127,22 @@ public class AdAlert extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getEnforceclientsecurity() {
+	@Column(nullable=false)
+	public Boolean isEnforceclientsecurity() {
 		return enforceclientsecurity;
 	}
 
-	public void setEnforceclientsecurity(String enforceclientsecurity) {
+	public void setEnforceclientsecurity(Boolean enforceclientsecurity) {
 		this.enforceclientsecurity = enforceclientsecurity;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getEnforcerolesecurity() {
+	@Column(nullable=false)
+	public Boolean isEnforcerolesecurity() {
 		return enforcerolesecurity;
 	}
 
-	public void setEnforcerolesecurity(String enforcerolesecurity) {
+	public void setEnforcerolesecurity(Boolean enforcerolesecurity) {
 		this.enforcerolesecurity = enforcerolesecurity;
 	}
 

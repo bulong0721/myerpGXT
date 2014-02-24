@@ -110,6 +110,8 @@ public class RResolution extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_RESOLUTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1108", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_Resolution", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1108")
 	public Integer getRResolutionId() {
 		return rResolutionId;
 	}

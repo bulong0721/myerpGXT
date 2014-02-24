@@ -169,6 +169,8 @@ public class PaSlaGoal extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_SLA_GOAL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_992", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_SLA_Goal", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_992")
 	public Integer getPaSlaGoalId() {
 		return paSlaGoalId;
 	}

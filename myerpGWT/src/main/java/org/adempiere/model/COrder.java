@@ -37,7 +37,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	private Integer cPosId;
 	private Integer cProjectId;
 	private BigDecimal chargeamt;
-	private String copyfrom;
+	private Boolean copyfrom;
 	private String created;
 	private Integer createdby;
 	private String dateacct;
@@ -80,7 +80,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	private Integer payLocationId;
 	private String paymentrule;
 	private String poreference;
-	private String posted;
+	private Boolean posted;
 	private String priorityrule;
 	private Boolean processed;
 	private Long processedon;
@@ -88,7 +88,7 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	private String promotioncode;
 	private Integer refOrderId;
 	private Integer salesrepId;
-	private String sendemail;
+	private Boolean sendemail;
 	private BigDecimal totallines;
 	private String updated;
 	private Integer updatedby;
@@ -294,6 +294,8 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_ORDER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_232", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Order", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_232")
 	public Integer getCOrderId() {
 		return cOrderId;
 	}
@@ -362,12 +364,11 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCopyfrom() {
+	public Boolean isCopyfrom() {
 		return copyfrom;
 	}
 
-	public void setCopyfrom(String copyfrom) {
+	public void setCopyfrom(Boolean copyfrom) {
 		this.copyfrom = copyfrom;
 	}
 
@@ -788,12 +789,12 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 
@@ -866,12 +867,12 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getSendemail() {
+	@Column(nullable=false)
+	public Boolean isSendemail() {
 		return sendemail;
 	}
 
-	public void setSendemail(String sendemail) {
+	public void setSendemail(Boolean sendemail) {
 		this.sendemail = sendemail;
 	}
 

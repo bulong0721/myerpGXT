@@ -122,6 +122,8 @@ public class KType extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="K_TYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_775", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Type", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_775")
 	public Integer getKTypeId() {
 		return kTypeId;
 	}

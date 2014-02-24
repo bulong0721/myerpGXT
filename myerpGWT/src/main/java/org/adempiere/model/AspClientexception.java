@@ -148,6 +148,8 @@ public class AspClientexception extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="ASP_CLIENTEXCEPTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53074", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "ASP_ClientException", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53074")
 	public Integer getAspClientexceptionId() {
 		return aspClientexceptionId;
 	}

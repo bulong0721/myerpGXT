@@ -145,6 +145,8 @@ public class PaAchievement extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_ACHIEVEMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_486", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PA_Achievement", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_486")
 	public Integer getPaAchievementId() {
 		return paAchievementId;
 	}

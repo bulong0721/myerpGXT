@@ -17,7 +17,7 @@ public class CPayselection extends org.adempiere.common.ADEntityBase {
 	private Integer cPayselectionId;
 	private String created;
 	private Integer createdby;
-	private String createfrom;
+	private Boolean createfrom;
 	private String description;
 	private Boolean isactive;
 	private Boolean isapproved;
@@ -68,6 +68,8 @@ public class CPayselection extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PAYSELECTION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_363", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_PaySelection", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_363")
 	public Integer getCPayselectionId() {
 		return cPayselectionId;
 	}
@@ -97,12 +99,11 @@ public class CPayselection extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=1)
-	public String getCreatefrom() {
+	public Boolean isCreatefrom() {
 		return createfrom;
 	}
 
-	public void setCreatefrom(String createfrom) {
+	public void setCreatefrom(Boolean createfrom) {
 		this.createfrom = createfrom;
 	}
 

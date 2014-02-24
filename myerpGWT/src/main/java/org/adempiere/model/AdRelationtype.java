@@ -76,6 +76,8 @@ public class AdRelationtype extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_RELATIONTYPE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53355", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_RelationType", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53355")
 	public Integer getAdRelationtypeId() {
 		return adRelationtypeId;
 	}

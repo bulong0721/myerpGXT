@@ -83,6 +83,8 @@ public class CDunningrunline extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_DUNNINGRUNLINE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_620", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_DunningRunLine", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_620")
 	public Integer getCDunningrunlineId() {
 		return cDunningrunlineId;
 	}

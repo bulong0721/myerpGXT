@@ -53,6 +53,8 @@ public class CRevenuerecognition extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_REVENUERECOGNITION_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_263", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_RevenueRecognition", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_263")
 	public Integer getCRevenuerecognitionId() {
 		return cRevenuerecognitionId;
 	}

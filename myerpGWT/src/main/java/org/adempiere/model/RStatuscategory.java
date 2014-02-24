@@ -121,6 +121,8 @@ public class RStatuscategory extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="R_STATUSCATEGORY_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1207", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_StatusCategory", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1207")
 	public Integer getRStatuscategoryId() {
 		return rStatuscategoryId;
 	}

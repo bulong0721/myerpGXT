@@ -33,6 +33,8 @@ public class AdAttachment extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_ATTACHMENT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_159", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_Attachment", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_159")
 	public Integer getAdAttachmentId() {
 		return adAttachmentId;
 	}

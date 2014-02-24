@@ -44,7 +44,7 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 	private Integer createdby;
 	private Boolean isactive;
 	private String postingtype;
-	private Boolean processing;
+	private String processing;
 	private String updated;
 	private Integer updatedby;
 
@@ -77,6 +77,8 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="A_ASSET_ACCT_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53143", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Acct", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53143")
 	public Integer getAAssetAcctId() {
 		return aAssetAcctId;
 	}
@@ -386,11 +388,12 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isProcessing() {
+	@Column(length=1)
+	public String getProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(Boolean processing) {
+	public void setProcessing(String processing) {
 		this.processing = processing;
 	}
 

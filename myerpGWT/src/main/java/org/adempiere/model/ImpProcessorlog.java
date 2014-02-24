@@ -115,6 +115,8 @@ public class ImpProcessorlog extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="IMP_PROCESSORLOG_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53096", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "IMP_ProcessorLog", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53096")
 	public Integer getImpProcessorlogId() {
 		return impProcessorlogId;
 	}

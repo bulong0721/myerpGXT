@@ -63,6 +63,8 @@ public class CCyclestep extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_CYCLESTEP_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_745", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_CycleStep", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_745")
 	public Integer getCCyclestepId() {
 		return cCyclestepId;
 	}

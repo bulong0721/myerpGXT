@@ -65,6 +65,8 @@ public class BOffer extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="B_OFFER_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_857", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "B_Offer", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_857")
 	public Integer getBOfferId() {
 		return bOfferId;
 	}

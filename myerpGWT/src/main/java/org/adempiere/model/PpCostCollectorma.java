@@ -112,6 +112,8 @@ public class PpCostCollectorma extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PP_COST_COLLECTORMA_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_53271", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "PP_Cost_CollectorMA", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53271")
 	public Integer getPpCostCollectormaId() {
 		return ppCostCollectormaId;
 	}

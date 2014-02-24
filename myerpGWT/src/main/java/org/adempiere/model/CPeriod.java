@@ -55,6 +55,8 @@ public class CPeriod extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_PERIOD_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_43", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Period", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_43")
 	public Integer getCPeriodId() {
 		return cPeriodId;
 	}

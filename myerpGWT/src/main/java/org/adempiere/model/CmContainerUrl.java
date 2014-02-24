@@ -17,7 +17,7 @@ public class CmContainerUrl extends org.adempiere.common.ADEntityBase {
 	private Integer cmContainerUrlId;
 	private String created;
 	private Integer createdby;
-	private Boolean isactive;
+	private String isactive;
 	private String lastResult;
 	private String status;
 	private String updated;
@@ -72,6 +72,8 @@ public class CmContainerUrl extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_CONTAINER_URL_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1246", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_Container_URL", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1246")
 	public Integer getCmContainerUrlId() {
 		return cmContainerUrlId;
 	}
@@ -101,12 +103,12 @@ public class CmContainerUrl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
+	@Column(nullable=false, length=1)
+	public String getIsactive() {
 		return isactive;
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setIsactive(String isactive) {
 		this.isactive = isactive;
 	}
 

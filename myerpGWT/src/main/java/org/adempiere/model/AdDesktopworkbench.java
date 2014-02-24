@@ -51,6 +51,8 @@ public class AdDesktopworkbench extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="AD_DESKTOPWORKBENCH_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_535", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "AD_DesktopWorkbench", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_535")
 	public Integer getAdDesktopworkbenchId() {
 		return adDesktopworkbenchId;
 	}

@@ -27,7 +27,7 @@ public class CAllocationhdr extends org.adempiere.common.ADEntityBase {
 	private Boolean isactive;
 	private Boolean isapproved;
 	private Boolean ismanual;
-	private String posted;
+	private Boolean posted;
 	private Boolean processed;
 	private Long processedon;
 	private Boolean processing;
@@ -73,6 +73,8 @@ public class CAllocationhdr extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="C_ALLOCATIONHDR_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_966", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_AllocationHdr", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_966")
 	public Integer getCAllocationhdrId() {
 		return cAllocationhdrId;
 	}
@@ -201,12 +203,12 @@ public class CAllocationhdr extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPosted() {
+	@Column(nullable=false)
+	public Boolean isPosted() {
 		return posted;
 	}
 
-	public void setPosted(String posted) {
+	public void setPosted(Boolean posted) {
 		this.posted = posted;
 	}
 

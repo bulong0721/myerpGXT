@@ -90,6 +90,8 @@ public class MBomalternative extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_BOMALTERNATIVE_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1131", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_BOMAlternative", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1131")
 	public Integer getMBomalternativeId() {
 		return mBomalternativeId;
 	}

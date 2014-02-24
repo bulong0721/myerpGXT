@@ -64,6 +64,8 @@ public class CmWebprojectDomain extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="CM_WEBPROJECT_DOMAIN_ID", columnDefinition="INT")
+	@TableGenerator(name = "PkGen_1255", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "CM_WebProject_Domain", valueColumnName = "currentnextsys", allocationSize = 1 )
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1255")
 	public Integer getCmWebprojectDomainId() {
 		return cmWebprojectDomainId;
 	}
