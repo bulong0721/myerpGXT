@@ -11,66 +11,76 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.CCurrencyAcctPK.class)
 public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cAcctschemaId;
-	private Integer cCurrencyId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cAcctSchemaID;
+	private Integer cCurrencyID;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private Integer realizedgainAcct;
-	private Integer realizedlossAcct;
-	private Integer unrealizedgainAcct;
-	private Integer unrealizedlossAcct;
+	private Integer createdBy;
+	private Integer realizedGainAcct;
+	private Integer realizedLossAcct;
+	private Integer unrealizedGainAcct;
+	private Integer unrealizedLossAcct;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CCurrencyAcct() {
 	}
 
-	public CCurrencyAcct(Integer cAcctschemaId, Integer cCurrencyId) {
-		this.cAcctschemaId = cAcctschemaId;
-		this.cCurrencyId = cCurrencyId;
+	public CCurrencyAcct(Integer cAcctSchemaID, Integer cCurrencyID) {
+		this.cAcctSchemaID = cAcctSchemaID;
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Id
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
@@ -85,62 +95,52 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(name="REALIZEDGAIN_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getRealizedgainAcct() {
-		return realizedgainAcct;
+	public Integer getRealizedGainAcct() {
+		return realizedGainAcct;
 	}
 
-	public void setRealizedgainAcct(Integer realizedgainAcct) {
-		this.realizedgainAcct = realizedgainAcct;
+	public void setRealizedGainAcct(Integer realizedGainAcct) {
+		this.realizedGainAcct = realizedGainAcct;
 	}
 
 	@Basic
 	@Column(name="REALIZEDLOSS_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getRealizedlossAcct() {
-		return realizedlossAcct;
+	public Integer getRealizedLossAcct() {
+		return realizedLossAcct;
 	}
 
-	public void setRealizedlossAcct(Integer realizedlossAcct) {
-		this.realizedlossAcct = realizedlossAcct;
+	public void setRealizedLossAcct(Integer realizedLossAcct) {
+		this.realizedLossAcct = realizedLossAcct;
 	}
 
 	@Basic
 	@Column(name="UNREALIZEDGAIN_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getUnrealizedgainAcct() {
-		return unrealizedgainAcct;
+	public Integer getUnrealizedGainAcct() {
+		return unrealizedGainAcct;
 	}
 
-	public void setUnrealizedgainAcct(Integer unrealizedgainAcct) {
-		this.unrealizedgainAcct = unrealizedgainAcct;
+	public void setUnrealizedGainAcct(Integer unrealizedGainAcct) {
+		this.unrealizedGainAcct = unrealizedGainAcct;
 	}
 
 	@Basic
 	@Column(name="UNREALIZEDLOSS_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getUnrealizedlossAcct() {
-		return unrealizedlossAcct;
+	public Integer getUnrealizedLossAcct() {
+		return unrealizedLossAcct;
 	}
 
-	public void setUnrealizedlossAcct(Integer unrealizedlossAcct) {
-		this.unrealizedlossAcct = unrealizedlossAcct;
+	public void setUnrealizedLossAcct(Integer unrealizedLossAcct) {
+		this.unrealizedLossAcct = unrealizedLossAcct;
 	}
 
 	@Basic
@@ -155,11 +155,11 @@ public class CCurrencyAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -11,64 +11,74 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.CChargeAcctPK.class)
 public class CChargeAcct extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cAcctschemaId;
-	private Integer cChargeId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cAcctSchemaID;
+	private Integer cChargeID;
 	private Integer chExpenseAcct;
 	private Integer chRevenueAcct;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
+	private Integer createdBy;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CChargeAcct() {
 	}
 
-	public CChargeAcct(Integer cAcctschemaId, Integer cChargeId) {
-		this.cAcctschemaId = cAcctschemaId;
-		this.cChargeId = cChargeId;
+	public CChargeAcct(Integer cAcctSchemaID, Integer cChargeID) {
+		this.cAcctSchemaID = cAcctSchemaID;
+		this.cChargeID = cChargeID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Id
 	@Column(name="C_CHARGE_ID", columnDefinition="INT")
-	public Integer getCChargeId() {
-		return cChargeId;
+	public Integer getCChargeID() {
+		return cChargeID;
 	}
 
-	public void setCChargeId(Integer cChargeId) {
-		this.cChargeId = cChargeId;
+	public void setCChargeID(Integer cChargeID) {
+		this.cChargeID = cChargeID;
 	}
 
 	@Basic
@@ -103,22 +113,12 @@ public class CChargeAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -133,11 +133,11 @@ public class CChargeAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

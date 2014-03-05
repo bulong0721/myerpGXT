@@ -16,11 +16,11 @@ public class TAgingPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer adPinstanceId;
-	public Integer cBpartnerId;
-	public Integer cCurrencyId;
-	public Integer cInvoiceId;
-	public Integer cInvoicepayscheduleId;
+	public Integer aDPInstanceID;
+	public Integer cBPartnerID;
+	public Integer cCurrencyID;
+	public Integer cInvoiceID;
+	public Integer cInvoicePayScheduleID;
 
 	public TAgingPK() {
 	}
@@ -29,61 +29,61 @@ public class TAgingPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getAdPinstanceId() {
-		return adPinstanceId;
+	public Integer getADPInstanceID() {
+		return aDPInstanceID;
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
-		this.adPinstanceId = adPinstanceId;
+	public void setADPInstanceID(Integer aDPInstanceID) {
+		this.aDPInstanceID = aDPInstanceID;
 	}
 
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
-	public Integer getCInvoiceId() {
-		return cInvoiceId;
+	public Integer getCInvoiceID() {
+		return cInvoiceID;
 	}
 
-	public void setCInvoiceId(Integer cInvoiceId) {
-		this.cInvoiceId = cInvoiceId;
+	public void setCInvoiceID(Integer cInvoiceID) {
+		this.cInvoiceID = cInvoiceID;
 	}
 
-	public Integer getCInvoicepayscheduleId() {
-		return cInvoicepayscheduleId;
+	public Integer getCInvoicePayScheduleID() {
+		return cInvoicePayScheduleID;
 	}
 
-	public void setCInvoicepayscheduleId(Integer cInvoicepayscheduleId) {
-		this.cInvoicepayscheduleId = cInvoicepayscheduleId;
+	public void setCInvoicePayScheduleID(Integer cInvoicePayScheduleID) {
+		this.cInvoicePayScheduleID = cInvoicePayScheduleID;
 	}
 
 	public String toString() {
-		return String.valueOf(adPinstanceId)
-			+ "::" + String.valueOf(cBpartnerId)
-			+ "::" + String.valueOf(cCurrencyId)
-			+ "::" + String.valueOf(cInvoiceId)
-			+ "::" + String.valueOf(cInvoicepayscheduleId);
+		return String.valueOf(aDPInstanceID)
+			+ "::" + String.valueOf(cBPartnerID)
+			+ "::" + String.valueOf(cCurrencyID)
+			+ "::" + String.valueOf(cInvoiceID)
+			+ "::" + String.valueOf(cInvoicePayScheduleID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((adPinstanceId == null) ? 0 : adPinstanceId.hashCode());
-		rs = rs * 37 + ((cBpartnerId == null) ? 0 : cBpartnerId.hashCode());
-		rs = rs * 37 + ((cCurrencyId == null) ? 0 : cCurrencyId.hashCode());
-		rs = rs * 37 + ((cInvoiceId == null) ? 0 : cInvoiceId.hashCode());
-		rs = rs * 37 + ((cInvoicepayscheduleId == null) ? 0 : cInvoicepayscheduleId.hashCode());
+		rs = rs * 37 + ((aDPInstanceID == null) ? 0 : aDPInstanceID.hashCode());
+		rs = rs * 37 + ((cBPartnerID == null) ? 0 : cBPartnerID.hashCode());
+		rs = rs * 37 + ((cCurrencyID == null) ? 0 : cCurrencyID.hashCode());
+		rs = rs * 37 + ((cInvoiceID == null) ? 0 : cInvoiceID.hashCode());
+		rs = rs * 37 + ((cInvoicePayScheduleID == null) ? 0 : cInvoicePayScheduleID.hashCode());
 		return rs;
 	}
 
@@ -94,45 +94,45 @@ public class TAgingPK implements Serializable {
 			return false;
 
 		TAgingPK other = (TAgingPK) obj;
-		return ((adPinstanceId == null && other.adPinstanceId == null)
-			|| (adPinstanceId != null && adPinstanceId.equals(other.adPinstanceId)))
-			&& ((cBpartnerId == null && other.cBpartnerId == null)
-			|| (cBpartnerId != null && cBpartnerId.equals(other.cBpartnerId)))
-			&& ((cCurrencyId == null && other.cCurrencyId == null)
-			|| (cCurrencyId != null && cCurrencyId.equals(other.cCurrencyId)))
-			&& ((cInvoiceId == null && other.cInvoiceId == null)
-			|| (cInvoiceId != null && cInvoiceId.equals(other.cInvoiceId)))
-			&& ((cInvoicepayscheduleId == null && other.cInvoicepayscheduleId == null)
-			|| (cInvoicepayscheduleId != null && cInvoicepayscheduleId.equals(other.cInvoicepayscheduleId)));
+		return ((aDPInstanceID == null && other.aDPInstanceID == null)
+			|| (aDPInstanceID != null && aDPInstanceID.equals(other.aDPInstanceID)))
+			&& ((cBPartnerID == null && other.cBPartnerID == null)
+			|| (cBPartnerID != null && cBPartnerID.equals(other.cBPartnerID)))
+			&& ((cCurrencyID == null && other.cCurrencyID == null)
+			|| (cCurrencyID != null && cCurrencyID.equals(other.cCurrencyID)))
+			&& ((cInvoiceID == null && other.cInvoiceID == null)
+			|| (cInvoiceID != null && cInvoiceID.equals(other.cInvoiceID)))
+			&& ((cInvoicePayScheduleID == null && other.cInvoicePayScheduleID == null)
+			|| (cInvoicePayScheduleID != null && cInvoicePayScheduleID.equals(other.cInvoicePayScheduleID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			adPinstanceId = null;
+			aDPInstanceID = null;
 		else
-			adPinstanceId = new Integer(str);
+			aDPInstanceID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cBpartnerId = null;
+			cBPartnerID = null;
 		else
-			cBpartnerId = new Integer(str);
+			cBPartnerID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cCurrencyId = null;
+			cCurrencyID = null;
 		else
-			cCurrencyId = new Integer(str);
+			cCurrencyID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cInvoiceId = null;
+			cInvoiceID = null;
 		else
-			cInvoiceId = new Integer(str);
+			cInvoiceID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cInvoicepayscheduleId = null;
+			cInvoicePayScheduleID = null;
 		else
-			cInvoicepayscheduleId = new Integer(str);
+			cInvoicePayScheduleID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

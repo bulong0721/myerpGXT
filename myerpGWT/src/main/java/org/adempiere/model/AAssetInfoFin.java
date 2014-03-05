@@ -11,9 +11,11 @@ import javax.persistence.*;
 @Table(name="a_asset_info_fin")
 public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetId;
-	private Integer aAssetInfoFinId;
+	private Integer aAssetID;
+	private Integer aAssetInfoFinID;
 	private String aContractDate;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private String aDueOn;
 	private String aExpiredDate;
 	private String aFinanceMeth;
@@ -22,43 +24,41 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	private Integer aPurchaseOptionCredit;
 	private BigDecimal aPurchaseOptionCreditPer;
 	private BigDecimal aPurchasePrice;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cBpartnerId;
+	private Boolean active;
+	private Integer cBPartnerID;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private String textmsg;
+	private Integer createdBy;
+	private String textMsg;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetInfoFin() {
 	}
 
-	public AAssetInfoFin(Integer aAssetInfoFinId) {
-		this.aAssetInfoFinId = aAssetInfoFinId;
+	public AAssetInfoFin(Integer aAssetInfoFinID) {
+		this.aAssetInfoFinID = aAssetInfoFinID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_INFO_FIN_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53152", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Info_Fin", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53152")
-	public Integer getAAssetInfoFinId() {
-		return aAssetInfoFinId;
+	public Integer getAAssetInfoFinID() {
+		return aAssetInfoFinID;
 	}
 
-	public void setAAssetInfoFinId(Integer aAssetInfoFinId) {
-		this.aAssetInfoFinId = aAssetInfoFinId;
+	public void setAAssetInfoFinID(Integer aAssetInfoFinID) {
+		this.aAssetInfoFinID = aAssetInfoFinID;
 	}
 
 	@Basic
@@ -69,6 +69,26 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 
 	public void setAContractDate(String aContractDate) {
 		this.aContractDate = aContractDate;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -152,33 +172,23 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
@@ -193,32 +203,22 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(length=510)
-	public String getTextmsg() {
-		return textmsg;
+	public String getTextMsg() {
+		return textMsg;
 	}
 
-	public void setTextmsg(String textmsg) {
-		this.textmsg = textmsg;
+	public void setTextMsg(String textMsg) {
+		this.textMsg = textMsg;
 	}
 
 	@Basic
@@ -233,11 +233,11 @@ public class AAssetInfoFin extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

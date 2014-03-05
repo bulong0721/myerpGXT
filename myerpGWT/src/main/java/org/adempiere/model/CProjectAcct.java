@@ -11,64 +11,74 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.CProjectAcctPK.class)
 public class CProjectAcct extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cAcctschemaId;
-	private Integer cProjectId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cAcctSchemaID;
+	private Integer cProjectID;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private Integer pjAssetAcct;
-	private Integer pjWipAcct;
+	private Integer createdBy;
+	private Integer pJAssetAcct;
+	private Integer pJWIPAcct;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CProjectAcct() {
 	}
 
-	public CProjectAcct(Integer cAcctschemaId, Integer cProjectId) {
-		this.cAcctschemaId = cAcctschemaId;
-		this.cProjectId = cProjectId;
+	public CProjectAcct(Integer cAcctSchemaID, Integer cProjectID) {
+		this.cAcctSchemaID = cAcctSchemaID;
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Id
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
@@ -83,42 +93,32 @@ public class CProjectAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(name="PJ_ASSET_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getPjAssetAcct() {
-		return pjAssetAcct;
+	public Integer getPJAssetAcct() {
+		return pJAssetAcct;
 	}
 
-	public void setPjAssetAcct(Integer pjAssetAcct) {
-		this.pjAssetAcct = pjAssetAcct;
+	public void setPJAssetAcct(Integer pJAssetAcct) {
+		this.pJAssetAcct = pJAssetAcct;
 	}
 
 	@Basic
 	@Column(name="PJ_WIP_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getPjWipAcct() {
-		return pjWipAcct;
+	public Integer getPJWIPAcct() {
+		return pJWIPAcct;
 	}
 
-	public void setPjWipAcct(Integer pjWipAcct) {
-		this.pjWipAcct = pjWipAcct;
+	public void setPJWIPAcct(Integer pJWIPAcct) {
+		this.pJWIPAcct = pJWIPAcct;
 	}
 
 	@Basic
@@ -133,11 +133,11 @@ public class CProjectAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -11,79 +11,89 @@ import javax.persistence.*;
 @Table(name="m_freight")
 public class MFreight extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cCountryId;
-	private Integer cCurrencyId;
-	private Integer cRegionId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cCountryID;
+	private Integer cCurrencyID;
+	private Integer cRegionID;
 	private String created;
-	private Integer createdby;
-	private BigDecimal freightamt;
-	private Boolean isactive;
-	private Integer mFreightId;
-	private Integer mFreightcategoryId;
-	private Integer mShipperId;
-	private Integer toCountryId;
-	private Integer toRegionId;
+	private Integer createdBy;
+	private BigDecimal freightAmt;
+	private Integer mFreightCategoryID;
+	private Integer mFreightID;
+	private Integer mShipperID;
+	private Integer toCountryID;
+	private Integer toRegionID;
 	private String updated;
-	private Integer updatedby;
-	private String validfrom;
+	private Integer updatedBy;
+	private String validFrom;
 
 	public MFreight() {
 	}
 
-	public MFreight(Integer mFreightId) {
-		this.mFreightId = mFreightId;
+	public MFreight(Integer mFreightID) {
+		this.mFreightID = mFreightID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_COUNTRY_ID", columnDefinition="INT")
-	public Integer getCCountryId() {
-		return cCountryId;
+	public Integer getCCountryID() {
+		return cCountryID;
 	}
 
-	public void setCCountryId(Integer cCountryId) {
-		this.cCountryId = cCountryId;
+	public void setCCountryID(Integer cCountryID) {
+		this.cCountryID = cCountryID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="C_REGION_ID", columnDefinition="INT")
-	public Integer getCRegionId() {
-		return cRegionId;
+	public Integer getCRegionID() {
+		return cRegionID;
 	}
 
-	public void setCRegionId(Integer cRegionId) {
-		this.cRegionId = cRegionId;
+	public void setCRegionID(Integer cRegionID) {
+		this.cRegionID = cRegionID;
 	}
 
 	@Basic
@@ -98,84 +108,74 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getFreightamt() {
-		return freightamt;
-	}
-
-	public void setFreightamt(BigDecimal freightamt) {
-		this.freightamt = freightamt;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public BigDecimal getFreightAmt() {
+		return freightAmt;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setFreightAmt(BigDecimal freightAmt) {
+		this.freightAmt = freightAmt;
+	}
+
+	@Basic
+	@Column(name="M_FREIGHTCATEGORY_ID", columnDefinition="INT", nullable=false)
+	public Integer getMFreightCategoryID() {
+		return mFreightCategoryID;
+	}
+
+	public void setMFreightCategoryID(Integer mFreightCategoryID) {
+		this.mFreightCategoryID = mFreightCategoryID;
 	}
 
 	@Id
 	@Column(name="M_FREIGHT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_751", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Freight", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_751")
-	public Integer getMFreightId() {
-		return mFreightId;
+	public Integer getMFreightID() {
+		return mFreightID;
 	}
 
-	public void setMFreightId(Integer mFreightId) {
-		this.mFreightId = mFreightId;
-	}
-
-	@Basic
-	@Column(name="M_FREIGHTCATEGORY_ID", columnDefinition="INT", nullable=false)
-	public Integer getMFreightcategoryId() {
-		return mFreightcategoryId;
-	}
-
-	public void setMFreightcategoryId(Integer mFreightcategoryId) {
-		this.mFreightcategoryId = mFreightcategoryId;
+	public void setMFreightID(Integer mFreightID) {
+		this.mFreightID = mFreightID;
 	}
 
 	@Basic
 	@Column(name="M_SHIPPER_ID", columnDefinition="INT", nullable=false)
-	public Integer getMShipperId() {
-		return mShipperId;
+	public Integer getMShipperID() {
+		return mShipperID;
 	}
 
-	public void setMShipperId(Integer mShipperId) {
-		this.mShipperId = mShipperId;
+	public void setMShipperID(Integer mShipperID) {
+		this.mShipperID = mShipperID;
 	}
 
 	@Basic
 	@Column(name="TO_COUNTRY_ID", columnDefinition="INT")
-	public Integer getToCountryId() {
-		return toCountryId;
+	public Integer getToCountryID() {
+		return toCountryID;
 	}
 
-	public void setToCountryId(Integer toCountryId) {
-		this.toCountryId = toCountryId;
+	public void setToCountryID(Integer toCountryID) {
+		this.toCountryID = toCountryID;
 	}
 
 	@Basic
 	@Column(name="TO_REGION_ID", columnDefinition="INT")
-	public Integer getToRegionId() {
-		return toRegionId;
+	public Integer getToRegionID() {
+		return toRegionID;
 	}
 
-	public void setToRegionId(Integer toRegionId) {
-		this.toRegionId = toRegionId;
+	public void setToRegionID(Integer toRegionID) {
+		this.toRegionID = toRegionID;
 	}
 
 	@Basic
@@ -190,21 +190,21 @@ public class MFreight extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getValidfrom() {
-		return validfrom;
+	public String getValidFrom() {
+		return validFrom;
 	}
 
-	public void setValidfrom(String validfrom) {
-		this.validfrom = validfrom;
+	public void setValidFrom(String validFrom) {
+		this.validFrom = validFrom;
 	}
 }

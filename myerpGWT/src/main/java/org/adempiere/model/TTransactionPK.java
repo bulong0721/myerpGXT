@@ -16,8 +16,8 @@ public class TTransactionPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer adPinstanceId;
-	public Integer mTransactionId;
+	public Integer aDPInstanceID;
+	public Integer mTransactionID;
 
 	public TTransactionPK() {
 	}
@@ -26,31 +26,31 @@ public class TTransactionPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getAdPinstanceId() {
-		return adPinstanceId;
+	public Integer getADPInstanceID() {
+		return aDPInstanceID;
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
-		this.adPinstanceId = adPinstanceId;
+	public void setADPInstanceID(Integer aDPInstanceID) {
+		this.aDPInstanceID = aDPInstanceID;
 	}
 
-	public Integer getMTransactionId() {
-		return mTransactionId;
+	public Integer getMTransactionID() {
+		return mTransactionID;
 	}
 
-	public void setMTransactionId(Integer mTransactionId) {
-		this.mTransactionId = mTransactionId;
+	public void setMTransactionID(Integer mTransactionID) {
+		this.mTransactionID = mTransactionID;
 	}
 
 	public String toString() {
-		return String.valueOf(adPinstanceId)
-			+ "::" + String.valueOf(mTransactionId);
+		return String.valueOf(aDPInstanceID)
+			+ "::" + String.valueOf(mTransactionID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((adPinstanceId == null) ? 0 : adPinstanceId.hashCode());
-		rs = rs * 37 + ((mTransactionId == null) ? 0 : mTransactionId.hashCode());
+		rs = rs * 37 + ((aDPInstanceID == null) ? 0 : aDPInstanceID.hashCode());
+		rs = rs * 37 + ((mTransactionID == null) ? 0 : mTransactionID.hashCode());
 		return rs;
 	}
 
@@ -61,24 +61,24 @@ public class TTransactionPK implements Serializable {
 			return false;
 
 		TTransactionPK other = (TTransactionPK) obj;
-		return ((adPinstanceId == null && other.adPinstanceId == null)
-			|| (adPinstanceId != null && adPinstanceId.equals(other.adPinstanceId)))
-			&& ((mTransactionId == null && other.mTransactionId == null)
-			|| (mTransactionId != null && mTransactionId.equals(other.mTransactionId)));
+		return ((aDPInstanceID == null && other.aDPInstanceID == null)
+			|| (aDPInstanceID != null && aDPInstanceID.equals(other.aDPInstanceID)))
+			&& ((mTransactionID == null && other.mTransactionID == null)
+			|| (mTransactionID != null && mTransactionID.equals(other.mTransactionID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			adPinstanceId = null;
+			aDPInstanceID = null;
 		else
-			adPinstanceId = new Integer(str);
+			aDPInstanceID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mTransactionId = null;
+			mTransactionID = null;
 		else
-			mTransactionId = new Integer(str);
+			mTransactionID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

@@ -10,91 +10,101 @@ import javax.persistence.*;
 @Table(name="a_depreciation_build")
 public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aDepreciationBuildId;
-	private Integer aEndAssetId;
-	private Integer aStartAssetId;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cPeriodId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDepreciationBuildID;
+	private Integer aEndAssetID;
+	private Integer aStartAssetID;
+	private Boolean active;
+	private Integer cPeriodID;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
-	private String datedoc;
-	private Boolean isactive;
-	private Integer periodno;
-	private String postingtype;
+	private Integer createdBy;
+	private String dateAcct;
+	private String dateDoc;
+	private Integer periodNo;
+	private String postingType;
 	private Boolean processed;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public ADepreciationBuild() {
 	}
 
-	public ADepreciationBuild(Integer aDepreciationBuildId) {
-		this.aDepreciationBuildId = aDepreciationBuildId;
+	public ADepreciationBuild(Integer aDepreciationBuildID) {
+		this.aDepreciationBuildID = aDepreciationBuildID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Id
 	@Column(name="A_DEPRECIATION_BUILD_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53149", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Build", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53149")
-	public Integer getADepreciationBuildId() {
-		return aDepreciationBuildId;
+	public Integer getADepreciationBuildID() {
+		return aDepreciationBuildID;
 	}
 
-	public void setADepreciationBuildId(Integer aDepreciationBuildId) {
-		this.aDepreciationBuildId = aDepreciationBuildId;
+	public void setADepreciationBuildID(Integer aDepreciationBuildID) {
+		this.aDepreciationBuildID = aDepreciationBuildID;
 	}
 
 	@Basic
 	@Column(name="A_END_ASSET_ID", columnDefinition="INT")
-	public Integer getAEndAssetId() {
-		return aEndAssetId;
+	public Integer getAEndAssetID() {
+		return aEndAssetID;
 	}
 
-	public void setAEndAssetId(Integer aEndAssetId) {
-		this.aEndAssetId = aEndAssetId;
+	public void setAEndAssetID(Integer aEndAssetID) {
+		this.aEndAssetID = aEndAssetID;
 	}
 
 	@Basic
 	@Column(name="A_START_ASSET_ID", columnDefinition="INT")
-	public Integer getAStartAssetId() {
-		return aStartAssetId;
+	public Integer getAStartAssetID() {
+		return aStartAssetID;
 	}
 
-	public void setAStartAssetId(Integer aStartAssetId) {
-		this.aStartAssetId = aStartAssetId;
-	}
-
-	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
-	public Integer getAdClientId() {
-		return adClientId;
-	}
-
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setAStartAssetID(Integer aStartAssetID) {
+		this.aStartAssetID = aStartAssetID;
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT")
-	public Integer getAdOrgId() {
-		return adOrgId;
+	@Column(name="ISACTIVE")
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_PERIOD_ID", columnDefinition="INT")
-	public Integer getCPeriodId() {
-		return cPeriodId;
+	public Integer getCPeriodID() {
+		return cPeriodID;
 	}
 
-	public void setCPeriodId(Integer cPeriodId) {
-		this.cPeriodId = cPeriodId;
+	public void setCPeriodID(Integer cPeriodID) {
+		this.cPeriodID = cPeriodID;
 	}
 
 	@Basic
@@ -109,59 +119,50 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	public String getDateacct() {
-		return dateacct;
-	}
-
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public String getDatedoc() {
-		return datedoc;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setDatedoc(String datedoc) {
-		this.datedoc = datedoc;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
 	}
 
 	@Basic
-	public Boolean isIsactive() {
-		return isactive;
+	public String getDateDoc() {
+		return dateDoc;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDateDoc(String dateDoc) {
+		this.dateDoc = dateDoc;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getPeriodno() {
-		return periodno;
+	public Integer getPeriodNo() {
+		return periodNo;
 	}
 
-	public void setPeriodno(Integer periodno) {
-		this.periodno = periodno;
+	public void setPeriodNo(Integer periodNo) {
+		this.periodNo = periodNo;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getPostingtype() {
-		return postingtype;
+	public String getPostingType() {
+		return postingType;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
@@ -194,11 +195,11 @@ public class ADepreciationBuild extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

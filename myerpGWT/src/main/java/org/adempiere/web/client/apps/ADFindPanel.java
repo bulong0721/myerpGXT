@@ -125,7 +125,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 		if (OPERATOR_BOOL_OR.equalsIgnoreCase(value)) {
 			return new ADPredicate(BooleanOperator.Or);
 		}
-		String columnName = tabModel.getFieldByName(value).getColumnname();
+		String columnName = tabModel.getFieldByName(value).getPropertyName();
 		return new ADExpression(columnName);
 	}
 
@@ -260,7 +260,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 		List<ADFieldModel> fieldList = new ArrayList<ADFieldModel>(5);
 		if (null != tabModel && null != tabModel.getFieldList()) {
 			for (ADFieldModel fieldModel : tabModel.getFieldList()) {
-				if (fieldModel.getIsselectioncolumn() || fieldModel.getIskey()
+				if (fieldModel.isSelectionColumn() || fieldModel.isKey()
 						|| LOOKUP_FIELDS.contains(fieldModel.getName().toLowerCase())) {
 					fieldList.add(fieldModel);
 				}
@@ -295,14 +295,14 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 				toCamel(subExpr);
 			}
 		} else {
-			expr.setColumnName(StringUtil.toCamelStyle(expr.getColumnName()));
+			expr.setColumnName(expr.getColumnName());
 		}
 	}
 
 	private void createSimpleConditon() {
 		simpleConditon = new ADPredicate(BooleanOperator.Or);
 		for (ADFieldBuilder fieldStrategy : simpleEditor.getFieldList()) {
-			String columnName = fieldStrategy.getField().getColumnname();
+			String columnName = fieldStrategy.getField().getPropertyName();
 			String value = StringUtil.toString(fieldStrategy.getFormEditor().getValue());
 			if (StringUtil.isNullOrEmpty(value)) {
 				continue;
@@ -311,7 +311,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 			if (fieldStrategy.getFieldType().isText()) {
 				fOp = FieldOperator.Like;
 			}
-			ADExpression expr = new ADExpression(StringUtil.toCamelStyle(columnName), fOp, value);
+			ADExpression expr = new ADExpression(columnName, fOp, value);
 			simpleConditon.add(expr);
 		}
 	}

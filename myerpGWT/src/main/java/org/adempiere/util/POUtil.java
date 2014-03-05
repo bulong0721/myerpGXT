@@ -11,17 +11,19 @@ import javax.persistence.PersistenceUnitUtil;
 import javax.persistence.TypedQuery;
 
 import org.adempiere.common.ADEntityBase;
-import org.adempiere.model.AdColumn;
-import org.adempiere.model.AdElement;
-import org.adempiere.model.AdField;
+import org.adempiere.common.RefCriteria;
+import org.adempiere.model.ADAttachment;
+import org.adempiere.model.ADColumn;
+import org.adempiere.model.ADElement;
+import org.adempiere.model.ADField;
+import org.adempiere.model.ADForm;
+import org.adempiere.model.ADMenu;
+import org.adempiere.model.ADProcess;
+import org.adempiere.model.ADTab;
+import org.adempiere.model.ADTable;
+import org.adempiere.model.ADTreeNode;
 import org.adempiere.model.AdFieldV;
-import org.adempiere.model.AdForm;
-import org.adempiere.model.AdMenu;
-import org.adempiere.model.AdProcess;
-import org.adempiere.model.AdTab;
 import org.adempiere.model.AdTabV;
-import org.adempiere.model.AdTable;
-import org.adempiere.model.AdTreenode;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.util.StringUtil;
@@ -34,7 +36,7 @@ public final class POUtil {
 	 * @param id
 	 * @return
 	 */
-	public static <T extends ADEntityBase> T find(PersistContext pCtx, Class<T> clazz, Object id) {
+	public static <T> T find(PersistContext pCtx, Class<T> clazz, Object id) {
 		EntityManager em = pCtx.begin();
 		try {
 			T entity = em.find(clazz, id);
@@ -52,12 +54,12 @@ public final class POUtil {
 	 * @param tableName
 	 * @return
 	 */
-	public static AdTable findByTableName(PersistContext pCtx, String tableName) {
+	public static ADTable findByTableName(PersistContext pCtx, String tableName) {
 		if (StringUtil.isNullOrEmpty(tableName)) {
 			return null;
 		}
 		Map<String, Object> paramMap = toMap("tablename", tableName);
-		return selectOne(pCtx, "queryTableByTableName", AdTable.class, paramMap);
+		return selectOne(pCtx, "queryTableByTableName", ADTable.class, paramMap);
 	}
 
 	/**
@@ -65,12 +67,12 @@ public final class POUtil {
 	 * @param column
 	 * @return
 	 */
-	public static AdElement findElementByColumn(PersistContext pCtx, String column) {
+	public static ADElement findElementByColumn(PersistContext pCtx, String column) {
 		if (StringUtil.isNullOrEmpty(column)) {
 			return null;
 		}
 		Map<String, Object> paramMap = toMap("columnname", column);
-		return selectOne(pCtx, "queryElementByColumn", AdElement.class, paramMap);
+		return selectOne(pCtx, "queryElementByColumn", ADElement.class, paramMap);
 	}
 
 	/**
@@ -125,7 +127,7 @@ public final class POUtil {
 			pCtx.commit();
 			return entity;
 		} catch (Exception ex) {
-			// ex.printStackTrace();
+			ex.printStackTrace();
 			return null;
 		}
 	}
@@ -164,15 +166,27 @@ public final class POUtil {
 			return null;
 		}
 	}
+	
+	
+	/**
+	 * @param pCtx
+	 * @param adRefId
+	 * @return
+	 */
+	public static RefCriteria queryRefTable(PersistContext pCtx, long adRefId) {
+		Map<String, Object> paramMap = toMap("adReferenceId", adRefId);		
+		return selectOne(pCtx, "queryRefTable", RefCriteria.class, paramMap);
+
+	}
 
 	/**
 	 * @param pCtx
 	 * @param tableId
 	 * @return
 	 */
-	public static List<AdColumn> queryColumnsByTable(PersistContext pCtx, int tableId) {
+	public static List<ADColumn> queryColumnsByTable(PersistContext pCtx, int tableId) {
 		Map<String, Object> paramMap = toMap("adTableId", tableId);
-		return selectList(pCtx, "queryColumnsByTable", AdColumn.class, paramMap);
+		return selectList(pCtx, "queryColumnsByTable", ADColumn.class, paramMap);
 	}
 
 	/**
@@ -181,10 +195,10 @@ public final class POUtil {
 	 * @param tabId
 	 * @return
 	 */
-	public static List<AdColumn> queryUnMappedColumns(PersistContext pCtx, int tableId, int tabId) {
+	public static List<ADColumn> queryUnMappedColumns(PersistContext pCtx, int tableId, int tabId) {
 		Map<String, Object> paramMap = toMap("adTableId", tableId);
 		paramMap.put("adTabId", tabId);
-		return selectList(pCtx, "queryUnMappedColumns", AdColumn.class, paramMap);
+		return selectList(pCtx, "queryUnMappedColumns", ADColumn.class, paramMap);
 	}
 
 	/**
@@ -192,9 +206,9 @@ public final class POUtil {
 	 * @param windowId
 	 * @return
 	 */
-	public static List<AdTab> queryTabsByWindow(PersistContext pCtx, int windowId) {
+	public static List<ADTab> queryTabsByWindow(PersistContext pCtx, int windowId) {
 		Map<String, Object> paramMap = toMap("adWindowId", windowId);
-		return selectList(pCtx, "queryTabsByWindowId", AdTab.class, paramMap);
+		return selectList(pCtx, "queryTabsByWindowId", ADTab.class, paramMap);
 	}
 
 	/**
@@ -202,9 +216,9 @@ public final class POUtil {
 	 * @param tabId
 	 * @return
 	 */
-	public static List<AdField> queryFieldsByTabId(PersistContext pCtx, int tabId) {
+	public static List<ADField> queryFieldsByTabId(PersistContext pCtx, int tabId) {
 		Map<String, Object> paramMap = toMap("adTabId", tabId);
-		return selectList(pCtx, "queryFieldsByTabId", AdField.class, paramMap);
+		return selectList(pCtx, "queryFieldsByTabId", ADField.class, paramMap);
 	}
 
 	/**
@@ -219,21 +233,21 @@ public final class POUtil {
 
 	public static boolean updateFieldSequece(PersistContext pCtx, List<ADSequenceModel> seqList) {		
 		try {
-			List<AdField> fieldList = new ArrayList<AdField>(seqList.size());
+			List<ADField> fieldList = new ArrayList<ADField>(seqList.size());
 			for (ADSequenceModel seqModel : seqList) {
-				AdField field = find(pCtx, AdField.class, seqModel.getSeqID());
+				ADField field = find(pCtx, ADField.class, seqModel.getSeqID());
 				if (0 == seqModel.getSeqNo()) {
-					field.setIsdisplayed(false);
-					field.setSeqno(0);
+					field.setDisplayed(false);
+					field.setSeqNo(0);
 				} else {
-					field.setIsdisplayed(true);
-					field.setSeqno(seqModel.getSeqNo());
+					field.setDisplayed(true);
+					field.setSeqNo(seqModel.getSeqNo());
 				}
 				fieldList.add(field);
 			}
 			return POUtil.mergeAll(pCtx, fieldList);
 		} catch (Exception ex) {
-
+			ex.printStackTrace();
 		}
 		return false;
 	}
@@ -360,18 +374,18 @@ public final class POUtil {
 	/**
 	 * @return
 	 */
-	public static List<AdMenu> queryMainMenuNodes(PersistContext pCtx) {
-		List<AdMenu> menuList = selectList(pCtx, "queryMainMenuNodes", AdMenu.class);
+	public static List<ADMenu> queryMainMenuNodes(PersistContext pCtx) {
+		List<ADMenu> menuList = selectList(pCtx, "queryMainMenuNodes", ADMenu.class);
 		return menuList;
 	}
 	
-	public static <T extends AdTreenode> List<T> queryRootNodes(PersistContext pCtx, Class<T> clazz, int adTreeId, int adUserId) {
+	public static <T extends ADTreeNode> List<T> queryRootNodes(PersistContext pCtx, Class<T> clazz, int adTreeId, int adUserId) {
 		Map<String, Object> paramMap = toMap("adTreeId", adTreeId);
 		paramMap.put("adUserId", adUserId);
 		return selectList(pCtx, "queryRootNodes", clazz, paramMap);
 	}
 
-	public static <T extends AdTreenode> List<T> querySubNodes(PersistContext pCtx, Class<T> clazz, int parentId) {
+	public static <T extends ADTreeNode> List<T> querySubNodes(PersistContext pCtx, Class<T> clazz, int parentId) {
 		Map<String, Object> paramMap = toMap("parentId", parentId);
 		return selectList(pCtx, "queryRootNodes", clazz, paramMap);
 	}
@@ -380,9 +394,9 @@ public final class POUtil {
 	 * @param processId
 	 * @return
 	 */
-	public static AdProcess queryProcessWithParamsByProcessId(PersistContext pCtx, Integer processId) {
+	public static ADProcess queryProcessWithParamsByProcessId(PersistContext pCtx, Integer processId) {
 		Map<String, Object> paramMap = toMap("adProcessId", processId);
-		AdProcess process = selectOne(pCtx, "queryProcessWithParamsByProcessId", AdProcess.class, paramMap);
+		ADProcess process = selectOne(pCtx, "queryProcessWithParamsByProcessId", ADProcess.class, paramMap);
 		return process;
 	}
 
@@ -390,10 +404,15 @@ public final class POUtil {
 	 * @param formId
 	 * @return
 	 */
-	public static AdForm queryFormByFormId(PersistContext pCtx, Integer formId) {
+	public static ADForm queryFormByFormId(PersistContext pCtx, Integer formId) {
 		Map<String, Object> paramMap = toMap("adFormId", formId);
-		AdForm form = selectOne(pCtx, "queryFormByFormId", AdForm.class, paramMap);
+		ADForm form = selectOne(pCtx, "queryFormByFormId", ADForm.class, paramMap);
 		return form;
+	}
+
+	public static ADAttachment getAttachment(int tableId, long pFormatId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

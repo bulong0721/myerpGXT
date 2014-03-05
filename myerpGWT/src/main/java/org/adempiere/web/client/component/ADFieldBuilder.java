@@ -15,7 +15,6 @@ import org.adempiere.web.client.model.ADMapData.ADModelValueProvider;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
-import org.adempiere.web.client.util.StringUtil;
 
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.Cell;
@@ -68,12 +67,13 @@ public class ADFieldBuilder {
 	private void init() {
 		fieldType = field.getFieldType();
 		ADModelValueProvider<?> valueProvider = null;
-		String propertyName = StringUtil.toCamelStyle(field.getColumnname());
+		String propertyName = field.getPropertyName();
+//		LoggingUtil.info("column2property:" + field.getColumnname() + "=>" + propertyName);
 		if (fieldType.isID() || fieldType.isInteger()) {
 			valueProvider = new ADModelValueProvider<Integer>(propertyName, fieldType);
 			if (fieldType.isLookup()) {
-				optionStore = OptionStoreManager.getOptionStore(field.getColumnname(), field.getAdReferenceId(),
-						field.getAdReferenceValueId());
+				optionStore = OptionStoreManager.getOptionStore(field.getPropertyName(), field.getADReferenceID(),
+						field.getADReferenceValueID());
 				columnCell = new OptionCell(optionStore);
 				LabelProvider<LookupValue> labelProvider = CommonUtil.createLabelProvider();
 				if (formStrategy.isCreateGridEditor())
@@ -132,7 +132,7 @@ public class ADFieldBuilder {
 			showLabel = false;
 		} else if (fieldType.isText()) {
 			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
-			if (field.getIsencryptedfield()) {
+			if (field.isEncryptedField()) {
 				if (formStrategy.isCreateGridEditor())
 					gridEditor = new PasswordField();
 				if (formStrategy.isCreateFormEditor())
@@ -165,7 +165,7 @@ public class ADFieldBuilder {
 		columnCfg = new ColumnConfig(valueProvider, 100);
 		columnCfg.setHeader(field.getName());
 		columnCfg.setCell((Cell) columnCell);
-		if (formStrategy.isDisableKey() && field.getIskey()) {
+		if (formStrategy.isDisableKey() && field.isKey()) {
 			if (formStrategy.isCreateGridEditor())
 				gridEditor.setReadOnly(true);
 			if (formStrategy.isCreateFormEditor())

@@ -10,44 +10,54 @@ import javax.persistence.*;
 @Table(name="r_category")
 public class RCategory extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
 	private String help;
-	private Boolean isactive;
-	private Integer mProductId;
+	private Integer mProductID;
 	private String name;
-	private Integer rCategoryId;
+	private Integer rCategoryID;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public RCategory() {
 	}
 
-	public RCategory(Integer rCategoryId) {
-		this.rCategoryId = rCategoryId;
+	public RCategory(Integer rCategoryID) {
+		this.rCategoryID = rCategoryID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -62,12 +72,12 @@ public class RCategory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -90,23 +100,13 @@ public class RCategory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
@@ -123,12 +123,12 @@ public class RCategory extends org.adempiere.common.ADEntityBase {
 	@Column(name="R_CATEGORY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_1098", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_Category", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1098")
-	public Integer getRCategoryId() {
-		return rCategoryId;
+	public Integer getRCategoryID() {
+		return rCategoryID;
 	}
 
-	public void setRCategoryId(Integer rCategoryId) {
-		this.rCategoryId = rCategoryId;
+	public void setRCategoryID(Integer rCategoryID) {
+		this.rCategoryID = rCategoryID;
 	}
 
 	@Basic
@@ -143,11 +143,11 @@ public class RCategory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

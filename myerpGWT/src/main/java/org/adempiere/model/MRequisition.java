@@ -11,78 +11,98 @@ import javax.persistence.*;
 @Table(name="m_requisition")
 public class MRequisition extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
-	private Integer cDoctypeId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
+	private Boolean active;
+	private Boolean approved;
+	private Integer cDocTypeID;
 	private String created;
-	private Integer createdby;
-	private String datedoc;
-	private String daterequired;
+	private Integer createdBy;
+	private String dateDoc;
+	private String dateRequired;
 	private String description;
-	private String docaction;
-	private String docstatus;
-	private String documentno;
+	private String docAction;
+	private String docStatus;
+	private String documentNo;
 	private String help;
-	private Boolean isactive;
-	private Boolean isapproved;
-	private Integer mPricelistId;
-	private Integer mRequisitionId;
-	private Integer mWarehouseId;
+	private Integer mPriceListID;
+	private Integer mRequisitionID;
+	private Integer mWarehouseID;
 	private Boolean posted;
-	private String priorityrule;
+	private String priorityRule;
 	private Boolean processed;
-	private Long processedon;
+	private Long processedOn;
 	private Boolean processing;
-	private BigDecimal totallines;
+	private BigDecimal totalLines;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MRequisition() {
 	}
 
-	public MRequisition(Integer mRequisitionId) {
-		this.mRequisitionId = mRequisitionId;
+	public MRequisition(Integer mRequisitionID) {
+		this.mRequisitionID = mRequisitionID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	@Column(name="ISAPPROVED", nullable=false)
+	public Boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
 	}
 
 	@Basic
 	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getCDoctypeId() {
-		return cDoctypeId;
+	public Integer getCDocTypeID() {
+		return cDocTypeID;
 	}
 
-	public void setCDoctypeId(Integer cDoctypeId) {
-		this.cDoctypeId = cDoctypeId;
+	public void setCDocTypeID(Integer cDocTypeID) {
+		this.cDocTypeID = cDocTypeID;
 	}
 
 	@Basic
@@ -97,32 +117,32 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(columnDefinition="TIMESTAMP", nullable=false)
-	public String getDatedoc() {
-		return datedoc;
+	public String getDateDoc() {
+		return dateDoc;
 	}
 
-	public void setDatedoc(String datedoc) {
-		this.datedoc = datedoc;
+	public void setDateDoc(String dateDoc) {
+		this.dateDoc = dateDoc;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getDaterequired() {
-		return daterequired;
+	public String getDateRequired() {
+		return dateRequired;
 	}
 
-	public void setDaterequired(String daterequired) {
-		this.daterequired = daterequired;
+	public void setDateRequired(String dateRequired) {
+		this.dateRequired = dateRequired;
 	}
 
 	@Basic
@@ -136,32 +156,32 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getDocaction() {
-		return docaction;
+	public String getDocAction() {
+		return docAction;
 	}
 
-	public void setDocaction(String docaction) {
-		this.docaction = docaction;
+	public void setDocAction(String docAction) {
+		this.docAction = docAction;
 	}
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getDocstatus() {
-		return docstatus;
+	public String getDocStatus() {
+		return docStatus;
 	}
 
-	public void setDocstatus(String docstatus) {
-		this.docstatus = docstatus;
+	public void setDocStatus(String docStatus) {
+		this.docStatus = docStatus;
 	}
 
 	@Basic
 	@Column(nullable=false, length=30)
-	public String getDocumentno() {
-		return documentno;
+	public String getDocumentNo() {
+		return documentNo;
 	}
 
-	public void setDocumentno(String documentno) {
-		this.documentno = documentno;
+	public void setDocumentNo(String documentNo) {
+		this.documentNo = documentNo;
 	}
 
 	@Basic
@@ -175,55 +195,35 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsapproved() {
-		return isapproved;
-	}
-
-	public void setIsapproved(Boolean isapproved) {
-		this.isapproved = isapproved;
-	}
-
-	@Basic
 	@Column(name="M_PRICELIST_ID", columnDefinition="INT", nullable=false)
-	public Integer getMPricelistId() {
-		return mPricelistId;
+	public Integer getMPriceListID() {
+		return mPriceListID;
 	}
 
-	public void setMPricelistId(Integer mPricelistId) {
-		this.mPricelistId = mPricelistId;
+	public void setMPriceListID(Integer mPriceListID) {
+		this.mPriceListID = mPriceListID;
 	}
 
 	@Id
 	@Column(name="M_REQUISITION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_919", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Requisition", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_919")
-	public Integer getMRequisitionId() {
-		return mRequisitionId;
+	public Integer getMRequisitionID() {
+		return mRequisitionID;
 	}
 
-	public void setMRequisitionId(Integer mRequisitionId) {
-		this.mRequisitionId = mRequisitionId;
+	public void setMRequisitionID(Integer mRequisitionID) {
+		this.mRequisitionID = mRequisitionID;
 	}
 
 	@Basic
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	@Basic
@@ -238,12 +238,12 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getPriorityrule() {
-		return priorityrule;
+	public String getPriorityRule() {
+		return priorityRule;
 	}
 
-	public void setPriorityrule(String priorityrule) {
-		this.priorityrule = priorityrule;
+	public void setPriorityRule(String priorityRule) {
+		this.priorityRule = priorityRule;
 	}
 
 	@Basic
@@ -257,12 +257,12 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Long getProcessedon() {
-		return processedon;
+	public Long getProcessedOn() {
+		return processedOn;
 	}
 
-	public void setProcessedon(Long processedon) {
-		this.processedon = processedon;
+	public void setProcessedOn(Long processedOn) {
+		this.processedOn = processedOn;
 	}
 
 	@Basic
@@ -276,12 +276,12 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getTotallines() {
-		return totallines;
+	public BigDecimal getTotalLines() {
+		return totalLines;
 	}
 
-	public void setTotallines(BigDecimal totallines) {
-		this.totallines = totallines;
+	public void setTotalLines(BigDecimal totalLines) {
+		this.totalLines = totalLines;
 	}
 
 	@Basic
@@ -296,11 +296,11 @@ public class MRequisition extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

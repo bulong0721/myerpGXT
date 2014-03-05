@@ -11,308 +11,318 @@ import javax.persistence.*;
 @Table(name="fact_acct")
 public class FactAcct extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetId;
-	private Integer accountId;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adOrgtrxId;
-	private Integer adTableId;
-	private BigDecimal amtacctcr;
-	private BigDecimal amtacctdr;
-	private BigDecimal amtsourcecr;
-	private BigDecimal amtsourcedr;
-	private Integer cAcctschemaId;
-	private Integer cActivityId;
-	private Integer cBpartnerId;
-	private Integer cCampaignId;
-	private Integer cCurrencyId;
-	private Integer cLocfromId;
-	private Integer cLoctoId;
-	private Integer cPeriodId;
-	private Integer cProjectId;
-	private Integer cProjectphaseId;
-	private Integer cProjecttaskId;
-	private Integer cSalesregionId;
-	private Integer cSubacctId;
-	private Integer cTaxId;
-	private Integer cUomId;
+	private Integer aAssetID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDOrgTrxID;
+	private Integer aDTableID;
+	private Integer accountID;
+	private Boolean active;
+	private BigDecimal amtAcctCr;
+	private BigDecimal amtAcctDr;
+	private BigDecimal amtSourceCr;
+	private BigDecimal amtSourceDr;
+	private Integer cAcctSchemaID;
+	private Integer cActivityID;
+	private Integer cBPartnerID;
+	private Integer cCampaignID;
+	private Integer cCurrencyID;
+	private Integer cLocFromID;
+	private Integer cLocToID;
+	private Integer cPeriodID;
+	private Integer cProjectID;
+	private Integer cProjectPhaseID;
+	private Integer cProjectTaskID;
+	private Integer cSalesRegionID;
+	private Integer cSubAcctID;
+	private Integer cTaxID;
+	private Integer cUOMID;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
-	private String datetrx;
+	private Integer createdBy;
+	private String dateAcct;
+	private String dateTrx;
 	private String description;
-	private Integer factAcctId;
-	private Integer glBudgetId;
-	private Integer glCategoryId;
-	private Boolean isactive;
-	private Integer lineId;
-	private Integer mLocatorId;
-	private Integer mProductId;
-	private String postingtype;
+	private Integer factAcctID;
+	private Integer gLBudgetID;
+	private Integer gLCategoryID;
+	private Integer lineID;
+	private Integer mLocatorID;
+	private Integer mProductID;
+	private String postingType;
 	private BigDecimal qty;
-	private Integer recordId;
+	private Integer recordID;
 	private String updated;
-	private Integer updatedby;
-	private Integer user1Id;
-	private Integer user2Id;
-	private Integer userelement1Id;
-	private Integer userelement2Id;
+	private Integer updatedBy;
+	private Integer user1ID;
+	private Integer user2ID;
+	private Integer userElement1ID;
+	private Integer userElement2ID;
 
 	public FactAcct() {
 	}
 
-	public FactAcct(Integer factAcctId) {
-		this.factAcctId = factAcctId;
+	public FactAcct(Integer factAcctID) {
+		this.factAcctID = factAcctID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT")
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
-	}
-
-	@Basic
-	@Column(name="ACCOUNT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAccountId() {
-		return accountId;
-	}
-
-	public void setAccountId(Integer accountId) {
-		this.accountId = accountId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
-	public Integer getAdOrgtrxId() {
-		return adOrgtrxId;
+	public Integer getADOrgTrxID() {
+		return aDOrgTrxID;
 	}
 
-	public void setAdOrgtrxId(Integer adOrgtrxId) {
-		this.adOrgtrxId = adOrgtrxId;
+	public void setADOrgTrxID(Integer aDOrgTrxID) {
+		this.aDOrgTrxID = aDOrgTrxID;
 	}
 
 	@Basic
 	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdTableId() {
-		return adTableId;
+	public Integer getADTableID() {
+		return aDTableID;
 	}
 
-	public void setAdTableId(Integer adTableId) {
-		this.adTableId = adTableId;
+	public void setADTableID(Integer aDTableID) {
+		this.aDTableID = aDTableID;
+	}
+
+	@Basic
+	@Column(name="ACCOUNT_ID", columnDefinition="INT", nullable=false)
+	public Integer getAccountID() {
+		return accountID;
+	}
+
+	public void setAccountID(Integer accountID) {
+		this.accountID = accountID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getAmtacctcr() {
-		return amtacctcr;
+	public BigDecimal getAmtAcctCr() {
+		return amtAcctCr;
 	}
 
-	public void setAmtacctcr(BigDecimal amtacctcr) {
-		this.amtacctcr = amtacctcr;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getAmtacctdr() {
-		return amtacctdr;
-	}
-
-	public void setAmtacctdr(BigDecimal amtacctdr) {
-		this.amtacctdr = amtacctdr;
+	public void setAmtAcctCr(BigDecimal amtAcctCr) {
+		this.amtAcctCr = amtAcctCr;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getAmtsourcecr() {
-		return amtsourcecr;
+	public BigDecimal getAmtAcctDr() {
+		return amtAcctDr;
 	}
 
-	public void setAmtsourcecr(BigDecimal amtsourcecr) {
-		this.amtsourcecr = amtsourcecr;
+	public void setAmtAcctDr(BigDecimal amtAcctDr) {
+		this.amtAcctDr = amtAcctDr;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getAmtsourcedr() {
-		return amtsourcedr;
+	public BigDecimal getAmtSourceCr() {
+		return amtSourceCr;
 	}
 
-	public void setAmtsourcedr(BigDecimal amtsourcedr) {
-		this.amtsourcedr = amtsourcedr;
+	public void setAmtSourceCr(BigDecimal amtSourceCr) {
+		this.amtSourceCr = amtSourceCr;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getAmtSourceDr() {
+		return amtSourceDr;
+	}
+
+	public void setAmtSourceDr(BigDecimal amtSourceDr) {
+		this.amtSourceDr = amtSourceDr;
 	}
 
 	@Basic
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Basic
 	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
-	public Integer getCActivityId() {
-		return cActivityId;
+	public Integer getCActivityID() {
+		return cActivityID;
 	}
 
-	public void setCActivityId(Integer cActivityId) {
-		this.cActivityId = cActivityId;
+	public void setCActivityID(Integer cActivityID) {
+		this.cActivityID = cActivityID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="C_LOCFROM_ID", columnDefinition="INT")
-	public Integer getCLocfromId() {
-		return cLocfromId;
+	public Integer getCLocFromID() {
+		return cLocFromID;
 	}
 
-	public void setCLocfromId(Integer cLocfromId) {
-		this.cLocfromId = cLocfromId;
+	public void setCLocFromID(Integer cLocFromID) {
+		this.cLocFromID = cLocFromID;
 	}
 
 	@Basic
 	@Column(name="C_LOCTO_ID", columnDefinition="INT")
-	public Integer getCLoctoId() {
-		return cLoctoId;
+	public Integer getCLocToID() {
+		return cLocToID;
 	}
 
-	public void setCLoctoId(Integer cLoctoId) {
-		this.cLoctoId = cLoctoId;
+	public void setCLocToID(Integer cLocToID) {
+		this.cLocToID = cLocToID;
 	}
 
 	@Basic
 	@Column(name="C_PERIOD_ID", columnDefinition="INT")
-	public Integer getCPeriodId() {
-		return cPeriodId;
+	public Integer getCPeriodID() {
+		return cPeriodID;
 	}
 
-	public void setCPeriodId(Integer cPeriodId) {
-		this.cPeriodId = cPeriodId;
+	public void setCPeriodID(Integer cPeriodID) {
+		this.cPeriodID = cPeriodID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECTPHASE_ID", columnDefinition="INT")
-	public Integer getCProjectphaseId() {
-		return cProjectphaseId;
+	public Integer getCProjectPhaseID() {
+		return cProjectPhaseID;
 	}
 
-	public void setCProjectphaseId(Integer cProjectphaseId) {
-		this.cProjectphaseId = cProjectphaseId;
+	public void setCProjectPhaseID(Integer cProjectPhaseID) {
+		this.cProjectPhaseID = cProjectPhaseID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECTTASK_ID", columnDefinition="INT")
-	public Integer getCProjecttaskId() {
-		return cProjecttaskId;
+	public Integer getCProjectTaskID() {
+		return cProjectTaskID;
 	}
 
-	public void setCProjecttaskId(Integer cProjecttaskId) {
-		this.cProjecttaskId = cProjecttaskId;
+	public void setCProjectTaskID(Integer cProjectTaskID) {
+		this.cProjectTaskID = cProjectTaskID;
 	}
 
 	@Basic
 	@Column(name="C_SALESREGION_ID", columnDefinition="INT")
-	public Integer getCSalesregionId() {
-		return cSalesregionId;
+	public Integer getCSalesRegionID() {
+		return cSalesRegionID;
 	}
 
-	public void setCSalesregionId(Integer cSalesregionId) {
-		this.cSalesregionId = cSalesregionId;
+	public void setCSalesRegionID(Integer cSalesRegionID) {
+		this.cSalesRegionID = cSalesRegionID;
 	}
 
 	@Basic
 	@Column(name="C_SUBACCT_ID", columnDefinition="INT")
-	public Integer getCSubacctId() {
-		return cSubacctId;
+	public Integer getCSubAcctID() {
+		return cSubAcctID;
 	}
 
-	public void setCSubacctId(Integer cSubacctId) {
-		this.cSubacctId = cSubacctId;
+	public void setCSubAcctID(Integer cSubAcctID) {
+		this.cSubAcctID = cSubAcctID;
 	}
 
 	@Basic
 	@Column(name="C_TAX_ID", columnDefinition="INT")
-	public Integer getCTaxId() {
-		return cTaxId;
+	public Integer getCTaxID() {
+		return cTaxID;
 	}
 
-	public void setCTaxId(Integer cTaxId) {
-		this.cTaxId = cTaxId;
+	public void setCTaxID(Integer cTaxID) {
+		this.cTaxID = cTaxID;
 	}
 
 	@Basic
 	@Column(name="C_UOM_ID", columnDefinition="INT")
-	public Integer getCUomId() {
-		return cUomId;
+	public Integer getCUOMID() {
+		return cUOMID;
 	}
 
-	public void setCUomId(Integer cUomId) {
-		this.cUomId = cUomId;
+	public void setCUOMID(Integer cUOMID) {
+		this.cUOMID = cUOMID;
 	}
 
 	@Basic
@@ -327,32 +337,32 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getDateacct() {
-		return dateacct;
-	}
-
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getDatetrx() {
-		return datetrx;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setDatetrx(String datetrx) {
-		this.datetrx = datetrx;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public String getDateTrx() {
+		return dateTrx;
+	}
+
+	public void setDateTrx(String dateTrx) {
+		this.dateTrx = dateTrx;
 	}
 
 	@Basic
@@ -368,82 +378,72 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 	@Column(name="FACT_ACCT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_182", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "Fact_Acct", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_182")
-	public Integer getFactAcctId() {
-		return factAcctId;
+	public Integer getFactAcctID() {
+		return factAcctID;
 	}
 
-	public void setFactAcctId(Integer factAcctId) {
-		this.factAcctId = factAcctId;
+	public void setFactAcctID(Integer factAcctID) {
+		this.factAcctID = factAcctID;
 	}
 
 	@Basic
 	@Column(name="GL_BUDGET_ID", columnDefinition="INT")
-	public Integer getGlBudgetId() {
-		return glBudgetId;
+	public Integer getGLBudgetID() {
+		return gLBudgetID;
 	}
 
-	public void setGlBudgetId(Integer glBudgetId) {
-		this.glBudgetId = glBudgetId;
+	public void setGLBudgetID(Integer gLBudgetID) {
+		this.gLBudgetID = gLBudgetID;
 	}
 
 	@Basic
 	@Column(name="GL_CATEGORY_ID", columnDefinition="INT")
-	public Integer getGlCategoryId() {
-		return glCategoryId;
+	public Integer getGLCategoryID() {
+		return gLCategoryID;
 	}
 
-	public void setGlCategoryId(Integer glCategoryId) {
-		this.glCategoryId = glCategoryId;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setGLCategoryID(Integer gLCategoryID) {
+		this.gLCategoryID = gLCategoryID;
 	}
 
 	@Basic
 	@Column(name="LINE_ID", columnDefinition="INT")
-	public Integer getLineId() {
-		return lineId;
+	public Integer getLineID() {
+		return lineID;
 	}
 
-	public void setLineId(Integer lineId) {
-		this.lineId = lineId;
+	public void setLineID(Integer lineID) {
+		this.lineID = lineID;
 	}
 
 	@Basic
 	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
-	public Integer getMLocatorId() {
-		return mLocatorId;
+	public Integer getMLocatorID() {
+		return mLocatorID;
 	}
 
-	public void setMLocatorId(Integer mLocatorId) {
-		this.mLocatorId = mLocatorId;
+	public void setMLocatorID(Integer mLocatorID) {
+		this.mLocatorID = mLocatorID;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getPostingtype() {
-		return postingtype;
+	public String getPostingType() {
+		return postingType;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
@@ -457,12 +457,12 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="RECORD_ID", columnDefinition="INT", nullable=false)
-	public Integer getRecordId() {
-		return recordId;
+	public Integer getRecordID() {
+		return recordID;
 	}
 
-	public void setRecordId(Integer recordId) {
-		this.recordId = recordId;
+	public void setRecordID(Integer recordID) {
+		this.recordID = recordID;
 	}
 
 	@Basic
@@ -477,51 +477,51 @@ public class FactAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(name="USER1_ID", columnDefinition="INT")
-	public Integer getUser1Id() {
-		return user1Id;
+	public Integer getUser1ID() {
+		return user1ID;
 	}
 
-	public void setUser1Id(Integer user1Id) {
-		this.user1Id = user1Id;
+	public void setUser1ID(Integer user1ID) {
+		this.user1ID = user1ID;
 	}
 
 	@Basic
 	@Column(name="USER2_ID", columnDefinition="INT")
-	public Integer getUser2Id() {
-		return user2Id;
+	public Integer getUser2ID() {
+		return user2ID;
 	}
 
-	public void setUser2Id(Integer user2Id) {
-		this.user2Id = user2Id;
+	public void setUser2ID(Integer user2ID) {
+		this.user2ID = user2ID;
 	}
 
 	@Basic
 	@Column(name="USERELEMENT1_ID", columnDefinition="INT")
-	public Integer getUserelement1Id() {
-		return userelement1Id;
+	public Integer getUserElement1ID() {
+		return userElement1ID;
 	}
 
-	public void setUserelement1Id(Integer userelement1Id) {
-		this.userelement1Id = userelement1Id;
+	public void setUserElement1ID(Integer userElement1ID) {
+		this.userElement1ID = userElement1ID;
 	}
 
 	@Basic
 	@Column(name="USERELEMENT2_ID", columnDefinition="INT")
-	public Integer getUserelement2Id() {
-		return userelement2Id;
+	public Integer getUserElement2ID() {
+		return userElement2ID;
 	}
 
-	public void setUserelement2Id(Integer userelement2Id) {
-		this.userelement2Id = userelement2Id;
+	public void setUserElement2ID(Integer userElement2ID) {
+		this.userElement2ID = userElement2ID;
 	}
 }

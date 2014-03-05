@@ -10,89 +10,99 @@ import javax.persistence.*;
 @Table(name="w_advertisement")
 public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
-	private String adtext;
-	private Integer cBpartnerId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
+	private Boolean active;
+	private String adText;
+	private Integer cBPartnerID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
 	private String help;
-	private String imageurl;
-	private Boolean isactive;
-	private Boolean isselfservice;
+	private String imageURL;
 	private String name;
 	private Boolean processing;
-	private String publishstatus;
+	private String publishStatus;
+	private Boolean selfService;
 	private String updated;
-	private Integer updatedby;
-	private String validfrom;
-	private String validto;
+	private Integer updatedBy;
+	private String validFrom;
+	private String validTo;
 	private Integer version;
-	private Integer wAdvertisementId;
-	private Integer wClickcountId;
-	private Integer wCountercountId;
-	private String webparam1;
-	private String webparam2;
-	private String webparam3;
-	private String webparam4;
+	private Integer wAdvertisementID;
+	private Integer wClickCountID;
+	private Integer wCounterCountID;
+	private String webParam1;
+	private String webParam2;
+	private String webParam3;
+	private String webParam4;
 
 	public WAdvertisement() {
 	}
 
-	public WAdvertisement(Integer wAdvertisementId) {
-		this.wAdvertisementId = wAdvertisementId;
+	public WAdvertisement(Integer wAdvertisementID) {
+		this.wAdvertisementID = wAdvertisementID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(length=2000)
-	public String getAdtext() {
-		return adtext;
+	public String getAdText() {
+		return adText;
 	}
 
-	public void setAdtext(String adtext) {
-		this.adtext = adtext;
+	public void setAdText(String adText) {
+		this.adText = adText;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
@@ -107,12 +117,12 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -136,32 +146,12 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=120)
-	public String getImageurl() {
-		return imageurl;
+	public String getImageURL() {
+		return imageURL;
 	}
 
-	public void setImageurl(String imageurl) {
-		this.imageurl = imageurl;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsselfservice() {
-		return isselfservice;
-	}
-
-	public void setIsselfservice(Boolean isselfservice) {
-		this.isselfservice = isselfservice;
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 
 	@Basic
@@ -185,12 +175,22 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getPublishstatus() {
-		return publishstatus;
+	public String getPublishStatus() {
+		return publishStatus;
 	}
 
-	public void setPublishstatus(String publishstatus) {
-		this.publishstatus = publishstatus;
+	public void setPublishStatus(String publishStatus) {
+		this.publishStatus = publishStatus;
+	}
+
+	@Basic
+	@Column(name="ISSELFSERVICE", nullable=false)
+	public Boolean isSelfService() {
+		return selfService;
+	}
+
+	public void setSelfService(Boolean selfService) {
+		this.selfService = selfService;
 	}
 
 	@Basic
@@ -205,30 +205,30 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
-	}
-
-	@Basic
-	public String getValidfrom() {
-		return validfrom;
-	}
-
-	public void setValidfrom(String validfrom) {
-		this.validfrom = validfrom;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
-	public String getValidto() {
-		return validto;
+	public String getValidFrom() {
+		return validFrom;
 	}
 
-	public void setValidto(String validto) {
-		this.validto = validto;
+	public void setValidFrom(String validFrom) {
+		this.validFrom = validFrom;
+	}
+
+	@Basic
+	public String getValidTo() {
+		return validTo;
+	}
+
+	public void setValidTo(String validTo) {
+		this.validTo = validTo;
 	}
 
 	@Basic
@@ -245,71 +245,71 @@ public class WAdvertisement extends org.adempiere.common.ADEntityBase {
 	@Column(name="W_ADVERTISEMENT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_734", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "W_Advertisement", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_734")
-	public Integer getWAdvertisementId() {
-		return wAdvertisementId;
+	public Integer getWAdvertisementID() {
+		return wAdvertisementID;
 	}
 
-	public void setWAdvertisementId(Integer wAdvertisementId) {
-		this.wAdvertisementId = wAdvertisementId;
+	public void setWAdvertisementID(Integer wAdvertisementID) {
+		this.wAdvertisementID = wAdvertisementID;
 	}
 
 	@Basic
 	@Column(name="W_CLICKCOUNT_ID", columnDefinition="INT")
-	public Integer getWClickcountId() {
-		return wClickcountId;
+	public Integer getWClickCountID() {
+		return wClickCountID;
 	}
 
-	public void setWClickcountId(Integer wClickcountId) {
-		this.wClickcountId = wClickcountId;
+	public void setWClickCountID(Integer wClickCountID) {
+		this.wClickCountID = wClickCountID;
 	}
 
 	@Basic
 	@Column(name="W_COUNTERCOUNT_ID", columnDefinition="INT")
-	public Integer getWCountercountId() {
-		return wCountercountId;
+	public Integer getWCounterCountID() {
+		return wCounterCountID;
 	}
 
-	public void setWCountercountId(Integer wCountercountId) {
-		this.wCountercountId = wCountercountId;
-	}
-
-	@Basic
-	@Column(length=2000)
-	public String getWebparam1() {
-		return webparam1;
-	}
-
-	public void setWebparam1(String webparam1) {
-		this.webparam1 = webparam1;
+	public void setWCounterCountID(Integer wCounterCountID) {
+		this.wCounterCountID = wCounterCountID;
 	}
 
 	@Basic
 	@Column(length=2000)
-	public String getWebparam2() {
-		return webparam2;
+	public String getWebParam1() {
+		return webParam1;
 	}
 
-	public void setWebparam2(String webparam2) {
-		this.webparam2 = webparam2;
-	}
-
-	@Basic
-	@Column(length=2000)
-	public String getWebparam3() {
-		return webparam3;
-	}
-
-	public void setWebparam3(String webparam3) {
-		this.webparam3 = webparam3;
+	public void setWebParam1(String webParam1) {
+		this.webParam1 = webParam1;
 	}
 
 	@Basic
 	@Column(length=2000)
-	public String getWebparam4() {
-		return webparam4;
+	public String getWebParam2() {
+		return webParam2;
 	}
 
-	public void setWebparam4(String webparam4) {
-		this.webparam4 = webparam4;
+	public void setWebParam2(String webParam2) {
+		this.webParam2 = webParam2;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getWebParam3() {
+		return webParam3;
+	}
+
+	public void setWebParam3(String webParam3) {
+		this.webParam3 = webParam3;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getWebParam4() {
+		return webParam4;
+	}
+
+	public void setWebParam4(String webParam4) {
+		this.webParam4 = webParam4;
 	}
 }

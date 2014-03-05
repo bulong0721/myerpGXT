@@ -10,49 +10,69 @@ import javax.persistence.*;
 @Table(name="a_asset_info_tax")
 public class AAssetInfoTax extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetId;
-	private Integer aAssetInfoTaxId;
+	private Integer aAssetID;
+	private Integer aAssetInfoTaxID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private String aFinanceMeth;
-	private Integer aInvestmentCr;
+	private Integer aInvestmentCR;
 	private Boolean aNewUsed;
 	private String aState;
 	private String aTaxEntity;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private String textmsg;
+	private Integer createdBy;
+	private String textMsg;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetInfoTax() {
 	}
 
-	public AAssetInfoTax(Integer aAssetInfoTaxId) {
-		this.aAssetInfoTaxId = aAssetInfoTaxId;
+	public AAssetInfoTax(Integer aAssetInfoTaxID) {
+		this.aAssetInfoTaxID = aAssetInfoTaxID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_INFO_TAX_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53151", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Info_Tax", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53151")
-	public Integer getAAssetInfoTaxId() {
-		return aAssetInfoTaxId;
+	public Integer getAAssetInfoTaxID() {
+		return aAssetInfoTaxID;
 	}
 
-	public void setAAssetInfoTaxId(Integer aAssetInfoTaxId) {
-		this.aAssetInfoTaxId = aAssetInfoTaxId;
+	public void setAAssetInfoTaxID(Integer aAssetInfoTaxID) {
+		this.aAssetInfoTaxID = aAssetInfoTaxID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -67,12 +87,12 @@ public class AAssetInfoTax extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_INVESTMENT_CR", columnDefinition="INT")
-	public Integer getAInvestmentCr() {
-		return aInvestmentCr;
+	public Integer getAInvestmentCR() {
+		return aInvestmentCR;
 	}
 
-	public void setAInvestmentCr(Integer aInvestmentCr) {
-		this.aInvestmentCr = aInvestmentCr;
+	public void setAInvestmentCR(Integer aInvestmentCR) {
+		this.aInvestmentCR = aInvestmentCR;
 	}
 
 	@Basic
@@ -106,23 +126,13 @@ public class AAssetInfoTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -137,32 +147,22 @@ public class AAssetInfoTax extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(length=510)
-	public String getTextmsg() {
-		return textmsg;
+	public String getTextMsg() {
+		return textMsg;
 	}
 
-	public void setTextmsg(String textmsg) {
-		this.textmsg = textmsg;
+	public void setTextMsg(String textMsg) {
+		this.textMsg = textMsg;
 	}
 
 	@Basic
@@ -177,11 +177,11 @@ public class AAssetInfoTax extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

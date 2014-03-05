@@ -29,13 +29,26 @@ public class ADModelData implements IsADRPCModel, ADMapData {
 	 */
 	@Override
 	public Object getValue(String path, DisplayType fieldType) {
-		if (fieldType.isID() || fieldType.isInteger()) {
+		if (fieldType.isInteger()) {
+			return JSOUtil.getAttributeAsInteger(jso, path);
+		}
+		if (fieldType.isID()) {
+			if (isStringKey(path, fieldType)) {
+				return JSOUtil.getAttributeAsObject(jso, path);
+			}
 			return JSOUtil.getAttributeAsInteger(jso, path);
 		}
 		if (fieldType.isFloat()) {
 			return JSOUtil.getAttributeAsDouble(jso, path);
 		}
 		return JSOUtil.getAttributeAsObject(jso, path);
+	}
+
+	private boolean isStringKey(String path, DisplayType fieldType) {
+		if ("adLanguage".equals(path) || "calendaryear".equals(path)) {
+			return true;
+		}
+		return false;
 	}
 
 	public JavaScriptObject getJso() {

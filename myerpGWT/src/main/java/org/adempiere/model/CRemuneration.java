@@ -11,61 +11,71 @@ import javax.persistence.*;
 @Table(name="c_remuneration")
 public class CRemuneration extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cRemunerationId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cRemunerationID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private BigDecimal grossramt;
-	private BigDecimal grossrcost;
+	private BigDecimal grossRAmt;
+	private BigDecimal grossRCost;
 	private String help;
-	private Boolean isactive;
 	private String name;
-	private BigDecimal overtimeamt;
-	private BigDecimal overtimecost;
-	private String remunerationtype;
-	private Integer standardhours;
+	private BigDecimal overtimeAmt;
+	private BigDecimal overtimeCost;
+	private String remunerationType;
+	private Integer standardHours;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CRemuneration() {
 	}
 
-	public CRemuneration(Integer cRemunerationId) {
-		this.cRemunerationId = cRemunerationId;
+	public CRemuneration(Integer cRemunerationID) {
+		this.cRemunerationID = cRemunerationID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_REMUNERATION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_1128", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Remuneration", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1128")
-	public Integer getCRemunerationId() {
-		return cRemunerationId;
+	public Integer getCRemunerationID() {
+		return cRemunerationID;
 	}
 
-	public void setCRemunerationId(Integer cRemunerationId) {
-		this.cRemunerationId = cRemunerationId;
+	public void setCRemunerationID(Integer cRemunerationID) {
+		this.cRemunerationID = cRemunerationID;
 	}
 
 	@Basic
@@ -80,12 +90,12 @@ public class CRemuneration extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -99,22 +109,22 @@ public class CRemuneration extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getGrossramt() {
-		return grossramt;
+	public BigDecimal getGrossRAmt() {
+		return grossRAmt;
 	}
 
-	public void setGrossramt(BigDecimal grossramt) {
-		this.grossramt = grossramt;
+	public void setGrossRAmt(BigDecimal grossRAmt) {
+		this.grossRAmt = grossRAmt;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getGrossrcost() {
-		return grossrcost;
+	public BigDecimal getGrossRCost() {
+		return grossRCost;
 	}
 
-	public void setGrossrcost(BigDecimal grossrcost) {
-		this.grossrcost = grossrcost;
+	public void setGrossRCost(BigDecimal grossRCost) {
+		this.grossRCost = grossRCost;
 	}
 
 	@Basic
@@ -125,16 +135,6 @@ public class CRemuneration extends org.adempiere.common.ADEntityBase {
 
 	public void setHelp(String help) {
 		this.help = help;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
 	}
 
 	@Basic
@@ -149,42 +149,42 @@ public class CRemuneration extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getOvertimeamt() {
-		return overtimeamt;
+	public BigDecimal getOvertimeAmt() {
+		return overtimeAmt;
 	}
 
-	public void setOvertimeamt(BigDecimal overtimeamt) {
-		this.overtimeamt = overtimeamt;
+	public void setOvertimeAmt(BigDecimal overtimeAmt) {
+		this.overtimeAmt = overtimeAmt;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getOvertimecost() {
-		return overtimecost;
+	public BigDecimal getOvertimeCost() {
+		return overtimeCost;
 	}
 
-	public void setOvertimecost(BigDecimal overtimecost) {
-		this.overtimecost = overtimecost;
+	public void setOvertimeCost(BigDecimal overtimeCost) {
+		this.overtimeCost = overtimeCost;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getRemunerationtype() {
-		return remunerationtype;
+	public String getRemunerationType() {
+		return remunerationType;
 	}
 
-	public void setRemunerationtype(String remunerationtype) {
-		this.remunerationtype = remunerationtype;
+	public void setRemunerationType(String remunerationType) {
+		this.remunerationType = remunerationType;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getStandardhours() {
-		return standardhours;
+	public Integer getStandardHours() {
+		return standardHours;
 	}
 
-	public void setStandardhours(Integer standardhours) {
-		this.standardhours = standardhours;
+	public void setStandardHours(Integer standardHours) {
+		this.standardHours = standardHours;
 	}
 
 	@Basic
@@ -199,11 +199,11 @@ public class CRemuneration extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

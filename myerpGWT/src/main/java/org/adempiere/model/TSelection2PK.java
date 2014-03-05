@@ -17,7 +17,7 @@ public class TSelection2PK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer adPinstanceId;
+	public Integer aDPInstanceID;
 	public BigDecimal queryId;
 	public Integer tSelectionId;
 
@@ -28,12 +28,12 @@ public class TSelection2PK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getAdPinstanceId() {
-		return adPinstanceId;
+	public Integer getADPInstanceID() {
+		return aDPInstanceID;
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
-		this.adPinstanceId = adPinstanceId;
+	public void setADPInstanceID(Integer aDPInstanceID) {
+		this.aDPInstanceID = aDPInstanceID;
 	}
 
 	public BigDecimal getQueryId() {
@@ -53,14 +53,14 @@ public class TSelection2PK implements Serializable {
 	}
 
 	public String toString() {
-		return String.valueOf(adPinstanceId)
+		return String.valueOf(aDPInstanceID)
 			+ "::" + String.valueOf(queryId)
 			+ "::" + String.valueOf(tSelectionId);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((adPinstanceId == null) ? 0 : adPinstanceId.hashCode());
+		rs = rs * 37 + ((aDPInstanceID == null) ? 0 : aDPInstanceID.hashCode());
 		rs = rs * 37 + ((queryId == null) ? 0 : queryId.hashCode());
 		rs = rs * 37 + ((tSelectionId == null) ? 0 : tSelectionId.hashCode());
 		return rs;
@@ -73,8 +73,8 @@ public class TSelection2PK implements Serializable {
 			return false;
 
 		TSelection2PK other = (TSelection2PK) obj;
-		return ((adPinstanceId == null && other.adPinstanceId == null)
-			|| (adPinstanceId != null && adPinstanceId.equals(other.adPinstanceId)))
+		return ((aDPInstanceID == null && other.aDPInstanceID == null)
+			|| (aDPInstanceID != null && aDPInstanceID.equals(other.aDPInstanceID)))
 			&& ((queryId == null && other.queryId == null)
 			|| (queryId != null && queryId.equals(other.queryId)))
 			&& ((tSelectionId == null && other.tSelectionId == null)
@@ -85,9 +85,9 @@ public class TSelection2PK implements Serializable {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			adPinstanceId = null;
+			aDPInstanceID = null;
 		else
-			adPinstanceId = new Integer(str);
+			aDPInstanceID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
 			queryId = null;

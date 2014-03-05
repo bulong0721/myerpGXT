@@ -11,365 +11,385 @@ import javax.persistence.*;
 @Table(name="c_order")
 public class COrder extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adOrgtrxId;
-	private Integer adUserId;
-	private Long amountrefunded;
-	private Long amounttendered;
-	private Integer billBpartnerId;
-	private Integer billLocationId;
-	private Integer billUserId;
-	private Integer cActivityId;
-	private Integer cBpartnerId;
-	private Integer cBpartnerLocationId;
-	private Integer cCampaignId;
-	private Integer cCashlineId;
-	private Integer cChargeId;
-	private Integer cConversiontypeId;
-	private Integer cCurrencyId;
-	private Integer cDoctypeId;
-	private Integer cDoctypetargetId;
-	private Integer cOrderId;
-	private Integer cOrdersourceId;
-	private Integer cPaymentId;
-	private Integer cPaymenttermId;
-	private Integer cPosId;
-	private Integer cProjectId;
-	private BigDecimal chargeamt;
-	private Boolean copyfrom;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDOrgTrxID;
+	private Integer aDUserID;
+	private Boolean active;
+	private Long amountRefunded;
+	private Long amountTendered;
+	private Boolean approved;
+	private Integer billBPartnerID;
+	private Integer billLocationID;
+	private Integer billUserID;
+	private Integer cActivityID;
+	private Integer cBPartnerID;
+	private Integer cBPartnerLocationID;
+	private Integer cCampaignID;
+	private Integer cCashLineID;
+	private Integer cChargeID;
+	private Integer cConversionTypeID;
+	private Integer cCurrencyID;
+	private Integer cDocTypeID;
+	private Integer cDocTypeTargetID;
+	private Integer cOrderID;
+	private Integer cOrderSourceID;
+	private Integer cPOSID;
+	private Integer cPaymentID;
+	private Integer cPaymentTermID;
+	private Integer cProjectID;
+	private BigDecimal chargeAmt;
+	private Boolean copyFrom;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
-	private String dateordered;
-	private String dateprinted;
-	private String datepromised;
-	private String deliveryrule;
-	private String deliveryviarule;
+	private Integer createdBy;
+	private Boolean creditApproved;
+	private String dateAcct;
+	private String dateOrdered;
+	private String datePrinted;
+	private String datePromised;
+	private Boolean delivered;
+	private String deliveryRule;
+	private String deliveryViaRule;
 	private String description;
-	private String docaction;
-	private String docstatus;
-	private String documentno;
-	private Integer dropshipBpartnerId;
-	private Integer dropshipLocationId;
-	private Integer dropshipUserId;
-	private BigDecimal freightamt;
-	private String freightcostrule;
-	private BigDecimal grandtotal;
-	private String invoicerule;
-	private Boolean isactive;
-	private Boolean isapproved;
-	private Boolean iscreditapproved;
-	private Boolean isdelivered;
-	private Boolean isdiscountprinted;
-	private Boolean isdropship;
-	private Boolean isinvoiced;
-	private Boolean isprinted;
-	private Boolean isselected;
-	private Boolean isselfservice;
-	private Boolean issotrx;
-	private Boolean istaxincluded;
-	private Boolean istransferred;
-	private Integer linkOrderId;
-	private Integer mFreightcategoryId;
-	private Integer mPricelistId;
-	private Integer mShipperId;
-	private Integer mWarehouseId;
-	private String ordertype;
-	private Integer payBpartnerId;
-	private Integer payLocationId;
-	private String paymentrule;
-	private String poreference;
+	private Boolean discountPrinted;
+	private String docAction;
+	private String docStatus;
+	private String documentNo;
+	private Boolean dropShip;
+	private Integer dropShipBPartnerID;
+	private Integer dropShipLocationID;
+	private Integer dropShipUserID;
+	private BigDecimal freightAmt;
+	private String freightCostRule;
+	private BigDecimal grandTotal;
+	private String invoiceRule;
+	private Boolean invoiced;
+	private Integer linkOrderID;
+	private Integer mFreightCategoryID;
+	private Integer mPriceListID;
+	private Integer mShipperID;
+	private Integer mWarehouseID;
+	private String orderType;
+	private String pOReference;
+	private Integer payBPartnerID;
+	private Integer payLocationID;
+	private String paymentRule;
 	private Boolean posted;
-	private String priorityrule;
+	private Boolean printed;
+	private String priorityRule;
 	private Boolean processed;
-	private Long processedon;
+	private Long processedOn;
 	private Boolean processing;
-	private String promotioncode;
-	private Integer refOrderId;
-	private Integer salesrepId;
-	private Boolean sendemail;
-	private BigDecimal totallines;
+	private String promotionCode;
+	private Integer refOrderID;
+	private Boolean sOTrx;
+	private Integer salesRepID;
+	private Boolean selected;
+	private Boolean selfService;
+	private Boolean sendEMail;
+	private Boolean taxIncluded;
+	private BigDecimal totalLines;
+	private Boolean transferred;
 	private String updated;
-	private Integer updatedby;
-	private Integer user1Id;
-	private Integer user2Id;
+	private Integer updatedBy;
+	private Integer user1ID;
+	private Integer user2ID;
 	private BigDecimal volume;
 	private BigDecimal weight;
 
 	public COrder() {
 	}
 
-	public COrder(Integer cOrderId) {
-		this.cOrderId = cOrderId;
+	public COrder(Integer cOrderID) {
+		this.cOrderID = cOrderID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
-	public Integer getAdOrgtrxId() {
-		return adOrgtrxId;
+	public Integer getADOrgTrxID() {
+		return aDOrgTrxID;
 	}
 
-	public void setAdOrgtrxId(Integer adOrgtrxId) {
-		this.adOrgtrxId = adOrgtrxId;
+	public void setADOrgTrxID(Integer aDOrgTrxID) {
+		this.aDOrgTrxID = aDOrgTrxID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
-	}
-
-	@Basic
-	public Long getAmountrefunded() {
-		return amountrefunded;
-	}
-
-	public void setAmountrefunded(Long amountrefunded) {
-		this.amountrefunded = amountrefunded;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
 	}
 
 	@Basic
-	public Long getAmounttendered() {
-		return amounttendered;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAmounttendered(Long amounttendered) {
-		this.amounttendered = amounttendered;
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	public Long getAmountRefunded() {
+		return amountRefunded;
+	}
+
+	public void setAmountRefunded(Long amountRefunded) {
+		this.amountRefunded = amountRefunded;
+	}
+
+	@Basic
+	public Long getAmountTendered() {
+		return amountTendered;
+	}
+
+	public void setAmountTendered(Long amountTendered) {
+		this.amountTendered = amountTendered;
+	}
+
+	@Basic
+	@Column(name="ISAPPROVED", nullable=false)
+	public Boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
 	}
 
 	@Basic
 	@Column(name="BILL_BPARTNER_ID", columnDefinition="INT")
-	public Integer getBillBpartnerId() {
-		return billBpartnerId;
+	public Integer getBillBPartnerID() {
+		return billBPartnerID;
 	}
 
-	public void setBillBpartnerId(Integer billBpartnerId) {
-		this.billBpartnerId = billBpartnerId;
+	public void setBillBPartnerID(Integer billBPartnerID) {
+		this.billBPartnerID = billBPartnerID;
 	}
 
 	@Basic
 	@Column(name="BILL_LOCATION_ID", columnDefinition="INT")
-	public Integer getBillLocationId() {
-		return billLocationId;
+	public Integer getBillLocationID() {
+		return billLocationID;
 	}
 
-	public void setBillLocationId(Integer billLocationId) {
-		this.billLocationId = billLocationId;
+	public void setBillLocationID(Integer billLocationID) {
+		this.billLocationID = billLocationID;
 	}
 
 	@Basic
 	@Column(name="BILL_USER_ID", columnDefinition="INT")
-	public Integer getBillUserId() {
-		return billUserId;
+	public Integer getBillUserID() {
+		return billUserID;
 	}
 
-	public void setBillUserId(Integer billUserId) {
-		this.billUserId = billUserId;
+	public void setBillUserID(Integer billUserID) {
+		this.billUserID = billUserID;
 	}
 
 	@Basic
 	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
-	public Integer getCActivityId() {
-		return cActivityId;
+	public Integer getCActivityID() {
+		return cActivityID;
 	}
 
-	public void setCActivityId(Integer cActivityId) {
-		this.cActivityId = cActivityId;
+	public void setCActivityID(Integer cActivityID) {
+		this.cActivityID = cActivityID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT", nullable=false)
-	public Integer getCBpartnerLocationId() {
-		return cBpartnerLocationId;
+	public Integer getCBPartnerLocationID() {
+		return cBPartnerLocationID;
 	}
 
-	public void setCBpartnerLocationId(Integer cBpartnerLocationId) {
-		this.cBpartnerLocationId = cBpartnerLocationId;
+	public void setCBPartnerLocationID(Integer cBPartnerLocationID) {
+		this.cBPartnerLocationID = cBPartnerLocationID;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
 	@Column(name="C_CASHLINE_ID", columnDefinition="INT")
-	public Integer getCCashlineId() {
-		return cCashlineId;
+	public Integer getCCashLineID() {
+		return cCashLineID;
 	}
 
-	public void setCCashlineId(Integer cCashlineId) {
-		this.cCashlineId = cCashlineId;
+	public void setCCashLineID(Integer cCashLineID) {
+		this.cCashLineID = cCashLineID;
 	}
 
 	@Basic
 	@Column(name="C_CHARGE_ID", columnDefinition="INT")
-	public Integer getCChargeId() {
-		return cChargeId;
+	public Integer getCChargeID() {
+		return cChargeID;
 	}
 
-	public void setCChargeId(Integer cChargeId) {
-		this.cChargeId = cChargeId;
+	public void setCChargeID(Integer cChargeID) {
+		this.cChargeID = cChargeID;
 	}
 
 	@Basic
 	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT")
-	public Integer getCConversiontypeId() {
-		return cConversiontypeId;
+	public Integer getCConversionTypeID() {
+		return cConversionTypeID;
 	}
 
-	public void setCConversiontypeId(Integer cConversiontypeId) {
-		this.cConversiontypeId = cConversiontypeId;
+	public void setCConversionTypeID(Integer cConversionTypeID) {
+		this.cConversionTypeID = cConversionTypeID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getCDoctypeId() {
-		return cDoctypeId;
+	public Integer getCDocTypeID() {
+		return cDocTypeID;
 	}
 
-	public void setCDoctypeId(Integer cDoctypeId) {
-		this.cDoctypeId = cDoctypeId;
+	public void setCDocTypeID(Integer cDocTypeID) {
+		this.cDocTypeID = cDocTypeID;
 	}
 
 	@Basic
 	@Column(name="C_DOCTYPETARGET_ID", columnDefinition="INT", nullable=false)
-	public Integer getCDoctypetargetId() {
-		return cDoctypetargetId;
+	public Integer getCDocTypeTargetID() {
+		return cDocTypeTargetID;
 	}
 
-	public void setCDoctypetargetId(Integer cDoctypetargetId) {
-		this.cDoctypetargetId = cDoctypetargetId;
+	public void setCDocTypeTargetID(Integer cDocTypeTargetID) {
+		this.cDocTypeTargetID = cDocTypeTargetID;
 	}
 
 	@Id
 	@Column(name="C_ORDER_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_232", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Order", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_232")
-	public Integer getCOrderId() {
-		return cOrderId;
+	public Integer getCOrderID() {
+		return cOrderID;
 	}
 
-	public void setCOrderId(Integer cOrderId) {
-		this.cOrderId = cOrderId;
+	public void setCOrderID(Integer cOrderID) {
+		this.cOrderID = cOrderID;
 	}
 
 	@Basic
 	@Column(name="C_ORDERSOURCE_ID", columnDefinition="INT")
-	public Integer getCOrdersourceId() {
-		return cOrdersourceId;
+	public Integer getCOrderSourceID() {
+		return cOrderSourceID;
 	}
 
-	public void setCOrdersourceId(Integer cOrdersourceId) {
-		this.cOrdersourceId = cOrdersourceId;
-	}
-
-	@Basic
-	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
-	public Integer getCPaymentId() {
-		return cPaymentId;
-	}
-
-	public void setCPaymentId(Integer cPaymentId) {
-		this.cPaymentId = cPaymentId;
-	}
-
-	@Basic
-	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT", nullable=false)
-	public Integer getCPaymenttermId() {
-		return cPaymenttermId;
-	}
-
-	public void setCPaymenttermId(Integer cPaymenttermId) {
-		this.cPaymenttermId = cPaymenttermId;
+	public void setCOrderSourceID(Integer cOrderSourceID) {
+		this.cOrderSourceID = cOrderSourceID;
 	}
 
 	@Basic
 	@Column(name="C_POS_ID", columnDefinition="INT")
-	public Integer getCPosId() {
-		return cPosId;
+	public Integer getCPOSID() {
+		return cPOSID;
 	}
 
-	public void setCPosId(Integer cPosId) {
-		this.cPosId = cPosId;
+	public void setCPOSID(Integer cPOSID) {
+		this.cPOSID = cPOSID;
+	}
+
+	@Basic
+	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
+	public Integer getCPaymentID() {
+		return cPaymentID;
+	}
+
+	public void setCPaymentID(Integer cPaymentID) {
+		this.cPaymentID = cPaymentID;
+	}
+
+	@Basic
+	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT", nullable=false)
+	public Integer getCPaymentTermID() {
+		return cPaymentTermID;
+	}
+
+	public void setCPaymentTermID(Integer cPaymentTermID) {
+		this.cPaymentTermID = cPaymentTermID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
-	}
-
-	@Basic
-	public BigDecimal getChargeamt() {
-		return chargeamt;
-	}
-
-	public void setChargeamt(BigDecimal chargeamt) {
-		this.chargeamt = chargeamt;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
-	public Boolean isCopyfrom() {
-		return copyfrom;
+	public BigDecimal getChargeAmt() {
+		return chargeAmt;
 	}
 
-	public void setCopyfrom(Boolean copyfrom) {
-		this.copyfrom = copyfrom;
+	public void setChargeAmt(BigDecimal chargeAmt) {
+		this.chargeAmt = chargeAmt;
+	}
+
+	@Basic
+	public Boolean isCopyFrom() {
+		return copyFrom;
+	}
+
+	public void setCopyFrom(Boolean copyFrom) {
+		this.copyFrom = copyFrom;
 	}
 
 	@Basic
@@ -384,70 +404,90 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	@Basic
+	@Column(name="ISCREDITAPPROVED", nullable=false)
+	public Boolean isCreditApproved() {
+		return creditApproved;
+	}
+
+	public void setCreditApproved(Boolean creditApproved) {
+		this.creditApproved = creditApproved;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getDateacct() {
-		return dateacct;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getDateordered() {
-		return dateordered;
+	public String getDateOrdered() {
+		return dateOrdered;
 	}
 
-	public void setDateordered(String dateordered) {
-		this.dateordered = dateordered;
-	}
-
-	@Basic
-	public String getDateprinted() {
-		return dateprinted;
-	}
-
-	public void setDateprinted(String dateprinted) {
-		this.dateprinted = dateprinted;
+	public void setDateOrdered(String dateOrdered) {
+		this.dateOrdered = dateOrdered;
 	}
 
 	@Basic
-	public String getDatepromised() {
-		return datepromised;
+	public String getDatePrinted() {
+		return datePrinted;
 	}
 
-	public void setDatepromised(String datepromised) {
-		this.datepromised = datepromised;
+	public void setDatePrinted(String datePrinted) {
+		this.datePrinted = datePrinted;
+	}
+
+	@Basic
+	public String getDatePromised() {
+		return datePromised;
+	}
+
+	public void setDatePromised(String datePromised) {
+		this.datePromised = datePromised;
+	}
+
+	@Basic
+	@Column(name="ISDELIVERED", nullable=false)
+	public Boolean isDelivered() {
+		return delivered;
+	}
+
+	public void setDelivered(Boolean delivered) {
+		this.delivered = delivered;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getDeliveryrule() {
-		return deliveryrule;
+	public String getDeliveryRule() {
+		return deliveryRule;
 	}
 
-	public void setDeliveryrule(String deliveryrule) {
-		this.deliveryrule = deliveryrule;
+	public void setDeliveryRule(String deliveryRule) {
+		this.deliveryRule = deliveryRule;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getDeliveryviarule() {
-		return deliveryviarule;
+	public String getDeliveryViaRule() {
+		return deliveryViaRule;
 	}
 
-	public void setDeliveryviarule(String deliveryviarule) {
-		this.deliveryviarule = deliveryviarule;
+	public void setDeliveryViaRule(String deliveryViaRule) {
+		this.deliveryViaRule = deliveryViaRule;
 	}
 
 	@Basic
@@ -460,332 +500,232 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=2)
-	public String getDocaction() {
-		return docaction;
+	@Column(name="ISDISCOUNTPRINTED", nullable=false)
+	public Boolean isDiscountPrinted() {
+		return discountPrinted;
 	}
 
-	public void setDocaction(String docaction) {
-		this.docaction = docaction;
+	public void setDiscountPrinted(Boolean discountPrinted) {
+		this.discountPrinted = discountPrinted;
 	}
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getDocstatus() {
-		return docstatus;
+	public String getDocAction() {
+		return docAction;
 	}
 
-	public void setDocstatus(String docstatus) {
-		this.docstatus = docstatus;
+	public void setDocAction(String docAction) {
+		this.docAction = docAction;
+	}
+
+	@Basic
+	@Column(nullable=false, length=2)
+	public String getDocStatus() {
+		return docStatus;
+	}
+
+	public void setDocStatus(String docStatus) {
+		this.docStatus = docStatus;
 	}
 
 	@Basic
 	@Column(nullable=false, length=30)
-	public String getDocumentno() {
-		return documentno;
+	public String getDocumentNo() {
+		return documentNo;
 	}
 
-	public void setDocumentno(String documentno) {
-		this.documentno = documentno;
+	public void setDocumentNo(String documentNo) {
+		this.documentNo = documentNo;
+	}
+
+	@Basic
+	@Column(name="ISDROPSHIP", nullable=false)
+	public Boolean isDropShip() {
+		return dropShip;
+	}
+
+	public void setDropShip(Boolean dropShip) {
+		this.dropShip = dropShip;
 	}
 
 	@Basic
 	@Column(name="DROPSHIP_BPARTNER_ID", columnDefinition="INT")
-	public Integer getDropshipBpartnerId() {
-		return dropshipBpartnerId;
+	public Integer getDropShipBPartnerID() {
+		return dropShipBPartnerID;
 	}
 
-	public void setDropshipBpartnerId(Integer dropshipBpartnerId) {
-		this.dropshipBpartnerId = dropshipBpartnerId;
+	public void setDropShipBPartnerID(Integer dropShipBPartnerID) {
+		this.dropShipBPartnerID = dropShipBPartnerID;
 	}
 
 	@Basic
 	@Column(name="DROPSHIP_LOCATION_ID", columnDefinition="INT")
-	public Integer getDropshipLocationId() {
-		return dropshipLocationId;
+	public Integer getDropShipLocationID() {
+		return dropShipLocationID;
 	}
 
-	public void setDropshipLocationId(Integer dropshipLocationId) {
-		this.dropshipLocationId = dropshipLocationId;
+	public void setDropShipLocationID(Integer dropShipLocationID) {
+		this.dropShipLocationID = dropShipLocationID;
 	}
 
 	@Basic
 	@Column(name="DROPSHIP_USER_ID", columnDefinition="INT")
-	public Integer getDropshipUserId() {
-		return dropshipUserId;
+	public Integer getDropShipUserID() {
+		return dropShipUserID;
 	}
 
-	public void setDropshipUserId(Integer dropshipUserId) {
-		this.dropshipUserId = dropshipUserId;
-	}
-
-	@Basic
-	public BigDecimal getFreightamt() {
-		return freightamt;
-	}
-
-	public void setFreightamt(BigDecimal freightamt) {
-		this.freightamt = freightamt;
+	public void setDropShipUserID(Integer dropShipUserID) {
+		this.dropShipUserID = dropShipUserID;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getFreightcostrule() {
-		return freightcostrule;
+	public BigDecimal getFreightAmt() {
+		return freightAmt;
 	}
 
-	public void setFreightcostrule(String freightcostrule) {
-		this.freightcostrule = freightcostrule;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getGrandtotal() {
-		return grandtotal;
-	}
-
-	public void setGrandtotal(BigDecimal grandtotal) {
-		this.grandtotal = grandtotal;
+	public void setFreightAmt(BigDecimal freightAmt) {
+		this.freightAmt = freightAmt;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getInvoicerule() {
-		return invoicerule;
+	public String getFreightCostRule() {
+		return freightCostRule;
 	}
 
-	public void setInvoicerule(String invoicerule) {
-		this.invoicerule = invoicerule;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setFreightCostRule(String freightCostRule) {
+		this.freightCostRule = freightCostRule;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsapproved() {
-		return isapproved;
+	public BigDecimal getGrandTotal() {
+		return grandTotal;
 	}
 
-	public void setIsapproved(Boolean isapproved) {
-		this.isapproved = isapproved;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIscreditapproved() {
-		return iscreditapproved;
-	}
-
-	public void setIscreditapproved(Boolean iscreditapproved) {
-		this.iscreditapproved = iscreditapproved;
+	public void setGrandTotal(BigDecimal grandTotal) {
+		this.grandTotal = grandTotal;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdelivered() {
-		return isdelivered;
+	@Column(nullable=false, length=1)
+	public String getInvoiceRule() {
+		return invoiceRule;
 	}
 
-	public void setIsdelivered(Boolean isdelivered) {
-		this.isdelivered = isdelivered;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdiscountprinted() {
-		return isdiscountprinted;
-	}
-
-	public void setIsdiscountprinted(Boolean isdiscountprinted) {
-		this.isdiscountprinted = isdiscountprinted;
+	public void setInvoiceRule(String invoiceRule) {
+		this.invoiceRule = invoiceRule;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdropship() {
-		return isdropship;
+	@Column(name="ISINVOICED", nullable=false)
+	public Boolean isInvoiced() {
+		return invoiced;
 	}
 
-	public void setIsdropship(Boolean isdropship) {
-		this.isdropship = isdropship;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsinvoiced() {
-		return isinvoiced;
-	}
-
-	public void setIsinvoiced(Boolean isinvoiced) {
-		this.isinvoiced = isinvoiced;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsprinted() {
-		return isprinted;
-	}
-
-	public void setIsprinted(Boolean isprinted) {
-		this.isprinted = isprinted;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsselected() {
-		return isselected;
-	}
-
-	public void setIsselected(Boolean isselected) {
-		this.isselected = isselected;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsselfservice() {
-		return isselfservice;
-	}
-
-	public void setIsselfservice(Boolean isselfservice) {
-		this.isselfservice = isselfservice;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIssotrx() {
-		return issotrx;
-	}
-
-	public void setIssotrx(Boolean issotrx) {
-		this.issotrx = issotrx;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIstaxincluded() {
-		return istaxincluded;
-	}
-
-	public void setIstaxincluded(Boolean istaxincluded) {
-		this.istaxincluded = istaxincluded;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIstransferred() {
-		return istransferred;
-	}
-
-	public void setIstransferred(Boolean istransferred) {
-		this.istransferred = istransferred;
+	public void setInvoiced(Boolean invoiced) {
+		this.invoiced = invoiced;
 	}
 
 	@Basic
 	@Column(name="LINK_ORDER_ID", columnDefinition="INT")
-	public Integer getLinkOrderId() {
-		return linkOrderId;
+	public Integer getLinkOrderID() {
+		return linkOrderID;
 	}
 
-	public void setLinkOrderId(Integer linkOrderId) {
-		this.linkOrderId = linkOrderId;
+	public void setLinkOrderID(Integer linkOrderID) {
+		this.linkOrderID = linkOrderID;
 	}
 
 	@Basic
 	@Column(name="M_FREIGHTCATEGORY_ID", columnDefinition="INT")
-	public Integer getMFreightcategoryId() {
-		return mFreightcategoryId;
+	public Integer getMFreightCategoryID() {
+		return mFreightCategoryID;
 	}
 
-	public void setMFreightcategoryId(Integer mFreightcategoryId) {
-		this.mFreightcategoryId = mFreightcategoryId;
+	public void setMFreightCategoryID(Integer mFreightCategoryID) {
+		this.mFreightCategoryID = mFreightCategoryID;
 	}
 
 	@Basic
 	@Column(name="M_PRICELIST_ID", columnDefinition="INT", nullable=false)
-	public Integer getMPricelistId() {
-		return mPricelistId;
+	public Integer getMPriceListID() {
+		return mPriceListID;
 	}
 
-	public void setMPricelistId(Integer mPricelistId) {
-		this.mPricelistId = mPricelistId;
+	public void setMPriceListID(Integer mPriceListID) {
+		this.mPriceListID = mPriceListID;
 	}
 
 	@Basic
 	@Column(name="M_SHIPPER_ID", columnDefinition="INT")
-	public Integer getMShipperId() {
-		return mShipperId;
+	public Integer getMShipperID() {
+		return mShipperID;
 	}
 
-	public void setMShipperId(Integer mShipperId) {
-		this.mShipperId = mShipperId;
+	public void setMShipperID(Integer mShipperID) {
+		this.mShipperID = mShipperID;
 	}
 
 	@Basic
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	@Basic
 	@Column(length=510)
-	public String getOrdertype() {
-		return ordertype;
+	public String getOrderType() {
+		return orderType;
 	}
 
-	public void setOrdertype(String ordertype) {
-		this.ordertype = ordertype;
-	}
-
-	@Basic
-	@Column(name="PAY_BPARTNER_ID", columnDefinition="INT")
-	public Integer getPayBpartnerId() {
-		return payBpartnerId;
-	}
-
-	public void setPayBpartnerId(Integer payBpartnerId) {
-		this.payBpartnerId = payBpartnerId;
-	}
-
-	@Basic
-	@Column(name="PAY_LOCATION_ID", columnDefinition="INT")
-	public Integer getPayLocationId() {
-		return payLocationId;
-	}
-
-	public void setPayLocationId(Integer payLocationId) {
-		this.payLocationId = payLocationId;
-	}
-
-	@Basic
-	@Column(nullable=false, length=1)
-	public String getPaymentrule() {
-		return paymentrule;
-	}
-
-	public void setPaymentrule(String paymentrule) {
-		this.paymentrule = paymentrule;
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getPoreference() {
-		return poreference;
+	public String getPOReference() {
+		return pOReference;
 	}
 
-	public void setPoreference(String poreference) {
-		this.poreference = poreference;
+	public void setPOReference(String pOReference) {
+		this.pOReference = pOReference;
+	}
+
+	@Basic
+	@Column(name="PAY_BPARTNER_ID", columnDefinition="INT")
+	public Integer getPayBPartnerID() {
+		return payBPartnerID;
+	}
+
+	public void setPayBPartnerID(Integer payBPartnerID) {
+		this.payBPartnerID = payBPartnerID;
+	}
+
+	@Basic
+	@Column(name="PAY_LOCATION_ID", columnDefinition="INT")
+	public Integer getPayLocationID() {
+		return payLocationID;
+	}
+
+	public void setPayLocationID(Integer payLocationID) {
+		this.payLocationID = payLocationID;
+	}
+
+	@Basic
+	@Column(nullable=false, length=1)
+	public String getPaymentRule() {
+		return paymentRule;
+	}
+
+	public void setPaymentRule(String paymentRule) {
+		this.paymentRule = paymentRule;
 	}
 
 	@Basic
@@ -799,13 +739,23 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getPriorityrule() {
-		return priorityrule;
+	@Column(name="ISPRINTED", nullable=false)
+	public Boolean isPrinted() {
+		return printed;
 	}
 
-	public void setPriorityrule(String priorityrule) {
-		this.priorityrule = priorityrule;
+	public void setPrinted(Boolean printed) {
+		this.printed = printed;
+	}
+
+	@Basic
+	@Column(nullable=false, length=1)
+	public String getPriorityRule() {
+		return priorityRule;
+	}
+
+	public void setPriorityRule(String priorityRule) {
+		this.priorityRule = priorityRule;
 	}
 
 	@Basic
@@ -819,12 +769,12 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Long getProcessedon() {
-		return processedon;
+	public Long getProcessedOn() {
+		return processedOn;
 	}
 
-	public void setProcessedon(Long processedon) {
-		this.processedon = processedon;
+	public void setProcessedOn(Long processedOn) {
+		this.processedOn = processedOn;
 	}
 
 	@Basic
@@ -838,52 +788,102 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=30)
-	public String getPromotioncode() {
-		return promotioncode;
+	public String getPromotionCode() {
+		return promotionCode;
 	}
 
-	public void setPromotioncode(String promotioncode) {
-		this.promotioncode = promotioncode;
+	public void setPromotionCode(String promotionCode) {
+		this.promotionCode = promotionCode;
 	}
 
 	@Basic
 	@Column(name="REF_ORDER_ID", columnDefinition="INT")
-	public Integer getRefOrderId() {
-		return refOrderId;
+	public Integer getRefOrderID() {
+		return refOrderID;
 	}
 
-	public void setRefOrderId(Integer refOrderId) {
-		this.refOrderId = refOrderId;
+	public void setRefOrderID(Integer refOrderID) {
+		this.refOrderID = refOrderID;
+	}
+
+	@Basic
+	@Column(name="ISSOTRX", nullable=false)
+	public Boolean isSOTrx() {
+		return sOTrx;
+	}
+
+	public void setSOTrx(Boolean sOTrx) {
+		this.sOTrx = sOTrx;
 	}
 
 	@Basic
 	@Column(name="SALESREP_ID", columnDefinition="INT")
-	public Integer getSalesrepId() {
-		return salesrepId;
+	public Integer getSalesRepID() {
+		return salesRepID;
 	}
 
-	public void setSalesrepId(Integer salesrepId) {
-		this.salesrepId = salesrepId;
+	public void setSalesRepID(Integer salesRepID) {
+		this.salesRepID = salesRepID;
+	}
+
+	@Basic
+	@Column(name="ISSELECTED", nullable=false)
+	public Boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(Boolean selected) {
+		this.selected = selected;
+	}
+
+	@Basic
+	@Column(name="ISSELFSERVICE", nullable=false)
+	public Boolean isSelfService() {
+		return selfService;
+	}
+
+	public void setSelfService(Boolean selfService) {
+		this.selfService = selfService;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isSendemail() {
-		return sendemail;
+	public Boolean isSendEMail() {
+		return sendEMail;
 	}
 
-	public void setSendemail(Boolean sendemail) {
-		this.sendemail = sendemail;
+	public void setSendEMail(Boolean sendEMail) {
+		this.sendEMail = sendEMail;
+	}
+
+	@Basic
+	@Column(name="ISTAXINCLUDED", nullable=false)
+	public Boolean isTaxIncluded() {
+		return taxIncluded;
+	}
+
+	public void setTaxIncluded(Boolean taxIncluded) {
+		this.taxIncluded = taxIncluded;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getTotallines() {
-		return totallines;
+	public BigDecimal getTotalLines() {
+		return totalLines;
 	}
 
-	public void setTotallines(BigDecimal totallines) {
-		this.totallines = totallines;
+	public void setTotalLines(BigDecimal totalLines) {
+		this.totalLines = totalLines;
+	}
+
+	@Basic
+	@Column(name="ISTRANSFERRED", nullable=false)
+	public Boolean isTransferred() {
+		return transferred;
+	}
+
+	public void setTransferred(Boolean transferred) {
+		this.transferred = transferred;
 	}
 
 	@Basic
@@ -898,32 +898,32 @@ public class COrder extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(name="USER1_ID", columnDefinition="INT")
-	public Integer getUser1Id() {
-		return user1Id;
+	public Integer getUser1ID() {
+		return user1ID;
 	}
 
-	public void setUser1Id(Integer user1Id) {
-		this.user1Id = user1Id;
+	public void setUser1ID(Integer user1ID) {
+		this.user1ID = user1ID;
 	}
 
 	@Basic
 	@Column(name="USER2_ID", columnDefinition="INT")
-	public Integer getUser2Id() {
-		return user2Id;
+	public Integer getUser2ID() {
+		return user2ID;
 	}
 
-	public void setUser2Id(Integer user2Id) {
-		this.user2Id = user2Id;
+	public void setUser2ID(Integer user2ID) {
+		this.user2ID = user2ID;
 	}
 
 	@Basic

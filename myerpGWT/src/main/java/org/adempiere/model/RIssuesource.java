@@ -10,19 +10,19 @@ import javax.persistence.*;
 @Table(name="r_issuesource")
 public class RIssuesource extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private String active;
 	private String created;
-	private Integer createdby;
-	private String isactive;
-	private String profileinfo;
-	private Integer rIssueprojectId;
+	private Integer createdBy;
+	private String profileInfo;
+	private Integer rIssueProjectID;
+	private Integer rIssueSystemID;
+	private Integer rIssueUserID;
 	private Integer rIssuesourceId;
-	private Integer rIssuesystemId;
-	private Integer rIssueuserId;
-	private String statisticsinfo;
+	private String statisticsInfo;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public RIssuesource() {
 	}
@@ -33,22 +33,32 @@ public class RIssuesource extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false, length=1)
+	public String getActive() {
+		return active;
+	}
+
+	public void setActive(String active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -63,42 +73,52 @@ public class RIssuesource extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(String isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(length=60)
-	public String getProfileinfo() {
-		return profileinfo;
+	public String getProfileInfo() {
+		return profileInfo;
 	}
 
-	public void setProfileinfo(String profileinfo) {
-		this.profileinfo = profileinfo;
+	public void setProfileInfo(String profileInfo) {
+		this.profileInfo = profileInfo;
 	}
 
 	@Basic
 	@Column(name="R_ISSUEPROJECT_ID", columnDefinition="INT", nullable=false)
-	public Integer getRIssueprojectId() {
-		return rIssueprojectId;
+	public Integer getRIssueProjectID() {
+		return rIssueProjectID;
 	}
 
-	public void setRIssueprojectId(Integer rIssueprojectId) {
-		this.rIssueprojectId = rIssueprojectId;
+	public void setRIssueProjectID(Integer rIssueProjectID) {
+		this.rIssueProjectID = rIssueProjectID;
+	}
+
+	@Basic
+	@Column(name="R_ISSUESYSTEM_ID", columnDefinition="INT", nullable=false)
+	public Integer getRIssueSystemID() {
+		return rIssueSystemID;
+	}
+
+	public void setRIssueSystemID(Integer rIssueSystemID) {
+		this.rIssueSystemID = rIssueSystemID;
+	}
+
+	@Basic
+	@Column(name="R_ISSUEUSER_ID", columnDefinition="INT", nullable=false)
+	public Integer getRIssueUserID() {
+		return rIssueUserID;
+	}
+
+	public void setRIssueUserID(Integer rIssueUserID) {
+		this.rIssueUserID = rIssueUserID;
 	}
 
 	@Id
@@ -114,33 +134,13 @@ public class RIssuesource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="R_ISSUESYSTEM_ID", columnDefinition="INT", nullable=false)
-	public Integer getRIssuesystemId() {
-		return rIssuesystemId;
-	}
-
-	public void setRIssuesystemId(Integer rIssuesystemId) {
-		this.rIssuesystemId = rIssuesystemId;
-	}
-
-	@Basic
-	@Column(name="R_ISSUEUSER_ID", columnDefinition="INT", nullable=false)
-	public Integer getRIssueuserId() {
-		return rIssueuserId;
-	}
-
-	public void setRIssueuserId(Integer rIssueuserId) {
-		this.rIssueuserId = rIssueuserId;
-	}
-
-	@Basic
 	@Column(length=60)
-	public String getStatisticsinfo() {
-		return statisticsinfo;
+	public String getStatisticsInfo() {
+		return statisticsInfo;
 	}
 
-	public void setStatisticsinfo(String statisticsinfo) {
-		this.statisticsinfo = statisticsinfo;
+	public void setStatisticsInfo(String statisticsInfo) {
+		this.statisticsInfo = statisticsInfo;
 	}
 
 	@Basic
@@ -155,11 +155,11 @@ public class RIssuesource extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -10,58 +10,68 @@ import javax.persistence.*;
 @Table(name="m_warehouse")
 public class MWarehouse extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cLocationId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cLocationID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Boolean isintransit;
-	private Integer mWarehouseId;
-	private Integer mWarehousesourceId;
+	private Boolean inTransit;
+	private Integer mWarehouseID;
+	private Integer mWarehouseSourceID;
 	private String name;
-	private String replenishmentclass;
+	private String replenishmentClass;
 	private String separator;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 	private String value;
 
 	public MWarehouse() {
 	}
 
-	public MWarehouse(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public MWarehouse(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_LOCATION_ID", columnDefinition="INT", nullable=false)
-	public Integer getCLocationId() {
-		return cLocationId;
+	public Integer getCLocationID() {
+		return cLocationID;
 	}
 
-	public void setCLocationId(Integer cLocationId) {
-		this.cLocationId = cLocationId;
+	public void setCLocationID(Integer cLocationID) {
+		this.cLocationID = cLocationID;
 	}
 
 	@Basic
@@ -76,12 +86,12 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -94,44 +104,35 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	@Column(name="ISINTRANSIT")
+	public Boolean isInTransit() {
+		return inTransit;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	public Boolean isIsintransit() {
-		return isintransit;
-	}
-
-	public void setIsintransit(Boolean isintransit) {
-		this.isintransit = isintransit;
+	public void setInTransit(Boolean inTransit) {
+		this.inTransit = inTransit;
 	}
 
 	@Id
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_76", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Warehouse", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_76")
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	@Basic
 	@Column(name="M_WAREHOUSESOURCE_ID", columnDefinition="INT")
-	public Integer getMWarehousesourceId() {
-		return mWarehousesourceId;
+	public Integer getMWarehouseSourceID() {
+		return mWarehouseSourceID;
 	}
 
-	public void setMWarehousesourceId(Integer mWarehousesourceId) {
-		this.mWarehousesourceId = mWarehousesourceId;
+	public void setMWarehouseSourceID(Integer mWarehouseSourceID) {
+		this.mWarehouseSourceID = mWarehouseSourceID;
 	}
 
 	@Basic
@@ -146,12 +147,12 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=60)
-	public String getReplenishmentclass() {
-		return replenishmentclass;
+	public String getReplenishmentClass() {
+		return replenishmentClass;
 	}
 
-	public void setReplenishmentclass(String replenishmentclass) {
-		this.replenishmentclass = replenishmentclass;
+	public void setReplenishmentClass(String replenishmentClass) {
+		this.replenishmentClass = replenishmentClass;
 	}
 
 	@Basic
@@ -176,12 +177,12 @@ public class MWarehouse extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic

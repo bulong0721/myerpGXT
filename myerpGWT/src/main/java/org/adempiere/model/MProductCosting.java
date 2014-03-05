@@ -12,146 +12,156 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.MProductCostingPK.class)
 public class MProductCosting extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cAcctschemaId;
-	private BigDecimal costaverage;
-	private BigDecimal costaveragecumamt;
-	private BigDecimal costaveragecumqty;
-	private BigDecimal coststandard;
-	private BigDecimal coststandardcumamt;
-	private BigDecimal coststandardcumqty;
-	private BigDecimal coststandardpoamt;
-	private BigDecimal coststandardpoqty;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cAcctSchemaID;
+	private BigDecimal costAverage;
+	private BigDecimal costAverageCumAmt;
+	private BigDecimal costAverageCumQty;
+	private BigDecimal costStandard;
+	private BigDecimal costStandardCumAmt;
+	private BigDecimal costStandardCumQty;
+	private BigDecimal costStandardPOAmt;
+	private BigDecimal costStandardPOQty;
 	private String created;
-	private Integer createdby;
-	private BigDecimal currentcostprice;
-	private BigDecimal futurecostprice;
-	private Boolean isactive;
-	private Integer mProductId;
-	private BigDecimal pricelastinv;
-	private BigDecimal pricelastpo;
-	private BigDecimal totalinvamt;
-	private BigDecimal totalinvqty;
+	private Integer createdBy;
+	private BigDecimal currentCostPrice;
+	private BigDecimal futureCostPrice;
+	private Integer mProductID;
+	private BigDecimal priceLastInv;
+	private BigDecimal priceLastPO;
+	private BigDecimal totalInvAmt;
+	private BigDecimal totalInvQty;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MProductCosting() {
 	}
 
-	public MProductCosting(Integer cAcctschemaId, Integer mProductId) {
-		this.cAcctschemaId = cAcctschemaId;
-		this.mProductId = mProductId;
+	public MProductCosting(Integer cAcctSchemaID, Integer mProductID) {
+		this.cAcctSchemaID = cAcctSchemaID;
+		this.mProductID = mProductID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getCostaverage() {
-		return costaverage;
-	}
-
-	public void setCostaverage(BigDecimal costaverage) {
-		this.costaverage = costaverage;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCostaveragecumamt() {
-		return costaveragecumamt;
+	public BigDecimal getCostAverage() {
+		return costAverage;
 	}
 
-	public void setCostaveragecumamt(BigDecimal costaveragecumamt) {
-		this.costaveragecumamt = costaveragecumamt;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getCostaveragecumqty() {
-		return costaveragecumqty;
-	}
-
-	public void setCostaveragecumqty(BigDecimal costaveragecumqty) {
-		this.costaveragecumqty = costaveragecumqty;
+	public void setCostAverage(BigDecimal costAverage) {
+		this.costAverage = costAverage;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCoststandard() {
-		return coststandard;
+	public BigDecimal getCostAverageCumAmt() {
+		return costAverageCumAmt;
 	}
 
-	public void setCoststandard(BigDecimal coststandard) {
-		this.coststandard = coststandard;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getCoststandardcumamt() {
-		return coststandardcumamt;
-	}
-
-	public void setCoststandardcumamt(BigDecimal coststandardcumamt) {
-		this.coststandardcumamt = coststandardcumamt;
+	public void setCostAverageCumAmt(BigDecimal costAverageCumAmt) {
+		this.costAverageCumAmt = costAverageCumAmt;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCoststandardcumqty() {
-		return coststandardcumqty;
+	public BigDecimal getCostAverageCumQty() {
+		return costAverageCumQty;
 	}
 
-	public void setCoststandardcumqty(BigDecimal coststandardcumqty) {
-		this.coststandardcumqty = coststandardcumqty;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getCoststandardpoamt() {
-		return coststandardpoamt;
-	}
-
-	public void setCoststandardpoamt(BigDecimal coststandardpoamt) {
-		this.coststandardpoamt = coststandardpoamt;
+	public void setCostAverageCumQty(BigDecimal costAverageCumQty) {
+		this.costAverageCumQty = costAverageCumQty;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCoststandardpoqty() {
-		return coststandardpoqty;
+	public BigDecimal getCostStandard() {
+		return costStandard;
 	}
 
-	public void setCoststandardpoqty(BigDecimal coststandardpoqty) {
-		this.coststandardpoqty = coststandardpoqty;
+	public void setCostStandard(BigDecimal costStandard) {
+		this.costStandard = costStandard;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getCostStandardCumAmt() {
+		return costStandardCumAmt;
+	}
+
+	public void setCostStandardCumAmt(BigDecimal costStandardCumAmt) {
+		this.costStandardCumAmt = costStandardCumAmt;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getCostStandardCumQty() {
+		return costStandardCumQty;
+	}
+
+	public void setCostStandardCumQty(BigDecimal costStandardCumQty) {
+		this.costStandardCumQty = costStandardCumQty;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getCostStandardPOAmt() {
+		return costStandardPOAmt;
+	}
+
+	public void setCostStandardPOAmt(BigDecimal costStandardPOAmt) {
+		this.costStandardPOAmt = costStandardPOAmt;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getCostStandardPOQty() {
+		return costStandardPOQty;
+	}
+
+	public void setCostStandardPOQty(BigDecimal costStandardPOQty) {
+		this.costStandardPOQty = costStandardPOQty;
 	}
 
 	@Basic
@@ -166,92 +176,82 @@ public class MProductCosting extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getCurrentcostprice() {
-		return currentcostprice;
-	}
-
-	public void setCurrentcostprice(BigDecimal currentcostprice) {
-		this.currentcostprice = currentcostprice;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getFuturecostprice() {
-		return futurecostprice;
+	public BigDecimal getCurrentCostPrice() {
+		return currentCostPrice;
 	}
 
-	public void setFuturecostprice(BigDecimal futurecostprice) {
-		this.futurecostprice = futurecostprice;
+	public void setCurrentCostPrice(BigDecimal currentCostPrice) {
+		this.currentCostPrice = currentCostPrice;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public BigDecimal getFutureCostPrice() {
+		return futureCostPrice;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setFutureCostPrice(BigDecimal futureCostPrice) {
+		this.futureCostPrice = futureCostPrice;
 	}
 
 	@Id
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getPricelastinv() {
-		return pricelastinv;
-	}
-
-	public void setPricelastinv(BigDecimal pricelastinv) {
-		this.pricelastinv = pricelastinv;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getPricelastpo() {
-		return pricelastpo;
+	public BigDecimal getPriceLastInv() {
+		return priceLastInv;
 	}
 
-	public void setPricelastpo(BigDecimal pricelastpo) {
-		this.pricelastpo = pricelastpo;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getTotalinvamt() {
-		return totalinvamt;
-	}
-
-	public void setTotalinvamt(BigDecimal totalinvamt) {
-		this.totalinvamt = totalinvamt;
+	public void setPriceLastInv(BigDecimal priceLastInv) {
+		this.priceLastInv = priceLastInv;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getTotalinvqty() {
-		return totalinvqty;
+	public BigDecimal getPriceLastPO() {
+		return priceLastPO;
 	}
 
-	public void setTotalinvqty(BigDecimal totalinvqty) {
-		this.totalinvqty = totalinvqty;
+	public void setPriceLastPO(BigDecimal priceLastPO) {
+		this.priceLastPO = priceLastPO;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getTotalInvAmt() {
+		return totalInvAmt;
+	}
+
+	public void setTotalInvAmt(BigDecimal totalInvAmt) {
+		this.totalInvAmt = totalInvAmt;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getTotalInvQty() {
+		return totalInvQty;
+	}
+
+	public void setTotalInvQty(BigDecimal totalInvQty) {
+		this.totalInvQty = totalInvQty;
 	}
 
 	@Basic
@@ -266,11 +266,11 @@ public class MProductCosting extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

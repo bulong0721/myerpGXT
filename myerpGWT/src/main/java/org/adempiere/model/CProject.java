@@ -11,208 +11,238 @@ import javax.persistence.*;
 @Table(name="c_project")
 public class CProject extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
-	private Integer cBpartnerId;
-	private Integer cBpartnerLocationId;
-	private Integer cBpartnersrId;
-	private Integer cCampaignId;
-	private Integer cCurrencyId;
-	private Integer cPaymenttermId;
-	private Integer cPhaseId;
-	private Integer cProjectId;
-	private Integer cProjecttypeId;
-	private BigDecimal committedamt;
-	private BigDecimal committedqty;
-	private Boolean copyfrom;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
+	private Boolean active;
+	private Integer cBPartnerID;
+	private Integer cBPartnerLocationID;
+	private Integer cBPartnerSRID;
+	private Integer cCampaignID;
+	private Integer cCurrencyID;
+	private Integer cPaymentTermID;
+	private Integer cPhaseID;
+	private Integer cProjectID;
+	private Integer cProjectTypeID;
+	private Boolean commitCeiling;
+	private Boolean commitment;
+	private BigDecimal committedAmt;
+	private BigDecimal committedQty;
+	private Boolean copyFrom;
 	private String created;
-	private Integer createdby;
-	private String datecontract;
-	private String datefinish;
+	private Integer createdBy;
+	private String dateContract;
+	private String dateFinish;
 	private String description;
-	private Boolean generateto;
-	private BigDecimal invoicedamt;
-	private BigDecimal invoicedqty;
-	private Boolean isactive;
-	private Boolean iscommitceiling;
-	private Boolean iscommitment;
-	private Boolean issummary;
-	private Integer mPricelistVersionId;
-	private Integer mWarehouseId;
+	private Boolean generateTo;
+	private BigDecimal invoicedAmt;
+	private BigDecimal invoicedQty;
+	private Integer mPriceListVersionID;
+	private Integer mWarehouseID;
 	private String name;
 	private String note;
-	private BigDecimal plannedamt;
-	private BigDecimal plannedmarginamt;
-	private BigDecimal plannedqty;
-	private String poreference;
+	private String pOReference;
+	private BigDecimal plannedAmt;
+	private BigDecimal plannedMarginAmt;
+	private BigDecimal plannedQty;
 	private Boolean processed;
 	private Boolean processing;
-	private BigDecimal projectbalanceamt;
-	private String projectcategory;
-	private String projectlinelevel;
-	private String projinvoicerule;
-	private Integer salesrepId;
+	private String projInvoiceRule;
+	private BigDecimal projectBalanceAmt;
+	private String projectCategory;
+	private String projectLineLevel;
+	private Integer salesRepID;
+	private Boolean summary;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 	private String value;
 
 	public CProject() {
 	}
 
-	public CProject(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public CProject(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
-	public Integer getCBpartnerLocationId() {
-		return cBpartnerLocationId;
+	public Integer getCBPartnerLocationID() {
+		return cBPartnerLocationID;
 	}
 
-	public void setCBpartnerLocationId(Integer cBpartnerLocationId) {
-		this.cBpartnerLocationId = cBpartnerLocationId;
+	public void setCBPartnerLocationID(Integer cBPartnerLocationID) {
+		this.cBPartnerLocationID = cBPartnerLocationID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNERSR_ID", columnDefinition="INT")
-	public Integer getCBpartnersrId() {
-		return cBpartnersrId;
+	public Integer getCBPartnerSRID() {
+		return cBPartnerSRID;
 	}
 
-	public void setCBpartnersrId(Integer cBpartnersrId) {
-		this.cBpartnersrId = cBpartnersrId;
+	public void setCBPartnerSRID(Integer cBPartnerSRID) {
+		this.cBPartnerSRID = cBPartnerSRID;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT")
-	public Integer getCPaymenttermId() {
-		return cPaymenttermId;
+	public Integer getCPaymentTermID() {
+		return cPaymentTermID;
 	}
 
-	public void setCPaymenttermId(Integer cPaymenttermId) {
-		this.cPaymenttermId = cPaymenttermId;
+	public void setCPaymentTermID(Integer cPaymentTermID) {
+		this.cPaymentTermID = cPaymentTermID;
 	}
 
 	@Basic
 	@Column(name="C_PHASE_ID", columnDefinition="INT")
-	public Integer getCPhaseId() {
-		return cPhaseId;
+	public Integer getCPhaseID() {
+		return cPhaseID;
 	}
 
-	public void setCPhaseId(Integer cPhaseId) {
-		this.cPhaseId = cPhaseId;
+	public void setCPhaseID(Integer cPhaseID) {
+		this.cPhaseID = cPhaseID;
 	}
 
 	@Id
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_109", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Project", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_109")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECTTYPE_ID", columnDefinition="INT")
-	public Integer getCProjecttypeId() {
-		return cProjecttypeId;
+	public Integer getCProjectTypeID() {
+		return cProjectTypeID;
 	}
 
-	public void setCProjecttypeId(Integer cProjecttypeId) {
-		this.cProjecttypeId = cProjecttypeId;
+	public void setCProjectTypeID(Integer cProjectTypeID) {
+		this.cProjectTypeID = cProjectTypeID;
+	}
+
+	@Basic
+	@Column(name="ISCOMMITCEILING", nullable=false)
+	public Boolean isCommitCeiling() {
+		return commitCeiling;
+	}
+
+	public void setCommitCeiling(Boolean commitCeiling) {
+		this.commitCeiling = commitCeiling;
+	}
+
+	@Basic
+	@Column(name="ISCOMMITMENT", nullable=false)
+	public Boolean isCommitment() {
+		return commitment;
+	}
+
+	public void setCommitment(Boolean commitment) {
+		this.commitment = commitment;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCommittedamt() {
-		return committedamt;
+	public BigDecimal getCommittedAmt() {
+		return committedAmt;
 	}
 
-	public void setCommittedamt(BigDecimal committedamt) {
-		this.committedamt = committedamt;
+	public void setCommittedAmt(BigDecimal committedAmt) {
+		this.committedAmt = committedAmt;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCommittedqty() {
-		return committedqty;
+	public BigDecimal getCommittedQty() {
+		return committedQty;
 	}
 
-	public void setCommittedqty(BigDecimal committedqty) {
-		this.committedqty = committedqty;
+	public void setCommittedQty(BigDecimal committedQty) {
+		this.committedQty = committedQty;
 	}
 
 	@Basic
-	public Boolean isCopyfrom() {
-		return copyfrom;
+	public Boolean isCopyFrom() {
+		return copyFrom;
 	}
 
-	public void setCopyfrom(Boolean copyfrom) {
-		this.copyfrom = copyfrom;
+	public void setCopyFrom(Boolean copyFrom) {
+		this.copyFrom = copyFrom;
 	}
 
 	@Basic
@@ -227,30 +257,30 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	public String getDatecontract() {
-		return datecontract;
-	}
-
-	public void setDatecontract(String datecontract) {
-		this.datecontract = datecontract;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public String getDatefinish() {
-		return datefinish;
+	public String getDateContract() {
+		return dateContract;
 	}
 
-	public void setDatefinish(String datefinish) {
-		this.datefinish = datefinish;
+	public void setDateContract(String dateContract) {
+		this.dateContract = dateContract;
+	}
+
+	@Basic
+	public String getDateFinish() {
+		return dateFinish;
+	}
+
+	public void setDateFinish(String dateFinish) {
+		this.dateFinish = dateFinish;
 	}
 
 	@Basic
@@ -263,92 +293,52 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isGenerateto() {
-		return generateto;
+	public Boolean isGenerateTo() {
+		return generateTo;
 	}
 
-	public void setGenerateto(Boolean generateto) {
-		this.generateto = generateto;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getInvoicedamt() {
-		return invoicedamt;
-	}
-
-	public void setInvoicedamt(BigDecimal invoicedamt) {
-		this.invoicedamt = invoicedamt;
+	public void setGenerateTo(Boolean generateTo) {
+		this.generateTo = generateTo;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getInvoicedqty() {
-		return invoicedqty;
+	public BigDecimal getInvoicedAmt() {
+		return invoicedAmt;
 	}
 
-	public void setInvoicedqty(BigDecimal invoicedqty) {
-		this.invoicedqty = invoicedqty;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setInvoicedAmt(BigDecimal invoicedAmt) {
+		this.invoicedAmt = invoicedAmt;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIscommitceiling() {
-		return iscommitceiling;
+	public BigDecimal getInvoicedQty() {
+		return invoicedQty;
 	}
 
-	public void setIscommitceiling(Boolean iscommitceiling) {
-		this.iscommitceiling = iscommitceiling;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIscommitment() {
-		return iscommitment;
-	}
-
-	public void setIscommitment(Boolean iscommitment) {
-		this.iscommitment = iscommitment;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIssummary() {
-		return issummary;
-	}
-
-	public void setIssummary(Boolean issummary) {
-		this.issummary = issummary;
+	public void setInvoicedQty(BigDecimal invoicedQty) {
+		this.invoicedQty = invoicedQty;
 	}
 
 	@Basic
 	@Column(name="M_PRICELIST_VERSION_ID", columnDefinition="INT")
-	public Integer getMPricelistVersionId() {
-		return mPricelistVersionId;
+	public Integer getMPriceListVersionID() {
+		return mPriceListVersionID;
 	}
 
-	public void setMPricelistVersionId(Integer mPricelistVersionId) {
-		this.mPricelistVersionId = mPricelistVersionId;
+	public void setMPriceListVersionID(Integer mPriceListVersionID) {
+		this.mPriceListVersionID = mPriceListVersionID;
 	}
 
 	@Basic
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	@Basic
@@ -372,43 +362,43 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public BigDecimal getPlannedamt() {
-		return plannedamt;
-	}
-
-	public void setPlannedamt(BigDecimal plannedamt) {
-		this.plannedamt = plannedamt;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getPlannedmarginamt() {
-		return plannedmarginamt;
-	}
-
-	public void setPlannedmarginamt(BigDecimal plannedmarginamt) {
-		this.plannedmarginamt = plannedmarginamt;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getPlannedqty() {
-		return plannedqty;
-	}
-
-	public void setPlannedqty(BigDecimal plannedqty) {
-		this.plannedqty = plannedqty;
-	}
-
-	@Basic
 	@Column(length=20)
-	public String getPoreference() {
-		return poreference;
+	public String getPOReference() {
+		return pOReference;
 	}
 
-	public void setPoreference(String poreference) {
-		this.poreference = poreference;
+	public void setPOReference(String pOReference) {
+		this.pOReference = pOReference;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getPlannedAmt() {
+		return plannedAmt;
+	}
+
+	public void setPlannedAmt(BigDecimal plannedAmt) {
+		this.plannedAmt = plannedAmt;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getPlannedMarginAmt() {
+		return plannedMarginAmt;
+	}
+
+	public void setPlannedMarginAmt(BigDecimal plannedMarginAmt) {
+		this.plannedMarginAmt = plannedMarginAmt;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getPlannedQty() {
+		return plannedQty;
+	}
+
+	public void setPlannedQty(BigDecimal plannedQty) {
+		this.plannedQty = plannedQty;
 	}
 
 	@Basic
@@ -431,53 +421,63 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public BigDecimal getProjectbalanceamt() {
-		return projectbalanceamt;
+	@Column(nullable=false, length=1)
+	public String getProjInvoiceRule() {
+		return projInvoiceRule;
 	}
 
-	public void setProjectbalanceamt(BigDecimal projectbalanceamt) {
-		this.projectbalanceamt = projectbalanceamt;
+	public void setProjInvoiceRule(String projInvoiceRule) {
+		this.projInvoiceRule = projInvoiceRule;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getProjectBalanceAmt() {
+		return projectBalanceAmt;
+	}
+
+	public void setProjectBalanceAmt(BigDecimal projectBalanceAmt) {
+		this.projectBalanceAmt = projectBalanceAmt;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getProjectcategory() {
-		return projectcategory;
+	public String getProjectCategory() {
+		return projectCategory;
 	}
 
-	public void setProjectcategory(String projectcategory) {
-		this.projectcategory = projectcategory;
-	}
-
-	@Basic
-	@Column(nullable=false, length=1)
-	public String getProjectlinelevel() {
-		return projectlinelevel;
-	}
-
-	public void setProjectlinelevel(String projectlinelevel) {
-		this.projectlinelevel = projectlinelevel;
+	public void setProjectCategory(String projectCategory) {
+		this.projectCategory = projectCategory;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getProjinvoicerule() {
-		return projinvoicerule;
+	public String getProjectLineLevel() {
+		return projectLineLevel;
 	}
 
-	public void setProjinvoicerule(String projinvoicerule) {
-		this.projinvoicerule = projinvoicerule;
+	public void setProjectLineLevel(String projectLineLevel) {
+		this.projectLineLevel = projectLineLevel;
 	}
 
 	@Basic
 	@Column(name="SALESREP_ID", columnDefinition="INT")
-	public Integer getSalesrepId() {
-		return salesrepId;
+	public Integer getSalesRepID() {
+		return salesRepID;
 	}
 
-	public void setSalesrepId(Integer salesrepId) {
-		this.salesrepId = salesrepId;
+	public void setSalesRepID(Integer salesRepID) {
+		this.salesRepID = salesRepID;
+	}
+
+	@Basic
+	@Column(name="ISSUMMARY", nullable=false)
+	public Boolean isSummary() {
+		return summary;
+	}
+
+	public void setSummary(Boolean summary) {
+		this.summary = summary;
 	}
 
 	@Basic
@@ -492,12 +492,12 @@ public class CProject extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic

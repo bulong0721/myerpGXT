@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.adempiere.common.ADModelKey;
 import org.adempiere.common.DisplayType;
-import org.adempiere.web.client.util.StringUtil;
 
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
@@ -25,9 +24,9 @@ public interface ADMapData extends IsADRPCModel {
 		public ADModelKeyProvider(ADTabModel tabModel) {
 			keyFields = new ArrayList<String>();
 			for (ADFormField field : tabModel.getFieldList()) {
-				if (field.getIskey()) {
+				if (field.isKey()) {
 					fieldType = field.getFieldType();
-					String propertyName = StringUtil.toCamelStyle(field.getColumnname());
+					String propertyName = field.getPropertyName();
 					keyFields.add(propertyName);
 				}
 			}

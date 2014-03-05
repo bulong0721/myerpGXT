@@ -10,47 +10,57 @@ import javax.persistence.*;
 @Table(name="m_lot")
 public class MLot extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private String datefrom;
-	private String dateto;
+	private Integer createdBy;
+	private String dateFrom;
+	private String dateTo;
 	private String description;
 	private String help;
-	private Boolean isactive;
-	private Integer mLotId;
-	private Integer mLotctlId;
-	private Integer mProductId;
+	private Integer mLotCtlID;
+	private Integer mLotID;
+	private Integer mProductID;
 	private String name;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MLot() {
 	}
 
-	public MLot(Integer mLotId) {
-		this.mLotId = mLotId;
+	public MLot(Integer mLotID) {
+		this.mLotID = mLotID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -65,30 +75,30 @@ public class MLot extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	public String getDatefrom() {
-		return datefrom;
-	}
-
-	public void setDatefrom(String datefrom) {
-		this.datefrom = datefrom;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public String getDateto() {
-		return dateto;
+	public String getDateFrom() {
+		return dateFrom;
 	}
 
-	public void setDateto(String dateto) {
-		this.dateto = dateto;
+	public void setDateFrom(String dateFrom) {
+		this.dateFrom = dateFrom;
+	}
+
+	@Basic
+	public String getDateTo() {
+		return dateTo;
+	}
+
+	public void setDateTo(String dateTo) {
+		this.dateTo = dateTo;
 	}
 
 	@Basic
@@ -111,45 +121,35 @@ public class MLot extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	@Column(name="M_LOTCTL_ID", columnDefinition="INT")
+	public Integer getMLotCtlID() {
+		return mLotCtlID;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setMLotCtlID(Integer mLotCtlID) {
+		this.mLotCtlID = mLotCtlID;
 	}
 
 	@Id
 	@Column(name="M_LOT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_686", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Lot", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_686")
-	public Integer getMLotId() {
-		return mLotId;
+	public Integer getMLotID() {
+		return mLotID;
 	}
 
-	public void setMLotId(Integer mLotId) {
-		this.mLotId = mLotId;
-	}
-
-	@Basic
-	@Column(name="M_LOTCTL_ID", columnDefinition="INT")
-	public Integer getMLotctlId() {
-		return mLotctlId;
-	}
-
-	public void setMLotctlId(Integer mLotctlId) {
-		this.mLotctlId = mLotctlId;
+	public void setMLotID(Integer mLotID) {
+		this.mLotID = mLotID;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
@@ -174,11 +174,11 @@ public class MLot extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -10,89 +10,99 @@ import javax.persistence.*;
 @Table(name="c_city")
 public class CCity extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private String areacode;
-	private Integer cCityId;
-	private Integer cCountryId;
-	private Integer cRegionId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private String areaCode;
+	private Integer cCityID;
+	private Integer cCountryID;
+	private Integer cRegionID;
 	private String coordinates;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
+	private Integer createdBy;
 	private String locode;
 	private String name;
 	private String postal;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CCity() {
 	}
 
-	public CCity(Integer cCityId) {
-		this.cCityId = cCityId;
+	public CCity(Integer cCityID) {
+		this.cCityID = cCityID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(length=10)
-	public String getAreacode() {
-		return areacode;
+	public String getAreaCode() {
+		return areaCode;
 	}
 
-	public void setAreacode(String areacode) {
-		this.areacode = areacode;
+	public void setAreaCode(String areaCode) {
+		this.areaCode = areaCode;
 	}
 
 	@Id
 	@Column(name="C_CITY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_56", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_City", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_56")
-	public Integer getCCityId() {
-		return cCityId;
+	public Integer getCCityID() {
+		return cCityID;
 	}
 
-	public void setCCityId(Integer cCityId) {
-		this.cCityId = cCityId;
+	public void setCCityID(Integer cCityID) {
+		this.cCityID = cCityID;
 	}
 
 	@Basic
 	@Column(name="C_COUNTRY_ID", columnDefinition="INT")
-	public Integer getCCountryId() {
-		return cCountryId;
+	public Integer getCCountryID() {
+		return cCountryID;
 	}
 
-	public void setCCountryId(Integer cCountryId) {
-		this.cCountryId = cCountryId;
+	public void setCCountryID(Integer cCountryID) {
+		this.cCountryID = cCountryID;
 	}
 
 	@Basic
 	@Column(name="C_REGION_ID", columnDefinition="INT")
-	public Integer getCRegionId() {
-		return cRegionId;
+	public Integer getCRegionID() {
+		return cRegionID;
 	}
 
-	public void setCRegionId(Integer cRegionId) {
-		this.cRegionId = cRegionId;
+	public void setCRegionID(Integer cRegionID) {
+		this.cRegionID = cRegionID;
 	}
 
 	@Basic
@@ -117,22 +127,12 @@ public class CCity extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -177,11 +177,11 @@ public class CCity extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

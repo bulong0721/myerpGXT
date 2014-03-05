@@ -3,110 +3,110 @@ package org.adempiere.web.client.model;
 import org.adempiere.common.DisplayType;
 
 public class ADProcessArgModel implements IsADRPCModel, ADFormField {
-	private Integer				adProcessParaId;
-	private Integer				adReferenceId;
-	private Integer				adReferenceValueId;
-	private Integer				adValRuleId;
-	private String				columnname;
-	private String				defaultvalue;
-	private String				displaylogic;
-	private Integer				fieldlength;
-	private Boolean				isactive;
-	private Boolean				iscentrallymaintained;
-	private Boolean				ismandatory;
-	private String				name;
-	private String				readonlylogic;
-	private Integer				seqno;
-	private String				valuemax;
-	private String				valuemin;
-	private String				vformat;
+	private Integer	ADProcessParaID;
+	private Integer	ADReferenceID;
+	private Integer	ADReferenceValueID;
+	private Integer	ADValRuleID;
+	private String	columnName;
+	private String	defaultValue;
+	private String	displayLogic;
+	private Integer	fieldLength;
+	private Boolean	active;
+	private Boolean	centrallyMaintained;
+	private Boolean	mandatory;
+	private String	name;
+	private String	readonlyLogic;
+	private Integer	seqNo;
+	private String	valueMax;
+	private String	valueMin;
+	private String	VFormat;
 
-	public Integer getAdProcessParaId() {
-		return adProcessParaId;
+	public Integer getADProcessParaID() {
+		return ADProcessParaID;
 	}
 
-	public void setAdProcessParaId(Integer adProcessParaId) {
-		this.adProcessParaId = adProcessParaId;
+	public void setADProcessParaID(Integer aDProcessParaID) {
+		ADProcessParaID = aDProcessParaID;
 	}
 
-	public Integer getAdReferenceId() {
-		return adReferenceId;
+	public Integer getADReferenceID() {
+		return ADReferenceID;
 	}
 
-	public void setAdReferenceId(Integer adReferenceId) {
-		this.adReferenceId = adReferenceId;
+	public void setADReferenceID(Integer aDReferenceID) {
+		ADReferenceID = aDReferenceID;
 	}
 
-	public Integer getAdReferenceValueId() {
-		return adReferenceValueId;
+	public Integer getADReferenceValueID() {
+		return ADReferenceValueID;
 	}
 
-	public void setAdReferenceValueId(Integer adReferenceValueId) {
-		this.adReferenceValueId = adReferenceValueId;
+	public void setADReferenceValueID(Integer aDReferenceValueID) {
+		ADReferenceValueID = aDReferenceValueID;
 	}
 
-	public Integer getAdValRuleId() {
-		return adValRuleId;
+	public Integer getADValRuleID() {
+		return ADValRuleID;
 	}
 
-	public void setAdValRuleId(Integer adValRuleId) {
-		this.adValRuleId = adValRuleId;
+	public void setADValRuleID(Integer aDValRuleID) {
+		ADValRuleID = aDValRuleID;
 	}
 
-	public String getColumnname() {
-		return columnname;
+	public String getPropertyName() {
+		return columnName;
 	}
 
-	public void setColumnname(String columnname) {
-		this.columnname = columnname;
+	public void setPropertyName(String columnName) {
+		this.columnName = columnName;
 	}
 
-	public String getDefaultvalue() {
-		return defaultvalue;
+	public String getDefaultValue() {
+		return defaultValue;
 	}
 
-	public void setDefaultvalue(String defaultvalue) {
-		this.defaultvalue = defaultvalue;
+	public void setDefaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
 	}
 
-	public String getDisplaylogic() {
-		return displaylogic;
+	public String getDisplayLogic() {
+		return displayLogic;
 	}
 
-	public void setDisplaylogic(String displaylogic) {
-		this.displaylogic = displaylogic;
+	public void setDisplayLogic(String displayLogic) {
+		this.displayLogic = displayLogic;
 	}
 
-	public Integer getFieldlength() {
-		return fieldlength;
+	public Integer getFieldLength() {
+		return fieldLength;
 	}
 
-	public void setFieldlength(Integer fieldlength) {
-		this.fieldlength = fieldlength;
+	public void setFieldLength(Integer fieldLength) {
+		this.fieldLength = fieldLength;
 	}
 
-	public Boolean getIsactive() {
-		return isactive;
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
-	public Boolean getIscentrallymaintained() {
-		return iscentrallymaintained;
+	public Boolean isCentrallyMaintained() {
+		return centrallyMaintained;
 	}
 
-	public void setIscentrallymaintained(Boolean iscentrallymaintained) {
-		this.iscentrallymaintained = iscentrallymaintained;
+	public void setCentrallyMaintained(Boolean centrallyMaintained) {
+		this.centrallyMaintained = centrallyMaintained;
 	}
 
-	public Boolean getIsmandatory() {
-		return ismandatory;
+	public Boolean isMandatory() {
+		return mandatory;
 	}
 
-	public void setIsmandatory(Boolean ismandatory) {
-		this.ismandatory = ismandatory;
+	public void setMandatory(Boolean mandatory) {
+		this.mandatory = mandatory;
 	}
 
 	public String getName() {
@@ -117,73 +117,73 @@ public class ADProcessArgModel implements IsADRPCModel, ADFormField {
 		this.name = name;
 	}
 
-	public String getReadonlylogic() {
-		return readonlylogic;
+	public String getReadonlyLogic() {
+		return readonlyLogic;
 	}
 
-	public void setReadonlylogic(String readonlylogic) {
-		this.readonlylogic = readonlylogic;
+	public void setReadonlyLogic(String readonlyLogic) {
+		this.readonlyLogic = readonlyLogic;
 	}
 
-	public Integer getSeqno() {
-		return seqno;
+	public Integer getSeqNo() {
+		return seqNo;
 	}
 
-	public void setSeqno(Integer seqno) {
-		this.seqno = seqno;
+	public void setSeqNo(Integer seqNo) {
+		this.seqNo = seqNo;
 	}
 
-	public String getValuemax() {
-		return valuemax;
+	public String getValueMax() {
+		return valueMax;
 	}
 
-	public void setValuemax(String valuemax) {
-		this.valuemax = valuemax;
+	public void setValueMax(String valueMax) {
+		this.valueMax = valueMax;
 	}
 
-	public String getValuemin() {
-		return valuemin;
+	public String getValueMin() {
+		return valueMin;
 	}
 
-	public void setValuemin(String valuemin) {
-		this.valuemin = valuemin;
+	public void setValueMin(String valueMin) {
+		this.valueMin = valueMin;
 	}
 
-	public String getVformat() {
-		return vformat;
+	public String getVFormat() {
+		return VFormat;
 	}
 
-	public void setVformat(String vformat) {
-		this.vformat = vformat;
-	}
-
-	@Override
-	public String getFieldgroup() {
-		return null;
-	}
-
-	@Override
-	public Boolean getIsdisplayed() {
-		return true;
+	public void setVFormat(String vFormat) {
+		VFormat = vFormat;
 	}
 
 	@Override
 	public DisplayType getFieldType() {
-		return DisplayType.fromInteger(adReferenceId);
+		return DisplayType.fromInteger(ADReferenceID);
 	}
 
 	@Override
-	public Boolean getIsencryptedfield() {
+	public String getFieldGroup() {
+		return null;
+	}
+
+	@Override
+	public Boolean isDisplayed() {
+		return true;
+	}
+
+	@Override
+	public Boolean isEncryptedField() {
 		return false;
 	}
 
 	@Override
-	public Boolean getIskey() {
+	public Boolean isKey() {
 		return false;
 	}
 
 	@Override
-	public Boolean getIssameline() {
+	public Boolean isSameline() {
 		return false;
 	}
 

@@ -10,45 +10,65 @@ import javax.persistence.*;
 @Table(name="a_depreciation_entry")
 public class ADepreciationEntry extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aDepreciationEntryId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDepreciationEntryID;
 	private String aEntryType;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cAcctschemaId;
-	private Integer cCurrencyId;
-	private Integer cDoctypeId;
-	private Integer cPeriodId;
+	private Boolean active;
+	private Integer cAcctSchemaID;
+	private Integer cCurrencyID;
+	private Integer cDocTypeID;
+	private Integer cPeriodID;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
-	private String datedoc;
+	private Integer createdBy;
+	private String dateAcct;
+	private String dateDoc;
 	private String description;
-	private String documentno;
-	private Integer glCategoryId;
-	private Boolean isactive;
-	private String postingtype;
+	private String documentNo;
+	private Integer gLCategoryID;
+	private String postingType;
 	private Boolean processed;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public ADepreciationEntry() {
 	}
 
-	public ADepreciationEntry(Integer aDepreciationEntryId) {
-		this.aDepreciationEntryId = aDepreciationEntryId;
+	public ADepreciationEntry(Integer aDepreciationEntryID) {
+		this.aDepreciationEntryID = aDepreciationEntryID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Id
 	@Column(name="A_DEPRECIATION_ENTRY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53141", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Entry", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53141")
-	public Integer getADepreciationEntryId() {
-		return aDepreciationEntryId;
+	public Integer getADepreciationEntryID() {
+		return aDepreciationEntryID;
 	}
 
-	public void setADepreciationEntryId(Integer aDepreciationEntryId) {
-		this.aDepreciationEntryId = aDepreciationEntryId;
+	public void setADepreciationEntryID(Integer aDepreciationEntryID) {
+		this.aDepreciationEntryID = aDepreciationEntryID;
 	}
 
 	@Basic
@@ -62,63 +82,53 @@ public class ADepreciationEntry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getCDoctypeId() {
-		return cDoctypeId;
+	public Integer getCDocTypeID() {
+		return cDocTypeID;
 	}
 
-	public void setCDoctypeId(Integer cDoctypeId) {
-		this.cDoctypeId = cDoctypeId;
+	public void setCDocTypeID(Integer cDocTypeID) {
+		this.cDocTypeID = cDocTypeID;
 	}
 
 	@Basic
 	@Column(name="C_PERIOD_ID", columnDefinition="INT", nullable=false)
-	public Integer getCPeriodId() {
-		return cPeriodId;
+	public Integer getCPeriodID() {
+		return cPeriodID;
 	}
 
-	public void setCPeriodId(Integer cPeriodId) {
-		this.cPeriodId = cPeriodId;
+	public void setCPeriodID(Integer cPeriodID) {
+		this.cPeriodID = cPeriodID;
 	}
 
 	@Basic
@@ -133,32 +143,32 @@ public class ADepreciationEntry extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getDateacct() {
-		return dateacct;
-	}
-
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getDatedoc() {
-		return datedoc;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setDatedoc(String datedoc) {
-		this.datedoc = datedoc;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public String getDateDoc() {
+		return dateDoc;
+	}
+
+	public void setDateDoc(String dateDoc) {
+		this.dateDoc = dateDoc;
 	}
 
 	@Basic
@@ -173,42 +183,32 @@ public class ADepreciationEntry extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=60)
-	public String getDocumentno() {
-		return documentno;
+	public String getDocumentNo() {
+		return documentNo;
 	}
 
-	public void setDocumentno(String documentno) {
-		this.documentno = documentno;
+	public void setDocumentNo(String documentNo) {
+		this.documentNo = documentNo;
 	}
 
 	@Basic
 	@Column(name="GL_CATEGORY_ID", columnDefinition="INT", nullable=false)
-	public Integer getGlCategoryId() {
-		return glCategoryId;
+	public Integer getGLCategoryID() {
+		return gLCategoryID;
 	}
 
-	public void setGlCategoryId(Integer glCategoryId) {
-		this.glCategoryId = glCategoryId;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setGLCategoryID(Integer gLCategoryID) {
+		this.gLCategoryID = gLCategoryID;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getPostingtype() {
-		return postingtype;
+	public String getPostingType() {
+		return postingType;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
@@ -243,11 +243,11 @@ public class ADepreciationEntry extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -11,69 +11,79 @@ import javax.persistence.*;
 @Table(name="c_phase")
 public class CPhase extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cPhaseId;
-	private Integer cProjecttypeId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cPhaseID;
+	private Integer cProjectTypeID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
 	private String help;
-	private Boolean isactive;
-	private Integer mProductId;
+	private Integer mProductID;
 	private String name;
-	private Integer seqno;
-	private BigDecimal standardqty;
+	private Integer seqNo;
+	private BigDecimal standardQty;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CPhase() {
 	}
 
-	public CPhase(Integer cPhaseId) {
-		this.cPhaseId = cPhaseId;
+	public CPhase(Integer cPhaseID) {
+		this.cPhaseID = cPhaseID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_PHASE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_732", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Phase", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_732")
-	public Integer getCPhaseId() {
-		return cPhaseId;
+	public Integer getCPhaseID() {
+		return cPhaseID;
 	}
 
-	public void setCPhaseId(Integer cPhaseId) {
-		this.cPhaseId = cPhaseId;
+	public void setCPhaseID(Integer cPhaseID) {
+		this.cPhaseID = cPhaseID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECTTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getCProjecttypeId() {
-		return cProjecttypeId;
+	public Integer getCProjectTypeID() {
+		return cProjectTypeID;
 	}
 
-	public void setCProjecttypeId(Integer cProjecttypeId) {
-		this.cProjecttypeId = cProjecttypeId;
+	public void setCProjectTypeID(Integer cProjectTypeID) {
+		this.cProjectTypeID = cProjectTypeID;
 	}
 
 	@Basic
@@ -88,12 +98,12 @@ public class CPhase extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -116,23 +126,13 @@ public class CPhase extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
@@ -147,22 +147,22 @@ public class CPhase extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getSeqno() {
-		return seqno;
+	public Integer getSeqNo() {
+		return seqNo;
 	}
 
-	public void setSeqno(Integer seqno) {
-		this.seqno = seqno;
+	public void setSeqNo(Integer seqNo) {
+		this.seqNo = seqNo;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getStandardqty() {
-		return standardqty;
+	public BigDecimal getStandardQty() {
+		return standardQty;
 	}
 
-	public void setStandardqty(BigDecimal standardqty) {
-		this.standardqty = standardqty;
+	public void setStandardQty(BigDecimal standardQty) {
+		this.standardQty = standardQty;
 	}
 
 	@Basic
@@ -177,11 +177,11 @@ public class CPhase extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -11,122 +11,142 @@ import javax.persistence.*;
 @Table(name="m_inventory")
 public class MInventory extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adOrgtrxId;
-	private BigDecimal approvalamt;
-	private Integer cActivityId;
-	private Integer cCampaignId;
-	private Integer cDoctypeId;
-	private Integer cProjectId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDOrgTrxID;
+	private Boolean active;
+	private BigDecimal approvalAmt;
+	private Boolean approved;
+	private Integer cActivityID;
+	private Integer cCampaignID;
+	private Integer cDocTypeID;
+	private Integer cProjectID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private String docaction;
-	private String docstatus;
-	private String documentno;
-	private Boolean generatelist;
-	private Boolean isactive;
-	private Boolean isapproved;
-	private Integer mInventoryId;
-	private Integer mPerpetualinvId;
-	private Integer mWarehouseId;
-	private String movementdate;
+	private String docAction;
+	private String docStatus;
+	private String documentNo;
+	private Boolean generateList;
+	private Integer mInventoryID;
+	private Integer mPerpetualInvID;
+	private Integer mWarehouseID;
+	private String movementDate;
 	private Boolean posted;
 	private Boolean processed;
-	private Long processedon;
+	private Long processedOn;
 	private Boolean processing;
-	private Integer reversalId;
+	private Integer reversalID;
+	private Boolean updateQty;
 	private String updated;
-	private Integer updatedby;
-	private Boolean updateqty;
-	private Integer user1Id;
-	private Integer user2Id;
+	private Integer updatedBy;
+	private Integer user1ID;
+	private Integer user2ID;
 
 	public MInventory() {
 	}
 
-	public MInventory(Integer mInventoryId) {
-		this.mInventoryId = mInventoryId;
+	public MInventory(Integer mInventoryID) {
+		this.mInventoryID = mInventoryID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
-	public Integer getAdOrgtrxId() {
-		return adOrgtrxId;
+	public Integer getADOrgTrxID() {
+		return aDOrgTrxID;
 	}
 
-	public void setAdOrgtrxId(Integer adOrgtrxId) {
-		this.adOrgtrxId = adOrgtrxId;
+	public void setADOrgTrxID(Integer aDOrgTrxID) {
+		this.aDOrgTrxID = aDOrgTrxID;
 	}
 
 	@Basic
-	public BigDecimal getApprovalamt() {
-		return approvalamt;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setApprovalamt(BigDecimal approvalamt) {
-		this.approvalamt = approvalamt;
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	public BigDecimal getApprovalAmt() {
+		return approvalAmt;
+	}
+
+	public void setApprovalAmt(BigDecimal approvalAmt) {
+		this.approvalAmt = approvalAmt;
+	}
+
+	@Basic
+	@Column(name="ISAPPROVED", nullable=false)
+	public Boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
 	}
 
 	@Basic
 	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
-	public Integer getCActivityId() {
-		return cActivityId;
+	public Integer getCActivityID() {
+		return cActivityID;
 	}
 
-	public void setCActivityId(Integer cActivityId) {
-		this.cActivityId = cActivityId;
+	public void setCActivityID(Integer cActivityID) {
+		this.cActivityID = cActivityID;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
 	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getCDoctypeId() {
-		return cDoctypeId;
+	public Integer getCDocTypeID() {
+		return cDocTypeID;
 	}
 
-	public void setCDoctypeId(Integer cDoctypeId) {
-		this.cDoctypeId = cDoctypeId;
+	public void setCDocTypeID(Integer cDocTypeID) {
+		this.cDocTypeID = cDocTypeID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
@@ -141,12 +161,12 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -160,103 +180,83 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getDocaction() {
-		return docaction;
+	public String getDocAction() {
+		return docAction;
 	}
 
-	public void setDocaction(String docaction) {
-		this.docaction = docaction;
+	public void setDocAction(String docAction) {
+		this.docAction = docAction;
 	}
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getDocstatus() {
-		return docstatus;
+	public String getDocStatus() {
+		return docStatus;
 	}
 
-	public void setDocstatus(String docstatus) {
-		this.docstatus = docstatus;
+	public void setDocStatus(String docStatus) {
+		this.docStatus = docStatus;
 	}
 
 	@Basic
 	@Column(nullable=false, length=30)
-	public String getDocumentno() {
-		return documentno;
+	public String getDocumentNo() {
+		return documentNo;
 	}
 
-	public void setDocumentno(String documentno) {
-		this.documentno = documentno;
-	}
-
-	@Basic
-	public Boolean isGeneratelist() {
-		return generatelist;
-	}
-
-	public void setGeneratelist(Boolean generatelist) {
-		this.generatelist = generatelist;
+	public void setDocumentNo(String documentNo) {
+		this.documentNo = documentNo;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public Boolean isGenerateList() {
+		return generateList;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsapproved() {
-		return isapproved;
-	}
-
-	public void setIsapproved(Boolean isapproved) {
-		this.isapproved = isapproved;
+	public void setGenerateList(Boolean generateList) {
+		this.generateList = generateList;
 	}
 
 	@Id
 	@Column(name="M_INVENTORY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_244", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Inventory", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_244")
-	public Integer getMInventoryId() {
-		return mInventoryId;
+	public Integer getMInventoryID() {
+		return mInventoryID;
 	}
 
-	public void setMInventoryId(Integer mInventoryId) {
-		this.mInventoryId = mInventoryId;
+	public void setMInventoryID(Integer mInventoryID) {
+		this.mInventoryID = mInventoryID;
 	}
 
 	@Basic
 	@Column(name="M_PERPETUALINV_ID", columnDefinition="INT")
-	public Integer getMPerpetualinvId() {
-		return mPerpetualinvId;
+	public Integer getMPerpetualInvID() {
+		return mPerpetualInvID;
 	}
 
-	public void setMPerpetualinvId(Integer mPerpetualinvId) {
-		this.mPerpetualinvId = mPerpetualinvId;
+	public void setMPerpetualInvID(Integer mPerpetualInvID) {
+		this.mPerpetualInvID = mPerpetualInvID;
 	}
 
 	@Basic
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getMovementdate() {
-		return movementdate;
+	public String getMovementDate() {
+		return movementDate;
 	}
 
-	public void setMovementdate(String movementdate) {
-		this.movementdate = movementdate;
+	public void setMovementDate(String movementDate) {
+		this.movementDate = movementDate;
 	}
 
 	@Basic
@@ -280,12 +280,12 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Long getProcessedon() {
-		return processedon;
+	public Long getProcessedOn() {
+		return processedOn;
 	}
 
-	public void setProcessedon(Long processedon) {
-		this.processedon = processedon;
+	public void setProcessedOn(Long processedOn) {
+		this.processedOn = processedOn;
 	}
 
 	@Basic
@@ -299,12 +299,21 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="REVERSAL_ID", columnDefinition="INT")
-	public Integer getReversalId() {
-		return reversalId;
+	public Integer getReversalID() {
+		return reversalID;
 	}
 
-	public void setReversalId(Integer reversalId) {
-		this.reversalId = reversalId;
+	public void setReversalID(Integer reversalID) {
+		this.reversalID = reversalID;
+	}
+
+	@Basic
+	public Boolean isUpdateQty() {
+		return updateQty;
+	}
+
+	public void setUpdateQty(Boolean updateQty) {
+		this.updateQty = updateQty;
 	}
 
 	@Basic
@@ -319,40 +328,31 @@ public class MInventory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
-	}
-
-	@Basic
-	public Boolean isUpdateqty() {
-		return updateqty;
-	}
-
-	public void setUpdateqty(Boolean updateqty) {
-		this.updateqty = updateqty;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(name="USER1_ID", columnDefinition="INT")
-	public Integer getUser1Id() {
-		return user1Id;
+	public Integer getUser1ID() {
+		return user1ID;
 	}
 
-	public void setUser1Id(Integer user1Id) {
-		this.user1Id = user1Id;
+	public void setUser1ID(Integer user1ID) {
+		this.user1ID = user1ID;
 	}
 
 	@Basic
 	@Column(name="USER2_ID", columnDefinition="INT")
-	public Integer getUser2Id() {
-		return user2Id;
+	public Integer getUser2ID() {
+		return user2ID;
 	}
 
-	public void setUser2Id(Integer user2Id) {
-		this.user2Id = user2Id;
+	public void setUser2ID(Integer user2ID) {
+		this.user2ID = user2ID;
 	}
 }

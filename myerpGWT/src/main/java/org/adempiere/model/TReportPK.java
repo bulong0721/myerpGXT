@@ -16,10 +16,10 @@ public class TReportPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer adPinstanceId;
-	public Integer factAcctId;
-	public Integer paReportlineId;
-	public Integer recordId;
+	public Integer aDPInstanceID;
+	public Integer factAcctID;
+	public Integer pAReportLineID;
+	public Integer recordID;
 
 	public TReportPK() {
 	}
@@ -28,51 +28,51 @@ public class TReportPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getAdPinstanceId() {
-		return adPinstanceId;
+	public Integer getADPInstanceID() {
+		return aDPInstanceID;
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
-		this.adPinstanceId = adPinstanceId;
+	public void setADPInstanceID(Integer aDPInstanceID) {
+		this.aDPInstanceID = aDPInstanceID;
 	}
 
-	public Integer getFactAcctId() {
-		return factAcctId;
+	public Integer getFactAcctID() {
+		return factAcctID;
 	}
 
-	public void setFactAcctId(Integer factAcctId) {
-		this.factAcctId = factAcctId;
+	public void setFactAcctID(Integer factAcctID) {
+		this.factAcctID = factAcctID;
 	}
 
-	public Integer getPaReportlineId() {
-		return paReportlineId;
+	public Integer getPAReportLineID() {
+		return pAReportLineID;
 	}
 
-	public void setPaReportlineId(Integer paReportlineId) {
-		this.paReportlineId = paReportlineId;
+	public void setPAReportLineID(Integer pAReportLineID) {
+		this.pAReportLineID = pAReportLineID;
 	}
 
-	public Integer getRecordId() {
-		return recordId;
+	public Integer getRecordID() {
+		return recordID;
 	}
 
-	public void setRecordId(Integer recordId) {
-		this.recordId = recordId;
+	public void setRecordID(Integer recordID) {
+		this.recordID = recordID;
 	}
 
 	public String toString() {
-		return String.valueOf(adPinstanceId)
-			+ "::" + String.valueOf(factAcctId)
-			+ "::" + String.valueOf(paReportlineId)
-			+ "::" + String.valueOf(recordId);
+		return String.valueOf(aDPInstanceID)
+			+ "::" + String.valueOf(factAcctID)
+			+ "::" + String.valueOf(pAReportLineID)
+			+ "::" + String.valueOf(recordID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((adPinstanceId == null) ? 0 : adPinstanceId.hashCode());
-		rs = rs * 37 + ((factAcctId == null) ? 0 : factAcctId.hashCode());
-		rs = rs * 37 + ((paReportlineId == null) ? 0 : paReportlineId.hashCode());
-		rs = rs * 37 + ((recordId == null) ? 0 : recordId.hashCode());
+		rs = rs * 37 + ((aDPInstanceID == null) ? 0 : aDPInstanceID.hashCode());
+		rs = rs * 37 + ((factAcctID == null) ? 0 : factAcctID.hashCode());
+		rs = rs * 37 + ((pAReportLineID == null) ? 0 : pAReportLineID.hashCode());
+		rs = rs * 37 + ((recordID == null) ? 0 : recordID.hashCode());
 		return rs;
 	}
 
@@ -83,38 +83,38 @@ public class TReportPK implements Serializable {
 			return false;
 
 		TReportPK other = (TReportPK) obj;
-		return ((adPinstanceId == null && other.adPinstanceId == null)
-			|| (adPinstanceId != null && adPinstanceId.equals(other.adPinstanceId)))
-			&& ((factAcctId == null && other.factAcctId == null)
-			|| (factAcctId != null && factAcctId.equals(other.factAcctId)))
-			&& ((paReportlineId == null && other.paReportlineId == null)
-			|| (paReportlineId != null && paReportlineId.equals(other.paReportlineId)))
-			&& ((recordId == null && other.recordId == null)
-			|| (recordId != null && recordId.equals(other.recordId)));
+		return ((aDPInstanceID == null && other.aDPInstanceID == null)
+			|| (aDPInstanceID != null && aDPInstanceID.equals(other.aDPInstanceID)))
+			&& ((factAcctID == null && other.factAcctID == null)
+			|| (factAcctID != null && factAcctID.equals(other.factAcctID)))
+			&& ((pAReportLineID == null && other.pAReportLineID == null)
+			|| (pAReportLineID != null && pAReportLineID.equals(other.pAReportLineID)))
+			&& ((recordID == null && other.recordID == null)
+			|| (recordID != null && recordID.equals(other.recordID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			adPinstanceId = null;
+			aDPInstanceID = null;
 		else
-			adPinstanceId = new Integer(str);
+			aDPInstanceID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			factAcctId = null;
+			factAcctID = null;
 		else
-			factAcctId = new Integer(str);
+			factAcctID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			paReportlineId = null;
+			pAReportLineID = null;
 		else
-			paReportlineId = new Integer(str);
+			pAReportLineID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			recordId = null;
+			recordID = null;
 		else
-			recordId = new Integer(str);
+			recordID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

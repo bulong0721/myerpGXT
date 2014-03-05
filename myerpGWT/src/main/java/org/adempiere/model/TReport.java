@@ -12,7 +12,7 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.TReportPK.class)
 public class TReport extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adPinstanceId;
+	private Integer aDPInstanceID;
 	private BigDecimal col0;
 	private BigDecimal col1;
 	private BigDecimal col10;
@@ -35,31 +35,31 @@ public class TReport extends org.adempiere.common.ADEntityBase {
 	private BigDecimal col8;
 	private BigDecimal col9;
 	private String description;
-	private Integer factAcctId;
-	private Integer levelno;
+	private Integer factAcctID;
+	private Integer levelNo;
 	private String name;
-	private Integer paReportlineId;
-	private Integer recordId;
-	private BigDecimal seqno;
+	private Integer pAReportLineID;
+	private Integer recordID;
+	private BigDecimal seqNo;
 
 	public TReport() {
 	}
 
-	public TReport(Integer adPinstanceId, Integer factAcctId, Integer paReportlineId, Integer recordId) {
-		this.adPinstanceId = adPinstanceId;
-		this.factAcctId = factAcctId;
-		this.paReportlineId = paReportlineId;
-		this.recordId = recordId;
+	public TReport(Integer aDPInstanceID, Integer factAcctID, Integer pAReportLineID, Integer recordID) {
+		this.aDPInstanceID = aDPInstanceID;
+		this.factAcctID = factAcctID;
+		this.pAReportLineID = pAReportLineID;
+		this.recordID = recordID;
 	}
 
 	@Id
 	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
-	public Integer getAdPinstanceId() {
-		return adPinstanceId;
+	public Integer getADPInstanceID() {
+		return aDPInstanceID;
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
-		this.adPinstanceId = adPinstanceId;
+	public void setADPInstanceID(Integer aDPInstanceID) {
+		this.aDPInstanceID = aDPInstanceID;
 	}
 
 	@Basic
@@ -283,22 +283,22 @@ public class TReport extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="FACT_ACCT_ID", columnDefinition="INT")
-	public Integer getFactAcctId() {
-		return factAcctId;
+	public Integer getFactAcctID() {
+		return factAcctID;
 	}
 
-	public void setFactAcctId(Integer factAcctId) {
-		this.factAcctId = factAcctId;
+	public void setFactAcctID(Integer factAcctID) {
+		this.factAcctID = factAcctID;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getLevelno() {
-		return levelno;
+	public Integer getLevelNo() {
+		return levelNo;
 	}
 
-	public void setLevelno(Integer levelno) {
-		this.levelno = levelno;
+	public void setLevelNo(Integer levelNo) {
+		this.levelNo = levelNo;
 	}
 
 	@Basic
@@ -313,30 +313,30 @@ public class TReport extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="PA_REPORTLINE_ID", columnDefinition="INT")
-	public Integer getPaReportlineId() {
-		return paReportlineId;
+	public Integer getPAReportLineID() {
+		return pAReportLineID;
 	}
 
-	public void setPaReportlineId(Integer paReportlineId) {
-		this.paReportlineId = paReportlineId;
+	public void setPAReportLineID(Integer pAReportLineID) {
+		this.pAReportLineID = pAReportLineID;
 	}
 
 	@Id
 	@Column(name="RECORD_ID", columnDefinition="INT")
-	public Integer getRecordId() {
-		return recordId;
+	public Integer getRecordID() {
+		return recordID;
 	}
 
-	public void setRecordId(Integer recordId) {
-		this.recordId = recordId;
+	public void setRecordID(Integer recordID) {
+		this.recordID = recordID;
 	}
 
 	@Basic
-	public BigDecimal getSeqno() {
-		return seqno;
+	public BigDecimal getSeqNo() {
+		return seqNo;
 	}
 
-	public void setSeqno(BigDecimal seqno) {
-		this.seqno = seqno;
+	public void setSeqNo(BigDecimal seqNo) {
+		this.seqNo = seqNo;
 	}
 }

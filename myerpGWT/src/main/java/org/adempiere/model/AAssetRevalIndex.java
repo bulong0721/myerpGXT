@@ -11,36 +11,56 @@ import javax.persistence.*;
 @Table(name="a_asset_reval_index")
 public class AAssetRevalIndex extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetRevalIndexId;
+	private Integer aAssetRevalIndexID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private String aEffectiveDate;
 	private String aRevalCode;
 	private String aRevalMultiplier;
 	private BigDecimal aRevalRate;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
+	private Integer createdBy;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetRevalIndex() {
 	}
 
-	public AAssetRevalIndex(Integer aAssetRevalIndexId) {
-		this.aAssetRevalIndexId = aAssetRevalIndexId;
+	public AAssetRevalIndex(Integer aAssetRevalIndexID) {
+		this.aAssetRevalIndexID = aAssetRevalIndexID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_REVAL_INDEX_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53140", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Reval_Index", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53140")
-	public Integer getAAssetRevalIndexId() {
-		return aAssetRevalIndexId;
+	public Integer getAAssetRevalIndexID() {
+		return aAssetRevalIndexID;
 	}
 
-	public void setAAssetRevalIndexId(Integer aAssetRevalIndexId) {
-		this.aAssetRevalIndexId = aAssetRevalIndexId;
+	public void setAAssetRevalIndexID(Integer aAssetRevalIndexID) {
+		this.aAssetRevalIndexID = aAssetRevalIndexID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -84,23 +104,13 @@ public class AAssetRevalIndex extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -115,22 +125,12 @@ public class AAssetRevalIndex extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -145,11 +145,11 @@ public class AAssetRevalIndex extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

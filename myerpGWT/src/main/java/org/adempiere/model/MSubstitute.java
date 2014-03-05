@@ -11,44 +11,54 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.MSubstitutePK.class)
 public class MSubstitute extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Integer mProductId;
+	private Integer mProductID;
 	private String name;
-	private Integer substituteId;
+	private Integer substituteID;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MSubstitute() {
 	}
 
-	public MSubstitute(Integer mProductId, Integer substituteId) {
-		this.mProductId = mProductId;
-		this.substituteId = substituteId;
+	public MSubstitute(Integer mProductID, Integer substituteID) {
+		this.mProductID = mProductID;
+		this.substituteID = substituteID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -63,12 +73,12 @@ public class MSubstitute extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -80,24 +90,14 @@ public class MSubstitute extends org.adempiere.common.ADEntityBase {
 		this.description = description;
 	}
 
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
 	@Id
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
@@ -112,12 +112,12 @@ public class MSubstitute extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="SUBSTITUTE_ID", columnDefinition="INT")
-	public Integer getSubstituteId() {
-		return substituteId;
+	public Integer getSubstituteID() {
+		return substituteID;
 	}
 
-	public void setSubstituteId(Integer substituteId) {
-		this.substituteId = substituteId;
+	public void setSubstituteID(Integer substituteID) {
+		this.substituteID = substituteID;
 	}
 
 	@Basic
@@ -132,11 +132,11 @@ public class MSubstitute extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

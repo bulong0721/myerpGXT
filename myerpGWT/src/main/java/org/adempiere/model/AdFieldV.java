@@ -2,11 +2,7 @@ package org.adempiere.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.adempiere.common.ADEntityBase;
 
@@ -18,519 +14,562 @@ import org.adempiere.common.ADEntityBase;
 @Table(name = "ad_field_v")
 public class AdFieldV extends ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Integer adColumnId;
-	private Integer adFieldId;
-	private Integer adProcessId;
-	private Integer adReferenceId;
-	private Integer adReferenceValueId;
-	private Integer adTabId;
-	private Integer adTableId;
-	private Integer adValRuleId;
-	private Integer adWindowId;
+	private Integer aDColumnID;
+	private Integer aDFieldID;
+	private Integer aDProcessID;
+	private Integer aDReferenceID;
+	private Integer aDReferenceValueID;
+	private Integer aDTabID;
+	private Integer aDTableID;
+	private Integer aDValRuleID;
+	private Integer aDWindowID;
+	private Boolean alwaysUpdateable;
+	private Boolean autocomplete;
 	private String callout;
-	private String columnname;
-	private String columnsql;
-	private String defaultvalue;
+	private Boolean collapsedByDefault;
+	private String columnName;
+	private String columnSQL;
+	private String defaultValue;
 	private String description;
-	private Integer displaylength;
-	private String displaylogic;
-	private String fieldgroup;
-	private String fieldgrouptype;
-	private Integer fieldlength;
+	private Integer displayLength;
+	private String displayLogic;
+	private Boolean displayed;
+	private String fieldGroupType;
+	private Integer fieldLength;
+	private Boolean fieldOnly;
+	private String fieldGroup;
+	private Boolean heading;
 	private String help;
-	private Integer includedTabId;
-	private String infofactoryclass;
-	private Boolean isalwaysupdateable;
-	private Boolean isautocomplete;
-	private Boolean iscollapsedbydefault;
-	private Boolean isdisplayed;
-	private Boolean isencryptedcolumn;
-	private Boolean isencryptedfield;
-	private Boolean isfieldonly;
-	private Boolean isheading;
-	private Boolean isidentifier;
-	private Boolean iskey;
-	private Boolean ismandatory;
-	private Boolean isparent;
-	private Boolean isreadonly;
-	private Boolean issameline;
-	private Boolean isselectioncolumn;
-	private Boolean istranslated;
-	private Boolean isupdateable;
-	private String mandatorylogic;
+	private Boolean identifier;
+	private Integer includedTabID;
+	private String infoFactoryClass;
+	private Boolean encryptedColumn;
+	private Boolean encryptedField;
+	private Boolean key;
+	private Boolean mandatory;
+	private String mandatoryLogic;
 	private String name;
-	private String obscuretype;
-	private String readonlylogic;
-	private Integer seqno;
-	private Integer sortno;
-	private String tablename;
-	private String validationcode;
-	private String valuemax;
-	private String valuemin;
-	private String vformat;
+	private String obscureType;
+	private Boolean parent;
+	private String propertyName;
+	private Boolean readOnly;
+	private String readOnlyLogic;
+	private Boolean sameLine;
+	private Boolean selectionColumn;
+	private Integer seqNo;
+	private Integer sortNo;
+	private String tableName;
+	private Boolean translated;
+	private Boolean updateable;
+	private String vFormat;
+	private String validationCode;
+	private String valueMax;
+	private String valueMin;
 
-	public AdFieldV() {
+	@Basic
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
+	public Integer getADColumnID() {
+		return aDColumnID;
 	}
 
-
-	@Column(name="AD_COLUMN_ID")
-	public Integer getAdColumnId() {
-		return this.adColumnId;
-	}
-
-	public void setAdColumnId(Integer adColumnId) {
-		this.adColumnId = adColumnId;
+	public void setADColumnID(Integer aDColumnID) {
+		this.aDColumnID = aDColumnID;
 	}
 
 	@Id
-	@Column(name="AD_FIELD_ID")
-	public Integer getAdFieldId() {
-		return this.adFieldId;
+	@Column(name="AD_FIELD_ID", columnDefinition="INT")
+	public Integer getADFieldID() {
+		return aDFieldID;
 	}
 
-	public void setAdFieldId(Integer adFieldId) {
-		this.adFieldId = adFieldId;
+	public void setADFieldID(Integer aDFieldID) {
+		this.aDFieldID = aDFieldID;
 	}
 
-
-	@Column(name="AD_PROCESS_ID")
-	public Integer getAdProcessId() {
-		return this.adProcessId;
+	@Basic
+	@Column(name="AD_PROCESS_ID", columnDefinition="INT")
+	public Integer getADProcessID() {
+		return aDProcessID;
 	}
 
-	public void setAdProcessId(Integer adProcessId) {
-		this.adProcessId = adProcessId;
+	public void setADProcessID(Integer aDProcessID) {
+		this.aDProcessID = aDProcessID;
 	}
 
-
+	@Basic
 	@Column(name="AD_REFERENCE_ID")
-	public Integer getAdReferenceId() {
-		return this.adReferenceId;
+	public Integer getADReferenceID() {
+		return aDReferenceID;
 	}
 
-	public void setAdReferenceId(Integer adReferenceId) {
-		this.adReferenceId = adReferenceId;
+	public void setADReferenceID(Integer aDReferenceID) {
+		this.aDReferenceID = aDReferenceID;
 	}
 
-
+	@Basic
 	@Column(name="AD_REFERENCE_VALUE_ID")
-	public Integer getAdReferenceValueId() {
-		return this.adReferenceValueId;
+	public Integer getADReferenceValueID() {
+		return aDReferenceValueID;
 	}
 
-	public void setAdReferenceValueId(Integer adReferenceValueId) {
-		this.adReferenceValueId = adReferenceValueId;
+	public void setADReferenceValueID(Integer aDReferenceValueID) {
+		this.aDReferenceValueID = aDReferenceValueID;
 	}
 
-
-	@Column(name="AD_TAB_ID")
-	public Integer getAdTabId() {
-		return this.adTabId;
+	@Basic
+	@Column(name="AD_TAB_ID", columnDefinition="INT", nullable=false)
+	public Integer getADTabID() {
+		return aDTabID;
 	}
 
-	public void setAdTabId(Integer adTabId) {
-		this.adTabId = adTabId;
+	public void setADTabID(Integer aDTabID) {
+		this.aDTabID = aDTabID;
 	}
 
-
-	@Column(name="AD_TABLE_ID")
-	public Integer getAdTableId() {
-		return this.adTableId;
+	@Basic
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
+	public Integer getADTableID() {
+		return aDTableID;
 	}
 
-	public void setAdTableId(Integer adTableId) {
-		this.adTableId = adTableId;
+	public void setADTableID(Integer aDTableID) {
+		this.aDTableID = aDTableID;
 	}
 
-
+	@Basic
 	@Column(name="AD_VAL_RULE_ID")
-	public Integer getAdValRuleId() {
-		return this.adValRuleId;
+	public Integer getADValRuleID() {
+		return aDValRuleID;
 	}
 
-	public void setAdValRuleId(Integer adValRuleId) {
-		this.adValRuleId = adValRuleId;
+	public void setADValRuleID(Integer aDValRuleID) {
+		this.aDValRuleID = aDValRuleID;
 	}
 
-
-	@Column(name="AD_WINDOW_ID")
-	public Integer getAdWindowId() {
-		return this.adWindowId;
+	@Basic
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT", nullable=false)
+	public Integer getADWindowID() {
+		return aDWindowID;
 	}
 
-	public void setAdWindowId(Integer adWindowId) {
-		this.adWindowId = adWindowId;
+	public void setADWindowID(Integer aDWindowID) {
+		this.aDWindowID = aDWindowID;
 	}
 
+	@Basic
+	@Column(name="ISALWAYSUPDATEABLE")
+	public Boolean isAlwaysUpdateable() {
+		return alwaysUpdateable;
+	}
 
+	public void setAlwaysUpdateable(Boolean alwaysUpdateable) {
+		this.alwaysUpdateable = alwaysUpdateable;
+	}
+
+	@Basic
+	@Column(name="ISAUTOCOMPLETE")
+	public Boolean isAutocomplete() {
+		return autocomplete;
+	}
+
+	public void setAutocomplete(Boolean autocomplete) {
+		this.autocomplete = autocomplete;
+	}
+
+	@Basic
 	public String getCallout() {
-		return this.callout;
+		return callout;
 	}
 
 	public void setCallout(String callout) {
 		this.callout = callout;
 	}
 
-
-	public String getColumnname() {
-		return this.columnname;
+	@Basic
+	@Column(name="ISCOLLAPSEDBYDEFAULT")
+	public Boolean isCollapsedByDefault() {
+		return collapsedByDefault;
 	}
 
-	public void setColumnname(String columnname) {
-		this.columnname = columnname;
+	public void setCollapsedByDefault(Boolean collapsedByDefault) {
+		this.collapsedByDefault = collapsedByDefault;
 	}
 
-
-	public String getColumnsql() {
-		return this.columnsql;
+	@Basic
+	@Column(length=30)
+	public String getColumnName() {
+		return columnName;
 	}
 
-	public void setColumnsql(String columnsql) {
-		this.columnsql = columnsql;
+	public void setColumnName(String columnName) {
+		this.columnName = columnName;
 	}
 
-
-	@Lob
-	public String getDefaultvalue() {
-		return this.defaultvalue;
+	@Basic
+	@Column(length=2000)
+	public String getColumnSQL() {
+		return columnSQL;
 	}
 
-	public void setDefaultvalue(String defaultvalue) {
-		this.defaultvalue = defaultvalue;
+	public void setColumnSQL(String columnSQL) {
+		this.columnSQL = columnSQL;
 	}
 
+	@Basic
+	public String getDefaultValue() {
+		return defaultValue;
+	}
 
+	public void setDefaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
+	}
+
+	@Basic
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
-	public Integer getDisplaylength() {
-		return this.displaylength;
+	@Basic
+	@Column(columnDefinition="INT")
+	public Integer getDisplayLength() {
+		return displayLength;
 	}
 
-	public void setDisplaylength(Integer displaylength) {
-		this.displaylength = displaylength;
+	public void setDisplayLength(Integer displayLength) {
+		this.displayLength = displayLength;
 	}
 
-
-	public String getDisplaylogic() {
-		return this.displaylogic;
+	@Basic
+	@Column(length=2000)
+	public String getDisplayLogic() {
+		return displayLogic;
 	}
 
-	public void setDisplaylogic(String displaylogic) {
-		this.displaylogic = displaylogic;
+	public void setDisplayLogic(String displayLogic) {
+		this.displayLogic = displayLogic;
 	}
 
-
-	public String getFieldgroup() {
-		return this.fieldgroup;
+	@Basic
+	@Column(name="ISDISPLAYED", nullable=false)
+	public Boolean isDisplayed() {
+		return displayed;
 	}
 
-	public void setFieldgroup(String fieldgroup) {
-		this.fieldgroup = fieldgroup;
+	public void setDisplayed(Boolean displayed) {
+		this.displayed = displayed;
 	}
 
-
-	public String getFieldgrouptype() {
-		return this.fieldgrouptype;
+	@Basic
+	@Column(length=1)
+	public String getFieldGroupType() {
+		return fieldGroupType;
 	}
 
-	public void setFieldgrouptype(String fieldgrouptype) {
-		this.fieldgrouptype = fieldgrouptype;
+	public void setFieldGroupType(String fieldGroupType) {
+		this.fieldGroupType = fieldGroupType;
 	}
 
-
-	public Integer getFieldlength() {
-		return this.fieldlength;
+	@Basic
+	@Column(columnDefinition="INT")
+	public Integer getFieldLength() {
+		return fieldLength;
 	}
 
-	public void setFieldlength(Integer fieldlength) {
-		this.fieldlength = fieldlength;
+	public void setFieldLength(Integer fieldLength) {
+		this.fieldLength = fieldLength;
 	}
 
+	@Basic
+	@Column(name="ISFIELDONLY", nullable=false)
+	public Boolean isFieldOnly() {
+		return fieldOnly;
+	}
 
+	public void setFieldOnly(Boolean fieldOnly) {
+		this.fieldOnly = fieldOnly;
+	}
+
+	@Basic
+	@Column(length=60)
+	public String getFieldGroup() {
+		return fieldGroup;
+	}
+
+	public void setFieldGroup(String fieldGroup) {
+		this.fieldGroup = fieldGroup;
+	}
+
+	@Basic
+	@Column(name="ISHEADING", nullable=false)
+	public Boolean isHeading() {
+		return heading;
+	}
+
+	public void setHeading(Boolean heading) {
+		this.heading = heading;
+	}
+
+	@Basic
+	@Column(length=2000)
 	public String getHelp() {
-		return this.help;
+		return help;
 	}
 
 	public void setHelp(String help) {
 		this.help = help;
 	}
 
-
-	@Column(name="INCLUDED_TAB_ID")
-	public Integer getIncludedTabId() {
-		return this.includedTabId;
+	@Basic
+	@Column(name="ISIDENTIFIER")
+	public Boolean isIdentifier() {
+		return identifier;
 	}
 
-	public void setIncludedTabId(Integer includedTabId) {
-		this.includedTabId = includedTabId;
+	public void setIdentifier(Boolean identifier) {
+		this.identifier = identifier;
 	}
 
-
-	public String getInfofactoryclass() {
-		return this.infofactoryclass;
+	@Basic
+	@Column(name="INCLUDED_TAB_ID", columnDefinition="INT")
+	public Integer getIncludedTabID() {
+		return includedTabID;
 	}
 
-	public void setInfofactoryclass(String infofactoryclass) {
-		this.infofactoryclass = infofactoryclass;
+	public void setIncludedTabID(Integer includedTabID) {
+		this.includedTabID = includedTabID;
 	}
 
-
-	public Boolean getIsalwaysupdateable() {
-		return this.isalwaysupdateable;
+	@Basic
+	public String getInfoFactoryClass() {
+		return infoFactoryClass;
 	}
 
-	public void setIsalwaysupdateable(Boolean isalwaysupdateable) {
-		this.isalwaysupdateable = isalwaysupdateable;
+	public void setInfoFactoryClass(String infoFactoryClass) {
+		this.infoFactoryClass = infoFactoryClass;
 	}
 
-
-	public Boolean getIsautocomplete() {
-		return this.isautocomplete;
+	@Basic
+	@Column(name="ISENCRYPTEDCOLUMN")
+	public Boolean isEncryptedColumn() {
+		return encryptedColumn;
 	}
 
-	public void setIsautocomplete(Boolean isautocomplete) {
-		this.isautocomplete = isautocomplete;
+	public void setEcryptedColumn(Boolean encryptedColumn) {
+		this.encryptedColumn = encryptedColumn;
 	}
 
-
-	public Boolean getIscollapsedbydefault() {
-		return this.iscollapsedbydefault;
+	@Basic
+	@Column(name="ISENCRYPTEDFIELD", nullable=false)
+	public Boolean isEncryptedField() {
+		return encryptedField;
 	}
 
-	public void setIscollapsedbydefault(Boolean iscollapsedbydefault) {
-		this.iscollapsedbydefault = iscollapsedbydefault;
+	public void setEncryptedField(Boolean encryptedField) {
+		this.encryptedField = encryptedField;
 	}
 
-
-	public Boolean getIsdisplayed() {
-		return this.isdisplayed;
+	@Basic
+	@Column(name="ISKEY")
+	public Boolean isKey() {
+		return key;
 	}
 
-	public void setIsdisplayed(Boolean isdisplayed) {
-		this.isdisplayed = isdisplayed;
+	public void setKey(Boolean key) {
+		this.key = key;
 	}
 
-
-	public Boolean getIsencryptedcolumn() {
-		return this.isencryptedcolumn;
+	@Basic
+	@Column(name="ISMANDATORY")
+	public Boolean isMandatory() {
+		return mandatory;
 	}
 
-	public void setIsencryptedcolumn(Boolean isencryptedcolumn) {
-		this.isencryptedcolumn = isencryptedcolumn;
+	public void setMandatory(Boolean mandatory) {
+		this.mandatory = mandatory;
 	}
 
-
-	public Boolean getIsencryptedfield() {
-		return this.isencryptedfield;
+	@Basic
+	@Column(length=2000)
+	public String getMandatoryLogic() {
+		return mandatoryLogic;
 	}
 
-	public void setIsencryptedfield(Boolean isencryptedfield) {
-		this.isencryptedfield = isencryptedfield;
+	public void setMandatoryLogic(String mandatoryLogic) {
+		this.mandatoryLogic = mandatoryLogic;
 	}
 
-
-	public Boolean getIsfieldonly() {
-		return this.isfieldonly;
-	}
-
-	public void setIsfieldonly(Boolean isfieldonly) {
-		this.isfieldonly = isfieldonly;
-	}
-
-
-	public Boolean getIsheading() {
-		return this.isheading;
-	}
-
-	public void setIsheading(Boolean isheading) {
-		this.isheading = isheading;
-	}
-
-
-	public Boolean getIsidentifier() {
-		return this.isidentifier;
-	}
-
-	public void setIsidentifier(Boolean isidentifier) {
-		this.isidentifier = isidentifier;
-	}
-
-
-	public Boolean getIskey() {
-		return this.iskey;
-	}
-
-	public void setIskey(Boolean iskey) {
-		this.iskey = iskey;
-	}
-
-
-	public Boolean getIsmandatory() {
-		return this.ismandatory;
-	}
-
-	public void setIsmandatory(Boolean ismandatory) {
-		this.ismandatory = ismandatory;
-	}
-
-
-	public Boolean getIsparent() {
-		return this.isparent;
-	}
-
-	public void setIsparent(Boolean isparent) {
-		this.isparent = isparent;
-	}
-
-
-	public Boolean getIsreadonly() {
-		return this.isreadonly;
-	}
-
-	public void setIsreadonly(Boolean isreadonly) {
-		this.isreadonly = isreadonly;
-	}
-
-
-	public Boolean getIssameline() {
-		return this.issameline;
-	}
-
-	public void setIssameline(Boolean issameline) {
-		this.issameline = issameline;
-	}
-
-
-	public Boolean getIsselectioncolumn() {
-		return this.isselectioncolumn;
-	}
-
-	public void setIsselectioncolumn(Boolean isselectioncolumn) {
-		this.isselectioncolumn = isselectioncolumn;
-	}
-
-
-	public Boolean getIstranslated() {
-		return this.istranslated;
-	}
-
-	public void setIstranslated(Boolean istranslated) {
-		this.istranslated = istranslated;
-	}
-
-
-	public Boolean getIsupdateable() {
-		return this.isupdateable;
-	}
-
-	public void setIsupdateable(Boolean isupdateable) {
-		this.isupdateable = isupdateable;
-	}
-
-
-	public String getMandatorylogic() {
-		return this.mandatorylogic;
-	}
-
-	public void setMandatorylogic(String mandatorylogic) {
-		this.mandatorylogic = mandatorylogic;
-	}
-
-
+	@Basic
+	@Column(nullable=false, length=60)
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
-	public String getObscuretype() {
-		return this.obscuretype;
+	@Basic
+	@Column(length=3)
+	public String getObscureType() {
+		return obscureType;
 	}
 
-	public void setObscuretype(String obscuretype) {
-		this.obscuretype = obscuretype;
+	public void setObscureType(String obscureType) {
+		this.obscureType = obscureType;
 	}
 
-
-	public String getReadonlylogic() {
-		return this.readonlylogic;
+	@Basic
+	@Column(name="ISPARENT")
+	public Boolean isParent() {
+		return parent;
 	}
 
-	public void setReadonlylogic(String readonlylogic) {
-		this.readonlylogic = readonlylogic;
+	public void setParent(Boolean parent) {
+		this.parent = parent;
 	}
 
-
-	public Integer getSeqno() {
-		return this.seqno;
+	@Basic
+	@Column(length=30)
+	public String getPropertyName() {
+		return propertyName;
 	}
 
-	public void setSeqno(Integer seqno) {
-		this.seqno = seqno;
+	public void setPropertyName(String propertyName) {
+		this.propertyName = propertyName;
 	}
 
-
-	public Integer getSortno() {
-		return this.sortno;
+	@Basic
+	@Column(name="ISREADONLY", nullable=false)
+	public Boolean isReadOnly() {
+		return readOnly;
 	}
 
-	public void setSortno(Integer sortno) {
-		this.sortno = sortno;
+	public void setReadOnly(Boolean readOnly) {
+		this.readOnly = readOnly;
 	}
 
-
-	public String getTablename() {
-		return this.tablename;
+	@Basic
+	@Column(length=2000)
+	public String getReadOnlyLogic() {
+		return readOnlyLogic;
 	}
 
-	public void setTablename(String tablename) {
-		this.tablename = tablename;
+	public void setReadOnlyLogic(String readOnlyLogic) {
+		this.readOnlyLogic = readOnlyLogic;
 	}
 
-
-	public String getValidationcode() {
-		return this.validationcode;
+	@Basic
+	@Column(name="ISSAMELINE", nullable=false)
+	public Boolean isSameLine() {
+		return sameLine;
 	}
 
-	public void setValidationcode(String validationcode) {
-		this.validationcode = validationcode;
+	public void setSameLine(Boolean sameLine) {
+		this.sameLine = sameLine;
 	}
 
-
-	public String getValuemax() {
-		return this.valuemax;
+	@Basic
+	@Column(name="ISSELECTIONCOLUMN")
+	public Boolean isSelectionColumn() {
+		return selectionColumn;
 	}
 
-	public void setValuemax(String valuemax) {
-		this.valuemax = valuemax;
+	public void setSelectionColumn(Boolean selectionColumn) {
+		this.selectionColumn = selectionColumn;
 	}
 
-
-	public String getValuemin() {
-		return this.valuemin;
+	@Basic
+	@Column(columnDefinition="INT")
+	public Integer getSeqNo() {
+		return seqNo;
 	}
 
-	public void setValuemin(String valuemin) {
-		this.valuemin = valuemin;
+	public void setSeqNo(Integer seqNo) {
+		this.seqNo = seqNo;
 	}
 
-
-	public String getVformat() {
-		return this.vformat;
+	@Basic
+	@Column(columnDefinition="INT")
+	public Integer getSortNo() {
+		return sortNo;
 	}
 
-	public void setVformat(String vformat) {
-		this.vformat = vformat;
+	public void setSortNo(Integer sortNo) {
+		this.sortNo = sortNo;
+	}
+
+	@Basic
+	@Column(nullable=false, length=40)
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
+	@Basic
+	@Column(name="ISTRANSLATED")
+	public Boolean isTranslated() {
+		return translated;
+	}
+
+	public void setTranslated(Boolean translated) {
+		this.translated = translated;
+	}
+
+	@Basic
+	@Column(name="ISUPDATEABLE")
+	public Boolean isUpdateable() {
+		return updateable;
+	}
+
+	public void setUpdateable(Boolean updateable) {
+		this.updateable = updateable;
+	}
+
+	@Basic
+	@Column(length=60)
+	public String getVFormat() {
+		return vFormat;
+	}
+
+	public void setVFormat(String vFormat) {
+		this.vFormat = vFormat;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getValidationCode() {
+		return validationCode;
+	}
+
+	public void setValidationCode(String validationCode) {
+		this.validationCode = validationCode;
+	}
+
+	@Basic
+	@Column(length=20)
+	public String getValueMax() {
+		return valueMax;
+	}
+
+	public void setValueMax(String valueMax) {
+		this.valueMax = valueMax;
+	}
+
+	@Basic
+	@Column(length=20)
+	public String getValueMin() {
+		return valueMin;
+	}
+
+	public void setValueMin(String valueMin) {
+		this.valueMin = valueMin;
 	}
 
 }

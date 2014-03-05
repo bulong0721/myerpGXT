@@ -10,53 +10,63 @@ import javax.persistence.*;
 @Table(name="b_buyer")
 public class BBuyer extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
 	private String name;
 	private String updated;
-	private Integer updatedby;
-	private String validto;
+	private Integer updatedBy;
+	private String validTo;
 
 	public BBuyer() {
 	}
 
-	public BBuyer(Integer adUserId) {
-		this.adUserId = adUserId;
+	public BBuyer(Integer aDUserID) {
+		this.aDUserID = aDUserID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Id
 	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -71,12 +81,12 @@ public class BBuyer extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -86,16 +96,6 @@ public class BBuyer extends org.adempiere.common.ADEntityBase {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
 	}
 
 	@Basic
@@ -120,21 +120,21 @@ public class BBuyer extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getValidto() {
-		return validto;
+	public String getValidTo() {
+		return validTo;
 	}
 
-	public void setValidto(String validto) {
-		this.validto = validto;
+	public void setValidTo(String validTo) {
+		this.validTo = validTo;
 	}
 }

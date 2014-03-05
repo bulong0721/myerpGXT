@@ -3,7 +3,7 @@ package org.adempiere.process;
 import java.util.List;
 
 import org.adempiere.common.AdempiereUserError;
-import org.adempiere.model.AdField;
+import org.adempiere.model.ADField;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
 
@@ -24,10 +24,10 @@ public class TabCopy extends ServerProcess {
 		if (null == desTabId)
 			throw new AdempiereUserError("@NotFound@ (to<-) @AD_Tab_ID@");
 		int count = 0;
-		List<AdField> srcFields = POUtil.queryFieldsByTabId(context, srcTabId);
-		for (AdField srcField : srcFields) {
-			AdField descField = DTOUtil.copyField(srcField, desTabId);
-			descField.setAdFieldId(null);
+		List<ADField> srcFields = POUtil.queryFieldsByTabId(context, srcTabId);
+		for (ADField srcField : srcFields) {
+			ADField descField = DTOUtil.copyField(srcField, desTabId);
+			descField.setADFieldID(null);
 			if (POUtil.persist(context, descField)) {
 				count++;
 			} else {

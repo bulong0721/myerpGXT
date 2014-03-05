@@ -10,109 +10,119 @@ import javax.persistence.*;
 @Table(name="c_recurring_run")
 public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cInvoiceId;
-	private Integer cOrderId;
-	private Integer cPaymentId;
-	private Integer cProjectId;
-	private Integer cRecurringId;
-	private Integer cRecurringRunId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cInvoiceID;
+	private Integer cOrderID;
+	private Integer cPaymentID;
+	private Integer cProjectID;
+	private Integer cRecurringID;
+	private Integer cRecurringRunID;
 	private String created;
-	private Integer createdby;
-	private String datedoc;
-	private Integer glJournalbatchId;
-	private Boolean isactive;
+	private Integer createdBy;
+	private String dateDoc;
+	private Integer gLJournalBatchID;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CRecurringRun() {
 	}
 
-	public CRecurringRun(Integer cRecurringRunId) {
-		this.cRecurringRunId = cRecurringRunId;
+	public CRecurringRun(Integer cRecurringRunID) {
+		this.cRecurringRunID = cRecurringRunID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_INVOICE_ID", columnDefinition="INT")
-	public Integer getCInvoiceId() {
-		return cInvoiceId;
+	public Integer getCInvoiceID() {
+		return cInvoiceID;
 	}
 
-	public void setCInvoiceId(Integer cInvoiceId) {
-		this.cInvoiceId = cInvoiceId;
+	public void setCInvoiceID(Integer cInvoiceID) {
+		this.cInvoiceID = cInvoiceID;
 	}
 
 	@Basic
 	@Column(name="C_ORDER_ID", columnDefinition="INT")
-	public Integer getCOrderId() {
-		return cOrderId;
+	public Integer getCOrderID() {
+		return cOrderID;
 	}
 
-	public void setCOrderId(Integer cOrderId) {
-		this.cOrderId = cOrderId;
+	public void setCOrderID(Integer cOrderID) {
+		this.cOrderID = cOrderID;
 	}
 
 	@Basic
 	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
-	public Integer getCPaymentId() {
-		return cPaymentId;
+	public Integer getCPaymentID() {
+		return cPaymentID;
 	}
 
-	public void setCPaymentId(Integer cPaymentId) {
-		this.cPaymentId = cPaymentId;
+	public void setCPaymentID(Integer cPaymentID) {
+		this.cPaymentID = cPaymentID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
 	@Column(name="C_RECURRING_ID", columnDefinition="INT", nullable=false)
-	public Integer getCRecurringId() {
-		return cRecurringId;
+	public Integer getCRecurringID() {
+		return cRecurringID;
 	}
 
-	public void setCRecurringId(Integer cRecurringId) {
-		this.cRecurringId = cRecurringId;
+	public void setCRecurringID(Integer cRecurringID) {
+		this.cRecurringID = cRecurringID;
 	}
 
 	@Id
 	@Column(name="C_RECURRING_RUN_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_728", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Recurring_Run", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_728")
-	public Integer getCRecurringRunId() {
-		return cRecurringRunId;
+	public Integer getCRecurringRunID() {
+		return cRecurringRunID;
 	}
 
-	public void setCRecurringRunId(Integer cRecurringRunId) {
-		this.cRecurringRunId = cRecurringRunId;
+	public void setCRecurringRunID(Integer cRecurringRunID) {
+		this.cRecurringRunID = cRecurringRunID;
 	}
 
 	@Basic
@@ -127,41 +137,31 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public String getDatedoc() {
-		return datedoc;
+	public String getDateDoc() {
+		return dateDoc;
 	}
 
-	public void setDatedoc(String datedoc) {
-		this.datedoc = datedoc;
+	public void setDateDoc(String dateDoc) {
+		this.dateDoc = dateDoc;
 	}
 
 	@Basic
 	@Column(name="GL_JOURNALBATCH_ID", columnDefinition="INT")
-	public Integer getGlJournalbatchId() {
-		return glJournalbatchId;
+	public Integer getGLJournalBatchID() {
+		return gLJournalBatchID;
 	}
 
-	public void setGlJournalbatchId(Integer glJournalbatchId) {
-		this.glJournalbatchId = glJournalbatchId;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setGLJournalBatchID(Integer gLJournalBatchID) {
+		this.gLJournalBatchID = gLJournalBatchID;
 	}
 
 	@Basic
@@ -176,11 +176,11 @@ public class CRecurringRun extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

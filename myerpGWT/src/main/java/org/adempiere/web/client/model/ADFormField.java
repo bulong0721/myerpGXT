@@ -4,36 +4,36 @@ import org.adempiere.common.DisplayType;
 
 public interface ADFormField extends IsADRPCModel {
 
-	Integer getAdReferenceId();
+	Integer getADReferenceID();
 
-	Integer getAdReferenceValueId();
+	Integer getADReferenceValueID();
 
-	String getColumnname();
+	String getPropertyName();
 
-	String getDefaultvalue();
+	String getDefaultValue();
 
-	String getFieldgroup();
+	String getFieldGroup();
 
-	Boolean getIsdisplayed();
+	Boolean isDisplayed();
 
 	String getName();
 
-	String getReadonlylogic();
+	String getReadonlyLogic();
 
-	Integer getSeqno();
+	Integer getSeqNo();
 
-	String getValuemax();
+	String getValueMax();
 
-	String getValuemin();
+	String getValueMin();
 
-	String getVformat();
+	String getVFormat();
 
 	DisplayType getFieldType();
 
-	Boolean getIsencryptedfield();
+	Boolean isEncryptedField();
 
-	Boolean getIskey();
+	Boolean isKey();
 
-	Boolean getIssameline();
+	Boolean isSameline();
 
 }

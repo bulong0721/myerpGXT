@@ -10,17 +10,17 @@ import javax.persistence.*;
 @Table(name="m_locator")
 public class MLocator extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private Boolean isdefault;
-	private Integer mLocatorId;
-	private Integer mWarehouseId;
-	private Integer priorityno;
+	private Integer createdBy;
+	private Boolean isDefault;
+	private Integer mLocatorID;
+	private Integer mWarehouseID;
+	private Integer priorityNo;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 	private String value;
 	private String x;
 	private String y;
@@ -29,28 +29,38 @@ public class MLocator extends org.adempiere.common.ADEntityBase {
 	public MLocator() {
 	}
 
-	public MLocator(Integer mLocatorId) {
-		this.mLocatorId = mLocatorId;
+	public MLocator(Integer mLocatorID) {
+		this.mLocatorID = mLocatorID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -65,64 +75,54 @@ public class MLocator extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsdefault() {
-		return isdefault;
+	public Boolean isIsDefault() {
+		return isDefault;
 	}
 
-	public void setIsdefault(Boolean isdefault) {
-		this.isdefault = isdefault;
+	public void setIsDefault(Boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	@Id
 	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_113", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Locator", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_113")
-	public Integer getMLocatorId() {
-		return mLocatorId;
+	public Integer getMLocatorID() {
+		return mLocatorID;
 	}
 
-	public void setMLocatorId(Integer mLocatorId) {
-		this.mLocatorId = mLocatorId;
+	public void setMLocatorID(Integer mLocatorID) {
+		this.mLocatorID = mLocatorID;
 	}
 
 	@Basic
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getPriorityno() {
-		return priorityno;
+	public Integer getPriorityNo() {
+		return priorityNo;
 	}
 
-	public void setPriorityno(Integer priorityno) {
-		this.priorityno = priorityno;
+	public void setPriorityNo(Integer priorityNo) {
+		this.priorityNo = priorityNo;
 	}
 
 	@Basic
@@ -137,12 +137,12 @@ public class MLocator extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic

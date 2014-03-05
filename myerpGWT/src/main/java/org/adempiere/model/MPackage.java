@@ -10,48 +10,58 @@ import javax.persistence.*;
 @Table(name="m_package")
 public class MPackage extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private String datereceived;
+	private Integer createdBy;
+	private String dateReceived;
 	private String description;
-	private String documentno;
-	private Boolean isactive;
-	private Integer mInoutId;
-	private Integer mPackageId;
-	private Integer mShipperId;
-	private String receivedinfo;
-	private String shipdate;
-	private String trackinginfo;
+	private String documentNo;
+	private Integer mInOutID;
+	private Integer mPackageID;
+	private Integer mShipperID;
+	private String receivedInfo;
+	private String shipDate;
+	private String trackingInfo;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MPackage() {
 	}
 
-	public MPackage(Integer mPackageId) {
-		this.mPackageId = mPackageId;
+	public MPackage(Integer mPackageID) {
+		this.mPackageID = mPackageID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -66,21 +76,21 @@ public class MPackage extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public String getDatereceived() {
-		return datereceived;
+	public String getDateReceived() {
+		return dateReceived;
 	}
 
-	public void setDatereceived(String datereceived) {
-		this.datereceived = datereceived;
+	public void setDateReceived(String dateReceived) {
+		this.dateReceived = dateReceived;
 	}
 
 	@Basic
@@ -94,81 +104,71 @@ public class MPackage extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=30)
-	public String getDocumentno() {
-		return documentno;
+	public String getDocumentNo() {
+		return documentNo;
 	}
 
-	public void setDocumentno(String documentno) {
-		this.documentno = documentno;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDocumentNo(String documentNo) {
+		this.documentNo = documentNo;
 	}
 
 	@Basic
 	@Column(name="M_INOUT_ID", columnDefinition="INT", nullable=false)
-	public Integer getMInoutId() {
-		return mInoutId;
+	public Integer getMInOutID() {
+		return mInOutID;
 	}
 
-	public void setMInoutId(Integer mInoutId) {
-		this.mInoutId = mInoutId;
+	public void setMInOutID(Integer mInOutID) {
+		this.mInOutID = mInOutID;
 	}
 
 	@Id
 	@Column(name="M_PACKAGE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_839", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Package", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_839")
-	public Integer getMPackageId() {
-		return mPackageId;
+	public Integer getMPackageID() {
+		return mPackageID;
 	}
 
-	public void setMPackageId(Integer mPackageId) {
-		this.mPackageId = mPackageId;
+	public void setMPackageID(Integer mPackageID) {
+		this.mPackageID = mPackageID;
 	}
 
 	@Basic
 	@Column(name="M_SHIPPER_ID", columnDefinition="INT", nullable=false)
-	public Integer getMShipperId() {
-		return mShipperId;
+	public Integer getMShipperID() {
+		return mShipperID;
 	}
 
-	public void setMShipperId(Integer mShipperId) {
-		this.mShipperId = mShipperId;
-	}
-
-	@Basic
-	public String getReceivedinfo() {
-		return receivedinfo;
-	}
-
-	public void setReceivedinfo(String receivedinfo) {
-		this.receivedinfo = receivedinfo;
+	public void setMShipperID(Integer mShipperID) {
+		this.mShipperID = mShipperID;
 	}
 
 	@Basic
-	public String getShipdate() {
-		return shipdate;
+	public String getReceivedInfo() {
+		return receivedInfo;
 	}
 
-	public void setShipdate(String shipdate) {
-		this.shipdate = shipdate;
+	public void setReceivedInfo(String receivedInfo) {
+		this.receivedInfo = receivedInfo;
 	}
 
 	@Basic
-	public String getTrackinginfo() {
-		return trackinginfo;
+	public String getShipDate() {
+		return shipDate;
 	}
 
-	public void setTrackinginfo(String trackinginfo) {
-		this.trackinginfo = trackinginfo;
+	public void setShipDate(String shipDate) {
+		this.shipDate = shipDate;
+	}
+
+	@Basic
+	public String getTrackingInfo() {
+		return trackingInfo;
+	}
+
+	public void setTrackingInfo(String trackingInfo) {
+		this.trackingInfo = trackingInfo;
 	}
 
 	@Basic
@@ -183,11 +183,11 @@ public class MPackage extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

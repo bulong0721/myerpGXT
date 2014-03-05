@@ -10,78 +10,88 @@ import javax.persistence.*;
 @Table(name="k_index")
 public class KIndex extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adTableId;
-	private Integer cDoctypeId;
-	private Integer cmWebprojectId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDTableID;
+	private Boolean active;
+	private Integer cDocTypeID;
+	private Integer cMWebProjectID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String excerpt;
-	private Boolean isactive;
-	private Integer kIndexId;
+	private Integer kINDEXID;
 	private String keyword;
-	private Integer rRequesttypeId;
-	private Integer recordId;
-	private String sourceupdated;
+	private Integer rRequestTypeID;
+	private Integer recordID;
+	private String sourceUpdated;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public KIndex() {
 	}
 
-	public KIndex(Integer kIndexId) {
-		this.kIndexId = kIndexId;
+	public KIndex(Integer kINDEXID) {
+		this.kINDEXID = kINDEXID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdTableId() {
-		return adTableId;
+	public Integer getADTableID() {
+		return aDTableID;
 	}
 
-	public void setAdTableId(Integer adTableId) {
-		this.adTableId = adTableId;
+	public void setADTableID(Integer aDTableID) {
+		this.aDTableID = aDTableID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
-	public Integer getCDoctypeId() {
-		return cDoctypeId;
+	public Integer getCDocTypeID() {
+		return cDocTypeID;
 	}
 
-	public void setCDoctypeId(Integer cDoctypeId) {
-		this.cDoctypeId = cDoctypeId;
+	public void setCDocTypeID(Integer cDocTypeID) {
+		this.cDocTypeID = cDocTypeID;
 	}
 
 	@Basic
 	@Column(name="CM_WEBPROJECT_ID", columnDefinition="INT")
-	public Integer getCmWebprojectId() {
-		return cmWebprojectId;
+	public Integer getCMWebProjectID() {
+		return cMWebProjectID;
 	}
 
-	public void setCmWebprojectId(Integer cmWebprojectId) {
-		this.cmWebprojectId = cmWebprojectId;
+	public void setCMWebProjectID(Integer cMWebProjectID) {
+		this.cMWebProjectID = cMWebProjectID;
 	}
 
 	@Basic
@@ -96,12 +106,12 @@ public class KIndex extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -114,26 +124,16 @@ public class KIndex extends org.adempiere.common.ADEntityBase {
 		this.excerpt = excerpt;
 	}
 
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
 	@Id
 	@Column(name="K_INDEX_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_1286", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Index", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1286")
-	public Integer getKIndexId() {
-		return kIndexId;
+	public Integer getKINDEXID() {
+		return kINDEXID;
 	}
 
-	public void setKIndexId(Integer kIndexId) {
-		this.kIndexId = kIndexId;
+	public void setKINDEXID(Integer kINDEXID) {
+		this.kINDEXID = kINDEXID;
 	}
 
 	@Basic
@@ -148,32 +148,32 @@ public class KIndex extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="R_REQUESTTYPE_ID", columnDefinition="INT")
-	public Integer getRRequesttypeId() {
-		return rRequesttypeId;
+	public Integer getRRequestTypeID() {
+		return rRequestTypeID;
 	}
 
-	public void setRRequesttypeId(Integer rRequesttypeId) {
-		this.rRequesttypeId = rRequesttypeId;
+	public void setRRequestTypeID(Integer rRequestTypeID) {
+		this.rRequestTypeID = rRequestTypeID;
 	}
 
 	@Basic
 	@Column(name="RECORD_ID", columnDefinition="INT", nullable=false)
-	public Integer getRecordId() {
-		return recordId;
+	public Integer getRecordID() {
+		return recordID;
 	}
 
-	public void setRecordId(Integer recordId) {
-		this.recordId = recordId;
+	public void setRecordID(Integer recordID) {
+		this.recordID = recordID;
 	}
 
 	@Basic
 	@Column(columnDefinition="TIMESTAMP", nullable=false)
-	public String getSourceupdated() {
-		return sourceupdated;
+	public String getSourceUpdated() {
+		return sourceUpdated;
 	}
 
-	public void setSourceupdated(String sourceupdated) {
-		this.sourceupdated = sourceupdated;
+	public void setSourceUpdated(String sourceUpdated) {
+		this.sourceUpdated = sourceUpdated;
 	}
 
 	@Basic
@@ -188,11 +188,11 @@ public class KIndex extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

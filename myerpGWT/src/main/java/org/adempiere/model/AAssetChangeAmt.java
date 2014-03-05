@@ -12,106 +12,116 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.AAssetChangeAmtPK.class)
 public class AAssetChangeAmt extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetChangeId;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private BigDecimal assetaccumdepreciationamt;
-	private BigDecimal assetbookvalueamt;
-	private BigDecimal assetmarketvalueamt;
-	private BigDecimal assetvalueamt;
-	private Integer cAcctschemaId;
+	private Integer aAssetChangeID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private String active;
+	private BigDecimal assetAccumDepreciationAmt;
+	private BigDecimal assetBookValueAmt;
+	private BigDecimal assetMarketValueAmt;
+	private BigDecimal assetValueAmt;
+	private Integer cAcctSchemaID;
 	private String created;
-	private Integer createdby;
-	private String isactive;
+	private Integer createdBy;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetChangeAmt() {
 	}
 
-	public AAssetChangeAmt(Integer aAssetChangeId, Integer cAcctschemaId) {
-		this.aAssetChangeId = aAssetChangeId;
-		this.cAcctschemaId = cAcctschemaId;
+	public AAssetChangeAmt(Integer aAssetChangeID, Integer cAcctSchemaID) {
+		this.aAssetChangeID = aAssetChangeID;
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_CHANGE_ID", columnDefinition="INT")
-	public Integer getAAssetChangeId() {
-		return aAssetChangeId;
+	public Integer getAAssetChangeID() {
+		return aAssetChangeID;
 	}
 
-	public void setAAssetChangeId(Integer aAssetChangeId) {
-		this.aAssetChangeId = aAssetChangeId;
+	public void setAAssetChangeID(Integer aAssetChangeID) {
+		this.aAssetChangeID = aAssetChangeID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false, length=1)
+	public String getActive() {
+		return active;
+	}
+
+	public void setActive(String active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getAssetaccumdepreciationamt() {
-		return assetaccumdepreciationamt;
+	public BigDecimal getAssetAccumDepreciationAmt() {
+		return assetAccumDepreciationAmt;
 	}
 
-	public void setAssetaccumdepreciationamt(BigDecimal assetaccumdepreciationamt) {
-		this.assetaccumdepreciationamt = assetaccumdepreciationamt;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getAssetbookvalueamt() {
-		return assetbookvalueamt;
-	}
-
-	public void setAssetbookvalueamt(BigDecimal assetbookvalueamt) {
-		this.assetbookvalueamt = assetbookvalueamt;
+	public void setAssetAccumDepreciationAmt(BigDecimal assetAccumDepreciationAmt) {
+		this.assetAccumDepreciationAmt = assetAccumDepreciationAmt;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getAssetmarketvalueamt() {
-		return assetmarketvalueamt;
+	public BigDecimal getAssetBookValueAmt() {
+		return assetBookValueAmt;
 	}
 
-	public void setAssetmarketvalueamt(BigDecimal assetmarketvalueamt) {
-		this.assetmarketvalueamt = assetmarketvalueamt;
+	public void setAssetBookValueAmt(BigDecimal assetBookValueAmt) {
+		this.assetBookValueAmt = assetBookValueAmt;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getAssetvalueamt() {
-		return assetvalueamt;
+	public BigDecimal getAssetMarketValueAmt() {
+		return assetMarketValueAmt;
 	}
 
-	public void setAssetvalueamt(BigDecimal assetvalueamt) {
-		this.assetvalueamt = assetvalueamt;
+	public void setAssetMarketValueAmt(BigDecimal assetMarketValueAmt) {
+		this.assetMarketValueAmt = assetMarketValueAmt;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getAssetValueAmt() {
+		return assetValueAmt;
+	}
+
+	public void setAssetValueAmt(BigDecimal assetValueAmt) {
+		this.assetValueAmt = assetValueAmt;
 	}
 
 	@Id
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Basic
@@ -126,22 +136,12 @@ public class AAssetChangeAmt extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(String isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -156,11 +156,11 @@ public class AAssetChangeAmt extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

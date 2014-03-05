@@ -11,245 +11,255 @@ import javax.persistence.*;
 @Table(name="r_request")
 public class RRequest extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetId;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adRoleId;
-	private Integer adTableId;
-	private Integer adUserId;
-	private Integer cActivityId;
-	private Integer cBpartnerId;
-	private Integer cCampaignId;
-	private Integer cInvoiceId;
-	private Integer cInvoicerequestId;
-	private Integer cOrderId;
-	private Integer cPaymentId;
-	private Integer cProjectId;
-	private String closedate;
-	private String confidentialtype;
-	private String confidentialtypeentry;
+	private Integer aAssetID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDRoleID;
+	private Integer aDTableID;
+	private Integer aDUserID;
+	private Boolean active;
+	private Integer cActivityID;
+	private Integer cBPartnerID;
+	private Integer cCampaignID;
+	private Integer cInvoiceID;
+	private Integer cInvoiceRequestID;
+	private Integer cOrderID;
+	private Integer cPaymentID;
+	private Integer cProjectID;
+	private String closeDate;
+	private String confidentialType;
+	private String confidentialTypeEntry;
 	private String created;
-	private Integer createdby;
-	private String datecompleteplan;
-	private String datelastaction;
-	private String datelastalert;
-	private String datenextaction;
-	private String datestartplan;
-	private String documentno;
-	private String duetype;
-	private String endtime;
-	private Boolean isactive;
-	private Boolean isescalated;
-	private Boolean isinvoiced;
-	private Boolean isselfservice;
-	private String lastresult;
-	private Integer mChangerequestId;
-	private Integer mFixchangenoticeId;
-	private Integer mInoutId;
-	private Integer mProductId;
-	private Integer mProductspentId;
-	private Integer mRmaId;
-	private String nextaction;
+	private Integer createdBy;
+	private String dateCompletePlan;
+	private String dateLastAction;
+	private String dateLastAlert;
+	private String dateNextAction;
+	private String dateStartPlan;
+	private String documentNo;
+	private String dueType;
+	private String endTime;
+	private Boolean escalated;
+	private Boolean invoiced;
+	private String lastResult;
+	private Integer mChangeRequestID;
+	private Integer mFixChangeNoticeID;
+	private Integer mInOutID;
+	private Integer mProductID;
+	private Integer mProductSpentID;
+	private Integer mRMAID;
+	private String nextAction;
 	private String priority;
-	private String priorityuser;
+	private String priorityUser;
 	private Boolean processed;
-	private BigDecimal qtyinvoiced;
-	private BigDecimal qtyplan;
-	private BigDecimal qtyspent;
-	private Integer rCategoryId;
-	private Integer rGroupId;
-	private Integer rMailtextId;
-	private Integer rRequestId;
-	private Integer rRequestrelatedId;
-	private Integer rRequesttypeId;
-	private Integer rResolutionId;
-	private Integer rStandardresponseId;
-	private Integer rStatusId;
-	private Integer recordId;
-	private BigDecimal requestamt;
+	private BigDecimal qtyInvoiced;
+	private BigDecimal qtyPlan;
+	private BigDecimal qtySpent;
+	private Integer rCategoryID;
+	private Integer rGroupID;
+	private Integer rMailTextID;
+	private Integer rRequestID;
+	private Integer rRequestRelatedID;
+	private Integer rRequestTypeID;
+	private Integer rResolutionID;
+	private Integer rStandardResponseID;
+	private Integer rStatusID;
+	private Integer recordID;
+	private BigDecimal requestAmt;
 	private String result;
-	private Integer salesrepId;
-	private String startdate;
-	private String starttime;
+	private Integer salesRepID;
+	private Boolean selfService;
+	private String startDate;
+	private String startTime;
 	private String summary;
-	private String taskstatus;
+	private String taskStatus;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public RRequest() {
 	}
 
-	public RRequest(Integer rRequestId) {
-		this.rRequestId = rRequestId;
+	public RRequest(Integer rRequestID) {
+		this.rRequestID = rRequestID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT")
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_ROLE_ID", columnDefinition="INT")
-	public Integer getAdRoleId() {
-		return adRoleId;
+	public Integer getADRoleID() {
+		return aDRoleID;
 	}
 
-	public void setAdRoleId(Integer adRoleId) {
-		this.adRoleId = adRoleId;
+	public void setADRoleID(Integer aDRoleID) {
+		this.aDRoleID = aDRoleID;
 	}
 
 	@Basic
 	@Column(name="AD_TABLE_ID", columnDefinition="INT")
-	public Integer getAdTableId() {
-		return adTableId;
+	public Integer getADTableID() {
+		return aDTableID;
 	}
 
-	public void setAdTableId(Integer adTableId) {
-		this.adTableId = adTableId;
+	public void setADTableID(Integer aDTableID) {
+		this.aDTableID = aDTableID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
-	public Integer getCActivityId() {
-		return cActivityId;
+	public Integer getCActivityID() {
+		return cActivityID;
 	}
 
-	public void setCActivityId(Integer cActivityId) {
-		this.cActivityId = cActivityId;
+	public void setCActivityID(Integer cActivityID) {
+		this.cActivityID = cActivityID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
 	@Column(name="C_INVOICE_ID", columnDefinition="INT")
-	public Integer getCInvoiceId() {
-		return cInvoiceId;
+	public Integer getCInvoiceID() {
+		return cInvoiceID;
 	}
 
-	public void setCInvoiceId(Integer cInvoiceId) {
-		this.cInvoiceId = cInvoiceId;
+	public void setCInvoiceID(Integer cInvoiceID) {
+		this.cInvoiceID = cInvoiceID;
 	}
 
 	@Basic
 	@Column(name="C_INVOICEREQUEST_ID", columnDefinition="INT")
-	public Integer getCInvoicerequestId() {
-		return cInvoicerequestId;
+	public Integer getCInvoiceRequestID() {
+		return cInvoiceRequestID;
 	}
 
-	public void setCInvoicerequestId(Integer cInvoicerequestId) {
-		this.cInvoicerequestId = cInvoicerequestId;
+	public void setCInvoiceRequestID(Integer cInvoiceRequestID) {
+		this.cInvoiceRequestID = cInvoiceRequestID;
 	}
 
 	@Basic
 	@Column(name="C_ORDER_ID", columnDefinition="INT")
-	public Integer getCOrderId() {
-		return cOrderId;
+	public Integer getCOrderID() {
+		return cOrderID;
 	}
 
-	public void setCOrderId(Integer cOrderId) {
-		this.cOrderId = cOrderId;
+	public void setCOrderID(Integer cOrderID) {
+		this.cOrderID = cOrderID;
 	}
 
 	@Basic
 	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
-	public Integer getCPaymentId() {
-		return cPaymentId;
+	public Integer getCPaymentID() {
+		return cPaymentID;
 	}
 
-	public void setCPaymentId(Integer cPaymentId) {
-		this.cPaymentId = cPaymentId;
+	public void setCPaymentID(Integer cPaymentID) {
+		this.cPaymentID = cPaymentID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
-	}
-
-	@Basic
-	public String getClosedate() {
-		return closedate;
-	}
-
-	public void setClosedate(String closedate) {
-		this.closedate = closedate;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
-	@Column(nullable=false, length=1)
-	public String getConfidentialtype() {
-		return confidentialtype;
+	public String getCloseDate() {
+		return closeDate;
 	}
 
-	public void setConfidentialtype(String confidentialtype) {
-		this.confidentialtype = confidentialtype;
+	public void setCloseDate(String closeDate) {
+		this.closeDate = closeDate;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getConfidentialtypeentry() {
-		return confidentialtypeentry;
+	public String getConfidentialType() {
+		return confidentialType;
 	}
 
-	public void setConfidentialtypeentry(String confidentialtypeentry) {
-		this.confidentialtypeentry = confidentialtypeentry;
+	public void setConfidentialType(String confidentialType) {
+		this.confidentialType = confidentialType;
+	}
+
+	@Basic
+	@Column(nullable=false, length=1)
+	public String getConfidentialTypeEntry() {
+		return confidentialTypeEntry;
+	}
+
+	public void setConfidentialTypeEntry(String confidentialTypeEntry) {
+		this.confidentialTypeEntry = confidentialTypeEntry;
 	}
 
 	@Basic
@@ -264,206 +274,186 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	public String getDatecompleteplan() {
-		return datecompleteplan;
-	}
-
-	public void setDatecompleteplan(String datecompleteplan) {
-		this.datecompleteplan = datecompleteplan;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public String getDatelastaction() {
-		return datelastaction;
+	public String getDateCompletePlan() {
+		return dateCompletePlan;
 	}
 
-	public void setDatelastaction(String datelastaction) {
-		this.datelastaction = datelastaction;
-	}
-
-	@Basic
-	public String getDatelastalert() {
-		return datelastalert;
-	}
-
-	public void setDatelastalert(String datelastalert) {
-		this.datelastalert = datelastalert;
+	public void setDateCompletePlan(String dateCompletePlan) {
+		this.dateCompletePlan = dateCompletePlan;
 	}
 
 	@Basic
-	public String getDatenextaction() {
-		return datenextaction;
+	public String getDateLastAction() {
+		return dateLastAction;
 	}
 
-	public void setDatenextaction(String datenextaction) {
-		this.datenextaction = datenextaction;
+	public void setDateLastAction(String dateLastAction) {
+		this.dateLastAction = dateLastAction;
 	}
 
 	@Basic
-	public String getDatestartplan() {
-		return datestartplan;
+	public String getDateLastAlert() {
+		return dateLastAlert;
 	}
 
-	public void setDatestartplan(String datestartplan) {
-		this.datestartplan = datestartplan;
+	public void setDateLastAlert(String dateLastAlert) {
+		this.dateLastAlert = dateLastAlert;
+	}
+
+	@Basic
+	public String getDateNextAction() {
+		return dateNextAction;
+	}
+
+	public void setDateNextAction(String dateNextAction) {
+		this.dateNextAction = dateNextAction;
+	}
+
+	@Basic
+	public String getDateStartPlan() {
+		return dateStartPlan;
+	}
+
+	public void setDateStartPlan(String dateStartPlan) {
+		this.dateStartPlan = dateStartPlan;
 	}
 
 	@Basic
 	@Column(nullable=false, length=30)
-	public String getDocumentno() {
-		return documentno;
+	public String getDocumentNo() {
+		return documentNo;
 	}
 
-	public void setDocumentno(String documentno) {
-		this.documentno = documentno;
+	public void setDocumentNo(String documentNo) {
+		this.documentNo = documentNo;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getDuetype() {
-		return duetype;
+	public String getDueType() {
+		return dueType;
 	}
 
-	public void setDuetype(String duetype) {
-		this.duetype = duetype;
-	}
-
-	@Basic
-	public String getEndtime() {
-		return endtime;
-	}
-
-	public void setEndtime(String endtime) {
-		this.endtime = endtime;
+	public void setDueType(String dueType) {
+		this.dueType = dueType;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public String getEndTime() {
+		return endTime;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsescalated() {
-		return isescalated;
-	}
-
-	public void setIsescalated(Boolean isescalated) {
-		this.isescalated = isescalated;
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsinvoiced() {
-		return isinvoiced;
+	@Column(name="ISESCALATED", nullable=false)
+	public Boolean isEscalated() {
+		return escalated;
 	}
 
-	public void setIsinvoiced(Boolean isinvoiced) {
-		this.isinvoiced = isinvoiced;
+	public void setEscalated(Boolean escalated) {
+		this.escalated = escalated;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsselfservice() {
-		return isselfservice;
+	@Column(name="ISINVOICED", nullable=false)
+	public Boolean isInvoiced() {
+		return invoiced;
 	}
 
-	public void setIsselfservice(Boolean isselfservice) {
-		this.isselfservice = isselfservice;
+	public void setInvoiced(Boolean invoiced) {
+		this.invoiced = invoiced;
 	}
 
 	@Basic
 	@Column(length=2000)
-	public String getLastresult() {
-		return lastresult;
+	public String getLastResult() {
+		return lastResult;
 	}
 
-	public void setLastresult(String lastresult) {
-		this.lastresult = lastresult;
+	public void setLastResult(String lastResult) {
+		this.lastResult = lastResult;
 	}
 
 	@Basic
 	@Column(name="M_CHANGEREQUEST_ID", columnDefinition="INT")
-	public Integer getMChangerequestId() {
-		return mChangerequestId;
+	public Integer getMChangeRequestID() {
+		return mChangeRequestID;
 	}
 
-	public void setMChangerequestId(Integer mChangerequestId) {
-		this.mChangerequestId = mChangerequestId;
+	public void setMChangeRequestID(Integer mChangeRequestID) {
+		this.mChangeRequestID = mChangeRequestID;
 	}
 
 	@Basic
 	@Column(name="M_FIXCHANGENOTICE_ID", columnDefinition="INT")
-	public Integer getMFixchangenoticeId() {
-		return mFixchangenoticeId;
+	public Integer getMFixChangeNoticeID() {
+		return mFixChangeNoticeID;
 	}
 
-	public void setMFixchangenoticeId(Integer mFixchangenoticeId) {
-		this.mFixchangenoticeId = mFixchangenoticeId;
+	public void setMFixChangeNoticeID(Integer mFixChangeNoticeID) {
+		this.mFixChangeNoticeID = mFixChangeNoticeID;
 	}
 
 	@Basic
 	@Column(name="M_INOUT_ID", columnDefinition="INT")
-	public Integer getMInoutId() {
-		return mInoutId;
+	public Integer getMInOutID() {
+		return mInOutID;
 	}
 
-	public void setMInoutId(Integer mInoutId) {
-		this.mInoutId = mInoutId;
+	public void setMInOutID(Integer mInOutID) {
+		this.mInOutID = mInOutID;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCTSPENT_ID", columnDefinition="INT")
-	public Integer getMProductspentId() {
-		return mProductspentId;
+	public Integer getMProductSpentID() {
+		return mProductSpentID;
 	}
 
-	public void setMProductspentId(Integer mProductspentId) {
-		this.mProductspentId = mProductspentId;
+	public void setMProductSpentID(Integer mProductSpentID) {
+		this.mProductSpentID = mProductSpentID;
 	}
 
 	@Basic
 	@Column(name="M_RMA_ID", columnDefinition="INT")
-	public Integer getMRmaId() {
-		return mRmaId;
+	public Integer getMRMAID() {
+		return mRMAID;
 	}
 
-	public void setMRmaId(Integer mRmaId) {
-		this.mRmaId = mRmaId;
+	public void setMRMAID(Integer mRMAID) {
+		this.mRMAID = mRMAID;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getNextaction() {
-		return nextaction;
+	public String getNextAction() {
+		return nextAction;
 	}
 
-	public void setNextaction(String nextaction) {
-		this.nextaction = nextaction;
+	public void setNextAction(String nextAction) {
+		this.nextAction = nextAction;
 	}
 
 	@Basic
@@ -478,12 +468,12 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=1)
-	public String getPriorityuser() {
-		return priorityuser;
+	public String getPriorityUser() {
+		return priorityUser;
 	}
 
-	public void setPriorityuser(String priorityuser) {
-		this.priorityuser = priorityuser;
+	public void setPriorityUser(String priorityUser) {
+		this.priorityUser = priorityUser;
 	}
 
 	@Basic
@@ -497,142 +487,142 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public BigDecimal getQtyinvoiced() {
-		return qtyinvoiced;
+	public BigDecimal getQtyInvoiced() {
+		return qtyInvoiced;
 	}
 
-	public void setQtyinvoiced(BigDecimal qtyinvoiced) {
-		this.qtyinvoiced = qtyinvoiced;
-	}
-
-	@Basic
-	public BigDecimal getQtyplan() {
-		return qtyplan;
-	}
-
-	public void setQtyplan(BigDecimal qtyplan) {
-		this.qtyplan = qtyplan;
+	public void setQtyInvoiced(BigDecimal qtyInvoiced) {
+		this.qtyInvoiced = qtyInvoiced;
 	}
 
 	@Basic
-	public BigDecimal getQtyspent() {
-		return qtyspent;
+	public BigDecimal getQtyPlan() {
+		return qtyPlan;
 	}
 
-	public void setQtyspent(BigDecimal qtyspent) {
-		this.qtyspent = qtyspent;
+	public void setQtyPlan(BigDecimal qtyPlan) {
+		this.qtyPlan = qtyPlan;
+	}
+
+	@Basic
+	public BigDecimal getQtySpent() {
+		return qtySpent;
+	}
+
+	public void setQtySpent(BigDecimal qtySpent) {
+		this.qtySpent = qtySpent;
 	}
 
 	@Basic
 	@Column(name="R_CATEGORY_ID", columnDefinition="INT")
-	public Integer getRCategoryId() {
-		return rCategoryId;
+	public Integer getRCategoryID() {
+		return rCategoryID;
 	}
 
-	public void setRCategoryId(Integer rCategoryId) {
-		this.rCategoryId = rCategoryId;
+	public void setRCategoryID(Integer rCategoryID) {
+		this.rCategoryID = rCategoryID;
 	}
 
 	@Basic
 	@Column(name="R_GROUP_ID", columnDefinition="INT")
-	public Integer getRGroupId() {
-		return rGroupId;
+	public Integer getRGroupID() {
+		return rGroupID;
 	}
 
-	public void setRGroupId(Integer rGroupId) {
-		this.rGroupId = rGroupId;
+	public void setRGroupID(Integer rGroupID) {
+		this.rGroupID = rGroupID;
 	}
 
 	@Basic
 	@Column(name="R_MAILTEXT_ID", columnDefinition="INT")
-	public Integer getRMailtextId() {
-		return rMailtextId;
+	public Integer getRMailTextID() {
+		return rMailTextID;
 	}
 
-	public void setRMailtextId(Integer rMailtextId) {
-		this.rMailtextId = rMailtextId;
+	public void setRMailTextID(Integer rMailTextID) {
+		this.rMailTextID = rMailTextID;
 	}
 
 	@Id
 	@Column(name="R_REQUEST_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_354", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_Request", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_354")
-	public Integer getRRequestId() {
-		return rRequestId;
+	public Integer getRRequestID() {
+		return rRequestID;
 	}
 
-	public void setRRequestId(Integer rRequestId) {
-		this.rRequestId = rRequestId;
+	public void setRRequestID(Integer rRequestID) {
+		this.rRequestID = rRequestID;
 	}
 
 	@Basic
 	@Column(name="R_REQUESTRELATED_ID", columnDefinition="INT")
-	public Integer getRRequestrelatedId() {
-		return rRequestrelatedId;
+	public Integer getRRequestRelatedID() {
+		return rRequestRelatedID;
 	}
 
-	public void setRRequestrelatedId(Integer rRequestrelatedId) {
-		this.rRequestrelatedId = rRequestrelatedId;
+	public void setRRequestRelatedID(Integer rRequestRelatedID) {
+		this.rRequestRelatedID = rRequestRelatedID;
 	}
 
 	@Basic
 	@Column(name="R_REQUESTTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getRRequesttypeId() {
-		return rRequesttypeId;
+	public Integer getRRequestTypeID() {
+		return rRequestTypeID;
 	}
 
-	public void setRRequesttypeId(Integer rRequesttypeId) {
-		this.rRequesttypeId = rRequesttypeId;
+	public void setRRequestTypeID(Integer rRequestTypeID) {
+		this.rRequestTypeID = rRequestTypeID;
 	}
 
 	@Basic
 	@Column(name="R_RESOLUTION_ID", columnDefinition="INT")
-	public Integer getRResolutionId() {
-		return rResolutionId;
+	public Integer getRResolutionID() {
+		return rResolutionID;
 	}
 
-	public void setRResolutionId(Integer rResolutionId) {
-		this.rResolutionId = rResolutionId;
+	public void setRResolutionID(Integer rResolutionID) {
+		this.rResolutionID = rResolutionID;
 	}
 
 	@Basic
 	@Column(name="R_STANDARDRESPONSE_ID", columnDefinition="INT")
-	public Integer getRStandardresponseId() {
-		return rStandardresponseId;
+	public Integer getRStandardResponseID() {
+		return rStandardResponseID;
 	}
 
-	public void setRStandardresponseId(Integer rStandardresponseId) {
-		this.rStandardresponseId = rStandardresponseId;
+	public void setRStandardResponseID(Integer rStandardResponseID) {
+		this.rStandardResponseID = rStandardResponseID;
 	}
 
 	@Basic
 	@Column(name="R_STATUS_ID", columnDefinition="INT")
-	public Integer getRStatusId() {
-		return rStatusId;
+	public Integer getRStatusID() {
+		return rStatusID;
 	}
 
-	public void setRStatusId(Integer rStatusId) {
-		this.rStatusId = rStatusId;
+	public void setRStatusID(Integer rStatusID) {
+		this.rStatusID = rStatusID;
 	}
 
 	@Basic
 	@Column(name="RECORD_ID", columnDefinition="INT")
-	public Integer getRecordId() {
-		return recordId;
+	public Integer getRecordID() {
+		return recordID;
 	}
 
-	public void setRecordId(Integer recordId) {
-		this.recordId = recordId;
+	public void setRecordID(Integer recordID) {
+		this.recordID = recordID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getRequestamt() {
-		return requestamt;
+	public BigDecimal getRequestAmt() {
+		return requestAmt;
 	}
 
-	public void setRequestamt(BigDecimal requestamt) {
-		this.requestamt = requestamt;
+	public void setRequestAmt(BigDecimal requestAmt) {
+		this.requestAmt = requestAmt;
 	}
 
 	@Basic
@@ -647,30 +637,40 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="SALESREP_ID", columnDefinition="INT", nullable=false)
-	public Integer getSalesrepId() {
-		return salesrepId;
+	public Integer getSalesRepID() {
+		return salesRepID;
 	}
 
-	public void setSalesrepId(Integer salesrepId) {
-		this.salesrepId = salesrepId;
-	}
-
-	@Basic
-	public String getStartdate() {
-		return startdate;
-	}
-
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
+	public void setSalesRepID(Integer salesRepID) {
+		this.salesRepID = salesRepID;
 	}
 
 	@Basic
-	public String getStarttime() {
-		return starttime;
+	@Column(name="ISSELFSERVICE", nullable=false)
+	public Boolean isSelfService() {
+		return selfService;
 	}
 
-	public void setStarttime(String starttime) {
-		this.starttime = starttime;
+	public void setSelfService(Boolean selfService) {
+		this.selfService = selfService;
+	}
+
+	@Basic
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	@Basic
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
 	}
 
 	@Basic
@@ -685,12 +685,12 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=1)
-	public String getTaskstatus() {
-		return taskstatus;
+	public String getTaskStatus() {
+		return taskStatus;
 	}
 
-	public void setTaskstatus(String taskstatus) {
-		this.taskstatus = taskstatus;
+	public void setTaskStatus(String taskStatus) {
+		this.taskStatus = taskStatus;
 	}
 
 	@Basic
@@ -705,11 +705,11 @@ public class RRequest extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

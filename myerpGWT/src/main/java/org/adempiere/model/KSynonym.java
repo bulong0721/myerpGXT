@@ -10,53 +10,63 @@ import javax.persistence.*;
 @Table(name="k_synonym")
 public class KSynonym extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private String adLanguage;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private String aDLanguage;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private Integer kSynonymId;
+	private Integer createdBy;
+	private Integer kSynonymID;
 	private String name;
-	private String synonymname;
+	private String synonymName;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public KSynonym() {
 	}
 
-	public KSynonym(Integer kSynonymId) {
-		this.kSynonymId = kSynonymId;
+	public KSynonym(Integer kSynonymID) {
+		this.kSynonymID = kSynonymID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_LANGUAGE", nullable=false, length=6)
-	public String getAdLanguage() {
-		return adLanguage;
+	public String getADLanguage() {
+		return aDLanguage;
 	}
 
-	public void setAdLanguage(String adLanguage) {
-		this.adLanguage = adLanguage;
+	public void setADLanguage(String aDLanguage) {
+		this.aDLanguage = aDLanguage;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -71,34 +81,24 @@ public class KSynonym extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Id
 	@Column(name="K_SYNONYM_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_777", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Synonym", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_777")
-	public Integer getKSynonymId() {
-		return kSynonymId;
+	public Integer getKSynonymID() {
+		return kSynonymID;
 	}
 
-	public void setKSynonymId(Integer kSynonymId) {
-		this.kSynonymId = kSynonymId;
+	public void setKSynonymID(Integer kSynonymID) {
+		this.kSynonymID = kSynonymID;
 	}
 
 	@Basic
@@ -113,12 +113,12 @@ public class KSynonym extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=60)
-	public String getSynonymname() {
-		return synonymname;
+	public String getSynonymName() {
+		return synonymName;
 	}
 
-	public void setSynonymname(String synonymname) {
-		this.synonymname = synonymname;
+	public void setSynonymName(String synonymName) {
+		this.synonymName = synonymName;
 	}
 
 	@Basic
@@ -133,11 +133,11 @@ public class KSynonym extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

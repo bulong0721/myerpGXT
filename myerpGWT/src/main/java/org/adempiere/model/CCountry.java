@@ -10,126 +10,156 @@ import javax.persistence.*;
 @Table(name="c_country")
 public class CCountry extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private String adLanguage;
-	private Integer adOrgId;
-	private Boolean allowcitiesoutoflist;
-	private Integer cCountryId;
-	private Integer cCurrencyId;
-	private String capturesequence;
-	private String countrycode;
+	private Integer aDClientID;
+	private String aDLanguage;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Boolean addressLinesLocalReverse;
+	private Boolean addressLinesReverse;
+	private Boolean allowCitiesOutOfList;
+	private Integer cCountryID;
+	private Integer cCurrencyID;
+	private String captureSequence;
+	private String countryCode;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private String displaysequence;
-	private String displaysequencelocal;
-	private String expressionbankaccountno;
-	private String expressionbankroutingno;
-	private String expressionphone;
-	private String expressionpostal;
-	private String expressionpostalAdd;
-	private Boolean haspostalAdd;
-	private Boolean hasregion;
-	private Boolean isactive;
-	private Boolean isaddresslineslocalreverse;
-	private Boolean isaddresslinesreverse;
-	private Boolean ispostcodelookup;
-	private String lookupclassname;
-	private String lookupclientid;
-	private String lookuppassword;
-	private String lookupurl;
-	private String mediasize;
+	private String displaySequence;
+	private String displaySequenceLocal;
+	private String expressionBankAccountNo;
+	private String expressionBankRoutingNo;
+	private String expressionPhone;
+	private String expressionPostal;
+	private String expressionPostalAdd;
+	private Boolean hasPostalAdd;
+	private Boolean hasRegion;
+	private String lookupClassName;
+	private String lookupClientID;
+	private String lookupPassword;
+	private String lookupUrl;
+	private String mediaSize;
 	private String name;
-	private String regionname;
+	private Boolean postcodeLookup;
+	private String regionName;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CCountry() {
 	}
 
-	public CCountry(Integer cCountryId) {
-		this.cCountryId = cCountryId;
+	public CCountry(Integer cCountryID) {
+		this.cCountryID = cCountryID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_LANGUAGE", length=6)
-	public String getAdLanguage() {
-		return adLanguage;
+	public String getADLanguage() {
+		return aDLanguage;
 	}
 
-	public void setAdLanguage(String adLanguage) {
-		this.adLanguage = adLanguage;
+	public void setADLanguage(String aDLanguage) {
+		this.aDLanguage = aDLanguage;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
-	public Boolean isAllowcitiesoutoflist() {
-		return allowcitiesoutoflist;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAllowcitiesoutoflist(Boolean allowcitiesoutoflist) {
-		this.allowcitiesoutoflist = allowcitiesoutoflist;
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	@Column(name="ISADDRESSLINESLOCALREVERSE", nullable=false)
+	public Boolean isAddressLinesLocalReverse() {
+		return addressLinesLocalReverse;
+	}
+
+	public void setAddressLinesLocalReverse(Boolean addressLinesLocalReverse) {
+		this.addressLinesLocalReverse = addressLinesLocalReverse;
+	}
+
+	@Basic
+	@Column(name="ISADDRESSLINESREVERSE", nullable=false)
+	public Boolean isAddressLinesReverse() {
+		return addressLinesReverse;
+	}
+
+	public void setAddressLinesReverse(Boolean addressLinesReverse) {
+		this.addressLinesReverse = addressLinesReverse;
+	}
+
+	@Basic
+	public Boolean isAllowCitiesOutOfList() {
+		return allowCitiesOutOfList;
+	}
+
+	public void setAllowCitiesOutOfList(Boolean allowCitiesOutOfList) {
+		this.allowCitiesOutOfList = allowCitiesOutOfList;
 	}
 
 	@Id
 	@Column(name="C_COUNTRY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_57", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Country", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_57")
-	public Integer getCCountryId() {
-		return cCountryId;
+	public Integer getCCountryID() {
+		return cCountryID;
 	}
 
-	public void setCCountryId(Integer cCountryId) {
-		this.cCountryId = cCountryId;
+	public void setCCountryID(Integer cCountryID) {
+		this.cCountryID = cCountryID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(length=60)
-	public String getCapturesequence() {
-		return capturesequence;
+	public String getCaptureSequence() {
+		return captureSequence;
 	}
 
-	public void setCapturesequence(String capturesequence) {
-		this.capturesequence = capturesequence;
+	public void setCaptureSequence(String captureSequence) {
+		this.captureSequence = captureSequence;
 	}
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getCountrycode() {
-		return countrycode;
+	public String getCountryCode() {
+		return countryCode;
 	}
 
-	public void setCountrycode(String countrycode) {
-		this.countrycode = countrycode;
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
 	}
 
 	@Basic
@@ -144,12 +174,12 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -163,181 +193,141 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=20)
-	public String getDisplaysequence() {
-		return displaysequence;
+	public String getDisplaySequence() {
+		return displaySequence;
 	}
 
-	public void setDisplaysequence(String displaysequence) {
-		this.displaysequence = displaysequence;
-	}
-
-	@Basic
-	@Column(length=20)
-	public String getDisplaysequencelocal() {
-		return displaysequencelocal;
-	}
-
-	public void setDisplaysequencelocal(String displaysequencelocal) {
-		this.displaysequencelocal = displaysequencelocal;
+	public void setDisplaySequence(String displaySequence) {
+		this.displaySequence = displaySequence;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getExpressionbankaccountno() {
-		return expressionbankaccountno;
+	public String getDisplaySequenceLocal() {
+		return displaySequenceLocal;
 	}
 
-	public void setExpressionbankaccountno(String expressionbankaccountno) {
-		this.expressionbankaccountno = expressionbankaccountno;
-	}
-
-	@Basic
-	@Column(length=20)
-	public String getExpressionbankroutingno() {
-		return expressionbankroutingno;
-	}
-
-	public void setExpressionbankroutingno(String expressionbankroutingno) {
-		this.expressionbankroutingno = expressionbankroutingno;
+	public void setDisplaySequenceLocal(String displaySequenceLocal) {
+		this.displaySequenceLocal = displaySequenceLocal;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getExpressionphone() {
-		return expressionphone;
+	public String getExpressionBankAccountNo() {
+		return expressionBankAccountNo;
 	}
 
-	public void setExpressionphone(String expressionphone) {
-		this.expressionphone = expressionphone;
+	public void setExpressionBankAccountNo(String expressionBankAccountNo) {
+		this.expressionBankAccountNo = expressionBankAccountNo;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getExpressionpostal() {
-		return expressionpostal;
+	public String getExpressionBankRoutingNo() {
+		return expressionBankRoutingNo;
 	}
 
-	public void setExpressionpostal(String expressionpostal) {
-		this.expressionpostal = expressionpostal;
+	public void setExpressionBankRoutingNo(String expressionBankRoutingNo) {
+		this.expressionBankRoutingNo = expressionBankRoutingNo;
+	}
+
+	@Basic
+	@Column(length=20)
+	public String getExpressionPhone() {
+		return expressionPhone;
+	}
+
+	public void setExpressionPhone(String expressionPhone) {
+		this.expressionPhone = expressionPhone;
+	}
+
+	@Basic
+	@Column(length=20)
+	public String getExpressionPostal() {
+		return expressionPostal;
+	}
+
+	public void setExpressionPostal(String expressionPostal) {
+		this.expressionPostal = expressionPostal;
 	}
 
 	@Basic
 	@Column(name="EXPRESSIONPOSTAL_ADD", length=20)
-	public String getExpressionpostalAdd() {
-		return expressionpostalAdd;
+	public String getExpressionPostalAdd() {
+		return expressionPostalAdd;
 	}
 
-	public void setExpressionpostalAdd(String expressionpostalAdd) {
-		this.expressionpostalAdd = expressionpostalAdd;
+	public void setExpressionPostalAdd(String expressionPostalAdd) {
+		this.expressionPostalAdd = expressionPostalAdd;
 	}
 
 	@Basic
 	@Column(name="HASPOSTAL_ADD", nullable=false)
-	public Boolean isHaspostalAdd() {
-		return haspostalAdd;
+	public Boolean isHasPostalAdd() {
+		return hasPostalAdd;
 	}
 
-	public void setHaspostalAdd(Boolean haspostalAdd) {
-		this.haspostalAdd = haspostalAdd;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isHasregion() {
-		return hasregion;
-	}
-
-	public void setHasregion(Boolean hasregion) {
-		this.hasregion = hasregion;
+	public void setHasPostalAdd(Boolean hasPostalAdd) {
+		this.hasPostalAdd = hasPostalAdd;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public Boolean isHasRegion() {
+		return hasRegion;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsaddresslineslocalreverse() {
-		return isaddresslineslocalreverse;
-	}
-
-	public void setIsaddresslineslocalreverse(Boolean isaddresslineslocalreverse) {
-		this.isaddresslineslocalreverse = isaddresslineslocalreverse;
+	public void setHasRegion(Boolean hasRegion) {
+		this.hasRegion = hasRegion;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsaddresslinesreverse() {
-		return isaddresslinesreverse;
+	public String getLookupClassName() {
+		return lookupClassName;
 	}
 
-	public void setIsaddresslinesreverse(Boolean isaddresslinesreverse) {
-		this.isaddresslinesreverse = isaddresslinesreverse;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIspostcodelookup() {
-		return ispostcodelookup;
-	}
-
-	public void setIspostcodelookup(Boolean ispostcodelookup) {
-		this.ispostcodelookup = ispostcodelookup;
-	}
-
-	@Basic
-	public String getLookupclassname() {
-		return lookupclassname;
-	}
-
-	public void setLookupclassname(String lookupclassname) {
-		this.lookupclassname = lookupclassname;
+	public void setLookupClassName(String lookupClassName) {
+		this.lookupClassName = lookupClassName;
 	}
 
 	@Basic
 	@Column(length=50)
-	public String getLookupclientid() {
-		return lookupclientid;
+	public String getLookupClientID() {
+		return lookupClientID;
 	}
 
-	public void setLookupclientid(String lookupclientid) {
-		this.lookupclientid = lookupclientid;
+	public void setLookupClientID(String lookupClientID) {
+		this.lookupClientID = lookupClientID;
 	}
 
 	@Basic
 	@Column(length=50)
-	public String getLookuppassword() {
-		return lookuppassword;
+	public String getLookupPassword() {
+		return lookupPassword;
 	}
 
-	public void setLookuppassword(String lookuppassword) {
-		this.lookuppassword = lookuppassword;
+	public void setLookupPassword(String lookupPassword) {
+		this.lookupPassword = lookupPassword;
 	}
 
 	@Basic
 	@Column(length=100)
-	public String getLookupurl() {
-		return lookupurl;
+	public String getLookupUrl() {
+		return lookupUrl;
 	}
 
-	public void setLookupurl(String lookupurl) {
-		this.lookupurl = lookupurl;
+	public void setLookupUrl(String lookupUrl) {
+		this.lookupUrl = lookupUrl;
 	}
 
 	@Basic
 	@Column(length=40)
-	public String getMediasize() {
-		return mediasize;
+	public String getMediaSize() {
+		return mediaSize;
 	}
 
-	public void setMediasize(String mediasize) {
-		this.mediasize = mediasize;
+	public void setMediaSize(String mediaSize) {
+		this.mediaSize = mediaSize;
 	}
 
 	@Basic
@@ -351,13 +341,23 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=60)
-	public String getRegionname() {
-		return regionname;
+	@Column(name="ISPOSTCODELOOKUP", nullable=false)
+	public Boolean isPostcodeLookup() {
+		return postcodeLookup;
 	}
 
-	public void setRegionname(String regionname) {
-		this.regionname = regionname;
+	public void setPostcodeLookup(Boolean postcodeLookup) {
+		this.postcodeLookup = postcodeLookup;
+	}
+
+	@Basic
+	@Column(length=60)
+	public String getRegionName() {
+		return regionName;
+	}
+
+	public void setRegionName(String regionName) {
+		this.regionName = regionName;
 	}
 
 	@Basic
@@ -372,11 +372,11 @@ public class CCountry extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

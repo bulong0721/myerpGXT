@@ -10,69 +10,89 @@ import javax.persistence.*;
 @Table(name="c_element")
 public class CElement extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adTreeId;
-	private Integer cElementId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDTreeID;
+	private Boolean active;
+	private Boolean balancing;
+	private Integer cElementID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private String elementtype;
-	private Boolean isactive;
-	private Boolean isbalancing;
-	private Boolean isnaturalaccount;
+	private String elementType;
 	private String name;
+	private Boolean naturalAccount;
 	private String updated;
-	private Integer updatedby;
-	private String vformat;
+	private Integer updatedBy;
+	private String vFormat;
 
 	public CElement() {
 	}
 
-	public CElement(Integer cElementId) {
-		this.cElementId = cElementId;
+	public CElement(Integer cElementID) {
+		this.cElementID = cElementID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_TREE_ID", columnDefinition="INT")
-	public Integer getAdTreeId() {
-		return adTreeId;
+	public Integer getADTreeID() {
+		return aDTreeID;
 	}
 
-	public void setAdTreeId(Integer adTreeId) {
-		this.adTreeId = adTreeId;
+	public void setADTreeID(Integer aDTreeID) {
+		this.aDTreeID = aDTreeID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	@Column(name="ISBALANCING", nullable=false)
+	public Boolean isBalancing() {
+		return balancing;
+	}
+
+	public void setBalancing(Boolean balancing) {
+		this.balancing = balancing;
 	}
 
 	@Id
 	@Column(name="C_ELEMENT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_42", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Element", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_42")
-	public Integer getCElementId() {
-		return cElementId;
+	public Integer getCElementID() {
+		return cElementID;
 	}
 
-	public void setCElementId(Integer cElementId) {
-		this.cElementId = cElementId;
+	public void setCElementID(Integer cElementID) {
+		this.cElementID = cElementID;
 	}
 
 	@Basic
@@ -87,12 +107,12 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -106,42 +126,12 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getElementtype() {
-		return elementtype;
+	public String getElementType() {
+		return elementType;
 	}
 
-	public void setElementtype(String elementtype) {
-		this.elementtype = elementtype;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsbalancing() {
-		return isbalancing;
-	}
-
-	public void setIsbalancing(Boolean isbalancing) {
-		this.isbalancing = isbalancing;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsnaturalaccount() {
-		return isnaturalaccount;
-	}
-
-	public void setIsnaturalaccount(Boolean isnaturalaccount) {
-		this.isnaturalaccount = isnaturalaccount;
+	public void setElementType(String elementType) {
+		this.elementType = elementType;
 	}
 
 	@Basic
@@ -152,6 +142,16 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Basic
+	@Column(name="ISNATURALACCOUNT", nullable=false)
+	public Boolean isNaturalAccount() {
+		return naturalAccount;
+	}
+
+	public void setNaturalAccount(Boolean naturalAccount) {
+		this.naturalAccount = naturalAccount;
 	}
 
 	@Basic
@@ -166,21 +166,21 @@ public class CElement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(length=40)
-	public String getVformat() {
-		return vformat;
+	public String getVFormat() {
+		return vFormat;
 	}
 
-	public void setVformat(String vformat) {
-		this.vformat = vformat;
+	public void setVFormat(String vFormat) {
+		this.vFormat = vFormat;
 	}
 }

@@ -10,65 +10,75 @@ import javax.persistence.*;
 @Table(name="w_basket")
 public class WBasket extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
-	private Integer cBpartnerId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
+	private String active;
+	private Integer cBPartnerID;
 	private String created;
-	private Integer createdby;
-	private String email;
-	private String isactive;
-	private Integer mPricelistId;
-	private String sessionId;
+	private Integer createdBy;
+	private String eMail;
+	private Integer mPriceListID;
+	private String sessionID;
 	private String updated;
-	private Integer updatedby;
-	private Integer wBasketId;
+	private Integer updatedBy;
+	private Integer wBasketID;
 
 	public WBasket() {
 	}
 
-	public WBasket(Integer wBasketId) {
-		this.wBasketId = wBasketId;
+	public WBasket(Integer wBasketID) {
+		this.wBasketID = wBasketID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false, length=1)
+	public String getActive() {
+		return active;
+	}
+
+	public void setActive(String active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
@@ -83,52 +93,42 @@ public class WBasket extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(length=60)
-	public String getEmail() {
-		return email;
+	public String getEMail() {
+		return eMail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(String isactive) {
-		this.isactive = isactive;
+	public void setEMail(String eMail) {
+		this.eMail = eMail;
 	}
 
 	@Basic
 	@Column(name="M_PRICELIST_ID", columnDefinition="INT")
-	public Integer getMPricelistId() {
-		return mPricelistId;
+	public Integer getMPriceListID() {
+		return mPriceListID;
 	}
 
-	public void setMPricelistId(Integer mPricelistId) {
-		this.mPricelistId = mPricelistId;
+	public void setMPriceListID(Integer mPriceListID) {
+		this.mPriceListID = mPriceListID;
 	}
 
 	@Basic
 	@Column(name="SESSION_ID", nullable=false, length=60)
-	public String getSessionId() {
-		return sessionId;
+	public String getSessionID() {
+		return sessionID;
 	}
 
-	public void setSessionId(String sessionId) {
-		this.sessionId = sessionId;
+	public void setSessionID(String sessionID) {
+		this.sessionID = sessionID;
 	}
 
 	@Basic
@@ -143,23 +143,23 @@ public class WBasket extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Id
 	@Column(name="W_BASKET_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_339", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "W_Basket", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_339")
-	public Integer getWBasketId() {
-		return wBasketId;
+	public Integer getWBasketID() {
+		return wBasketID;
 	}
 
-	public void setWBasketId(Integer wBasketId) {
-		this.wBasketId = wBasketId;
+	public void setWBasketID(Integer wBasketID) {
+		this.wBasketID = wBasketID;
 	}
 }

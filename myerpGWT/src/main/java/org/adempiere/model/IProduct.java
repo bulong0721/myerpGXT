@@ -11,126 +11,136 @@ import javax.persistence.*;
 @Table(name="i_product")
 public class IProduct extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private String bpartnerValue;
-	private Integer cBpartnerId;
-	private Integer cCurrencyId;
-	private Integer cUomId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private String bPartnerValue;
+	private Integer cBPartnerID;
+	private Integer cCurrencyID;
+	private Integer cUOMID;
 	private String classification;
-	private BigDecimal costperorder;
+	private BigDecimal costPerOrder;
 	private String created;
-	private Integer createdby;
-	private Integer deliverytimePromised;
+	private Integer createdBy;
+	private Integer deliveryTimePromised;
 	private String description;
-	private String descriptionurl;
+	private String descriptionURL;
 	private Boolean discontinued;
-	private String discontinuedat;
+	private String discontinuedAt;
 	private String discontinuedby;
-	private String documentnote;
+	private String documentNote;
 	private String help;
-	private String iErrormsg;
-	private Boolean iIsimported;
-	private Integer iProductId;
-	private String imageurl;
-	private Boolean isactive;
-	private String isoCode;
-	private Integer mProductCategoryId;
-	private Integer mProductId;
+	private String iErrorMsg;
+	private Boolean iIsImported;
+	private Integer iProductID;
+	private String iSOCode;
+	private String imageURL;
+	private Integer mProductCategoryID;
+	private Integer mProductID;
 	private String manufacturer;
 	private String name;
 	private BigDecimal orderMin;
 	private BigDecimal orderPack;
-	private String priceeffective;
-	private BigDecimal pricelimit;
-	private BigDecimal pricelist;
-	private BigDecimal pricepo;
-	private BigDecimal pricestd;
+	private String priceEffective;
+	private BigDecimal priceLimit;
+	private BigDecimal priceList;
+	private BigDecimal pricePO;
+	private BigDecimal priceStd;
 	private Boolean processed;
 	private Boolean processing;
-	private String productcategoryValue;
-	private String producttype;
-	private BigDecimal royaltyamt;
-	private Integer shelfdepth;
-	private Integer shelfheight;
-	private Integer shelfwidth;
-	private String sku;
-	private Integer unitsperpallet;
-	private String upc;
+	private String productCategoryValue;
+	private String productType;
+	private BigDecimal royaltyAmt;
+	private String sKU;
+	private Integer shelfDepth;
+	private Integer shelfHeight;
+	private Integer shelfWidth;
+	private String uPC;
+	private Integer unitsPerPallet;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 	private String value;
-	private String vendorcategory;
-	private String vendorproductno;
+	private String vendorCategory;
+	private String vendorProductNo;
 	private BigDecimal volume;
 	private BigDecimal weight;
-	private String x12de355;
+	private String x12DE355;
 
 	public IProduct() {
 	}
 
-	public IProduct(Integer iProductId) {
-		this.iProductId = iProductId;
+	public IProduct(Integer iProductID) {
+		this.iProductID = iProductID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT")
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE")
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="BPARTNER_VALUE", length=40)
-	public String getBpartnerValue() {
-		return bpartnerValue;
+	public String getBPartnerValue() {
+		return bPartnerValue;
 	}
 
-	public void setBpartnerValue(String bpartnerValue) {
-		this.bpartnerValue = bpartnerValue;
+	public void setBPartnerValue(String bPartnerValue) {
+		this.bPartnerValue = bPartnerValue;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="C_UOM_ID", columnDefinition="INT")
-	public Integer getCUomId() {
-		return cUomId;
+	public Integer getCUOMID() {
+		return cUOMID;
 	}
 
-	public void setCUomId(Integer cUomId) {
-		this.cUomId = cUomId;
+	public void setCUOMID(Integer cUOMID) {
+		this.cUOMID = cUOMID;
 	}
 
 	@Basic
@@ -144,12 +154,12 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public BigDecimal getCostperorder() {
-		return costperorder;
+	public BigDecimal getCostPerOrder() {
+		return costPerOrder;
 	}
 
-	public void setCostperorder(BigDecimal costperorder) {
-		this.costperorder = costperorder;
+	public void setCostPerOrder(BigDecimal costPerOrder) {
+		this.costPerOrder = costPerOrder;
 	}
 
 	@Basic
@@ -164,22 +174,22 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(name="DELIVERYTIME_PROMISED", columnDefinition="INT")
-	public Integer getDeliverytimePromised() {
-		return deliverytimePromised;
+	public Integer getDeliveryTimePromised() {
+		return deliveryTimePromised;
 	}
 
-	public void setDeliverytimePromised(Integer deliverytimePromised) {
-		this.deliverytimePromised = deliverytimePromised;
+	public void setDeliveryTimePromised(Integer deliveryTimePromised) {
+		this.deliveryTimePromised = deliveryTimePromised;
 	}
 
 	@Basic
@@ -193,12 +203,12 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=120)
-	public String getDescriptionurl() {
-		return descriptionurl;
+	public String getDescriptionURL() {
+		return descriptionURL;
 	}
 
-	public void setDescriptionurl(String descriptionurl) {
-		this.descriptionurl = descriptionurl;
+	public void setDescriptionURL(String descriptionURL) {
+		this.descriptionURL = descriptionURL;
 	}
 
 	@Basic
@@ -211,12 +221,12 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public String getDiscontinuedat() {
-		return discontinuedat;
+	public String getDiscontinuedAt() {
+		return discontinuedAt;
 	}
 
-	public void setDiscontinuedat(String discontinuedat) {
-		this.discontinuedat = discontinuedat;
+	public void setDiscontinuedAt(String discontinuedAt) {
+		this.discontinuedAt = discontinuedAt;
 	}
 
 	@Basic
@@ -230,12 +240,12 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=2000)
-	public String getDocumentnote() {
-		return documentnote;
+	public String getDocumentNote() {
+		return documentNote;
 	}
 
-	public void setDocumentnote(String documentnote) {
-		this.documentnote = documentnote;
+	public void setDocumentNote(String documentNote) {
+		this.documentNote = documentNote;
 	}
 
 	@Basic
@@ -250,83 +260,74 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="I_ERRORMSG", length=2000)
-	public String getIErrormsg() {
-		return iErrormsg;
+	public String getIErrorMsg() {
+		return iErrorMsg;
 	}
 
-	public void setIErrormsg(String iErrormsg) {
-		this.iErrormsg = iErrormsg;
+	public void setIErrorMsg(String iErrorMsg) {
+		this.iErrorMsg = iErrorMsg;
 	}
 
 	@Basic
 	@Column(name="I_ISIMPORTED", nullable=false)
-	public Boolean isIIsimported() {
-		return iIsimported;
+	public Boolean isIIsImported() {
+		return iIsImported;
 	}
 
-	public void setIIsimported(Boolean iIsimported) {
-		this.iIsimported = iIsimported;
+	public void setIIsImported(Boolean iIsImported) {
+		this.iIsImported = iIsImported;
 	}
 
 	@Id
 	@Column(name="I_PRODUCT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_632", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_Product", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_632")
-	public Integer getIProductId() {
-		return iProductId;
+	public Integer getIProductID() {
+		return iProductID;
 	}
 
-	public void setIProductId(Integer iProductId) {
-		this.iProductId = iProductId;
-	}
-
-	@Basic
-	@Column(length=120)
-	public String getImageurl() {
-		return imageurl;
-	}
-
-	public void setImageurl(String imageurl) {
-		this.imageurl = imageurl;
-	}
-
-	@Basic
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setIProductID(Integer iProductID) {
+		this.iProductID = iProductID;
 	}
 
 	@Basic
 	@Column(name="ISO_CODE", length=3)
-	public String getIsoCode() {
-		return isoCode;
+	public String getISOCode() {
+		return iSOCode;
 	}
 
-	public void setIsoCode(String isoCode) {
-		this.isoCode = isoCode;
+	public void setISOCode(String iSOCode) {
+		this.iSOCode = iSOCode;
+	}
+
+	@Basic
+	@Column(length=120)
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
-	public Integer getMProductCategoryId() {
-		return mProductCategoryId;
+	public Integer getMProductCategoryID() {
+		return mProductCategoryID;
 	}
 
-	public void setMProductCategoryId(Integer mProductCategoryId) {
-		this.mProductCategoryId = mProductCategoryId;
+	public void setMProductCategoryID(Integer mProductCategoryID) {
+		this.mProductCategoryID = mProductCategoryID;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
@@ -370,48 +371,48 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public String getPriceeffective() {
-		return priceeffective;
+	public String getPriceEffective() {
+		return priceEffective;
 	}
 
-	public void setPriceeffective(String priceeffective) {
-		this.priceeffective = priceeffective;
-	}
-
-	@Basic
-	public BigDecimal getPricelimit() {
-		return pricelimit;
-	}
-
-	public void setPricelimit(BigDecimal pricelimit) {
-		this.pricelimit = pricelimit;
+	public void setPriceEffective(String priceEffective) {
+		this.priceEffective = priceEffective;
 	}
 
 	@Basic
-	public BigDecimal getPricelist() {
-		return pricelist;
+	public BigDecimal getPriceLimit() {
+		return priceLimit;
 	}
 
-	public void setPricelist(BigDecimal pricelist) {
-		this.pricelist = pricelist;
-	}
-
-	@Basic
-	public BigDecimal getPricepo() {
-		return pricepo;
-	}
-
-	public void setPricepo(BigDecimal pricepo) {
-		this.pricepo = pricepo;
+	public void setPriceLimit(BigDecimal priceLimit) {
+		this.priceLimit = priceLimit;
 	}
 
 	@Basic
-	public BigDecimal getPricestd() {
-		return pricestd;
+	public BigDecimal getPriceList() {
+		return priceList;
 	}
 
-	public void setPricestd(BigDecimal pricestd) {
-		this.pricestd = pricestd;
+	public void setPriceList(BigDecimal priceList) {
+		this.priceList = priceList;
+	}
+
+	@Basic
+	public BigDecimal getPricePO() {
+		return pricePO;
+	}
+
+	public void setPricePO(BigDecimal pricePO) {
+		this.pricePO = pricePO;
+	}
+
+	@Basic
+	public BigDecimal getPriceStd() {
+		return priceStd;
+	}
+
+	public void setPriceStd(BigDecimal priceStd) {
+		this.priceStd = priceStd;
 	}
 
 	@Basic
@@ -434,91 +435,91 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="PRODUCTCATEGORY_VALUE", length=40)
-	public String getProductcategoryValue() {
-		return productcategoryValue;
+	public String getProductCategoryValue() {
+		return productCategoryValue;
 	}
 
-	public void setProductcategoryValue(String productcategoryValue) {
-		this.productcategoryValue = productcategoryValue;
+	public void setProductCategoryValue(String productCategoryValue) {
+		this.productCategoryValue = productCategoryValue;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getProducttype() {
-		return producttype;
+	public String getProductType() {
+		return productType;
 	}
 
-	public void setProducttype(String producttype) {
-		this.producttype = producttype;
-	}
-
-	@Basic
-	public BigDecimal getRoyaltyamt() {
-		return royaltyamt;
-	}
-
-	public void setRoyaltyamt(BigDecimal royaltyamt) {
-		this.royaltyamt = royaltyamt;
+	public void setProductType(String productType) {
+		this.productType = productType;
 	}
 
 	@Basic
-	@Column(columnDefinition="INT")
-	public Integer getShelfdepth() {
-		return shelfdepth;
+	public BigDecimal getRoyaltyAmt() {
+		return royaltyAmt;
 	}
 
-	public void setShelfdepth(Integer shelfdepth) {
-		this.shelfdepth = shelfdepth;
-	}
-
-	@Basic
-	@Column(columnDefinition="INT")
-	public Integer getShelfheight() {
-		return shelfheight;
-	}
-
-	public void setShelfheight(Integer shelfheight) {
-		this.shelfheight = shelfheight;
-	}
-
-	@Basic
-	@Column(columnDefinition="INT")
-	public Integer getShelfwidth() {
-		return shelfwidth;
-	}
-
-	public void setShelfwidth(Integer shelfwidth) {
-		this.shelfwidth = shelfwidth;
+	public void setRoyaltyAmt(BigDecimal royaltyAmt) {
+		this.royaltyAmt = royaltyAmt;
 	}
 
 	@Basic
 	@Column(length=30)
-	public String getSku() {
-		return sku;
+	public String getSKU() {
+		return sKU;
 	}
 
-	public void setSku(String sku) {
-		this.sku = sku;
+	public void setSKU(String sKU) {
+		this.sKU = sKU;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getUnitsperpallet() {
-		return unitsperpallet;
+	public Integer getShelfDepth() {
+		return shelfDepth;
 	}
 
-	public void setUnitsperpallet(Integer unitsperpallet) {
-		this.unitsperpallet = unitsperpallet;
+	public void setShelfDepth(Integer shelfDepth) {
+		this.shelfDepth = shelfDepth;
+	}
+
+	@Basic
+	@Column(columnDefinition="INT")
+	public Integer getShelfHeight() {
+		return shelfHeight;
+	}
+
+	public void setShelfHeight(Integer shelfHeight) {
+		this.shelfHeight = shelfHeight;
+	}
+
+	@Basic
+	@Column(columnDefinition="INT")
+	public Integer getShelfWidth() {
+		return shelfWidth;
+	}
+
+	public void setShelfWidth(Integer shelfWidth) {
+		this.shelfWidth = shelfWidth;
 	}
 
 	@Basic
 	@Column(length=30)
-	public String getUpc() {
-		return upc;
+	public String getUPC() {
+		return uPC;
 	}
 
-	public void setUpc(String upc) {
-		this.upc = upc;
+	public void setUPC(String uPC) {
+		this.uPC = uPC;
+	}
+
+	@Basic
+	@Column(columnDefinition="INT")
+	public Integer getUnitsPerPallet() {
+		return unitsPerPallet;
+	}
+
+	public void setUnitsPerPallet(Integer unitsPerPallet) {
+		this.unitsPerPallet = unitsPerPallet;
 	}
 
 	@Basic
@@ -533,12 +534,12 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
@@ -553,22 +554,22 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=30)
-	public String getVendorcategory() {
-		return vendorcategory;
+	public String getVendorCategory() {
+		return vendorCategory;
 	}
 
-	public void setVendorcategory(String vendorcategory) {
-		this.vendorcategory = vendorcategory;
+	public void setVendorCategory(String vendorCategory) {
+		this.vendorCategory = vendorCategory;
 	}
 
 	@Basic
 	@Column(length=40)
-	public String getVendorproductno() {
-		return vendorproductno;
+	public String getVendorProductNo() {
+		return vendorProductNo;
 	}
 
-	public void setVendorproductno(String vendorproductno) {
-		this.vendorproductno = vendorproductno;
+	public void setVendorProductNo(String vendorProductNo) {
+		this.vendorProductNo = vendorProductNo;
 	}
 
 	@Basic
@@ -591,11 +592,11 @@ public class IProduct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=4)
-	public String getX12de355() {
-		return x12de355;
+	public String getX12DE355() {
+		return x12DE355;
 	}
 
-	public void setX12de355(String x12de355) {
-		this.x12de355 = x12de355;
+	public void setX12DE355(String x12DE355) {
+		this.x12DE355 = x12DE355;
 	}
 }

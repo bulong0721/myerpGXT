@@ -11,62 +11,72 @@ import javax.persistence.*;
 @Table(name="m_transaction")
 public class MTransaction extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cProjectissueId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cProjectIssueID;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private Integer mAttributesetinstanceId;
-	private Integer mInoutlineId;
-	private Integer mInventorylineId;
-	private Integer mLocatorId;
-	private Integer mMovementlineId;
-	private Integer mProductId;
-	private Integer mProductionlineId;
-	private Integer mTransactionId;
-	private String movementdate;
-	private BigDecimal movementqty;
-	private String movementtype;
-	private Integer ppCostCollectorId;
+	private Integer createdBy;
+	private Integer mAttributeSetInstanceID;
+	private Integer mInOutLineID;
+	private Integer mInventoryLineID;
+	private Integer mLocatorID;
+	private Integer mMovementLineID;
+	private Integer mProductID;
+	private Integer mProductionLineID;
+	private Integer mTransactionID;
+	private String movementDate;
+	private BigDecimal movementQty;
+	private String movementType;
+	private Integer pPCostCollectorID;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MTransaction() {
 	}
 
-	public MTransaction(Integer mTransactionId) {
-		this.mTransactionId = mTransactionId;
+	public MTransaction(Integer mTransactionID) {
+		this.mTransactionID = mTransactionID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_PROJECTISSUE_ID", columnDefinition="INT")
-	public Integer getCProjectissueId() {
-		return cProjectissueId;
+	public Integer getCProjectIssueID() {
+		return cProjectIssueID;
 	}
 
-	public void setCProjectissueId(Integer cProjectissueId) {
-		this.cProjectissueId = cProjectissueId;
+	public void setCProjectIssueID(Integer cProjectIssueID) {
+		this.cProjectIssueID = cProjectIssueID;
 	}
 
 	@Basic
@@ -81,144 +91,134 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT", nullable=false)
-	public Integer getMAttributesetinstanceId() {
-		return mAttributesetinstanceId;
+	public Integer getMAttributeSetInstanceID() {
+		return mAttributeSetInstanceID;
 	}
 
-	public void setMAttributesetinstanceId(Integer mAttributesetinstanceId) {
-		this.mAttributesetinstanceId = mAttributesetinstanceId;
+	public void setMAttributeSetInstanceID(Integer mAttributeSetInstanceID) {
+		this.mAttributeSetInstanceID = mAttributeSetInstanceID;
 	}
 
 	@Basic
 	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
-	public Integer getMInoutlineId() {
-		return mInoutlineId;
+	public Integer getMInOutLineID() {
+		return mInOutLineID;
 	}
 
-	public void setMInoutlineId(Integer mInoutlineId) {
-		this.mInoutlineId = mInoutlineId;
+	public void setMInOutLineID(Integer mInOutLineID) {
+		this.mInOutLineID = mInOutLineID;
 	}
 
 	@Basic
 	@Column(name="M_INVENTORYLINE_ID", columnDefinition="INT")
-	public Integer getMInventorylineId() {
-		return mInventorylineId;
+	public Integer getMInventoryLineID() {
+		return mInventoryLineID;
 	}
 
-	public void setMInventorylineId(Integer mInventorylineId) {
-		this.mInventorylineId = mInventorylineId;
+	public void setMInventoryLineID(Integer mInventoryLineID) {
+		this.mInventoryLineID = mInventoryLineID;
 	}
 
 	@Basic
 	@Column(name="M_LOCATOR_ID", columnDefinition="INT", nullable=false)
-	public Integer getMLocatorId() {
-		return mLocatorId;
+	public Integer getMLocatorID() {
+		return mLocatorID;
 	}
 
-	public void setMLocatorId(Integer mLocatorId) {
-		this.mLocatorId = mLocatorId;
+	public void setMLocatorID(Integer mLocatorID) {
+		this.mLocatorID = mLocatorID;
 	}
 
 	@Basic
 	@Column(name="M_MOVEMENTLINE_ID", columnDefinition="INT")
-	public Integer getMMovementlineId() {
-		return mMovementlineId;
+	public Integer getMMovementLineID() {
+		return mMovementLineID;
 	}
 
-	public void setMMovementlineId(Integer mMovementlineId) {
-		this.mMovementlineId = mMovementlineId;
+	public void setMMovementLineID(Integer mMovementLineID) {
+		this.mMovementLineID = mMovementLineID;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCTIONLINE_ID", columnDefinition="INT")
-	public Integer getMProductionlineId() {
-		return mProductionlineId;
+	public Integer getMProductionLineID() {
+		return mProductionLineID;
 	}
 
-	public void setMProductionlineId(Integer mProductionlineId) {
-		this.mProductionlineId = mProductionlineId;
+	public void setMProductionLineID(Integer mProductionLineID) {
+		this.mProductionLineID = mProductionLineID;
 	}
 
 	@Id
 	@Column(name="M_TRANSACTION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_252", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Transaction", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_252")
-	public Integer getMTransactionId() {
-		return mTransactionId;
+	public Integer getMTransactionID() {
+		return mTransactionID;
 	}
 
-	public void setMTransactionId(Integer mTransactionId) {
-		this.mTransactionId = mTransactionId;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getMovementdate() {
-		return movementdate;
-	}
-
-	public void setMovementdate(String movementdate) {
-		this.movementdate = movementdate;
+	public void setMTransactionID(Integer mTransactionID) {
+		this.mTransactionID = mTransactionID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getMovementqty() {
-		return movementqty;
+	public String getMovementDate() {
+		return movementDate;
 	}
 
-	public void setMovementqty(BigDecimal movementqty) {
-		this.movementqty = movementqty;
+	public void setMovementDate(String movementDate) {
+		this.movementDate = movementDate;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getMovementQty() {
+		return movementQty;
+	}
+
+	public void setMovementQty(BigDecimal movementQty) {
+		this.movementQty = movementQty;
 	}
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getMovementtype() {
-		return movementtype;
+	public String getMovementType() {
+		return movementType;
 	}
 
-	public void setMovementtype(String movementtype) {
-		this.movementtype = movementtype;
+	public void setMovementType(String movementType) {
+		this.movementType = movementType;
 	}
 
 	@Basic
 	@Column(name="PP_COST_COLLECTOR_ID", columnDefinition="INT")
-	public Integer getPpCostCollectorId() {
-		return ppCostCollectorId;
+	public Integer getPPCostCollectorID() {
+		return pPCostCollectorID;
 	}
 
-	public void setPpCostCollectorId(Integer ppCostCollectorId) {
-		this.ppCostCollectorId = ppCostCollectorId;
+	public void setPPCostCollectorID(Integer pPCostCollectorID) {
+		this.pPCostCollectorID = pPCostCollectorID;
 	}
 
 	@Basic
@@ -233,11 +233,11 @@ public class MTransaction extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

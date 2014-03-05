@@ -10,80 +10,90 @@ import javax.persistence.*;
 @Table(name="c_subscription")
 public class CSubscription extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cBpartnerId;
-	private Integer cSubscriptionId;
-	private Integer cSubscriptiontypeId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cBPartnerID;
+	private Integer cSubscriptionID;
+	private Integer cSubscriptionTypeID;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private Boolean isdue;
-	private Integer mProductId;
+	private Integer createdBy;
+	private Boolean due;
+	private Integer mProductID;
 	private String name;
-	private String paiduntildate;
-	private String renewaldate;
-	private String startdate;
+	private String paidUntilDate;
+	private String renewalDate;
+	private String startDate;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CSubscription() {
 	}
 
-	public CSubscription(Integer cSubscriptionId) {
-		this.cSubscriptionId = cSubscriptionId;
+	public CSubscription(Integer cSubscriptionID) {
+		this.cSubscriptionID = cSubscriptionID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Id
 	@Column(name="C_SUBSCRIPTION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_844", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Subscription", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_844")
-	public Integer getCSubscriptionId() {
-		return cSubscriptionId;
+	public Integer getCSubscriptionID() {
+		return cSubscriptionID;
 	}
 
-	public void setCSubscriptionId(Integer cSubscriptionId) {
-		this.cSubscriptionId = cSubscriptionId;
+	public void setCSubscriptionID(Integer cSubscriptionID) {
+		this.cSubscriptionID = cSubscriptionID;
 	}
 
 	@Basic
 	@Column(name="C_SUBSCRIPTIONTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getCSubscriptiontypeId() {
-		return cSubscriptiontypeId;
+	public Integer getCSubscriptionTypeID() {
+		return cSubscriptionTypeID;
 	}
 
-	public void setCSubscriptiontypeId(Integer cSubscriptiontypeId) {
-		this.cSubscriptiontypeId = cSubscriptiontypeId;
+	public void setCSubscriptionTypeID(Integer cSubscriptionTypeID) {
+		this.cSubscriptionTypeID = cSubscriptionTypeID;
 	}
 
 	@Basic
@@ -98,42 +108,32 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdue() {
-		return isdue;
+	@Column(name="ISDUE", nullable=false)
+	public Boolean isDue() {
+		return due;
 	}
 
-	public void setIsdue(Boolean isdue) {
-		this.isdue = isdue;
+	public void setDue(Boolean due) {
+		this.due = due;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
@@ -148,32 +148,32 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public String getPaiduntildate() {
-		return paiduntildate;
+	public String getPaidUntilDate() {
+		return paidUntilDate;
 	}
 
-	public void setPaiduntildate(String paiduntildate) {
-		this.paiduntildate = paiduntildate;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getRenewaldate() {
-		return renewaldate;
-	}
-
-	public void setRenewaldate(String renewaldate) {
-		this.renewaldate = renewaldate;
+	public void setPaidUntilDate(String paidUntilDate) {
+		this.paidUntilDate = paidUntilDate;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getStartdate() {
-		return startdate;
+	public String getRenewalDate() {
+		return renewalDate;
 	}
 
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
+	public void setRenewalDate(String renewalDate) {
+		this.renewalDate = renewalDate;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
 	@Basic
@@ -188,11 +188,11 @@ public class CSubscription extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

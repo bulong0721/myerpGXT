@@ -3,8 +3,8 @@ package org.adempiere.process;
 import java.util.List;
 
 import org.adempiere.common.AdempiereUserError;
-import org.adempiere.model.AdColumn;
-import org.adempiere.model.AdField;
+import org.adempiere.model.ADColumn;
+import org.adempiere.model.ADField;
 import org.adempiere.util.POUtil;
 
 public class TabCreateFields extends ServerProcess {
@@ -26,9 +26,9 @@ public class TabCreateFields extends ServerProcess {
 		if (null == adTabId)
 			throw new AdempiereUserError("@NotFound@ (tab<-) @AD_Window_ID@");
 		int count = 0;
-		List<AdColumn> unMappedColumns = POUtil.queryUnMappedColumns(context, adTableId, adTabId);
-		for (AdColumn column : unMappedColumns) {
-			AdField field = createField(column);
+		List<ADColumn> unMappedColumns = POUtil.queryUnMappedColumns(context, adTableId, adTabId);
+		for (ADColumn column : unMappedColumns) {
+			ADField field = createField(column);
 			if (POUtil.persist(context, field)) {
 				count++;
 			}
@@ -36,25 +36,25 @@ public class TabCreateFields extends ServerProcess {
 		return "@Created@ #" + count;
 	}
 	
-	private AdField createField(AdColumn column) {
-		AdField field = new AdField();
-		field.setAdClientId(column.getAdClientId());
-		field.setAdOrgId(column.getAdOrgId());
-		field.setAdTabId(adTabId);
-		field.setAdColumnId(column.getAdColumnId());
+	private ADField createField(ADColumn column) {
+		ADField field = new ADField();
+		field.setAdClientId(column.getADClientID());
+		field.setAdOrgId(column.getADOrgID());
+		field.setADTabID(adTabId);
+		field.setADColumnID(column.getADColumnID());
 		field.setName(column.getName());
 		
-		field.setEntitytype("U");		
-		field.setIscentrallymaintained(true);
-		field.setIsdisplayed (true);	// Y
-		field.setIsencrypted (false);
-		field.setIsfieldonly (false);
-		field.setIsheading (false);
-		field.setIsreadonly (false);
-		field.setIssameline (false);
+		field.setEntityType("U");		
+		field.setCentrallyMaintained(true);
+		field.setDisplayed (true);	// Y
+		field.setEncrypted (false);
+		field.setFieldOnly (false);
+		field.setHeading (false);
+		field.setReadOnly (false);
+		field.setSameLine (false);
 		
-		if (column.isIskey())
-			field.setIsdisplayed(false);
+		if (column.isKey())
+			field.setDisplayed(false);
 		return field;
 	}
 

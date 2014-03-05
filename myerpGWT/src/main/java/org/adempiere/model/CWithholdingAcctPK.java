@@ -16,8 +16,8 @@ public class CWithholdingAcctPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer cAcctschemaId;
-	public Integer cWithholdingId;
+	public Integer cAcctSchemaID;
+	public Integer cWithholdingID;
 
 	public CWithholdingAcctPK() {
 	}
@@ -26,31 +26,31 @@ public class CWithholdingAcctPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
-	public Integer getCWithholdingId() {
-		return cWithholdingId;
+	public Integer getCWithholdingID() {
+		return cWithholdingID;
 	}
 
-	public void setCWithholdingId(Integer cWithholdingId) {
-		this.cWithholdingId = cWithholdingId;
+	public void setCWithholdingID(Integer cWithholdingID) {
+		this.cWithholdingID = cWithholdingID;
 	}
 
 	public String toString() {
-		return String.valueOf(cAcctschemaId)
-			+ "::" + String.valueOf(cWithholdingId);
+		return String.valueOf(cAcctSchemaID)
+			+ "::" + String.valueOf(cWithholdingID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((cAcctschemaId == null) ? 0 : cAcctschemaId.hashCode());
-		rs = rs * 37 + ((cWithholdingId == null) ? 0 : cWithholdingId.hashCode());
+		rs = rs * 37 + ((cAcctSchemaID == null) ? 0 : cAcctSchemaID.hashCode());
+		rs = rs * 37 + ((cWithholdingID == null) ? 0 : cWithholdingID.hashCode());
 		return rs;
 	}
 
@@ -61,24 +61,24 @@ public class CWithholdingAcctPK implements Serializable {
 			return false;
 
 		CWithholdingAcctPK other = (CWithholdingAcctPK) obj;
-		return ((cAcctschemaId == null && other.cAcctschemaId == null)
-			|| (cAcctschemaId != null && cAcctschemaId.equals(other.cAcctschemaId)))
-			&& ((cWithholdingId == null && other.cWithholdingId == null)
-			|| (cWithholdingId != null && cWithholdingId.equals(other.cWithholdingId)));
+		return ((cAcctSchemaID == null && other.cAcctSchemaID == null)
+			|| (cAcctSchemaID != null && cAcctSchemaID.equals(other.cAcctSchemaID)))
+			&& ((cWithholdingID == null && other.cWithholdingID == null)
+			|| (cWithholdingID != null && cWithholdingID.equals(other.cWithholdingID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cAcctschemaId = null;
+			cAcctSchemaID = null;
 		else
-			cAcctschemaId = new Integer(str);
+			cAcctSchemaID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cWithholdingId = null;
+			cWithholdingID = null;
 		else
-			cWithholdingId = new Integer(str);
+			cWithholdingID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

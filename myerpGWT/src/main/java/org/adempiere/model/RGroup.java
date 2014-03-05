@@ -10,46 +10,56 @@ import javax.persistence.*;
 @Table(name="r_group")
 public class RGroup extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
 	private String help;
-	private Boolean isactive;
-	private Integer mBomId;
-	private Integer mChangenoticeId;
+	private Integer mBOMID;
+	private Integer mChangeNoticeID;
 	private String name;
-	private Integer ppProductBomId;
-	private Integer rGroupId;
+	private Integer pPProductBOMID;
+	private Integer rGroupID;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public RGroup() {
 	}
 
-	public RGroup(Integer rGroupId) {
-		this.rGroupId = rGroupId;
+	public RGroup(Integer rGroupID) {
+		this.rGroupID = rGroupID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -64,12 +74,12 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -92,33 +102,23 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
 	@Column(name="M_BOM_ID", columnDefinition="INT")
-	public Integer getMBomId() {
-		return mBomId;
+	public Integer getMBOMID() {
+		return mBOMID;
 	}
 
-	public void setMBomId(Integer mBomId) {
-		this.mBomId = mBomId;
+	public void setMBOMID(Integer mBOMID) {
+		this.mBOMID = mBOMID;
 	}
 
 	@Basic
 	@Column(name="M_CHANGENOTICE_ID", columnDefinition="INT")
-	public Integer getMChangenoticeId() {
-		return mChangenoticeId;
+	public Integer getMChangeNoticeID() {
+		return mChangeNoticeID;
 	}
 
-	public void setMChangenoticeId(Integer mChangenoticeId) {
-		this.mChangenoticeId = mChangenoticeId;
+	public void setMChangeNoticeID(Integer mChangeNoticeID) {
+		this.mChangeNoticeID = mChangeNoticeID;
 	}
 
 	@Basic
@@ -133,24 +133,24 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="PP_PRODUCT_BOM_ID", columnDefinition="INT")
-	public Integer getPpProductBomId() {
-		return ppProductBomId;
+	public Integer getPPProductBOMID() {
+		return pPProductBOMID;
 	}
 
-	public void setPpProductBomId(Integer ppProductBomId) {
-		this.ppProductBomId = ppProductBomId;
+	public void setPPProductBOMID(Integer pPProductBOMID) {
+		this.pPProductBOMID = pPProductBOMID;
 	}
 
 	@Id
 	@Column(name="R_GROUP_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_1107", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_Group", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1107")
-	public Integer getRGroupId() {
-		return rGroupId;
+	public Integer getRGroupID() {
+		return rGroupID;
 	}
 
-	public void setRGroupId(Integer rGroupId) {
-		this.rGroupId = rGroupId;
+	public void setRGroupID(Integer rGroupID) {
+		this.rGroupID = rGroupID;
 	}
 
 	@Basic
@@ -165,11 +165,11 @@ public class RGroup extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

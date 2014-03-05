@@ -12,48 +12,58 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.MStoragePK.class)
 public class MStorage extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private String datelastinventory;
-	private Boolean isactive;
-	private Integer mAttributesetinstanceId;
-	private Integer mLocatorId;
-	private Integer mProductId;
-	private BigDecimal qtyonhand;
-	private BigDecimal qtyordered;
-	private BigDecimal qtyreserved;
+	private Integer createdBy;
+	private String dateLastInventory;
+	private Integer mAttributeSetInstanceID;
+	private Integer mLocatorID;
+	private Integer mProductID;
+	private BigDecimal qtyOnHand;
+	private BigDecimal qtyOrdered;
+	private BigDecimal qtyReserved;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MStorage() {
 	}
 
-	public MStorage(Integer mAttributesetinstanceId, Integer mLocatorId, Integer mProductId) {
-		this.mAttributesetinstanceId = mAttributesetinstanceId;
-		this.mLocatorId = mLocatorId;
-		this.mProductId = mProductId;
+	public MStorage(Integer mAttributeSetInstanceID, Integer mLocatorID, Integer mProductID) {
+		this.mAttributeSetInstanceID = mAttributeSetInstanceID;
+		this.mLocatorID = mLocatorID;
+		this.mProductID = mProductID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -68,91 +78,81 @@ public class MStorage extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	public String getDatelastinventory() {
-		return datelastinventory;
-	}
-
-	public void setDatelastinventory(String datelastinventory) {
-		this.datelastinventory = datelastinventory;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public String getDateLastInventory() {
+		return dateLastInventory;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDateLastInventory(String dateLastInventory) {
+		this.dateLastInventory = dateLastInventory;
 	}
 
 	@Id
 	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
-	public Integer getMAttributesetinstanceId() {
-		return mAttributesetinstanceId;
+	public Integer getMAttributeSetInstanceID() {
+		return mAttributeSetInstanceID;
 	}
 
-	public void setMAttributesetinstanceId(Integer mAttributesetinstanceId) {
-		this.mAttributesetinstanceId = mAttributesetinstanceId;
+	public void setMAttributeSetInstanceID(Integer mAttributeSetInstanceID) {
+		this.mAttributeSetInstanceID = mAttributeSetInstanceID;
 	}
 
 	@Id
 	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
-	public Integer getMLocatorId() {
-		return mLocatorId;
+	public Integer getMLocatorID() {
+		return mLocatorID;
 	}
 
-	public void setMLocatorId(Integer mLocatorId) {
-		this.mLocatorId = mLocatorId;
+	public void setMLocatorID(Integer mLocatorID) {
+		this.mLocatorID = mLocatorID;
 	}
 
 	@Id
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getQtyonhand() {
-		return qtyonhand;
-	}
-
-	public void setQtyonhand(BigDecimal qtyonhand) {
-		this.qtyonhand = qtyonhand;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getQtyordered() {
-		return qtyordered;
+	public BigDecimal getQtyOnHand() {
+		return qtyOnHand;
 	}
 
-	public void setQtyordered(BigDecimal qtyordered) {
-		this.qtyordered = qtyordered;
+	public void setQtyOnHand(BigDecimal qtyOnHand) {
+		this.qtyOnHand = qtyOnHand;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getQtyreserved() {
-		return qtyreserved;
+	public BigDecimal getQtyOrdered() {
+		return qtyOrdered;
 	}
 
-	public void setQtyreserved(BigDecimal qtyreserved) {
-		this.qtyreserved = qtyreserved;
+	public void setQtyOrdered(BigDecimal qtyOrdered) {
+		this.qtyOrdered = qtyOrdered;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getQtyReserved() {
+		return qtyReserved;
+	}
+
+	public void setQtyReserved(BigDecimal qtyReserved) {
+		this.qtyReserved = qtyReserved;
 	}
 
 	@Basic
@@ -167,11 +167,11 @@ public class MStorage extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

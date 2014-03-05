@@ -11,135 +11,145 @@ import javax.persistence.*;
 @Table(name="a_asset_addition")
 public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetAdditionId;
-	private Integer aAssetId;
-	private String aCapvsexp;
-	private BigDecimal aQtyCurrent;
-	private String aSourcetype;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private BigDecimal assetvalueamt;
-	private Integer cInvoiceId;
-	private Integer cInvoicelineId;
+	private Integer aAssetAdditionID;
+	private Integer aAssetID;
+	private String aCapvsExp;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private BigDecimal aQTYCurrent;
+	private String aSourceType;
+	private Boolean active;
+	private BigDecimal assetValueAmt;
+	private Integer cInvoiceID;
+	private Integer cInvoiceLineID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private String documentno;
-	private Integer glJournalbatchId;
-	private Boolean isactive;
+	private String documentNo;
+	private Integer gLJournalBatchID;
 	private Integer line;
-	private Integer mInoutlineId;
-	private String postingtype;
+	private Integer mInOutLineID;
+	private String postingType;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetAddition() {
 	}
 
-	public AAssetAddition(Integer aAssetAdditionId) {
-		this.aAssetAdditionId = aAssetAdditionId;
+	public AAssetAddition(Integer aAssetAdditionID) {
+		this.aAssetAdditionID = aAssetAdditionID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_ADDITION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53157", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Addition", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53157")
-	public Integer getAAssetAdditionId() {
-		return aAssetAdditionId;
+	public Integer getAAssetAdditionID() {
+		return aAssetAdditionID;
 	}
 
-	public void setAAssetAdditionId(Integer aAssetAdditionId) {
-		this.aAssetAdditionId = aAssetAdditionId;
+	public void setAAssetAdditionID(Integer aAssetAdditionID) {
+		this.aAssetAdditionID = aAssetAdditionID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Basic
 	@Column(name="A_CAPVSEXP", length=3)
-	public String getACapvsexp() {
-		return aCapvsexp;
+	public String getACapvsExp() {
+		return aCapvsExp;
 	}
 
-	public void setACapvsexp(String aCapvsexp) {
-		this.aCapvsexp = aCapvsexp;
-	}
-
-	@Basic
-	@Column(name="A_QTY_CURRENT")
-	public BigDecimal getAQtyCurrent() {
-		return aQtyCurrent;
-	}
-
-	public void setAQtyCurrent(BigDecimal aQtyCurrent) {
-		this.aQtyCurrent = aQtyCurrent;
-	}
-
-	@Basic
-	@Column(name="A_SOURCETYPE", length=3)
-	public String getASourcetype() {
-		return aSourcetype;
-	}
-
-	public void setASourcetype(String aSourcetype) {
-		this.aSourcetype = aSourcetype;
+	public void setACapvsExp(String aCapvsExp) {
+		this.aCapvsExp = aCapvsExp;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="A_QTY_CURRENT")
+	public BigDecimal getAQTYCurrent() {
+		return aQTYCurrent;
+	}
+
+	public void setAQTYCurrent(BigDecimal aQTYCurrent) {
+		this.aQTYCurrent = aQTYCurrent;
+	}
+
+	@Basic
+	@Column(name="A_SOURCETYPE", length=3)
+	public String getASourceType() {
+		return aSourceType;
+	}
+
+	public void setASourceType(String aSourceType) {
+		this.aSourceType = aSourceType;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getAssetvalueamt() {
-		return assetvalueamt;
+	public BigDecimal getAssetValueAmt() {
+		return assetValueAmt;
 	}
 
-	public void setAssetvalueamt(BigDecimal assetvalueamt) {
-		this.assetvalueamt = assetvalueamt;
+	public void setAssetValueAmt(BigDecimal assetValueAmt) {
+		this.assetValueAmt = assetValueAmt;
 	}
 
 	@Basic
 	@Column(name="C_INVOICE_ID", columnDefinition="INT")
-	public Integer getCInvoiceId() {
-		return cInvoiceId;
+	public Integer getCInvoiceID() {
+		return cInvoiceID;
 	}
 
-	public void setCInvoiceId(Integer cInvoiceId) {
-		this.cInvoiceId = cInvoiceId;
+	public void setCInvoiceID(Integer cInvoiceID) {
+		this.cInvoiceID = cInvoiceID;
 	}
 
 	@Basic
 	@Column(name="C_INVOICELINE_ID", columnDefinition="INT")
-	public Integer getCInvoicelineId() {
-		return cInvoicelineId;
+	public Integer getCInvoiceLineID() {
+		return cInvoiceLineID;
 	}
 
-	public void setCInvoicelineId(Integer cInvoicelineId) {
-		this.cInvoicelineId = cInvoicelineId;
+	public void setCInvoiceLineID(Integer cInvoiceLineID) {
+		this.cInvoiceLineID = cInvoiceLineID;
 	}
 
 	@Basic
@@ -154,12 +164,12 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -174,32 +184,22 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=30)
-	public String getDocumentno() {
-		return documentno;
+	public String getDocumentNo() {
+		return documentNo;
 	}
 
-	public void setDocumentno(String documentno) {
-		this.documentno = documentno;
+	public void setDocumentNo(String documentNo) {
+		this.documentNo = documentNo;
 	}
 
 	@Basic
 	@Column(name="GL_JOURNALBATCH_ID", columnDefinition="INT")
-	public Integer getGlJournalbatchId() {
-		return glJournalbatchId;
+	public Integer getGLJournalBatchID() {
+		return gLJournalBatchID;
 	}
 
-	public void setGlJournalbatchId(Integer glJournalbatchId) {
-		this.glJournalbatchId = glJournalbatchId;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setGLJournalBatchID(Integer gLJournalBatchID) {
+		this.gLJournalBatchID = gLJournalBatchID;
 	}
 
 	@Basic
@@ -214,22 +214,22 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
-	public Integer getMInoutlineId() {
-		return mInoutlineId;
+	public Integer getMInOutLineID() {
+		return mInOutLineID;
 	}
 
-	public void setMInoutlineId(Integer mInoutlineId) {
-		this.mInoutlineId = mInoutlineId;
+	public void setMInOutLineID(Integer mInOutLineID) {
+		this.mInOutLineID = mInOutLineID;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getPostingtype() {
-		return postingtype;
+	public String getPostingType() {
+		return postingType;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
@@ -244,11 +244,11 @@ public class AAssetAddition extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

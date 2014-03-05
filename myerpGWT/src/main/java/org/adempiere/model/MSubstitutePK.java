@@ -16,8 +16,8 @@ public class MSubstitutePK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer mProductId;
-	public Integer substituteId;
+	public Integer mProductID;
+	public Integer substituteID;
 
 	public MSubstitutePK() {
 	}
@@ -26,31 +26,31 @@ public class MSubstitutePK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
-	public Integer getSubstituteId() {
-		return substituteId;
+	public Integer getSubstituteID() {
+		return substituteID;
 	}
 
-	public void setSubstituteId(Integer substituteId) {
-		this.substituteId = substituteId;
+	public void setSubstituteID(Integer substituteID) {
+		this.substituteID = substituteID;
 	}
 
 	public String toString() {
-		return String.valueOf(mProductId)
-			+ "::" + String.valueOf(substituteId);
+		return String.valueOf(mProductID)
+			+ "::" + String.valueOf(substituteID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((mProductId == null) ? 0 : mProductId.hashCode());
-		rs = rs * 37 + ((substituteId == null) ? 0 : substituteId.hashCode());
+		rs = rs * 37 + ((mProductID == null) ? 0 : mProductID.hashCode());
+		rs = rs * 37 + ((substituteID == null) ? 0 : substituteID.hashCode());
 		return rs;
 	}
 
@@ -61,24 +61,24 @@ public class MSubstitutePK implements Serializable {
 			return false;
 
 		MSubstitutePK other = (MSubstitutePK) obj;
-		return ((mProductId == null && other.mProductId == null)
-			|| (mProductId != null && mProductId.equals(other.mProductId)))
-			&& ((substituteId == null && other.substituteId == null)
-			|| (substituteId != null && substituteId.equals(other.substituteId)));
+		return ((mProductID == null && other.mProductID == null)
+			|| (mProductID != null && mProductID.equals(other.mProductID)))
+			&& ((substituteID == null && other.substituteID == null)
+			|| (substituteID != null && substituteID.equals(other.substituteID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mProductId = null;
+			mProductID = null;
 		else
-			mProductId = new Integer(str);
+			mProductID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			substituteId = null;
+			substituteID = null;
 		else
-			substituteId = new Integer(str);
+			substituteID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

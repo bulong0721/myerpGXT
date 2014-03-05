@@ -10,66 +10,76 @@ import javax.persistence.*;
 @Table(name="c_region")
 public class CRegion extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cCountryId;
-	private Integer cRegionId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cCountryID;
+	private Integer cRegionID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Boolean isdefault;
+	private Boolean isDefault;
 	private String name;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CRegion() {
 	}
 
-	public CRegion(Integer cRegionId) {
-		this.cRegionId = cRegionId;
+	public CRegion(Integer cRegionID) {
+		this.cRegionID = cRegionID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_COUNTRY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCountryId() {
-		return cCountryId;
+	public Integer getCCountryID() {
+		return cCountryID;
 	}
 
-	public void setCCountryId(Integer cCountryId) {
-		this.cCountryId = cCountryId;
+	public void setCCountryID(Integer cCountryID) {
+		this.cCountryID = cCountryID;
 	}
 
 	@Id
 	@Column(name="C_REGION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_62", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Region", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_62")
-	public Integer getCRegionId() {
-		return cRegionId;
+	public Integer getCRegionID() {
+		return cRegionID;
 	}
 
-	public void setCRegionId(Integer cRegionId) {
-		this.cRegionId = cRegionId;
+	public void setCRegionID(Integer cRegionID) {
+		this.cRegionID = cRegionID;
 	}
 
 	@Basic
@@ -84,12 +94,12 @@ public class CRegion extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -102,22 +112,12 @@ public class CRegion extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public Boolean isIsDefault() {
+		return isDefault;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	public Boolean isIsdefault() {
-		return isdefault;
-	}
-
-	public void setIsdefault(Boolean isdefault) {
-		this.isdefault = isdefault;
+	public void setIsDefault(Boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	@Basic
@@ -142,11 +142,11 @@ public class CRegion extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

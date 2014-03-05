@@ -13,16 +13,18 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aAccumdepreciationAcct;
 	private Integer aAssetAcct;
-	private Integer aAssetAcctId;
-	private Integer aAssetId;
-	private Integer aAssetSpreadId;
+	private Integer aAssetAcctID;
+	private Integer aAssetID;
+	private Integer aAssetSpreadID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private Integer aDepreciationAcct;
-	private Integer aDepreciationConvId;
-	private Integer aDepreciationId;
+	private Integer aDepreciationConvID;
+	private Integer aDepreciationID;
 	private BigDecimal aDepreciationManualAmount;
 	private String aDepreciationManualPeriod;
-	private Integer aDepreciationMethodId;
-	private Integer aDepreciationTableHeaderId;
+	private Integer aDepreciationMethodID;
+	private Integer aDepreciationTableHeaderID;
 	private BigDecimal aDepreciationVariablePerc;
 	private String aDisposalGain;
 	private String aDisposalLoss;
@@ -37,22 +39,20 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 	private String aRevalDepexpOffset;
 	private BigDecimal aSalvageValue;
 	private BigDecimal aSplitPercent;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cAcctschemaId;
+	private Boolean active;
+	private Integer cAcctSchemaID;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private String postingtype;
+	private Integer createdBy;
+	private String postingType;
 	private String processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetAcct() {
 	}
 
-	public AAssetAcct(Integer aAssetAcctId) {
-		this.aAssetAcctId = aAssetAcctId;
+	public AAssetAcct(Integer aAssetAcctID) {
+		this.aAssetAcctID = aAssetAcctID;
 	}
 
 	@Basic
@@ -79,32 +79,52 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 	@Column(name="A_ASSET_ACCT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53143", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Acct", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53143")
-	public Integer getAAssetAcctId() {
-		return aAssetAcctId;
+	public Integer getAAssetAcctID() {
+		return aAssetAcctID;
 	}
 
-	public void setAAssetAcctId(Integer aAssetAcctId) {
-		this.aAssetAcctId = aAssetAcctId;
+	public void setAAssetAcctID(Integer aAssetAcctID) {
+		this.aAssetAcctID = aAssetAcctID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_SPREAD_ID", columnDefinition="INT")
-	public Integer getAAssetSpreadId() {
-		return aAssetSpreadId;
+	public Integer getAAssetSpreadID() {
+		return aAssetSpreadID;
 	}
 
-	public void setAAssetSpreadId(Integer aAssetSpreadId) {
-		this.aAssetSpreadId = aAssetSpreadId;
+	public void setAAssetSpreadID(Integer aAssetSpreadID) {
+		this.aAssetSpreadID = aAssetSpreadID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -119,22 +139,22 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_DEPRECIATION_CONV_ID", columnDefinition="INT", nullable=false)
-	public Integer getADepreciationConvId() {
-		return aDepreciationConvId;
+	public Integer getADepreciationConvID() {
+		return aDepreciationConvID;
 	}
 
-	public void setADepreciationConvId(Integer aDepreciationConvId) {
-		this.aDepreciationConvId = aDepreciationConvId;
+	public void setADepreciationConvID(Integer aDepreciationConvID) {
+		this.aDepreciationConvID = aDepreciationConvID;
 	}
 
 	@Basic
 	@Column(name="A_DEPRECIATION_ID", columnDefinition="INT", nullable=false)
-	public Integer getADepreciationId() {
-		return aDepreciationId;
+	public Integer getADepreciationID() {
+		return aDepreciationID;
 	}
 
-	public void setADepreciationId(Integer aDepreciationId) {
-		this.aDepreciationId = aDepreciationId;
+	public void setADepreciationID(Integer aDepreciationID) {
+		this.aDepreciationID = aDepreciationID;
 	}
 
 	@Basic
@@ -159,22 +179,22 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_DEPRECIATION_METHOD_ID", columnDefinition="INT", nullable=false)
-	public Integer getADepreciationMethodId() {
-		return aDepreciationMethodId;
+	public Integer getADepreciationMethodID() {
+		return aDepreciationMethodID;
 	}
 
-	public void setADepreciationMethodId(Integer aDepreciationMethodId) {
-		this.aDepreciationMethodId = aDepreciationMethodId;
+	public void setADepreciationMethodID(Integer aDepreciationMethodID) {
+		this.aDepreciationMethodID = aDepreciationMethodID;
 	}
 
 	@Basic
 	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID", columnDefinition="INT")
-	public Integer getADepreciationTableHeaderId() {
-		return aDepreciationTableHeaderId;
+	public Integer getADepreciationTableHeaderID() {
+		return aDepreciationTableHeaderID;
 	}
 
-	public void setADepreciationTableHeaderId(Integer aDepreciationTableHeaderId) {
-		this.aDepreciationTableHeaderId = aDepreciationTableHeaderId;
+	public void setADepreciationTableHeaderID(Integer aDepreciationTableHeaderID) {
+		this.aDepreciationTableHeaderID = aDepreciationTableHeaderID;
 	}
 
 	@Basic
@@ -318,33 +338,23 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Basic
@@ -359,32 +369,22 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getPostingtype() {
-		return postingtype;
+	public String getPostingType() {
+		return postingType;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
@@ -409,11 +409,11 @@ public class AAssetAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -88,7 +88,7 @@ public class StringUtil {
 		return text;
 	}
 
-	public static String convertToCamel(String colName) {
+	private static String convertToCamel(String colName) {
 		if (null == colName || 0 == colName.length()) {
 			return colName;
 		}
@@ -99,7 +99,7 @@ public class StringUtil {
 		}
 	}
 
-	public static String convertToPascal(String tableName) {
+	private static String convertToPascal(String tableName) {
 		if (null == tableName || 0 == tableName.length()) {
 			return tableName;
 		}
@@ -110,7 +110,7 @@ public class StringUtil {
 		}
 	}
 
-	public static String toPascalStyle(String name) {
+	private static String toPascalStyle(String name) {
 		StringBuffer sb = new StringBuffer();
 		String[] str = name.split("_");
 		for (String temp : str) {
@@ -120,7 +120,7 @@ public class StringUtil {
 		return sb.toString();
 	}
 
-	public static String toCamelStyle(String name) {
+	private static String toCamelStyle(String name) {
 		StringBuffer sb = new StringBuffer();
 		String[] str = name.split("_");
 		boolean firstTime = true;

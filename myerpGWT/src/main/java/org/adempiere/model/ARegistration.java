@@ -10,106 +10,126 @@ import javax.persistence.*;
 @Table(name="a_registration")
 public class ARegistration extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetId;
-	private Integer aRegistrationId;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
-	private String assetservicedate;
-	private Integer cBpartnerId;
+	private Integer aAssetID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
+	private Integer aRegistrationID;
+	private Boolean active;
+	private Boolean allowPublish;
+	private String assetServiceDate;
+	private Integer cBPartnerID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
 	private String help;
-	private Boolean isactive;
-	private Boolean isallowpublish;
-	private Boolean isinproduction;
-	private Boolean isregistered;
-	private Integer mProductId;
+	private Boolean inProduction;
+	private Integer mProductID;
 	private String name;
 	private String note;
 	private Boolean processing;
+	private Boolean registered;
 	private String remoteAddr;
 	private String remoteHost;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public ARegistration() {
 	}
 
-	public ARegistration(Integer aRegistrationId) {
-		this.aRegistrationId = aRegistrationId;
+	public ARegistration(Integer aRegistrationID) {
+		this.aRegistrationID = aRegistrationID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT")
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="AD_USER_ID", columnDefinition="INT")
+	public Integer getADUserID() {
+		return aDUserID;
+	}
+
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
 	}
 
 	@Id
 	@Column(name="A_REGISTRATION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_826", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Registration", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_826")
-	public Integer getARegistrationId() {
-		return aRegistrationId;
+	public Integer getARegistrationID() {
+		return aRegistrationID;
 	}
 
-	public void setARegistrationId(Integer aRegistrationId) {
-		this.aRegistrationId = aRegistrationId;
-	}
-
-	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
-	}
-
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setARegistrationID(Integer aRegistrationID) {
+		this.aRegistrationID = aRegistrationID;
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
-	}
-
-	@Basic
-	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
-	}
-
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
-	public String getAssetservicedate() {
-		return assetservicedate;
+	@Column(name="ISALLOWPUBLISH", nullable=false)
+	public Boolean isAllowPublish() {
+		return allowPublish;
 	}
 
-	public void setAssetservicedate(String assetservicedate) {
-		this.assetservicedate = assetservicedate;
+	public void setAllowPublish(Boolean allowPublish) {
+		this.allowPublish = allowPublish;
+	}
+
+	@Basic
+	public String getAssetServiceDate() {
+		return assetServiceDate;
+	}
+
+	public void setAssetServiceDate(String assetServiceDate) {
+		this.assetServiceDate = assetServiceDate;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
@@ -124,12 +144,12 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -152,53 +172,23 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	@Column(name="ISINPRODUCTION", nullable=false)
+	public Boolean isInProduction() {
+		return inProduction;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsallowpublish() {
-		return isallowpublish;
-	}
-
-	public void setIsallowpublish(Boolean isallowpublish) {
-		this.isallowpublish = isallowpublish;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsinproduction() {
-		return isinproduction;
-	}
-
-	public void setIsinproduction(Boolean isinproduction) {
-		this.isinproduction = isinproduction;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsregistered() {
-		return isregistered;
-	}
-
-	public void setIsregistered(Boolean isregistered) {
-		this.isregistered = isregistered;
+	public void setInProduction(Boolean inProduction) {
+		this.inProduction = inProduction;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
@@ -228,6 +218,16 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 
 	public void setProcessing(Boolean processing) {
 		this.processing = processing;
+	}
+
+	@Basic
+	@Column(name="ISREGISTERED", nullable=false)
+	public Boolean isRegistered() {
+		return registered;
+	}
+
+	public void setRegistered(Boolean registered) {
+		this.registered = registered;
 	}
 
 	@Basic
@@ -262,11 +262,11 @@ public class ARegistration extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -12,27 +12,27 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.TSelection2PK.class)
 public class TSelection2 extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adPinstanceId;
+	private Integer aDPInstanceID;
 	private BigDecimal queryId;
 	private Integer tSelectionId;
 
 	public TSelection2() {
 	}
 
-	public TSelection2(Integer adPinstanceId, BigDecimal queryId, Integer tSelectionId) {
-		this.adPinstanceId = adPinstanceId;
+	public TSelection2(Integer aDPInstanceID, BigDecimal queryId, Integer tSelectionId) {
+		this.aDPInstanceID = aDPInstanceID;
 		this.queryId = queryId;
 		this.tSelectionId = tSelectionId;
 	}
 
 	@Id
 	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
-	public Integer getAdPinstanceId() {
-		return adPinstanceId;
+	public Integer getADPInstanceID() {
+		return aDPInstanceID;
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
-		this.adPinstanceId = adPinstanceId;
+	public void setADPInstanceID(Integer aDPInstanceID) {
+		this.aDPInstanceID = aDPInstanceID;
 	}
 
 	@Id

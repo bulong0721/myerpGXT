@@ -10,84 +10,94 @@ import javax.persistence.*;
 @Table(name="w_store")
 public class WStore extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cPaymenttermId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cPaymentTermID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private String emailfooter;
-	private String emailheader;
+	private String eMailFooter;
+	private String eMailHeader;
 	private String help;
-	private Boolean isactive;
-	private Boolean isdefault;
-	private Boolean ismenuassets;
-	private Boolean ismenucontact;
-	private Boolean ismenuinterests;
-	private Boolean ismenuinvoices;
-	private Boolean ismenuorders;
-	private Boolean ismenupayments;
-	private Boolean ismenuregistrations;
-	private Boolean ismenurequests;
-	private Boolean ismenurfqs;
-	private Boolean ismenushipments;
-	private Integer mPricelistId;
-	private Integer mWarehouseId;
+	private Boolean isDefault;
+	private Integer mPriceListID;
+	private Integer mWarehouseID;
+	private Boolean menuAssets;
+	private Boolean menuContact;
+	private Boolean menuInterests;
+	private Boolean menuInvoices;
+	private Boolean menuOrders;
+	private Boolean menuPayments;
+	private Boolean menuRegistrations;
+	private Boolean menuRequests;
+	private Boolean menuRfQs;
+	private Boolean menuShipments;
 	private String name;
-	private Integer salesrepId;
+	private Integer salesRepID;
 	private String stylesheet;
+	private String uRL;
 	private String updated;
-	private Integer updatedby;
-	private String url;
-	private Integer wStoreId;
-	private String webcontext;
-	private String webinfo;
-	private String weborderemail;
-	private String webparam1;
-	private String webparam2;
-	private String webparam3;
-	private String webparam4;
-	private String webparam5;
-	private String webparam6;
-	private String wstoreemail;
-	private String wstoreuser;
-	private String wstoreuserpw;
+	private Integer updatedBy;
+	private String wStoreEMail;
+	private Integer wStoreID;
+	private String wStoreUser;
+	private String wStoreUserPW;
+	private String webContext;
+	private String webInfo;
+	private String webOrderEMail;
+	private String webParam1;
+	private String webParam2;
+	private String webParam3;
+	private String webParam4;
+	private String webParam5;
+	private String webParam6;
 
 	public WStore() {
 	}
 
-	public WStore(Integer wStoreId) {
-		this.wStoreId = wStoreId;
+	public WStore(Integer wStoreID) {
+		this.wStoreID = wStoreID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT")
-	public Integer getCPaymenttermId() {
-		return cPaymenttermId;
+	public Integer getCPaymentTermID() {
+		return cPaymentTermID;
 	}
 
-	public void setCPaymenttermId(Integer cPaymenttermId) {
-		this.cPaymenttermId = cPaymenttermId;
+	public void setCPaymentTermID(Integer cPaymentTermID) {
+		this.cPaymentTermID = cPaymentTermID;
 	}
 
 	@Basic
@@ -102,12 +112,12 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -121,22 +131,22 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=2000)
-	public String getEmailfooter() {
-		return emailfooter;
+	public String getEMailFooter() {
+		return eMailFooter;
 	}
 
-	public void setEmailfooter(String emailfooter) {
-		this.emailfooter = emailfooter;
+	public void setEMailFooter(String eMailFooter) {
+		this.eMailFooter = eMailFooter;
 	}
 
 	@Basic
 	@Column(length=2000)
-	public String getEmailheader() {
-		return emailheader;
+	public String getEMailHeader() {
+		return eMailHeader;
 	}
 
-	public void setEmailheader(String emailheader) {
-		this.emailheader = emailheader;
+	public void setEMailHeader(String eMailHeader) {
+		this.eMailHeader = eMailHeader;
 	}
 
 	@Basic
@@ -151,142 +161,132 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public Boolean isIsDefault() {
+		return isDefault;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdefault() {
-		return isdefault;
-	}
-
-	public void setIsdefault(Boolean isdefault) {
-		this.isdefault = isdefault;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmenuassets() {
-		return ismenuassets;
-	}
-
-	public void setIsmenuassets(Boolean ismenuassets) {
-		this.ismenuassets = ismenuassets;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmenucontact() {
-		return ismenucontact;
-	}
-
-	public void setIsmenucontact(Boolean ismenucontact) {
-		this.ismenucontact = ismenucontact;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmenuinterests() {
-		return ismenuinterests;
-	}
-
-	public void setIsmenuinterests(Boolean ismenuinterests) {
-		this.ismenuinterests = ismenuinterests;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmenuinvoices() {
-		return ismenuinvoices;
-	}
-
-	public void setIsmenuinvoices(Boolean ismenuinvoices) {
-		this.ismenuinvoices = ismenuinvoices;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmenuorders() {
-		return ismenuorders;
-	}
-
-	public void setIsmenuorders(Boolean ismenuorders) {
-		this.ismenuorders = ismenuorders;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmenupayments() {
-		return ismenupayments;
-	}
-
-	public void setIsmenupayments(Boolean ismenupayments) {
-		this.ismenupayments = ismenupayments;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmenuregistrations() {
-		return ismenuregistrations;
-	}
-
-	public void setIsmenuregistrations(Boolean ismenuregistrations) {
-		this.ismenuregistrations = ismenuregistrations;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmenurequests() {
-		return ismenurequests;
-	}
-
-	public void setIsmenurequests(Boolean ismenurequests) {
-		this.ismenurequests = ismenurequests;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmenurfqs() {
-		return ismenurfqs;
-	}
-
-	public void setIsmenurfqs(Boolean ismenurfqs) {
-		this.ismenurfqs = ismenurfqs;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmenushipments() {
-		return ismenushipments;
-	}
-
-	public void setIsmenushipments(Boolean ismenushipments) {
-		this.ismenushipments = ismenushipments;
+	public void setIsDefault(Boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	@Basic
 	@Column(name="M_PRICELIST_ID", columnDefinition="INT", nullable=false)
-	public Integer getMPricelistId() {
-		return mPricelistId;
+	public Integer getMPriceListID() {
+		return mPriceListID;
 	}
 
-	public void setMPricelistId(Integer mPricelistId) {
-		this.mPricelistId = mPricelistId;
+	public void setMPriceListID(Integer mPriceListID) {
+		this.mPriceListID = mPriceListID;
 	}
 
 	@Basic
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
+	}
+
+	@Basic
+	@Column(name="ISMENUASSETS", nullable=false)
+	public Boolean isMenuAssets() {
+		return menuAssets;
+	}
+
+	public void setMenuAssets(Boolean menuAssets) {
+		this.menuAssets = menuAssets;
+	}
+
+	@Basic
+	@Column(name="ISMENUCONTACT", nullable=false)
+	public Boolean isMenuContact() {
+		return menuContact;
+	}
+
+	public void setMenuContact(Boolean menuContact) {
+		this.menuContact = menuContact;
+	}
+
+	@Basic
+	@Column(name="ISMENUINTERESTS", nullable=false)
+	public Boolean isMenuInterests() {
+		return menuInterests;
+	}
+
+	public void setMenuInterests(Boolean menuInterests) {
+		this.menuInterests = menuInterests;
+	}
+
+	@Basic
+	@Column(name="ISMENUINVOICES", nullable=false)
+	public Boolean isMenuInvoices() {
+		return menuInvoices;
+	}
+
+	public void setMenuInvoices(Boolean menuInvoices) {
+		this.menuInvoices = menuInvoices;
+	}
+
+	@Basic
+	@Column(name="ISMENUORDERS", nullable=false)
+	public Boolean isMenuOrders() {
+		return menuOrders;
+	}
+
+	public void setMenuOrders(Boolean menuOrders) {
+		this.menuOrders = menuOrders;
+	}
+
+	@Basic
+	@Column(name="ISMENUPAYMENTS", nullable=false)
+	public Boolean isMenuPayments() {
+		return menuPayments;
+	}
+
+	public void setMenuPayments(Boolean menuPayments) {
+		this.menuPayments = menuPayments;
+	}
+
+	@Basic
+	@Column(name="ISMENUREGISTRATIONS", nullable=false)
+	public Boolean isMenuRegistrations() {
+		return menuRegistrations;
+	}
+
+	public void setMenuRegistrations(Boolean menuRegistrations) {
+		this.menuRegistrations = menuRegistrations;
+	}
+
+	@Basic
+	@Column(name="ISMENUREQUESTS", nullable=false)
+	public Boolean isMenuRequests() {
+		return menuRequests;
+	}
+
+	public void setMenuRequests(Boolean menuRequests) {
+		this.menuRequests = menuRequests;
+	}
+
+	@Basic
+	@Column(name="ISMENURFQS", nullable=false)
+	public Boolean isMenuRfQs() {
+		return menuRfQs;
+	}
+
+	public void setMenuRfQs(Boolean menuRfQs) {
+		this.menuRfQs = menuRfQs;
+	}
+
+	@Basic
+	@Column(name="ISMENUSHIPMENTS", nullable=false)
+	public Boolean isMenuShipments() {
+		return menuShipments;
+	}
+
+	public void setMenuShipments(Boolean menuShipments) {
+		this.menuShipments = menuShipments;
 	}
 
 	@Basic
@@ -301,12 +301,12 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="SALESREP_ID", columnDefinition="INT", nullable=false)
-	public Integer getSalesrepId() {
-		return salesrepId;
+	public Integer getSalesRepID() {
+		return salesRepID;
 	}
 
-	public void setSalesrepId(Integer salesrepId) {
-		this.salesrepId = salesrepId;
+	public void setSalesRepID(Integer salesRepID) {
+		this.salesRepID = salesRepID;
 	}
 
 	@Basic
@@ -317,6 +317,16 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 
 	public void setStylesheet(String stylesheet) {
 		this.stylesheet = stylesheet;
+	}
+
+	@Basic
+	@Column(nullable=false, length=120)
+	public String getURL() {
+		return uRL;
+	}
+
+	public void setURL(String uRL) {
+		this.uRL = uRL;
 	}
 
 	@Basic
@@ -331,153 +341,143 @@ public class WStore extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
-	@Column(nullable=false, length=120)
-	public String getUrl() {
-		return url;
+	@Column(length=60)
+	public String getWStoreEMail() {
+		return wStoreEMail;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setWStoreEMail(String wStoreEMail) {
+		this.wStoreEMail = wStoreEMail;
 	}
 
 	@Id
 	@Column(name="W_STORE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_1112", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "W_Store", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1112")
-	public Integer getWStoreId() {
-		return wStoreId;
+	public Integer getWStoreID() {
+		return wStoreID;
 	}
 
-	public void setWStoreId(Integer wStoreId) {
-		this.wStoreId = wStoreId;
-	}
-
-	@Basic
-	@Column(nullable=false, length=20)
-	public String getWebcontext() {
-		return webcontext;
-	}
-
-	public void setWebcontext(String webcontext) {
-		this.webcontext = webcontext;
-	}
-
-	@Basic
-	@Column(length=2000)
-	public String getWebinfo() {
-		return webinfo;
-	}
-
-	public void setWebinfo(String webinfo) {
-		this.webinfo = webinfo;
+	public void setWStoreID(Integer wStoreID) {
+		this.wStoreID = wStoreID;
 	}
 
 	@Basic
 	@Column(length=60)
-	public String getWeborderemail() {
-		return weborderemail;
+	public String getWStoreUser() {
+		return wStoreUser;
 	}
 
-	public void setWeborderemail(String weborderemail) {
-		this.weborderemail = weborderemail;
-	}
-
-	@Basic
-	@Column(length=2000)
-	public String getWebparam1() {
-		return webparam1;
-	}
-
-	public void setWebparam1(String webparam1) {
-		this.webparam1 = webparam1;
-	}
-
-	@Basic
-	@Column(length=2000)
-	public String getWebparam2() {
-		return webparam2;
-	}
-
-	public void setWebparam2(String webparam2) {
-		this.webparam2 = webparam2;
-	}
-
-	@Basic
-	@Column(length=2000)
-	public String getWebparam3() {
-		return webparam3;
-	}
-
-	public void setWebparam3(String webparam3) {
-		this.webparam3 = webparam3;
-	}
-
-	@Basic
-	@Column(length=2000)
-	public String getWebparam4() {
-		return webparam4;
-	}
-
-	public void setWebparam4(String webparam4) {
-		this.webparam4 = webparam4;
-	}
-
-	@Basic
-	@Column(length=2000)
-	public String getWebparam5() {
-		return webparam5;
-	}
-
-	public void setWebparam5(String webparam5) {
-		this.webparam5 = webparam5;
-	}
-
-	@Basic
-	@Column(length=2000)
-	public String getWebparam6() {
-		return webparam6;
-	}
-
-	public void setWebparam6(String webparam6) {
-		this.webparam6 = webparam6;
-	}
-
-	@Basic
-	@Column(length=60)
-	public String getWstoreemail() {
-		return wstoreemail;
-	}
-
-	public void setWstoreemail(String wstoreemail) {
-		this.wstoreemail = wstoreemail;
-	}
-
-	@Basic
-	@Column(length=60)
-	public String getWstoreuser() {
-		return wstoreuser;
-	}
-
-	public void setWstoreuser(String wstoreuser) {
-		this.wstoreuser = wstoreuser;
+	public void setWStoreUser(String wStoreUser) {
+		this.wStoreUser = wStoreUser;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getWstoreuserpw() {
-		return wstoreuserpw;
+	public String getWStoreUserPW() {
+		return wStoreUserPW;
 	}
 
-	public void setWstoreuserpw(String wstoreuserpw) {
-		this.wstoreuserpw = wstoreuserpw;
+	public void setWStoreUserPW(String wStoreUserPW) {
+		this.wStoreUserPW = wStoreUserPW;
+	}
+
+	@Basic
+	@Column(nullable=false, length=20)
+	public String getWebContext() {
+		return webContext;
+	}
+
+	public void setWebContext(String webContext) {
+		this.webContext = webContext;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getWebInfo() {
+		return webInfo;
+	}
+
+	public void setWebInfo(String webInfo) {
+		this.webInfo = webInfo;
+	}
+
+	@Basic
+	@Column(length=60)
+	public String getWebOrderEMail() {
+		return webOrderEMail;
+	}
+
+	public void setWebOrderEMail(String webOrderEMail) {
+		this.webOrderEMail = webOrderEMail;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getWebParam1() {
+		return webParam1;
+	}
+
+	public void setWebParam1(String webParam1) {
+		this.webParam1 = webParam1;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getWebParam2() {
+		return webParam2;
+	}
+
+	public void setWebParam2(String webParam2) {
+		this.webParam2 = webParam2;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getWebParam3() {
+		return webParam3;
+	}
+
+	public void setWebParam3(String webParam3) {
+		this.webParam3 = webParam3;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getWebParam4() {
+		return webParam4;
+	}
+
+	public void setWebParam4(String webParam4) {
+		this.webParam4 = webParam4;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getWebParam5() {
+		return webParam5;
+	}
+
+	public void setWebParam5(String webParam5) {
+		this.webParam5 = webParam5;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getWebParam6() {
+		return webParam6;
+	}
+
+	public void setWebParam6(String webParam6) {
+		this.webParam6 = webParam6;
 	}
 }

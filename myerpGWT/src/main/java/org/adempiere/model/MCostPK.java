@@ -16,13 +16,13 @@ public class MCostPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer adClientId;
-	public Integer adOrgId;
-	public Integer cAcctschemaId;
-	public Integer mAttributesetinstanceId;
-	public Integer mCostelementId;
-	public Integer mCosttypeId;
-	public Integer mProductId;
+	public Integer aDClientID;
+	public Integer aDOrgID;
+	public Integer cAcctSchemaID;
+	public Integer mAttributeSetInstanceID;
+	public Integer mCostElementID;
+	public Integer mCostTypeID;
+	public Integer mProductID;
 
 	public MCostPK() {
 	}
@@ -31,81 +31,81 @@ public class MCostPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
-	public Integer getMAttributesetinstanceId() {
-		return mAttributesetinstanceId;
+	public Integer getMAttributeSetInstanceID() {
+		return mAttributeSetInstanceID;
 	}
 
-	public void setMAttributesetinstanceId(Integer mAttributesetinstanceId) {
-		this.mAttributesetinstanceId = mAttributesetinstanceId;
+	public void setMAttributeSetInstanceID(Integer mAttributeSetInstanceID) {
+		this.mAttributeSetInstanceID = mAttributeSetInstanceID;
 	}
 
-	public Integer getMCostelementId() {
-		return mCostelementId;
+	public Integer getMCostElementID() {
+		return mCostElementID;
 	}
 
-	public void setMCostelementId(Integer mCostelementId) {
-		this.mCostelementId = mCostelementId;
+	public void setMCostElementID(Integer mCostElementID) {
+		this.mCostElementID = mCostElementID;
 	}
 
-	public Integer getMCosttypeId() {
-		return mCosttypeId;
+	public Integer getMCostTypeID() {
+		return mCostTypeID;
 	}
 
-	public void setMCosttypeId(Integer mCosttypeId) {
-		this.mCosttypeId = mCosttypeId;
+	public void setMCostTypeID(Integer mCostTypeID) {
+		this.mCostTypeID = mCostTypeID;
 	}
 
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	public String toString() {
-		return String.valueOf(adClientId)
-			+ "::" + String.valueOf(adOrgId)
-			+ "::" + String.valueOf(cAcctschemaId)
-			+ "::" + String.valueOf(mAttributesetinstanceId)
-			+ "::" + String.valueOf(mCostelementId)
-			+ "::" + String.valueOf(mCosttypeId)
-			+ "::" + String.valueOf(mProductId);
+		return String.valueOf(aDClientID)
+			+ "::" + String.valueOf(aDOrgID)
+			+ "::" + String.valueOf(cAcctSchemaID)
+			+ "::" + String.valueOf(mAttributeSetInstanceID)
+			+ "::" + String.valueOf(mCostElementID)
+			+ "::" + String.valueOf(mCostTypeID)
+			+ "::" + String.valueOf(mProductID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((adClientId == null) ? 0 : adClientId.hashCode());
-		rs = rs * 37 + ((adOrgId == null) ? 0 : adOrgId.hashCode());
-		rs = rs * 37 + ((cAcctschemaId == null) ? 0 : cAcctschemaId.hashCode());
-		rs = rs * 37 + ((mAttributesetinstanceId == null) ? 0 : mAttributesetinstanceId.hashCode());
-		rs = rs * 37 + ((mCostelementId == null) ? 0 : mCostelementId.hashCode());
-		rs = rs * 37 + ((mCosttypeId == null) ? 0 : mCosttypeId.hashCode());
-		rs = rs * 37 + ((mProductId == null) ? 0 : mProductId.hashCode());
+		rs = rs * 37 + ((aDClientID == null) ? 0 : aDClientID.hashCode());
+		rs = rs * 37 + ((aDOrgID == null) ? 0 : aDOrgID.hashCode());
+		rs = rs * 37 + ((cAcctSchemaID == null) ? 0 : cAcctSchemaID.hashCode());
+		rs = rs * 37 + ((mAttributeSetInstanceID == null) ? 0 : mAttributeSetInstanceID.hashCode());
+		rs = rs * 37 + ((mCostElementID == null) ? 0 : mCostElementID.hashCode());
+		rs = rs * 37 + ((mCostTypeID == null) ? 0 : mCostTypeID.hashCode());
+		rs = rs * 37 + ((mProductID == null) ? 0 : mProductID.hashCode());
 		return rs;
 	}
 
@@ -116,59 +116,59 @@ public class MCostPK implements Serializable {
 			return false;
 
 		MCostPK other = (MCostPK) obj;
-		return ((adClientId == null && other.adClientId == null)
-			|| (adClientId != null && adClientId.equals(other.adClientId)))
-			&& ((adOrgId == null && other.adOrgId == null)
-			|| (adOrgId != null && adOrgId.equals(other.adOrgId)))
-			&& ((cAcctschemaId == null && other.cAcctschemaId == null)
-			|| (cAcctschemaId != null && cAcctschemaId.equals(other.cAcctschemaId)))
-			&& ((mAttributesetinstanceId == null && other.mAttributesetinstanceId == null)
-			|| (mAttributesetinstanceId != null && mAttributesetinstanceId.equals(other.mAttributesetinstanceId)))
-			&& ((mCostelementId == null && other.mCostelementId == null)
-			|| (mCostelementId != null && mCostelementId.equals(other.mCostelementId)))
-			&& ((mCosttypeId == null && other.mCosttypeId == null)
-			|| (mCosttypeId != null && mCosttypeId.equals(other.mCosttypeId)))
-			&& ((mProductId == null && other.mProductId == null)
-			|| (mProductId != null && mProductId.equals(other.mProductId)));
+		return ((aDClientID == null && other.aDClientID == null)
+			|| (aDClientID != null && aDClientID.equals(other.aDClientID)))
+			&& ((aDOrgID == null && other.aDOrgID == null)
+			|| (aDOrgID != null && aDOrgID.equals(other.aDOrgID)))
+			&& ((cAcctSchemaID == null && other.cAcctSchemaID == null)
+			|| (cAcctSchemaID != null && cAcctSchemaID.equals(other.cAcctSchemaID)))
+			&& ((mAttributeSetInstanceID == null && other.mAttributeSetInstanceID == null)
+			|| (mAttributeSetInstanceID != null && mAttributeSetInstanceID.equals(other.mAttributeSetInstanceID)))
+			&& ((mCostElementID == null && other.mCostElementID == null)
+			|| (mCostElementID != null && mCostElementID.equals(other.mCostElementID)))
+			&& ((mCostTypeID == null && other.mCostTypeID == null)
+			|| (mCostTypeID != null && mCostTypeID.equals(other.mCostTypeID)))
+			&& ((mProductID == null && other.mProductID == null)
+			|| (mProductID != null && mProductID.equals(other.mProductID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			adClientId = null;
+			aDClientID = null;
 		else
-			adClientId = new Integer(str);
+			aDClientID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			adOrgId = null;
+			aDOrgID = null;
 		else
-			adOrgId = new Integer(str);
+			aDOrgID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cAcctschemaId = null;
+			cAcctSchemaID = null;
 		else
-			cAcctschemaId = new Integer(str);
+			cAcctSchemaID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mAttributesetinstanceId = null;
+			mAttributeSetInstanceID = null;
 		else
-			mAttributesetinstanceId = new Integer(str);
+			mAttributeSetInstanceID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mCostelementId = null;
+			mCostElementID = null;
 		else
-			mCostelementId = new Integer(str);
+			mCostElementID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mCosttypeId = null;
+			mCostTypeID = null;
 		else
-			mCosttypeId = new Integer(str);
+			mCostTypeID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mProductId = null;
+			mProductID = null;
 		else
-			mProductId = new Integer(str);
+			mProductID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

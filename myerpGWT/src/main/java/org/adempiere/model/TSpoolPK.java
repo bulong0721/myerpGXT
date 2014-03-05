@@ -16,8 +16,8 @@ public class TSpoolPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer adPinstanceId;
-	public Integer seqno;
+	public Integer aDPInstanceID;
+	public Integer seqNo;
 
 	public TSpoolPK() {
 	}
@@ -26,31 +26,31 @@ public class TSpoolPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getAdPinstanceId() {
-		return adPinstanceId;
+	public Integer getADPInstanceID() {
+		return aDPInstanceID;
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
-		this.adPinstanceId = adPinstanceId;
+	public void setADPInstanceID(Integer aDPInstanceID) {
+		this.aDPInstanceID = aDPInstanceID;
 	}
 
-	public Integer getSeqno() {
-		return seqno;
+	public Integer getSeqNo() {
+		return seqNo;
 	}
 
-	public void setSeqno(Integer seqno) {
-		this.seqno = seqno;
+	public void setSeqNo(Integer seqNo) {
+		this.seqNo = seqNo;
 	}
 
 	public String toString() {
-		return String.valueOf(adPinstanceId)
-			+ "::" + String.valueOf(seqno);
+		return String.valueOf(aDPInstanceID)
+			+ "::" + String.valueOf(seqNo);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((adPinstanceId == null) ? 0 : adPinstanceId.hashCode());
-		rs = rs * 37 + ((seqno == null) ? 0 : seqno.hashCode());
+		rs = rs * 37 + ((aDPInstanceID == null) ? 0 : aDPInstanceID.hashCode());
+		rs = rs * 37 + ((seqNo == null) ? 0 : seqNo.hashCode());
 		return rs;
 	}
 
@@ -61,24 +61,24 @@ public class TSpoolPK implements Serializable {
 			return false;
 
 		TSpoolPK other = (TSpoolPK) obj;
-		return ((adPinstanceId == null && other.adPinstanceId == null)
-			|| (adPinstanceId != null && adPinstanceId.equals(other.adPinstanceId)))
-			&& ((seqno == null && other.seqno == null)
-			|| (seqno != null && seqno.equals(other.seqno)));
+		return ((aDPInstanceID == null && other.aDPInstanceID == null)
+			|| (aDPInstanceID != null && aDPInstanceID.equals(other.aDPInstanceID)))
+			&& ((seqNo == null && other.seqNo == null)
+			|| (seqNo != null && seqNo.equals(other.seqNo)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			adPinstanceId = null;
+			aDPInstanceID = null;
 		else
-			adPinstanceId = new Integer(str);
+			aDPInstanceID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			seqno = null;
+			seqNo = null;
 		else
-			seqno = new Integer(str);
+			seqNo = new Integer(str);
 	}
 
 	protected static class Tokenizer {

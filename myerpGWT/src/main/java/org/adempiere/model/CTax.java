@@ -11,111 +11,121 @@ import javax.persistence.*;
 @Table(name="c_tax")
 public class CTax extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adRuleId;
-	private Integer cCountryId;
-	private Integer cRegionId;
-	private Integer cTaxId;
-	private Integer cTaxcategoryId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDRuleID;
+	private Boolean active;
+	private Integer cCountryID;
+	private Integer cRegionID;
+	private Integer cTaxCategoryID;
+	private Integer cTaxID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Boolean isdefault;
-	private Boolean isdocumentlevel;
-	private Boolean issalestax;
-	private Boolean issummary;
-	private Boolean istaxexempt;
+	private Boolean documentLevel;
+	private Boolean isDefault;
 	private String name;
-	private Integer parentTaxId;
+	private Integer parentTaxID;
 	private BigDecimal rate;
-	private Boolean requirestaxcertificate;
-	private String sopotype;
-	private String taxindicator;
-	private Integer toCountryId;
-	private Integer toRegionId;
+	private Boolean requiresTaxCertificate;
+	private String sOPOType;
+	private Boolean salesTax;
+	private Boolean summary;
+	private Boolean taxExempt;
+	private String taxIndicator;
+	private Integer toCountryID;
+	private Integer toRegionID;
 	private String updated;
-	private Integer updatedby;
-	private String validfrom;
+	private Integer updatedBy;
+	private String validFrom;
 
 	public CTax() {
 	}
 
-	public CTax(Integer cTaxId) {
-		this.cTaxId = cTaxId;
+	public CTax(Integer cTaxID) {
+		this.cTaxID = cTaxID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_RULE_ID", columnDefinition="INT")
-	public Integer getAdRuleId() {
-		return adRuleId;
+	public Integer getADRuleID() {
+		return aDRuleID;
 	}
 
-	public void setAdRuleId(Integer adRuleId) {
-		this.adRuleId = adRuleId;
+	public void setADRuleID(Integer aDRuleID) {
+		this.aDRuleID = aDRuleID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_COUNTRY_ID", columnDefinition="INT")
-	public Integer getCCountryId() {
-		return cCountryId;
+	public Integer getCCountryID() {
+		return cCountryID;
 	}
 
-	public void setCCountryId(Integer cCountryId) {
-		this.cCountryId = cCountryId;
+	public void setCCountryID(Integer cCountryID) {
+		this.cCountryID = cCountryID;
 	}
 
 	@Basic
 	@Column(name="C_REGION_ID", columnDefinition="INT")
-	public Integer getCRegionId() {
-		return cRegionId;
+	public Integer getCRegionID() {
+		return cRegionID;
 	}
 
-	public void setCRegionId(Integer cRegionId) {
-		this.cRegionId = cRegionId;
+	public void setCRegionID(Integer cRegionID) {
+		this.cRegionID = cRegionID;
+	}
+
+	@Basic
+	@Column(name="C_TAXCATEGORY_ID", columnDefinition="INT", nullable=false)
+	public Integer getCTaxCategoryID() {
+		return cTaxCategoryID;
+	}
+
+	public void setCTaxCategoryID(Integer cTaxCategoryID) {
+		this.cTaxCategoryID = cTaxCategoryID;
 	}
 
 	@Id
 	@Column(name="C_TAX_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_174", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Tax", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_174")
-	public Integer getCTaxId() {
-		return cTaxId;
+	public Integer getCTaxID() {
+		return cTaxID;
 	}
 
-	public void setCTaxId(Integer cTaxId) {
-		this.cTaxId = cTaxId;
-	}
-
-	@Basic
-	@Column(name="C_TAXCATEGORY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCTaxcategoryId() {
-		return cTaxcategoryId;
-	}
-
-	public void setCTaxcategoryId(Integer cTaxcategoryId) {
-		this.cTaxcategoryId = cTaxcategoryId;
+	public void setCTaxID(Integer cTaxID) {
+		this.cTaxID = cTaxID;
 	}
 
 	@Basic
@@ -130,12 +140,12 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -148,63 +158,23 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	@Column(name="ISDOCUMENTLEVEL", nullable=false)
+	public Boolean isDocumentLevel() {
+		return documentLevel;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdefault() {
-		return isdefault;
-	}
-
-	public void setIsdefault(Boolean isdefault) {
-		this.isdefault = isdefault;
+	public void setDocumentLevel(Boolean documentLevel) {
+		this.documentLevel = documentLevel;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsdocumentlevel() {
-		return isdocumentlevel;
+	public Boolean isIsDefault() {
+		return isDefault;
 	}
 
-	public void setIsdocumentlevel(Boolean isdocumentlevel) {
-		this.isdocumentlevel = isdocumentlevel;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIssalestax() {
-		return issalestax;
-	}
-
-	public void setIssalestax(Boolean issalestax) {
-		this.issalestax = issalestax;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIssummary() {
-		return issummary;
-	}
-
-	public void setIssummary(Boolean issummary) {
-		this.issummary = issummary;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIstaxexempt() {
-		return istaxexempt;
-	}
-
-	public void setIstaxexempt(Boolean istaxexempt) {
-		this.istaxexempt = istaxexempt;
+	public void setIsDefault(Boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	@Basic
@@ -219,12 +189,12 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="PARENT_TAX_ID", columnDefinition="INT")
-	public Integer getParentTaxId() {
-		return parentTaxId;
+	public Integer getParentTaxID() {
+		return parentTaxID;
 	}
 
-	public void setParentTaxId(Integer parentTaxId) {
-		this.parentTaxId = parentTaxId;
+	public void setParentTaxID(Integer parentTaxID) {
+		this.parentTaxID = parentTaxID;
 	}
 
 	@Basic
@@ -239,52 +209,82 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isRequirestaxcertificate() {
-		return requirestaxcertificate;
+	public Boolean isRequiresTaxCertificate() {
+		return requiresTaxCertificate;
 	}
 
-	public void setRequirestaxcertificate(Boolean requirestaxcertificate) {
-		this.requirestaxcertificate = requirestaxcertificate;
+	public void setRequiresTaxCertificate(Boolean requiresTaxCertificate) {
+		this.requiresTaxCertificate = requiresTaxCertificate;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getSopotype() {
-		return sopotype;
+	public String getSOPOType() {
+		return sOPOType;
 	}
 
-	public void setSopotype(String sopotype) {
-		this.sopotype = sopotype;
+	public void setSOPOType(String sOPOType) {
+		this.sOPOType = sOPOType;
+	}
+
+	@Basic
+	@Column(name="ISSALESTAX", nullable=false)
+	public Boolean isSalesTax() {
+		return salesTax;
+	}
+
+	public void setSalesTax(Boolean salesTax) {
+		this.salesTax = salesTax;
+	}
+
+	@Basic
+	@Column(name="ISSUMMARY", nullable=false)
+	public Boolean isSummary() {
+		return summary;
+	}
+
+	public void setSummary(Boolean summary) {
+		this.summary = summary;
+	}
+
+	@Basic
+	@Column(name="ISTAXEXEMPT", nullable=false)
+	public Boolean isTaxExempt() {
+		return taxExempt;
+	}
+
+	public void setTaxExempt(Boolean taxExempt) {
+		this.taxExempt = taxExempt;
 	}
 
 	@Basic
 	@Column(length=10)
-	public String getTaxindicator() {
-		return taxindicator;
+	public String getTaxIndicator() {
+		return taxIndicator;
 	}
 
-	public void setTaxindicator(String taxindicator) {
-		this.taxindicator = taxindicator;
+	public void setTaxIndicator(String taxIndicator) {
+		this.taxIndicator = taxIndicator;
 	}
 
 	@Basic
 	@Column(name="TO_COUNTRY_ID", columnDefinition="INT")
-	public Integer getToCountryId() {
-		return toCountryId;
+	public Integer getToCountryID() {
+		return toCountryID;
 	}
 
-	public void setToCountryId(Integer toCountryId) {
-		this.toCountryId = toCountryId;
+	public void setToCountryID(Integer toCountryID) {
+		this.toCountryID = toCountryID;
 	}
 
 	@Basic
 	@Column(name="TO_REGION_ID", columnDefinition="INT")
-	public Integer getToRegionId() {
-		return toRegionId;
+	public Integer getToRegionID() {
+		return toRegionID;
 	}
 
-	public void setToRegionId(Integer toRegionId) {
-		this.toRegionId = toRegionId;
+	public void setToRegionID(Integer toRegionID) {
+		this.toRegionID = toRegionID;
 	}
 
 	@Basic
@@ -299,21 +299,21 @@ public class CTax extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getValidfrom() {
-		return validfrom;
+	public String getValidFrom() {
+		return validFrom;
 	}
 
-	public void setValidfrom(String validfrom) {
-		this.validfrom = validfrom;
+	public void setValidFrom(String validFrom) {
+		this.validFrom = validFrom;
 	}
 }

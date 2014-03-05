@@ -16,8 +16,8 @@ public class CTaxAcctPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer cAcctschemaId;
-	public Integer cTaxId;
+	public Integer cAcctSchemaID;
+	public Integer cTaxID;
 
 	public CTaxAcctPK() {
 	}
@@ -26,31 +26,31 @@ public class CTaxAcctPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
-	public Integer getCTaxId() {
-		return cTaxId;
+	public Integer getCTaxID() {
+		return cTaxID;
 	}
 
-	public void setCTaxId(Integer cTaxId) {
-		this.cTaxId = cTaxId;
+	public void setCTaxID(Integer cTaxID) {
+		this.cTaxID = cTaxID;
 	}
 
 	public String toString() {
-		return String.valueOf(cAcctschemaId)
-			+ "::" + String.valueOf(cTaxId);
+		return String.valueOf(cAcctSchemaID)
+			+ "::" + String.valueOf(cTaxID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((cAcctschemaId == null) ? 0 : cAcctschemaId.hashCode());
-		rs = rs * 37 + ((cTaxId == null) ? 0 : cTaxId.hashCode());
+		rs = rs * 37 + ((cAcctSchemaID == null) ? 0 : cAcctSchemaID.hashCode());
+		rs = rs * 37 + ((cTaxID == null) ? 0 : cTaxID.hashCode());
 		return rs;
 	}
 
@@ -61,24 +61,24 @@ public class CTaxAcctPK implements Serializable {
 			return false;
 
 		CTaxAcctPK other = (CTaxAcctPK) obj;
-		return ((cAcctschemaId == null && other.cAcctschemaId == null)
-			|| (cAcctschemaId != null && cAcctschemaId.equals(other.cAcctschemaId)))
-			&& ((cTaxId == null && other.cTaxId == null)
-			|| (cTaxId != null && cTaxId.equals(other.cTaxId)));
+		return ((cAcctSchemaID == null && other.cAcctSchemaID == null)
+			|| (cAcctSchemaID != null && cAcctSchemaID.equals(other.cAcctSchemaID)))
+			&& ((cTaxID == null && other.cTaxID == null)
+			|| (cTaxID != null && cTaxID.equals(other.cTaxID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cAcctschemaId = null;
+			cAcctSchemaID = null;
 		else
-			cAcctschemaId = new Integer(str);
+			cAcctSchemaID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cTaxId = null;
+			cTaxID = null;
 		else
-			cTaxId = new Integer(str);
+			cTaxID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

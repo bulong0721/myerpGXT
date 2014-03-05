@@ -10,57 +10,67 @@ import javax.persistence.*;
 @Table(name="a_depreciation_method")
 public class ADepreciationMethod extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aDepreciationMethodId;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDepreciationMethodID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private String depreciationtype;
+	private Integer createdBy;
+	private String depreciationType;
 	private String description;
-	private Boolean isactive;
 	private String name;
 	private Boolean processed;
 	private String text;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public ADepreciationMethod() {
 	}
 
-	public ADepreciationMethod(Integer aDepreciationMethodId) {
-		this.aDepreciationMethodId = aDepreciationMethodId;
+	public ADepreciationMethod(Integer aDepreciationMethodID) {
+		this.aDepreciationMethodID = aDepreciationMethodID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Id
 	@Column(name="A_DEPRECIATION_METHOD_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53144", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Method", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53144")
-	public Integer getADepreciationMethodId() {
-		return aDepreciationMethodId;
+	public Integer getADepreciationMethodID() {
+		return aDepreciationMethodID;
 	}
 
-	public void setADepreciationMethodId(Integer aDepreciationMethodId) {
-		this.aDepreciationMethodId = aDepreciationMethodId;
-	}
-
-	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
-	}
-
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADepreciationMethodID(Integer aDepreciationMethodID) {
+		this.aDepreciationMethodID = aDepreciationMethodID;
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -75,22 +85,22 @@ public class ADepreciationMethod extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(length=10)
-	public String getDepreciationtype() {
-		return depreciationtype;
+	public String getDepreciationType() {
+		return depreciationType;
 	}
 
-	public void setDepreciationtype(String depreciationtype) {
-		this.depreciationtype = depreciationtype;
+	public void setDepreciationType(String depreciationType) {
+		this.depreciationType = depreciationType;
 	}
 
 	@Basic
@@ -101,16 +111,6 @@ public class ADepreciationMethod extends org.adempiere.common.ADEntityBase {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
 	}
 
 	@Basic
@@ -155,11 +155,11 @@ public class ADepreciationMethod extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

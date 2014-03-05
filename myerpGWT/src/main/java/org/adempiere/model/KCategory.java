@@ -10,43 +10,53 @@ import javax.persistence.*;
 @Table(name="k_category")
 public class KCategory extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
 	private String help;
-	private Boolean isactive;
-	private Integer kCategoryId;
+	private Integer kCategoryID;
 	private String name;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public KCategory() {
 	}
 
-	public KCategory(Integer kCategoryId) {
-		this.kCategoryId = kCategoryId;
+	public KCategory(Integer kCategoryID) {
+		this.kCategoryID = kCategoryID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -61,12 +71,12 @@ public class KCategory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -88,26 +98,16 @@ public class KCategory extends org.adempiere.common.ADEntityBase {
 		this.help = help;
 	}
 
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
 	@Id
 	@Column(name="K_CATEGORY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_784", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Category", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_784")
-	public Integer getKCategoryId() {
-		return kCategoryId;
+	public Integer getKCategoryID() {
+		return kCategoryID;
 	}
 
-	public void setKCategoryId(Integer kCategoryId) {
-		this.kCategoryId = kCategoryId;
+	public void setKCategoryID(Integer kCategoryID) {
+		this.kCategoryID = kCategoryID;
 	}
 
 	@Basic
@@ -132,11 +132,11 @@ public class KCategory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

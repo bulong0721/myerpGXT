@@ -3,8 +3,8 @@ package org.adempiere.process;
 import java.util.List;
 
 import org.adempiere.common.AdempiereUserError;
-import org.adempiere.model.AdField;
-import org.adempiere.model.AdTab;
+import org.adempiere.model.ADField;
+import org.adempiere.model.ADTab;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
 
@@ -27,17 +27,17 @@ public class WindowCopy extends ServerProcess {
 			throw new AdempiereUserError("@NotFound@ (to<-) @AD_Window_ID@");
 		int tabCount = 0;
 		int fieldCount = 0;
-		List<AdTab> srcTabs = POUtil.queryTabsByWindow(context, srcWindowId);
-		for (AdTab srcTab : srcTabs) {
-			AdTab newTab = DTOUtil.copyTab(srcTab, desWindowId);
-			newTab.setAdTabId(null);
+		List<ADTab> srcTabs = POUtil.queryTabsByWindow(context, srcWindowId);
+		for (ADTab srcTab : srcTabs) {
+			ADTab newTab = DTOUtil.copyTab(srcTab, desWindowId);
+			newTab.setADTabID(null);
 			POUtil.persist(context, newTab);
 			Integer newTabId = (Integer) POUtil.getIdentifier(context, newTab);
-			List<AdField> srcFields = POUtil.queryFieldsByTabId(context, srcTab.getAdTabId());
+			List<ADField> srcFields = POUtil.queryFieldsByTabId(context, srcTab.getADTabID());
 			tabCount++;
-			for (AdField srcField : srcFields) {
-				AdField descField = DTOUtil.copyField(srcField, newTabId);
-				descField.setAdFieldId(null);
+			for (ADField srcField : srcFields) {
+				ADField descField = DTOUtil.copyField(srcField, newTabId);
+				descField.setADFieldID(null);
 				if (POUtil.persist(context, descField)) {
 					fieldCount++;
 				} else {

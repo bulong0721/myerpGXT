@@ -11,70 +11,80 @@ import javax.persistence.*;
 @Table(name="m_product_category")
 public class MProductCategory extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetGroupId;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adPrintcolorId;
+	private Integer aAssetGroupID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDPrintColorID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Boolean isdefault;
-	private Boolean isselfservice;
-	private Integer mProductCategoryId;
-	private Integer mProductCategoryParentId;
-	private String mmpolicy;
+	private Boolean isDefault;
+	private String mMPolicy;
+	private Integer mProductCategoryID;
+	private Integer mProductCategoryParentID;
 	private String name;
-	private BigDecimal plannedmargin;
+	private BigDecimal plannedMargin;
+	private Boolean selfService;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 	private String value;
 
 	public MProductCategory() {
 	}
 
-	public MProductCategory(Integer mProductCategoryId) {
-		this.mProductCategoryId = mProductCategoryId;
+	public MProductCategory(Integer mProductCategoryID) {
+		this.mProductCategoryID = mProductCategoryID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_GROUP_ID", columnDefinition="INT")
-	public Integer getAAssetGroupId() {
-		return aAssetGroupId;
+	public Integer getAAssetGroupID() {
+		return aAssetGroupID;
 	}
 
-	public void setAAssetGroupId(Integer aAssetGroupId) {
-		this.aAssetGroupId = aAssetGroupId;
+	public void setAAssetGroupID(Integer aAssetGroupID) {
+		this.aAssetGroupID = aAssetGroupID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_PRINTCOLOR_ID", columnDefinition="INT")
-	public Integer getAdPrintcolorId() {
-		return adPrintcolorId;
+	public Integer getADPrintColorID() {
+		return aDPrintColorID;
 	}
 
-	public void setAdPrintcolorId(Integer adPrintcolorId) {
-		this.adPrintcolorId = adPrintcolorId;
+	public void setADPrintColorID(Integer aDPrintColorID) {
+		this.aDPrintColorID = aDPrintColorID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -89,12 +99,12 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -108,64 +118,44 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public Boolean isIsDefault() {
+		return isDefault;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdefault() {
-		return isdefault;
-	}
-
-	public void setIsdefault(Boolean isdefault) {
-		this.isdefault = isdefault;
+	public void setIsDefault(Boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsselfservice() {
-		return isselfservice;
+	@Column(nullable=false, length=1)
+	public String getMMPolicy() {
+		return mMPolicy;
 	}
 
-	public void setIsselfservice(Boolean isselfservice) {
-		this.isselfservice = isselfservice;
+	public void setMMPolicy(String mMPolicy) {
+		this.mMPolicy = mMPolicy;
 	}
 
 	@Id
 	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_115", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Product_Category", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_115")
-	public Integer getMProductCategoryId() {
-		return mProductCategoryId;
+	public Integer getMProductCategoryID() {
+		return mProductCategoryID;
 	}
 
-	public void setMProductCategoryId(Integer mProductCategoryId) {
-		this.mProductCategoryId = mProductCategoryId;
+	public void setMProductCategoryID(Integer mProductCategoryID) {
+		this.mProductCategoryID = mProductCategoryID;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_CATEGORY_PARENT_ID", columnDefinition="INT")
-	public Integer getMProductCategoryParentId() {
-		return mProductCategoryParentId;
+	public Integer getMProductCategoryParentID() {
+		return mProductCategoryParentID;
 	}
 
-	public void setMProductCategoryParentId(Integer mProductCategoryParentId) {
-		this.mProductCategoryParentId = mProductCategoryParentId;
-	}
-
-	@Basic
-	@Column(nullable=false, length=1)
-	public String getMmpolicy() {
-		return mmpolicy;
-	}
-
-	public void setMmpolicy(String mmpolicy) {
-		this.mmpolicy = mmpolicy;
+	public void setMProductCategoryParentID(Integer mProductCategoryParentID) {
+		this.mProductCategoryParentID = mProductCategoryParentID;
 	}
 
 	@Basic
@@ -180,12 +170,22 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getPlannedmargin() {
-		return plannedmargin;
+	public BigDecimal getPlannedMargin() {
+		return plannedMargin;
 	}
 
-	public void setPlannedmargin(BigDecimal plannedmargin) {
-		this.plannedmargin = plannedmargin;
+	public void setPlannedMargin(BigDecimal plannedMargin) {
+		this.plannedMargin = plannedMargin;
+	}
+
+	@Basic
+	@Column(name="ISSELFSERVICE", nullable=false)
+	public Boolean isSelfService() {
+		return selfService;
+	}
+
+	public void setSelfService(Boolean selfService) {
+		this.selfService = selfService;
 	}
 
 	@Basic
@@ -200,12 +200,12 @@ public class MProductCategory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic

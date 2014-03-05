@@ -13,7 +13,7 @@ public final class ContextUtil {
 	 */
 	public static Object getDefaultValue(ADFieldModel field) {
 		// TODO undone
-		String defaultString = field.getDefaultvalue();
+		String defaultString = field.getDefaultValue();
 		if (defaultString.startsWith("@")) {
 			String varName = StringUtil.strip(defaultString, "@#$");
 			return getVariable(varName);

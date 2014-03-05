@@ -101,7 +101,7 @@
 //	@Override
 //	public boolean isColumnPrinted(int col) {
 //		AdPrintformatitem item = printFormat.getItem(col);
-//		return StringUtil.isYes(item.getIsprinted());
+//		return item.isIsprinted();
 //	}
 //
 //	@Override
@@ -148,7 +148,7 @@
 //		}
 //		//
 //		// Set Landscape/Portrait:
-//		sheet.getPrintSetup().setLandscape(StringUtil.isYes(paper.getIslandscape()));
+//		sheet.getPrintSetup().setLandscape(paper.isIslandscape());
 //		//
 //		// Set Paper Margin:
 //		sheet.setMargin(HSSFSheet.TopMargin, ((double) paper.getMargintop()) / 72);

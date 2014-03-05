@@ -13,97 +13,97 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private String aCity;
 	private String aCountry;
-	private String aEmail;
-	private String aIdentDl;
-	private String aIdentSsn;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDOrgTrxID;
+	private String aEMail;
+	private String aIdentDL;
+	private String aIdentSSN;
 	private String aName;
 	private String aState;
 	private String aStreet;
 	private String aZip;
-	private String accountno;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adOrgtrxId;
-	private Integer cActivityId;
-	private Integer cBankaccountId;
-	private Integer cBpBankaccountId;
-	private Integer cBpartnerId;
-	private Integer cCampaignId;
-	private Integer cCashbookId;
-	private Integer cChargeId;
-	private Integer cConversiontypeId;
-	private Integer cCurrencyId;
-	private Integer cDoctypeId;
-	private Integer cInvoiceId;
-	private Integer cOrderId;
-	private Integer cPaymentId;
-	private Integer cPaymentbatchId;
-	private Integer cProjectId;
-	private BigDecimal chargeamt;
-	private String checkno;
+	private String accountNo;
+	private Boolean active;
+	private Boolean allocated;
+	private Boolean approved;
+	private Integer cActivityID;
+	private Integer cBPBankAccountID;
+	private Integer cBPartnerID;
+	private Integer cBankAccountID;
+	private Integer cCampaignID;
+	private Integer cCashBookID;
+	private Integer cChargeID;
+	private Integer cConversionTypeID;
+	private Integer cCurrencyID;
+	private Integer cDocTypeID;
+	private Integer cInvoiceID;
+	private Integer cOrderID;
+	private Integer cPaymentBatchID;
+	private Integer cPaymentID;
+	private Integer cProjectID;
+	private BigDecimal chargeAmt;
+	private String checkNo;
 	private String created;
-	private Integer createdby;
-	private Integer creditcardexpmm;
-	private Integer creditcardexpyy;
-	private String creditcardnumber;
-	private String creditcardtype;
-	private String creditcardvv;
-	private String dateacct;
-	private String datetrx;
+	private Integer createdBy;
+	private Integer creditCardExpMM;
+	private Integer creditCardExpYY;
+	private String creditCardNumber;
+	private String creditCardType;
+	private String creditCardVV;
+	private String dateAcct;
+	private String dateTrx;
+	private Boolean delayedCapture;
 	private String description;
-	private BigDecimal discountamt;
-	private String docaction;
-	private String docstatus;
-	private String documentno;
-	private Boolean isactive;
-	private Boolean isallocated;
-	private Boolean isapproved;
-	private Boolean isdelayedcapture;
-	private Boolean isonline;
-	private Boolean isoverunderpayment;
-	private Boolean isprepayment;
-	private Boolean isreceipt;
-	private Boolean isreconciled;
-	private Boolean isselfservice;
+	private BigDecimal discountAmt;
+	private String docAction;
+	private String docStatus;
+	private String documentNo;
 	private String micr;
-	private Boolean oprocessing;
-	private String origTrxid;
-	private BigDecimal overunderamt;
-	private BigDecimal payamt;
-	private String ponum;
+	private Boolean oProcessing;
+	private Boolean online;
+	private String origTrxID;
+	private BigDecimal overUnderAmt;
+	private Boolean overUnderPayment;
+	private String pONum;
+	private BigDecimal payAmt;
 	private Boolean posted;
+	private Boolean prepayment;
 	private Boolean processed;
-	private Long processedon;
+	private Long processedOn;
 	private Boolean processing;
-	private String rAuthcode;
-	private String rAuthcodeDc;
-	private String rAvsaddr;
-	private String rAvszip;
-	private Boolean rCvv2match;
+	private String rAuthCode;
+	private String rAuthCodeDC;
+	private String rAvsAddr;
+	private String rAvsZip;
+	private Boolean rCVV2Match;
 	private String rInfo;
-	private String rPnref;
-	private String rPnrefDc;
-	private String rRespmsg;
+	private String rPnRef;
+	private String rPnRefDC;
+	private String rRespMsg;
 	private String rResult;
-	private Integer refPaymentId;
-	private Integer reversalId;
-	private String routingno;
+	private Boolean receipt;
+	private Boolean reconciled;
+	private Integer refPaymentID;
+	private Integer reversalID;
+	private String routingNo;
+	private Boolean selfService;
 	private String swipe;
-	private BigDecimal taxamt;
-	private String tendertype;
-	private String trxtype;
+	private BigDecimal taxAmt;
+	private String tenderType;
+	private String trxType;
 	private String updated;
-	private Integer updatedby;
-	private Integer user1Id;
-	private Integer user2Id;
-	private String voiceauthcode;
-	private BigDecimal writeoffamt;
+	private Integer updatedBy;
+	private Integer user1ID;
+	private Integer user2ID;
+	private String voiceAuthCode;
+	private BigDecimal writeOffAmt;
 
 	public CPayment() {
 	}
 
-	public CPayment(Integer cPaymentId) {
-		this.cPaymentId = cPaymentId;
+	public CPayment(Integer cPaymentID) {
+		this.cPaymentID = cPaymentID;
 	}
 
 	@Basic
@@ -127,33 +127,63 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="A_EMAIL", length=60)
-	public String getAEmail() {
-		return aEmail;
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAEmail(String aEmail) {
-		this.aEmail = aEmail;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
+	public Integer getADOrgTrxID() {
+		return aDOrgTrxID;
+	}
+
+	public void setADOrgTrxID(Integer aDOrgTrxID) {
+		this.aDOrgTrxID = aDOrgTrxID;
+	}
+
+	@Basic
+	@Column(name="A_EMAIL", length=60)
+	public String getAEMail() {
+		return aEMail;
+	}
+
+	public void setAEMail(String aEMail) {
+		this.aEMail = aEMail;
 	}
 
 	@Basic
 	@Column(name="A_IDENT_DL", length=20)
-	public String getAIdentDl() {
-		return aIdentDl;
+	public String getAIdentDL() {
+		return aIdentDL;
 	}
 
-	public void setAIdentDl(String aIdentDl) {
-		this.aIdentDl = aIdentDl;
+	public void setAIdentDL(String aIdentDL) {
+		this.aIdentDL = aIdentDL;
 	}
 
 	@Basic
 	@Column(name="A_IDENT_SSN", length=20)
-	public String getAIdentSsn() {
-		return aIdentSsn;
+	public String getAIdentSSN() {
+		return aIdentSSN;
 	}
 
-	public void setAIdentSsn(String aIdentSsn) {
-		this.aIdentSsn = aIdentSsn;
+	public void setAIdentSSN(String aIdentSSN) {
+		this.aIdentSSN = aIdentSSN;
 	}
 
 	@Basic
@@ -198,213 +228,213 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=20)
-	public String getAccountno() {
-		return accountno;
+	public String getAccountNo() {
+		return accountNo;
 	}
 
-	public void setAccountno(String accountno) {
-		this.accountno = accountno;
-	}
-
-	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
-	}
-
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setAccountNo(String accountNo) {
+		this.accountNo = accountNo;
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
-	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
-	public Integer getAdOrgtrxId() {
-		return adOrgtrxId;
+	@Column(name="ISALLOCATED", nullable=false)
+	public Boolean isAllocated() {
+		return allocated;
 	}
 
-	public void setAdOrgtrxId(Integer adOrgtrxId) {
-		this.adOrgtrxId = adOrgtrxId;
+	public void setAllocated(Boolean allocated) {
+		this.allocated = allocated;
+	}
+
+	@Basic
+	@Column(name="ISAPPROVED", nullable=false)
+	public Boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
 	}
 
 	@Basic
 	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
-	public Integer getCActivityId() {
-		return cActivityId;
+	public Integer getCActivityID() {
+		return cActivityID;
 	}
 
-	public void setCActivityId(Integer cActivityId) {
-		this.cActivityId = cActivityId;
-	}
-
-	@Basic
-	@Column(name="C_BANKACCOUNT_ID", columnDefinition="INT")
-	public Integer getCBankaccountId() {
-		return cBankaccountId;
-	}
-
-	public void setCBankaccountId(Integer cBankaccountId) {
-		this.cBankaccountId = cBankaccountId;
+	public void setCActivityID(Integer cActivityID) {
+		this.cActivityID = cActivityID;
 	}
 
 	@Basic
 	@Column(name="C_BP_BANKACCOUNT_ID", columnDefinition="INT")
-	public Integer getCBpBankaccountId() {
-		return cBpBankaccountId;
+	public Integer getCBPBankAccountID() {
+		return cBPBankAccountID;
 	}
 
-	public void setCBpBankaccountId(Integer cBpBankaccountId) {
-		this.cBpBankaccountId = cBpBankaccountId;
+	public void setCBPBankAccountID(Integer cBPBankAccountID) {
+		this.cBPBankAccountID = cBPBankAccountID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
+	}
+
+	@Basic
+	@Column(name="C_BANKACCOUNT_ID", columnDefinition="INT")
+	public Integer getCBankAccountID() {
+		return cBankAccountID;
+	}
+
+	public void setCBankAccountID(Integer cBankAccountID) {
+		this.cBankAccountID = cBankAccountID;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
 	@Column(name="C_CASHBOOK_ID", columnDefinition="INT")
-	public Integer getCCashbookId() {
-		return cCashbookId;
+	public Integer getCCashBookID() {
+		return cCashBookID;
 	}
 
-	public void setCCashbookId(Integer cCashbookId) {
-		this.cCashbookId = cCashbookId;
+	public void setCCashBookID(Integer cCashBookID) {
+		this.cCashBookID = cCashBookID;
 	}
 
 	@Basic
 	@Column(name="C_CHARGE_ID", columnDefinition="INT")
-	public Integer getCChargeId() {
-		return cChargeId;
+	public Integer getCChargeID() {
+		return cChargeID;
 	}
 
-	public void setCChargeId(Integer cChargeId) {
-		this.cChargeId = cChargeId;
+	public void setCChargeID(Integer cChargeID) {
+		this.cChargeID = cChargeID;
 	}
 
 	@Basic
 	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT")
-	public Integer getCConversiontypeId() {
-		return cConversiontypeId;
+	public Integer getCConversionTypeID() {
+		return cConversionTypeID;
 	}
 
-	public void setCConversiontypeId(Integer cConversiontypeId) {
-		this.cConversiontypeId = cConversiontypeId;
+	public void setCConversionTypeID(Integer cConversionTypeID) {
+		this.cConversionTypeID = cConversionTypeID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getCDoctypeId() {
-		return cDoctypeId;
+	public Integer getCDocTypeID() {
+		return cDocTypeID;
 	}
 
-	public void setCDoctypeId(Integer cDoctypeId) {
-		this.cDoctypeId = cDoctypeId;
+	public void setCDocTypeID(Integer cDocTypeID) {
+		this.cDocTypeID = cDocTypeID;
 	}
 
 	@Basic
 	@Column(name="C_INVOICE_ID", columnDefinition="INT")
-	public Integer getCInvoiceId() {
-		return cInvoiceId;
+	public Integer getCInvoiceID() {
+		return cInvoiceID;
 	}
 
-	public void setCInvoiceId(Integer cInvoiceId) {
-		this.cInvoiceId = cInvoiceId;
+	public void setCInvoiceID(Integer cInvoiceID) {
+		this.cInvoiceID = cInvoiceID;
 	}
 
 	@Basic
 	@Column(name="C_ORDER_ID", columnDefinition="INT")
-	public Integer getCOrderId() {
-		return cOrderId;
+	public Integer getCOrderID() {
+		return cOrderID;
 	}
 
-	public void setCOrderId(Integer cOrderId) {
-		this.cOrderId = cOrderId;
+	public void setCOrderID(Integer cOrderID) {
+		this.cOrderID = cOrderID;
+	}
+
+	@Basic
+	@Column(name="C_PAYMENTBATCH_ID", columnDefinition="INT")
+	public Integer getCPaymentBatchID() {
+		return cPaymentBatchID;
+	}
+
+	public void setCPaymentBatchID(Integer cPaymentBatchID) {
+		this.cPaymentBatchID = cPaymentBatchID;
 	}
 
 	@Id
 	@Column(name="C_PAYMENT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_262", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Payment", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_262")
-	public Integer getCPaymentId() {
-		return cPaymentId;
+	public Integer getCPaymentID() {
+		return cPaymentID;
 	}
 
-	public void setCPaymentId(Integer cPaymentId) {
-		this.cPaymentId = cPaymentId;
-	}
-
-	@Basic
-	@Column(name="C_PAYMENTBATCH_ID", columnDefinition="INT")
-	public Integer getCPaymentbatchId() {
-		return cPaymentbatchId;
-	}
-
-	public void setCPaymentbatchId(Integer cPaymentbatchId) {
-		this.cPaymentbatchId = cPaymentbatchId;
+	public void setCPaymentID(Integer cPaymentID) {
+		this.cPaymentID = cPaymentID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
-	public BigDecimal getChargeamt() {
-		return chargeamt;
+	public BigDecimal getChargeAmt() {
+		return chargeAmt;
 	}
 
-	public void setChargeamt(BigDecimal chargeamt) {
-		this.chargeamt = chargeamt;
+	public void setChargeAmt(BigDecimal chargeAmt) {
+		this.chargeAmt = chargeAmt;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getCheckno() {
-		return checkno;
+	public String getCheckNo() {
+		return checkNo;
 	}
 
-	public void setCheckno(String checkno) {
-		this.checkno = checkno;
+	public void setCheckNo(String checkNo) {
+		this.checkNo = checkNo;
 	}
 
 	@Basic
@@ -419,82 +449,92 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(columnDefinition="INT")
-	public Integer getCreditcardexpmm() {
-		return creditcardexpmm;
-	}
-
-	public void setCreditcardexpmm(Integer creditcardexpmm) {
-		this.creditcardexpmm = creditcardexpmm;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getCreditcardexpyy() {
-		return creditcardexpyy;
+	public Integer getCreditCardExpMM() {
+		return creditCardExpMM;
 	}
 
-	public void setCreditcardexpyy(Integer creditcardexpyy) {
-		this.creditcardexpyy = creditcardexpyy;
+	public void setCreditCardExpMM(Integer creditCardExpMM) {
+		this.creditCardExpMM = creditCardExpMM;
+	}
+
+	@Basic
+	@Column(columnDefinition="INT")
+	public Integer getCreditCardExpYY() {
+		return creditCardExpYY;
+	}
+
+	public void setCreditCardExpYY(Integer creditCardExpYY) {
+		this.creditCardExpYY = creditCardExpYY;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getCreditcardnumber() {
-		return creditcardnumber;
+	public String getCreditCardNumber() {
+		return creditCardNumber;
 	}
 
-	public void setCreditcardnumber(String creditcardnumber) {
-		this.creditcardnumber = creditcardnumber;
+	public void setCreditCardNumber(String creditCardNumber) {
+		this.creditCardNumber = creditCardNumber;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getCreditcardtype() {
-		return creditcardtype;
+	public String getCreditCardType() {
+		return creditCardType;
 	}
 
-	public void setCreditcardtype(String creditcardtype) {
-		this.creditcardtype = creditcardtype;
+	public void setCreditCardType(String creditCardType) {
+		this.creditCardType = creditCardType;
 	}
 
 	@Basic
 	@Column(length=4)
-	public String getCreditcardvv() {
-		return creditcardvv;
+	public String getCreditCardVV() {
+		return creditCardVV;
 	}
 
-	public void setCreditcardvv(String creditcardvv) {
-		this.creditcardvv = creditcardvv;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getDateacct() {
-		return dateacct;
-	}
-
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setCreditCardVV(String creditCardVV) {
+		this.creditCardVV = creditCardVV;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getDatetrx() {
-		return datetrx;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setDatetrx(String datetrx) {
-		this.datetrx = datetrx;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public String getDateTrx() {
+		return dateTrx;
+	}
+
+	public void setDateTrx(String dateTrx) {
+		this.dateTrx = dateTrx;
+	}
+
+	@Basic
+	@Column(name="ISDELAYEDCAPTURE", nullable=false)
+	public Boolean isDelayedCapture() {
+		return delayedCapture;
+	}
+
+	public void setDelayedCapture(Boolean delayedCapture) {
+		this.delayedCapture = delayedCapture;
 	}
 
 	@Basic
@@ -507,142 +547,42 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public BigDecimal getDiscountamt() {
-		return discountamt;
+	public BigDecimal getDiscountAmt() {
+		return discountAmt;
 	}
 
-	public void setDiscountamt(BigDecimal discountamt) {
-		this.discountamt = discountamt;
-	}
-
-	@Basic
-	@Column(nullable=false, length=2)
-	public String getDocaction() {
-		return docaction;
-	}
-
-	public void setDocaction(String docaction) {
-		this.docaction = docaction;
+	public void setDiscountAmt(BigDecimal discountAmt) {
+		this.discountAmt = discountAmt;
 	}
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getDocstatus() {
-		return docstatus;
+	public String getDocAction() {
+		return docAction;
 	}
 
-	public void setDocstatus(String docstatus) {
-		this.docstatus = docstatus;
+	public void setDocAction(String docAction) {
+		this.docAction = docAction;
+	}
+
+	@Basic
+	@Column(nullable=false, length=2)
+	public String getDocStatus() {
+		return docStatus;
+	}
+
+	public void setDocStatus(String docStatus) {
+		this.docStatus = docStatus;
 	}
 
 	@Basic
 	@Column(nullable=false, length=30)
-	public String getDocumentno() {
-		return documentno;
+	public String getDocumentNo() {
+		return documentNo;
 	}
 
-	public void setDocumentno(String documentno) {
-		this.documentno = documentno;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsallocated() {
-		return isallocated;
-	}
-
-	public void setIsallocated(Boolean isallocated) {
-		this.isallocated = isallocated;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsapproved() {
-		return isapproved;
-	}
-
-	public void setIsapproved(Boolean isapproved) {
-		this.isapproved = isapproved;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdelayedcapture() {
-		return isdelayedcapture;
-	}
-
-	public void setIsdelayedcapture(Boolean isdelayedcapture) {
-		this.isdelayedcapture = isdelayedcapture;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsonline() {
-		return isonline;
-	}
-
-	public void setIsonline(Boolean isonline) {
-		this.isonline = isonline;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsoverunderpayment() {
-		return isoverunderpayment;
-	}
-
-	public void setIsoverunderpayment(Boolean isoverunderpayment) {
-		this.isoverunderpayment = isoverunderpayment;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsprepayment() {
-		return isprepayment;
-	}
-
-	public void setIsprepayment(Boolean isprepayment) {
-		this.isprepayment = isprepayment;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsreceipt() {
-		return isreceipt;
-	}
-
-	public void setIsreceipt(Boolean isreceipt) {
-		this.isreceipt = isreceipt;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsreconciled() {
-		return isreconciled;
-	}
-
-	public void setIsreconciled(Boolean isreconciled) {
-		this.isreconciled = isreconciled;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsselfservice() {
-		return isselfservice;
-	}
-
-	public void setIsselfservice(Boolean isselfservice) {
-		this.isselfservice = isselfservice;
+	public void setDocumentNo(String documentNo) {
+		this.documentNo = documentNo;
 	}
 
 	@Basic
@@ -656,51 +596,71 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Boolean isOprocessing() {
-		return oprocessing;
+	public Boolean isOProcessing() {
+		return oProcessing;
 	}
 
-	public void setOprocessing(Boolean oprocessing) {
-		this.oprocessing = oprocessing;
+	public void setOProcessing(Boolean oProcessing) {
+		this.oProcessing = oProcessing;
+	}
+
+	@Basic
+	@Column(name="ISONLINE", nullable=false)
+	public Boolean isOnline() {
+		return online;
+	}
+
+	public void setOnline(Boolean online) {
+		this.online = online;
 	}
 
 	@Basic
 	@Column(name="ORIG_TRXID", length=20)
-	public String getOrigTrxid() {
-		return origTrxid;
+	public String getOrigTrxID() {
+		return origTrxID;
 	}
 
-	public void setOrigTrxid(String origTrxid) {
-		this.origTrxid = origTrxid;
-	}
-
-	@Basic
-	public BigDecimal getOverunderamt() {
-		return overunderamt;
-	}
-
-	public void setOverunderamt(BigDecimal overunderamt) {
-		this.overunderamt = overunderamt;
+	public void setOrigTrxID(String origTrxID) {
+		this.origTrxID = origTrxID;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public BigDecimal getPayamt() {
-		return payamt;
+	public BigDecimal getOverUnderAmt() {
+		return overUnderAmt;
 	}
 
-	public void setPayamt(BigDecimal payamt) {
-		this.payamt = payamt;
+	public void setOverUnderAmt(BigDecimal overUnderAmt) {
+		this.overUnderAmt = overUnderAmt;
+	}
+
+	@Basic
+	@Column(name="ISOVERUNDERPAYMENT", nullable=false)
+	public Boolean isOverUnderPayment() {
+		return overUnderPayment;
+	}
+
+	public void setOverUnderPayment(Boolean overUnderPayment) {
+		this.overUnderPayment = overUnderPayment;
 	}
 
 	@Basic
 	@Column(length=60)
-	public String getPonum() {
-		return ponum;
+	public String getPONum() {
+		return pONum;
 	}
 
-	public void setPonum(String ponum) {
-		this.ponum = ponum;
+	public void setPONum(String pONum) {
+		this.pONum = pONum;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getPayAmt() {
+		return payAmt;
+	}
+
+	public void setPayAmt(BigDecimal payAmt) {
+		this.payAmt = payAmt;
 	}
 
 	@Basic
@@ -714,6 +674,16 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(name="ISPREPAYMENT", nullable=false)
+	public Boolean isPrepayment() {
+		return prepayment;
+	}
+
+	public void setPrepayment(Boolean prepayment) {
+		this.prepayment = prepayment;
+	}
+
+	@Basic
 	@Column(nullable=false)
 	public Boolean isProcessed() {
 		return processed;
@@ -724,12 +694,12 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Long getProcessedon() {
-		return processedon;
+	public Long getProcessedOn() {
+		return processedOn;
 	}
 
-	public void setProcessedon(Long processedon) {
-		this.processedon = processedon;
+	public void setProcessedOn(Long processedOn) {
+		this.processedOn = processedOn;
 	}
 
 	@Basic
@@ -743,52 +713,52 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="R_AUTHCODE", length=20)
-	public String getRAuthcode() {
-		return rAuthcode;
+	public String getRAuthCode() {
+		return rAuthCode;
 	}
 
-	public void setRAuthcode(String rAuthcode) {
-		this.rAuthcode = rAuthcode;
+	public void setRAuthCode(String rAuthCode) {
+		this.rAuthCode = rAuthCode;
 	}
 
 	@Basic
 	@Column(name="R_AUTHCODE_DC", length=20)
-	public String getRAuthcodeDc() {
-		return rAuthcodeDc;
+	public String getRAuthCodeDC() {
+		return rAuthCodeDC;
 	}
 
-	public void setRAuthcodeDc(String rAuthcodeDc) {
-		this.rAuthcodeDc = rAuthcodeDc;
+	public void setRAuthCodeDC(String rAuthCodeDC) {
+		this.rAuthCodeDC = rAuthCodeDC;
 	}
 
 	@Basic
 	@Column(name="R_AVSADDR", length=1)
-	public String getRAvsaddr() {
-		return rAvsaddr;
+	public String getRAvsAddr() {
+		return rAvsAddr;
 	}
 
-	public void setRAvsaddr(String rAvsaddr) {
-		this.rAvsaddr = rAvsaddr;
+	public void setRAvsAddr(String rAvsAddr) {
+		this.rAvsAddr = rAvsAddr;
 	}
 
 	@Basic
 	@Column(name="R_AVSZIP", length=1)
-	public String getRAvszip() {
-		return rAvszip;
+	public String getRAvsZip() {
+		return rAvsZip;
 	}
 
-	public void setRAvszip(String rAvszip) {
-		this.rAvszip = rAvszip;
+	public void setRAvsZip(String rAvsZip) {
+		this.rAvsZip = rAvsZip;
 	}
 
 	@Basic
 	@Column(name="R_CVV2MATCH")
-	public Boolean isRCvv2match() {
-		return rCvv2match;
+	public Boolean isRCVV2Match() {
+		return rCVV2Match;
 	}
 
-	public void setRCvv2match(Boolean rCvv2match) {
-		this.rCvv2match = rCvv2match;
+	public void setRCVV2Match(Boolean rCVV2Match) {
+		this.rCVV2Match = rCVV2Match;
 	}
 
 	@Basic
@@ -803,32 +773,32 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="R_PNREF", length=20)
-	public String getRPnref() {
-		return rPnref;
+	public String getRPnRef() {
+		return rPnRef;
 	}
 
-	public void setRPnref(String rPnref) {
-		this.rPnref = rPnref;
+	public void setRPnRef(String rPnRef) {
+		this.rPnRef = rPnRef;
 	}
 
 	@Basic
 	@Column(name="R_PNREF_DC", length=20)
-	public String getRPnrefDc() {
-		return rPnrefDc;
+	public String getRPnRefDC() {
+		return rPnRefDC;
 	}
 
-	public void setRPnrefDc(String rPnrefDc) {
-		this.rPnrefDc = rPnrefDc;
+	public void setRPnRefDC(String rPnRefDC) {
+		this.rPnRefDC = rPnRefDC;
 	}
 
 	@Basic
 	@Column(name="R_RESPMSG", length=60)
-	public String getRRespmsg() {
-		return rRespmsg;
+	public String getRRespMsg() {
+		return rRespMsg;
 	}
 
-	public void setRRespmsg(String rRespmsg) {
-		this.rRespmsg = rRespmsg;
+	public void setRRespMsg(String rRespMsg) {
+		this.rRespMsg = rRespMsg;
 	}
 
 	@Basic
@@ -842,33 +812,63 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="REF_PAYMENT_ID", columnDefinition="INT")
-	public Integer getRefPaymentId() {
-		return refPaymentId;
+	@Column(name="ISRECEIPT", nullable=false)
+	public Boolean isReceipt() {
+		return receipt;
 	}
 
-	public void setRefPaymentId(Integer refPaymentId) {
-		this.refPaymentId = refPaymentId;
+	public void setReceipt(Boolean receipt) {
+		this.receipt = receipt;
+	}
+
+	@Basic
+	@Column(name="ISRECONCILED", nullable=false)
+	public Boolean isReconciled() {
+		return reconciled;
+	}
+
+	public void setReconciled(Boolean reconciled) {
+		this.reconciled = reconciled;
+	}
+
+	@Basic
+	@Column(name="REF_PAYMENT_ID", columnDefinition="INT")
+	public Integer getRefPaymentID() {
+		return refPaymentID;
+	}
+
+	public void setRefPaymentID(Integer refPaymentID) {
+		this.refPaymentID = refPaymentID;
 	}
 
 	@Basic
 	@Column(name="REVERSAL_ID", columnDefinition="INT")
-	public Integer getReversalId() {
-		return reversalId;
+	public Integer getReversalID() {
+		return reversalID;
 	}
 
-	public void setReversalId(Integer reversalId) {
-		this.reversalId = reversalId;
+	public void setReversalID(Integer reversalID) {
+		this.reversalID = reversalID;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getRoutingno() {
-		return routingno;
+	public String getRoutingNo() {
+		return routingNo;
 	}
 
-	public void setRoutingno(String routingno) {
-		this.routingno = routingno;
+	public void setRoutingNo(String routingNo) {
+		this.routingNo = routingNo;
+	}
+
+	@Basic
+	@Column(name="ISSELFSERVICE", nullable=false)
+	public Boolean isSelfService() {
+		return selfService;
+	}
+
+	public void setSelfService(Boolean selfService) {
+		this.selfService = selfService;
 	}
 
 	@Basic
@@ -882,32 +882,32 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public BigDecimal getTaxamt() {
-		return taxamt;
+	public BigDecimal getTaxAmt() {
+		return taxAmt;
 	}
 
-	public void setTaxamt(BigDecimal taxamt) {
-		this.taxamt = taxamt;
-	}
-
-	@Basic
-	@Column(nullable=false, length=1)
-	public String getTendertype() {
-		return tendertype;
-	}
-
-	public void setTendertype(String tendertype) {
-		this.tendertype = tendertype;
+	public void setTaxAmt(BigDecimal taxAmt) {
+		this.taxAmt = taxAmt;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getTrxtype() {
-		return trxtype;
+	public String getTenderType() {
+		return tenderType;
 	}
 
-	public void setTrxtype(String trxtype) {
-		this.trxtype = trxtype;
+	public void setTenderType(String tenderType) {
+		this.tenderType = tenderType;
+	}
+
+	@Basic
+	@Column(nullable=false, length=1)
+	public String getTrxType() {
+		return trxType;
+	}
+
+	public void setTrxType(String trxType) {
+		this.trxType = trxType;
 	}
 
 	@Basic
@@ -922,50 +922,50 @@ public class CPayment extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(name="USER1_ID", columnDefinition="INT")
-	public Integer getUser1Id() {
-		return user1Id;
+	public Integer getUser1ID() {
+		return user1ID;
 	}
 
-	public void setUser1Id(Integer user1Id) {
-		this.user1Id = user1Id;
+	public void setUser1ID(Integer user1ID) {
+		this.user1ID = user1ID;
 	}
 
 	@Basic
 	@Column(name="USER2_ID", columnDefinition="INT")
-	public Integer getUser2Id() {
-		return user2Id;
+	public Integer getUser2ID() {
+		return user2ID;
 	}
 
-	public void setUser2Id(Integer user2Id) {
-		this.user2Id = user2Id;
+	public void setUser2ID(Integer user2ID) {
+		this.user2ID = user2ID;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getVoiceauthcode() {
-		return voiceauthcode;
+	public String getVoiceAuthCode() {
+		return voiceAuthCode;
 	}
 
-	public void setVoiceauthcode(String voiceauthcode) {
-		this.voiceauthcode = voiceauthcode;
+	public void setVoiceAuthCode(String voiceAuthCode) {
+		this.voiceAuthCode = voiceAuthCode;
 	}
 
 	@Basic
-	public BigDecimal getWriteoffamt() {
-		return writeoffamt;
+	public BigDecimal getWriteOffAmt() {
+		return writeOffAmt;
 	}
 
-	public void setWriteoffamt(BigDecimal writeoffamt) {
-		this.writeoffamt = writeoffamt;
+	public void setWriteOffAmt(BigDecimal writeOffAmt) {
+		this.writeOffAmt = writeOffAmt;
 	}
 }

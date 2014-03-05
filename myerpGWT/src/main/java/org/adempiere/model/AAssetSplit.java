@@ -12,36 +12,36 @@ import javax.persistence.*;
 public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private BigDecimal aAmountSplit;
-	private Integer aAssetAcctId;
+	private Integer aAssetAcctID;
 	private BigDecimal aAssetCost;
-	private Integer aAssetId;
-	private String aAssetIdTo;
-	private Integer aAssetSplitId;
-	private Integer aDepreciationWorkfileId;
+	private Integer aAssetID;
+	private String aAssetIDTo;
+	private Integer aAssetSplitID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDepreciationWorkfileID;
 	private BigDecimal aPercentOriginal;
 	private BigDecimal aPercentSplit;
-	private BigDecimal aQtyCurrent;
-	private BigDecimal aQtySplit;
+	private BigDecimal aQTYCurrent;
+	private BigDecimal aQTYSplit;
 	private String aSplitType;
-	private Boolean aTransferBalanceIs;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cPeriodId;
+	private Boolean aTransferBalanceIS;
+	private Boolean active;
+	private Integer cPeriodID;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
-	private Boolean isactive;
-	private String postingtype;
+	private Integer createdBy;
+	private String dateAcct;
+	private String postingType;
 	private Boolean processed;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetSplit() {
 	}
 
-	public AAssetSplit(Integer aAssetSplitId) {
-		this.aAssetSplitId = aAssetSplitId;
+	public AAssetSplit(Integer aAssetSplitID) {
+		this.aAssetSplitID = aAssetSplitID;
 	}
 
 	@Basic
@@ -56,12 +56,12 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_ASSET_ACCT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetAcctId() {
-		return aAssetAcctId;
+	public Integer getAAssetAcctID() {
+		return aAssetAcctID;
 	}
 
-	public void setAAssetAcctId(Integer aAssetAcctId) {
-		this.aAssetAcctId = aAssetAcctId;
+	public void setAAssetAcctID(Integer aAssetAcctID) {
+		this.aAssetAcctID = aAssetAcctID;
 	}
 
 	@Basic
@@ -76,44 +76,64 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID_TO", length=22)
-	public String getAAssetIdTo() {
-		return aAssetIdTo;
+	public String getAAssetIDTo() {
+		return aAssetIDTo;
 	}
 
-	public void setAAssetIdTo(String aAssetIdTo) {
-		this.aAssetIdTo = aAssetIdTo;
+	public void setAAssetIDTo(String aAssetIDTo) {
+		this.aAssetIDTo = aAssetIDTo;
 	}
 
 	@Id
 	@Column(name="A_ASSET_SPLIT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53142", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Split", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53142")
-	public Integer getAAssetSplitId() {
-		return aAssetSplitId;
+	public Integer getAAssetSplitID() {
+		return aAssetSplitID;
 	}
 
-	public void setAAssetSplitId(Integer aAssetSplitId) {
-		this.aAssetSplitId = aAssetSplitId;
+	public void setAAssetSplitID(Integer aAssetSplitID) {
+		this.aAssetSplitID = aAssetSplitID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="A_DEPRECIATION_WORKFILE_ID", columnDefinition="INT", nullable=false)
-	public Integer getADepreciationWorkfileId() {
-		return aDepreciationWorkfileId;
+	public Integer getADepreciationWorkfileID() {
+		return aDepreciationWorkfileID;
 	}
 
-	public void setADepreciationWorkfileId(Integer aDepreciationWorkfileId) {
-		this.aDepreciationWorkfileId = aDepreciationWorkfileId;
+	public void setADepreciationWorkfileID(Integer aDepreciationWorkfileID) {
+		this.aDepreciationWorkfileID = aDepreciationWorkfileID;
 	}
 
 	@Basic
@@ -138,22 +158,22 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_QTY_CURRENT", nullable=false)
-	public BigDecimal getAQtyCurrent() {
-		return aQtyCurrent;
+	public BigDecimal getAQTYCurrent() {
+		return aQTYCurrent;
 	}
 
-	public void setAQtyCurrent(BigDecimal aQtyCurrent) {
-		this.aQtyCurrent = aQtyCurrent;
+	public void setAQTYCurrent(BigDecimal aQTYCurrent) {
+		this.aQTYCurrent = aQTYCurrent;
 	}
 
 	@Basic
 	@Column(name="A_QTY_SPLIT")
-	public BigDecimal getAQtySplit() {
-		return aQtySplit;
+	public BigDecimal getAQTYSplit() {
+		return aQTYSplit;
 	}
 
-	public void setAQtySplit(BigDecimal aQtySplit) {
-		this.aQtySplit = aQtySplit;
+	public void setAQTYSplit(BigDecimal aQTYSplit) {
+		this.aQTYSplit = aQTYSplit;
 	}
 
 	@Basic
@@ -168,42 +188,32 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_TRANSFER_BALANCE_IS", nullable=false)
-	public Boolean isATransferBalanceIs() {
-		return aTransferBalanceIs;
+	public Boolean isATransferBalanceIS() {
+		return aTransferBalanceIS;
 	}
 
-	public void setATransferBalanceIs(Boolean aTransferBalanceIs) {
-		this.aTransferBalanceIs = aTransferBalanceIs;
-	}
-
-	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
-	}
-
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setATransferBalanceIS(Boolean aTransferBalanceIS) {
+		this.aTransferBalanceIS = aTransferBalanceIS;
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_PERIOD_ID", columnDefinition="INT", nullable=false)
-	public Integer getCPeriodId() {
-		return cPeriodId;
+	public Integer getCPeriodID() {
+		return cPeriodID;
 	}
 
-	public void setCPeriodId(Integer cPeriodId) {
-		this.cPeriodId = cPeriodId;
+	public void setCPeriodID(Integer cPeriodID) {
+		this.cPeriodID = cPeriodID;
 	}
 
 	@Basic
@@ -218,42 +228,32 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getDateacct() {
-		return dateacct;
-	}
-
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getPostingtype() {
-		return postingtype;
+	public String getPostingType() {
+		return postingType;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
@@ -288,11 +288,11 @@ public class AAssetSplit extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

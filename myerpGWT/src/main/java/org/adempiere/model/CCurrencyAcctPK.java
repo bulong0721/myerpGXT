@@ -16,8 +16,8 @@ public class CCurrencyAcctPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer cAcctschemaId;
-	public Integer cCurrencyId;
+	public Integer cAcctSchemaID;
+	public Integer cCurrencyID;
 
 	public CCurrencyAcctPK() {
 	}
@@ -26,31 +26,31 @@ public class CCurrencyAcctPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	public String toString() {
-		return String.valueOf(cAcctschemaId)
-			+ "::" + String.valueOf(cCurrencyId);
+		return String.valueOf(cAcctSchemaID)
+			+ "::" + String.valueOf(cCurrencyID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((cAcctschemaId == null) ? 0 : cAcctschemaId.hashCode());
-		rs = rs * 37 + ((cCurrencyId == null) ? 0 : cCurrencyId.hashCode());
+		rs = rs * 37 + ((cAcctSchemaID == null) ? 0 : cAcctSchemaID.hashCode());
+		rs = rs * 37 + ((cCurrencyID == null) ? 0 : cCurrencyID.hashCode());
 		return rs;
 	}
 
@@ -61,24 +61,24 @@ public class CCurrencyAcctPK implements Serializable {
 			return false;
 
 		CCurrencyAcctPK other = (CCurrencyAcctPK) obj;
-		return ((cAcctschemaId == null && other.cAcctschemaId == null)
-			|| (cAcctschemaId != null && cAcctschemaId.equals(other.cAcctschemaId)))
-			&& ((cCurrencyId == null && other.cCurrencyId == null)
-			|| (cCurrencyId != null && cCurrencyId.equals(other.cCurrencyId)));
+		return ((cAcctSchemaID == null && other.cAcctSchemaID == null)
+			|| (cAcctSchemaID != null && cAcctSchemaID.equals(other.cAcctSchemaID)))
+			&& ((cCurrencyID == null && other.cCurrencyID == null)
+			|| (cCurrencyID != null && cCurrencyID.equals(other.cCurrencyID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cAcctschemaId = null;
+			cAcctSchemaID = null;
 		else
-			cAcctschemaId = new Integer(str);
+			cAcctSchemaID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cCurrencyId = null;
+			cCurrencyID = null;
 		else
-			cCurrencyId = new Integer(str);
+			cCurrencyID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

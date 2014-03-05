@@ -16,8 +16,8 @@ public class MProductCategoryAcctPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer cAcctschemaId;
-	public Integer mProductCategoryId;
+	public Integer cAcctSchemaID;
+	public Integer mProductCategoryID;
 
 	public MProductCategoryAcctPK() {
 	}
@@ -26,31 +26,31 @@ public class MProductCategoryAcctPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
-	public Integer getMProductCategoryId() {
-		return mProductCategoryId;
+	public Integer getMProductCategoryID() {
+		return mProductCategoryID;
 	}
 
-	public void setMProductCategoryId(Integer mProductCategoryId) {
-		this.mProductCategoryId = mProductCategoryId;
+	public void setMProductCategoryID(Integer mProductCategoryID) {
+		this.mProductCategoryID = mProductCategoryID;
 	}
 
 	public String toString() {
-		return String.valueOf(cAcctschemaId)
-			+ "::" + String.valueOf(mProductCategoryId);
+		return String.valueOf(cAcctSchemaID)
+			+ "::" + String.valueOf(mProductCategoryID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((cAcctschemaId == null) ? 0 : cAcctschemaId.hashCode());
-		rs = rs * 37 + ((mProductCategoryId == null) ? 0 : mProductCategoryId.hashCode());
+		rs = rs * 37 + ((cAcctSchemaID == null) ? 0 : cAcctSchemaID.hashCode());
+		rs = rs * 37 + ((mProductCategoryID == null) ? 0 : mProductCategoryID.hashCode());
 		return rs;
 	}
 
@@ -61,24 +61,24 @@ public class MProductCategoryAcctPK implements Serializable {
 			return false;
 
 		MProductCategoryAcctPK other = (MProductCategoryAcctPK) obj;
-		return ((cAcctschemaId == null && other.cAcctschemaId == null)
-			|| (cAcctschemaId != null && cAcctschemaId.equals(other.cAcctschemaId)))
-			&& ((mProductCategoryId == null && other.mProductCategoryId == null)
-			|| (mProductCategoryId != null && mProductCategoryId.equals(other.mProductCategoryId)));
+		return ((cAcctSchemaID == null && other.cAcctSchemaID == null)
+			|| (cAcctSchemaID != null && cAcctSchemaID.equals(other.cAcctSchemaID)))
+			&& ((mProductCategoryID == null && other.mProductCategoryID == null)
+			|| (mProductCategoryID != null && mProductCategoryID.equals(other.mProductCategoryID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cAcctschemaId = null;
+			cAcctSchemaID = null;
 		else
-			cAcctschemaId = new Integer(str);
+			cAcctSchemaID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mProductCategoryId = null;
+			mProductCategoryID = null;
 		else
-			mProductCategoryId = new Integer(str);
+			mProductCategoryID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

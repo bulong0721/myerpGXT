@@ -5,12 +5,12 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.model.AdTreenode;
+import org.adempiere.model.ADTreeNode;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.util.POUtil;
-import org.adempiere.web.client.model.ADTreeNode;
+import org.adempiere.web.client.model.IsTreeNode;
 
-public abstract class ADTreeBuilder<T extends AdTreenode> {
+public abstract class ADTreeBuilder<T extends ADTreeNode> {
 	public static final int	TREE_MENU	= 10;
 	private int				adTreeId;
 	private final Type		type;
@@ -34,10 +34,10 @@ public abstract class ADTreeBuilder<T extends AdTreenode> {
 		return POUtil.querySubNodes(pCtx, getEntityClass(), parentId);
 	}
 
-	public abstract ADTreeNode toModel(T entity);
+	public abstract IsTreeNode toModel(T entity);
 
-	public List<ADTreeNode> toModels(List<T> entityList) {
-		List<ADTreeNode> resultList = new ArrayList<ADTreeNode>(entityList.size());
+	public List<IsTreeNode> toModels(List<T> entityList) {
+		List<IsTreeNode> resultList = new ArrayList<IsTreeNode>(entityList.size());
 		for (T entity : entityList) {
 			resultList.add(toModel(entity));
 		}

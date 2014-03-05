@@ -28,7 +28,6 @@ import org.adempiere.web.client.util.ClassUtil;
 import org.adempiere.web.client.util.ContextUtil;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.LoggingUtil;
-import org.adempiere.web.client.util.StringUtil;
 import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.ButtonStates;
@@ -361,10 +360,10 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	public void newRecord() {
 		newRecord = new ADModelData();
 		for (ADFieldModel field : tabModel.getFieldList()) {
-			if (null == field.getDefaultvalue()) {
+			if (null == field.getDefaultValue()) {
 				continue;
 			}
-			String fieldName = StringUtil.toCamelStyle(field.getColumnname());
+			String fieldName = field.getPropertyName();
 			newRecord.setValue(fieldName, ContextUtil.getDefaultValue(field));
 		}
 		LoggingUtil.info("xxxxxxxxxxxxxxNewRecord:" + newRecord.toString());
@@ -462,7 +461,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 					dialog.show();
 					return;
 				}
-				if (0 == field.getAdProcessId()) {
+				if (0 == field.getADProcessID()) {
 					return;
 				}
 				AsyncCallback<ADResultPair<ADProcessModel, ADFormModel>> callback = new AsyncSuccessCallback<ADResultPair<ADProcessModel, ADFormModel>>() {
@@ -486,8 +485,8 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 						}
 					}
 				};
-				LoggingUtil.info("xxxxxxxxxProcessId:" + field.getAdProcessId());
-				adempiereService.getProcessWithFormModel(field.getAdProcessId(), callback);
+				LoggingUtil.info("xxxxxxxxxProcessId:" + field.getADProcessID());
+				adempiereService.getProcessWithFormModel(field.getADProcessID(), callback);
 			}
 		};
 		processCallout(fieldModel, callback);

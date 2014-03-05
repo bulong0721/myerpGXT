@@ -15,11 +15,13 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	private String aAccumdepreciationAcctNew;
 	private String aAccumdepreciationAcctStr;
 	private Integer aAssetAcct;
-	private Integer aAssetAcctId;
+	private Integer aAssetAcctID;
 	private String aAssetAcctNew;
 	private String aAssetAcctStr;
-	private Integer aAssetId;
-	private Integer aAssetTransferId;
+	private Integer aAssetID;
+	private Integer aAssetTransferID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private Integer aDepreciationAcct;
 	private String aDepreciationAcctNew;
 	private String aDepreciationAcctStr;
@@ -33,26 +35,24 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 	private Integer aPeriodStart;
 	private BigDecimal aSplitPercent;
 	private Boolean aTransferBalance;
-	private Boolean aTransferBalanceIs;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cAcctschemaId;
-	private Integer cPeriodId;
+	private Boolean aTransferBalanceIS;
+	private Boolean active;
+	private Integer cAcctSchemaID;
+	private Integer cPeriodID;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
-	private Boolean isactive;
-	private String postingtype;
+	private Integer createdBy;
+	private String dateAcct;
+	private String postingType;
 	private Boolean processed;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetTransfer() {
 	}
 
-	public AAssetTransfer(Integer aAssetTransferId) {
-		this.aAssetTransferId = aAssetTransferId;
+	public AAssetTransfer(Integer aAssetTransferID) {
+		this.aAssetTransferID = aAssetTransferID;
 	}
 
 	@Basic
@@ -97,12 +97,12 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_ASSET_ACCT_ID", columnDefinition="INT")
-	public Integer getAAssetAcctId() {
-		return aAssetAcctId;
+	public Integer getAAssetAcctID() {
+		return aAssetAcctID;
 	}
 
-	public void setAAssetAcctId(Integer aAssetAcctId) {
-		this.aAssetAcctId = aAssetAcctId;
+	public void setAAssetAcctID(Integer aAssetAcctID) {
+		this.aAssetAcctID = aAssetAcctID;
 	}
 
 	@Basic
@@ -127,24 +127,44 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT")
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_TRANSFER_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53148", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Transfer", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53148")
-	public Integer getAAssetTransferId() {
-		return aAssetTransferId;
+	public Integer getAAssetTransferID() {
+		return aAssetTransferID;
 	}
 
-	public void setAAssetTransferId(Integer aAssetTransferId) {
-		this.aAssetTransferId = aAssetTransferId;
+	public void setAAssetTransferID(Integer aAssetTransferID) {
+		this.aAssetTransferID = aAssetTransferID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT")
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -279,52 +299,42 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_TRANSFER_BALANCE_IS", nullable=false)
-	public Boolean isATransferBalanceIs() {
-		return aTransferBalanceIs;
+	public Boolean isATransferBalanceIS() {
+		return aTransferBalanceIS;
 	}
 
-	public void setATransferBalanceIs(Boolean aTransferBalanceIs) {
-		this.aTransferBalanceIs = aTransferBalanceIs;
-	}
-
-	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
-	public Integer getAdClientId() {
-		return adClientId;
-	}
-
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setATransferBalanceIS(Boolean aTransferBalanceIS) {
+		this.aTransferBalanceIS = aTransferBalanceIS;
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT")
-	public Integer getAdOrgId() {
-		return adOrgId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Basic
 	@Column(name="C_PERIOD_ID", columnDefinition="INT")
-	public Integer getCPeriodId() {
-		return cPeriodId;
+	public Integer getCPeriodID() {
+		return cPeriodID;
 	}
 
-	public void setCPeriodId(Integer cPeriodId) {
-		this.cPeriodId = cPeriodId;
+	public void setCPeriodID(Integer cPeriodID) {
+		this.cPeriodID = cPeriodID;
 	}
 
 	@Basic
@@ -339,42 +349,32 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getDateacct() {
-		return dateacct;
-	}
-
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getPostingtype() {
-		return postingtype;
+	public String getPostingType() {
+		return postingType;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
@@ -409,11 +409,11 @@ public class AAssetTransfer extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

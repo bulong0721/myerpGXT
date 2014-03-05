@@ -10,70 +10,80 @@ import javax.persistence.*;
 @Table(name="w_counter")
 public class WCounter extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private String acceptlanguage;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
+	private String acceptLanguage;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private String email;
-	private Boolean isactive;
-	private String pageurl;
+	private Integer createdBy;
+	private String eMail;
+	private String pageURL;
 	private Boolean processed;
 	private String referrer;
 	private String remoteAddr;
 	private String remoteHost;
 	private String updated;
-	private Integer updatedby;
-	private String useragent;
-	private Integer wCounterId;
-	private Integer wCountercountId;
+	private Integer updatedBy;
+	private String userAgent;
+	private Integer wCounterCountID;
+	private Integer wCounterID;
 
 	public WCounter() {
 	}
 
-	public WCounter(Integer wCounterId) {
-		this.wCounterId = wCounterId;
-	}
-
-	@Basic
-	@Column(length=60)
-	public String getAcceptlanguage() {
-		return acceptlanguage;
-	}
-
-	public void setAcceptlanguage(String acceptlanguage) {
-		this.acceptlanguage = acceptlanguage;
+	public WCounter(Integer wCounterID) {
+		this.wCounterID = wCounterID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
+	}
+
+	@Basic
+	@Column(length=60)
+	public String getAcceptLanguage() {
+		return acceptLanguage;
+	}
+
+	public void setAcceptLanguage(String acceptLanguage) {
+		this.acceptLanguage = acceptLanguage;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -88,42 +98,32 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(length=60)
-	public String getEmail() {
-		return email;
+	public String getEMail() {
+		return eMail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setEMail(String eMail) {
+		this.eMail = eMail;
 	}
 
 	@Basic
 	@Column(nullable=false, length=120)
-	public String getPageurl() {
-		return pageurl;
+	public String getPageURL() {
+		return pageURL;
 	}
 
-	public void setPageurl(String pageurl) {
-		this.pageurl = pageurl;
+	public void setPageURL(String pageURL) {
+		this.pageURL = pageURL;
 	}
 
 	@Basic
@@ -178,42 +178,42 @@ public class WCounter extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
-	public String getUseragent() {
-		return useragent;
+	public String getUserAgent() {
+		return userAgent;
 	}
 
-	public void setUseragent(String useragent) {
-		this.useragent = useragent;
+	public void setUserAgent(String userAgent) {
+		this.userAgent = userAgent;
+	}
+
+	@Basic
+	@Column(name="W_COUNTERCOUNT_ID", columnDefinition="INT")
+	public Integer getWCounterCountID() {
+		return wCounterCountID;
+	}
+
+	public void setWCounterCountID(Integer wCounterCountID) {
+		this.wCounterCountID = wCounterCountID;
 	}
 
 	@Id
 	@Column(name="W_COUNTER_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_340", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "W_Counter", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_340")
-	public Integer getWCounterId() {
-		return wCounterId;
+	public Integer getWCounterID() {
+		return wCounterID;
 	}
 
-	public void setWCounterId(Integer wCounterId) {
-		this.wCounterId = wCounterId;
-	}
-
-	@Basic
-	@Column(name="W_COUNTERCOUNT_ID", columnDefinition="INT")
-	public Integer getWCountercountId() {
-		return wCountercountId;
-	}
-
-	public void setWCountercountId(Integer wCountercountId) {
-		this.wCountercountId = wCountercountId;
+	public void setWCounterID(Integer wCounterID) {
+		this.wCounterID = wCounterID;
 	}
 }

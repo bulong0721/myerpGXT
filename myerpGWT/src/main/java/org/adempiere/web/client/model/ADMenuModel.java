@@ -6,7 +6,7 @@ import org.adempiere.web.client.resources.ResourcesFactory;
 import com.google.gwt.resources.client.ImageResource;
 import com.sencha.gxt.data.shared.IconProvider;
 
-public class ADMenuModel implements IsADRPCModel, ADTreeNode {
+public class ADMenuModel implements IsADRPCModel, IsTreeNode {
 	private Boolean				isactive;
 	private Integer				adMenuId;
 	private Integer				parentId;
@@ -144,10 +144,10 @@ public class ADMenuModel implements IsADRPCModel, ADTreeNode {
 		return adMenuId;
 	}
 
-	public static IconProvider<ADTreeNode> createIconProvider() {
-		return new IconProvider<ADTreeNode>() {
+	public static IconProvider<IsTreeNode> createIconProvider() {
+		return new IconProvider<IsTreeNode>() {
 			@Override
-			public ImageResource getIcon(ADTreeNode node) {
+			public ImageResource getIcon(IsTreeNode node) {
 				ADMenuModel model = (ADMenuModel) node;
 				if (null == model) {
 					return null;

@@ -11,54 +11,64 @@ import javax.persistence.*;
 @Table(name="c_withholding")
 public class CWithholding extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private Integer beneficiary;
-	private Integer cPaymenttermId;
-	private Integer cWithholdingId;
+	private Integer cPaymentTermID;
+	private Integer cWithholdingID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private BigDecimal fixamt;
-	private Boolean isactive;
-	private Boolean ispaidto3party;
-	private Boolean ispercentwithholding;
-	private Boolean istaxprorated;
-	private Boolean istaxwithholding;
-	private BigDecimal maxamt;
-	private BigDecimal minamt;
+	private BigDecimal fixAmt;
+	private BigDecimal maxAmt;
+	private BigDecimal minAmt;
 	private String name;
+	private Boolean paidTo3Party;
 	private BigDecimal percent;
-	private BigDecimal thresholdmax;
+	private Boolean percentWithholding;
+	private Boolean taxProrated;
+	private Boolean taxWithholding;
+	private BigDecimal thresholdMax;
 	private BigDecimal thresholdmin;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CWithholding() {
 	}
 
-	public CWithholding(Integer cWithholdingId) {
-		this.cWithholdingId = cWithholdingId;
+	public CWithholding(Integer cWithholdingID) {
+		this.cWithholdingID = cWithholdingID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -73,24 +83,24 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="C_PAYMENTTERM_ID", columnDefinition="INT", nullable=false)
-	public Integer getCPaymenttermId() {
-		return cPaymenttermId;
+	public Integer getCPaymentTermID() {
+		return cPaymentTermID;
 	}
 
-	public void setCPaymenttermId(Integer cPaymenttermId) {
-		this.cPaymenttermId = cPaymenttermId;
+	public void setCPaymentTermID(Integer cPaymentTermID) {
+		this.cPaymentTermID = cPaymentTermID;
 	}
 
 	@Id
 	@Column(name="C_WITHHOLDING_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_220", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Withholding", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_220")
-	public Integer getCWithholdingId() {
-		return cWithholdingId;
+	public Integer getCWithholdingID() {
+		return cWithholdingID;
 	}
 
-	public void setCWithholdingId(Integer cWithholdingId) {
-		this.cWithholdingId = cWithholdingId;
+	public void setCWithholdingID(Integer cWithholdingID) {
+		this.cWithholdingID = cWithholdingID;
 	}
 
 	@Basic
@@ -105,12 +115,12 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -123,80 +133,30 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public BigDecimal getFixamt() {
-		return fixamt;
+	public BigDecimal getFixAmt() {
+		return fixAmt;
 	}
 
-	public void setFixamt(BigDecimal fixamt) {
-		this.fixamt = fixamt;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setFixAmt(BigDecimal fixAmt) {
+		this.fixAmt = fixAmt;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIspaidto3party() {
-		return ispaidto3party;
+	public BigDecimal getMaxAmt() {
+		return maxAmt;
 	}
 
-	public void setIspaidto3party(Boolean ispaidto3party) {
-		this.ispaidto3party = ispaidto3party;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIspercentwithholding() {
-		return ispercentwithholding;
-	}
-
-	public void setIspercentwithholding(Boolean ispercentwithholding) {
-		this.ispercentwithholding = ispercentwithholding;
+	public void setMaxAmt(BigDecimal maxAmt) {
+		this.maxAmt = maxAmt;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIstaxprorated() {
-		return istaxprorated;
+	public BigDecimal getMinAmt() {
+		return minAmt;
 	}
 
-	public void setIstaxprorated(Boolean istaxprorated) {
-		this.istaxprorated = istaxprorated;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIstaxwithholding() {
-		return istaxwithholding;
-	}
-
-	public void setIstaxwithholding(Boolean istaxwithholding) {
-		this.istaxwithholding = istaxwithholding;
-	}
-
-	@Basic
-	public BigDecimal getMaxamt() {
-		return maxamt;
-	}
-
-	public void setMaxamt(BigDecimal maxamt) {
-		this.maxamt = maxamt;
-	}
-
-	@Basic
-	public BigDecimal getMinamt() {
-		return minamt;
-	}
-
-	public void setMinamt(BigDecimal minamt) {
-		this.minamt = minamt;
+	public void setMinAmt(BigDecimal minAmt) {
+		this.minAmt = minAmt;
 	}
 
 	@Basic
@@ -210,6 +170,16 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(name="ISPAIDTO3PARTY", nullable=false)
+	public Boolean isPaidTo3Party() {
+		return paidTo3Party;
+	}
+
+	public void setPaidTo3Party(Boolean paidTo3Party) {
+		this.paidTo3Party = paidTo3Party;
+	}
+
+	@Basic
 	public BigDecimal getPercent() {
 		return percent;
 	}
@@ -219,12 +189,42 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public BigDecimal getThresholdmax() {
-		return thresholdmax;
+	@Column(name="ISPERCENTWITHHOLDING", nullable=false)
+	public Boolean isPercentWithholding() {
+		return percentWithholding;
 	}
 
-	public void setThresholdmax(BigDecimal thresholdmax) {
-		this.thresholdmax = thresholdmax;
+	public void setPercentWithholding(Boolean percentWithholding) {
+		this.percentWithholding = percentWithholding;
+	}
+
+	@Basic
+	@Column(name="ISTAXPRORATED", nullable=false)
+	public Boolean isTaxProrated() {
+		return taxProrated;
+	}
+
+	public void setTaxProrated(Boolean taxProrated) {
+		this.taxProrated = taxProrated;
+	}
+
+	@Basic
+	@Column(name="ISTAXWITHHOLDING", nullable=false)
+	public Boolean isTaxWithholding() {
+		return taxWithholding;
+	}
+
+	public void setTaxWithholding(Boolean taxWithholding) {
+		this.taxWithholding = taxWithholding;
+	}
+
+	@Basic
+	public BigDecimal getThresholdMax() {
+		return thresholdMax;
+	}
+
+	public void setThresholdMax(BigDecimal thresholdMax) {
+		this.thresholdMax = thresholdMax;
 	}
 
 	@Basic
@@ -248,11 +248,11 @@ public class CWithholding extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

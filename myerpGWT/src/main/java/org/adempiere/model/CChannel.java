@@ -10,65 +10,75 @@ import javax.persistence.*;
 @Table(name="c_channel")
 public class CChannel extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adPrintcolorId;
-	private Integer cChannelId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDPrintColorID;
+	private Boolean active;
+	private Integer cChannelID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
 	private String name;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CChannel() {
 	}
 
-	public CChannel(Integer cChannelId) {
-		this.cChannelId = cChannelId;
+	public CChannel(Integer cChannelID) {
+		this.cChannelID = cChannelID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_PRINTCOLOR_ID", columnDefinition="INT")
-	public Integer getAdPrintcolorId() {
-		return adPrintcolorId;
+	public Integer getADPrintColorID() {
+		return aDPrintColorID;
 	}
 
-	public void setAdPrintcolorId(Integer adPrintcolorId) {
-		this.adPrintcolorId = adPrintcolorId;
+	public void setADPrintColorID(Integer aDPrintColorID) {
+		this.aDPrintColorID = aDPrintColorID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_CHANNEL_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_235", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Channel", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_235")
-	public Integer getCChannelId() {
-		return cChannelId;
+	public Integer getCChannelID() {
+		return cChannelID;
 	}
 
-	public void setCChannelId(Integer cChannelId) {
-		this.cChannelId = cChannelId;
+	public void setCChannelID(Integer cChannelID) {
+		this.cChannelID = cChannelID;
 	}
 
 	@Basic
@@ -83,12 +93,12 @@ public class CChannel extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -98,16 +108,6 @@ public class CChannel extends org.adempiere.common.ADEntityBase {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
 	}
 
 	@Basic
@@ -132,11 +132,11 @@ public class CChannel extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -10,8 +10,10 @@ import javax.persistence.*;
 @Table(name="a_asset_info_oth")
 public class AAssetInfoOth extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetId;
-	private Integer aAssetInfoOthId;
+	private Integer aAssetID;
+	private Integer aAssetInfoOthID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private String aUser1;
 	private String aUser10;
 	private String aUser11;
@@ -27,40 +29,58 @@ public class AAssetInfoOth extends org.adempiere.common.ADEntityBase {
 	private String aUser7;
 	private String aUser8;
 	private String aUser9;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
+	private Integer createdBy;
 	private String text;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetInfoOth() {
 	}
 
-	public AAssetInfoOth(Integer adClientId) {
-		this.adClientId = adClientId;
+	public AAssetInfoOth(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_INFO_OTH_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetInfoOthId() {
-		return aAssetInfoOthId;
+	public Integer getAAssetInfoOthID() {
+		return aAssetInfoOthID;
 	}
 
-	public void setAAssetInfoOthId(Integer aAssetInfoOthId) {
-		this.aAssetInfoOthId = aAssetInfoOthId;
+	public void setAAssetInfoOthID(Integer aAssetInfoOthID) {
+		this.aAssetInfoOthID = aAssetInfoOthID;
+	}
+
+	@Id
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -213,24 +233,14 @@ public class AAssetInfoOth extends org.adempiere.common.ADEntityBase {
 		this.aUser9 = aUser9;
 	}
 
-	@Id
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
-	public Integer getAdClientId() {
-		return adClientId;
-	}
-
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
 	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -245,22 +255,12 @@ public class AAssetInfoOth extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -285,11 +285,11 @@ public class AAssetInfoOth extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

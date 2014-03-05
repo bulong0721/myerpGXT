@@ -10,66 +10,76 @@ import javax.persistence.*;
 @Table(name="c_year")
 public class CYear extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cCalendarId;
-	private Integer cYearId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cCalendarID;
+	private Integer cYearID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private String fiscalyear;
-	private Boolean isactive;
+	private String fiscalYear;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CYear() {
 	}
 
-	public CYear(Integer cYearId) {
-		this.cYearId = cYearId;
+	public CYear(Integer cYearID) {
+		this.cYearID = cYearID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_CALENDAR_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCalendarId() {
-		return cCalendarId;
+	public Integer getCCalendarID() {
+		return cCalendarID;
 	}
 
-	public void setCCalendarId(Integer cCalendarId) {
-		this.cCalendarId = cCalendarId;
+	public void setCCalendarID(Integer cCalendarID) {
+		this.cCalendarID = cCalendarID;
 	}
 
 	@Id
 	@Column(name="C_YEAR_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_65", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Year", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_65")
-	public Integer getCYearId() {
-		return cYearId;
+	public Integer getCYearID() {
+		return cYearID;
 	}
 
-	public void setCYearId(Integer cYearId) {
-		this.cYearId = cYearId;
+	public void setCYearID(Integer cYearID) {
+		this.cYearID = cYearID;
 	}
 
 	@Basic
@@ -84,12 +94,12 @@ public class CYear extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -103,22 +113,12 @@ public class CYear extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=10)
-	public String getFiscalyear() {
-		return fiscalyear;
+	public String getFiscalYear() {
+		return fiscalYear;
 	}
 
-	public void setFiscalyear(String fiscalyear) {
-		this.fiscalyear = fiscalyear;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setFiscalYear(String fiscalYear) {
+		this.fiscalYear = fiscalYear;
 	}
 
 	@Basic
@@ -142,11 +142,11 @@ public class CYear extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

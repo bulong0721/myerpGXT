@@ -3,13 +3,13 @@ package org.adempiere.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adempiere.model.AdField;
+import org.adempiere.model.ADField;
+import org.adempiere.model.ADForm;
+import org.adempiere.model.ADMenu;
+import org.adempiere.model.ADProcess;
+import org.adempiere.model.ADProcessPara;
+import org.adempiere.model.ADTab;
 import org.adempiere.model.AdFieldV;
-import org.adempiere.model.AdForm;
-import org.adempiere.model.AdMenu;
-import org.adempiere.model.AdProcess;
-import org.adempiere.model.AdProcessPara;
-import org.adempiere.model.AdTab;
 import org.adempiere.model.AdTabV;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
@@ -21,34 +21,34 @@ import org.adempiere.web.client.model.ADTabModel;
 public final class DTOUtil {
 	public static ADFieldModel toFieldModel(AdFieldV entity) {
 		ADFieldModel model = new ADFieldModel();
-		model.setAdFieldId(entity.getAdFieldId());
-		model.setAdProcessId(entity.getAdProcessId());
-		model.setAdReferenceId(entity.getAdReferenceId());
-		model.setAdReferenceValueId(entity.getAdReferenceValueId());
+		model.setADFieldID(entity.getADFieldID());
+		model.setADProcessID(entity.getADProcessID());
+		model.setADReferenceID(entity.getADReferenceID());
+		model.setADReferenceValueID(entity.getADReferenceValueID());
 		model.setCallout(entity.getCallout());
-		model.setColumnname(entity.getColumnname());
-		model.setDefaultvalue(entity.getDefaultvalue());
-		model.setFieldgroup(entity.getFieldgroup());
-		model.setFieldgrouptype(entity.getFieldgrouptype());
-		model.setFieldlength(entity.getFieldlength());
-		model.setIsdisplayed(entity.getIsdisplayed());
-		model.setIsencryptedcolumn(entity.getIsencryptedcolumn());
-		model.setIsencryptedfield(entity.getIsencryptedfield());
-		model.setIsfieldonly(entity.getIsfieldonly());
-		model.setIskey(entity.getIskey());
-		model.setIsmandatory(entity.getIsmandatory());
-		model.setIsparent(entity.getIsparent());
-		model.setIsreadonly(entity.getIsreadonly());
-		model.setIsselectioncolumn(entity.getIsselectioncolumn());
+		model.setPropertyName(entity.getPropertyName());
+		model.setDefaultValue(entity.getDefaultValue());
+		model.setFieldGroup(entity.getFieldGroup());
+		model.setFieldGroupType(entity.getFieldGroupType());
+		model.setFieldLength(entity.getFieldLength());
+		model.setDisplayed(entity.isDisplayed());
+		model.setEncryptedColumn(entity.isEncryptedColumn());
+		model.setEncryptedField(entity.isEncryptedField());
+		model.setFieldonly(entity.isFieldOnly());
+		model.setKey(entity.isKey());
+		model.setMandatory(entity.isMandatory());
+		model.setParent(entity.isParent());
+		model.setReadonly(entity.isReadOnly());
+		model.setSelectionColumn(entity.isSelectionColumn());
 		model.setName(entity.getName());
-		model.setReadonlylogic(entity.getReadonlylogic());
-		model.setSeqno(entity.getSeqno());
-		model.setSortno(entity.getSortno());
-		model.setTablename(entity.getTablename());
-		model.setValidationcode(entity.getValidationcode());
-		model.setValuemax(entity.getValuemax());
-		model.setValuemin(entity.getValuemin());
-		model.setVformat(entity.getVformat());
+		model.setReadonlyLogic(entity.getReadOnlyLogic());
+		model.setSeqNo(entity.getSeqNo());
+		model.setSortNo(entity.getSortNo());
+		model.setTableName(entity.getTableName());
+		model.setValidationCode(entity.getValidationCode());
+		model.setValueMax(entity.getValueMax());
+		model.setValueMin(entity.getValueMin());
+		model.setVFormat(entity.getVFormat());
 		return model;
 	}
 
@@ -63,97 +63,97 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static ADMenuModel toMenuModel(AdMenu entity) {
+	public static ADMenuModel toMenuModel(ADMenu entity) {
 		ADMenuModel model = new ADMenuModel();
-		model.setIsactive(entity.isIsactive());
-		model.setAdMenuId(entity.getNodeId());
-		model.setParentId(entity.getParentId());
-		model.setSeqno(entity.getSeqno());
+		model.setIsactive(entity.isActive());
+		model.setAdMenuId(entity.getNodeID());
+		model.setParentId(entity.getParentID());
+		model.setSeqno(entity.getSeqNo());
 		model.setName(entity.getName());
-		model.setAdFormId(entity.getAdFormId());
-		model.setAdProcessId(entity.getAdProcessId());
-		model.setAdTaskId(entity.getAdTaskId());
-		model.setAdWindowId(entity.getAdWindowId());
-		model.setAdWorkbenchId(entity.getAdWorkbenchId());
-		model.setAdWorkflowId(entity.getAdWorkflowId());
+		model.setAdFormId(entity.getADFormID());
+		model.setAdProcessId(entity.getADProcessID());
+		model.setAdTaskId(entity.getADTaskID());
+		model.setAdWindowId(entity.getADWindowID());
+		model.setAdWorkbenchId(entity.getADWorkbenchID());
+		model.setAdWorkflowId(entity.getADWorkflowID());
 		model.setAction(entity.getAction());
 		return model;
 	}
 	
-	public static List<ADMenuModel> toMenuModels(List<AdMenu> list) {
+	public static List<ADMenuModel> toMenuModels(List<ADMenu> list) {
 		int size = null == list ? 0 : list.size();
 		List<ADMenuModel> resultList = new ArrayList<ADMenuModel>(size);
 		if (null != list) {
-			for (AdMenu entity : list) {
+			for (ADMenu entity : list) {
 				resultList.add(toMenuModel(entity));
 			}
 		}
 		return resultList;
 	}
 
-	public static ADProcessModel toProcessModel(AdProcess entity) {
+	public static ADProcessModel toProcessModel(ADProcess entity) {
 		ADProcessModel model = new ADProcessModel();
-		model.setAdProcessId(entity.getAdProcessId());
-		model.setAdFormId(entity.getAdFormId());
-		model.setAdPrintformatId(entity.getAdPrintformatId());
-		model.setAdReportviewId(entity.getAdReportviewId());
-		model.setAdWorkflowId(entity.getAdWorkflowId());
+		model.setAdProcessId(entity.getADProcessID());
+		model.setAdFormId(entity.getADFormID());
+		model.setAdPrintformatId(entity.getADPrintFormatID());
+		model.setAdReportviewId(entity.getADReportViewID());
+		model.setAdWorkflowId(entity.getADWorkflowID());
 		model.setClassname(entity.getClassname());
-		model.setCopyfromprocess(entity.isCopyfromprocess());
-		model.setIsactive(entity.isIsactive());
-		model.setIsdirectprint(entity.isIsdirectprint());
-		model.setIsreport(entity.isIsreport());
-		model.setIsserverprocess(entity.isIsserverprocess());
-		model.setJasperreport(entity.getJasperreport());
+		model.setCopyfromprocess(entity.isCopyFromProcess());
+		model.setIsactive(entity.isActive());
+		model.setIsdirectprint(entity.isDirectPrint());
+		model.setIsreport(entity.isReport());
+		model.setIsserverprocess(entity.isServerProcess());
+		model.setJasperreport(entity.getJasperReport());
 		model.setName(entity.getName());
 		model.setDescription(entity.getDescription());
-		model.setProcedurename(entity.getProcedurename());
+		model.setProcedurename(entity.getProcedureName());
 		model.setValue(entity.getValue());
-		model.setWorkflowvalue(entity.getWorkflowvalue());
-		if (null != entity.getAdProcessParas()) {
-			model.setParamList(toProcessParameters(entity.getAdProcessParas()));
+		model.setWorkflowvalue(entity.getWorkflowValue());
+		if (null != entity.getADProcessParas()) {
+			model.setParamList(toProcessParameters(entity.getADProcessParas()));
 		}
 		return model;
 	}
 
-	public static List<ADProcessModel> toProcessModels(List<AdProcess> list) {
+	public static List<ADProcessModel> toProcessModels(List<ADProcess> list) {
 		int size = null == list ? 0 : list.size();
 		List<ADProcessModel> resultList = new ArrayList<ADProcessModel>(size);
 		if (null != list) {
-			for (AdProcess entity : list) {
+			for (ADProcess entity : list) {
 				resultList.add(toProcessModel(entity));
 			}
 		}
 		return resultList;
 	}
 
-	public static ADProcessArgModel toProcessParameter(AdProcessPara entity) {
+	public static ADProcessArgModel toProcessParameter(ADProcessPara entity) {
 		ADProcessArgModel model = new ADProcessArgModel();
-		model.setAdProcessParaId(entity.getAdProcessParaId());
-		model.setAdReferenceId(entity.getAdReferenceId());
-		model.setAdReferenceValueId(entity.getAdReferenceValueId());
-		model.setAdValRuleId(entity.getAdValRuleId());
-		model.setColumnname(entity.getColumnname());
-		model.setDefaultvalue(entity.getDefaultvalue());
-		model.setDisplaylogic(entity.getDisplaylogic());
-		model.setFieldlength(entity.getFieldlength());
-		model.setIsactive(entity.isIsactive());
-		model.setIscentrallymaintained(entity.isIscentrallymaintained());
-		model.setIsmandatory(entity.isIsmandatory());
+		model.setADProcessParaID(entity.getADProcessParaID());
+		model.setADReferenceID(entity.getADReferenceID());
+		model.setADReferenceValueID(entity.getADReferenceValueID());
+		model.setADValRuleID(entity.getADValRuleID());
+		model.setPropertyName(entity.getColumnName());
+		model.setDefaultValue(entity.getDefaultValue());
+		model.setDisplayLogic(entity.getDisplayLogic());
+		model.setFieldLength(entity.getFieldLength());
+		model.setActive(entity.isActive());
+		model.setCentrallyMaintained(entity.isCentrallyMaintained());
+		model.setMandatory(entity.isMandatory());
 		model.setName(entity.getName());
-		model.setReadonlylogic(entity.getReadonlylogic());
-		model.setSeqno(entity.getSeqno());
-		model.setValuemax(entity.getValuemax());
-		model.setValuemin(entity.getValuemin());
-		model.setVformat(entity.getVformat());
+		model.setReadonlyLogic(entity.getReadOnlyLogic());
+		model.setSeqNo(entity.getSeqNo());
+		model.setValueMax(entity.getValueMax());
+		model.setValueMin(entity.getValueMin());
+		model.setVFormat(entity.getVFormat());
 		return model;
 	}
 
-	public static List<ADProcessArgModel> toProcessParameters(List<AdProcessPara> list) {
+	public static List<ADProcessArgModel> toProcessParameters(List<ADProcessPara> list) {
 		int size = null == list ? 0 : list.size();
 		List<ADProcessArgModel> resultList = new ArrayList<ADProcessArgModel>(size);
 		if (null != list) {
-			for (AdProcessPara entity : list) {
+			for (ADProcessPara entity : list) {
 				resultList.add(toProcessParameter(entity));
 			}
 		}
@@ -162,21 +162,21 @@ public final class DTOUtil {
 
 	public static ADTabModel toTabModel(AdTabV entity) {
 		ADTabModel model = new ADTabModel();
-		model.setAdTabId(entity.getAdTabId());
-		model.setAdColumnId(entity.getAdColumnId());
-		model.setAdTableId(entity.getAdTableId());
-		model.setParentColumnId(entity.getParentColumnId());
-		model.setSeqno(entity.getSeqno());
-		model.setTablevel(entity.getTablevel());
-		model.setIsinfotab(entity.getIsinfotab());
-		model.setIsreadonly(entity.getIsreadonly());
-		model.setIssinglerow(entity.getIssinglerow());
+		model.setAdTabId(entity.getADTabID());
+		model.setAdColumnId(entity.getADColumnID());
+		model.setAdTableId(entity.getADTableID());
+		model.setParentColumnId(entity.getParentColumnID());
+		model.setSeqno(entity.getSeqNo());
+		model.setTablevel(entity.getTabLevel());
+		model.setIsinfotab(entity.isInfoTab());
+		model.setIsreadonly(entity.isReadOnly());
+		model.setIssinglerow(entity.isSingleRow());
 		model.setName(entity.getName());
-		model.setReadonlylogic(entity.getReadonlylogic());
-		model.setTablename(entity.getTablename());
-		model.setHasTree(entity.getHastree());
-		model.setIsSortTab(entity.getIssorttab());
-		model.setIsHighVolume(entity.getIshighvolume());
+		model.setReadonlylogic(entity.getReadOnlyLogic());
+		model.setTablename(entity.getTableName());
+		model.setHasTree(entity.isHasTree());
+		model.setIsSortTab(entity.isSortTab());
+		model.setIsHighVolume(entity.isHighVolume());
 		return model;
 	}
 
@@ -191,112 +191,112 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static ADFormModel toFormModel(AdForm entity) {
+	public static ADFormModel toFormModel(ADForm entity) {
 		ADFormModel model = new ADFormModel();
-		model.setAdFormId(entity.getAdFormId());
-		model.setAccesslevel(entity.getAccesslevel());
-		model.setAdClientId(entity.getAdClientId());
-		model.setAdOrgId(entity.getAdOrgId());
+		model.setAdFormId(entity.getADFormID());
+		model.setAccesslevel(entity.getAccessLevel());
+		model.setAdClientId(entity.getADClientID());
+		model.setAdOrgId(entity.getADOrgID());
 		model.setClassname(entity.getClassname());
 		model.setDescription(entity.getDescription());
 		model.setHelp(entity.getHelp());
-		model.setIsActive(entity.isIsactive());
-		model.setIsBetafunctionality(entity.isIsbetafunctionality());
-		model.setJspurl(entity.getJspurl());
+		model.setIsActive(entity.isActive());
+		model.setIsBetafunctionality(entity.isBetaFunctionality());
+		model.setJspurl(entity.getJSPURL());
 		model.setName(entity.getName());
 		return model;
 	}
 
-	public static List<ADFormModel> toFormModels(List<AdForm> formList) {
+	public static List<ADFormModel> toFormModels(List<ADForm> formList) {
 		int size = null == formList ? 0 : formList.size();
 		List<ADFormModel> resultList = new ArrayList<ADFormModel>(size);
 		if (null != formList) {
-			for (AdForm formEntity : formList) {
+			for (ADForm formEntity : formList) {
 				resultList.add(toFormModel(formEntity));
 			}
 		}
 		return resultList;
 	}
 
-	public static AdTab copyTab(AdTab tab, Integer windowId) {
-		AdTab newTab = new AdTab();
-		newTab.setAdClientId(tab.getAdClientId());
-		newTab.setAdColumnId(tab.getAdColumnId());
-		newTab.setAdColumnsortorderId(tab.getAdColumnsortorderId());
-		newTab.setAdColumnsortyesnoId(tab.getAdColumnsortyesnoId());
-		newTab.setAdImageId(tab.getAdImageId());
-		newTab.setAdOrgId(tab.getAdOrgId());
-		newTab.setAdProcessId(tab.getAdProcessId());
-		newTab.setAdTabId(tab.getAdTabId());
-		newTab.setAdTableId(tab.getAdTableId());
-		newTab.setAdWindowId(windowId);
-		newTab.setCommitwarning(tab.getCommitwarning());
+	public static ADTab copyTab(ADTab tab, Integer windowId) {
+		ADTab newTab = new ADTab();
+		newTab.setAdClientId(tab.getADClientID());
+		newTab.setADColumnID(tab.getADColumnID());
+		newTab.setADColumnSortOrderID(tab.getADColumnSortOrderID());
+		newTab.setADColumnSortYesNoID(tab.getADColumnSortYesNoID());
+		newTab.setADImageID(tab.getADImageID());
+		newTab.setAdOrgId(tab.getADOrgID());
+		newTab.setADProcessID(tab.getADProcessID());
+		newTab.setADTabID(tab.getADTabID());
+		newTab.setADTableID(tab.getADTableID());
+		newTab.setADWindowID(windowId);
+		newTab.setCommitWarning(tab.getCommitWarning());
 		newTab.setCreated(tab.getCreated());
 		newTab.setCreatedby(tab.getCreatedby());
 		newTab.setDescription(tab.getDescription());
-		newTab.setDisplaylogic(tab.getDisplaylogic());
-		newTab.setEntitytype(tab.getEntitytype());
-		newTab.setHastree(tab.isHastree());
+		newTab.setDisplayLogic(tab.getDisplayLogic());
+		newTab.setEntityType(tab.getEntityType());
+		newTab.setHasTree(tab.isHasTree());
 		newTab.setHelp(tab.getHelp());
-		newTab.setImportfields(tab.isImportfields());
-		newTab.setIncludedTabId(tab.getIncludedTabId());
-		newTab.setIsactive(tab.isIsactive());
-		newTab.setIsadvancedtab(tab.isIsadvancedtab());
-		newTab.setIsinfotab(tab.isIsinfotab());
-		newTab.setIsinsertrecord(tab.isIsinsertrecord());
-		newTab.setIsreadonly(tab.isIsreadonly());
-		newTab.setIssinglerow(tab.isIssinglerow());
-		newTab.setIssorttab(tab.isIssorttab());
-		newTab.setIstranslationtab(tab.isIstranslationtab());
+		newTab.setImportFields(tab.isImportFields());
+		newTab.setIncludedTabID(tab.getIncludedTabID());
+		newTab.setIsactive(tab.isActive());
+		newTab.setAdvancedTab(tab.isAdvancedTab());
+		newTab.setInfoTab(tab.isInfoTab());
+		newTab.setInsertRecord(tab.isInsertRecord());
+		newTab.setReadOnly(tab.isReadOnly());
+		newTab.setSingleRow(tab.isSingleRow());
+		newTab.setSortTab(tab.isSortTab());
+		newTab.setTranslationTab(tab.isTranslationTab());
 		newTab.setName(tab.getName());
-		newTab.setOrderbyclause(tab.getOrderbyclause());
-		newTab.setParentColumnId(tab.getParentColumnId());
+		newTab.setOrderByClause(tab.getOrderByClause());
+		newTab.setParentColumnID(tab.getParentColumnID());
 		newTab.setProcessing(tab.isProcessing());
-		newTab.setReadonlylogic(tab.getReadonlylogic());
-		newTab.setSeqno(tab.getSeqno());
-		newTab.setTablevel(tab.getTablevel());
+		newTab.setReadOnlyLogic(tab.getReadOnlyLogic());
+		newTab.setSeqNo(tab.getSeqNo());
+		newTab.setTabLevel(tab.getTabLevel());
 		newTab.setUpdated(tab.getUpdated());
-		newTab.setUpdatedby(tab.getUpdatedby());
-		newTab.setWhereclause(tab.getWhereclause());
+		newTab.setUpdatedby(tab.getUpdatedBy());
+		newTab.setWhereClause(tab.getWhereClause());
 		return newTab;
 	}
 
-	public static AdField copyField(AdField field, Integer tabId) {
-		AdField newField = new AdField();
-		newField.setAdClientId(field.getAdClientId());
-		newField.setAdColumnId(field.getAdColumnId());
-		newField.setAdFieldId(field.getAdFieldId());
-		newField.setAdFieldgroupId(field.getAdFieldgroupId());
-		newField.setAdOrgId(field.getAdOrgId());
-		newField.setAdReferenceId(field.getAdReferenceId());
-		newField.setAdReferenceValueId(field.getAdReferenceValueId());
-		newField.setAdTabId(tabId);
-		newField.setAdValRuleId(field.getAdValRuleId());
+	public static ADField copyField(ADField field, Integer tabId) {
+		ADField newField = new ADField();
+		newField.setAdClientId(field.getADClientID());
+		newField.setADColumnID(field.getADColumnID());
+		newField.setADFieldID(field.getADFieldID());
+		newField.setADFieldGroupID(field.getADFieldGroupID());
+		newField.setAdOrgId(field.getADOrgID());
+		newField.setADReferenceID(field.getADReferenceID());
+		newField.setADReferenceValueID(field.getADReferenceValueID());
+		newField.setADTabID(tabId);
+		newField.setADValRuleID(field.getADValRuleID());
 		newField.setCreated(field.getCreated());
 		newField.setCreatedby(field.getCreatedby());
-		newField.setDefaultvalue(field.getDefaultvalue());
+		newField.setDefaultValue(field.getDefaultValue());
 		newField.setDescription(field.getDescription());
-		newField.setDisplaylength(field.getDisplaylength());
-		newField.setDisplaylogic(field.getDisplaylogic());
-		newField.setEntitytype(field.getEntitytype());
+		newField.setDisplayLength(field.getDisplayLength());
+		newField.setDisplayLogic(field.getDisplayLogic());
+		newField.setEntityType(field.getEntityType());
 		newField.setHelp(field.getHelp());
-		newField.setIncludedTabId(field.getIncludedTabId());
-		newField.setInfofactoryclass(field.getInfofactoryclass());
-		newField.setIsactive(field.isIsactive());
-		newField.setIscentrallymaintained(field.isIscentrallymaintained());
-		newField.setIsdisplayed(field.isIsdisplayed());
-		newField.setIsencrypted(field.isIsencrypted());
-		newField.setIsfieldonly(field.isIsfieldonly());
-		newField.setIsheading(field.isIsheading());
-		newField.setIsmandatory(field.isIsmandatory());
-		newField.setIsreadonly(field.isIsreadonly());
-		newField.setIssameline(field.isIssameline());
+		newField.setIncludedTabID(field.getIncludedTabID());
+		newField.setInfoFactoryClass(field.getInfoFactoryClass());
+		newField.setIsactive(field.isActive());
+		newField.setCentrallyMaintained(field.isCentrallyMaintained());
+		newField.setDisplayed(field.isDisplayed());
+		newField.setEncrypted(field.isEncrypted());
+		newField.setFieldOnly(field.isFieldOnly());
+		newField.setHeading(field.isHeading());
+		newField.setMandatory(field.isMandatory());
+		newField.setReadOnly(field.isReadOnly());
+		newField.setSameLine(field.isSameLine());
 		newField.setName(field.getName());
-		newField.setObscuretype(field.getObscuretype());
-		newField.setSeqno(field.getSeqno());
-		newField.setSortno(field.getSortno());
+		newField.setObscureType(field.getObscureType());
+		newField.setSeqNo(field.getSortNo());
+		newField.setSortNo(field.getSortNo());
 		newField.setUpdated(field.getUpdated());
-		newField.setUpdatedby(field.getUpdatedby());
+		newField.setUpdatedby(field.getUpdatedBy());
 
 		return newField;
 	}

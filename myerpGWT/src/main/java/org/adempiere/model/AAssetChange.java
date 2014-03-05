@@ -13,27 +13,30 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aAccumdepreciationAcct;
 	private Integer aAssetAcct;
-	private Integer aAssetAcctId;
-	private Integer aAssetAdditionId;
-	private Integer aAssetChangeId;
-	private String aAssetCreatedate;
-	private Integer aAssetId;
-	private Integer aAssetRetirementId;
-	private String aAssetRevaldate;
+	private Integer aAssetAcctID;
+	private Integer aAssetAdditionID;
+	private Integer aAssetChangeID;
+	private String aAssetCreateDate;
+	private Integer aAssetID;
+	private Integer aAssetRetirementID;
+	private String aAssetRevalDate;
 	private String aAssetSpreadType;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
 	private Integer aDepreciationAcct;
 	private String aDepreciationCalcType;
 	private BigDecimal aDepreciationManualAmount;
 	private String aDepreciationManualPeriod;
-	private Integer aDepreciationTableHeaderId;
+	private Integer aDepreciationTableHeaderID;
 	private BigDecimal aDepreciationVariablePerc;
 	private String aDisposalLoss;
 	private String aDisposalRevenue;
-	private Integer aParentAssetId;
+	private Integer aParentAssetID;
 	private Integer aPeriodEnd;
 	private Integer aPeriodStart;
-	private BigDecimal aQtyCurrent;
-	private BigDecimal aQtyOriginal;
+	private BigDecimal aQTYCurrent;
+	private BigDecimal aQTYOriginal;
 	private Integer aRevalAccumdepOffsetCur;
 	private Integer aRevalAccumdepOffsetPrior;
 	private String aRevalCalMethod;
@@ -42,52 +45,49 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	private Integer aRevalDepexpOffset;
 	private BigDecimal aSalvageValue;
 	private BigDecimal aSplitPercent;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
-	private BigDecimal assetaccumdepreciationamt;
-	private BigDecimal assetbookvalueamt;
-	private String assetdepreciationdate;
-	private String assetdisposaldate;
-	private BigDecimal assetmarketvalueamt;
-	private String assetservicedate;
-	private BigDecimal assetvalueamt;
-	private Integer cAcctschemaId;
-	private Integer cBpartnerId;
-	private Integer cBpartnerLocationId;
-	private Integer cLocationId;
-	private Integer cValidcombinationId;
-	private BigDecimal changeamt;
-	private String changedate;
-	private String changetype;
-	private String conventiontype;
+	private Boolean active;
+	private BigDecimal assetAccumDepreciationAmt;
+	private BigDecimal assetBookValueAmt;
+	private String assetDepreciationDate;
+	private String assetDisposalDate;
+	private BigDecimal assetMarketValueAmt;
+	private String assetServiceDate;
+	private BigDecimal assetValueAmt;
+	private Integer cAcctSchemaID;
+	private Integer cBPartnerID;
+	private Integer cBPartnerLocationID;
+	private Integer cLocationID;
+	private Integer cValidCombinationID;
+	private BigDecimal changeAmt;
+	private String changeDate;
+	private String changeType;
+	private String conventionType;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
-	private String depreciationtype;
-	private Boolean isactive;
-	private Boolean isdepreciated;
-	private Boolean isdisposed;
-	private Boolean isfullydepreciated;
-	private Boolean isinposession;
-	private Boolean isowned;
-	private Integer lifeuseunits;
+	private Integer createdBy;
+	private String dateAcct;
+	private Boolean depreciated;
+	private String depreciationType;
+	private Boolean disposed;
+	private Boolean fullyDepreciated;
+	private Boolean inPosession;
+	private Integer lifeUseUnits;
 	private String lot;
-	private String postingtype;
-	private String serno;
-	private String textdetails;
+	private Boolean owned;
+	private String postingType;
+	private String serNo;
+	private String textDetails;
 	private String updated;
-	private Integer updatedby;
-	private Integer uselifemonths;
-	private Integer uselifeyears;
-	private Integer useunits;
-	private String versionno;
+	private Integer updatedBy;
+	private Integer useLifeMonths;
+	private Integer useLifeYears;
+	private Integer useUnits;
+	private String versionNo;
 
 	public AAssetChange() {
 	}
 
-	public AAssetChange(Integer aAssetChangeId) {
-		this.aAssetChangeId = aAssetChangeId;
+	public AAssetChange(Integer aAssetChangeID) {
+		this.aAssetChangeID = aAssetChangeID;
 	}
 
 	@Basic
@@ -112,74 +112,74 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_ASSET_ACCT_ID", columnDefinition="INT")
-	public Integer getAAssetAcctId() {
-		return aAssetAcctId;
+	public Integer getAAssetAcctID() {
+		return aAssetAcctID;
 	}
 
-	public void setAAssetAcctId(Integer aAssetAcctId) {
-		this.aAssetAcctId = aAssetAcctId;
+	public void setAAssetAcctID(Integer aAssetAcctID) {
+		this.aAssetAcctID = aAssetAcctID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ADDITION_ID", columnDefinition="INT")
-	public Integer getAAssetAdditionId() {
-		return aAssetAdditionId;
+	public Integer getAAssetAdditionID() {
+		return aAssetAdditionID;
 	}
 
-	public void setAAssetAdditionId(Integer aAssetAdditionId) {
-		this.aAssetAdditionId = aAssetAdditionId;
+	public void setAAssetAdditionID(Integer aAssetAdditionID) {
+		this.aAssetAdditionID = aAssetAdditionID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_CHANGE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53153", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Change", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53153")
-	public Integer getAAssetChangeId() {
-		return aAssetChangeId;
+	public Integer getAAssetChangeID() {
+		return aAssetChangeID;
 	}
 
-	public void setAAssetChangeId(Integer aAssetChangeId) {
-		this.aAssetChangeId = aAssetChangeId;
+	public void setAAssetChangeID(Integer aAssetChangeID) {
+		this.aAssetChangeID = aAssetChangeID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_CREATEDATE")
-	public String getAAssetCreatedate() {
-		return aAssetCreatedate;
+	public String getAAssetCreateDate() {
+		return aAssetCreateDate;
 	}
 
-	public void setAAssetCreatedate(String aAssetCreatedate) {
-		this.aAssetCreatedate = aAssetCreatedate;
+	public void setAAssetCreateDate(String aAssetCreateDate) {
+		this.aAssetCreateDate = aAssetCreateDate;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_RETIREMENT_ID", columnDefinition="INT")
-	public Integer getAAssetRetirementId() {
-		return aAssetRetirementId;
+	public Integer getAAssetRetirementID() {
+		return aAssetRetirementID;
 	}
 
-	public void setAAssetRetirementId(Integer aAssetRetirementId) {
-		this.aAssetRetirementId = aAssetRetirementId;
+	public void setAAssetRetirementID(Integer aAssetRetirementID) {
+		this.aAssetRetirementID = aAssetRetirementID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_REVALDATE")
-	public String getAAssetRevaldate() {
-		return aAssetRevaldate;
+	public String getAAssetRevalDate() {
+		return aAssetRevalDate;
 	}
 
-	public void setAAssetRevaldate(String aAssetRevaldate) {
-		this.aAssetRevaldate = aAssetRevaldate;
+	public void setAAssetRevalDate(String aAssetRevalDate) {
+		this.aAssetRevalDate = aAssetRevalDate;
 	}
 
 	@Basic
@@ -190,6 +190,36 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 
 	public void setAAssetSpreadType(String aAssetSpreadType) {
 		this.aAssetSpreadType = aAssetSpreadType;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="AD_USER_ID", columnDefinition="INT")
+	public Integer getADUserID() {
+		return aDUserID;
+	}
+
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
 	}
 
 	@Basic
@@ -234,12 +264,12 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID", columnDefinition="INT")
-	public Integer getADepreciationTableHeaderId() {
-		return aDepreciationTableHeaderId;
+	public Integer getADepreciationTableHeaderID() {
+		return aDepreciationTableHeaderID;
 	}
 
-	public void setADepreciationTableHeaderId(Integer aDepreciationTableHeaderId) {
-		this.aDepreciationTableHeaderId = aDepreciationTableHeaderId;
+	public void setADepreciationTableHeaderID(Integer aDepreciationTableHeaderID) {
+		this.aDepreciationTableHeaderID = aDepreciationTableHeaderID;
 	}
 
 	@Basic
@@ -274,12 +304,12 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_PARENT_ASSET_ID", columnDefinition="INT")
-	public Integer getAParentAssetId() {
-		return aParentAssetId;
+	public Integer getAParentAssetID() {
+		return aParentAssetID;
 	}
 
-	public void setAParentAssetId(Integer aParentAssetId) {
-		this.aParentAssetId = aParentAssetId;
+	public void setAParentAssetID(Integer aParentAssetID) {
+		this.aParentAssetID = aParentAssetID;
 	}
 
 	@Basic
@@ -304,22 +334,22 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_QTY_CURRENT")
-	public BigDecimal getAQtyCurrent() {
-		return aQtyCurrent;
+	public BigDecimal getAQTYCurrent() {
+		return aQTYCurrent;
 	}
 
-	public void setAQtyCurrent(BigDecimal aQtyCurrent) {
-		this.aQtyCurrent = aQtyCurrent;
+	public void setAQTYCurrent(BigDecimal aQTYCurrent) {
+		this.aQTYCurrent = aQTYCurrent;
 	}
 
 	@Basic
 	@Column(name="A_QTY_ORIGINAL")
-	public BigDecimal getAQtyOriginal() {
-		return aQtyOriginal;
+	public BigDecimal getAQTYOriginal() {
+		return aQTYOriginal;
 	}
 
-	public void setAQtyOriginal(BigDecimal aQtyOriginal) {
-		this.aQtyOriginal = aQtyOriginal;
+	public void setAQTYOriginal(BigDecimal aQTYOriginal) {
+		this.aQTYOriginal = aQTYOriginal;
 	}
 
 	@Basic
@@ -403,184 +433,164 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
-	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
+	public BigDecimal getAssetAccumDepreciationAmt() {
+		return assetAccumDepreciationAmt;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
-	}
-
-	@Basic
-	public BigDecimal getAssetaccumdepreciationamt() {
-		return assetaccumdepreciationamt;
-	}
-
-	public void setAssetaccumdepreciationamt(BigDecimal assetaccumdepreciationamt) {
-		this.assetaccumdepreciationamt = assetaccumdepreciationamt;
+	public void setAssetAccumDepreciationAmt(BigDecimal assetAccumDepreciationAmt) {
+		this.assetAccumDepreciationAmt = assetAccumDepreciationAmt;
 	}
 
 	@Basic
-	public BigDecimal getAssetbookvalueamt() {
-		return assetbookvalueamt;
+	public BigDecimal getAssetBookValueAmt() {
+		return assetBookValueAmt;
 	}
 
-	public void setAssetbookvalueamt(BigDecimal assetbookvalueamt) {
-		this.assetbookvalueamt = assetbookvalueamt;
-	}
-
-	@Basic
-	public String getAssetdepreciationdate() {
-		return assetdepreciationdate;
-	}
-
-	public void setAssetdepreciationdate(String assetdepreciationdate) {
-		this.assetdepreciationdate = assetdepreciationdate;
+	public void setAssetBookValueAmt(BigDecimal assetBookValueAmt) {
+		this.assetBookValueAmt = assetBookValueAmt;
 	}
 
 	@Basic
-	public String getAssetdisposaldate() {
-		return assetdisposaldate;
+	public String getAssetDepreciationDate() {
+		return assetDepreciationDate;
 	}
 
-	public void setAssetdisposaldate(String assetdisposaldate) {
-		this.assetdisposaldate = assetdisposaldate;
-	}
-
-	@Basic
-	public BigDecimal getAssetmarketvalueamt() {
-		return assetmarketvalueamt;
-	}
-
-	public void setAssetmarketvalueamt(BigDecimal assetmarketvalueamt) {
-		this.assetmarketvalueamt = assetmarketvalueamt;
+	public void setAssetDepreciationDate(String assetDepreciationDate) {
+		this.assetDepreciationDate = assetDepreciationDate;
 	}
 
 	@Basic
-	public String getAssetservicedate() {
-		return assetservicedate;
+	public String getAssetDisposalDate() {
+		return assetDisposalDate;
 	}
 
-	public void setAssetservicedate(String assetservicedate) {
-		this.assetservicedate = assetservicedate;
+	public void setAssetDisposalDate(String assetDisposalDate) {
+		this.assetDisposalDate = assetDisposalDate;
 	}
 
 	@Basic
-	public BigDecimal getAssetvalueamt() {
-		return assetvalueamt;
+	public BigDecimal getAssetMarketValueAmt() {
+		return assetMarketValueAmt;
 	}
 
-	public void setAssetvalueamt(BigDecimal assetvalueamt) {
-		this.assetvalueamt = assetvalueamt;
+	public void setAssetMarketValueAmt(BigDecimal assetMarketValueAmt) {
+		this.assetMarketValueAmt = assetMarketValueAmt;
+	}
+
+	@Basic
+	public String getAssetServiceDate() {
+		return assetServiceDate;
+	}
+
+	public void setAssetServiceDate(String assetServiceDate) {
+		this.assetServiceDate = assetServiceDate;
+	}
+
+	@Basic
+	public BigDecimal getAssetValueAmt() {
+		return assetValueAmt;
+	}
+
+	public void setAssetValueAmt(BigDecimal assetValueAmt) {
+		this.assetValueAmt = assetValueAmt;
 	}
 
 	@Basic
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
-	public Integer getCBpartnerLocationId() {
-		return cBpartnerLocationId;
+	public Integer getCBPartnerLocationID() {
+		return cBPartnerLocationID;
 	}
 
-	public void setCBpartnerLocationId(Integer cBpartnerLocationId) {
-		this.cBpartnerLocationId = cBpartnerLocationId;
+	public void setCBPartnerLocationID(Integer cBPartnerLocationID) {
+		this.cBPartnerLocationID = cBPartnerLocationID;
 	}
 
 	@Basic
 	@Column(name="C_LOCATION_ID", columnDefinition="INT")
-	public Integer getCLocationId() {
-		return cLocationId;
+	public Integer getCLocationID() {
+		return cLocationID;
 	}
 
-	public void setCLocationId(Integer cLocationId) {
-		this.cLocationId = cLocationId;
+	public void setCLocationID(Integer cLocationID) {
+		this.cLocationID = cLocationID;
 	}
 
 	@Basic
 	@Column(name="C_VALIDCOMBINATION_ID", columnDefinition="INT")
-	public Integer getCValidcombinationId() {
-		return cValidcombinationId;
+	public Integer getCValidCombinationID() {
+		return cValidCombinationID;
 	}
 
-	public void setCValidcombinationId(Integer cValidcombinationId) {
-		this.cValidcombinationId = cValidcombinationId;
-	}
-
-	@Basic
-	public BigDecimal getChangeamt() {
-		return changeamt;
-	}
-
-	public void setChangeamt(BigDecimal changeamt) {
-		this.changeamt = changeamt;
+	public void setCValidCombinationID(Integer cValidCombinationID) {
+		this.cValidCombinationID = cValidCombinationID;
 	}
 
 	@Basic
-	public String getChangedate() {
-		return changedate;
+	public BigDecimal getChangeAmt() {
+		return changeAmt;
 	}
 
-	public void setChangedate(String changedate) {
-		this.changedate = changedate;
+	public void setChangeAmt(BigDecimal changeAmt) {
+		this.changeAmt = changeAmt;
+	}
+
+	@Basic
+	public String getChangeDate() {
+		return changeDate;
+	}
+
+	public void setChangeDate(String changeDate) {
+		this.changeDate = changeDate;
 	}
 
 	@Basic
 	@Column(nullable=false, length=3)
-	public String getChangetype() {
-		return changetype;
+	public String getChangeType() {
+		return changeType;
 	}
 
-	public void setChangetype(String changetype) {
-		this.changetype = changetype;
+	public void setChangeType(String changeType) {
+		this.changeType = changeType;
 	}
 
 	@Basic
 	@Column(length=10)
-	public String getConventiontype() {
-		return conventiontype;
+	public String getConventionType() {
+		return conventionType;
 	}
 
-	public void setConventiontype(String conventiontype) {
-		this.conventiontype = conventiontype;
+	public void setConventionType(String conventionType) {
+		this.conventionType = conventionType;
 	}
 
 	@Basic
@@ -595,96 +605,81 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public String getDateacct() {
-		return dateacct;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
+	}
+
+	@Basic
+	@Column(name="ISDEPRECIATED")
+	public Boolean isDepreciated() {
+		return depreciated;
+	}
+
+	public void setDepreciated(Boolean depreciated) {
+		this.depreciated = depreciated;
 	}
 
 	@Basic
 	@Column(length=10)
-	public String getDepreciationtype() {
-		return depreciationtype;
+	public String getDepreciationType() {
+		return depreciationType;
 	}
 
-	public void setDepreciationtype(String depreciationtype) {
-		this.depreciationtype = depreciationtype;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDepreciationType(String depreciationType) {
+		this.depreciationType = depreciationType;
 	}
 
 	@Basic
-	public Boolean isIsdepreciated() {
-		return isdepreciated;
+	@Column(name="ISDISPOSED")
+	public Boolean isDisposed() {
+		return disposed;
 	}
 
-	public void setIsdepreciated(Boolean isdepreciated) {
-		this.isdepreciated = isdepreciated;
-	}
-
-	@Basic
-	public Boolean isIsdisposed() {
-		return isdisposed;
-	}
-
-	public void setIsdisposed(Boolean isdisposed) {
-		this.isdisposed = isdisposed;
+	public void setDisposed(Boolean disposed) {
+		this.disposed = disposed;
 	}
 
 	@Basic
-	public Boolean isIsfullydepreciated() {
-		return isfullydepreciated;
+	@Column(name="ISFULLYDEPRECIATED")
+	public Boolean isFullyDepreciated() {
+		return fullyDepreciated;
 	}
 
-	public void setIsfullydepreciated(Boolean isfullydepreciated) {
-		this.isfullydepreciated = isfullydepreciated;
-	}
-
-	@Basic
-	public Boolean isIsinposession() {
-		return isinposession;
-	}
-
-	public void setIsinposession(Boolean isinposession) {
-		this.isinposession = isinposession;
+	public void setFullyDepreciated(Boolean fullyDepreciated) {
+		this.fullyDepreciated = fullyDepreciated;
 	}
 
 	@Basic
-	public Boolean isIsowned() {
-		return isowned;
+	@Column(name="ISINPOSESSION")
+	public Boolean isInPosession() {
+		return inPosession;
 	}
 
-	public void setIsowned(Boolean isowned) {
-		this.isowned = isowned;
+	public void setInPosession(Boolean inPosession) {
+		this.inPosession = inPosession;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getLifeuseunits() {
-		return lifeuseunits;
+	public Integer getLifeUseUnits() {
+		return lifeUseUnits;
 	}
 
-	public void setLifeuseunits(Integer lifeuseunits) {
-		this.lifeuseunits = lifeuseunits;
+	public void setLifeUseUnits(Integer lifeUseUnits) {
+		this.lifeUseUnits = lifeUseUnits;
 	}
 
 	@Basic
@@ -698,33 +693,43 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(length=10)
-	public String getPostingtype() {
-		return postingtype;
+	@Column(name="ISOWNED")
+	public Boolean isOwned() {
+		return owned;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setOwned(Boolean owned) {
+		this.owned = owned;
+	}
+
+	@Basic
+	@Column(length=10)
+	public String getPostingType() {
+		return postingType;
+	}
+
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
 	@Column(length=40)
-	public String getSerno() {
-		return serno;
+	public String getSerNo() {
+		return serNo;
 	}
 
-	public void setSerno(String serno) {
-		this.serno = serno;
+	public void setSerNo(String serNo) {
+		this.serNo = serNo;
 	}
 
 	@Basic
 	@Column(nullable=false, length=60)
-	public String getTextdetails() {
-		return textdetails;
+	public String getTextDetails() {
+		return textDetails;
 	}
 
-	public void setTextdetails(String textdetails) {
-		this.textdetails = textdetails;
+	public void setTextDetails(String textDetails) {
+		this.textDetails = textDetails;
 	}
 
 	@Basic
@@ -739,51 +744,51 @@ public class AAssetChange extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
-	}
-
-	@Basic
-	@Column(columnDefinition="INT")
-	public Integer getUselifemonths() {
-		return uselifemonths;
-	}
-
-	public void setUselifemonths(Integer uselifemonths) {
-		this.uselifemonths = uselifemonths;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getUselifeyears() {
-		return uselifeyears;
+	public Integer getUseLifeMonths() {
+		return useLifeMonths;
 	}
 
-	public void setUselifeyears(Integer uselifeyears) {
-		this.uselifeyears = uselifeyears;
+	public void setUseLifeMonths(Integer useLifeMonths) {
+		this.useLifeMonths = useLifeMonths;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getUseunits() {
-		return useunits;
+	public Integer getUseLifeYears() {
+		return useLifeYears;
 	}
 
-	public void setUseunits(Integer useunits) {
-		this.useunits = useunits;
+	public void setUseLifeYears(Integer useLifeYears) {
+		this.useLifeYears = useLifeYears;
+	}
+
+	@Basic
+	@Column(columnDefinition="INT")
+	public Integer getUseUnits() {
+		return useUnits;
+	}
+
+	public void setUseUnits(Integer useUnits) {
+		this.useUnits = useUnits;
 	}
 
 	@Basic
 	@Column(length=40)
-	public String getVersionno() {
-		return versionno;
+	public String getVersionNo() {
+		return versionNo;
 	}
 
-	public void setVersionno(String versionno) {
-		this.versionno = versionno;
+	public void setVersionNo(String versionNo) {
+		this.versionNo = versionNo;
 	}
 }

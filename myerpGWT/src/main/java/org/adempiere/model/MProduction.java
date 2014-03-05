@@ -10,114 +10,123 @@ import javax.persistence.*;
 @Table(name="m_production")
 public class MProduction extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adOrgtrxId;
-	private Integer cActivityId;
-	private Integer cCampaignId;
-	private Integer cProjectId;
-	private String created;
-	private Integer createdby;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDOrgTrxID;
+	private Boolean active;
+	private Integer cActivityID;
+	private Integer cCampaignID;
+	private Integer cProjectID;
+	private Boolean created;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Boolean iscreated;
-	private Integer mProductionId;
-	private String movementdate;
+	private Integer mProductionID;
+	private String movementDate;
 	private String name;
 	private Boolean posted;
 	private Boolean processed;
-	private Long processedon;
+	private Long processedOn;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
-	private Integer user1Id;
-	private Integer user2Id;
+	private Integer updatedBy;
+	private Integer user1ID;
+	private Integer user2ID;
 
 	public MProduction() {
 	}
 
-	public MProduction(Integer mProductionId) {
-		this.mProductionId = mProductionId;
+	public MProduction(Integer mProductionID) {
+		this.mProductionID = mProductionID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
-	public Integer getAdOrgtrxId() {
-		return adOrgtrxId;
+	public Integer getADOrgTrxID() {
+		return aDOrgTrxID;
 	}
 
-	public void setAdOrgtrxId(Integer adOrgtrxId) {
-		this.adOrgtrxId = adOrgtrxId;
+	public void setADOrgTrxID(Integer aDOrgTrxID) {
+		this.aDOrgTrxID = aDOrgTrxID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
-	public Integer getCActivityId() {
-		return cActivityId;
+	public Integer getCActivityID() {
+		return cActivityID;
 	}
 
-	public void setCActivityId(Integer cActivityId) {
-		this.cActivityId = cActivityId;
+	public void setCActivityID(Integer cActivityID) {
+		this.cActivityID = cActivityID;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
-	@Column(columnDefinition="TIMESTAMP", nullable=false)
-	public String getCreated() {
+	@Column(name="ISCREATED", nullable=false)
+	public Boolean isCreated() {
 		return created;
 	}
 
-	public void setCreated(String created) {
+	public void setCreated(Boolean created) {
 		this.created = created;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -129,46 +138,26 @@ public class MProduction extends org.adempiere.common.ADEntityBase {
 		this.description = description;
 	}
 
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIscreated() {
-		return iscreated;
-	}
-
-	public void setIscreated(Boolean iscreated) {
-		this.iscreated = iscreated;
-	}
-
 	@Id
 	@Column(name="M_PRODUCTION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_248", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Production", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_248")
-	public Integer getMProductionId() {
-		return mProductionId;
+	public Integer getMProductionID() {
+		return mProductionID;
 	}
 
-	public void setMProductionId(Integer mProductionId) {
-		this.mProductionId = mProductionId;
+	public void setMProductionID(Integer mProductionID) {
+		this.mProductionID = mProductionID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getMovementdate() {
-		return movementdate;
+	public String getMovementDate() {
+		return movementDate;
 	}
 
-	public void setMovementdate(String movementdate) {
-		this.movementdate = movementdate;
+	public void setMovementDate(String movementDate) {
+		this.movementDate = movementDate;
 	}
 
 	@Basic
@@ -202,12 +191,12 @@ public class MProduction extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Long getProcessedon() {
-		return processedon;
+	public Long getProcessedOn() {
+		return processedOn;
 	}
 
-	public void setProcessedon(Long processedon) {
-		this.processedon = processedon;
+	public void setProcessedOn(Long processedOn) {
+		this.processedOn = processedOn;
 	}
 
 	@Basic
@@ -231,31 +220,31 @@ public class MProduction extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(name="USER1_ID", columnDefinition="INT")
-	public Integer getUser1Id() {
-		return user1Id;
+	public Integer getUser1ID() {
+		return user1ID;
 	}
 
-	public void setUser1Id(Integer user1Id) {
-		this.user1Id = user1Id;
+	public void setUser1ID(Integer user1ID) {
+		this.user1ID = user1ID;
 	}
 
 	@Basic
 	@Column(name="USER2_ID", columnDefinition="INT")
-	public Integer getUser2Id() {
-		return user2Id;
+	public Integer getUser2ID() {
+		return user2ID;
 	}
 
-	public void setUser2Id(Integer user2Id) {
-		this.user2Id = user2Id;
+	public void setUser2ID(Integer user2ID) {
+		this.user2ID = user2ID;
 	}
 }

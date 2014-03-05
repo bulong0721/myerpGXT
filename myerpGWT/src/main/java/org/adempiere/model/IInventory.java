@@ -11,34 +11,34 @@ import javax.persistence.*;
 @Table(name="i_inventory")
 public class IInventory extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private BigDecimal currentcostprice;
+	private Integer createdBy;
+	private BigDecimal currentCostPrice;
 	private String description;
-	private String iErrormsg;
-	private Integer iInventoryId;
-	private Boolean iIsimported;
-	private Boolean isactive;
-	private String locatorvalue;
+	private String iErrorMsg;
+	private Integer iInventoryID;
+	private Boolean iIsImported;
+	private String locatorValue;
 	private String lot;
-	private Integer mInventoryId;
-	private Integer mInventorylineId;
-	private Integer mLocatorId;
-	private Integer mProductId;
-	private Integer mWarehouseId;
-	private String movementdate;
+	private Integer mInventoryID;
+	private Integer mInventoryLineID;
+	private Integer mLocatorID;
+	private Integer mProductID;
+	private Integer mWarehouseID;
+	private String movementDate;
 	private Boolean processed;
 	private Boolean processing;
-	private BigDecimal qtybook;
-	private BigDecimal qtycount;
-	private String serno;
-	private String upc;
+	private BigDecimal qtyBook;
+	private BigDecimal qtyCount;
+	private String serNo;
+	private String uPC;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 	private String value;
-	private String warehousevalue;
+	private String warehouseValue;
 	private String x;
 	private String y;
 	private String z;
@@ -46,28 +46,38 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	public IInventory() {
 	}
 
-	public IInventory(Integer iInventoryId) {
-		this.iInventoryId = iInventoryId;
+	public IInventory(Integer iInventoryID) {
+		this.iInventoryID = iInventoryID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT")
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE")
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -82,21 +92,21 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public BigDecimal getCurrentcostprice() {
-		return currentcostprice;
+	public BigDecimal getCurrentCostPrice() {
+		return currentCostPrice;
 	}
 
-	public void setCurrentcostprice(BigDecimal currentcostprice) {
-		this.currentcostprice = currentcostprice;
+	public void setCurrentCostPrice(BigDecimal currentCostPrice) {
+		this.currentCostPrice = currentCostPrice;
 	}
 
 	@Basic
@@ -110,53 +120,44 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="I_ERRORMSG", length=2000)
-	public String getIErrormsg() {
-		return iErrormsg;
+	public String getIErrorMsg() {
+		return iErrorMsg;
 	}
 
-	public void setIErrormsg(String iErrormsg) {
-		this.iErrormsg = iErrormsg;
+	public void setIErrorMsg(String iErrorMsg) {
+		this.iErrorMsg = iErrorMsg;
 	}
 
 	@Id
 	@Column(name="I_INVENTORY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_727", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_Inventory", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_727")
-	public Integer getIInventoryId() {
-		return iInventoryId;
+	public Integer getIInventoryID() {
+		return iInventoryID;
 	}
 
-	public void setIInventoryId(Integer iInventoryId) {
-		this.iInventoryId = iInventoryId;
+	public void setIInventoryID(Integer iInventoryID) {
+		this.iInventoryID = iInventoryID;
 	}
 
 	@Basic
 	@Column(name="I_ISIMPORTED", nullable=false)
-	public Boolean isIIsimported() {
-		return iIsimported;
+	public Boolean isIIsImported() {
+		return iIsImported;
 	}
 
-	public void setIIsimported(Boolean iIsimported) {
-		this.iIsimported = iIsimported;
-	}
-
-	@Basic
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setIIsImported(Boolean iIsImported) {
+		this.iIsImported = iIsImported;
 	}
 
 	@Basic
 	@Column(length=40)
-	public String getLocatorvalue() {
-		return locatorvalue;
+	public String getLocatorValue() {
+		return locatorValue;
 	}
 
-	public void setLocatorvalue(String locatorvalue) {
-		this.locatorvalue = locatorvalue;
+	public void setLocatorValue(String locatorValue) {
+		this.locatorValue = locatorValue;
 	}
 
 	@Basic
@@ -171,61 +172,61 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="M_INVENTORY_ID", columnDefinition="INT")
-	public Integer getMInventoryId() {
-		return mInventoryId;
+	public Integer getMInventoryID() {
+		return mInventoryID;
 	}
 
-	public void setMInventoryId(Integer mInventoryId) {
-		this.mInventoryId = mInventoryId;
+	public void setMInventoryID(Integer mInventoryID) {
+		this.mInventoryID = mInventoryID;
 	}
 
 	@Basic
 	@Column(name="M_INVENTORYLINE_ID", columnDefinition="INT")
-	public Integer getMInventorylineId() {
-		return mInventorylineId;
+	public Integer getMInventoryLineID() {
+		return mInventoryLineID;
 	}
 
-	public void setMInventorylineId(Integer mInventorylineId) {
-		this.mInventorylineId = mInventorylineId;
+	public void setMInventoryLineID(Integer mInventoryLineID) {
+		this.mInventoryLineID = mInventoryLineID;
 	}
 
 	@Basic
 	@Column(name="M_LOCATOR_ID", columnDefinition="INT")
-	public Integer getMLocatorId() {
-		return mLocatorId;
+	public Integer getMLocatorID() {
+		return mLocatorID;
 	}
 
-	public void setMLocatorId(Integer mLocatorId) {
-		this.mLocatorId = mLocatorId;
+	public void setMLocatorID(Integer mLocatorID) {
+		this.mLocatorID = mLocatorID;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	@Basic
-	public String getMovementdate() {
-		return movementdate;
+	public String getMovementDate() {
+		return movementDate;
 	}
 
-	public void setMovementdate(String movementdate) {
-		this.movementdate = movementdate;
+	public void setMovementDate(String movementDate) {
+		this.movementDate = movementDate;
 	}
 
 	@Basic
@@ -247,41 +248,41 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public BigDecimal getQtybook() {
-		return qtybook;
+	public BigDecimal getQtyBook() {
+		return qtyBook;
 	}
 
-	public void setQtybook(BigDecimal qtybook) {
-		this.qtybook = qtybook;
+	public void setQtyBook(BigDecimal qtyBook) {
+		this.qtyBook = qtyBook;
 	}
 
 	@Basic
-	public BigDecimal getQtycount() {
-		return qtycount;
+	public BigDecimal getQtyCount() {
+		return qtyCount;
 	}
 
-	public void setQtycount(BigDecimal qtycount) {
-		this.qtycount = qtycount;
+	public void setQtyCount(BigDecimal qtyCount) {
+		this.qtyCount = qtyCount;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getSerno() {
-		return serno;
+	public String getSerNo() {
+		return serNo;
 	}
 
-	public void setSerno(String serno) {
-		this.serno = serno;
+	public void setSerNo(String serNo) {
+		this.serNo = serNo;
 	}
 
 	@Basic
 	@Column(length=30)
-	public String getUpc() {
-		return upc;
+	public String getUPC() {
+		return uPC;
 	}
 
-	public void setUpc(String upc) {
-		this.upc = upc;
+	public void setUPC(String uPC) {
+		this.uPC = uPC;
 	}
 
 	@Basic
@@ -296,12 +297,12 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
@@ -316,12 +317,12 @@ public class IInventory extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=40)
-	public String getWarehousevalue() {
-		return warehousevalue;
+	public String getWarehouseValue() {
+		return warehouseValue;
 	}
 
-	public void setWarehousevalue(String warehousevalue) {
-		this.warehousevalue = warehousevalue;
+	public void setWarehouseValue(String warehouseValue) {
+		this.warehouseValue = warehouseValue;
 	}
 
 	@Basic

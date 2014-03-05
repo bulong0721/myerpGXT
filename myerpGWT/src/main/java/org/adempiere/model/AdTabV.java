@@ -2,10 +2,7 @@ package org.adempiere.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.adempiere.common.ADEntityBase;
 
@@ -16,344 +13,401 @@ import org.adempiere.common.ADEntityBase;
 @Entity
 @Table(name = "ad_tab_v")
 public class AdTabV extends ADEntityBase implements Serializable {
-	private static final long	serialVersionUID	= 1L;
-	private String				accesslevel;
-	private Integer				adColumnId;
-	private Integer				adColumnsortorderId;
-	private Integer				adColumnsortyesnoId;
-	private Integer				adImageId;
-	private Integer				adProcessId;
-	private Integer				adTabId;
-	private Integer				adTableId;
-	private Integer				adWindowId;
-	private String				commitwarning;
-	private String				description;
-	private String				displaylogic;
-	private String				hasassociation;
-	private Boolean				hastree;
-	private String				help;
-	private Integer				includedTabId;
-	private Boolean				isadvancedtab;
-	private Boolean				isdeleteable;
-	private Boolean				ishighvolume;
-	private Boolean				isinfotab;
-	private Boolean				isinsertrecord;
-	private Boolean				isreadonly;
-	private Boolean				issecurityenabled;
-	private Boolean				issinglerow;
-	private Boolean				issorttab;
-	private Boolean				istranslationtab;
-	private Boolean				isview;
-	private String				name;
-	private String				orderbyclause;
-	private Integer				parentColumnId;
-	private String				readonlylogic;
-	private String				replicationtype;
-	private Integer				seqno;
-	private String				tablename;
-	private Integer				tablevel;
-	private String				whereclause;
+	private static final long serialVersionUID = 1L;
+	private Integer aDColumnID;
+	private Integer aDColumnSortOrderID;
+	private Integer aDColumnSortYesNoID;
+	private Integer aDImageID;
+	private Integer aDProcessID;
+	private Integer aDTabID;
+	private Integer aDTableID;
+	private Integer aDWindowID;
+	private String accessLevel;
+	private Boolean advancedTab;
+	private String commitWarning;
+	private Boolean deleteable;
+	private String description;
+	private String displayLogic;
+	private Boolean hasTree;
+	private Integer hasassociation;
+	private String help;
+	private Boolean highVolume;
+	private Integer includedTabID;
+	private Boolean infoTab;
+	private Boolean insertRecord;
+	private String name;
+	private String orderByClause;
+	private Integer parentColumnID;
+	private Boolean readOnly;
+	private String readOnlyLogic;
+	private String replicationType;
+	private Boolean securityEnabled;
+	private Integer seqNo;
+	private Boolean singleRow;
+	private Boolean sortTab;
+	private Integer tabLevel;
+	private String tableName;
+	private Boolean translationTab;
+	private Boolean view;
+	private String whereClause;
 
-	public AdTabV() {
+	@Basic
+	@Column(name="AD_COLUMN_ID", columnDefinition="INT")
+	public Integer getADColumnID() {
+		return aDColumnID;
 	}
 
-	public String getAccesslevel() {
-		return this.accesslevel;
+	public void setADColumnID(Integer aDColumnID) {
+		this.aDColumnID = aDColumnID;
 	}
 
-	public void setAccesslevel(String accesslevel) {
-		this.accesslevel = accesslevel;
+	@Basic
+	@Column(name="AD_COLUMNSORTORDER_ID", columnDefinition="INT")
+	public Integer getADColumnSortOrderID() {
+		return aDColumnSortOrderID;
 	}
 
-	@Column(name = "AD_COLUMN_ID")
-	public Integer getAdColumnId() {
-		return this.adColumnId;
+	public void setADColumnSortOrderID(Integer aDColumnSortOrderID) {
+		this.aDColumnSortOrderID = aDColumnSortOrderID;
 	}
 
-	public void setAdColumnId(Integer adColumnId) {
-		this.adColumnId = adColumnId;
+	@Basic
+	@Column(name="AD_COLUMNSORTYESNO_ID", columnDefinition="INT")
+	public Integer getADColumnSortYesNoID() {
+		return aDColumnSortYesNoID;
 	}
 
-	@Column(name = "AD_COLUMNSORTORDER_ID")
-	public Integer getAdColumnsortorderId() {
-		return this.adColumnsortorderId;
+	public void setADColumnSortYesNoID(Integer aDColumnSortYesNoID) {
+		this.aDColumnSortYesNoID = aDColumnSortYesNoID;
 	}
 
-	public void setAdColumnsortorderId(Integer adColumnsortorderId) {
-		this.adColumnsortorderId = adColumnsortorderId;
+	@Basic
+	@Column(name="AD_IMAGE_ID", columnDefinition="INT")
+	public Integer getADImageID() {
+		return aDImageID;
 	}
 
-	@Column(name = "AD_COLUMNSORTYESNO_ID")
-	public Integer getAdColumnsortyesnoId() {
-		return this.adColumnsortyesnoId;
+	public void setADImageID(Integer aDImageID) {
+		this.aDImageID = aDImageID;
 	}
 
-	public void setAdColumnsortyesnoId(Integer adColumnsortyesnoId) {
-		this.adColumnsortyesnoId = adColumnsortyesnoId;
+	@Basic
+	@Column(name="AD_PROCESS_ID", columnDefinition="INT")
+	public Integer getADProcessID() {
+		return aDProcessID;
 	}
 
-	@Column(name = "AD_IMAGE_ID")
-	public Integer getAdImageId() {
-		return this.adImageId;
-	}
-
-	public void setAdImageId(Integer adImageId) {
-		this.adImageId = adImageId;
-	}
-
-	@Column(name = "AD_PROCESS_ID")
-	public Integer getAdProcessId() {
-		return this.adProcessId;
-	}
-
-	public void setAdProcessId(Integer adProcessId) {
-		this.adProcessId = adProcessId;
+	public void setADProcessID(Integer aDProcessID) {
+		this.aDProcessID = aDProcessID;
 	}
 
 	@Id
-	@Column(name = "AD_TAB_ID")
-	public Integer getAdTabId() {
-		return this.adTabId;
+	@Column(name="AD_TAB_ID", columnDefinition="INT")
+	public Integer getADTabID() {
+		return aDTabID;
 	}
 
-	public void setAdTabId(Integer adTabId) {
-		this.adTabId = adTabId;
+	public void setADTabID(Integer aDTabID) {
+		this.aDTabID = aDTabID;
 	}
 
-	@Column(name = "AD_TABLE_ID")
-	public Integer getAdTableId() {
-		return this.adTableId;
+	@Basic
+	@Column(name="AD_TABLE_ID", columnDefinition="INT", nullable=false)
+	public Integer getADTableID() {
+		return aDTableID;
 	}
 
-	public void setAdTableId(Integer adTableId) {
-		this.adTableId = adTableId;
+	public void setADTableID(Integer aDTableID) {
+		this.aDTableID = aDTableID;
 	}
 
-	@Column(name = "AD_WINDOW_ID")
-	public Integer getAdWindowId() {
-		return this.adWindowId;
+	@Basic
+	@Column(name="AD_WINDOW_ID", columnDefinition="INT", nullable=false)
+	public Integer getADWindowID() {
+		return aDWindowID;
 	}
 
-	public void setAdWindowId(Integer adWindowId) {
-		this.adWindowId = adWindowId;
+	public void setADWindowID(Integer aDWindowID) {
+		this.aDWindowID = aDWindowID;
 	}
 
-	public String getCommitwarning() {
-		return this.commitwarning;
+	@Basic
+	@Column(nullable=false, length=1)
+	public String getAccessLevel() {
+		return accessLevel;
 	}
 
-	public void setCommitwarning(String commitwarning) {
-		this.commitwarning = commitwarning;
+	public void setAccessLevel(String accessLevel) {
+		this.accessLevel = accessLevel;
 	}
 
+	@Basic
+	@Column(name="ISADVANCEDTAB", nullable=false)
+	public Boolean isAdvancedTab() {
+		return advancedTab;
+	}
+
+	public void setAdvancedTab(Boolean advancedTab) {
+		this.advancedTab = advancedTab;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getCommitWarning() {
+		return commitWarning;
+	}
+
+	public void setCommitWarning(String commitWarning) {
+		this.commitWarning = commitWarning;
+	}
+
+	@Basic
+	@Column(name="ISDELETEABLE", nullable=false)
+	public Boolean isDeleteable() {
+		return deleteable;
+	}
+
+	public void setDeleteable(Boolean deleteable) {
+		this.deleteable = deleteable;
+	}
+
+	@Basic
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public String getDisplaylogic() {
-		return this.displaylogic;
+	@Basic
+	@Column(length=2000)
+	public String getDisplayLogic() {
+		return displayLogic;
 	}
 
-	public void setDisplaylogic(String displaylogic) {
-		this.displaylogic = displaylogic;
+	public void setDisplayLogic(String displayLogic) {
+		this.displayLogic = displayLogic;
 	}
 
-	public String getHasassociation() {
-		return this.hasassociation;
+	@Basic
+	@Column(nullable=false)
+	public Boolean isHasTree() {
+		return hasTree;
 	}
 
-	public void setHasassociation(String hasassociation) {
+	public void setHasTree(Boolean hasTree) {
+		this.hasTree = hasTree;
+	}
+
+	@Basic
+	@Column(columnDefinition="INT", nullable=false)
+	public Integer getHasassociation() {
+		return hasassociation;
+	}
+
+	public void setHasassociation(Integer hasassociation) {
 		this.hasassociation = hasassociation;
 	}
 
-	public Boolean getHastree() {
-		return this.hastree;
-	}
-
-	public void setHastree(Boolean hastree) {
-		this.hastree = hastree;
-	}
-
+	@Basic
+	@Column(length=2000)
 	public String getHelp() {
-		return this.help;
+		return help;
 	}
 
 	public void setHelp(String help) {
 		this.help = help;
 	}
 
-	@Column(name = "INCLUDED_TAB_ID")
-	public Integer getIncludedTabId() {
-		return this.includedTabId;
+	@Basic
+	@Column(name="ISHIGHVOLUME", nullable=false)
+	public Boolean isHighVolume() {
+		return highVolume;
 	}
 
-	public void setIncludedTabId(Integer includedTabId) {
-		this.includedTabId = includedTabId;
+	public void setHighVolume(Boolean highVolume) {
+		this.highVolume = highVolume;
 	}
 
-	public Boolean getIsadvancedtab() {
-		return this.isadvancedtab;
+	@Basic
+	@Column(name="INCLUDED_TAB_ID", columnDefinition="INT")
+	public Integer getIncludedTabID() {
+		return includedTabID;
 	}
 
-	public void setIsadvancedtab(Boolean isadvancedtab) {
-		this.isadvancedtab = isadvancedtab;
+	public void setIncludedTabID(Integer includedTabID) {
+		this.includedTabID = includedTabID;
 	}
 
-	public Boolean getIsdeleteable() {
-		return this.isdeleteable;
+	@Basic
+	@Column(name="ISINFOTAB")
+	public Boolean isInfoTab() {
+		return infoTab;
 	}
 
-	public void setIsdeleteable(Boolean isdeleteable) {
-		this.isdeleteable = isdeleteable;
+	public void setInfoTab(Boolean infoTab) {
+		this.infoTab = infoTab;
 	}
 
-	public Boolean getIshighvolume() {
-		return this.ishighvolume;
+	@Basic
+	@Column(name="ISINSERTRECORD", nullable=false)
+	public Boolean isInsertRecord() {
+		return insertRecord;
 	}
 
-	public void setIshighvolume(Boolean ishighvolume) {
-		this.ishighvolume = ishighvolume;
+	public void setInsertRecord(Boolean insertRecord) {
+		this.insertRecord = insertRecord;
 	}
 
-	public Boolean getIsinfotab() {
-		return this.isinfotab;
-	}
-
-	public void setIsinfotab(Boolean isinfotab) {
-		this.isinfotab = isinfotab;
-	}
-
-	public Boolean getIsinsertrecord() {
-		return this.isinsertrecord;
-	}
-
-	public void setIsinsertrecord(Boolean isinsertrecord) {
-		this.isinsertrecord = isinsertrecord;
-	}
-
-	public Boolean getIsreadonly() {
-		return this.isreadonly;
-	}
-
-	public void setIsreadonly(Boolean isreadonly) {
-		this.isreadonly = isreadonly;
-	}
-
-	public Boolean getIssecurityenabled() {
-		return this.issecurityenabled;
-	}
-
-	public void setIssecurityenabled(Boolean issecurityenabled) {
-		this.issecurityenabled = issecurityenabled;
-	}
-
-	public Boolean getIssinglerow() {
-		return this.issinglerow;
-	}
-
-	public void setIssinglerow(Boolean issinglerow) {
-		this.issinglerow = issinglerow;
-	}
-
-	public Boolean getIssorttab() {
-		return this.issorttab;
-	}
-
-	public void setIssorttab(Boolean issorttab) {
-		this.issorttab = issorttab;
-	}
-
-	public Boolean getIstranslationtab() {
-		return this.istranslationtab;
-	}
-
-	public void setIstranslationtab(Boolean istranslationtab) {
-		this.istranslationtab = istranslationtab;
-	}
-
-	public Boolean getIsview() {
-		return this.isview;
-	}
-
-	public void setIsview(Boolean isview) {
-		this.isview = isview;
-	}
-
+	@Basic
+	@Column(nullable=false, length=60)
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getOrderbyclause() {
-		return this.orderbyclause;
+	@Basic
+	@Column(length=2000)
+	public String getOrderByClause() {
+		return orderByClause;
 	}
 
-	public void setOrderbyclause(String orderbyclause) {
-		this.orderbyclause = orderbyclause;
+	public void setOrderByClause(String orderByClause) {
+		this.orderByClause = orderByClause;
 	}
 
-	@Column(name = "PARENT_COLUMN_ID")
-	public Integer getParentColumnId() {
-		return this.parentColumnId;
+	@Basic
+	@Column(name="PARENT_COLUMN_ID", columnDefinition="INT")
+	public Integer getParentColumnID() {
+		return parentColumnID;
 	}
 
-	public void setParentColumnId(Integer parentColumnId) {
-		this.parentColumnId = parentColumnId;
+	public void setParentColumnID(Integer parentColumnID) {
+		this.parentColumnID = parentColumnID;
 	}
 
-	public String getReadonlylogic() {
-		return this.readonlylogic;
+	@Basic
+	@Column(name="ISREADONLY", nullable=false)
+	public Boolean isReadOnly() {
+		return readOnly;
 	}
 
-	public void setReadonlylogic(String readonlylogic) {
-		this.readonlylogic = readonlylogic;
+	public void setReadOnly(Boolean readOnly) {
+		this.readOnly = readOnly;
 	}
 
-	public String getReplicationtype() {
-		return this.replicationtype;
+	@Basic
+	@Column(length=2000)
+	public String getReadOnlyLogic() {
+		return readOnlyLogic;
 	}
 
-	public void setReplicationtype(String replicationtype) {
-		this.replicationtype = replicationtype;
+	public void setReadOnlyLogic(String readOnlyLogic) {
+		this.readOnlyLogic = readOnlyLogic;
 	}
 
-	public Integer getSeqno() {
-		return this.seqno;
+	@Basic
+	@Column(nullable=false, length=1)
+	public String getReplicationType() {
+		return replicationType;
 	}
 
-	public void setSeqno(Integer seqno) {
-		this.seqno = seqno;
+	public void setReplicationType(String replicationType) {
+		this.replicationType = replicationType;
 	}
 
-	public String getTablename() {
-		return this.tablename;
+	@Basic
+	@Column(name="ISSECURITYENABLED", nullable=false)
+	public Boolean isSecurityEnabled() {
+		return securityEnabled;
 	}
 
-	public void setTablename(String tablename) {
-		this.tablename = tablename;
+	public void setSecurityEnabled(Boolean securityEnabled) {
+		this.securityEnabled = securityEnabled;
 	}
 
-	public Integer getTablevel() {
-		return this.tablevel;
+	@Basic
+	@Column(columnDefinition="INT", nullable=false)
+	public Integer getSeqNo() {
+		return seqNo;
 	}
 
-	public void setTablevel(Integer tablevel) {
-		this.tablevel = tablevel;
+	public void setSeqNo(Integer seqNo) {
+		this.seqNo = seqNo;
 	}
 
-	public String getWhereclause() {
-		return this.whereclause;
+	@Basic
+	@Column(name="ISSINGLEROW", nullable=false)
+	public Boolean isSingleRow() {
+		return singleRow;
 	}
 
-	public void setWhereclause(String whereclause) {
-		this.whereclause = whereclause;
+	public void setSingleRow(Boolean singleRow) {
+		this.singleRow = singleRow;
+	}
+
+	@Basic
+	@Column(name="ISSORTTAB", nullable=false)
+	public Boolean isSortTab() {
+		return sortTab;
+	}
+
+	public void setSortTab(Boolean sortTab) {
+		this.sortTab = sortTab;
+	}
+
+	@Basic
+	@Column(columnDefinition="INT", nullable=false)
+	public Integer getTabLevel() {
+		return tabLevel;
+	}
+
+	public void setTabLevel(Integer tabLevel) {
+		this.tabLevel = tabLevel;
+	}
+
+	@Basic
+	@Column(nullable=false, length=40)
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
+	@Basic
+	@Column(name="ISTRANSLATIONTAB", nullable=false)
+	public Boolean isTranslationTab() {
+		return translationTab;
+	}
+
+	public void setTranslationTab(Boolean translationTab) {
+		this.translationTab = translationTab;
+	}
+
+	@Basic
+	@Column(name="ISVIEW", nullable=false)
+	public Boolean isView() {
+		return view;
+	}
+
+	public void setView(Boolean view) {
+		this.view = view;
+	}
+
+	@Basic
+	@Column(length=2000)
+	public String getWhereClause() {
+		return whereClause;
+	}
+
+	public void setWhereClause(String whereClause) {
+		this.whereClause = whereClause;
 	}
 
 }

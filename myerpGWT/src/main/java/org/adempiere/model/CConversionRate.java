@@ -11,89 +11,99 @@ import javax.persistence.*;
 @Table(name="c_conversion_rate")
 public class CConversionRate extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cConversionRateId;
-	private Integer cConversiontypeId;
-	private Integer cCurrencyId;
-	private Integer cCurrencyIdTo;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cConversionRateID;
+	private Integer cConversionTypeID;
+	private Integer cCurrencyID;
+	private Integer cCurrencyIDTo;
 	private String created;
-	private Integer createdby;
-	private BigDecimal dividerate;
-	private Boolean isactive;
-	private BigDecimal multiplyrate;
+	private Integer createdBy;
+	private BigDecimal divideRate;
+	private BigDecimal multiplyRate;
 	private String updated;
-	private Integer updatedby;
-	private String validfrom;
-	private String validto;
+	private Integer updatedBy;
+	private String validFrom;
+	private String validTo;
 
 	public CConversionRate() {
 	}
 
-	public CConversionRate(Integer cConversionRateId) {
-		this.cConversionRateId = cConversionRateId;
+	public CConversionRate(Integer cConversionRateID) {
+		this.cConversionRateID = cConversionRateID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_CONVERSION_RATE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_40", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Conversion_Rate", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_40")
-	public Integer getCConversionRateId() {
-		return cConversionRateId;
+	public Integer getCConversionRateID() {
+		return cConversionRateID;
 	}
 
-	public void setCConversionRateId(Integer cConversionRateId) {
-		this.cConversionRateId = cConversionRateId;
+	public void setCConversionRateID(Integer cConversionRateID) {
+		this.cConversionRateID = cConversionRateID;
 	}
 
 	@Basic
 	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getCConversiontypeId() {
-		return cConversiontypeId;
+	public Integer getCConversionTypeID() {
+		return cConversionTypeID;
 	}
 
-	public void setCConversiontypeId(Integer cConversiontypeId) {
-		this.cConversiontypeId = cConversiontypeId;
+	public void setCConversionTypeID(Integer cConversionTypeID) {
+		this.cConversionTypeID = cConversionTypeID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID_TO", columnDefinition="INT", nullable=false)
-	public Integer getCCurrencyIdTo() {
-		return cCurrencyIdTo;
+	public Integer getCCurrencyIDTo() {
+		return cCurrencyIDTo;
 	}
 
-	public void setCCurrencyIdTo(Integer cCurrencyIdTo) {
-		this.cCurrencyIdTo = cCurrencyIdTo;
+	public void setCCurrencyIDTo(Integer cCurrencyIDTo) {
+		this.cCurrencyIDTo = cCurrencyIDTo;
 	}
 
 	@Basic
@@ -108,42 +118,32 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getDividerate() {
-		return dividerate;
-	}
-
-	public void setDividerate(BigDecimal dividerate) {
-		this.dividerate = dividerate;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public BigDecimal getDivideRate() {
+		return divideRate;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDivideRate(BigDecimal divideRate) {
+		this.divideRate = divideRate;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getMultiplyrate() {
-		return multiplyrate;
+	public BigDecimal getMultiplyRate() {
+		return multiplyRate;
 	}
 
-	public void setMultiplyrate(BigDecimal multiplyrate) {
-		this.multiplyrate = multiplyrate;
+	public void setMultiplyRate(BigDecimal multiplyRate) {
+		this.multiplyRate = multiplyRate;
 	}
 
 	@Basic
@@ -158,30 +158,30 @@ public class CConversionRate extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getValidfrom() {
-		return validfrom;
+	public String getValidFrom() {
+		return validFrom;
 	}
 
-	public void setValidfrom(String validfrom) {
-		this.validfrom = validfrom;
+	public void setValidFrom(String validFrom) {
+		this.validFrom = validFrom;
 	}
 
 	@Basic
-	public String getValidto() {
-		return validto;
+	public String getValidTo() {
+		return validTo;
 	}
 
-	public void setValidto(String validto) {
-		this.validto = validto;
+	public void setValidTo(String validTo) {
+		this.validTo = validTo;
 	}
 }

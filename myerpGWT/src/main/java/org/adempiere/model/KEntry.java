@@ -10,60 +10,70 @@ import javax.persistence.*;
 @Table(name="k_entry")
 public class KEntry extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adSessionId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDSessionID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private String descriptionurl;
-	private Boolean isactive;
-	private Boolean ispublic;
-	private Integer kEntryId;
-	private Integer kSourceId;
-	private Integer kTopicId;
+	private Integer createdBy;
+	private String descriptionURL;
+	private Boolean isPublic;
+	private Integer kEntryID;
+	private Integer kSourceID;
+	private Integer kTopicID;
 	private String keywords;
 	private String name;
 	private Integer rating;
-	private String textmsg;
+	private String textMsg;
 	private String updated;
-	private Integer updatedby;
-	private String validto;
+	private Integer updatedBy;
+	private String validTo;
 
 	public KEntry() {
 	}
 
-	public KEntry(Integer kEntryId) {
-		this.kEntryId = kEntryId;
+	public KEntry(Integer kEntryID) {
+		this.kEntryID = kEntryID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_SESSION_ID", columnDefinition="INT")
-	public Integer getAdSessionId() {
-		return adSessionId;
+	public Integer getADSessionID() {
+		return aDSessionID;
 	}
 
-	public void setAdSessionId(Integer adSessionId) {
-		this.adSessionId = adSessionId;
+	public void setADSessionID(Integer aDSessionID) {
+		this.aDSessionID = aDSessionID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -78,74 +88,64 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(length=120)
-	public String getDescriptionurl() {
-		return descriptionurl;
+	public String getDescriptionURL() {
+		return descriptionURL;
 	}
 
-	public void setDescriptionurl(String descriptionurl) {
-		this.descriptionurl = descriptionurl;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDescriptionURL(String descriptionURL) {
+		this.descriptionURL = descriptionURL;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIspublic() {
-		return ispublic;
+	public Boolean isIsPublic() {
+		return isPublic;
 	}
 
-	public void setIspublic(Boolean ispublic) {
-		this.ispublic = ispublic;
+	public void setIsPublic(Boolean isPublic) {
+		this.isPublic = isPublic;
 	}
 
 	@Id
 	@Column(name="K_ENTRY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_781", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Entry", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_781")
-	public Integer getKEntryId() {
-		return kEntryId;
+	public Integer getKEntryID() {
+		return kEntryID;
 	}
 
-	public void setKEntryId(Integer kEntryId) {
-		this.kEntryId = kEntryId;
+	public void setKEntryID(Integer kEntryID) {
+		this.kEntryID = kEntryID;
 	}
 
 	@Basic
 	@Column(name="K_SOURCE_ID", columnDefinition="INT")
-	public Integer getKSourceId() {
-		return kSourceId;
+	public Integer getKSourceID() {
+		return kSourceID;
 	}
 
-	public void setKSourceId(Integer kSourceId) {
-		this.kSourceId = kSourceId;
+	public void setKSourceID(Integer kSourceID) {
+		this.kSourceID = kSourceID;
 	}
 
 	@Basic
 	@Column(name="K_TOPIC_ID", columnDefinition="INT", nullable=false)
-	public Integer getKTopicId() {
-		return kTopicId;
+	public Integer getKTopicID() {
+		return kTopicID;
 	}
 
-	public void setKTopicId(Integer kTopicId) {
-		this.kTopicId = kTopicId;
+	public void setKTopicID(Integer kTopicID) {
+		this.kTopicID = kTopicID;
 	}
 
 	@Basic
@@ -179,12 +179,12 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=2000)
-	public String getTextmsg() {
-		return textmsg;
+	public String getTextMsg() {
+		return textMsg;
 	}
 
-	public void setTextmsg(String textmsg) {
-		this.textmsg = textmsg;
+	public void setTextMsg(String textMsg) {
+		this.textMsg = textMsg;
 	}
 
 	@Basic
@@ -199,20 +199,20 @@ public class KEntry extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
-	public String getValidto() {
-		return validto;
+	public String getValidTo() {
+		return validTo;
 	}
 
-	public void setValidto(String validto) {
-		this.validto = validto;
+	public void setValidTo(String validTo) {
+		this.validTo = validTo;
 	}
 }

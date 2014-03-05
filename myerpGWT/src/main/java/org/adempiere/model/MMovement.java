@@ -11,184 +11,214 @@ import javax.persistence.*;
 @Table(name="m_movement")
 public class MMovement extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adOrgtrxId;
-	private Integer adUserId;
-	private BigDecimal approvalamt;
-	private Integer cActivityId;
-	private Integer cBpartnerId;
-	private Integer cBpartnerLocationId;
-	private Integer cCampaignId;
-	private Integer cChargeId;
-	private Integer cDoctypeId;
-	private Integer cProjectId;
-	private BigDecimal chargeamt;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDOrgTrxID;
+	private Integer aDUserID;
+	private Boolean active;
+	private BigDecimal approvalAmt;
+	private Boolean approved;
+	private Integer cActivityID;
+	private Integer cBPartnerID;
+	private Integer cBPartnerLocationID;
+	private Integer cCampaignID;
+	private Integer cChargeID;
+	private Integer cDocTypeID;
+	private Integer cProjectID;
+	private BigDecimal chargeAmt;
+	private String createFrom;
 	private String created;
-	private Integer createdby;
-	private String createfrom;
-	private String datereceived;
-	private Integer ddOrderId;
-	private String deliveryrule;
-	private String deliveryviarule;
+	private Integer createdBy;
+	private Integer dDOrderID;
+	private String dateReceived;
+	private String deliveryRule;
+	private String deliveryViaRule;
 	private String description;
-	private String docaction;
-	private String docstatus;
-	private String documentno;
-	private BigDecimal freightamt;
-	private String freightcostrule;
-	private Boolean isactive;
-	private Boolean isapproved;
-	private Boolean isintransit;
-	private Integer mMovementId;
-	private Integer mShipperId;
-	private String movementdate;
-	private String poreference;
+	private String docAction;
+	private String docStatus;
+	private String documentNo;
+	private BigDecimal freightAmt;
+	private String freightCostRule;
+	private Boolean inTransit;
+	private Integer mMovementID;
+	private Integer mShipperID;
+	private String movementDate;
+	private String pOReference;
 	private Boolean posted;
-	private String priorityrule;
+	private String priorityRule;
 	private Boolean processed;
-	private Long processedon;
+	private Long processedOn;
 	private Boolean processing;
-	private Integer reversalId;
-	private Integer salesrepId;
+	private Integer reversalID;
+	private Integer salesRepID;
 	private String updated;
-	private Integer updatedby;
-	private Integer user1Id;
-	private Integer user2Id;
+	private Integer updatedBy;
+	private Integer user1ID;
+	private Integer user2ID;
 
 	public MMovement() {
 	}
 
-	public MMovement(Integer mMovementId) {
-		this.mMovementId = mMovementId;
+	public MMovement(Integer mMovementID) {
+		this.mMovementID = mMovementID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
-	public Integer getAdOrgtrxId() {
-		return adOrgtrxId;
+	public Integer getADOrgTrxID() {
+		return aDOrgTrxID;
 	}
 
-	public void setAdOrgtrxId(Integer adOrgtrxId) {
-		this.adOrgtrxId = adOrgtrxId;
+	public void setADOrgTrxID(Integer aDOrgTrxID) {
+		this.aDOrgTrxID = aDOrgTrxID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
 	}
 
 	@Basic
-	public BigDecimal getApprovalamt() {
-		return approvalamt;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setApprovalamt(BigDecimal approvalamt) {
-		this.approvalamt = approvalamt;
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	public BigDecimal getApprovalAmt() {
+		return approvalAmt;
+	}
+
+	public void setApprovalAmt(BigDecimal approvalAmt) {
+		this.approvalAmt = approvalAmt;
+	}
+
+	@Basic
+	@Column(name="ISAPPROVED", nullable=false)
+	public Boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
 	}
 
 	@Basic
 	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
-	public Integer getCActivityId() {
-		return cActivityId;
+	public Integer getCActivityID() {
+		return cActivityID;
 	}
 
-	public void setCActivityId(Integer cActivityId) {
-		this.cActivityId = cActivityId;
+	public void setCActivityID(Integer cActivityID) {
+		this.cActivityID = cActivityID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_LOCATION_ID", columnDefinition="INT")
-	public Integer getCBpartnerLocationId() {
-		return cBpartnerLocationId;
+	public Integer getCBPartnerLocationID() {
+		return cBPartnerLocationID;
 	}
 
-	public void setCBpartnerLocationId(Integer cBpartnerLocationId) {
-		this.cBpartnerLocationId = cBpartnerLocationId;
+	public void setCBPartnerLocationID(Integer cBPartnerLocationID) {
+		this.cBPartnerLocationID = cBPartnerLocationID;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
 	@Column(name="C_CHARGE_ID", columnDefinition="INT")
-	public Integer getCChargeId() {
-		return cChargeId;
+	public Integer getCChargeID() {
+		return cChargeID;
 	}
 
-	public void setCChargeId(Integer cChargeId) {
-		this.cChargeId = cChargeId;
+	public void setCChargeID(Integer cChargeID) {
+		this.cChargeID = cChargeID;
 	}
 
 	@Basic
 	@Column(name="C_DOCTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getCDoctypeId() {
-		return cDoctypeId;
+	public Integer getCDocTypeID() {
+		return cDocTypeID;
 	}
 
-	public void setCDoctypeId(Integer cDoctypeId) {
-		this.cDoctypeId = cDoctypeId;
+	public void setCDocTypeID(Integer cDocTypeID) {
+		this.cDocTypeID = cDocTypeID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
-	public BigDecimal getChargeamt() {
-		return chargeamt;
+	public BigDecimal getChargeAmt() {
+		return chargeAmt;
 	}
 
-	public void setChargeamt(BigDecimal chargeamt) {
-		this.chargeamt = chargeamt;
+	public void setChargeAmt(BigDecimal chargeAmt) {
+		this.chargeAmt = chargeAmt;
+	}
+
+	@Basic
+	@Column(length=1)
+	public String getCreateFrom() {
+		return createFrom;
+	}
+
+	public void setCreateFrom(String createFrom) {
+		this.createFrom = createFrom;
 	}
 
 	@Basic
@@ -203,61 +233,51 @@ public class MMovement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(length=1)
-	public String getCreatefrom() {
-		return createfrom;
-	}
-
-	public void setCreatefrom(String createfrom) {
-		this.createfrom = createfrom;
-	}
-
-	@Basic
-	public String getDatereceived() {
-		return datereceived;
-	}
-
-	public void setDatereceived(String datereceived) {
-		this.datereceived = datereceived;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(name="DD_ORDER_ID", columnDefinition="INT")
-	public Integer getDdOrderId() {
-		return ddOrderId;
+	public Integer getDDOrderID() {
+		return dDOrderID;
 	}
 
-	public void setDdOrderId(Integer ddOrderId) {
-		this.ddOrderId = ddOrderId;
+	public void setDDOrderID(Integer dDOrderID) {
+		this.dDOrderID = dDOrderID;
+	}
+
+	@Basic
+	public String getDateReceived() {
+		return dateReceived;
+	}
+
+	public void setDateReceived(String dateReceived) {
+		this.dateReceived = dateReceived;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getDeliveryrule() {
-		return deliveryrule;
+	public String getDeliveryRule() {
+		return deliveryRule;
 	}
 
-	public void setDeliveryrule(String deliveryrule) {
-		this.deliveryrule = deliveryrule;
+	public void setDeliveryRule(String deliveryRule) {
+		this.deliveryRule = deliveryRule;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getDeliveryviarule() {
-		return deliveryviarule;
+	public String getDeliveryViaRule() {
+		return deliveryViaRule;
 	}
 
-	public void setDeliveryviarule(String deliveryviarule) {
-		this.deliveryviarule = deliveryviarule;
+	public void setDeliveryViaRule(String deliveryViaRule) {
+		this.deliveryViaRule = deliveryViaRule;
 	}
 
 	@Basic
@@ -271,123 +291,103 @@ public class MMovement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getDocaction() {
-		return docaction;
+	public String getDocAction() {
+		return docAction;
 	}
 
-	public void setDocaction(String docaction) {
-		this.docaction = docaction;
+	public void setDocAction(String docAction) {
+		this.docAction = docAction;
 	}
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getDocstatus() {
-		return docstatus;
+	public String getDocStatus() {
+		return docStatus;
 	}
 
-	public void setDocstatus(String docstatus) {
-		this.docstatus = docstatus;
+	public void setDocStatus(String docStatus) {
+		this.docStatus = docStatus;
 	}
 
 	@Basic
 	@Column(nullable=false, length=30)
-	public String getDocumentno() {
-		return documentno;
+	public String getDocumentNo() {
+		return documentNo;
 	}
 
-	public void setDocumentno(String documentno) {
-		this.documentno = documentno;
+	public void setDocumentNo(String documentNo) {
+		this.documentNo = documentNo;
 	}
 
 	@Basic
-	public BigDecimal getFreightamt() {
-		return freightamt;
+	public BigDecimal getFreightAmt() {
+		return freightAmt;
 	}
 
-	public void setFreightamt(BigDecimal freightamt) {
-		this.freightamt = freightamt;
+	public void setFreightAmt(BigDecimal freightAmt) {
+		this.freightAmt = freightAmt;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getFreightcostrule() {
-		return freightcostrule;
+	public String getFreightCostRule() {
+		return freightCostRule;
 	}
 
-	public void setFreightcostrule(String freightcostrule) {
-		this.freightcostrule = freightcostrule;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setFreightCostRule(String freightCostRule) {
+		this.freightCostRule = freightCostRule;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsapproved() {
-		return isapproved;
+	@Column(name="ISINTRANSIT", nullable=false)
+	public Boolean isInTransit() {
+		return inTransit;
 	}
 
-	public void setIsapproved(Boolean isapproved) {
-		this.isapproved = isapproved;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsintransit() {
-		return isintransit;
-	}
-
-	public void setIsintransit(Boolean isintransit) {
-		this.isintransit = isintransit;
+	public void setInTransit(Boolean inTransit) {
+		this.inTransit = inTransit;
 	}
 
 	@Id
 	@Column(name="M_MOVEMENT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_246", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Movement", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_246")
-	public Integer getMMovementId() {
-		return mMovementId;
+	public Integer getMMovementID() {
+		return mMovementID;
 	}
 
-	public void setMMovementId(Integer mMovementId) {
-		this.mMovementId = mMovementId;
+	public void setMMovementID(Integer mMovementID) {
+		this.mMovementID = mMovementID;
 	}
 
 	@Basic
 	@Column(name="M_SHIPPER_ID", columnDefinition="INT")
-	public Integer getMShipperId() {
-		return mShipperId;
+	public Integer getMShipperID() {
+		return mShipperID;
 	}
 
-	public void setMShipperId(Integer mShipperId) {
-		this.mShipperId = mShipperId;
+	public void setMShipperID(Integer mShipperID) {
+		this.mShipperID = mShipperID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getMovementdate() {
-		return movementdate;
+	public String getMovementDate() {
+		return movementDate;
 	}
 
-	public void setMovementdate(String movementdate) {
-		this.movementdate = movementdate;
+	public void setMovementDate(String movementDate) {
+		this.movementDate = movementDate;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getPoreference() {
-		return poreference;
+	public String getPOReference() {
+		return pOReference;
 	}
 
-	public void setPoreference(String poreference) {
-		this.poreference = poreference;
+	public void setPOReference(String pOReference) {
+		this.pOReference = pOReference;
 	}
 
 	@Basic
@@ -402,12 +402,12 @@ public class MMovement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=1)
-	public String getPriorityrule() {
-		return priorityrule;
+	public String getPriorityRule() {
+		return priorityRule;
 	}
 
-	public void setPriorityrule(String priorityrule) {
-		this.priorityrule = priorityrule;
+	public void setPriorityRule(String priorityRule) {
+		this.priorityRule = priorityRule;
 	}
 
 	@Basic
@@ -421,12 +421,12 @@ public class MMovement extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Long getProcessedon() {
-		return processedon;
+	public Long getProcessedOn() {
+		return processedOn;
 	}
 
-	public void setProcessedon(Long processedon) {
-		this.processedon = processedon;
+	public void setProcessedOn(Long processedOn) {
+		this.processedOn = processedOn;
 	}
 
 	@Basic
@@ -440,22 +440,22 @@ public class MMovement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="REVERSAL_ID", columnDefinition="INT")
-	public Integer getReversalId() {
-		return reversalId;
+	public Integer getReversalID() {
+		return reversalID;
 	}
 
-	public void setReversalId(Integer reversalId) {
-		this.reversalId = reversalId;
+	public void setReversalID(Integer reversalID) {
+		this.reversalID = reversalID;
 	}
 
 	@Basic
 	@Column(name="SALESREP_ID", columnDefinition="INT")
-	public Integer getSalesrepId() {
-		return salesrepId;
+	public Integer getSalesRepID() {
+		return salesRepID;
 	}
 
-	public void setSalesrepId(Integer salesrepId) {
-		this.salesrepId = salesrepId;
+	public void setSalesRepID(Integer salesRepID) {
+		this.salesRepID = salesRepID;
 	}
 
 	@Basic
@@ -470,31 +470,31 @@ public class MMovement extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(name="USER1_ID", columnDefinition="INT")
-	public Integer getUser1Id() {
-		return user1Id;
+	public Integer getUser1ID() {
+		return user1ID;
 	}
 
-	public void setUser1Id(Integer user1Id) {
-		this.user1Id = user1Id;
+	public void setUser1ID(Integer user1ID) {
+		this.user1ID = user1ID;
 	}
 
 	@Basic
 	@Column(name="USER2_ID", columnDefinition="INT")
-	public Integer getUser2Id() {
-		return user2Id;
+	public Integer getUser2ID() {
+		return user2ID;
 	}
 
-	public void setUser2Id(Integer user2Id) {
-		this.user2Id = user2Id;
+	public void setUser2ID(Integer user2ID) {
+		this.user2ID = user2ID;
 	}
 }

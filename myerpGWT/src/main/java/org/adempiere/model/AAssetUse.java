@@ -10,66 +10,76 @@ import javax.persistence.*;
 @Table(name="a_asset_use")
 public class AAssetUse extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetId;
-	private Integer aAssetUseId;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aAssetID;
+	private Integer aAssetUseID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
 	private String updated;
-	private Integer updatedby;
-	private String usedate;
-	private Integer useunits;
+	private Integer updatedBy;
+	private String useDate;
+	private Integer useUnits;
 
 	public AAssetUse() {
 	}
 
-	public AAssetUse(Integer aAssetUseId) {
-		this.aAssetUseId = aAssetUseId;
+	public AAssetUse(Integer aAssetUseID) {
+		this.aAssetUseID = aAssetUseID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_USE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53158", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Use", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53158")
-	public Integer getAAssetUseId() {
-		return aAssetUseId;
+	public Integer getAAssetUseID() {
+		return aAssetUseID;
 	}
 
-	public void setAAssetUseId(Integer aAssetUseId) {
-		this.aAssetUseId = aAssetUseId;
+	public void setAAssetUseID(Integer aAssetUseID) {
+		this.aAssetUseID = aAssetUseID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -84,12 +94,12 @@ public class AAssetUse extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -99,16 +109,6 @@ public class AAssetUse extends org.adempiere.common.ADEntityBase {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
 	}
 
 	@Basic
@@ -123,31 +123,31 @@ public class AAssetUse extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getUsedate() {
-		return usedate;
+	public String getUseDate() {
+		return useDate;
 	}
 
-	public void setUsedate(String usedate) {
-		this.usedate = usedate;
+	public void setUseDate(String useDate) {
+		this.useDate = useDate;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUseunits() {
-		return useunits;
+	public Integer getUseUnits() {
+		return useUnits;
 	}
 
-	public void setUseunits(Integer useunits) {
-		this.useunits = useunits;
+	public void setUseUnits(Integer useUnits) {
+		this.useUnits = useUnits;
 	}
 }

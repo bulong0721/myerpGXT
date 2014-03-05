@@ -10,85 +10,95 @@ import javax.persistence.*;
 @Table(name="b_topic")
 public class BTopic extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer bTopicId;
-	private Integer bTopiccategoryId;
-	private Integer bTopictypeId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer bTopicCategoryID;
+	private Integer bTopicID;
+	private Integer bTopicTypeID;
 	private String created;
-	private Integer createdby;
-	private String decisiondate;
+	private Integer createdBy;
+	private String decisionDate;
 	private String description;
-	private String documentno;
-	private Boolean isactive;
-	private Boolean ispublished;
+	private String documentNo;
 	private String name;
 	private Boolean processed;
 	private Boolean processing;
-	private String textdetails;
-	private String textmsg;
-	private String topicaction;
-	private String topicstatus;
+	private Boolean published;
+	private String textDetails;
+	private String textMsg;
+	private String topicAction;
+	private String topicStatus;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public BTopic() {
 	}
 
-	public BTopic(Integer bTopicId) {
-		this.bTopicId = bTopicId;
+	public BTopic(Integer bTopicID) {
+		this.bTopicID = bTopicID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	@Column(name="B_TOPICCATEGORY_ID", columnDefinition="INT", nullable=false)
+	public Integer getBTopicCategoryID() {
+		return bTopicCategoryID;
+	}
+
+	public void setBTopicCategoryID(Integer bTopicCategoryID) {
+		this.bTopicCategoryID = bTopicCategoryID;
 	}
 
 	@Id
 	@Column(name="B_TOPIC_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_854", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "B_Topic", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_854")
-	public Integer getBTopicId() {
-		return bTopicId;
+	public Integer getBTopicID() {
+		return bTopicID;
 	}
 
-	public void setBTopicId(Integer bTopicId) {
-		this.bTopicId = bTopicId;
-	}
-
-	@Basic
-	@Column(name="B_TOPICCATEGORY_ID", columnDefinition="INT", nullable=false)
-	public Integer getBTopiccategoryId() {
-		return bTopiccategoryId;
-	}
-
-	public void setBTopiccategoryId(Integer bTopiccategoryId) {
-		this.bTopiccategoryId = bTopiccategoryId;
+	public void setBTopicID(Integer bTopicID) {
+		this.bTopicID = bTopicID;
 	}
 
 	@Basic
 	@Column(name="B_TOPICTYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getBTopictypeId() {
-		return bTopictypeId;
+	public Integer getBTopicTypeID() {
+		return bTopicTypeID;
 	}
 
-	public void setBTopictypeId(Integer bTopictypeId) {
-		this.bTopictypeId = bTopictypeId;
+	public void setBTopicTypeID(Integer bTopicTypeID) {
+		this.bTopicTypeID = bTopicTypeID;
 	}
 
 	@Basic
@@ -103,22 +113,22 @@ public class BTopic extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getDecisiondate() {
-		return decisiondate;
+	public String getDecisionDate() {
+		return decisionDate;
 	}
 
-	public void setDecisiondate(String decisiondate) {
-		this.decisiondate = decisiondate;
+	public void setDecisionDate(String decisionDate) {
+		this.decisionDate = decisionDate;
 	}
 
 	@Basic
@@ -132,32 +142,12 @@ public class BTopic extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=30)
-	public String getDocumentno() {
-		return documentno;
+	public String getDocumentNo() {
+		return documentNo;
 	}
 
-	public void setDocumentno(String documentno) {
-		this.documentno = documentno;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIspublished() {
-		return ispublished;
-	}
-
-	public void setIspublished(Boolean ispublished) {
-		this.ispublished = ispublished;
+	public void setDocumentNo(String documentNo) {
+		this.documentNo = documentNo;
 	}
 
 	@Basic
@@ -190,43 +180,53 @@ public class BTopic extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(columnDefinition="LONGTEXT")
-	public String getTextdetails() {
-		return textdetails;
+	@Column(name="ISPUBLISHED", nullable=false)
+	public Boolean isPublished() {
+		return published;
 	}
 
-	public void setTextdetails(String textdetails) {
-		this.textdetails = textdetails;
+	public void setPublished(Boolean published) {
+		this.published = published;
+	}
+
+	@Basic
+	@Column(columnDefinition="LONGTEXT")
+	public String getTextDetails() {
+		return textDetails;
+	}
+
+	public void setTextDetails(String textDetails) {
+		this.textDetails = textDetails;
 	}
 
 	@Basic
 	@Column(length=2000)
-	public String getTextmsg() {
-		return textmsg;
+	public String getTextMsg() {
+		return textMsg;
 	}
 
-	public void setTextmsg(String textmsg) {
-		this.textmsg = textmsg;
-	}
-
-	@Basic
-	@Column(nullable=false, length=2)
-	public String getTopicaction() {
-		return topicaction;
-	}
-
-	public void setTopicaction(String topicaction) {
-		this.topicaction = topicaction;
+	public void setTextMsg(String textMsg) {
+		this.textMsg = textMsg;
 	}
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getTopicstatus() {
-		return topicstatus;
+	public String getTopicAction() {
+		return topicAction;
 	}
 
-	public void setTopicstatus(String topicstatus) {
-		this.topicstatus = topicstatus;
+	public void setTopicAction(String topicAction) {
+		this.topicAction = topicAction;
+	}
+
+	@Basic
+	@Column(nullable=false, length=2)
+	public String getTopicStatus() {
+		return topicStatus;
+	}
+
+	public void setTopicStatus(String topicStatus) {
+		this.topicStatus = topicStatus;
 	}
 
 	@Basic
@@ -241,11 +241,11 @@ public class BTopic extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -13,15 +13,17 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aAccumdepreciationAcct;
 	private Integer aAssetAcct;
-	private Integer aAssetGroupAcctId;
-	private Integer aAssetGroupId;
+	private Integer aAssetGroupAcctID;
+	private Integer aAssetGroupID;
 	private String aAssetSpreadType;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private Integer aDepreciationAcct;
 	private String aDepreciationCalcType;
-	private Integer aDepreciationId;
+	private Integer aDepreciationID;
 	private BigDecimal aDepreciationManualAmount;
 	private String aDepreciationManualPeriod;
-	private Integer aDepreciationTableHeaderId;
+	private Integer aDepreciationTableHeaderID;
 	private BigDecimal aDepreciationVariablePerc;
 	private String aDisposalGain;
 	private String aDisposalLoss;
@@ -33,26 +35,24 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	private String aRevalCostOffsetPrior;
 	private String aRevalDepexpOffset;
 	private BigDecimal aSplitPercent;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cAcctschemaId;
-	private String conventiontype;
+	private Boolean active;
+	private Integer cAcctSchemaID;
+	private String conventionType;
 	private String created;
-	private Integer createdby;
-	private String depreciationtype;
-	private Boolean isactive;
-	private String postingtype;
+	private Integer createdBy;
+	private String depreciationType;
+	private String postingType;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
-	private Integer uselifemonths;
-	private Integer uselifeyears;
+	private Integer updatedBy;
+	private Integer useLifeMonths;
+	private Integer useLifeYears;
 
 	public AAssetGroupAcct() {
 	}
 
-	public AAssetGroupAcct(Integer aAssetGroupAcctId) {
-		this.aAssetGroupAcctId = aAssetGroupAcctId;
+	public AAssetGroupAcct(Integer aAssetGroupAcctID) {
+		this.aAssetGroupAcctID = aAssetGroupAcctID;
 	}
 
 	@Basic
@@ -79,22 +79,22 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	@Column(name="A_ASSET_GROUP_ACCT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53150", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Group_Acct", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53150")
-	public Integer getAAssetGroupAcctId() {
-		return aAssetGroupAcctId;
+	public Integer getAAssetGroupAcctID() {
+		return aAssetGroupAcctID;
 	}
 
-	public void setAAssetGroupAcctId(Integer aAssetGroupAcctId) {
-		this.aAssetGroupAcctId = aAssetGroupAcctId;
+	public void setAAssetGroupAcctID(Integer aAssetGroupAcctID) {
+		this.aAssetGroupAcctID = aAssetGroupAcctID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_GROUP_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetGroupId() {
-		return aAssetGroupId;
+	public Integer getAAssetGroupID() {
+		return aAssetGroupID;
 	}
 
-	public void setAAssetGroupId(Integer aAssetGroupId) {
-		this.aAssetGroupId = aAssetGroupId;
+	public void setAAssetGroupID(Integer aAssetGroupID) {
+		this.aAssetGroupID = aAssetGroupID;
 	}
 
 	@Basic
@@ -105,6 +105,26 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 
 	public void setAAssetSpreadType(String aAssetSpreadType) {
 		this.aAssetSpreadType = aAssetSpreadType;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -129,12 +149,12 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_DEPRECIATION_ID", columnDefinition="INT")
-	public Integer getADepreciationId() {
-		return aDepreciationId;
+	public Integer getADepreciationID() {
+		return aDepreciationID;
 	}
 
-	public void setADepreciationId(Integer aDepreciationId) {
-		this.aDepreciationId = aDepreciationId;
+	public void setADepreciationID(Integer aDepreciationID) {
+		this.aDepreciationID = aDepreciationID;
 	}
 
 	@Basic
@@ -159,12 +179,12 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID", columnDefinition="INT")
-	public Integer getADepreciationTableHeaderId() {
-		return aDepreciationTableHeaderId;
+	public Integer getADepreciationTableHeaderID() {
+		return aDepreciationTableHeaderID;
 	}
 
-	public void setADepreciationTableHeaderId(Integer aDepreciationTableHeaderId) {
-		this.aDepreciationTableHeaderId = aDepreciationTableHeaderId;
+	public void setADepreciationTableHeaderID(Integer aDepreciationTableHeaderID) {
+		this.aDepreciationTableHeaderID = aDepreciationTableHeaderID;
 	}
 
 	@Basic
@@ -278,43 +298,33 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE")
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT", nullable=false)
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Basic
 	@Column(nullable=false, length=10)
-	public String getConventiontype() {
-		return conventiontype;
+	public String getConventionType() {
+		return conventionType;
 	}
 
-	public void setConventiontype(String conventiontype) {
-		this.conventiontype = conventiontype;
+	public void setConventionType(String conventionType) {
+		this.conventionType = conventionType;
 	}
 
 	@Basic
@@ -329,41 +339,32 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false, length=10)
-	public String getDepreciationtype() {
-		return depreciationtype;
+	public String getDepreciationType() {
+		return depreciationType;
 	}
 
-	public void setDepreciationtype(String depreciationtype) {
-		this.depreciationtype = depreciationtype;
-	}
-
-	@Basic
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDepreciationType(String depreciationType) {
+		this.depreciationType = depreciationType;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getPostingtype() {
-		return postingtype;
+	public String getPostingType() {
+		return postingType;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
@@ -387,31 +388,31 @@ public class AAssetGroupAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
-	}
-
-	@Basic
-	@Column(columnDefinition="INT")
-	public Integer getUselifemonths() {
-		return uselifemonths;
-	}
-
-	public void setUselifemonths(Integer uselifemonths) {
-		this.uselifemonths = uselifemonths;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getUselifeyears() {
-		return uselifeyears;
+	public Integer getUseLifeMonths() {
+		return useLifeMonths;
 	}
 
-	public void setUselifeyears(Integer uselifeyears) {
-		this.uselifeyears = uselifeyears;
+	public void setUseLifeMonths(Integer useLifeMonths) {
+		this.useLifeMonths = useLifeMonths;
+	}
+
+	@Basic
+	@Column(columnDefinition="INT")
+	public Integer getUseLifeYears() {
+		return useLifeYears;
+	}
+
+	public void setUseLifeYears(Integer useLifeYears) {
+		this.useLifeYears = useLifeYears;
 	}
 }

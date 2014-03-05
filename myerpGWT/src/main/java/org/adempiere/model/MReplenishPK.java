@@ -16,8 +16,8 @@ public class MReplenishPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer mProductId;
-	public Integer mWarehouseId;
+	public Integer mProductID;
+	public Integer mWarehouseID;
 
 	public MReplenishPK() {
 	}
@@ -26,31 +26,31 @@ public class MReplenishPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	public String toString() {
-		return String.valueOf(mProductId)
-			+ "::" + String.valueOf(mWarehouseId);
+		return String.valueOf(mProductID)
+			+ "::" + String.valueOf(mWarehouseID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((mProductId == null) ? 0 : mProductId.hashCode());
-		rs = rs * 37 + ((mWarehouseId == null) ? 0 : mWarehouseId.hashCode());
+		rs = rs * 37 + ((mProductID == null) ? 0 : mProductID.hashCode());
+		rs = rs * 37 + ((mWarehouseID == null) ? 0 : mWarehouseID.hashCode());
 		return rs;
 	}
 
@@ -61,24 +61,24 @@ public class MReplenishPK implements Serializable {
 			return false;
 
 		MReplenishPK other = (MReplenishPK) obj;
-		return ((mProductId == null && other.mProductId == null)
-			|| (mProductId != null && mProductId.equals(other.mProductId)))
-			&& ((mWarehouseId == null && other.mWarehouseId == null)
-			|| (mWarehouseId != null && mWarehouseId.equals(other.mWarehouseId)));
+		return ((mProductID == null && other.mProductID == null)
+			|| (mProductID != null && mProductID.equals(other.mProductID)))
+			&& ((mWarehouseID == null && other.mWarehouseID == null)
+			|| (mWarehouseID != null && mWarehouseID.equals(other.mWarehouseID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mProductId = null;
+			mProductID = null;
 		else
-			mProductId = new Integer(str);
+			mProductID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mWarehouseId = null;
+			mWarehouseID = null;
 		else
-			mWarehouseId = new Integer(str);
+			mWarehouseID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

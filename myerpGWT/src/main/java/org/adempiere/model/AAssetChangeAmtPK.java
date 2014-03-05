@@ -16,8 +16,8 @@ public class AAssetChangeAmtPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer aAssetChangeId;
-	public Integer cAcctschemaId;
+	public Integer aAssetChangeID;
+	public Integer cAcctSchemaID;
 
 	public AAssetChangeAmtPK() {
 	}
@@ -26,31 +26,31 @@ public class AAssetChangeAmtPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getAAssetChangeId() {
-		return aAssetChangeId;
+	public Integer getAAssetChangeID() {
+		return aAssetChangeID;
 	}
 
-	public void setAAssetChangeId(Integer aAssetChangeId) {
-		this.aAssetChangeId = aAssetChangeId;
+	public void setAAssetChangeID(Integer aAssetChangeID) {
+		this.aAssetChangeID = aAssetChangeID;
 	}
 
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	public String toString() {
-		return String.valueOf(aAssetChangeId)
-			+ "::" + String.valueOf(cAcctschemaId);
+		return String.valueOf(aAssetChangeID)
+			+ "::" + String.valueOf(cAcctSchemaID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((aAssetChangeId == null) ? 0 : aAssetChangeId.hashCode());
-		rs = rs * 37 + ((cAcctschemaId == null) ? 0 : cAcctschemaId.hashCode());
+		rs = rs * 37 + ((aAssetChangeID == null) ? 0 : aAssetChangeID.hashCode());
+		rs = rs * 37 + ((cAcctSchemaID == null) ? 0 : cAcctSchemaID.hashCode());
 		return rs;
 	}
 
@@ -61,24 +61,24 @@ public class AAssetChangeAmtPK implements Serializable {
 			return false;
 
 		AAssetChangeAmtPK other = (AAssetChangeAmtPK) obj;
-		return ((aAssetChangeId == null && other.aAssetChangeId == null)
-			|| (aAssetChangeId != null && aAssetChangeId.equals(other.aAssetChangeId)))
-			&& ((cAcctschemaId == null && other.cAcctschemaId == null)
-			|| (cAcctschemaId != null && cAcctschemaId.equals(other.cAcctschemaId)));
+		return ((aAssetChangeID == null && other.aAssetChangeID == null)
+			|| (aAssetChangeID != null && aAssetChangeID.equals(other.aAssetChangeID)))
+			&& ((cAcctSchemaID == null && other.cAcctSchemaID == null)
+			|| (cAcctSchemaID != null && cAcctSchemaID.equals(other.cAcctSchemaID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			aAssetChangeId = null;
+			aAssetChangeID = null;
 		else
-			aAssetChangeId = new Integer(str);
+			aAssetChangeID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cAcctschemaId = null;
+			cAcctSchemaID = null;
 		else
-			cAcctschemaId = new Integer(str);
+			cAcctSchemaID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

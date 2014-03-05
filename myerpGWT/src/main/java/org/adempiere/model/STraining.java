@@ -10,70 +10,80 @@ import javax.persistence.*;
 @Table(name="s_training")
 public class STraining extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cTaxcategoryId;
-	private Integer cUomId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cTaxCategoryID;
+	private Integer cUOMID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private String descriptionurl;
-	private String documentnote;
+	private String descriptionURL;
+	private String documentNote;
 	private String help;
-	private String imageurl;
-	private Boolean isactive;
-	private Integer mProductCategoryId;
+	private String imageURL;
+	private Integer mProductCategoryID;
 	private String name;
 	private Boolean processing;
-	private Integer sTrainingId;
+	private Integer sTrainingID;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public STraining() {
 	}
 
-	public STraining(Integer sTrainingId) {
-		this.sTrainingId = sTrainingId;
+	public STraining(Integer sTrainingID) {
+		this.sTrainingID = sTrainingID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_TAXCATEGORY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCTaxcategoryId() {
-		return cTaxcategoryId;
+	public Integer getCTaxCategoryID() {
+		return cTaxCategoryID;
 	}
 
-	public void setCTaxcategoryId(Integer cTaxcategoryId) {
-		this.cTaxcategoryId = cTaxcategoryId;
+	public void setCTaxCategoryID(Integer cTaxCategoryID) {
+		this.cTaxCategoryID = cTaxCategoryID;
 	}
 
 	@Basic
 	@Column(name="C_UOM_ID", columnDefinition="INT", nullable=false)
-	public Integer getCUomId() {
-		return cUomId;
+	public Integer getCUOMID() {
+		return cUOMID;
 	}
 
-	public void setCUomId(Integer cUomId) {
-		this.cUomId = cUomId;
+	public void setCUOMID(Integer cUOMID) {
+		this.cUOMID = cUOMID;
 	}
 
 	@Basic
@@ -88,12 +98,12 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -107,22 +117,22 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=120)
-	public String getDescriptionurl() {
-		return descriptionurl;
+	public String getDescriptionURL() {
+		return descriptionURL;
 	}
 
-	public void setDescriptionurl(String descriptionurl) {
-		this.descriptionurl = descriptionurl;
+	public void setDescriptionURL(String descriptionURL) {
+		this.descriptionURL = descriptionURL;
 	}
 
 	@Basic
 	@Column(length=2000)
-	public String getDocumentnote() {
-		return documentnote;
+	public String getDocumentNote() {
+		return documentNote;
 	}
 
-	public void setDocumentnote(String documentnote) {
-		this.documentnote = documentnote;
+	public void setDocumentNote(String documentNote) {
+		this.documentNote = documentNote;
 	}
 
 	@Basic
@@ -137,32 +147,22 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=120)
-	public String getImageurl() {
-		return imageurl;
+	public String getImageURL() {
+		return imageURL;
 	}
 
-	public void setImageurl(String imageurl) {
-		this.imageurl = imageurl;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT", nullable=false)
-	public Integer getMProductCategoryId() {
-		return mProductCategoryId;
+	public Integer getMProductCategoryID() {
+		return mProductCategoryID;
 	}
 
-	public void setMProductCategoryId(Integer mProductCategoryId) {
-		this.mProductCategoryId = mProductCategoryId;
+	public void setMProductCategoryID(Integer mProductCategoryID) {
+		this.mProductCategoryID = mProductCategoryID;
 	}
 
 	@Basic
@@ -188,12 +188,12 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 	@Column(name="S_TRAINING_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_638", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "S_Training", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_638")
-	public Integer getSTrainingId() {
-		return sTrainingId;
+	public Integer getSTrainingID() {
+		return sTrainingID;
 	}
 
-	public void setSTrainingId(Integer sTrainingId) {
-		this.sTrainingId = sTrainingId;
+	public void setSTrainingID(Integer sTrainingID) {
+		this.sTrainingID = sTrainingID;
 	}
 
 	@Basic
@@ -208,11 +208,11 @@ public class STraining extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

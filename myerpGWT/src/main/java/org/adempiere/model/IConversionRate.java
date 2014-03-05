@@ -11,106 +11,125 @@ import javax.persistence.*;
 @Table(name="i_conversion_rate")
 public class IConversionRate extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cConversionRateId;
-	private Integer cConversiontypeId;
-	private Integer cCurrencyId;
-	private Integer cCurrencyIdTo;
-	private String conversiontypevalue;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cConversionRateID;
+	private Integer cConversionTypeID;
+	private Integer cCurrencyID;
+	private Integer cCurrencyIDTo;
+	private String conversionTypeValue;
+	private Boolean createReciprocalRate;
 	private String created;
-	private Integer createdby;
-	private Boolean createreciprocalrate;
-	private BigDecimal dividerate;
-	private Integer iConversionRateId;
-	private String iErrormsg;
-	private Boolean iIsimported;
-	private Boolean isactive;
-	private String isoCode;
-	private String isoCodeTo;
-	private BigDecimal multiplyrate;
+	private Integer createdBy;
+	private BigDecimal divideRate;
+	private Integer iConversionRateID;
+	private String iErrorMsg;
+	private Boolean iIsImported;
+	private String iSOCode;
+	private String iSOCodeTo;
+	private BigDecimal multiplyRate;
 	private Boolean processed;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
-	private String validfrom;
-	private String validto;
+	private Integer updatedBy;
+	private String validFrom;
+	private String validTo;
 
 	public IConversionRate() {
 	}
 
-	public IConversionRate(Integer iConversionRateId) {
-		this.iConversionRateId = iConversionRateId;
+	public IConversionRate(Integer iConversionRateID) {
+		this.iConversionRateID = iConversionRateID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT")
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE")
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_CONVERSION_RATE_ID", columnDefinition="INT")
-	public Integer getCConversionRateId() {
-		return cConversionRateId;
+	public Integer getCConversionRateID() {
+		return cConversionRateID;
 	}
 
-	public void setCConversionRateId(Integer cConversionRateId) {
-		this.cConversionRateId = cConversionRateId;
+	public void setCConversionRateID(Integer cConversionRateID) {
+		this.cConversionRateID = cConversionRateID;
 	}
 
 	@Basic
 	@Column(name="C_CONVERSIONTYPE_ID", columnDefinition="INT")
-	public Integer getCConversiontypeId() {
-		return cConversiontypeId;
+	public Integer getCConversionTypeID() {
+		return cConversionTypeID;
 	}
 
-	public void setCConversiontypeId(Integer cConversiontypeId) {
-		this.cConversiontypeId = cConversiontypeId;
+	public void setCConversionTypeID(Integer cConversionTypeID) {
+		this.cConversionTypeID = cConversionTypeID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID_TO", columnDefinition="INT")
-	public Integer getCCurrencyIdTo() {
-		return cCurrencyIdTo;
+	public Integer getCCurrencyIDTo() {
+		return cCurrencyIDTo;
 	}
 
-	public void setCCurrencyIdTo(Integer cCurrencyIdTo) {
-		this.cCurrencyIdTo = cCurrencyIdTo;
+	public void setCCurrencyIDTo(Integer cCurrencyIDTo) {
+		this.cCurrencyIDTo = cCurrencyIDTo;
 	}
 
 	@Basic
 	@Column(length=40)
-	public String getConversiontypevalue() {
-		return conversiontypevalue;
+	public String getConversionTypeValue() {
+		return conversionTypeValue;
 	}
 
-	public void setConversiontypevalue(String conversiontypevalue) {
-		this.conversiontypevalue = conversiontypevalue;
+	public void setConversionTypeValue(String conversionTypeValue) {
+		this.conversionTypeValue = conversionTypeValue;
+	}
+
+	@Basic
+	public Boolean isCreateReciprocalRate() {
+		return createReciprocalRate;
+	}
+
+	public void setCreateReciprocalRate(Boolean createReciprocalRate) {
+		this.createReciprocalRate = createReciprocalRate;
 	}
 
 	@Basic
@@ -125,100 +144,82 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	public Boolean isCreatereciprocalrate() {
-		return createreciprocalrate;
-	}
-
-	public void setCreatereciprocalrate(Boolean createreciprocalrate) {
-		this.createreciprocalrate = createreciprocalrate;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public BigDecimal getDividerate() {
-		return dividerate;
+	public BigDecimal getDivideRate() {
+		return divideRate;
 	}
 
-	public void setDividerate(BigDecimal dividerate) {
-		this.dividerate = dividerate;
+	public void setDivideRate(BigDecimal divideRate) {
+		this.divideRate = divideRate;
 	}
 
 	@Id
 	@Column(name="I_CONVERSION_RATE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_816", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "I_Conversion_Rate", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_816")
-	public Integer getIConversionRateId() {
-		return iConversionRateId;
+	public Integer getIConversionRateID() {
+		return iConversionRateID;
 	}
 
-	public void setIConversionRateId(Integer iConversionRateId) {
-		this.iConversionRateId = iConversionRateId;
+	public void setIConversionRateID(Integer iConversionRateID) {
+		this.iConversionRateID = iConversionRateID;
 	}
 
 	@Basic
 	@Column(name="I_ERRORMSG", length=2000)
-	public String getIErrormsg() {
-		return iErrormsg;
+	public String getIErrorMsg() {
+		return iErrorMsg;
 	}
 
-	public void setIErrormsg(String iErrormsg) {
-		this.iErrormsg = iErrormsg;
+	public void setIErrorMsg(String iErrorMsg) {
+		this.iErrorMsg = iErrorMsg;
 	}
 
 	@Basic
 	@Column(name="I_ISIMPORTED")
-	public Boolean isIIsimported() {
-		return iIsimported;
+	public Boolean isIIsImported() {
+		return iIsImported;
 	}
 
-	public void setIIsimported(Boolean iIsimported) {
-		this.iIsimported = iIsimported;
-	}
-
-	@Basic
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setIIsImported(Boolean iIsImported) {
+		this.iIsImported = iIsImported;
 	}
 
 	@Basic
 	@Column(name="ISO_CODE", length=3)
-	public String getIsoCode() {
-		return isoCode;
+	public String getISOCode() {
+		return iSOCode;
 	}
 
-	public void setIsoCode(String isoCode) {
-		this.isoCode = isoCode;
+	public void setISOCode(String iSOCode) {
+		this.iSOCode = iSOCode;
 	}
 
 	@Basic
 	@Column(name="ISO_CODE_TO", length=3)
-	public String getIsoCodeTo() {
-		return isoCodeTo;
+	public String getISOCodeTo() {
+		return iSOCodeTo;
 	}
 
-	public void setIsoCodeTo(String isoCodeTo) {
-		this.isoCodeTo = isoCodeTo;
+	public void setISOCodeTo(String iSOCodeTo) {
+		this.iSOCodeTo = iSOCodeTo;
 	}
 
 	@Basic
-	public BigDecimal getMultiplyrate() {
-		return multiplyrate;
+	public BigDecimal getMultiplyRate() {
+		return multiplyRate;
 	}
 
-	public void setMultiplyrate(BigDecimal multiplyrate) {
-		this.multiplyrate = multiplyrate;
+	public void setMultiplyRate(BigDecimal multiplyRate) {
+		this.multiplyRate = multiplyRate;
 	}
 
 	@Basic
@@ -251,29 +252,29 @@ public class IConversionRate extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
-	}
-
-	@Basic
-	public String getValidfrom() {
-		return validfrom;
-	}
-
-	public void setValidfrom(String validfrom) {
-		this.validfrom = validfrom;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
-	public String getValidto() {
-		return validto;
+	public String getValidFrom() {
+		return validFrom;
 	}
 
-	public void setValidto(String validto) {
-		this.validto = validto;
+	public void setValidFrom(String validFrom) {
+		this.validFrom = validFrom;
+	}
+
+	@Basic
+	public String getValidTo() {
+		return validTo;
+	}
+
+	public void setValidTo(String validTo) {
+		this.validTo = validTo;
 	}
 }

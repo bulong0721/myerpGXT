@@ -11,25 +11,45 @@ import javax.persistence.*;
 @Table(name="a_depreciation_table_detail")
 public class ADepreciationTableDetail extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private BigDecimal aDepreciationRate;
 	private String aDepreciationTableCode;
-	private Integer aDepreciationTableDetailId;
+	private Integer aDepreciationTableDetailID;
 	private Integer aPeriod;
 	private String aTableRateType;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
+	private Integer createdBy;
 	private Boolean processed;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public ADepreciationTableDetail() {
 	}
 
-	public ADepreciationTableDetail(Integer aDepreciationTableDetailId) {
-		this.aDepreciationTableDetailId = aDepreciationTableDetailId;
+	public ADepreciationTableDetail(Integer aDepreciationTableDetailID) {
+		this.aDepreciationTableDetailID = aDepreciationTableDetailID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -56,12 +76,12 @@ public class ADepreciationTableDetail extends org.adempiere.common.ADEntityBase 
 	@Column(name="A_DEPRECIATION_TABLE_DETAIL_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53133", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Table_Detail", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53133")
-	public Integer getADepreciationTableDetailId() {
-		return aDepreciationTableDetailId;
+	public Integer getADepreciationTableDetailID() {
+		return aDepreciationTableDetailID;
 	}
 
-	public void setADepreciationTableDetailId(Integer aDepreciationTableDetailId) {
-		this.aDepreciationTableDetailId = aDepreciationTableDetailId;
+	public void setADepreciationTableDetailID(Integer aDepreciationTableDetailID) {
+		this.aDepreciationTableDetailID = aDepreciationTableDetailID;
 	}
 
 	@Basic
@@ -85,23 +105,13 @@ public class ADepreciationTableDetail extends org.adempiere.common.ADEntityBase 
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -116,22 +126,12 @@ public class ADepreciationTableDetail extends org.adempiere.common.ADEntityBase 
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -156,11 +156,11 @@ public class ADepreciationTableDetail extends org.adempiere.common.ADEntityBase 
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

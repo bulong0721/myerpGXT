@@ -10,78 +10,88 @@ import javax.persistence.*;
 @Table(name="a_depreciation_forecast")
 public class ADepreciationForecast extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aDepreciationForecastId;
-	private Integer aEndAssetId;
-	private Integer aStartAssetId;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDepreciationForecastID;
+	private Integer aEndAssetID;
+	private Integer aStartAssetID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private String datedoc;
-	private Boolean isactive;
-	private String postingtype;
+	private Integer createdBy;
+	private String dateDoc;
+	private String postingType;
 	private Boolean processed;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public ADepreciationForecast() {
 	}
 
-	public ADepreciationForecast(Integer aDepreciationForecastId) {
-		this.aDepreciationForecastId = aDepreciationForecastId;
+	public ADepreciationForecast(Integer aDepreciationForecastID) {
+		this.aDepreciationForecastID = aDepreciationForecastID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Id
 	@Column(name="A_DEPRECIATION_FORECAST_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53138", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Forecast", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53138")
-	public Integer getADepreciationForecastId() {
-		return aDepreciationForecastId;
+	public Integer getADepreciationForecastID() {
+		return aDepreciationForecastID;
 	}
 
-	public void setADepreciationForecastId(Integer aDepreciationForecastId) {
-		this.aDepreciationForecastId = aDepreciationForecastId;
+	public void setADepreciationForecastID(Integer aDepreciationForecastID) {
+		this.aDepreciationForecastID = aDepreciationForecastID;
 	}
 
 	@Basic
 	@Column(name="A_END_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAEndAssetId() {
-		return aEndAssetId;
+	public Integer getAEndAssetID() {
+		return aEndAssetID;
 	}
 
-	public void setAEndAssetId(Integer aEndAssetId) {
-		this.aEndAssetId = aEndAssetId;
+	public void setAEndAssetID(Integer aEndAssetID) {
+		this.aEndAssetID = aEndAssetID;
 	}
 
 	@Basic
 	@Column(name="A_START_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAStartAssetId() {
-		return aStartAssetId;
+	public Integer getAStartAssetID() {
+		return aStartAssetID;
 	}
 
-	public void setAStartAssetId(Integer aStartAssetId) {
-		this.aStartAssetId = aStartAssetId;
-	}
-
-	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
-	}
-
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setAStartAssetID(Integer aStartAssetID) {
+		this.aStartAssetID = aStartAssetID;
 	}
 
 	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -96,42 +106,32 @@ public class ADepreciationForecast extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getDatedoc() {
-		return datedoc;
-	}
-
-	public void setDatedoc(String datedoc) {
-		this.datedoc = datedoc;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public String getDateDoc() {
+		return dateDoc;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDateDoc(String dateDoc) {
+		this.dateDoc = dateDoc;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getPostingtype() {
-		return postingtype;
+	public String getPostingType() {
+		return postingType;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
@@ -164,11 +164,11 @@ public class ADepreciationForecast extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

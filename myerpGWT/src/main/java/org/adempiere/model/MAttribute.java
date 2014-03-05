@@ -10,56 +10,66 @@ import javax.persistence.*;
 @Table(name="m_attribute")
 public class MAttribute extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private String attributevaluetype;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private String attributeValueType;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Boolean isinstanceattribute;
-	private Boolean ismandatory;
-	private Integer mAttributeId;
-	private Integer mAttributesearchId;
+	private Boolean instanceAttribute;
+	private Integer mAttributeID;
+	private Integer mAttributeSearchID;
+	private Boolean mandatory;
 	private String name;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MAttribute() {
 	}
 
-	public MAttribute(Integer mAttributeId) {
-		this.mAttributeId = mAttributeId;
+	public MAttribute(Integer mAttributeID) {
+		this.mAttributeID = mAttributeID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getAttributevaluetype() {
-		return attributevaluetype;
+	public String getAttributeValueType() {
+		return attributeValueType;
 	}
 
-	public void setAttributevaluetype(String attributevaluetype) {
-		this.attributevaluetype = attributevaluetype;
+	public void setAttributeValueType(String attributeValueType) {
+		this.attributeValueType = attributeValueType;
 	}
 
 	@Basic
@@ -74,12 +84,12 @@ public class MAttribute extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -92,55 +102,45 @@ public class MAttribute extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	@Column(name="ISINSTANCEATTRIBUTE", nullable=false)
+	public Boolean isInstanceAttribute() {
+		return instanceAttribute;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsinstanceattribute() {
-		return isinstanceattribute;
-	}
-
-	public void setIsinstanceattribute(Boolean isinstanceattribute) {
-		this.isinstanceattribute = isinstanceattribute;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsmandatory() {
-		return ismandatory;
-	}
-
-	public void setIsmandatory(Boolean ismandatory) {
-		this.ismandatory = ismandatory;
+	public void setInstanceAttribute(Boolean instanceAttribute) {
+		this.instanceAttribute = instanceAttribute;
 	}
 
 	@Id
 	@Column(name="M_ATTRIBUTE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_691", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Attribute", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_691")
-	public Integer getMAttributeId() {
-		return mAttributeId;
+	public Integer getMAttributeID() {
+		return mAttributeID;
 	}
 
-	public void setMAttributeId(Integer mAttributeId) {
-		this.mAttributeId = mAttributeId;
+	public void setMAttributeID(Integer mAttributeID) {
+		this.mAttributeID = mAttributeID;
 	}
 
 	@Basic
 	@Column(name="M_ATTRIBUTESEARCH_ID", columnDefinition="INT")
-	public Integer getMAttributesearchId() {
-		return mAttributesearchId;
+	public Integer getMAttributeSearchID() {
+		return mAttributeSearchID;
 	}
 
-	public void setMAttributesearchId(Integer mAttributesearchId) {
-		this.mAttributesearchId = mAttributesearchId;
+	public void setMAttributeSearchID(Integer mAttributeSearchID) {
+		this.mAttributeSearchID = mAttributeSearchID;
+	}
+
+	@Basic
+	@Column(name="ISMANDATORY", nullable=false)
+	public Boolean isMandatory() {
+		return mandatory;
+	}
+
+	public void setMandatory(Boolean mandatory) {
+		this.mandatory = mandatory;
 	}
 
 	@Basic
@@ -165,11 +165,11 @@ public class MAttribute extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

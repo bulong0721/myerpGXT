@@ -10,68 +10,78 @@ import javax.persistence.*;
 @Table(name="c_bank")
 public class CBank extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cBankId;
-	private Integer cLocationId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cBankID;
+	private Integer cLocationID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Boolean isownbank;
 	private String name;
-	private String routingno;
-	private String swiftcode;
+	private Boolean ownBank;
+	private String routingNo;
+	private String swiftCode;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CBank() {
 	}
 
-	public CBank(Integer cBankId) {
-		this.cBankId = cBankId;
+	public CBank(Integer cBankID) {
+		this.cBankID = cBankID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_BANK_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_212", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Bank", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_212")
-	public Integer getCBankId() {
-		return cBankId;
+	public Integer getCBankID() {
+		return cBankID;
 	}
 
-	public void setCBankId(Integer cBankId) {
-		this.cBankId = cBankId;
+	public void setCBankID(Integer cBankID) {
+		this.cBankID = cBankID;
 	}
 
 	@Basic
 	@Column(name="C_LOCATION_ID", columnDefinition="INT")
-	public Integer getCLocationId() {
-		return cLocationId;
+	public Integer getCLocationID() {
+		return cLocationID;
 	}
 
-	public void setCLocationId(Integer cLocationId) {
-		this.cLocationId = cLocationId;
+	public void setCLocationID(Integer cLocationID) {
+		this.cLocationID = cLocationID;
 	}
 
 	@Basic
@@ -86,12 +96,12 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -101,26 +111,6 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsownbank() {
-		return isownbank;
-	}
-
-	public void setIsownbank(Boolean isownbank) {
-		this.isownbank = isownbank;
 	}
 
 	@Basic
@@ -134,23 +124,33 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false, length=20)
-	public String getRoutingno() {
-		return routingno;
+	@Column(name="ISOWNBANK", nullable=false)
+	public Boolean isOwnBank() {
+		return ownBank;
 	}
 
-	public void setRoutingno(String routingno) {
-		this.routingno = routingno;
+	public void setOwnBank(Boolean ownBank) {
+		this.ownBank = ownBank;
+	}
+
+	@Basic
+	@Column(nullable=false, length=20)
+	public String getRoutingNo() {
+		return routingNo;
+	}
+
+	public void setRoutingNo(String routingNo) {
+		this.routingNo = routingNo;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getSwiftcode() {
-		return swiftcode;
+	public String getSwiftCode() {
+		return swiftCode;
 	}
 
-	public void setSwiftcode(String swiftcode) {
-		this.swiftcode = swiftcode;
+	public void setSwiftCode(String swiftCode) {
+		this.swiftCode = swiftCode;
 	}
 
 	@Basic
@@ -165,11 +165,11 @@ public class CBank extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -10,54 +10,64 @@ import javax.persistence.*;
 @Table(name="m_promotion")
 public class MPromotion extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cCampaignId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cCampaignID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Integer mPromotionId;
+	private Integer mPromotionID;
 	private String name;
-	private Integer promotionpriority;
+	private Integer promotionPriority;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MPromotion() {
 	}
 
-	public MPromotion(Integer mPromotionId) {
-		this.mPromotionId = mPromotionId;
+	public MPromotion(Integer mPromotionID) {
+		this.mPromotionID = mPromotionID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
@@ -72,12 +82,12 @@ public class MPromotion extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -89,26 +99,16 @@ public class MPromotion extends org.adempiere.common.ADEntityBase {
 		this.description = description;
 	}
 
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
 	@Id
 	@Column(name="M_PROMOTION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53278", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Promotion", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53278")
-	public Integer getMPromotionId() {
-		return mPromotionId;
+	public Integer getMPromotionID() {
+		return mPromotionID;
 	}
 
-	public void setMPromotionId(Integer mPromotionId) {
-		this.mPromotionId = mPromotionId;
+	public void setMPromotionID(Integer mPromotionID) {
+		this.mPromotionID = mPromotionID;
 	}
 
 	@Basic
@@ -123,12 +123,12 @@ public class MPromotion extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getPromotionpriority() {
-		return promotionpriority;
+	public Integer getPromotionPriority() {
+		return promotionPriority;
 	}
 
-	public void setPromotionpriority(Integer promotionpriority) {
-		this.promotionpriority = promotionpriority;
+	public void setPromotionPriority(Integer promotionPriority) {
+		this.promotionPriority = promotionPriority;
 	}
 
 	@Basic
@@ -143,11 +143,11 @@ public class MPromotion extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

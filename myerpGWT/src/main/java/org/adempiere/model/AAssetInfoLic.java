@@ -11,49 +11,69 @@ import javax.persistence.*;
 @Table(name="a_asset_info_lic")
 public class AAssetInfoLic extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetId;
-	private Integer aAssetInfoLicId;
+	private Integer aAssetID;
+	private Integer aAssetInfoLicID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private String aIssuingAgency;
 	private BigDecimal aLicenseFee;
 	private String aLicenseNo;
 	private String aRenewalDate;
 	private String aState;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
+	private Integer createdBy;
 	private String text;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetInfoLic() {
 	}
 
-	public AAssetInfoLic(Integer aAssetInfoLicId) {
-		this.aAssetInfoLicId = aAssetInfoLicId;
+	public AAssetInfoLic(Integer aAssetInfoLicID) {
+		this.aAssetInfoLicID = aAssetInfoLicID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_INFO_LIC_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53154", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Info_Lic", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53154")
-	public Integer getAAssetInfoLicId() {
-		return aAssetInfoLicId;
+	public Integer getAAssetInfoLicID() {
+		return aAssetInfoLicID;
 	}
 
-	public void setAAssetInfoLicId(Integer aAssetInfoLicId) {
-		this.aAssetInfoLicId = aAssetInfoLicId;
+	public void setAAssetInfoLicID(Integer aAssetInfoLicID) {
+		this.aAssetInfoLicID = aAssetInfoLicID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -107,23 +127,13 @@ public class AAssetInfoLic extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -138,22 +148,12 @@ public class AAssetInfoLic extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -178,11 +178,11 @@ public class AAssetInfoLic extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

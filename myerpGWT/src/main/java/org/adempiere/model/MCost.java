@@ -12,70 +12,90 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.MCostPK.class)
 public class MCost extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cAcctschemaId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cAcctSchemaID;
+	private Boolean costFrozen;
 	private String created;
-	private Integer createdby;
-	private BigDecimal cumulatedamt;
-	private BigDecimal cumulatedqty;
-	private BigDecimal currentcostprice;
-	private BigDecimal currentcostpricell;
-	private BigDecimal currentqty;
+	private Integer createdBy;
+	private BigDecimal cumulatedAmt;
+	private BigDecimal cumulatedQty;
+	private BigDecimal currentCostPrice;
+	private BigDecimal currentCostPriceLL;
+	private BigDecimal currentQty;
 	private String description;
-	private BigDecimal futurecostprice;
-	private BigDecimal futurecostpricell;
-	private Boolean isactive;
-	private Boolean iscostfrozen;
-	private Integer mAttributesetinstanceId;
-	private Integer mCostelementId;
-	private Integer mCosttypeId;
-	private Integer mProductId;
+	private BigDecimal futureCostPrice;
+	private BigDecimal futureCostPriceLL;
+	private Integer mAttributeSetInstanceID;
+	private Integer mCostElementID;
+	private Integer mCostTypeID;
+	private Integer mProductID;
 	private Integer percent;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MCost() {
 	}
 
-	public MCost(Integer adClientId, Integer adOrgId, Integer cAcctschemaId, Integer mAttributesetinstanceId, Integer mCostelementId, Integer mCosttypeId, Integer mProductId) {
-		this.adClientId = adClientId;
-		this.adOrgId = adOrgId;
-		this.cAcctschemaId = cAcctschemaId;
-		this.mAttributesetinstanceId = mAttributesetinstanceId;
-		this.mCostelementId = mCostelementId;
-		this.mCosttypeId = mCosttypeId;
-		this.mProductId = mProductId;
+	public MCost(Integer aDClientID, Integer aDOrgID, Integer cAcctSchemaID, Integer mAttributeSetInstanceID, Integer mCostElementID, Integer mCostTypeID, Integer mProductID) {
+		this.aDClientID = aDClientID;
+		this.aDOrgID = aDOrgID;
+		this.cAcctSchemaID = cAcctSchemaID;
+		this.mAttributeSetInstanceID = mAttributeSetInstanceID;
+		this.mCostElementID = mCostElementID;
+		this.mCostTypeID = mCostTypeID;
+		this.mProductID = mProductID;
 	}
 
 	@Id
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT")
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Id
 	@Column(name="AD_ORG_ID", columnDefinition="INT")
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
+	}
+
+	@Basic
+	@Column(name="ISCOSTFROZEN")
+	public Boolean isCostFrozen() {
+		return costFrozen;
+	}
+
+	public void setCostFrozen(Boolean costFrozen) {
+		this.costFrozen = costFrozen;
 	}
 
 	@Basic
@@ -90,59 +110,59 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	public BigDecimal getCumulatedamt() {
-		return cumulatedamt;
-	}
-
-	public void setCumulatedamt(BigDecimal cumulatedamt) {
-		this.cumulatedamt = cumulatedamt;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public BigDecimal getCumulatedqty() {
-		return cumulatedqty;
+	public BigDecimal getCumulatedAmt() {
+		return cumulatedAmt;
 	}
 
-	public void setCumulatedqty(BigDecimal cumulatedqty) {
-		this.cumulatedqty = cumulatedqty;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getCurrentcostprice() {
-		return currentcostprice;
-	}
-
-	public void setCurrentcostprice(BigDecimal currentcostprice) {
-		this.currentcostprice = currentcostprice;
+	public void setCumulatedAmt(BigDecimal cumulatedAmt) {
+		this.cumulatedAmt = cumulatedAmt;
 	}
 
 	@Basic
-	public BigDecimal getCurrentcostpricell() {
-		return currentcostpricell;
+	public BigDecimal getCumulatedQty() {
+		return cumulatedQty;
 	}
 
-	public void setCurrentcostpricell(BigDecimal currentcostpricell) {
-		this.currentcostpricell = currentcostpricell;
+	public void setCumulatedQty(BigDecimal cumulatedQty) {
+		this.cumulatedQty = cumulatedQty;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCurrentqty() {
-		return currentqty;
+	public BigDecimal getCurrentCostPrice() {
+		return currentCostPrice;
 	}
 
-	public void setCurrentqty(BigDecimal currentqty) {
-		this.currentqty = currentqty;
+	public void setCurrentCostPrice(BigDecimal currentCostPrice) {
+		this.currentCostPrice = currentCostPrice;
+	}
+
+	@Basic
+	public BigDecimal getCurrentCostPriceLL() {
+		return currentCostPriceLL;
+	}
+
+	public void setCurrentCostPriceLL(BigDecimal currentCostPriceLL) {
+		this.currentCostPriceLL = currentCostPriceLL;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getCurrentQty() {
+		return currentQty;
+	}
+
+	public void setCurrentQty(BigDecimal currentQty) {
+		this.currentQty = currentQty;
 	}
 
 	@Basic
@@ -155,80 +175,61 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public BigDecimal getFuturecostprice() {
-		return futurecostprice;
+	public BigDecimal getFutureCostPrice() {
+		return futureCostPrice;
 	}
 
-	public void setFuturecostprice(BigDecimal futurecostprice) {
-		this.futurecostprice = futurecostprice;
-	}
-
-	@Basic
-	public BigDecimal getFuturecostpricell() {
-		return futurecostpricell;
-	}
-
-	public void setFuturecostpricell(BigDecimal futurecostpricell) {
-		this.futurecostpricell = futurecostpricell;
+	public void setFutureCostPrice(BigDecimal futureCostPrice) {
+		this.futureCostPrice = futureCostPrice;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public BigDecimal getFutureCostPriceLL() {
+		return futureCostPriceLL;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	public Boolean isIscostfrozen() {
-		return iscostfrozen;
-	}
-
-	public void setIscostfrozen(Boolean iscostfrozen) {
-		this.iscostfrozen = iscostfrozen;
+	public void setFutureCostPriceLL(BigDecimal futureCostPriceLL) {
+		this.futureCostPriceLL = futureCostPriceLL;
 	}
 
 	@Id
 	@Column(name="M_ATTRIBUTESETINSTANCE_ID", columnDefinition="INT")
-	public Integer getMAttributesetinstanceId() {
-		return mAttributesetinstanceId;
+	public Integer getMAttributeSetInstanceID() {
+		return mAttributeSetInstanceID;
 	}
 
-	public void setMAttributesetinstanceId(Integer mAttributesetinstanceId) {
-		this.mAttributesetinstanceId = mAttributesetinstanceId;
+	public void setMAttributeSetInstanceID(Integer mAttributeSetInstanceID) {
+		this.mAttributeSetInstanceID = mAttributeSetInstanceID;
 	}
 
 	@Id
 	@Column(name="M_COSTELEMENT_ID", columnDefinition="INT")
-	public Integer getMCostelementId() {
-		return mCostelementId;
+	public Integer getMCostElementID() {
+		return mCostElementID;
 	}
 
-	public void setMCostelementId(Integer mCostelementId) {
-		this.mCostelementId = mCostelementId;
+	public void setMCostElementID(Integer mCostElementID) {
+		this.mCostElementID = mCostElementID;
 	}
 
 	@Id
 	@Column(name="M_COSTTYPE_ID", columnDefinition="INT")
-	public Integer getMCosttypeId() {
-		return mCosttypeId;
+	public Integer getMCostTypeID() {
+		return mCostTypeID;
 	}
 
-	public void setMCosttypeId(Integer mCosttypeId) {
-		this.mCosttypeId = mCosttypeId;
+	public void setMCostTypeID(Integer mCostTypeID) {
+		this.mCostTypeID = mCostTypeID;
 	}
 
 	@Id
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Basic
@@ -253,11 +254,11 @@ public class MCost extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -57,7 +57,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 		String oldFieldGroup = null;
 		for (ADFieldBuilder fieldStrategy : tabStrategy.getFieldStrategies()) {
 			ADFormField field = fieldStrategy.getField();
-			String fieldGroup = field.getFieldgroup();
+			String fieldGroup = field.getFieldGroup();
 			if (!StringUtil.isNullOrEmpty(fieldGroup)) {
 				if (!fieldGroup.equals(oldFieldGroup)) {
 					ContentPanel groupPanel = new ContentPanel();

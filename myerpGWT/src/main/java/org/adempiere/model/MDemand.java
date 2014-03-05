@@ -10,67 +10,77 @@ import javax.persistence.*;
 @Table(name="m_demand")
 public class MDemand extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cCalendarId;
-	private Integer cYearId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cCalendarID;
+	private Integer cYearID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
 	private String help;
-	private Boolean isactive;
-	private Boolean isdefault;
-	private Integer mDemandId;
+	private Boolean isDefault;
+	private Integer mDemandID;
 	private String name;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MDemand() {
 	}
 
-	public MDemand(Integer mDemandId) {
-		this.mDemandId = mDemandId;
+	public MDemand(Integer mDemandID) {
+		this.mDemandID = mDemandID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_CALENDAR_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCalendarId() {
-		return cCalendarId;
+	public Integer getCCalendarID() {
+		return cCalendarID;
 	}
 
-	public void setCCalendarId(Integer cCalendarId) {
-		this.cCalendarId = cCalendarId;
+	public void setCCalendarID(Integer cCalendarID) {
+		this.cCalendarID = cCalendarID;
 	}
 
 	@Basic
 	@Column(name="C_YEAR_ID", columnDefinition="INT", nullable=false)
-	public Integer getCYearId() {
-		return cYearId;
+	public Integer getCYearID() {
+		return cYearID;
 	}
 
-	public void setCYearId(Integer cYearId) {
-		this.cYearId = cYearId;
+	public void setCYearID(Integer cYearID) {
+		this.cYearID = cYearID;
 	}
 
 	@Basic
@@ -85,12 +95,12 @@ public class MDemand extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -114,34 +124,24 @@ public class MDemand extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public Boolean isIsDefault() {
+		return isDefault;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdefault() {
-		return isdefault;
-	}
-
-	public void setIsdefault(Boolean isdefault) {
-		this.isdefault = isdefault;
+	public void setIsDefault(Boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	@Id
 	@Column(name="M_DEMAND_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_950", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "M_Demand", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_950")
-	public Integer getMDemandId() {
-		return mDemandId;
+	public Integer getMDemandID() {
+		return mDemandID;
 	}
 
-	public void setMDemandId(Integer mDemandId) {
-		this.mDemandId = mDemandId;
+	public void setMDemandID(Integer mDemandID) {
+		this.mDemandID = mDemandID;
 	}
 
 	@Basic
@@ -175,11 +175,11 @@ public class MDemand extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

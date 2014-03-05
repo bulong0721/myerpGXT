@@ -10,25 +10,45 @@ import javax.persistence.*;
 @Table(name="a_depreciation_table_header")
 public class ADepreciationTableHeader extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private String aDepreciationTableCode;
-	private Integer aDepreciationTableHeaderId;
+	private Integer aDepreciationTableHeaderID;
 	private String aTableRateType;
 	private String aTerm;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
 	private Boolean processed;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public ADepreciationTableHeader() {
 	}
 
-	public ADepreciationTableHeader(Integer aDepreciationTableHeaderId) {
-		this.aDepreciationTableHeaderId = aDepreciationTableHeaderId;
+	public ADepreciationTableHeader(Integer aDepreciationTableHeaderID) {
+		this.aDepreciationTableHeaderID = aDepreciationTableHeaderID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -45,12 +65,12 @@ public class ADepreciationTableHeader extends org.adempiere.common.ADEntityBase 
 	@Column(name="A_DEPRECIATION_TABLE_HEADER_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53134", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Table_Header", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53134")
-	public Integer getADepreciationTableHeaderId() {
-		return aDepreciationTableHeaderId;
+	public Integer getADepreciationTableHeaderID() {
+		return aDepreciationTableHeaderID;
 	}
 
-	public void setADepreciationTableHeaderId(Integer aDepreciationTableHeaderId) {
-		this.aDepreciationTableHeaderId = aDepreciationTableHeaderId;
+	public void setADepreciationTableHeaderID(Integer aDepreciationTableHeaderID) {
+		this.aDepreciationTableHeaderID = aDepreciationTableHeaderID;
 	}
 
 	@Basic
@@ -74,23 +94,13 @@ public class ADepreciationTableHeader extends org.adempiere.common.ADEntityBase 
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -105,12 +115,12 @@ public class ADepreciationTableHeader extends org.adempiere.common.ADEntityBase 
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -121,16 +131,6 @@ public class ADepreciationTableHeader extends org.adempiere.common.ADEntityBase 
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
 	}
 
 	@Basic
@@ -155,11 +155,11 @@ public class ADepreciationTableHeader extends org.adempiere.common.ADEntityBase 
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

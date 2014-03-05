@@ -16,9 +16,9 @@ public class MStoragePK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer mAttributesetinstanceId;
-	public Integer mLocatorId;
-	public Integer mProductId;
+	public Integer mAttributeSetInstanceID;
+	public Integer mLocatorID;
+	public Integer mProductID;
 
 	public MStoragePK() {
 	}
@@ -27,41 +27,41 @@ public class MStoragePK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getMAttributesetinstanceId() {
-		return mAttributesetinstanceId;
+	public Integer getMAttributeSetInstanceID() {
+		return mAttributeSetInstanceID;
 	}
 
-	public void setMAttributesetinstanceId(Integer mAttributesetinstanceId) {
-		this.mAttributesetinstanceId = mAttributesetinstanceId;
+	public void setMAttributeSetInstanceID(Integer mAttributeSetInstanceID) {
+		this.mAttributeSetInstanceID = mAttributeSetInstanceID;
 	}
 
-	public Integer getMLocatorId() {
-		return mLocatorId;
+	public Integer getMLocatorID() {
+		return mLocatorID;
 	}
 
-	public void setMLocatorId(Integer mLocatorId) {
-		this.mLocatorId = mLocatorId;
+	public void setMLocatorID(Integer mLocatorID) {
+		this.mLocatorID = mLocatorID;
 	}
 
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	public String toString() {
-		return String.valueOf(mAttributesetinstanceId)
-			+ "::" + String.valueOf(mLocatorId)
-			+ "::" + String.valueOf(mProductId);
+		return String.valueOf(mAttributeSetInstanceID)
+			+ "::" + String.valueOf(mLocatorID)
+			+ "::" + String.valueOf(mProductID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((mAttributesetinstanceId == null) ? 0 : mAttributesetinstanceId.hashCode());
-		rs = rs * 37 + ((mLocatorId == null) ? 0 : mLocatorId.hashCode());
-		rs = rs * 37 + ((mProductId == null) ? 0 : mProductId.hashCode());
+		rs = rs * 37 + ((mAttributeSetInstanceID == null) ? 0 : mAttributeSetInstanceID.hashCode());
+		rs = rs * 37 + ((mLocatorID == null) ? 0 : mLocatorID.hashCode());
+		rs = rs * 37 + ((mProductID == null) ? 0 : mProductID.hashCode());
 		return rs;
 	}
 
@@ -72,31 +72,31 @@ public class MStoragePK implements Serializable {
 			return false;
 
 		MStoragePK other = (MStoragePK) obj;
-		return ((mAttributesetinstanceId == null && other.mAttributesetinstanceId == null)
-			|| (mAttributesetinstanceId != null && mAttributesetinstanceId.equals(other.mAttributesetinstanceId)))
-			&& ((mLocatorId == null && other.mLocatorId == null)
-			|| (mLocatorId != null && mLocatorId.equals(other.mLocatorId)))
-			&& ((mProductId == null && other.mProductId == null)
-			|| (mProductId != null && mProductId.equals(other.mProductId)));
+		return ((mAttributeSetInstanceID == null && other.mAttributeSetInstanceID == null)
+			|| (mAttributeSetInstanceID != null && mAttributeSetInstanceID.equals(other.mAttributeSetInstanceID)))
+			&& ((mLocatorID == null && other.mLocatorID == null)
+			|| (mLocatorID != null && mLocatorID.equals(other.mLocatorID)))
+			&& ((mProductID == null && other.mProductID == null)
+			|| (mProductID != null && mProductID.equals(other.mProductID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mAttributesetinstanceId = null;
+			mAttributeSetInstanceID = null;
 		else
-			mAttributesetinstanceId = new Integer(str);
+			mAttributeSetInstanceID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mLocatorId = null;
+			mLocatorID = null;
 		else
-			mLocatorId = new Integer(str);
+			mLocatorID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mProductId = null;
+			mProductID = null;
 		else
-			mProductId = new Integer(str);
+			mProductID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

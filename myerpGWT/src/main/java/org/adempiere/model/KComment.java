@@ -10,55 +10,65 @@ import javax.persistence.*;
 @Table(name="k_comment")
 public class KComment extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adSessionId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDSessionID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private Boolean ispublic;
-	private Integer kCommentId;
-	private Integer kEntryId;
+	private Integer createdBy;
+	private Boolean isPublic;
+	private Integer kCommentID;
+	private Integer kEntryID;
 	private Integer rating;
-	private String textmsg;
+	private String textMsg;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public KComment() {
 	}
 
-	public KComment(Integer kCommentId) {
-		this.kCommentId = kCommentId;
+	public KComment(Integer kCommentID) {
+		this.kCommentID = kCommentID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_SESSION_ID", columnDefinition="INT")
-	public Integer getAdSessionId() {
-		return adSessionId;
+	public Integer getADSessionID() {
+		return aDSessionID;
 	}
 
-	public void setAdSessionId(Integer adSessionId) {
-		this.adSessionId = adSessionId;
+	public void setADSessionID(Integer aDSessionID) {
+		this.aDSessionID = aDSessionID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -73,54 +83,44 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIspublic() {
-		return ispublic;
+	public Boolean isIsPublic() {
+		return isPublic;
 	}
 
-	public void setIspublic(Boolean ispublic) {
-		this.ispublic = ispublic;
+	public void setIsPublic(Boolean isPublic) {
+		this.isPublic = isPublic;
 	}
 
 	@Id
 	@Column(name="K_COMMENT_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_782", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "K_Comment", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_782")
-	public Integer getKCommentId() {
-		return kCommentId;
+	public Integer getKCommentID() {
+		return kCommentID;
 	}
 
-	public void setKCommentId(Integer kCommentId) {
-		this.kCommentId = kCommentId;
+	public void setKCommentID(Integer kCommentID) {
+		this.kCommentID = kCommentID;
 	}
 
 	@Basic
 	@Column(name="K_ENTRY_ID", columnDefinition="INT", nullable=false)
-	public Integer getKEntryId() {
-		return kEntryId;
+	public Integer getKEntryID() {
+		return kEntryID;
 	}
 
-	public void setKEntryId(Integer kEntryId) {
-		this.kEntryId = kEntryId;
+	public void setKEntryID(Integer kEntryID) {
+		this.kEntryID = kEntryID;
 	}
 
 	@Basic
@@ -135,12 +135,12 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=2000)
-	public String getTextmsg() {
-		return textmsg;
+	public String getTextMsg() {
+		return textMsg;
 	}
 
-	public void setTextmsg(String textmsg) {
-		this.textmsg = textmsg;
+	public void setTextMsg(String textMsg) {
+		this.textMsg = textMsg;
 	}
 
 	@Basic
@@ -155,11 +155,11 @@ public class KComment extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

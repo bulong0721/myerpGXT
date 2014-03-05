@@ -7,9 +7,9 @@ import java.sql.Types;
 import java.util.List;
 
 import org.adempiere.common.DisplayType;
-import org.adempiere.model.AdColumn;
-import org.adempiere.model.AdElement;
-import org.adempiere.model.AdTable;
+import org.adempiere.model.ADColumn;
+import org.adempiere.model.ADElement;
+import org.adempiere.model.ADTable;
 import org.adempiere.util.Env;
 import org.adempiere.util.POUtil;
 
@@ -35,8 +35,8 @@ public class TableCreateColumns extends ServerProcess {
 			if (putAllTables)
 				addTable(md, catalog, schema);
 			else {
-				AdTable table = POUtil.find(context, AdTable.class, tableId);
-				String tableName = table.getTablename();
+				ADTable table = POUtil.find(context, ADTable.class, tableId);
+				String tableName = table.getTableName();
 				ResultSet rs = md.getColumns(catalog, schema, tableName, null);
 				addTableColumn(rs, table);
 			}
@@ -57,7 +57,7 @@ public class TableCreateColumns extends ServerProcess {
 		while (rs.next()) {
 			String tableName = rs.getString("TABLE_NAME");
 			// Try to find
-			AdTable table = POUtil.findByTableName(context, tableName);
+			ADTable table = POUtil.findByTableName(context, tableName);
 			// Create new ?
 			if (table == null) {
 				String tn = tableName.toUpperCase();
@@ -74,11 +74,11 @@ public class TableCreateColumns extends ServerProcess {
 				}
 
 				// Create New
-				table = new AdTable();
+				table = new ADTable();
 				// table.setEntityType(p_EntityType);
 				table.setName(tableName);
-				table.setTablename(tableName);
-				table.setIsview(false);
+				table.setTableName(tableName);
+				table.setView(false);
 				if (!POUtil.persist(context, table)) {
 					continue;
 				}
@@ -88,15 +88,15 @@ public class TableCreateColumns extends ServerProcess {
 		}
 	} // addTable
 
-	private void addTableColumn(ResultSet rs, AdTable table) throws Exception {
-		String tableName = table.getTablename();
-		List<AdColumn> columnList = POUtil.queryColumnsByTable(context, table.getAdTableId());
+	private void addTableColumn(ResultSet rs, ADTable table) throws Exception {
+		String tableName = table.getTableName();
+		List<ADColumn> columnList = POUtil.queryColumnsByTable(context, table.getADTableID());
 		while (rs.next()) {
 			String tn = rs.getString("TABLE_NAME");
 			if (!tableName.equalsIgnoreCase(tn))
 				continue;
 			String columnName = rs.getString("COLUMN_NAME");
-			AdColumn column = getColumn(columnList, columnName);
+			ADColumn column = getColumn(columnList, columnName);
 			if (column != null)
 				continue;
 			int dataType = rs.getInt("DATA_TYPE");
@@ -104,81 +104,81 @@ public class TableCreateColumns extends ServerProcess {
 			int size = rs.getInt("COLUMN_SIZE");
 			//
 			column = createColumn(table);
-			column.setEntitytype("D");
+			column.setEntityType("D");
 			//
-			AdElement element = POUtil.findElementByColumn(context, columnName);
+			ADElement element = POUtil.findElementByColumn(context, columnName);
 			if (element == null) {
 				element = createElement(column);
-				if (columnName.equalsIgnoreCase(table.getTablename() + "_ID")) {
-					element.setColumnname(table.getTablename() + "_ID");
+				if (columnName.equalsIgnoreCase(table.getTableName() + "_ID")) {
+					element.setColumnName(table.getTableName() + "_ID");
 					element.setName(table.getName());
-					element.setPrintname(table.getName());
+					element.setPrintName(table.getName());
 				}
 				// TODO
 				POUtil.persist(context, element);
 			}
-			column.setColumnname(element.getColumnname());
+			column.setColumnName(element.getColumnName());
 			column.setName(element.getName());
 			column.setDescription(element.getDescription());
 			column.setHelp(element.getHelp());
-			column.setAdElementId(element.getAdElementId());
-			column.setIsmandatory(false);
+			column.setADElementID(element.getADElementID());
+			column.setMandatory(false);
 			if (columnName.equalsIgnoreCase(tableName + "_ID")) {
-				column.setIskey(true);
-				column.setAdReferenceId(DisplayType.ID);
-				column.setIsupdateable(false);
+				column.setKey(true);
+				column.setADReferenceID(DisplayType.ID);
+				column.setAlwaysUpdateable(false);
 			} else if (columnName.toUpperCase().endsWith("_ACCT") && size == 10)
-				column.setAdReferenceId(DisplayType.Account);
+				column.setADReferenceID(DisplayType.Account);
 			else if (columnName.equalsIgnoreCase("C_Location_ID"))
-				column.setAdReferenceId(DisplayType.Location);
+				column.setADReferenceID(DisplayType.Location);
 			else if (columnName.equalsIgnoreCase("M_AttributeSetInstance_ID"))
-				column.setAdReferenceId(DisplayType.PAttribute);
+				column.setADReferenceID(DisplayType.PAttribute);
 			else if (columnName.equalsIgnoreCase("SalesRep_ID")) {
-				column.setAdReferenceId(DisplayType.Table);
-				column.setAdReferenceValueId(190);
+				column.setADReferenceID(DisplayType.Table);
+				column.setADReferenceValueID(190);
 			} else if (columnName.toUpperCase().endsWith("_ID"))
-				column.setAdReferenceId(DisplayType.TableDir);
+				column.setADReferenceID(DisplayType.TableDir);
 			else if (dataType == Types.DATE || dataType == Types.TIME || dataType == Types.TIMESTAMP
 					|| columnName.equalsIgnoreCase("Created") || columnName.equalsIgnoreCase("Updated"))
-				column.setAdReferenceId(DisplayType.DateTime);
+				column.setADReferenceID(DisplayType.DateTime);
 			else if (columnName.equalsIgnoreCase("CreatedBy") || columnName.equalsIgnoreCase("UpdatedBy")) {
-				column.setAdReferenceId(DisplayType.Table);
-				column.setAdReferenceValueId(110);
-				column.setIsupdateable(false);
+				column.setADReferenceID(DisplayType.Table);
+				column.setADReferenceValueID(110);
+				column.setAlwaysUpdateable(false);
 			} else if (columnName.equalsIgnoreCase("EntityType")) {
-				column.setAdReferenceId(DisplayType.Table);
-				column.setAdReferenceValueId(389);
+				column.setADReferenceID(DisplayType.Table);
+				column.setADReferenceValueID(389);
 			} else if (dataType == Types.CLOB)
-				column.setAdReferenceId(DisplayType.TextLong);
+				column.setADReferenceID(DisplayType.TextLong);
 			else if (dataType == Types.BLOB)
-				column.setAdReferenceId(DisplayType.Binary);
+				column.setADReferenceID(DisplayType.Binary);
 			else if (columnName.toUpperCase().indexOf("AMT") != -1)
-				column.setAdReferenceId(DisplayType.Amount);
+				column.setADReferenceID(DisplayType.Amount);
 			else if (columnName.toUpperCase().indexOf("QTY") != -1)
-				column.setAdReferenceId(DisplayType.Quantity);
+				column.setADReferenceID(DisplayType.Quantity);
 			else if (size == 1 && (columnName.toUpperCase().startsWith("IS") || dataType == Types.CHAR))
-				column.setAdReferenceId(DisplayType.YesNo);
+				column.setADReferenceID(DisplayType.YesNo);
 			else if (size < 4 && dataType == Types.CHAR)
-				column.setAdReferenceId(DisplayType.List);
+				column.setADReferenceID(DisplayType.List);
 			else if (columnName.equalsIgnoreCase("Name") || columnName.equals("DocumentNo")) {
-				column.setAdReferenceId(DisplayType.String);
-				column.setIsidentifier(true);
-				column.setSeqno(1);
+				column.setADReferenceID(DisplayType.String);
+				column.setIdentifier(true);
+				column.setSeqNo(1);
 			} else if (dataType == Types.CHAR || dataType == Types.VARCHAR || typeName.startsWith("NVAR") || typeName.startsWith("NCHAR")) {
 				if (typeName.startsWith("N"))
 					size /= 2;
 				if (size > 255)
-					column.setAdReferenceId(DisplayType.Text);
+					column.setADReferenceID(DisplayType.Text);
 				else
-					column.setAdReferenceId(DisplayType.String);
+					column.setADReferenceID(DisplayType.String);
 			} else if (dataType == Types.INTEGER || dataType == Types.SMALLINT || dataType == Types.DECIMAL || dataType == Types.NUMERIC) {
 				if (size == 10)
-					column.setAdReferenceId(DisplayType.Integer);
+					column.setADReferenceID(DisplayType.Integer);
 				else
-					column.setAdReferenceId(DisplayType.Number);
+					column.setADReferenceID(DisplayType.Number);
 			} else
-				column.setAdReferenceId(DisplayType.String);
-			column.setFieldlength(size);
+				column.setADReferenceID(DisplayType.String);
+			column.setFieldLength(size);
 			if (/*
 				 * column.getIsupdateable() &&
 				 */(/*
@@ -186,7 +186,7 @@ public class TableCreateColumns extends ServerProcess {
 					 */
 			columnName.equalsIgnoreCase("AD_Client_ID") || columnName.equalsIgnoreCase("AD_Org_ID")
 					|| columnName.toUpperCase().startsWith("CREATED") || columnName.toUpperCase().equals("UPDATED"))) {
-				column.setIsupdateable(false);
+				column.setAlwaysUpdateable(false);
 			}
 			// Done
 			if (POUtil.persist(context, column)) {
@@ -196,38 +196,38 @@ public class TableCreateColumns extends ServerProcess {
 
 	} // addTableColumn
 
-	private AdElement createElement(AdColumn column) {
-		AdElement element = new AdElement();
-		element.setAdClientId(column.getAdClientId());
-		element.setAdOrgId(column.getAdOrgId());
-		element.setEntitytype("D");
+	private ADElement createElement(ADColumn column) {
+		ADElement element = new ADElement();
+		element.setAdClientId(column.getADClientID());
+		element.setAdOrgId(column.getADOrgID());
+		element.setEntityType("D");
 		return element;
 	}
 
-	private AdColumn createColumn(AdTable table) {
-		AdColumn column = new AdColumn();
-		column.setAdClientId(table.getAdClientId());
-		column.setAdOrgId(table.getAdOrgId());
-		column.setAdTableId(table.getAdTableId());
-		column.setEntitytype(table.getEntitytype());
+	private ADColumn createColumn(ADTable table) {
+		ADColumn column = new ADColumn();
+		column.setAdClientId(table.getADClientID());
+		column.setAdOrgId(table.getADOrgID());
+		column.setADTableID(table.getADTableID());
+		column.setEntityType(table.getEntityType());
 
-		column.setIsalwaysupdateable(false); // N
-		column.setIsautocomplete(false);
-		column.setIsencrypted(false);
-		column.setIsidentifier(false);
-		column.setIskey(false);
-		column.setIsmandatory(false);
-		column.setIsparent(false);
-		column.setIsselectioncolumn(false);
-		column.setIstranslated(false);
-		column.setIsupdateable(true); // Y
+		column.setAlwaysUpdateable(false); // N
+		column.setAutocomplete(false);
+		column.setEncrypted(false);
+		column.setIdentifier(false);
+		column.setKey(false);
+		column.setMandatory(false);
+		column.setParent(false);
+		column.setSelectionColumn(false);
+		column.setTranslated(false);
+		column.setAlwaysUpdateable(true); // Y
 		column.setVersion(Env.ZERO);
 		return column;
 	}
 
-	private AdColumn getColumn(List<AdColumn> columnList, String columnName) {
-		for (AdColumn column : columnList) {
-			if (columnName.equalsIgnoreCase(column.getColumnname())) {
+	private ADColumn getColumn(List<ADColumn> columnList, String columnName) {
+		for (ADColumn column : columnList) {
+			if (columnName.equalsIgnoreCase(column.getColumnName())) {
 				return column;
 			}
 		}

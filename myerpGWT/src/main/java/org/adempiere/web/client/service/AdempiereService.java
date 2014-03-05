@@ -15,7 +15,7 @@ import org.adempiere.web.client.model.ADResultPair;
 import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.model.ADWindowModel;
-import org.adempiere.web.client.model.ADTreeNode;
+import org.adempiere.web.client.model.IsTreeNode;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -23,9 +23,9 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("adempiere")
 public interface AdempiereService extends RemoteService {
 
-	List<ADTreeNode> getAdMenuModels();
+	List<IsTreeNode> getAdMenuModels();
 	
-	List<ADTreeNode> getTreeNodes(int adTreeId, ADTreeNode loadCfg);
+	List<IsTreeNode> getTreeNodes(int adTreeId, IsTreeNode loadCfg);
 
 	List<LookupValue> getOptions(String columnName, int type, Integer adRefId);
 	

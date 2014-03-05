@@ -11,74 +11,94 @@ import javax.persistence.*;
 @Table(name="s_resource")
 public class SResource extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
-	private BigDecimal chargeableqty;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
+	private Boolean active;
+	private Boolean available;
+	private BigDecimal chargeableQty;
 	private String created;
-	private Integer createdby;
-	private BigDecimal dailycapacity;
+	private Integer createdBy;
+	private BigDecimal dailyCapacity;
 	private String description;
-	private Boolean isactive;
-	private Boolean isavailable;
-	private Boolean ismanufacturingresource;
-	private Integer mWarehouseId;
-	private String manufacturingresourcetype;
+	private Integer mWarehouseID;
+	private Boolean manufacturingResource;
+	private String manufacturingResourceType;
 	private String name;
-	private BigDecimal percentutilization;
-	private Integer planninghorizon;
-	private BigDecimal queuingtime;
-	private Integer sResourceId;
-	private Integer sResourcetypeId;
+	private BigDecimal percentUtilization;
+	private Integer planningHorizon;
+	private BigDecimal queuingTime;
+	private Integer sResourceID;
+	private Integer sResourceTypeID;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 	private String value;
-	private BigDecimal waitingtime;
+	private BigDecimal waitingTime;
 
 	public SResource() {
 	}
 
-	public SResource(Integer sResourceId) {
-		this.sResourceId = sResourceId;
+	public SResource(Integer sResourceID) {
+		this.sResourceID = sResourceID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
 	}
 
 	@Basic
-	public BigDecimal getChargeableqty() {
-		return chargeableqty;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setChargeableqty(BigDecimal chargeableqty) {
-		this.chargeableqty = chargeableqty;
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	@Column(name="ISAVAILABLE", nullable=false)
+	public Boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
+
+	@Basic
+	public BigDecimal getChargeableQty() {
+		return chargeableQty;
+	}
+
+	public void setChargeableQty(BigDecimal chargeableQty) {
+		this.chargeableQty = chargeableQty;
 	}
 
 	@Basic
@@ -93,21 +113,21 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public BigDecimal getDailycapacity() {
-		return dailycapacity;
+	public BigDecimal getDailyCapacity() {
+		return dailyCapacity;
 	}
 
-	public void setDailycapacity(BigDecimal dailycapacity) {
-		this.dailycapacity = dailycapacity;
+	public void setDailyCapacity(BigDecimal dailyCapacity) {
+		this.dailyCapacity = dailyCapacity;
 	}
 
 	@Basic
@@ -120,52 +140,33 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsavailable() {
-		return isavailable;
-	}
-
-	public void setIsavailable(Boolean isavailable) {
-		this.isavailable = isavailable;
-	}
-
-	@Basic
-	public Boolean isIsmanufacturingresource() {
-		return ismanufacturingresource;
-	}
-
-	public void setIsmanufacturingresource(Boolean ismanufacturingresource) {
-		this.ismanufacturingresource = ismanufacturingresource;
-	}
-
-	@Basic
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT", nullable=false)
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
+	}
+
+	@Basic
+	@Column(name="ISMANUFACTURINGRESOURCE")
+	public Boolean isManufacturingResource() {
+		return manufacturingResource;
+	}
+
+	public void setManufacturingResource(Boolean manufacturingResource) {
+		this.manufacturingResource = manufacturingResource;
 	}
 
 	@Basic
 	@Column(length=2)
-	public String getManufacturingresourcetype() {
-		return manufacturingresourcetype;
+	public String getManufacturingResourceType() {
+		return manufacturingResourceType;
 	}
 
-	public void setManufacturingresourcetype(String manufacturingresourcetype) {
-		this.manufacturingresourcetype = manufacturingresourcetype;
+	public void setManufacturingResourceType(String manufacturingResourceType) {
+		this.manufacturingResourceType = manufacturingResourceType;
 	}
 
 	@Basic
@@ -180,53 +181,53 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getPercentutilization() {
-		return percentutilization;
+	public BigDecimal getPercentUtilization() {
+		return percentUtilization;
 	}
 
-	public void setPercentutilization(BigDecimal percentutilization) {
-		this.percentutilization = percentutilization;
+	public void setPercentUtilization(BigDecimal percentUtilization) {
+		this.percentUtilization = percentUtilization;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getPlanninghorizon() {
-		return planninghorizon;
+	public Integer getPlanningHorizon() {
+		return planningHorizon;
 	}
 
-	public void setPlanninghorizon(Integer planninghorizon) {
-		this.planninghorizon = planninghorizon;
+	public void setPlanningHorizon(Integer planningHorizon) {
+		this.planningHorizon = planningHorizon;
 	}
 
 	@Basic
-	public BigDecimal getQueuingtime() {
-		return queuingtime;
+	public BigDecimal getQueuingTime() {
+		return queuingTime;
 	}
 
-	public void setQueuingtime(BigDecimal queuingtime) {
-		this.queuingtime = queuingtime;
+	public void setQueuingTime(BigDecimal queuingTime) {
+		this.queuingTime = queuingTime;
 	}
 
 	@Id
 	@Column(name="S_RESOURCE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_559", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "S_Resource", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_559")
-	public Integer getSResourceId() {
-		return sResourceId;
+	public Integer getSResourceID() {
+		return sResourceID;
 	}
 
-	public void setSResourceId(Integer sResourceId) {
-		this.sResourceId = sResourceId;
+	public void setSResourceID(Integer sResourceID) {
+		this.sResourceID = sResourceID;
 	}
 
 	@Basic
 	@Column(name="S_RESOURCETYPE_ID", columnDefinition="INT", nullable=false)
-	public Integer getSResourcetypeId() {
-		return sResourcetypeId;
+	public Integer getSResourceTypeID() {
+		return sResourceTypeID;
 	}
 
-	public void setSResourcetypeId(Integer sResourcetypeId) {
-		this.sResourcetypeId = sResourcetypeId;
+	public void setSResourceTypeID(Integer sResourceTypeID) {
+		this.sResourceTypeID = sResourceTypeID;
 	}
 
 	@Basic
@@ -241,12 +242,12 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
@@ -260,11 +261,11 @@ public class SResource extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public BigDecimal getWaitingtime() {
-		return waitingtime;
+	public BigDecimal getWaitingTime() {
+		return waitingTime;
 	}
 
-	public void setWaitingtime(BigDecimal waitingtime) {
-		this.waitingtime = waitingtime;
+	public void setWaitingTime(BigDecimal waitingTime) {
+		this.waitingTime = waitingTime;
 	}
 }

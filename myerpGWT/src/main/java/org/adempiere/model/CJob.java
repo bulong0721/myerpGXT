@@ -10,67 +10,77 @@ import javax.persistence.*;
 @Table(name="c_job")
 public class CJob extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cJobId;
-	private Integer cJobcategoryId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cJobCategoryID;
+	private Integer cJobID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
+	private Boolean employee;
 	private String help;
-	private Boolean isactive;
-	private Boolean isemployee;
 	private String name;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CJob() {
 	}
 
-	public CJob(Integer cJobId) {
-		this.cJobId = cJobId;
+	public CJob(Integer cJobID) {
+		this.cJobID = cJobID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	@Column(name="C_JOBCATEGORY_ID", columnDefinition="INT", nullable=false)
+	public Integer getCJobCategoryID() {
+		return cJobCategoryID;
+	}
+
+	public void setCJobCategoryID(Integer cJobCategoryID) {
+		this.cJobCategoryID = cJobCategoryID;
 	}
 
 	@Id
 	@Column(name="C_JOB_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_1125", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Job", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1125")
-	public Integer getCJobId() {
-		return cJobId;
+	public Integer getCJobID() {
+		return cJobID;
 	}
 
-	public void setCJobId(Integer cJobId) {
-		this.cJobId = cJobId;
-	}
-
-	@Basic
-	@Column(name="C_JOBCATEGORY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCJobcategoryId() {
-		return cJobcategoryId;
-	}
-
-	public void setCJobcategoryId(Integer cJobcategoryId) {
-		this.cJobcategoryId = cJobcategoryId;
+	public void setCJobID(Integer cJobID) {
+		this.cJobID = cJobID;
 	}
 
 	@Basic
@@ -85,12 +95,12 @@ public class CJob extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -103,6 +113,16 @@ public class CJob extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
+	@Column(name="ISEMPLOYEE", nullable=false)
+	public Boolean isEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Boolean employee) {
+		this.employee = employee;
+	}
+
+	@Basic
 	@Column(length=2000)
 	public String getHelp() {
 		return help;
@@ -110,26 +130,6 @@ public class CJob extends org.adempiere.common.ADEntityBase {
 
 	public void setHelp(String help) {
 		this.help = help;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsemployee() {
-		return isemployee;
-	}
-
-	public void setIsemployee(Boolean isemployee) {
-		this.isemployee = isemployee;
 	}
 
 	@Basic
@@ -154,11 +154,11 @@ public class CJob extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

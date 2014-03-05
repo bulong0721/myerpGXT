@@ -17,6 +17,12 @@ public class LookupValue implements Serializable {
 		this.value = Integer.toString(value);
 	}
 	
+	public LookupValue(Integer display, Integer value) {
+		super();
+		this.display = Integer.toString(display);
+		this.value = Integer.toString(value);
+	}
+	
 	public LookupValue(String display, int value) {
 		super();
 		this.display = display;

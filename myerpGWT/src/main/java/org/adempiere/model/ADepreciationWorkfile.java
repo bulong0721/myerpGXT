@@ -13,38 +13,38 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private BigDecimal aAccumulatedDepr;
 	private BigDecimal aAssetCost;
-	private Integer aAssetId;
+	private Integer aAssetID;
 	private BigDecimal aAssetLifeCurrentYear;
 	private Integer aAssetLifeYears;
 	private BigDecimal aBaseAmount;
 	private BigDecimal aCalcAccumulatedDepr;
 	private BigDecimal aCurrDepExp;
 	private Integer aCurrentPeriod;
-	private Integer aDepreciationWorkfileId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDepreciationWorkfileID;
 	private Integer aLifePeriod;
 	private BigDecimal aPeriodForecast;
 	private Integer aPeriodPosted;
 	private BigDecimal aPriorYearAccumulatedDepr;
-	private BigDecimal aQtyCurrent;
+	private BigDecimal aQTYCurrent;
 	private BigDecimal aSalvageValue;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private String assetdepreciationdate;
+	private Boolean active;
+	private String assetDepreciationDate;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
-	private Boolean isactive;
-	private Boolean isdepreciated;
-	private String postingtype;
+	private Integer createdBy;
+	private String dateAcct;
+	private Boolean depreciated;
+	private String postingType;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public ADepreciationWorkfile() {
 	}
 
-	public ADepreciationWorkfile(Integer aDepreciationWorkfileId) {
-		this.aDepreciationWorkfileId = aDepreciationWorkfileId;
+	public ADepreciationWorkfile(Integer aDepreciationWorkfileID) {
+		this.aDepreciationWorkfileID = aDepreciationWorkfileID;
 	}
 
 	@Basic
@@ -69,12 +69,12 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Basic
@@ -137,16 +137,36 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 		this.aCurrentPeriod = aCurrentPeriod;
 	}
 
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
 	@Id
 	@Column(name="A_DEPRECIATION_WORKFILE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53136", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Depreciation_Workfile", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53136")
-	public Integer getADepreciationWorkfileId() {
-		return aDepreciationWorkfileId;
+	public Integer getADepreciationWorkfileID() {
+		return aDepreciationWorkfileID;
 	}
 
-	public void setADepreciationWorkfileId(Integer aDepreciationWorkfileId) {
-		this.aDepreciationWorkfileId = aDepreciationWorkfileId;
+	public void setADepreciationWorkfileID(Integer aDepreciationWorkfileID) {
+		this.aDepreciationWorkfileID = aDepreciationWorkfileID;
 	}
 
 	@Basic
@@ -191,12 +211,12 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="A_QTY_CURRENT", nullable=false)
-	public BigDecimal getAQtyCurrent() {
-		return aQtyCurrent;
+	public BigDecimal getAQTYCurrent() {
+		return aQTYCurrent;
 	}
 
-	public void setAQtyCurrent(BigDecimal aQtyCurrent) {
-		this.aQtyCurrent = aQtyCurrent;
+	public void setAQTYCurrent(BigDecimal aQTYCurrent) {
+		this.aQTYCurrent = aQTYCurrent;
 	}
 
 	@Basic
@@ -210,32 +230,22 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
-	public String getAssetdepreciationdate() {
-		return assetdepreciationdate;
+	public String getAssetDepreciationDate() {
+		return assetDepreciationDate;
 	}
 
-	public void setAssetdepreciationdate(String assetdepreciationdate) {
-		this.assetdepreciationdate = assetdepreciationdate;
+	public void setAssetDepreciationDate(String assetDepreciationDate) {
+		this.assetDepreciationDate = assetDepreciationDate;
 	}
 
 	@Basic
@@ -250,50 +260,41 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	public String getDateacct() {
-		return dateacct;
-	}
-
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
 	}
 
 	@Basic
-	public Boolean isIsdepreciated() {
-		return isdepreciated;
+	@Column(name="ISDEPRECIATED")
+	public Boolean isDepreciated() {
+		return depreciated;
 	}
 
-	public void setIsdepreciated(Boolean isdepreciated) {
-		this.isdepreciated = isdepreciated;
+	public void setDepreciated(Boolean depreciated) {
+		this.depreciated = depreciated;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getPostingtype() {
-		return postingtype;
+	public String getPostingType() {
+		return postingType;
 	}
 
-	public void setPostingtype(String postingtype) {
-		this.postingtype = postingtype;
+	public void setPostingType(String postingType) {
+		this.postingType = postingType;
 	}
 
 	@Basic
@@ -317,11 +318,11 @@ public class ADepreciationWorkfile extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -10,60 +10,80 @@ import javax.persistence.*;
 @Table(name="a_asset_group")
 public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetGroupId;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aAssetGroupID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Boolean createAsActive;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
+	private Boolean depreciated;
 	private String description;
 	private String help;
-	private Boolean isactive;
-	private Boolean iscreateasactive;
-	private Boolean isdepreciated;
-	private Boolean isoneassetperuom;
-	private Boolean isowned;
-	private String istrackissues;
 	private String name;
+	private Boolean oneAssetPerUOM;
+	private Boolean owned;
+	private String trackIssues;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetGroup() {
 	}
 
-	public AAssetGroup(Integer aAssetGroupId) {
-		this.aAssetGroupId = aAssetGroupId;
+	public AAssetGroup(Integer aAssetGroupID) {
+		this.aAssetGroupID = aAssetGroupID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_GROUP_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_669", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Group", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_669")
-	public Integer getAAssetGroupId() {
-		return aAssetGroupId;
+	public Integer getAAssetGroupID() {
+		return aAssetGroupID;
 	}
 
-	public void setAAssetGroupId(Integer aAssetGroupId) {
-		this.aAssetGroupId = aAssetGroupId;
+	public void setAAssetGroupID(Integer aAssetGroupID) {
+		this.aAssetGroupID = aAssetGroupID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	@Column(name="ISCREATEASACTIVE", nullable=false)
+	public Boolean isCreateAsActive() {
+		return createAsActive;
+	}
+
+	public void setCreateAsActive(Boolean createAsActive) {
+		this.createAsActive = createAsActive;
 	}
 
 	@Basic
@@ -78,12 +98,22 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	@Basic
+	@Column(name="ISDEPRECIATED", nullable=false)
+	public Boolean isDepreciated() {
+		return depreciated;
+	}
+
+	public void setDepreciated(Boolean depreciated) {
+		this.depreciated = depreciated;
 	}
 
 	@Basic
@@ -106,66 +136,6 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIscreateasactive() {
-		return iscreateasactive;
-	}
-
-	public void setIscreateasactive(Boolean iscreateasactive) {
-		this.iscreateasactive = iscreateasactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdepreciated() {
-		return isdepreciated;
-	}
-
-	public void setIsdepreciated(Boolean isdepreciated) {
-		this.isdepreciated = isdepreciated;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsoneassetperuom() {
-		return isoneassetperuom;
-	}
-
-	public void setIsoneassetperuom(Boolean isoneassetperuom) {
-		this.isoneassetperuom = isoneassetperuom;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsowned() {
-		return isowned;
-	}
-
-	public void setIsowned(Boolean isowned) {
-		this.isowned = isowned;
-	}
-
-	@Basic
-	@Column(length=1)
-	public String getIstrackissues() {
-		return istrackissues;
-	}
-
-	public void setIstrackissues(String istrackissues) {
-		this.istrackissues = istrackissues;
-	}
-
-	@Basic
 	@Column(nullable=false, length=60)
 	public String getName() {
 		return name;
@@ -173,6 +143,36 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Basic
+	@Column(name="ISONEASSETPERUOM", nullable=false)
+	public Boolean isOneAssetPerUOM() {
+		return oneAssetPerUOM;
+	}
+
+	public void setOneAssetPerUOM(Boolean oneAssetPerUOM) {
+		this.oneAssetPerUOM = oneAssetPerUOM;
+	}
+
+	@Basic
+	@Column(name="ISOWNED", nullable=false)
+	public Boolean isOwned() {
+		return owned;
+	}
+
+	public void setOwned(Boolean owned) {
+		this.owned = owned;
+	}
+
+	@Basic
+	@Column(name="ISTRACKISSUES", length=1)
+	public String getTrackIssues() {
+		return trackIssues;
+	}
+
+	public void setTrackIssues(String trackIssues) {
+		this.trackIssues = trackIssues;
 	}
 
 	@Basic
@@ -187,11 +187,11 @@ public class AAssetGroup extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

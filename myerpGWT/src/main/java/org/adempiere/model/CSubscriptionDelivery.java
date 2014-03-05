@@ -10,63 +10,73 @@ import javax.persistence.*;
 @Table(name="c_subscription_delivery")
 public class CSubscriptionDelivery extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cSubscriptionDeliveryId;
-	private Integer cSubscriptionId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cSubscriptionDeliveryID;
+	private Integer cSubscriptionID;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
+	private Integer createdBy;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CSubscriptionDelivery() {
 	}
 
-	public CSubscriptionDelivery(Integer cSubscriptionDeliveryId) {
-		this.cSubscriptionDeliveryId = cSubscriptionDeliveryId;
+	public CSubscriptionDelivery(Integer cSubscriptionDeliveryID) {
+		this.cSubscriptionDeliveryID = cSubscriptionDeliveryID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_SUBSCRIPTION_DELIVERY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_842", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Subscription_Delivery", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_842")
-	public Integer getCSubscriptionDeliveryId() {
-		return cSubscriptionDeliveryId;
+	public Integer getCSubscriptionDeliveryID() {
+		return cSubscriptionDeliveryID;
 	}
 
-	public void setCSubscriptionDeliveryId(Integer cSubscriptionDeliveryId) {
-		this.cSubscriptionDeliveryId = cSubscriptionDeliveryId;
+	public void setCSubscriptionDeliveryID(Integer cSubscriptionDeliveryID) {
+		this.cSubscriptionDeliveryID = cSubscriptionDeliveryID;
 	}
 
 	@Basic
 	@Column(name="C_SUBSCRIPTION_ID", columnDefinition="INT", nullable=false)
-	public Integer getCSubscriptionId() {
-		return cSubscriptionId;
+	public Integer getCSubscriptionID() {
+		return cSubscriptionID;
 	}
 
-	public void setCSubscriptionId(Integer cSubscriptionId) {
-		this.cSubscriptionId = cSubscriptionId;
+	public void setCSubscriptionID(Integer cSubscriptionID) {
+		this.cSubscriptionID = cSubscriptionID;
 	}
 
 	@Basic
@@ -81,22 +91,12 @@ public class CSubscriptionDelivery extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -111,11 +111,11 @@ public class CSubscriptionDelivery extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

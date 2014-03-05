@@ -10,54 +10,74 @@ import javax.persistence.*;
 @Table(name="r_status")
 public class RStatus extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Boolean closed;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
+	private Boolean finalClose;
 	private String help;
-	private Boolean isactive;
-	private Boolean isclosed;
-	private Boolean isdefault;
-	private Boolean isfinalclose;
-	private Boolean isopen;
-	private Boolean iswebcanupdate;
+	private Boolean isDefault;
 	private String name;
-	private Integer nextStatusId;
-	private Integer rStatusId;
-	private Integer rStatuscategoryId;
-	private Integer seqno;
-	private Integer timeoutdays;
-	private Integer updateStatusId;
+	private Integer nextStatusID;
+	private Boolean open;
+	private Integer rStatusCategoryID;
+	private Integer rStatusID;
+	private Integer seqNo;
+	private Integer timeoutDays;
+	private Integer updateStatusID;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 	private String value;
+	private Boolean webCanUpdate;
 
 	public RStatus() {
 	}
 
-	public RStatus(Integer rStatusId) {
-		this.rStatusId = rStatusId;
+	public RStatus(Integer rStatusID) {
+		this.rStatusID = rStatusID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	@Column(name="ISCLOSED", nullable=false)
+	public Boolean isClosed() {
+		return closed;
+	}
+
+	public void setClosed(Boolean closed) {
+		this.closed = closed;
 	}
 
 	@Basic
@@ -72,12 +92,12 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -87,6 +107,16 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Basic
+	@Column(name="ISFINALCLOSE", nullable=false)
+	public Boolean isFinalClose() {
+		return finalClose;
+	}
+
+	public void setFinalClose(Boolean finalClose) {
+		this.finalClose = finalClose;
 	}
 
 	@Basic
@@ -101,62 +131,12 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public Boolean isIsDefault() {
+		return isDefault;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsclosed() {
-		return isclosed;
-	}
-
-	public void setIsclosed(Boolean isclosed) {
-		this.isclosed = isclosed;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdefault() {
-		return isdefault;
-	}
-
-	public void setIsdefault(Boolean isdefault) {
-		this.isdefault = isdefault;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsfinalclose() {
-		return isfinalclose;
-	}
-
-	public void setIsfinalclose(Boolean isfinalclose) {
-		this.isfinalclose = isfinalclose;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsopen() {
-		return isopen;
-	}
-
-	public void setIsopen(Boolean isopen) {
-		this.isopen = isopen;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIswebcanupdate() {
-		return iswebcanupdate;
-	}
-
-	public void setIswebcanupdate(Boolean iswebcanupdate) {
-		this.iswebcanupdate = iswebcanupdate;
+	public void setIsDefault(Boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	@Basic
@@ -171,64 +151,74 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="NEXT_STATUS_ID", columnDefinition="INT")
-	public Integer getNextStatusId() {
-		return nextStatusId;
+	public Integer getNextStatusID() {
+		return nextStatusID;
 	}
 
-	public void setNextStatusId(Integer nextStatusId) {
-		this.nextStatusId = nextStatusId;
+	public void setNextStatusID(Integer nextStatusID) {
+		this.nextStatusID = nextStatusID;
+	}
+
+	@Basic
+	@Column(name="ISOPEN", nullable=false)
+	public Boolean isOpen() {
+		return open;
+	}
+
+	public void setOpen(Boolean open) {
+		this.open = open;
+	}
+
+	@Basic
+	@Column(name="R_STATUSCATEGORY_ID", columnDefinition="INT", nullable=false)
+	public Integer getRStatusCategoryID() {
+		return rStatusCategoryID;
+	}
+
+	public void setRStatusCategoryID(Integer rStatusCategoryID) {
+		this.rStatusCategoryID = rStatusCategoryID;
 	}
 
 	@Id
 	@Column(name="R_STATUS_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_1110", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_Status", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1110")
-	public Integer getRStatusId() {
-		return rStatusId;
+	public Integer getRStatusID() {
+		return rStatusID;
 	}
 
-	public void setRStatusId(Integer rStatusId) {
-		this.rStatusId = rStatusId;
-	}
-
-	@Basic
-	@Column(name="R_STATUSCATEGORY_ID", columnDefinition="INT", nullable=false)
-	public Integer getRStatuscategoryId() {
-		return rStatuscategoryId;
-	}
-
-	public void setRStatuscategoryId(Integer rStatuscategoryId) {
-		this.rStatuscategoryId = rStatuscategoryId;
+	public void setRStatusID(Integer rStatusID) {
+		this.rStatusID = rStatusID;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getSeqno() {
-		return seqno;
+	public Integer getSeqNo() {
+		return seqNo;
 	}
 
-	public void setSeqno(Integer seqno) {
-		this.seqno = seqno;
+	public void setSeqNo(Integer seqNo) {
+		this.seqNo = seqNo;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getTimeoutdays() {
-		return timeoutdays;
+	public Integer getTimeoutDays() {
+		return timeoutDays;
 	}
 
-	public void setTimeoutdays(Integer timeoutdays) {
-		this.timeoutdays = timeoutdays;
+	public void setTimeoutDays(Integer timeoutDays) {
+		this.timeoutDays = timeoutDays;
 	}
 
 	@Basic
 	@Column(name="UPDATE_STATUS_ID", columnDefinition="INT")
-	public Integer getUpdateStatusId() {
-		return updateStatusId;
+	public Integer getUpdateStatusID() {
+		return updateStatusID;
 	}
 
-	public void setUpdateStatusId(Integer updateStatusId) {
-		this.updateStatusId = updateStatusId;
+	public void setUpdateStatusID(Integer updateStatusID) {
+		this.updateStatusID = updateStatusID;
 	}
 
 	@Basic
@@ -243,12 +233,12 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
@@ -259,5 +249,15 @@ public class RStatus extends org.adempiere.common.ADEntityBase {
 
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	@Basic
+	@Column(name="ISWEBCANUPDATE", nullable=false)
+	public Boolean isWebCanUpdate() {
+		return webCanUpdate;
+	}
+
+	public void setWebCanUpdate(Boolean webCanUpdate) {
+		this.webCanUpdate = webCanUpdate;
 	}
 }

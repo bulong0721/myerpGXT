@@ -12,21 +12,22 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.TAgingPK.class)
 public class TAging extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adPinstanceId;
-	private Integer cActivityId;
-	private Integer cBpGroupId;
-	private Integer cBpartnerId;
-	private Integer cCampaignId;
-	private Integer cCurrencyId;
-	private Integer cInvoiceId;
-	private Integer cInvoicepayscheduleId;
-	private Integer cProjectId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDPInstanceID;
+	private String active;
+	private Integer cActivityID;
+	private Integer cBPGroupID;
+	private Integer cBPartnerID;
+	private Integer cCampaignID;
+	private Integer cCurrencyID;
+	private Integer cInvoiceID;
+	private Integer cInvoicePayScheduleID;
+	private Integer cProjectID;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
-	private Integer daysdue;
+	private Integer createdBy;
+	private String dateAcct;
+	private Integer daysDue;
 	private BigDecimal due0;
 	private BigDecimal due030;
 	private BigDecimal due07;
@@ -37,145 +38,154 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 	private BigDecimal due61Plus;
 	private BigDecimal due830;
 	private BigDecimal due91Plus;
-	private BigDecimal dueamt;
-	private String duedate;
-	private BigDecimal invoicedamt;
-	private String isactive;
-	private String islistinvoices;
-	private String issotrx;
-	private BigDecimal openamt;
-	private BigDecimal pastdue130;
-	private BigDecimal pastdue17;
-	private BigDecimal pastdue3160;
-	private BigDecimal pastdue31Plus;
-	private BigDecimal pastdue6190;
-	private BigDecimal pastdue61Plus;
-	private BigDecimal pastdue830;
-	private BigDecimal pastdue91Plus;
-	private BigDecimal pastdueamt;
-	private String statementdate;
+	private BigDecimal dueAmt;
+	private String dueDate;
+	private BigDecimal invoicedAmt;
+	private String listInvoices;
+	private BigDecimal openAmt;
+	private BigDecimal pastDue130;
+	private BigDecimal pastDue17;
+	private BigDecimal pastDue3160;
+	private BigDecimal pastDue31Plus;
+	private BigDecimal pastDue6190;
+	private BigDecimal pastDue61Plus;
+	private BigDecimal pastDue830;
+	private BigDecimal pastDue91Plus;
+	private BigDecimal pastDueAmt;
+	private String sOTrx;
+	private String statementDate;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public TAging() {
 	}
 
-	public TAging(Integer adPinstanceId, Integer cBpartnerId, Integer cCurrencyId, Integer cInvoiceId, Integer cInvoicepayscheduleId) {
-		this.adPinstanceId = adPinstanceId;
-		this.cBpartnerId = cBpartnerId;
-		this.cCurrencyId = cCurrencyId;
-		this.cInvoiceId = cInvoiceId;
-		this.cInvoicepayscheduleId = cInvoicepayscheduleId;
+	public TAging(Integer aDPInstanceID, Integer cBPartnerID, Integer cCurrencyID, Integer cInvoiceID, Integer cInvoicePayScheduleID) {
+		this.aDPInstanceID = aDPInstanceID;
+		this.cBPartnerID = cBPartnerID;
+		this.cCurrencyID = cCurrencyID;
+		this.cInvoiceID = cInvoiceID;
+		this.cInvoicePayScheduleID = cInvoicePayScheduleID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Id
 	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
-	public Integer getAdPinstanceId() {
-		return adPinstanceId;
+	public Integer getADPInstanceID() {
+		return aDPInstanceID;
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
-		this.adPinstanceId = adPinstanceId;
+	public void setADPInstanceID(Integer aDPInstanceID) {
+		this.aDPInstanceID = aDPInstanceID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false, length=1)
+	public String getActive() {
+		return active;
+	}
+
+	public void setActive(String active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
-	public Integer getCActivityId() {
-		return cActivityId;
+	public Integer getCActivityID() {
+		return cActivityID;
 	}
 
-	public void setCActivityId(Integer cActivityId) {
-		this.cActivityId = cActivityId;
+	public void setCActivityID(Integer cActivityID) {
+		this.cActivityID = cActivityID;
 	}
 
 	@Basic
 	@Column(name="C_BP_GROUP_ID", columnDefinition="INT", nullable=false)
-	public Integer getCBpGroupId() {
-		return cBpGroupId;
+	public Integer getCBPGroupID() {
+		return cBPGroupID;
 	}
 
-	public void setCBpGroupId(Integer cBpGroupId) {
-		this.cBpGroupId = cBpGroupId;
+	public void setCBPGroupID(Integer cBPGroupID) {
+		this.cBPGroupID = cBPGroupID;
 	}
 
 	@Id
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Id
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Id
 	@Column(name="C_INVOICE_ID", columnDefinition="INT")
-	public Integer getCInvoiceId() {
-		return cInvoiceId;
+	public Integer getCInvoiceID() {
+		return cInvoiceID;
 	}
 
-	public void setCInvoiceId(Integer cInvoiceId) {
-		this.cInvoiceId = cInvoiceId;
+	public void setCInvoiceID(Integer cInvoiceID) {
+		this.cInvoiceID = cInvoiceID;
 	}
 
 	@Id
 	@Column(name="C_INVOICEPAYSCHEDULE_ID", columnDefinition="INT")
-	public Integer getCInvoicepayscheduleId() {
-		return cInvoicepayscheduleId;
+	public Integer getCInvoicePayScheduleID() {
+		return cInvoicePayScheduleID;
 	}
 
-	public void setCInvoicepayscheduleId(Integer cInvoicepayscheduleId) {
-		this.cInvoicepayscheduleId = cInvoicepayscheduleId;
+	public void setCInvoicePayScheduleID(Integer cInvoicePayScheduleID) {
+		this.cInvoicePayScheduleID = cInvoicePayScheduleID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
@@ -190,32 +200,32 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getDateacct() {
-		return dateacct;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getDaysdue() {
-		return daysdue;
+	public Integer getDaysDue() {
+		return daysDue;
 	}
 
-	public void setDaysdue(Integer daysdue) {
-		this.daysdue = daysdue;
+	public void setDaysDue(Integer daysDue) {
+		this.daysDue = daysDue;
 	}
 
 	@Basic
@@ -320,172 +330,162 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getDueamt() {
-		return dueamt;
+	public BigDecimal getDueAmt() {
+		return dueAmt;
 	}
 
-	public void setDueamt(BigDecimal dueamt) {
-		this.dueamt = dueamt;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getDuedate() {
-		return duedate;
-	}
-
-	public void setDuedate(String duedate) {
-		this.duedate = duedate;
+	public void setDueAmt(BigDecimal dueAmt) {
+		this.dueAmt = dueAmt;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getInvoicedamt() {
-		return invoicedamt;
+	public String getDueDate() {
+		return dueDate;
 	}
 
-	public void setInvoicedamt(BigDecimal invoicedamt) {
-		this.invoicedamt = invoicedamt;
-	}
-
-	@Basic
-	@Column(nullable=false, length=1)
-	public String getIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(String isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false, length=1)
-	public String getIslistinvoices() {
-		return islistinvoices;
-	}
-
-	public void setIslistinvoices(String islistinvoices) {
-		this.islistinvoices = islistinvoices;
-	}
-
-	@Basic
-	@Column(nullable=false, length=1)
-	public String getIssotrx() {
-		return issotrx;
-	}
-
-	public void setIssotrx(String issotrx) {
-		this.issotrx = issotrx;
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getOpenamt() {
-		return openamt;
+	public BigDecimal getInvoicedAmt() {
+		return invoicedAmt;
 	}
 
-	public void setOpenamt(BigDecimal openamt) {
-		this.openamt = openamt;
+	public void setInvoicedAmt(BigDecimal invoicedAmt) {
+		this.invoicedAmt = invoicedAmt;
+	}
+
+	@Basic
+	@Column(name="ISLISTINVOICES", nullable=false, length=1)
+	public String getListInvoices() {
+		return listInvoices;
+	}
+
+	public void setListInvoices(String listInvoices) {
+		this.listInvoices = listInvoices;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public BigDecimal getOpenAmt() {
+		return openAmt;
+	}
+
+	public void setOpenAmt(BigDecimal openAmt) {
+		this.openAmt = openAmt;
 	}
 
 	@Basic
 	@Column(name="PASTDUE1_30", nullable=false)
-	public BigDecimal getPastdue130() {
-		return pastdue130;
+	public BigDecimal getPastDue130() {
+		return pastDue130;
 	}
 
-	public void setPastdue130(BigDecimal pastdue130) {
-		this.pastdue130 = pastdue130;
+	public void setPastDue130(BigDecimal pastDue130) {
+		this.pastDue130 = pastDue130;
 	}
 
 	@Basic
 	@Column(name="PASTDUE1_7", nullable=false)
-	public BigDecimal getPastdue17() {
-		return pastdue17;
+	public BigDecimal getPastDue17() {
+		return pastDue17;
 	}
 
-	public void setPastdue17(BigDecimal pastdue17) {
-		this.pastdue17 = pastdue17;
+	public void setPastDue17(BigDecimal pastDue17) {
+		this.pastDue17 = pastDue17;
 	}
 
 	@Basic
 	@Column(name="PASTDUE31_60", nullable=false)
-	public BigDecimal getPastdue3160() {
-		return pastdue3160;
+	public BigDecimal getPastDue3160() {
+		return pastDue3160;
 	}
 
-	public void setPastdue3160(BigDecimal pastdue3160) {
-		this.pastdue3160 = pastdue3160;
+	public void setPastDue3160(BigDecimal pastDue3160) {
+		this.pastDue3160 = pastDue3160;
 	}
 
 	@Basic
 	@Column(name="PASTDUE31_PLUS", nullable=false)
-	public BigDecimal getPastdue31Plus() {
-		return pastdue31Plus;
+	public BigDecimal getPastDue31Plus() {
+		return pastDue31Plus;
 	}
 
-	public void setPastdue31Plus(BigDecimal pastdue31Plus) {
-		this.pastdue31Plus = pastdue31Plus;
+	public void setPastDue31Plus(BigDecimal pastDue31Plus) {
+		this.pastDue31Plus = pastDue31Plus;
 	}
 
 	@Basic
 	@Column(name="PASTDUE61_90", nullable=false)
-	public BigDecimal getPastdue6190() {
-		return pastdue6190;
+	public BigDecimal getPastDue6190() {
+		return pastDue6190;
 	}
 
-	public void setPastdue6190(BigDecimal pastdue6190) {
-		this.pastdue6190 = pastdue6190;
+	public void setPastDue6190(BigDecimal pastDue6190) {
+		this.pastDue6190 = pastDue6190;
 	}
 
 	@Basic
 	@Column(name="PASTDUE61_PLUS", nullable=false)
-	public BigDecimal getPastdue61Plus() {
-		return pastdue61Plus;
+	public BigDecimal getPastDue61Plus() {
+		return pastDue61Plus;
 	}
 
-	public void setPastdue61Plus(BigDecimal pastdue61Plus) {
-		this.pastdue61Plus = pastdue61Plus;
+	public void setPastDue61Plus(BigDecimal pastDue61Plus) {
+		this.pastDue61Plus = pastDue61Plus;
 	}
 
 	@Basic
 	@Column(name="PASTDUE8_30", nullable=false)
-	public BigDecimal getPastdue830() {
-		return pastdue830;
+	public BigDecimal getPastDue830() {
+		return pastDue830;
 	}
 
-	public void setPastdue830(BigDecimal pastdue830) {
-		this.pastdue830 = pastdue830;
+	public void setPastDue830(BigDecimal pastDue830) {
+		this.pastDue830 = pastDue830;
 	}
 
 	@Basic
 	@Column(name="PASTDUE91_PLUS", nullable=false)
-	public BigDecimal getPastdue91Plus() {
-		return pastdue91Plus;
+	public BigDecimal getPastDue91Plus() {
+		return pastDue91Plus;
 	}
 
-	public void setPastdue91Plus(BigDecimal pastdue91Plus) {
-		this.pastdue91Plus = pastdue91Plus;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getPastdueamt() {
-		return pastdueamt;
-	}
-
-	public void setPastdueamt(BigDecimal pastdueamt) {
-		this.pastdueamt = pastdueamt;
+	public void setPastDue91Plus(BigDecimal pastDue91Plus) {
+		this.pastDue91Plus = pastDue91Plus;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getStatementdate() {
-		return statementdate;
+	public BigDecimal getPastDueAmt() {
+		return pastDueAmt;
 	}
 
-	public void setStatementdate(String statementdate) {
-		this.statementdate = statementdate;
+	public void setPastDueAmt(BigDecimal pastDueAmt) {
+		this.pastDueAmt = pastDueAmt;
+	}
+
+	@Basic
+	@Column(name="ISSOTRX", nullable=false, length=1)
+	public String getSOTrx() {
+		return sOTrx;
+	}
+
+	public void setSOTrx(String sOTrx) {
+		this.sOTrx = sOTrx;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public String getStatementDate() {
+		return statementDate;
+	}
+
+	public void setStatementDate(String statementDate) {
+		this.statementDate = statementDate;
 	}
 
 	@Basic
@@ -500,11 +500,11 @@ public class TAging extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

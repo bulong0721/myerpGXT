@@ -16,9 +16,9 @@ public class TReplenishPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer adPinstanceId;
-	public Integer mProductId;
-	public Integer mWarehouseId;
+	public Integer aDPInstanceID;
+	public Integer mProductID;
+	public Integer mWarehouseID;
 
 	public TReplenishPK() {
 	}
@@ -27,41 +27,41 @@ public class TReplenishPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getAdPinstanceId() {
-		return adPinstanceId;
+	public Integer getADPInstanceID() {
+		return aDPInstanceID;
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
-		this.adPinstanceId = adPinstanceId;
+	public void setADPInstanceID(Integer aDPInstanceID) {
+		this.aDPInstanceID = aDPInstanceID;
 	}
 
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	public String toString() {
-		return String.valueOf(adPinstanceId)
-			+ "::" + String.valueOf(mProductId)
-			+ "::" + String.valueOf(mWarehouseId);
+		return String.valueOf(aDPInstanceID)
+			+ "::" + String.valueOf(mProductID)
+			+ "::" + String.valueOf(mWarehouseID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((adPinstanceId == null) ? 0 : adPinstanceId.hashCode());
-		rs = rs * 37 + ((mProductId == null) ? 0 : mProductId.hashCode());
-		rs = rs * 37 + ((mWarehouseId == null) ? 0 : mWarehouseId.hashCode());
+		rs = rs * 37 + ((aDPInstanceID == null) ? 0 : aDPInstanceID.hashCode());
+		rs = rs * 37 + ((mProductID == null) ? 0 : mProductID.hashCode());
+		rs = rs * 37 + ((mWarehouseID == null) ? 0 : mWarehouseID.hashCode());
 		return rs;
 	}
 
@@ -72,31 +72,31 @@ public class TReplenishPK implements Serializable {
 			return false;
 
 		TReplenishPK other = (TReplenishPK) obj;
-		return ((adPinstanceId == null && other.adPinstanceId == null)
-			|| (adPinstanceId != null && adPinstanceId.equals(other.adPinstanceId)))
-			&& ((mProductId == null && other.mProductId == null)
-			|| (mProductId != null && mProductId.equals(other.mProductId)))
-			&& ((mWarehouseId == null && other.mWarehouseId == null)
-			|| (mWarehouseId != null && mWarehouseId.equals(other.mWarehouseId)));
+		return ((aDPInstanceID == null && other.aDPInstanceID == null)
+			|| (aDPInstanceID != null && aDPInstanceID.equals(other.aDPInstanceID)))
+			&& ((mProductID == null && other.mProductID == null)
+			|| (mProductID != null && mProductID.equals(other.mProductID)))
+			&& ((mWarehouseID == null && other.mWarehouseID == null)
+			|| (mWarehouseID != null && mWarehouseID.equals(other.mWarehouseID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			adPinstanceId = null;
+			aDPInstanceID = null;
 		else
-			adPinstanceId = new Integer(str);
+			aDPInstanceID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mProductId = null;
+			mProductID = null;
 		else
-			mProductId = new Integer(str);
+			mProductID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			mWarehouseId = null;
+			mWarehouseID = null;
 		else
-			mWarehouseId = new Integer(str);
+			mWarehouseID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

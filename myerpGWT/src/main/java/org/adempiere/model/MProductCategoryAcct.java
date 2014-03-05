@@ -11,98 +11,108 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.MProductCategoryAcctPK.class)
 public class MProductCategoryAcct extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cAcctschemaId;
-	private String costinglevel;
-	private String costingmethod;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cAcctSchemaID;
+	private String costingLevel;
+	private String costingMethod;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private Integer mProductCategoryId;
+	private Integer createdBy;
+	private Integer mProductCategoryID;
 	private Integer pAssetAcct;
-	private Integer pAveragecostvarianceAcct;
+	private Integer pAverageCostVarianceAcct;
 	private Integer pBurdenAcct;
-	private Integer pCogsAcct;
-	private Integer pCostadjustmentAcct;
-	private Integer pCostofproductionAcct;
+	private Integer pCOGSAcct;
+	private Integer pCostAdjustmentAcct;
+	private Integer pCostOfProductionAcct;
 	private Integer pExpenseAcct;
-	private Integer pFloorstockAcct;
-	private Integer pInventoryclearingAcct;
-	private Integer pInvoicepricevarianceAcct;
+	private Integer pFloorStockAcct;
+	private Integer pInventoryClearingAcct;
+	private Integer pInvoicePriceVarianceAcct;
 	private Integer pLaborAcct;
-	private Integer pMethodchangevarianceAcct;
-	private Integer pMixvarianceAcct;
-	private Integer pOutsideprocessingAcct;
+	private Integer pMethodChangeVarianceAcct;
+	private Integer pMixVarianceAcct;
+	private Integer pOutsideProcessingAcct;
 	private Integer pOverheadAcct;
-	private Integer pPurchasepricevarianceAcct;
-	private Integer pRatevarianceAcct;
+	private Integer pPurchasePriceVarianceAcct;
+	private Integer pRateVarianceAcct;
 	private Integer pRevenueAcct;
 	private Integer pScrapAcct;
-	private Integer pTradediscountgrantAcct;
-	private Integer pTradediscountrecAcct;
-	private Integer pUsagevarianceAcct;
-	private Integer pWipAcct;
+	private Integer pTradeDiscountGrantAcct;
+	private Integer pTradeDiscountRecAcct;
+	private Integer pUsageVarianceAcct;
+	private Integer pWIPAcct;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public MProductCategoryAcct() {
 	}
 
-	public MProductCategoryAcct(Integer cAcctschemaId, Integer mProductCategoryId) {
-		this.cAcctschemaId = cAcctschemaId;
-		this.mProductCategoryId = mProductCategoryId;
+	public MProductCategoryAcct(Integer cAcctSchemaID, Integer mProductCategoryID) {
+		this.cAcctSchemaID = cAcctSchemaID;
+		this.mProductCategoryID = mProductCategoryID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_ACCTSCHEMA_ID", columnDefinition="INT")
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
-	}
-
-	@Basic
-	@Column(length=1)
-	public String getCostinglevel() {
-		return costinglevel;
-	}
-
-	public void setCostinglevel(String costinglevel) {
-		this.costinglevel = costinglevel;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
 	@Basic
 	@Column(length=1)
-	public String getCostingmethod() {
-		return costingmethod;
+	public String getCostingLevel() {
+		return costingLevel;
 	}
 
-	public void setCostingmethod(String costingmethod) {
-		this.costingmethod = costingmethod;
+	public void setCostingLevel(String costingLevel) {
+		this.costingLevel = costingLevel;
+	}
+
+	@Basic
+	@Column(length=1)
+	public String getCostingMethod() {
+		return costingMethod;
+	}
+
+	public void setCostingMethod(String costingMethod) {
+		this.costingMethod = costingMethod;
 	}
 
 	@Basic
@@ -117,32 +127,22 @@ public class MProductCategoryAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Id
 	@Column(name="M_PRODUCT_CATEGORY_ID", columnDefinition="INT")
-	public Integer getMProductCategoryId() {
-		return mProductCategoryId;
+	public Integer getMProductCategoryID() {
+		return mProductCategoryID;
 	}
 
-	public void setMProductCategoryId(Integer mProductCategoryId) {
-		this.mProductCategoryId = mProductCategoryId;
+	public void setMProductCategoryID(Integer mProductCategoryID) {
+		this.mProductCategoryID = mProductCategoryID;
 	}
 
 	@Basic
@@ -157,12 +157,12 @@ public class MProductCategoryAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="P_AVERAGECOSTVARIANCE_ACCT", columnDefinition="INT")
-	public Integer getPAveragecostvarianceAcct() {
-		return pAveragecostvarianceAcct;
+	public Integer getPAverageCostVarianceAcct() {
+		return pAverageCostVarianceAcct;
 	}
 
-	public void setPAveragecostvarianceAcct(Integer pAveragecostvarianceAcct) {
-		this.pAveragecostvarianceAcct = pAveragecostvarianceAcct;
+	public void setPAverageCostVarianceAcct(Integer pAverageCostVarianceAcct) {
+		this.pAverageCostVarianceAcct = pAverageCostVarianceAcct;
 	}
 
 	@Basic
@@ -177,32 +177,32 @@ public class MProductCategoryAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="P_COGS_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getPCogsAcct() {
-		return pCogsAcct;
+	public Integer getPCOGSAcct() {
+		return pCOGSAcct;
 	}
 
-	public void setPCogsAcct(Integer pCogsAcct) {
-		this.pCogsAcct = pCogsAcct;
+	public void setPCOGSAcct(Integer pCOGSAcct) {
+		this.pCOGSAcct = pCOGSAcct;
 	}
 
 	@Basic
 	@Column(name="P_COSTADJUSTMENT_ACCT", columnDefinition="INT")
-	public Integer getPCostadjustmentAcct() {
-		return pCostadjustmentAcct;
+	public Integer getPCostAdjustmentAcct() {
+		return pCostAdjustmentAcct;
 	}
 
-	public void setPCostadjustmentAcct(Integer pCostadjustmentAcct) {
-		this.pCostadjustmentAcct = pCostadjustmentAcct;
+	public void setPCostAdjustmentAcct(Integer pCostAdjustmentAcct) {
+		this.pCostAdjustmentAcct = pCostAdjustmentAcct;
 	}
 
 	@Basic
 	@Column(name="P_COSTOFPRODUCTION_ACCT", columnDefinition="INT")
-	public Integer getPCostofproductionAcct() {
-		return pCostofproductionAcct;
+	public Integer getPCostOfProductionAcct() {
+		return pCostOfProductionAcct;
 	}
 
-	public void setPCostofproductionAcct(Integer pCostofproductionAcct) {
-		this.pCostofproductionAcct = pCostofproductionAcct;
+	public void setPCostOfProductionAcct(Integer pCostOfProductionAcct) {
+		this.pCostOfProductionAcct = pCostOfProductionAcct;
 	}
 
 	@Basic
@@ -217,32 +217,32 @@ public class MProductCategoryAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="P_FLOORSTOCK_ACCT", columnDefinition="INT")
-	public Integer getPFloorstockAcct() {
-		return pFloorstockAcct;
+	public Integer getPFloorStockAcct() {
+		return pFloorStockAcct;
 	}
 
-	public void setPFloorstockAcct(Integer pFloorstockAcct) {
-		this.pFloorstockAcct = pFloorstockAcct;
+	public void setPFloorStockAcct(Integer pFloorStockAcct) {
+		this.pFloorStockAcct = pFloorStockAcct;
 	}
 
 	@Basic
 	@Column(name="P_INVENTORYCLEARING_ACCT", columnDefinition="INT")
-	public Integer getPInventoryclearingAcct() {
-		return pInventoryclearingAcct;
+	public Integer getPInventoryClearingAcct() {
+		return pInventoryClearingAcct;
 	}
 
-	public void setPInventoryclearingAcct(Integer pInventoryclearingAcct) {
-		this.pInventoryclearingAcct = pInventoryclearingAcct;
+	public void setPInventoryClearingAcct(Integer pInventoryClearingAcct) {
+		this.pInventoryClearingAcct = pInventoryClearingAcct;
 	}
 
 	@Basic
 	@Column(name="P_INVOICEPRICEVARIANCE_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getPInvoicepricevarianceAcct() {
-		return pInvoicepricevarianceAcct;
+	public Integer getPInvoicePriceVarianceAcct() {
+		return pInvoicePriceVarianceAcct;
 	}
 
-	public void setPInvoicepricevarianceAcct(Integer pInvoicepricevarianceAcct) {
-		this.pInvoicepricevarianceAcct = pInvoicepricevarianceAcct;
+	public void setPInvoicePriceVarianceAcct(Integer pInvoicePriceVarianceAcct) {
+		this.pInvoicePriceVarianceAcct = pInvoicePriceVarianceAcct;
 	}
 
 	@Basic
@@ -257,32 +257,32 @@ public class MProductCategoryAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="P_METHODCHANGEVARIANCE_ACCT", columnDefinition="INT")
-	public Integer getPMethodchangevarianceAcct() {
-		return pMethodchangevarianceAcct;
+	public Integer getPMethodChangeVarianceAcct() {
+		return pMethodChangeVarianceAcct;
 	}
 
-	public void setPMethodchangevarianceAcct(Integer pMethodchangevarianceAcct) {
-		this.pMethodchangevarianceAcct = pMethodchangevarianceAcct;
+	public void setPMethodChangeVarianceAcct(Integer pMethodChangeVarianceAcct) {
+		this.pMethodChangeVarianceAcct = pMethodChangeVarianceAcct;
 	}
 
 	@Basic
 	@Column(name="P_MIXVARIANCE_ACCT", columnDefinition="INT")
-	public Integer getPMixvarianceAcct() {
-		return pMixvarianceAcct;
+	public Integer getPMixVarianceAcct() {
+		return pMixVarianceAcct;
 	}
 
-	public void setPMixvarianceAcct(Integer pMixvarianceAcct) {
-		this.pMixvarianceAcct = pMixvarianceAcct;
+	public void setPMixVarianceAcct(Integer pMixVarianceAcct) {
+		this.pMixVarianceAcct = pMixVarianceAcct;
 	}
 
 	@Basic
 	@Column(name="P_OUTSIDEPROCESSING_ACCT", columnDefinition="INT")
-	public Integer getPOutsideprocessingAcct() {
-		return pOutsideprocessingAcct;
+	public Integer getPOutsideProcessingAcct() {
+		return pOutsideProcessingAcct;
 	}
 
-	public void setPOutsideprocessingAcct(Integer pOutsideprocessingAcct) {
-		this.pOutsideprocessingAcct = pOutsideprocessingAcct;
+	public void setPOutsideProcessingAcct(Integer pOutsideProcessingAcct) {
+		this.pOutsideProcessingAcct = pOutsideProcessingAcct;
 	}
 
 	@Basic
@@ -297,22 +297,22 @@ public class MProductCategoryAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="P_PURCHASEPRICEVARIANCE_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getPPurchasepricevarianceAcct() {
-		return pPurchasepricevarianceAcct;
+	public Integer getPPurchasePriceVarianceAcct() {
+		return pPurchasePriceVarianceAcct;
 	}
 
-	public void setPPurchasepricevarianceAcct(Integer pPurchasepricevarianceAcct) {
-		this.pPurchasepricevarianceAcct = pPurchasepricevarianceAcct;
+	public void setPPurchasePriceVarianceAcct(Integer pPurchasePriceVarianceAcct) {
+		this.pPurchasePriceVarianceAcct = pPurchasePriceVarianceAcct;
 	}
 
 	@Basic
 	@Column(name="P_RATEVARIANCE_ACCT", columnDefinition="INT")
-	public Integer getPRatevarianceAcct() {
-		return pRatevarianceAcct;
+	public Integer getPRateVarianceAcct() {
+		return pRateVarianceAcct;
 	}
 
-	public void setPRatevarianceAcct(Integer pRatevarianceAcct) {
-		this.pRatevarianceAcct = pRatevarianceAcct;
+	public void setPRateVarianceAcct(Integer pRateVarianceAcct) {
+		this.pRateVarianceAcct = pRateVarianceAcct;
 	}
 
 	@Basic
@@ -337,42 +337,42 @@ public class MProductCategoryAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="P_TRADEDISCOUNTGRANT_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getPTradediscountgrantAcct() {
-		return pTradediscountgrantAcct;
+	public Integer getPTradeDiscountGrantAcct() {
+		return pTradeDiscountGrantAcct;
 	}
 
-	public void setPTradediscountgrantAcct(Integer pTradediscountgrantAcct) {
-		this.pTradediscountgrantAcct = pTradediscountgrantAcct;
+	public void setPTradeDiscountGrantAcct(Integer pTradeDiscountGrantAcct) {
+		this.pTradeDiscountGrantAcct = pTradeDiscountGrantAcct;
 	}
 
 	@Basic
 	@Column(name="P_TRADEDISCOUNTREC_ACCT", columnDefinition="INT", nullable=false)
-	public Integer getPTradediscountrecAcct() {
-		return pTradediscountrecAcct;
+	public Integer getPTradeDiscountRecAcct() {
+		return pTradeDiscountRecAcct;
 	}
 
-	public void setPTradediscountrecAcct(Integer pTradediscountrecAcct) {
-		this.pTradediscountrecAcct = pTradediscountrecAcct;
+	public void setPTradeDiscountRecAcct(Integer pTradeDiscountRecAcct) {
+		this.pTradeDiscountRecAcct = pTradeDiscountRecAcct;
 	}
 
 	@Basic
 	@Column(name="P_USAGEVARIANCE_ACCT", columnDefinition="INT")
-	public Integer getPUsagevarianceAcct() {
-		return pUsagevarianceAcct;
+	public Integer getPUsageVarianceAcct() {
+		return pUsageVarianceAcct;
 	}
 
-	public void setPUsagevarianceAcct(Integer pUsagevarianceAcct) {
-		this.pUsagevarianceAcct = pUsagevarianceAcct;
+	public void setPUsageVarianceAcct(Integer pUsageVarianceAcct) {
+		this.pUsageVarianceAcct = pUsageVarianceAcct;
 	}
 
 	@Basic
 	@Column(name="P_WIP_ACCT", columnDefinition="INT")
-	public Integer getPWipAcct() {
-		return pWipAcct;
+	public Integer getPWIPAcct() {
+		return pWIPAcct;
 	}
 
-	public void setPWipAcct(Integer pWipAcct) {
-		this.pWipAcct = pWipAcct;
+	public void setPWIPAcct(Integer pWIPAcct) {
+		this.pWIPAcct = pWIPAcct;
 	}
 
 	@Basic
@@ -396,11 +396,11 @@ public class MProductCategoryAcct extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

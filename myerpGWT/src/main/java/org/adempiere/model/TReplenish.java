@@ -12,84 +12,84 @@ import javax.persistence.*;
 @IdClass(org.adempiere.model.TReplenishPK.class)
 public class TReplenish extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adPinstanceId;
-	private Integer cBpartnerId;
-	private Integer cDoctypeId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDPInstanceID;
+	private Integer cBPartnerID;
+	private Integer cDocTypeID;
 	private BigDecimal levelMax;
 	private BigDecimal levelMin;
-	private Integer mProductId;
-	private Integer mWarehouseId;
-	private Integer mWarehousesourceId;
+	private Integer mProductID;
+	private Integer mWarehouseID;
+	private Integer mWarehouseSourceID;
 	private BigDecimal orderMin;
 	private BigDecimal orderPack;
-	private BigDecimal qtyonhand;
-	private BigDecimal qtyordered;
-	private BigDecimal qtyreserved;
-	private BigDecimal qtytoorder;
-	private String replenishmentcreate;
-	private String replenishtype;
+	private BigDecimal qtyOnHand;
+	private BigDecimal qtyOrdered;
+	private BigDecimal qtyReserved;
+	private BigDecimal qtyToOrder;
+	private String replenishType;
+	private String replenishmentCreate;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public TReplenish() {
 	}
 
-	public TReplenish(Integer adPinstanceId, Integer mProductId, Integer mWarehouseId) {
-		this.adPinstanceId = adPinstanceId;
-		this.mProductId = mProductId;
-		this.mWarehouseId = mWarehouseId;
+	public TReplenish(Integer aDPInstanceID, Integer mProductID, Integer mWarehouseID) {
+		this.aDPInstanceID = aDPInstanceID;
+		this.mProductID = mProductID;
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Id
 	@Column(name="AD_PINSTANCE_ID", columnDefinition="INT")
-	public Integer getAdPinstanceId() {
-		return adPinstanceId;
+	public Integer getADPInstanceID() {
+		return aDPInstanceID;
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
-		this.adPinstanceId = adPinstanceId;
+	public void setADPInstanceID(Integer aDPInstanceID) {
+		this.aDPInstanceID = aDPInstanceID;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
 	@Column(name="C_DOCTYPE_ID", columnDefinition="INT")
-	public Integer getCDoctypeId() {
-		return cDoctypeId;
+	public Integer getCDocTypeID() {
+		return cDocTypeID;
 	}
 
-	public void setCDoctypeId(Integer cDoctypeId) {
-		this.cDoctypeId = cDoctypeId;
+	public void setCDocTypeID(Integer cDocTypeID) {
+		this.cDocTypeID = cDocTypeID;
 	}
 
 	@Basic
@@ -114,32 +114,32 @@ public class TReplenish extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT")
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Id
 	@Column(name="M_WAREHOUSE_ID", columnDefinition="INT")
-	public Integer getMWarehouseId() {
-		return mWarehouseId;
+	public Integer getMWarehouseID() {
+		return mWarehouseID;
 	}
 
-	public void setMWarehouseId(Integer mWarehouseId) {
-		this.mWarehouseId = mWarehouseId;
+	public void setMWarehouseID(Integer mWarehouseID) {
+		this.mWarehouseID = mWarehouseID;
 	}
 
 	@Basic
 	@Column(name="M_WAREHOUSESOURCE_ID", columnDefinition="INT")
-	public Integer getMWarehousesourceId() {
-		return mWarehousesourceId;
+	public Integer getMWarehouseSourceID() {
+		return mWarehouseSourceID;
 	}
 
-	public void setMWarehousesourceId(Integer mWarehousesourceId) {
-		this.mWarehousesourceId = mWarehousesourceId;
+	public void setMWarehouseSourceID(Integer mWarehouseSourceID) {
+		this.mWarehouseSourceID = mWarehouseSourceID;
 	}
 
 	@Basic
@@ -164,62 +164,62 @@ public class TReplenish extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getQtyonhand() {
-		return qtyonhand;
+	public BigDecimal getQtyOnHand() {
+		return qtyOnHand;
 	}
 
-	public void setQtyonhand(BigDecimal qtyonhand) {
-		this.qtyonhand = qtyonhand;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getQtyordered() {
-		return qtyordered;
-	}
-
-	public void setQtyordered(BigDecimal qtyordered) {
-		this.qtyordered = qtyordered;
+	public void setQtyOnHand(BigDecimal qtyOnHand) {
+		this.qtyOnHand = qtyOnHand;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getQtyreserved() {
-		return qtyreserved;
+	public BigDecimal getQtyOrdered() {
+		return qtyOrdered;
 	}
 
-	public void setQtyreserved(BigDecimal qtyreserved) {
-		this.qtyreserved = qtyreserved;
+	public void setQtyOrdered(BigDecimal qtyOrdered) {
+		this.qtyOrdered = qtyOrdered;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getQtytoorder() {
-		return qtytoorder;
+	public BigDecimal getQtyReserved() {
+		return qtyReserved;
 	}
 
-	public void setQtytoorder(BigDecimal qtytoorder) {
-		this.qtytoorder = qtytoorder;
+	public void setQtyReserved(BigDecimal qtyReserved) {
+		this.qtyReserved = qtyReserved;
 	}
 
 	@Basic
-	@Column(length=3)
-	public String getReplenishmentcreate() {
-		return replenishmentcreate;
+	@Column(nullable=false)
+	public BigDecimal getQtyToOrder() {
+		return qtyToOrder;
 	}
 
-	public void setReplenishmentcreate(String replenishmentcreate) {
-		this.replenishmentcreate = replenishmentcreate;
+	public void setQtyToOrder(BigDecimal qtyToOrder) {
+		this.qtyToOrder = qtyToOrder;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getReplenishtype() {
-		return replenishtype;
+	public String getReplenishType() {
+		return replenishType;
 	}
 
-	public void setReplenishtype(String replenishtype) {
-		this.replenishtype = replenishtype;
+	public void setReplenishType(String replenishType) {
+		this.replenishType = replenishType;
+	}
+
+	@Basic
+	@Column(length=3)
+	public String getReplenishmentCreate() {
+		return replenishmentCreate;
+	}
+
+	public void setReplenishmentCreate(String replenishmentCreate) {
+		this.replenishmentCreate = replenishmentCreate;
 	}
 
 	@Basic
@@ -234,11 +234,11 @@ public class TReplenish extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT")
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

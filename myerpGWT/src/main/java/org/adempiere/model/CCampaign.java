@@ -11,70 +11,80 @@ import javax.persistence.*;
 @Table(name="c_campaign")
 public class CCampaign extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cCampaignId;
-	private Integer cChannelId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cCampaignID;
+	private Integer cChannelID;
 	private BigDecimal costs;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private String enddate;
-	private Boolean isactive;
-	private Boolean issummary;
+	private String endDate;
 	private String name;
-	private String startdate;
+	private String startDate;
+	private Boolean summary;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 	private String value;
 
 	public CCampaign() {
 	}
 
-	public CCampaign(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public CCampaign(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_234", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Campaign", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_234")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
 	}
 
 	@Basic
 	@Column(name="C_CHANNEL_ID", columnDefinition="INT")
-	public Integer getCChannelId() {
-		return cChannelId;
+	public Integer getCChannelID() {
+		return cChannelID;
 	}
 
-	public void setCChannelId(Integer cChannelId) {
-		this.cChannelId = cChannelId;
+	public void setCChannelID(Integer cChannelID) {
+		this.cChannelID = cChannelID;
 	}
 
 	@Basic
@@ -99,12 +109,12 @@ public class CCampaign extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -117,32 +127,12 @@ public class CCampaign extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public String getEnddate() {
-		return enddate;
+	public String getEndDate() {
+		return endDate;
 	}
 
-	public void setEnddate(String enddate) {
-		this.enddate = enddate;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIssummary() {
-		return issummary;
-	}
-
-	public void setIssummary(Boolean issummary) {
-		this.issummary = issummary;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 
 	@Basic
@@ -156,12 +146,22 @@ public class CCampaign extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public String getStartdate() {
-		return startdate;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	@Basic
+	@Column(name="ISSUMMARY", nullable=false)
+	public Boolean isSummary() {
+		return summary;
+	}
+
+	public void setSummary(Boolean summary) {
+		this.summary = summary;
 	}
 
 	@Basic
@@ -176,12 +176,12 @@ public class CCampaign extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic

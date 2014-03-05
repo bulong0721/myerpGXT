@@ -10,88 +10,98 @@ import javax.persistence.*;
 @Table(name="a_asset_delivery")
 public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetDeliveryId;
-	private Integer aAssetId;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
+	private Integer aAssetDeliveryID;
+	private Integer aAssetID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private String deliveryconfirmation;
+	private Integer createdBy;
+	private String deliveryConfirmation;
 	private String description;
-	private String email;
-	private Boolean isactive;
+	private String eMail;
 	private String lot;
-	private Integer mInoutlineId;
-	private Integer mProductdownloadId;
-	private String messageid;
-	private String movementdate;
+	private Integer mInOutLineID;
+	private Integer mProductDownloadID;
+	private String messageID;
+	private String movementDate;
 	private String referrer;
 	private String remoteAddr;
 	private String remoteHost;
-	private String serno;
+	private String serNo;
+	private String uRL;
 	private String updated;
-	private Integer updatedby;
-	private String url;
-	private String versionno;
+	private Integer updatedBy;
+	private String versionNo;
 
 	public AAssetDelivery() {
 	}
 
-	public AAssetDelivery(Integer aAssetDeliveryId) {
-		this.aAssetDeliveryId = aAssetDeliveryId;
+	public AAssetDelivery(Integer aAssetDeliveryID) {
+		this.aAssetDeliveryID = aAssetDeliveryID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_DELIVERY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_668", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Delivery", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_668")
-	public Integer getAAssetDeliveryId() {
-		return aAssetDeliveryId;
+	public Integer getAAssetDeliveryID() {
+		return aAssetDeliveryID;
 	}
 
-	public void setAAssetDeliveryId(Integer aAssetDeliveryId) {
-		this.aAssetDeliveryId = aAssetDeliveryId;
+	public void setAAssetDeliveryID(Integer aAssetDeliveryID) {
+		this.aAssetDeliveryID = aAssetDeliveryID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT")
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -106,22 +116,22 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(length=120)
-	public String getDeliveryconfirmation() {
-		return deliveryconfirmation;
+	public String getDeliveryConfirmation() {
+		return deliveryConfirmation;
 	}
 
-	public void setDeliveryconfirmation(String deliveryconfirmation) {
-		this.deliveryconfirmation = deliveryconfirmation;
+	public void setDeliveryConfirmation(String deliveryConfirmation) {
+		this.deliveryConfirmation = deliveryConfirmation;
 	}
 
 	@Basic
@@ -135,22 +145,12 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=60)
-	public String getEmail() {
-		return email;
+	public String getEMail() {
+		return eMail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setEMail(String eMail) {
+		this.eMail = eMail;
 	}
 
 	@Basic
@@ -165,42 +165,42 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="M_INOUTLINE_ID", columnDefinition="INT")
-	public Integer getMInoutlineId() {
-		return mInoutlineId;
+	public Integer getMInOutLineID() {
+		return mInOutLineID;
 	}
 
-	public void setMInoutlineId(Integer mInoutlineId) {
-		this.mInoutlineId = mInoutlineId;
+	public void setMInOutLineID(Integer mInOutLineID) {
+		this.mInOutLineID = mInOutLineID;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCTDOWNLOAD_ID", columnDefinition="INT")
-	public Integer getMProductdownloadId() {
-		return mProductdownloadId;
+	public Integer getMProductDownloadID() {
+		return mProductDownloadID;
 	}
 
-	public void setMProductdownloadId(Integer mProductdownloadId) {
-		this.mProductdownloadId = mProductdownloadId;
+	public void setMProductDownloadID(Integer mProductDownloadID) {
+		this.mProductDownloadID = mProductDownloadID;
 	}
 
 	@Basic
 	@Column(length=120)
-	public String getMessageid() {
-		return messageid;
+	public String getMessageID() {
+		return messageID;
 	}
 
-	public void setMessageid(String messageid) {
-		this.messageid = messageid;
+	public void setMessageID(String messageID) {
+		this.messageID = messageID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getMovementdate() {
-		return movementdate;
+	public String getMovementDate() {
+		return movementDate;
 	}
 
-	public void setMovementdate(String movementdate) {
-		this.movementdate = movementdate;
+	public void setMovementDate(String movementDate) {
+		this.movementDate = movementDate;
 	}
 
 	@Basic
@@ -234,12 +234,22 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=40)
-	public String getSerno() {
-		return serno;
+	public String getSerNo() {
+		return serNo;
 	}
 
-	public void setSerno(String serno) {
-		this.serno = serno;
+	public void setSerNo(String serNo) {
+		this.serNo = serNo;
+	}
+
+	@Basic
+	@Column(length=120)
+	public String getURL() {
+		return uRL;
+	}
+
+	public void setURL(String uRL) {
+		this.uRL = uRL;
 	}
 
 	@Basic
@@ -254,31 +264,21 @@ public class AAssetDelivery extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
-	}
-
-	@Basic
-	@Column(length=120)
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(length=20)
-	public String getVersionno() {
-		return versionno;
+	public String getVersionNo() {
+		return versionNo;
 	}
 
-	public void setVersionno(String versionno) {
-		this.versionno = versionno;
+	public void setVersionNo(String versionNo) {
+		this.versionNo = versionNo;
 	}
 }

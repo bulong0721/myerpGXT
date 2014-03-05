@@ -11,42 +11,52 @@ import javax.persistence.*;
 @Table(name="u_web_properties")
 public class UWebProperties extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
+	private BigDecimal createdBy;
 	private String uKey;
 	private String uValue;
-	private Integer uWebPropertiesId;
+	private Integer uWebPropertiesID;
 	private String updated;
-	private Integer updatedby;
+	private BigDecimal updatedBy;
 
 	public UWebProperties() {
 	}
 
-	public UWebProperties(Integer uWebPropertiesId) {
-		this.uWebPropertiesId = uWebPropertiesId;
+	public UWebProperties(Integer uWebPropertiesID) {
+		this.uWebPropertiesID = uWebPropertiesID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -61,22 +71,12 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public BigDecimal getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setCreatedBy(BigDecimal createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -103,12 +103,12 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 	@Column(name="U_WEB_PROPERTIES_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_52003", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "U_Web_Properties", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_52003")
-	public Integer getUWebPropertiesId() {
-		return uWebPropertiesId;
+	public Integer getUWebPropertiesID() {
+		return uWebPropertiesID;
 	}
 
-	public void setUWebPropertiesId(Integer uWebPropertiesId) {
-		this.uWebPropertiesId = uWebPropertiesId;
+	public void setUWebPropertiesID(Integer uWebPropertiesID) {
+		this.uWebPropertiesID = uWebPropertiesID;
 	}
 
 	@Basic
@@ -123,11 +123,11 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public BigDecimal getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(BigDecimal updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

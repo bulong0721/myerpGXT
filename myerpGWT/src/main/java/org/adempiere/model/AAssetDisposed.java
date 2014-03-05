@@ -11,63 +11,83 @@ import javax.persistence.*;
 @Table(name="a_asset_disposed")
 public class AAssetDisposed extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aAssetDisposedId;
-	private Integer aAssetId;
-	private Integer aAssetTradeId;
+	private Integer aAssetDisposedID;
+	private Integer aAssetID;
+	private Integer aAssetTradeID;
+	private Integer aDClientID;
+	private Integer aDOrgID;
 	private String aDisposedDate;
 	private String aDisposedMethod;
 	private String aDisposedReason;
 	private BigDecimal aProceeds;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cPeriodId;
+	private Boolean active;
+	private Integer cPeriodID;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
-	private String datedoc;
-	private Boolean isactive;
+	private Integer createdBy;
+	private String dateAcct;
+	private String dateDoc;
 	private Boolean processed;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public AAssetDisposed() {
 	}
 
-	public AAssetDisposed(Integer aAssetDisposedId) {
-		this.aAssetDisposedId = aAssetDisposedId;
+	public AAssetDisposed(Integer aAssetDisposedID) {
+		this.aAssetDisposedID = aAssetDisposedID;
 	}
 
 	@Id
 	@Column(name="A_ASSET_DISPOSED_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_53147", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "A_Asset_Disposed", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_53147")
-	public Integer getAAssetDisposedId() {
-		return aAssetDisposedId;
+	public Integer getAAssetDisposedID() {
+		return aAssetDisposedID;
 	}
 
-	public void setAAssetDisposedId(Integer aAssetDisposedId) {
-		this.aAssetDisposedId = aAssetDisposedId;
+	public void setAAssetDisposedID(Integer aAssetDisposedID) {
+		this.aAssetDisposedID = aAssetDisposedID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_ID", columnDefinition="INT", nullable=false)
-	public Integer getAAssetId() {
-		return aAssetId;
+	public Integer getAAssetID() {
+		return aAssetID;
 	}
 
-	public void setAAssetId(Integer aAssetId) {
-		this.aAssetId = aAssetId;
+	public void setAAssetID(Integer aAssetID) {
+		this.aAssetID = aAssetID;
 	}
 
 	@Basic
 	@Column(name="A_ASSET_TRADE_ID", columnDefinition="INT")
-	public Integer getAAssetTradeId() {
-		return aAssetTradeId;
+	public Integer getAAssetTradeID() {
+		return aAssetTradeID;
 	}
 
-	public void setAAssetTradeId(Integer aAssetTradeId) {
-		this.aAssetTradeId = aAssetTradeId;
+	public void setAAssetTradeID(Integer aAssetTradeID) {
+		this.aAssetTradeID = aAssetTradeID;
+	}
+
+	@Basic
+	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
+	public Integer getADClientID() {
+		return aDClientID;
+	}
+
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
+	}
+
+	@Basic
+	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
+	public Integer getADOrgID() {
+		return aDOrgID;
+	}
+
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
@@ -111,33 +131,23 @@ public class AAssetDisposed extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
-	}
-
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
-	}
-
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_PERIOD_ID", columnDefinition="INT", nullable=false)
-	public Integer getCPeriodId() {
-		return cPeriodId;
+	public Integer getCPeriodID() {
+		return cPeriodID;
 	}
 
-	public void setCPeriodId(Integer cPeriodId) {
-		this.cPeriodId = cPeriodId;
+	public void setCPeriodID(Integer cPeriodID) {
+		this.cPeriodID = cPeriodID;
 	}
 
 	@Basic
@@ -152,42 +162,32 @@ public class AAssetDisposed extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getDateacct() {
-		return dateacct;
-	}
-
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getDatedoc() {
-		return datedoc;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setDatedoc(String datedoc) {
-		this.datedoc = datedoc;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public String getDateDoc() {
+		return dateDoc;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setDateDoc(String dateDoc) {
+		this.dateDoc = dateDoc;
 	}
 
 	@Basic
@@ -222,11 +222,11 @@ public class AAssetDisposed extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

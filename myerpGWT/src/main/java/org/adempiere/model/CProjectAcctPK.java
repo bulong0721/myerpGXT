@@ -16,8 +16,8 @@ public class CProjectAcctPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public Integer cAcctschemaId;
-	public Integer cProjectId;
+	public Integer cAcctSchemaID;
+	public Integer cProjectID;
 
 	public CProjectAcctPK() {
 	}
@@ -26,31 +26,31 @@ public class CProjectAcctPK implements Serializable {
 		fromString(str);
 	}
 
-	public Integer getCAcctschemaId() {
-		return cAcctschemaId;
+	public Integer getCAcctSchemaID() {
+		return cAcctSchemaID;
 	}
 
-	public void setCAcctschemaId(Integer cAcctschemaId) {
-		this.cAcctschemaId = cAcctschemaId;
+	public void setCAcctSchemaID(Integer cAcctSchemaID) {
+		this.cAcctSchemaID = cAcctSchemaID;
 	}
 
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	public String toString() {
-		return String.valueOf(cAcctschemaId)
-			+ "::" + String.valueOf(cProjectId);
+		return String.valueOf(cAcctSchemaID)
+			+ "::" + String.valueOf(cProjectID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((cAcctschemaId == null) ? 0 : cAcctschemaId.hashCode());
-		rs = rs * 37 + ((cProjectId == null) ? 0 : cProjectId.hashCode());
+		rs = rs * 37 + ((cAcctSchemaID == null) ? 0 : cAcctSchemaID.hashCode());
+		rs = rs * 37 + ((cProjectID == null) ? 0 : cProjectID.hashCode());
 		return rs;
 	}
 
@@ -61,24 +61,24 @@ public class CProjectAcctPK implements Serializable {
 			return false;
 
 		CProjectAcctPK other = (CProjectAcctPK) obj;
-		return ((cAcctschemaId == null && other.cAcctschemaId == null)
-			|| (cAcctschemaId != null && cAcctschemaId.equals(other.cAcctschemaId)))
-			&& ((cProjectId == null && other.cProjectId == null)
-			|| (cProjectId != null && cProjectId.equals(other.cProjectId)));
+		return ((cAcctSchemaID == null && other.cAcctSchemaID == null)
+			|| (cAcctSchemaID != null && cAcctSchemaID.equals(other.cAcctSchemaID)))
+			&& ((cProjectID == null && other.cProjectID == null)
+			|| (cProjectID != null && cProjectID.equals(other.cProjectID)));
 	}
 
 	private void fromString(String str) {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cAcctschemaId = null;
+			cAcctSchemaID = null;
 		else
-			cAcctschemaId = new Integer(str);
+			cAcctSchemaID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			cProjectId = null;
+			cProjectID = null;
 		else
-			cProjectId = new Integer(str);
+			cProjectID = new Integer(str);
 	}
 
 	protected static class Tokenizer {

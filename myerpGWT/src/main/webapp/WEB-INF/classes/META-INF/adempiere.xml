@@ -2,56 +2,56 @@
 <entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
 	<named-query name="queryWindowById">
-		<query>SELECT w FROM AdWindow w WHERE w.adWindowId = :adWindowId</query>
+		<query>SELECT w FROM ADWindow w WHERE w.aDWindowID = :adWindowId</query>
 	</named-query>
 	<named-query name="queryTabsByWindowId">
-		<query>SELECT t FROM AdTab t WHERE t.adWindowId = :adWindowId ORDER BY t.seqno</query>
+		<query>SELECT t FROM ADTab t WHERE t.aDWindowID = :adWindowId ORDER BY t.seqNo</query>
 	</named-query>
 	<named-query name="queryFieldsByTabId">
-		<query>SELECT f FROM AdField f WHERE f.adTabId = :adTabId</query>
+		<query>SELECT f FROM ADField f WHERE f.aDTabID = :adTabId</query>
 	</named-query>
 	<named-query name="queryTabvsByWindowId">
-		<query>SELECT t FROM AdTabV t WHERE t.adWindowId = :adWindowId ORDER BY t.seqno</query>
+		<query>SELECT t FROM AdTabV t WHERE t.aDWindowID = :adWindowId ORDER BY t.seqNo</query>
 	</named-query>
 	<named-query name="queryFieldvsByTabId">
-		<query>SELECT f FROM AdFieldV f WHERE f.adTabId = :adTabId ORDER BY f.seqno</query>
+		<query>SELECT f FROM AdFieldV f WHERE f.aDTabID = :adTabId ORDER BY f.seqNo</query>
 	</named-query>
 	<named-query name="queryMainMenuNodes">
-		<query>SELECT m FROM AdMenu m ORDER BY m.parentId, m.seqno</query>
+		<query>SELECT m FROM ADMenu m ORDER BY m.parentID, m.seqNo</query>
 	</named-query>
 	<named-query name="queryRefList">
-		<query>SELECT NEW org.adempiere.common.LookupValue(r.name, r.value) FROM AdRefList r WHERE r.adReference.adReferenceId = :adReferenceId</query>
+		<query>SELECT NEW org.adempiere.common.LookupValue(r.name, r.value) FROM ADRefList r WHERE r.aDReferenceID = :adReferenceId</query>
 	</named-query>
 	<named-query name="queryRefTable">
-		<query>SELECT NEW org.adempiere.common.RefCriteria(r.adTable.tablename, r.keyColumn.columnname, r.displayColumn.columnname, r.isvaluedisplayed, r.orderbyclause, r.whereclause) FROM AdRefTable r WHERE r.adReference.adReferenceId = :adReferenceId</query>
+		<query>SELECT NEW org.adempiere.common.RefCriteria(r.aDTable.tableName, r.keyColumn.propertyName, r.displayColumn.propertyName, r.valueDisplayed, r.orderByClause, r.whereClause) FROM ADRefTable r WHERE r.aDReferenceID = :adReferenceId</query>
 	</named-query>
 	<named-query name="queryProcessWithParamsByProcessId">
-		<query>SELECT p FROM AdProcess p LEFT JOIN FETCH p.adProcessParas WHERE p.adProcessId = :adProcessId</query>
+		<query>SELECT p FROM ADProcess p LEFT JOIN FETCH p.aDProcessParas WHERE p.aDProcessID = :adProcessId</query>
 	</named-query>
 	<named-query name="queryFormByFormId">
-		<query>SELECT f FROM AdForm f WHERE f.adFormId = :adFormId</query>
+		<query>SELECT f FROM ADForm f WHERE f.aDFormID = :adFormId</query>
 	</named-query>
 	<named-query name="queryTableByTableName">
-		<query>SELECT t FROM AdTable t WHERE t.tablename = :tablename</query>
+		<query>SELECT t FROM ADTable t WHERE t.tableName = :tablename</query>
 	</named-query>
 	<named-query name="queryElementByColumn">
-		<query>SELECT e FROM AdElement e WHERE LOWER(e.columnname) = :columnname</query>
+		<query>SELECT e FROM ADElement e WHERE LOWER(e.columnName) = :columnname</query>
 	</named-query>
 	<named-query name="queryColumnsByTable">
-		<query>SELECT c FROM AdColumn c WHERE c.adTableId = :adTableId</query>
+		<query>SELECT c FROM ADColumn c WHERE c.aDTableID = :adTableId</query>
 	</named-query>
 	<named-query name="queryUnMappedColumns">
-		<query>SELECT c FROM AdColumn c WHERE c.adTableId = :adTableId AND c.isactive = true
+		<query>SELECT c FROM ADColumn c WHERE c.aDTableID = :adTableId AND c.active = true
 			   AND NOT (c.name LIKE 'Created%' OR c.name LIKE 'Updated%')
-			   AND NOT EXISTS (SELECT f.adFieldId FROM AdField f WHERE f.adColumnId=c.adColumnId AND f.adTabId= :adTabId)</query>
+			   AND NOT EXISTS (SELECT f.ADFieldID FROM ADField f WHERE f.aDColumnID=c.aDColumnID AND f.aDTabID= :adTabId)</query>
 	</named-query>
 	<named-query name="querySeqByTabId">
-		<query>SELECT NEW org.adempiere.web.client.model.ADSequenceModel(f.adFieldId, f.name, f.seqno) FROM AdField f WHERE f.adTabId = :adTabId ORDER BY f.seqno</query>
+		<query>SELECT NEW org.adempiere.web.client.model.ADSequenceModel(f.aDFieldID, f.name, f.seqNo) FROM ADField f WHERE f.aDTabID = :adTabId ORDER BY f.seqNo</query>
 	</named-query>
 	<named-query name="queryRootNodes">
-		<query>SELECT n FROM AdTreebar b JOIN b.nodes n WHERE b.adTreeId = :adTreeId AND b.adUserId = :adUserId</query>
+		<query>SELECT n FROM ADTreeBar b JOIN b.nodes n WHERE b.aDTreeID = :adTreeId AND b.aDUserID = :adUserId</query>
 	</named-query>
 	<named-query name="querySubNodes">
-		<query>SELECT n FROM AdTreenode n WHERE n.parentId = :parentId ORDER BY n.parentId, n.seqno</query>
+		<query>SELECT n FROM ADTreeNode n WHERE n.parentID = :parentId ORDER BY n.parentID, n.seqNo</query>
 	</named-query>
 </entity-mappings>

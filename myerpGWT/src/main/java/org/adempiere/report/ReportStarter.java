@@ -27,7 +27,7 @@ import net.sf.jasperreports.engine.util.JRResourcesUtil;
 
 import org.adempiere.common.Language;
 import org.adempiere.common.ProcessResult;
-import org.adempiere.model.AdAttachment;
+import org.adempiere.model.ADAttachment;
 import org.adempiere.process.ClientProcess;
 import org.adempiere.process.ProcessCall;
 import org.adempiere.process.ProcessContext;
@@ -39,7 +39,7 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 	private static File				REPORT_HOME	= null;
 	private static JRViewerProvider	viewerProvider;
 	private static JasperPrint		jasperPrint;
-	private AdAttachment			attachment;
+	private ADAttachment			attachment;
 
 	static {
 		String reportPath = System.getProperty("org.adempiere.report.path");

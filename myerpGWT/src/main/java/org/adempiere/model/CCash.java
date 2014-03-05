@@ -11,133 +11,153 @@ import javax.persistence.*;
 @Table(name="c_cash")
 public class CCash extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adOrgtrxId;
-	private BigDecimal beginningbalance;
-	private Integer cActivityId;
-	private Integer cCampaignId;
-	private Integer cCashId;
-	private Integer cCashbookId;
-	private Integer cProjectId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDOrgTrxID;
+	private Boolean active;
+	private Boolean approved;
+	private BigDecimal beginningBalance;
+	private Integer cActivityID;
+	private Integer cCampaignID;
+	private Integer cCashBookID;
+	private Integer cCashID;
+	private Integer cProjectID;
 	private String created;
-	private Integer createdby;
-	private String dateacct;
+	private Integer createdBy;
+	private String dateAcct;
 	private String description;
-	private String docaction;
-	private String docstatus;
-	private BigDecimal endingbalance;
-	private Boolean isactive;
-	private Boolean isapproved;
+	private String docAction;
+	private String docStatus;
+	private BigDecimal endingBalance;
 	private String name;
 	private Boolean posted;
 	private Boolean processed;
-	private Long processedon;
+	private Long processedOn;
 	private Boolean processing;
-	private String statementdate;
-	private BigDecimal statementdifference;
+	private String statementDate;
+	private BigDecimal statementDifference;
 	private String updated;
-	private Integer updatedby;
-	private Integer user1Id;
-	private Integer user2Id;
+	private Integer updatedBy;
+	private Integer user1ID;
+	private Integer user2ID;
 
 	public CCash() {
 	}
 
-	public CCash(Integer cCashId) {
-		this.cCashId = cCashId;
+	public CCash(Integer cCashID) {
+		this.cCashID = cCashID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_ORGTRX_ID", columnDefinition="INT")
-	public Integer getAdOrgtrxId() {
-		return adOrgtrxId;
+	public Integer getADOrgTrxID() {
+		return aDOrgTrxID;
 	}
 
-	public void setAdOrgtrxId(Integer adOrgtrxId) {
-		this.adOrgtrxId = adOrgtrxId;
+	public void setADOrgTrxID(Integer aDOrgTrxID) {
+		this.aDOrgTrxID = aDOrgTrxID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	@Basic
+	@Column(name="ISAPPROVED", nullable=false)
+	public Boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getBeginningbalance() {
-		return beginningbalance;
+	public BigDecimal getBeginningBalance() {
+		return beginningBalance;
 	}
 
-	public void setBeginningbalance(BigDecimal beginningbalance) {
-		this.beginningbalance = beginningbalance;
+	public void setBeginningBalance(BigDecimal beginningBalance) {
+		this.beginningBalance = beginningBalance;
 	}
 
 	@Basic
 	@Column(name="C_ACTIVITY_ID", columnDefinition="INT")
-	public Integer getCActivityId() {
-		return cActivityId;
+	public Integer getCActivityID() {
+		return cActivityID;
 	}
 
-	public void setCActivityId(Integer cActivityId) {
-		this.cActivityId = cActivityId;
+	public void setCActivityID(Integer cActivityID) {
+		this.cActivityID = cActivityID;
 	}
 
 	@Basic
 	@Column(name="C_CAMPAIGN_ID", columnDefinition="INT")
-	public Integer getCCampaignId() {
-		return cCampaignId;
+	public Integer getCCampaignID() {
+		return cCampaignID;
 	}
 
-	public void setCCampaignId(Integer cCampaignId) {
-		this.cCampaignId = cCampaignId;
+	public void setCCampaignID(Integer cCampaignID) {
+		this.cCampaignID = cCampaignID;
+	}
+
+	@Basic
+	@Column(name="C_CASHBOOK_ID", columnDefinition="INT", nullable=false)
+	public Integer getCCashBookID() {
+		return cCashBookID;
+	}
+
+	public void setCCashBookID(Integer cCashBookID) {
+		this.cCashBookID = cCashBookID;
 	}
 
 	@Id
 	@Column(name="C_CASH_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_344", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Cash", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_344")
-	public Integer getCCashId() {
-		return cCashId;
+	public Integer getCCashID() {
+		return cCashID;
 	}
 
-	public void setCCashId(Integer cCashId) {
-		this.cCashId = cCashId;
-	}
-
-	@Basic
-	@Column(name="C_CASHBOOK_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCashbookId() {
-		return cCashbookId;
-	}
-
-	public void setCCashbookId(Integer cCashbookId) {
-		this.cCashbookId = cCashbookId;
+	public void setCCashID(Integer cCashID) {
+		this.cCashID = cCashID;
 	}
 
 	@Basic
 	@Column(name="C_PROJECT_ID", columnDefinition="INT")
-	public Integer getCProjectId() {
-		return cProjectId;
+	public Integer getCProjectID() {
+		return cProjectID;
 	}
 
-	public void setCProjectId(Integer cProjectId) {
-		this.cProjectId = cProjectId;
+	public void setCProjectID(Integer cProjectID) {
+		this.cProjectID = cProjectID;
 	}
 
 	@Basic
@@ -152,22 +172,22 @@ public class CCash extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getDateacct() {
-		return dateacct;
+	public String getDateAcct() {
+		return dateAcct;
 	}
 
-	public void setDateacct(String dateacct) {
-		this.dateacct = dateacct;
+	public void setDateAcct(String dateAcct) {
+		this.dateAcct = dateAcct;
 	}
 
 	@Basic
@@ -181,52 +201,32 @@ public class CCash extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getDocaction() {
-		return docaction;
+	public String getDocAction() {
+		return docAction;
 	}
 
-	public void setDocaction(String docaction) {
-		this.docaction = docaction;
+	public void setDocAction(String docAction) {
+		this.docAction = docAction;
 	}
 
 	@Basic
 	@Column(nullable=false, length=2)
-	public String getDocstatus() {
-		return docstatus;
+	public String getDocStatus() {
+		return docStatus;
 	}
 
-	public void setDocstatus(String docstatus) {
-		this.docstatus = docstatus;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public BigDecimal getEndingbalance() {
-		return endingbalance;
-	}
-
-	public void setEndingbalance(BigDecimal endingbalance) {
-		this.endingbalance = endingbalance;
+	public void setDocStatus(String docStatus) {
+		this.docStatus = docStatus;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public BigDecimal getEndingBalance() {
+		return endingBalance;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsapproved() {
-		return isapproved;
-	}
-
-	public void setIsapproved(Boolean isapproved) {
-		this.isapproved = isapproved;
+	public void setEndingBalance(BigDecimal endingBalance) {
+		this.endingBalance = endingBalance;
 	}
 
 	@Basic
@@ -260,12 +260,12 @@ public class CCash extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public Long getProcessedon() {
-		return processedon;
+	public Long getProcessedOn() {
+		return processedOn;
 	}
 
-	public void setProcessedon(Long processedon) {
-		this.processedon = processedon;
+	public void setProcessedOn(Long processedOn) {
+		this.processedOn = processedOn;
 	}
 
 	@Basic
@@ -279,21 +279,21 @@ public class CCash extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public String getStatementdate() {
-		return statementdate;
+	public String getStatementDate() {
+		return statementDate;
 	}
 
-	public void setStatementdate(String statementdate) {
-		this.statementdate = statementdate;
+	public void setStatementDate(String statementDate) {
+		this.statementDate = statementDate;
 	}
 
 	@Basic
-	public BigDecimal getStatementdifference() {
-		return statementdifference;
+	public BigDecimal getStatementDifference() {
+		return statementDifference;
 	}
 
-	public void setStatementdifference(BigDecimal statementdifference) {
-		this.statementdifference = statementdifference;
+	public void setStatementDifference(BigDecimal statementDifference) {
+		this.statementDifference = statementDifference;
 	}
 
 	@Basic
@@ -308,31 +308,31 @@ public class CCash extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	@Basic
 	@Column(name="USER1_ID", columnDefinition="INT")
-	public Integer getUser1Id() {
-		return user1Id;
+	public Integer getUser1ID() {
+		return user1ID;
 	}
 
-	public void setUser1Id(Integer user1Id) {
-		this.user1Id = user1Id;
+	public void setUser1ID(Integer user1ID) {
+		this.user1ID = user1ID;
 	}
 
 	@Basic
 	@Column(name="USER2_ID", columnDefinition="INT")
-	public Integer getUser2Id() {
-		return user2Id;
+	public Integer getUser2ID() {
+		return user2ID;
 	}
 
-	public void setUser2Id(Integer user2Id) {
-		this.user2Id = user2Id;
+	public void setUser2ID(Integer user2ID) {
+		this.user2ID = user2ID;
 	}
 }

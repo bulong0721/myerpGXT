@@ -11,72 +11,82 @@ import javax.persistence.*;
 @Table(name="c_currency")
 public class CCurrency extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cCurrencyId;
-	private Integer costingprecision;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cCurrencyID;
+	private Integer costingPrecision;
 	private String created;
-	private Integer createdby;
-	private String cursymbol;
+	private Integer createdBy;
+	private String curSymbol;
 	private String description;
-	private String emuentrydate;
-	private BigDecimal emurate;
-	private Boolean isactive;
-	private Boolean isemumember;
-	private Boolean iseuro;
-	private String isoCode;
-	private BigDecimal roundofffactor;
-	private Integer stdprecision;
+	private String eMUEntryDate;
+	private Boolean eMUMember;
+	private BigDecimal eMURate;
+	private Boolean euro;
+	private String iSOCode;
+	private BigDecimal roundOffFactor;
+	private Integer stdPrecision;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CCurrency() {
 	}
 
-	public CCurrency(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public CCurrency(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_41", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Currency", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_41")
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCostingprecision() {
-		return costingprecision;
+	public Integer getCostingPrecision() {
+		return costingPrecision;
 	}
 
-	public void setCostingprecision(Integer costingprecision) {
-		this.costingprecision = costingprecision;
+	public void setCostingPrecision(Integer costingPrecision) {
+		this.costingPrecision = costingPrecision;
 	}
 
 	@Basic
@@ -91,22 +101,22 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(length=10)
-	public String getCursymbol() {
-		return cursymbol;
+	public String getCurSymbol() {
+		return curSymbol;
 	}
 
-	public void setCursymbol(String cursymbol) {
-		this.cursymbol = cursymbol;
+	public void setCurSymbol(String curSymbol) {
+		this.curSymbol = curSymbol;
 	}
 
 	@Basic
@@ -120,80 +130,70 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	public String getEmuentrydate() {
-		return emuentrydate;
+	public String getEMUEntryDate() {
+		return eMUEntryDate;
 	}
 
-	public void setEmuentrydate(String emuentrydate) {
-		this.emuentrydate = emuentrydate;
-	}
-
-	@Basic
-	public BigDecimal getEmurate() {
-		return emurate;
-	}
-
-	public void setEmurate(BigDecimal emurate) {
-		this.emurate = emurate;
+	public void setEMUEntryDate(String eMUEntryDate) {
+		this.eMUEntryDate = eMUEntryDate;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	@Column(name="ISEMUMEMBER", nullable=false)
+	public Boolean isEMUMember() {
+		return eMUMember;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsemumember() {
-		return isemumember;
-	}
-
-	public void setIsemumember(Boolean isemumember) {
-		this.isemumember = isemumember;
+	public void setEMUMember(Boolean eMUMember) {
+		this.eMUMember = eMUMember;
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIseuro() {
-		return iseuro;
+	public BigDecimal getEMURate() {
+		return eMURate;
 	}
 
-	public void setIseuro(Boolean iseuro) {
-		this.iseuro = iseuro;
+	public void setEMURate(BigDecimal eMURate) {
+		this.eMURate = eMURate;
+	}
+
+	@Basic
+	@Column(name="ISEURO", nullable=false)
+	public Boolean isEuro() {
+		return euro;
+	}
+
+	public void setEuro(Boolean euro) {
+		this.euro = euro;
 	}
 
 	@Basic
 	@Column(name="ISO_CODE", nullable=false, length=3)
-	public String getIsoCode() {
-		return isoCode;
+	public String getISOCode() {
+		return iSOCode;
 	}
 
-	public void setIsoCode(String isoCode) {
-		this.isoCode = isoCode;
+	public void setISOCode(String iSOCode) {
+		this.iSOCode = iSOCode;
 	}
 
 	@Basic
-	public BigDecimal getRoundofffactor() {
-		return roundofffactor;
+	public BigDecimal getRoundOffFactor() {
+		return roundOffFactor;
 	}
 
-	public void setRoundofffactor(BigDecimal roundofffactor) {
-		this.roundofffactor = roundofffactor;
+	public void setRoundOffFactor(BigDecimal roundOffFactor) {
+		this.roundOffFactor = roundOffFactor;
 	}
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getStdprecision() {
-		return stdprecision;
+	public Integer getStdPrecision() {
+		return stdPrecision;
 	}
 
-	public void setStdprecision(Integer stdprecision) {
-		this.stdprecision = stdprecision;
+	public void setStdPrecision(Integer stdPrecision) {
+		this.stdPrecision = stdPrecision;
 	}
 
 	@Basic
@@ -208,11 +208,11 @@ public class CCurrency extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Map;
 
 import org.adempiere.common.ProcessResult;
-import org.adempiere.model.AdPinstance;
+import org.adempiere.model.ADPInstance;
 import org.adempiere.process.ProcessCall;
 import org.adempiere.process.ProcessContext;
 import org.adempiere.web.client.model.ADProcessModel;
@@ -40,7 +40,7 @@ public final class ProcessUtil {
 	}
 
 	public static void process(ProcessContext ctx, ProcessResult pi) {
-		AdPinstance instance = null;
+		ADPInstance instance = null;
 		try {
 			instance = createPInstance();
 		} catch (Exception e) {
@@ -57,13 +57,13 @@ public final class ProcessUtil {
 //			pi.setHasError(true);
 //			return;
 //		}
-		ctx.setAdPinstanceId(instance.getAdPinstanceId());
+		ctx.setAdPinstanceId(instance.getADPInstanceID());
 		ProcessUtil.startProcess(ctx, pi);
 	}
 
-	private static AdPinstance createPInstance() {
+	private static ADPInstance createPInstance() {
 		//TODO
-		AdPinstance pInstance = new AdPinstance();
+		ADPInstance pInstance = new ADPInstance();
 		return pInstance;
 	}
 

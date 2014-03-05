@@ -10,43 +10,53 @@ import javax.persistence.*;
 @Table(name="r_resolution")
 public class RResolution extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
 	private String help;
-	private Boolean isactive;
 	private String name;
-	private Integer rResolutionId;
+	private Integer rResolutionID;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public RResolution() {
 	}
 
-	public RResolution(Integer rResolutionId) {
-		this.rResolutionId = rResolutionId;
+	public RResolution(Integer rResolutionID) {
+		this.rResolutionID = rResolutionID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -61,12 +71,12 @@ public class RResolution extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -89,16 +99,6 @@ public class RResolution extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
 	@Column(nullable=false, length=60)
 	public String getName() {
 		return name;
@@ -112,12 +112,12 @@ public class RResolution extends org.adempiere.common.ADEntityBase {
 	@Column(name="R_RESOLUTION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_1108", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "R_Resolution", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_1108")
-	public Integer getRResolutionId() {
-		return rResolutionId;
+	public Integer getRResolutionID() {
+		return rResolutionID;
 	}
 
-	public void setRResolutionId(Integer rResolutionId) {
-		this.rResolutionId = rResolutionId;
+	public void setRResolutionID(Integer rResolutionID) {
+		this.rResolutionID = rResolutionID;
 	}
 
 	@Basic
@@ -132,11 +132,11 @@ public class RResolution extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

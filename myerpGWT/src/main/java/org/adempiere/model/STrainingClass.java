@@ -10,44 +10,54 @@ import javax.persistence.*;
 @Table(name="s_training_class")
 public class STrainingClass extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
 	private String created;
-	private Integer createdby;
-	private String enddate;
-	private Boolean isactive;
-	private Integer mProductId;
-	private Integer sTrainingClassId;
-	private Integer sTrainingId;
-	private String startdate;
+	private Integer createdBy;
+	private String endDate;
+	private Integer mProductID;
+	private Integer sTrainingClassID;
+	private Integer sTrainingID;
+	private String startDate;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public STrainingClass() {
 	}
 
-	public STrainingClass(Integer sTrainingClassId) {
-		this.sTrainingClassId = sTrainingClassId;
+	public STrainingClass(Integer sTrainingClassID) {
+		this.sTrainingClassID = sTrainingClassID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
@@ -62,74 +72,64 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public String getEnddate() {
-		return enddate;
-	}
-
-	public void setEnddate(String enddate) {
-		this.enddate = enddate;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public String getEndDate() {
+		return endDate;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 
 	@Basic
 	@Column(name="M_PRODUCT_ID", columnDefinition="INT", nullable=false)
-	public Integer getMProductId() {
-		return mProductId;
+	public Integer getMProductID() {
+		return mProductID;
 	}
 
-	public void setMProductId(Integer mProductId) {
-		this.mProductId = mProductId;
+	public void setMProductID(Integer mProductID) {
+		this.mProductID = mProductID;
 	}
 
 	@Id
 	@Column(name="S_TRAINING_CLASS_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_637", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "S_Training_Class", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_637")
-	public Integer getSTrainingClassId() {
-		return sTrainingClassId;
+	public Integer getSTrainingClassID() {
+		return sTrainingClassID;
 	}
 
-	public void setSTrainingClassId(Integer sTrainingClassId) {
-		this.sTrainingClassId = sTrainingClassId;
+	public void setSTrainingClassID(Integer sTrainingClassID) {
+		this.sTrainingClassID = sTrainingClassID;
 	}
 
 	@Basic
 	@Column(name="S_TRAINING_ID", columnDefinition="INT", nullable=false)
-	public Integer getSTrainingId() {
-		return sTrainingId;
+	public Integer getSTrainingID() {
+		return sTrainingID;
 	}
 
-	public void setSTrainingId(Integer sTrainingId) {
-		this.sTrainingId = sTrainingId;
+	public void setSTrainingID(Integer sTrainingID) {
+		this.sTrainingID = sTrainingID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public String getStartdate() {
-		return startdate;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
 	@Basic
@@ -144,11 +144,11 @@ public class STrainingClass extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

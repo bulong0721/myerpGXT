@@ -38,7 +38,7 @@ public class ADFormBuilder {
 		int size = fieldList.size();
 		fieldStrategies = new ArrayList<ADFieldBuilder>(size);
 		for (ADFormField field : fieldList) {
-			if (field.getIsdisplayed() || field.getIskey()) {
+			if (field.isDisplayed() || field.isKey()) {
 				ADFieldBuilder fieldStrategy = new ADFieldBuilder(this, field);
 				fieldStrategies.add(fieldStrategy);
 			}
@@ -80,7 +80,7 @@ public class ADFormBuilder {
 			return null;
 		}
 		for (ADFieldBuilder fieldStrategy : getFieldStrategies()) {
-			if (column.equalsIgnoreCase(fieldStrategy.getField().getColumnname())) {
+			if (column.equalsIgnoreCase(fieldStrategy.getField().getPropertyName())) {
 				return fieldStrategy;
 			}
 		}

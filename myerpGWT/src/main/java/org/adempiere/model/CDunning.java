@@ -10,57 +10,77 @@ import javax.persistence.*;
 @Table(name="c_dunning")
 public class CDunning extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cDunningId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cDunningID;
+	private Boolean createLevelsSequentially;
 	private String created;
-	private Integer createdby;
-	private Boolean createlevelssequentially;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Boolean isdefault;
+	private Boolean isDefault;
 	private String name;
-	private Boolean senddunningletter;
+	private Boolean sendDunningLetter;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CDunning() {
 	}
 
-	public CDunning(Integer cDunningId) {
-		this.cDunningId = cDunningId;
+	public CDunning(Integer cDunningID) {
+		this.cDunningID = cDunningID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_DUNNING_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_217", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Dunning", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_217")
-	public Integer getCDunningId() {
-		return cDunningId;
+	public Integer getCDunningID() {
+		return cDunningID;
 	}
 
-	public void setCDunningId(Integer cDunningId) {
-		this.cDunningId = cDunningId;
+	public void setCDunningID(Integer cDunningID) {
+		this.cDunningID = cDunningID;
+	}
+
+	@Basic
+	@Column(nullable=false)
+	public Boolean isCreateLevelsSequentially() {
+		return createLevelsSequentially;
+	}
+
+	public void setCreateLevelsSequentially(Boolean createLevelsSequentially) {
+		this.createLevelsSequentially = createLevelsSequentially;
 	}
 
 	@Basic
@@ -75,22 +95,12 @@ public class CDunning extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isCreatelevelssequentially() {
-		return createlevelssequentially;
-	}
-
-	public void setCreatelevelssequentially(Boolean createlevelssequentially) {
-		this.createlevelssequentially = createlevelssequentially;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -104,22 +114,12 @@ public class CDunning extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public Boolean isIsDefault() {
+		return isDefault;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdefault() {
-		return isdefault;
-	}
-
-	public void setIsdefault(Boolean isdefault) {
-		this.isdefault = isdefault;
+	public void setIsDefault(Boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	@Basic
@@ -134,12 +134,12 @@ public class CDunning extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isSenddunningletter() {
-		return senddunningletter;
+	public Boolean isSendDunningLetter() {
+		return sendDunningLetter;
 	}
 
-	public void setSenddunningletter(Boolean senddunningletter) {
-		this.senddunningletter = senddunningletter;
+	public void setSendDunningLetter(Boolean sendDunningLetter) {
+		this.sendDunningLetter = sendDunningLetter;
 	}
 
 	@Basic
@@ -154,11 +154,11 @@ public class CDunning extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

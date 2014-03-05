@@ -10,93 +10,112 @@ import javax.persistence.*;
 @Table(name="c_commission")
 public class CCommission extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cBpartnerId;
-	private Integer cChargeId;
-	private Integer cCommissionId;
-	private Integer cCurrencyId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cBPartnerID;
+	private Integer cChargeID;
+	private Integer cCommissionID;
+	private Integer cCurrencyID;
+	private Boolean createFrom;
 	private String created;
-	private Integer createdby;
-	private Boolean createfrom;
-	private String datelastrun;
+	private Integer createdBy;
+	private String dateLastRun;
 	private String description;
-	private String docbasistype;
-	private String frequencytype;
-	private Boolean isactive;
-	private Boolean listdetails;
+	private String docBasisType;
+	private String frequencyType;
+	private Boolean listDetails;
 	private String name;
 	private Boolean processing;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CCommission() {
 	}
 
-	public CCommission(Integer cCommissionId) {
-		this.cCommissionId = cCommissionId;
+	public CCommission(Integer cCommissionID) {
+		this.cCommissionID = cCommissionID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT", nullable=false)
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Basic
 	@Column(name="C_CHARGE_ID", columnDefinition="INT", nullable=false)
-	public Integer getCChargeId() {
-		return cChargeId;
+	public Integer getCChargeID() {
+		return cChargeID;
 	}
 
-	public void setCChargeId(Integer cChargeId) {
-		this.cChargeId = cChargeId;
+	public void setCChargeID(Integer cChargeID) {
+		this.cChargeID = cChargeID;
 	}
 
 	@Id
 	@Column(name="C_COMMISSION_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_366", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Commission", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_366")
-	public Integer getCCommissionId() {
-		return cCommissionId;
+	public Integer getCCommissionID() {
+		return cCommissionID;
 	}
 
-	public void setCCommissionId(Integer cCommissionId) {
-		this.cCommissionId = cCommissionId;
+	public void setCCommissionID(Integer cCommissionID) {
+		this.cCommissionID = cCommissionID;
 	}
 
 	@Basic
 	@Column(name="C_CURRENCY_ID", columnDefinition="INT", nullable=false)
-	public Integer getCCurrencyId() {
-		return cCurrencyId;
+	public Integer getCCurrencyID() {
+		return cCurrencyID;
 	}
 
-	public void setCCurrencyId(Integer cCurrencyId) {
-		this.cCurrencyId = cCurrencyId;
+	public void setCCurrencyID(Integer cCurrencyID) {
+		this.cCurrencyID = cCurrencyID;
+	}
+
+	@Basic
+	public Boolean isCreateFrom() {
+		return createFrom;
+	}
+
+	public void setCreateFrom(Boolean createFrom) {
+		this.createFrom = createFrom;
 	}
 
 	@Basic
@@ -111,30 +130,21 @@ public class CCommission extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	public Boolean isCreatefrom() {
-		return createfrom;
-	}
-
-	public void setCreatefrom(Boolean createfrom) {
-		this.createfrom = createfrom;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
-	public String getDatelastrun() {
-		return datelastrun;
+	public String getDateLastRun() {
+		return dateLastRun;
 	}
 
-	public void setDatelastrun(String datelastrun) {
-		this.datelastrun = datelastrun;
+	public void setDateLastRun(String dateLastRun) {
+		this.dateLastRun = dateLastRun;
 	}
 
 	@Basic
@@ -148,42 +158,32 @@ public class CCommission extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getDocbasistype() {
-		return docbasistype;
+	public String getDocBasisType() {
+		return docBasisType;
 	}
 
-	public void setDocbasistype(String docbasistype) {
-		this.docbasistype = docbasistype;
+	public void setDocBasisType(String docBasisType) {
+		this.docBasisType = docBasisType;
 	}
 
 	@Basic
 	@Column(nullable=false, length=1)
-	public String getFrequencytype() {
-		return frequencytype;
+	public String getFrequencyType() {
+		return frequencyType;
 	}
 
-	public void setFrequencytype(String frequencytype) {
-		this.frequencytype = frequencytype;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setFrequencyType(String frequencyType) {
+		this.frequencyType = frequencyType;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isListdetails() {
-		return listdetails;
+	public Boolean isListDetails() {
+		return listDetails;
 	}
 
-	public void setListdetails(Boolean listdetails) {
-		this.listdetails = listdetails;
+	public void setListDetails(Boolean listDetails) {
+		this.listDetails = listDetails;
 	}
 
 	@Basic
@@ -217,11 +217,11 @@ public class CCommission extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

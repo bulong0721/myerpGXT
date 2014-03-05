@@ -10,89 +10,99 @@ import javax.persistence.*;
 @Table(name="b_offer")
 public class BOffer extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer adUserId;
-	private Integer bOfferId;
-	private Integer bSellerfundsId;
-	private Integer bTopicId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Integer aDUserID;
+	private Boolean active;
+	private Integer bOfferID;
+	private Integer bSellerFundsID;
+	private Integer bTopicID;
 	private String created;
-	private Integer createdby;
-	private Boolean isactive;
-	private Boolean iswillingtocommit;
+	private Integer createdBy;
 	private String name;
-	private String privatenote;
-	private String textmsg;
+	private String privateNote;
+	private String textMsg;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
+	private Boolean willingToCommit;
 
 	public BOffer() {
 	}
 
-	public BOffer(Integer bOfferId) {
-		this.bOfferId = bOfferId;
+	public BOffer(Integer bOfferID) {
+		this.bOfferID = bOfferID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
 	}
 
 	@Basic
 	@Column(name="AD_USER_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdUserId() {
-		return adUserId;
+	public Integer getADUserID() {
+		return aDUserID;
 	}
 
-	public void setAdUserId(Integer adUserId) {
-		this.adUserId = adUserId;
+	public void setADUserID(Integer aDUserID) {
+		this.aDUserID = aDUserID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="B_OFFER_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_857", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "B_Offer", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_857")
-	public Integer getBOfferId() {
-		return bOfferId;
+	public Integer getBOfferID() {
+		return bOfferID;
 	}
 
-	public void setBOfferId(Integer bOfferId) {
-		this.bOfferId = bOfferId;
+	public void setBOfferID(Integer bOfferID) {
+		this.bOfferID = bOfferID;
 	}
 
 	@Basic
 	@Column(name="B_SELLERFUNDS_ID", columnDefinition="INT", nullable=false)
-	public Integer getBSellerfundsId() {
-		return bSellerfundsId;
+	public Integer getBSellerFundsID() {
+		return bSellerFundsID;
 	}
 
-	public void setBSellerfundsId(Integer bSellerfundsId) {
-		this.bSellerfundsId = bSellerfundsId;
+	public void setBSellerFundsID(Integer bSellerFundsID) {
+		this.bSellerFundsID = bSellerFundsID;
 	}
 
 	@Basic
 	@Column(name="B_TOPIC_ID", columnDefinition="INT", nullable=false)
-	public Integer getBTopicId() {
-		return bTopicId;
+	public Integer getBTopicID() {
+		return bTopicID;
 	}
 
-	public void setBTopicId(Integer bTopicId) {
-		this.bTopicId = bTopicId;
+	public void setBTopicID(Integer bTopicID) {
+		this.bTopicID = bTopicID;
 	}
 
 	@Basic
@@ -107,32 +117,12 @@ public class BOffer extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIswillingtocommit() {
-		return iswillingtocommit;
-	}
-
-	public void setIswillingtocommit(Boolean iswillingtocommit) {
-		this.iswillingtocommit = iswillingtocommit;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -147,22 +137,22 @@ public class BOffer extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(length=2000)
-	public String getPrivatenote() {
-		return privatenote;
+	public String getPrivateNote() {
+		return privateNote;
 	}
 
-	public void setPrivatenote(String privatenote) {
-		this.privatenote = privatenote;
+	public void setPrivateNote(String privateNote) {
+		this.privateNote = privateNote;
 	}
 
 	@Basic
 	@Column(length=2000)
-	public String getTextmsg() {
-		return textmsg;
+	public String getTextMsg() {
+		return textMsg;
 	}
 
-	public void setTextmsg(String textmsg) {
-		this.textmsg = textmsg;
+	public void setTextMsg(String textMsg) {
+		this.textMsg = textMsg;
 	}
 
 	@Basic
@@ -177,11 +167,21 @@ public class BOffer extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	@Basic
+	@Column(name="ISWILLINGTOCOMMIT", nullable=false)
+	public Boolean isWillingToCommit() {
+		return willingToCommit;
+	}
+
+	public void setWillingToCommit(Boolean willingToCommit) {
+		this.willingToCommit = willingToCommit;
 	}
 }

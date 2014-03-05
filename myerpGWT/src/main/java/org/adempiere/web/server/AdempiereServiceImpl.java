@@ -20,12 +20,11 @@ import org.adempiere.common.DisplayType;
 import org.adempiere.common.LookupValue;
 import org.adempiere.common.ProcessResult;
 import org.adempiere.common.RefCriteria;
+import org.adempiere.model.ADForm;
+import org.adempiere.model.ADMenu;
+import org.adempiere.model.ADProcess;
 import org.adempiere.model.AdFieldV;
-import org.adempiere.model.AdForm;
-import org.adempiere.model.AdMenu;
-import org.adempiere.model.AdProcess;
 import org.adempiere.model.AdTabV;
-import org.adempiere.model.AdTreenode;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.process.ProcessContext;
 import org.adempiere.util.DTOUtil;
@@ -40,7 +39,7 @@ import org.adempiere.web.client.model.ADResultPair;
 import org.adempiere.web.client.model.ADResultWithError;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.model.ADTabModel;
-import org.adempiere.web.client.model.ADTreeNode;
+import org.adempiere.web.client.model.IsTreeNode;
 import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.util.StringUtil;
@@ -54,11 +53,11 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	private PersistContext	pCtx	= new PersistContext();
 
 	@Override
-	public List<ADTreeNode> getAdMenuModels() {
+	public List<IsTreeNode> getAdMenuModels() {
 		try {
-			List<AdMenu> menuList = POUtil.queryMainMenuNodes(pCtx);
-			List<ADTreeNode> resultList = new ArrayList<ADTreeNode>(menuList.size());
-			for (AdMenu nodeMM : menuList) {
+			List<ADMenu> menuList = POUtil.queryMainMenuNodes(pCtx);
+			List<IsTreeNode> resultList = new ArrayList<IsTreeNode>(menuList.size());
+			for (ADMenu nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
 			return resultList;
@@ -67,11 +66,11 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		}
 	}
 
-	public List<ADTreeNode> getRootNodes(int adTreeId) {
+	public List<IsTreeNode> getRootNodes(int adTreeId) {
 		try {
-			List<AdMenu> menuList = POUtil.queryMainMenuNodes(pCtx);
-			List<ADTreeNode> resultList = new ArrayList<ADTreeNode>(menuList.size());
-			for (AdMenu nodeMM : menuList) {
+			List<ADMenu> menuList = POUtil.queryMainMenuNodes(pCtx);
+			List<IsTreeNode> resultList = new ArrayList<IsTreeNode>(menuList.size());
+			for (ADMenu nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
 			return resultList;
@@ -124,7 +123,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 
 	@Override
 	public ADJSONData getWindowTabData(ADLoadConfig loadCfg) {
-		String entityClass = getEntityClassName(loadCfg.getTableName());
+		String entityClass = getEntityClassNameByTable(loadCfg.getTableName());
 		System.out.println("fetchByClass1:" + entityClass);
 		StringBuffer buffer = new StringBuffer();
 		toString(loadCfg.getExpr(), buffer, 0);
@@ -271,17 +270,25 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	public static Class<?> getEntityClass(String tableName) throws ClassNotFoundException {
-		return toClass(getEntityClassName(tableName));
+		return toClass(getEntityClassNameByTable(tableName));
 	}
 
-	public static String getEntityClassName(String tableName) {
+	public static String getEntityClassNameByTable(String tableName) {
 		StringBuffer buffer = new StringBuffer("org.adempiere.model.");
-		buffer.append(StringUtil.convertToPascal(tableName));
+		String className = tableName.replace("_", "");
+		buffer.append(className);
+		return buffer.toString();
+	}
+
+	public static String getEntityClassNameByProperty(String propertyName) {
+		StringBuffer buffer = new StringBuffer("org.adempiere.model.");
+		buffer.append(propertyName.substring(0, 1).toUpperCase());
+		buffer.append(propertyName, 1, propertyName.length() - 2);
 		return buffer.toString();
 	}
 
 	@Override
-	public List<LookupValue> getOptions(String columnName, int type, Integer adRefId) {
+	public List<LookupValue> getOptions(String propertyName, int type, Integer adRefId) {
 		if (type == DisplayType.List.getValue()) {
 			return getOptionsFromList(adRefId);
 		}
@@ -289,20 +296,18 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 			return getOptionsFromTable(adRefId);
 		}
 		if (type == DisplayType.TableDir.getValue()) {
-			return getOptionsFromTableDir(columnName);
+			return getOptionsFromTableDir(propertyName);
 		}
 		return Collections.emptyList();
 	}
 
 	public List<LookupValue> getOptionsFromTable(long adRefId) {
 		try {
+			RefCriteria criteria = POUtil.queryRefTable(pCtx, adRefId);
 			EntityManager em = pCtx.begin();
-			TypedQuery<RefCriteria> qurey = em.createNamedQuery("queryRefTable", RefCriteria.class);
-			qurey.setParameter("adReferenceId", adRefId);
-			RefCriteria criteria = qurey.getSingleResult();
-			String tableName = getEntityClassName(criteria.getAdTable());
-			String keyColumn = StringUtil.convertToCamel(criteria.getKeyColumn());
-			String disColumn = StringUtil.convertToCamel(criteria.getDisplayColumn());
+			String tableName = getEntityClassNameByTable(criteria.getAdTable());
+			String keyColumn = criteria.getKeyColumn();
+			String disColumn = criteria.getDisplayColumn();
 			CriteriaBuilder cb = em.getCriteriaBuilder();
 			CriteriaQuery<LookupValue> cq = cb.createQuery(LookupValue.class);
 			Class<?> entityClazz = toClass(tableName);
@@ -319,18 +324,17 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		}
 	}
 
-	public List<LookupValue> getOptionsFromTableDir(String columnName) {
-		if (StringUtil.isNullOrEmpty(columnName) || !columnName.endsWith("_ID")) {
+	public List<LookupValue> getOptionsFromTableDir(String propertyName) {
+		if (StringUtil.isNullOrEmpty(propertyName) || !propertyName.endsWith("ID")) {
 			return Collections.emptyList();
 		}
 		try {
-			String tableName = StringUtil.trimEnd(columnName, "_ID");
 			EntityManager em = pCtx.begin();
 			CriteriaBuilder cb = em.getCriteriaBuilder();
-			Class<?> entityClazz = toClass(getEntityClassName(tableName));
+			Class<?> entityClazz = toClass(getEntityClassNameByProperty(propertyName));
 			CriteriaQuery cq = cb.createQuery(entityClazz);
 			Root<?> root = cq.from(entityClazz);
-			String keyColumn = StringUtil.toCamelStyle(columnName);
+			String keyColumn = propertyName;
 			cq.select(cb.construct(LookupValue.class, root.get("name"), root.get(keyColumn)));
 			TypedQuery tq = em.createQuery(cq);
 			List<LookupValue> resultList = wrapper(tq.getResultList());
@@ -366,7 +370,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	public ADProcessModel getADProcessModel(Integer processId) {
 		ADProcessModel processModel = null;
 		try {
-			AdProcess process = POUtil.queryProcessWithParamsByProcessId(pCtx, processId);
+			ADProcess process = POUtil.queryProcessWithParamsByProcessId(pCtx, processId);
 			processModel = DTOUtil.toProcessModel(process);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -400,7 +404,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	public ADFormModel getADFormModel(Integer formId) {
 		ADFormModel formModel = null;
 		try {
-			AdForm form = POUtil.queryFormByFormId(pCtx, formId);
+			ADForm form = POUtil.queryFormByFormId(pCtx, formId);
 			formModel = DTOUtil.toFormModel(form);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -445,20 +449,24 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		// "{\"adProcessId\":173,\"classname\":\"org.adempiere.process.TableCreateColumns\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
 		// String rowJson =
 		// "{\"accesslevel\":\"6\",\"adClientId\":0,\"adOrgId\":0,\"adTableId\":906,\"adWindowId\":113,\"entitytype\":\"D\",\"isactive\":true,\"iscentrallymaintained\":true,\"ischangelog\":false,\"isdeleteable\":true,\"ishighvolume\":false,\"issecurityenabled\":false,\"isview\":false,\"loadseq\":125,\"name\":\"Workflow\",\"replicationtype\":\"L\",\"tablename\":\"AD_Workflow\"}";
-//		String json = "{\"adWindowId\":53110,\"classname\":\"org.adempiere.process.WindowCopy\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
-//		String rowJson = "{\"adWindowId\":53110}";
-//
-//		ADProcessModel pModel = JSON.parseObject(json, ADProcessModel.class);
-//		ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson, "{\"adWindowId\":103}");
-//		ProcessResult pInfo = new ProcessResult();
-//		try {
-//			ProcessUtil.process(ctx, pInfo);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		// String json =
+		// "{\"adWindowId\":53110,\"classname\":\"org.adempiere.process.WindowCopy\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
+		// String rowJson = "{\"adWindowId\":53110}";
+		//
+		// ADProcessModel pModel = JSON.parseObject(json, ADProcessModel.class);
+		// ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson,
+		// "{\"adWindowId\":103}");
+		// ProcessResult pInfo = new ProcessResult();
+		// try {
+		// ProcessUtil.process(ctx, pInfo);
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
 		AdempiereServiceImpl service = new AdempiereServiceImpl();
-		List<ADTreeNode> nodes = service.getTreeNodes(10, null);
-		System.out.println(nodes.size());
+		// List<IsTreeNode> nodes = service.getTreeNodes(10, null);
+		// System.out.println(nodes.size());
+		List<LookupValue> list = service.getOptionsFromTableDir("aDClientID");
+		System.out.println(list.size());
 	}
 
 	@Override
@@ -481,9 +489,9 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public List<ADTreeNode> getTreeNodes(int adTreeId, ADTreeNode loadCfg) {
+	public List<IsTreeNode> getTreeNodes(int adTreeId, IsTreeNode loadCfg) {
 		ADTreeBuilder treeBuilder = ADTreeBuilder.createTreeBuilder(adTreeId);
-		List<AdTreenode> entityList;
+		List<IsTreeNode> entityList;
 		if (null == loadCfg) {
 			entityList = treeBuilder.getRootNodes(pCtx, 100);
 		} else {

@@ -3,90 +3,58 @@ package org.adempiere.web.client.model;
 import org.adempiere.common.DisplayType;
 
 public class ADFieldModel implements IsADRPCModel, ADFormField {
-	private Integer	adProcessId;
-	private Integer	adReferenceId;
-	private Integer	adReferenceValueId;
+	private Integer	ADProcessID;
+	private Integer	ADReferenceID;
+	private Integer	ADReferenceValueID;
 	private String	callout;
-	private String	columnname;
-	private String	defaultvalue;
-	private String	fieldgroup;
-	private String	fieldgrouptype;
-	private Integer	fieldlength;
-	private Boolean	isdisplayed;
-	private Boolean	isencryptedcolumn;
-	private Boolean	isencryptedfield;
-	private Boolean	isfieldonly;
-	private Boolean	iskey;
-	private Boolean	ismandatory;
-	private Boolean	isparent;
-	private Boolean	isreadonly;
-	private Boolean	issameline;
-	private Boolean	isselectioncolumn;
+	private String	columnName;
+	private String	defaultValue;
+	private String	fieldGroup;
+	private String	fieldGroupType;
+	private Integer	fieldLength;
+	private Boolean	displayed;
+	private Boolean	encryptedColumn;
+	private Boolean	encryptedField;
+	private Boolean	fieldonly;
+	private Boolean	key;
+	private Boolean	mandatory;
+	private Boolean	parent;
+	private Boolean	readonly;
+	private Boolean	sameline;
+	private Boolean	selectionColumn;
 	private String	name;
-	private String	readonlylogic;
-	private Integer	seqno;
-	private Integer	sortno;
-	private String	tablename;
-	private String	validationcode;
-	private String	valuemax;
-	private String	valuemin;
-	private String	vformat;
-	private Integer	adFieldId;
+	private String	readonlyLogic;
+	private Integer	seqNo;
+	private Integer	sortNo;
+	private String	tableName;
+	private String	validationCode;
+	private String	valueMax;
+	private String	valueMin;
+	private String	vFormat;
+	private Integer	ADFieldID;
 
-	public Integer getAdFieldId() {
-		return adFieldId;
+	public Integer getADProcessID() {
+		return ADProcessID;
 	}
 
-	public void setAdFieldId(Integer adFieldId) {
-		this.adFieldId = adFieldId;
+	public void setADProcessID(Integer aDProcessID) {
+		ADProcessID = aDProcessID;
 	}
 
-	public DisplayType getFieldType() {
-		return DisplayType.fromInteger(adReferenceId);
+	public Integer getADReferenceID() {
+		return ADReferenceID;
 	}
 
-	public Integer getAdProcessId() {
-		return adProcessId;
+	public void setADReferenceID(Integer aDReferenceID) {
+		ADReferenceID = aDReferenceID;
 	}
 
-	public void setAdProcessId(Integer adProcessId) {
-		this.adProcessId = adProcessId;
+	public Integer getADReferenceValueID() {
+		return ADReferenceValueID;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getAdReferenceId()
-	 */
-	@Override
-	public Integer getAdReferenceId() {
-		return adReferenceId;
-	}
-
-	public void setAdReferenceId(Integer adReferenceId) {
-		this.adReferenceId = adReferenceId;
-	}
-
-	public Boolean getIsselectioncolumn() {
-		return isselectioncolumn;
-	}
-
-	public void setIsselectioncolumn(Boolean isselectioncolumn) {
-		this.isselectioncolumn = isselectioncolumn;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getAdReferenceValueId()
-	 */
-	@Override
-	public Integer getAdReferenceValueId() {
-		return adReferenceValueId;
-	}
-
-	public void setAdReferenceValueId(Integer adReferenceValueId) {
-		this.adReferenceValueId = adReferenceValueId;
+	public void setADReferenceValueID(Integer aDReferenceValueID) {
+		ADReferenceValueID = aDReferenceValueID;
 	}
 
 	public String getCallout() {
@@ -97,149 +65,126 @@ public class ADFieldModel implements IsADRPCModel, ADFormField {
 		this.callout = callout;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getColumnname()
-	 */
-	@Override
-	public String getColumnname() {
-		return columnname;
+	public String getPropertyName() {
+		return columnName;
 	}
 
-	public void setColumnname(String columnname) {
-		this.columnname = columnname;
+	public void setPropertyName(String columnName) {
+		this.columnName = columnName;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getDefaultvalue()
-	 */
-	@Override
-	public String getDefaultvalue() {
-		return defaultvalue;
+	public String getDefaultValue() {
+		return defaultValue;
 	}
 
-	public void setDefaultvalue(String defaultvalue) {
-		this.defaultvalue = defaultvalue;
+	public void setDefaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getFieldgroup()
-	 */
-	@Override
-	public String getFieldgroup() {
-		return fieldgroup;
+	public String getFieldGroup() {
+		return fieldGroup;
 	}
 
-	public void setFieldgroup(String fieldgroup) {
-		this.fieldgroup = fieldgroup;
+	public void setFieldGroup(String fieldGroup) {
+		this.fieldGroup = fieldGroup;
 	}
 
-	public String getFieldgrouptype() {
-		return fieldgrouptype;
+	public String getFieldGroupType() {
+		return fieldGroupType;
 	}
 
-	public void setFieldgrouptype(String fieldgrouptype) {
-		this.fieldgrouptype = fieldgrouptype;
+	public void setFieldGroupType(String fieldGroupType) {
+		this.fieldGroupType = fieldGroupType;
 	}
 
-	public Integer getFieldlength() {
-		return fieldlength;
+	public Integer getFieldLength() {
+		return fieldLength;
 	}
 
-	public void setFieldlength(Integer fieldlength) {
-		this.fieldlength = fieldlength;
+	public void setFieldLength(Integer fieldLength) {
+		this.fieldLength = fieldLength;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getIsdisplayed()
-	 */
-	@Override
-	public Boolean getIsdisplayed() {
-		return isdisplayed;
+	public Boolean isDisplayed() {
+		return displayed;
 	}
 
-	public void setIsdisplayed(Boolean isdisplayed) {
-		this.isdisplayed = isdisplayed;
+	public void setDisplayed(Boolean displayed) {
+		this.displayed = displayed;
 	}
 
-	public Boolean getIsencryptedcolumn() {
-		return isencryptedcolumn;
+	public Boolean isEncryptedColumn() {
+		return encryptedColumn;
 	}
 
-	public void setIsencryptedcolumn(Boolean isencryptedcolumn) {
-		this.isencryptedcolumn = isencryptedcolumn;
+	public void setEncryptedColumn(Boolean encryptedColumn) {
+		this.encryptedColumn = encryptedColumn;
 	}
 
-	public Boolean getIsencryptedfield() {
-		return isencryptedfield;
+	public Boolean isEncryptedField() {
+		return encryptedField;
 	}
 
-	public void setIsencryptedfield(Boolean isencryptedfield) {
-		this.isencryptedfield = isencryptedfield;
+	public void setEncryptedField(Boolean encryptedField) {
+		this.encryptedField = encryptedField;
 	}
 
-	public Boolean getIsfieldonly() {
-		return isfieldonly;
+	public Boolean isFieldonly() {
+		return fieldonly;
 	}
 
-	public void setIsfieldonly(Boolean isfieldonly) {
-		this.isfieldonly = isfieldonly;
+	public void setFieldonly(Boolean fieldonly) {
+		this.fieldonly = fieldonly;
 	}
 
-	public Boolean getIskey() {
-		return iskey;
+	public Boolean isKey() {
+		return key;
 	}
 
-	public void setIskey(Boolean iskey) {
-		this.iskey = iskey;
+	public void setKey(Boolean key) {
+		this.key = key;
 	}
 
-	public Boolean getIsmandatory() {
-		return ismandatory;
+	public Boolean isMandatory() {
+		return mandatory;
 	}
 
-	public void setIsmandatory(Boolean ismandatory) {
-		this.ismandatory = ismandatory;
+	public void setMandatory(Boolean mandatory) {
+		this.mandatory = mandatory;
 	}
 
-	public Boolean getIsparent() {
-		return isparent;
+	public Boolean isParent() {
+		return parent;
 	}
 
-	public void setIsparent(Boolean isparent) {
-		this.isparent = isparent;
+	public void setParent(Boolean parent) {
+		this.parent = parent;
 	}
 
-	public Boolean getIsreadonly() {
-		return isreadonly;
+	public Boolean isReadonly() {
+		return readonly;
 	}
 
-	public void setIsreadonly(Boolean isreadonly) {
-		this.isreadonly = isreadonly;
+	public void setReadonly(Boolean readonly) {
+		this.readonly = readonly;
 	}
 
-	@Override
-	public Boolean getIssameline() {
-		return issameline;
+	public Boolean isSameline() {
+		return sameline;
 	}
 
-	public void setIssameline(Boolean issameline) {
-		this.issameline = issameline;
+	public void setSameline(Boolean sameline) {
+		this.sameline = sameline;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getName()
-	 */
-	@Override
+	public Boolean isSelectionColumn() {
+		return selectionColumn;
+	}
+
+	public void setSelectionColumn(Boolean selectionColumn) {
+		this.selectionColumn = selectionColumn;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -248,98 +193,80 @@ public class ADFieldModel implements IsADRPCModel, ADFormField {
 		this.name = name;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getReadonlylogic()
-	 */
-	@Override
-	public String getReadonlylogic() {
-		return readonlylogic;
+	public String getReadonlyLogic() {
+		return readonlyLogic;
 	}
 
-	public void setReadonlylogic(String readonlylogic) {
-		this.readonlylogic = readonlylogic;
+	public void setReadonlyLogic(String readonlyLogic) {
+		this.readonlyLogic = readonlyLogic;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getSeqno()
-	 */
-	@Override
-	public Integer getSeqno() {
-		return seqno;
+	public Integer getSeqNo() {
+		return seqNo;
 	}
 
-	public void setSeqno(Integer seqno) {
-		this.seqno = seqno;
+	public void setSeqNo(Integer seqNo) {
+		this.seqNo = seqNo;
 	}
 
-	public Integer getSortno() {
-		return sortno;
+	public Integer getSortNo() {
+		return sortNo;
 	}
 
-	public void setSortno(Integer sortno) {
-		this.sortno = sortno;
+	public void setSortNo(Integer sortNo) {
+		this.sortNo = sortNo;
 	}
 
-	public String getTablename() {
-		return tablename;
+	public String getTableName() {
+		return tableName;
 	}
 
-	public void setTablename(String tablename) {
-		this.tablename = tablename;
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
 	}
 
-	public String getValidationcode() {
-		return validationcode;
+	public String getValidationCode() {
+		return validationCode;
 	}
 
-	public void setValidationcode(String validationcode) {
-		this.validationcode = validationcode;
+	public void setValidationCode(String validationCode) {
+		this.validationCode = validationCode;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getValuemax()
-	 */
-	@Override
-	public String getValuemax() {
-		return valuemax;
+	public String getValueMax() {
+		return valueMax;
 	}
 
-	public void setValuemax(String valuemax) {
-		this.valuemax = valuemax;
+	public void setValueMax(String valueMax) {
+		this.valueMax = valueMax;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getValuemin()
-	 */
-	@Override
-	public String getValuemin() {
-		return valuemin;
+	public String getValueMin() {
+		return valueMin;
 	}
 
-	public void setValuemin(String valuemin) {
-		this.valuemin = valuemin;
+	public void setValueMin(String valueMin) {
+		this.valueMin = valueMin;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.adempiere.web.client.model.IAdParameter#getVformat()
-	 */
-	@Override
-	public String getVformat() {
-		return vformat;
+	public String getVFormat() {
+		return vFormat;
 	}
 
-	public void setVformat(String vformat) {
-		this.vformat = vformat;
+	public void setVFormat(String vFormat) {
+		this.vFormat = vFormat;
+	}
+
+	public Integer getADFieldID() {
+		return ADFieldID;
+	}
+	
+	public DisplayType getFieldType() {
+		return DisplayType.fromInteger(ADReferenceID);
+	}
+
+	public void setADFieldID(Integer aDFieldID) {
+		ADFieldID = aDFieldID;
 	}
 
 }

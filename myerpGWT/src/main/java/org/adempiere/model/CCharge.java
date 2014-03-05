@@ -11,101 +11,111 @@ import javax.persistence.*;
 @Table(name="c_charge")
 public class CCharge extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cBpartnerId;
-	private Integer cChargeId;
-	private Integer cChargetypeId;
-	private Integer cTaxcategoryId;
-	private BigDecimal chargeamt;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cBPartnerID;
+	private Integer cChargeID;
+	private Integer cChargeTypeID;
+	private Integer cTaxCategoryID;
+	private BigDecimal chargeAmt;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
 	private String description;
-	private Boolean isactive;
-	private Boolean issamecurrency;
-	private Boolean issametax;
-	private Boolean istaxincluded;
 	private String name;
+	private Boolean sameCurrency;
+	private Boolean sameTax;
+	private Boolean taxIncluded;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CCharge() {
 	}
 
-	public CCharge(Integer cChargeId) {
-		this.cChargeId = cChargeId;
+	public CCharge(Integer cChargeID) {
+		this.cChargeID = cChargeID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Basic
 	@Column(name="C_BPARTNER_ID", columnDefinition="INT")
-	public Integer getCBpartnerId() {
-		return cBpartnerId;
+	public Integer getCBPartnerID() {
+		return cBPartnerID;
 	}
 
-	public void setCBpartnerId(Integer cBpartnerId) {
-		this.cBpartnerId = cBpartnerId;
+	public void setCBPartnerID(Integer cBPartnerID) {
+		this.cBPartnerID = cBPartnerID;
 	}
 
 	@Id
 	@Column(name="C_CHARGE_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_229", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Charge", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_229")
-	public Integer getCChargeId() {
-		return cChargeId;
+	public Integer getCChargeID() {
+		return cChargeID;
 	}
 
-	public void setCChargeId(Integer cChargeId) {
-		this.cChargeId = cChargeId;
+	public void setCChargeID(Integer cChargeID) {
+		this.cChargeID = cChargeID;
 	}
 
 	@Basic
 	@Column(name="C_CHARGETYPE_ID", columnDefinition="INT")
-	public Integer getCChargetypeId() {
-		return cChargetypeId;
+	public Integer getCChargeTypeID() {
+		return cChargeTypeID;
 	}
 
-	public void setCChargetypeId(Integer cChargetypeId) {
-		this.cChargetypeId = cChargetypeId;
+	public void setCChargeTypeID(Integer cChargeTypeID) {
+		this.cChargeTypeID = cChargeTypeID;
 	}
 
 	@Basic
 	@Column(name="C_TAXCATEGORY_ID", columnDefinition="INT")
-	public Integer getCTaxcategoryId() {
-		return cTaxcategoryId;
+	public Integer getCTaxCategoryID() {
+		return cTaxCategoryID;
 	}
 
-	public void setCTaxcategoryId(Integer cTaxcategoryId) {
-		this.cTaxcategoryId = cTaxcategoryId;
+	public void setCTaxCategoryID(Integer cTaxCategoryID) {
+		this.cTaxCategoryID = cTaxCategoryID;
 	}
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getChargeamt() {
-		return chargeamt;
+	public BigDecimal getChargeAmt() {
+		return chargeAmt;
 	}
 
-	public void setChargeamt(BigDecimal chargeamt) {
-		this.chargeamt = chargeamt;
+	public void setChargeAmt(BigDecimal chargeAmt) {
+		this.chargeAmt = chargeAmt;
 	}
 
 	@Basic
@@ -120,12 +130,12 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Basic
@@ -138,46 +148,6 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
-	}
-
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIssamecurrency() {
-		return issamecurrency;
-	}
-
-	public void setIssamecurrency(Boolean issamecurrency) {
-		this.issamecurrency = issamecurrency;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIssametax() {
-		return issametax;
-	}
-
-	public void setIssametax(Boolean issametax) {
-		this.issametax = issametax;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIstaxincluded() {
-		return istaxincluded;
-	}
-
-	public void setIstaxincluded(Boolean istaxincluded) {
-		this.istaxincluded = istaxincluded;
-	}
-
-	@Basic
 	@Column(nullable=false, length=60)
 	public String getName() {
 		return name;
@@ -185,6 +155,36 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Basic
+	@Column(name="ISSAMECURRENCY", nullable=false)
+	public Boolean isSameCurrency() {
+		return sameCurrency;
+	}
+
+	public void setSameCurrency(Boolean sameCurrency) {
+		this.sameCurrency = sameCurrency;
+	}
+
+	@Basic
+	@Column(name="ISSAMETAX", nullable=false)
+	public Boolean isSameTax() {
+		return sameTax;
+	}
+
+	public void setSameTax(Boolean sameTax) {
+		this.sameTax = sameTax;
+	}
+
+	@Basic
+	@Column(name="ISTAXINCLUDED", nullable=false)
+	public Boolean isTaxIncluded() {
+		return taxIncluded;
+	}
+
+	public void setTaxIncluded(Boolean taxIncluded) {
+		this.taxIncluded = taxIncluded;
 	}
 
 	@Basic
@@ -199,11 +199,11 @@ public class CCharge extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }

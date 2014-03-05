@@ -10,56 +10,66 @@ import javax.persistence.*;
 @Table(name="c_greeting")
 public class CGreeting extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer adClientId;
-	private Integer adOrgId;
-	private Integer cGreetingId;
+	private Integer aDClientID;
+	private Integer aDOrgID;
+	private Boolean active;
+	private Integer cGreetingID;
 	private String created;
-	private Integer createdby;
+	private Integer createdBy;
+	private Boolean firstNameOnly;
 	private String greeting;
-	private Boolean isactive;
-	private Boolean isdefault;
-	private Boolean isfirstnameonly;
+	private Boolean isDefault;
 	private String name;
 	private String updated;
-	private Integer updatedby;
+	private Integer updatedBy;
 
 	public CGreeting() {
 	}
 
-	public CGreeting(Integer cGreetingId) {
-		this.cGreetingId = cGreetingId;
+	public CGreeting(Integer cGreetingID) {
+		this.cGreetingID = cGreetingID;
 	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdClientId() {
-		return adClientId;
+	public Integer getADClientID() {
+		return aDClientID;
 	}
 
-	public void setAdClientId(Integer adClientId) {
-		this.adClientId = adClientId;
+	public void setADClientID(Integer aDClientID) {
+		this.aDClientID = aDClientID;
 	}
 
 	@Basic
 	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getAdOrgId() {
-		return adOrgId;
+	public Integer getADOrgID() {
+		return aDOrgID;
 	}
 
-	public void setAdOrgId(Integer adOrgId) {
-		this.adOrgId = adOrgId;
+	public void setADOrgID(Integer aDOrgID) {
+		this.aDOrgID = aDOrgID;
+	}
+
+	@Basic
+	@Column(name="ISACTIVE", nullable=false)
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Id
 	@Column(name="C_GREETING_ID", columnDefinition="INT")
 	@TableGenerator(name = "PkGen_283", table = "ad_sequence", pkColumnName = "name", pkColumnValue = "C_Greeting", valueColumnName = "currentnextsys", allocationSize = 1 )
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PkGen_283")
-	public Integer getCGreetingId() {
-		return cGreetingId;
+	public Integer getCGreetingID() {
+		return cGreetingID;
 	}
 
-	public void setCGreetingId(Integer cGreetingId) {
-		this.cGreetingId = cGreetingId;
+	public void setCGreetingID(Integer cGreetingID) {
+		this.cGreetingID = cGreetingID;
 	}
 
 	@Basic
@@ -74,12 +84,22 @@ public class CGreeting extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedby() {
-		return createdby;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Integer createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	@Basic
+	@Column(name="ISFIRSTNAMEONLY", nullable=false)
+	public Boolean isFirstNameOnly() {
+		return firstNameOnly;
+	}
+
+	public void setFirstNameOnly(Boolean firstNameOnly) {
+		this.firstNameOnly = firstNameOnly;
 	}
 
 	@Basic
@@ -94,32 +114,12 @@ public class CGreeting extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public Boolean isIsactive() {
-		return isactive;
+	public Boolean isIsDefault() {
+		return isDefault;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsdefault() {
-		return isdefault;
-	}
-
-	public void setIsdefault(Boolean isdefault) {
-		this.isdefault = isdefault;
-	}
-
-	@Basic
-	@Column(nullable=false)
-	public Boolean isIsfirstnameonly() {
-		return isfirstnameonly;
-	}
-
-	public void setIsfirstnameonly(Boolean isfirstnameonly) {
-		this.isfirstnameonly = isfirstnameonly;
+	public void setIsDefault(Boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	@Basic
@@ -144,11 +144,11 @@ public class CGreeting extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedby() {
-		return updatedby;
+	public Integer getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setUpdatedby(Integer updatedby) {
-		this.updatedby = updatedby;
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 }
