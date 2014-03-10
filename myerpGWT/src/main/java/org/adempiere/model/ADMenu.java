@@ -7,7 +7,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ad_menu")
-@DiscriminatorValue("10")
 public class ADMenu extends ADTreeNode {
 	private static final long	serialVersionUID	= 1L;
 	private Integer				aDFormID;
@@ -28,7 +27,7 @@ public class ADMenu extends ADTreeNode {
 
 	public ADMenu() {
 	}
-	
+
 	@Basic
 	@Column(name = "NODE_ID", columnDefinition = "INT", nullable = false)
 	public Integer getADMenuID() {
@@ -36,7 +35,7 @@ public class ADMenu extends ADTreeNode {
 	}
 
 	public void setADMenuID(Integer adMenuId) {
-//		setNodeId(adMenuId);
+		// setNodeId(adMenuId);
 	}
 
 	@Basic

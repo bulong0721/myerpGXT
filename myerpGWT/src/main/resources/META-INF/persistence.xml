@@ -718,6 +718,16 @@
 		<class>org.adempiere.model.AdTabV</class>
 		<class>org.adempiere.model.AdFieldV</class>
 		<class>org.adempiere.model.AdUserRolesV</class>
+		<class>org.adempiere.model.AdFieldVTrl</class>
+		<class>org.adempiere.model.AdTabVTrl</class>
+		<class>org.adempiere.model.AdWindowVTrl</class>
+		<class>org.adempiere.model.ADMenuVTrl</class>
+		<class>org.adempiere.model.ADFormVTrl</class>
+		<class>org.adempiere.model.ADMessageVTrl</class>
+		<class>org.adempiere.model.ADProcessParaVTrl</class>
+		<class>org.adempiere.model.ADProcessVTrl</class>
+		<class>org.adempiere.model.ADTaskVTrl</class>
+		<class>org.adempiere.model.ADWorkflowVTrl</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/adempierenew1" />
 			<property name="javax.persistence.jdbc.user" value="adempiere" />

@@ -13,11 +13,23 @@
 	<named-query name="queryTabvsByWindowId">
 		<query>SELECT t FROM AdTabV t WHERE t.aDWindowID = :adWindowId ORDER BY t.seqNo</query>
 	</named-query>
+	<named-query name="queryFormByLanguage">
+		<query>SELECT f FROM ADFormVTrl f WHERE f.aDLanguageID = :aDLanguageID AND t.aDFormID = :adFormId</query>
+	</named-query>
+	<named-query name="queryTabVTrlsByWindowId">
+		<query>SELECT t FROM AdTabVTrl t WHERE t.aDLanguageID = :aDLanguageID AND t.aDWindowID = :adWindowId ORDER BY t.seqNo</query>
+	</named-query>
 	<named-query name="queryFieldvsByTabId">
 		<query>SELECT f FROM AdFieldV f WHERE f.aDTabID = :adTabId ORDER BY f.seqNo</query>
 	</named-query>
+	<named-query name="queryFieldVTrlsByTabId">
+		<query>SELECT f FROM AdFieldVTrl f WHERE f.aDTabID = :adTabId AND f.aDLanguageID = :aDLanguageID ORDER BY f.seqNo</query>
+	</named-query>
 	<named-query name="queryMainMenuNodes">
 		<query>SELECT m FROM ADMenu m ORDER BY m.parentID, m.seqNo</query>
+	</named-query>
+	<named-query name="queryMainMenuByLanguage">
+		<query>SELECT m FROM ADMenuVTrl m WHERE m.aDLanguageID = :aDLanguageID ORDER BY m.parentID, m.seqNo</query>
 	</named-query>
 	<named-query name="queryRefList">
 		<query>SELECT NEW org.adempiere.common.LookupValue(r.name, r.value) FROM ADRefList r WHERE r.aDReferenceID = :adReferenceId</query>
@@ -28,8 +40,8 @@
 	<named-query name="queryProcessWithParamsByProcessId">
 		<query>SELECT p FROM ADProcess p LEFT JOIN FETCH p.aDProcessParas WHERE p.aDProcessID = :adProcessId</query>
 	</named-query>
-	<named-query name="queryFormByFormId">
-		<query>SELECT f FROM ADForm f WHERE f.aDFormID = :adFormId</query>
+	<named-query name="queryProcessTrlWithParamsByProcessId">
+		<query>SELECT p FROM ADProcessVTrl p LEFT JOIN FETCH p.aDProcessParaTrls WHERE p.aDProcessID = :adProcessId</query>
 	</named-query>
 	<named-query name="queryTableByTableName">
 		<query>SELECT t FROM ADTable t WHERE t.tableName = :tablename</query>

@@ -22,7 +22,7 @@ import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.model.ADModelData;
 import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADResultPair;
-import org.adempiere.web.client.model.ADResultWithError;
+import org.adempiere.web.client.model.ADFeedback;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.util.ClassUtil;
 import org.adempiere.web.client.util.ContextUtil;
@@ -283,9 +283,9 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	public void saveOrUpdateRecord() {
-		AsyncCallback<ADResultWithError> callback = new AsyncSuccessCallback<ADResultWithError>() {
+		AsyncCallback<ADFeedback> callback = new AsyncSuccessCallback<ADFeedback>() {
 			@Override
-			public void onSuccess(ADResultWithError result) {
+			public void onSuccess(ADFeedback result) {
 				if (result.isSuccess()) {
 					store.commitChanges();
 					SimpleTabPanel.this.newRecord = null;
@@ -330,9 +330,9 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 			return;
 		}
 		List<ADModelKey> keys = keyProvider.getKeys(selectedData);
-		adempiereService.deleteData(keys, tabModel.getTablename(), new AsyncSuccessCallback<ADResultWithError>() {
+		adempiereService.deleteData(keys, tabModel.getTablename(), new AsyncSuccessCallback<ADFeedback>() {
 			@Override
-			public void onSuccess(ADResultWithError result) {
+			public void onSuccess(ADFeedback result) {
 				store.remove(selectedData);
 				store.commitChanges();
 				grid.getSelectionModel().select(0, false);

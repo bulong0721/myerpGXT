@@ -16,14 +16,18 @@ import org.adempiere.model.ADAttachment;
 import org.adempiere.model.ADColumn;
 import org.adempiere.model.ADElement;
 import org.adempiere.model.ADField;
-import org.adempiere.model.ADForm;
+import org.adempiere.model.ADFormVTrl;
 import org.adempiere.model.ADMenu;
+import org.adempiere.model.ADMenuVTrl;
 import org.adempiere.model.ADProcess;
+import org.adempiere.model.ADProcessVTrl;
 import org.adempiere.model.ADTab;
 import org.adempiere.model.ADTable;
 import org.adempiere.model.ADTreeNode;
 import org.adempiere.model.AdFieldV;
+import org.adempiere.model.AdFieldVTrl;
 import org.adempiere.model.AdTabV;
+import org.adempiere.model.AdTabVTrl;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.util.StringUtil;
@@ -166,15 +170,14 @@ public final class POUtil {
 			return null;
 		}
 	}
-	
-	
+
 	/**
 	 * @param pCtx
 	 * @param adRefId
 	 * @return
 	 */
 	public static RefCriteria queryRefTable(PersistContext pCtx, long adRefId) {
-		Map<String, Object> paramMap = toMap("adReferenceId", adRefId);		
+		Map<String, Object> paramMap = toMap("adReferenceId", adRefId);
 		return selectOne(pCtx, "queryRefTable", RefCriteria.class, paramMap);
 
 	}
@@ -231,7 +234,7 @@ public final class POUtil {
 		return selectList(pCtx, "querySeqByTabId", ADSequenceModel.class, paramMap);
 	}
 
-	public static boolean updateFieldSequece(PersistContext pCtx, List<ADSequenceModel> seqList) {		
+	public static boolean updateFieldSequece(PersistContext pCtx, List<ADSequenceModel> seqList) {
 		try {
 			List<ADField> fieldList = new ArrayList<ADField>(seqList.size());
 			for (ADSequenceModel seqModel : seqList) {
@@ -311,7 +314,7 @@ public final class POUtil {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * @param pCtx
 	 * @param list
@@ -360,6 +363,12 @@ public final class POUtil {
 		return tabVList;
 	}
 
+	public static List<AdTabVTrl> queryTabVTrlsByWindowId(PersistContext pCtx, Integer windowId, int languageId) {
+		Map<String, Object> paramMap = toMap("adWindowId", windowId);
+		paramMap.put("aDLanguageID", languageId);
+		return selectList(pCtx, "queryTabVTrlsByWindowId", AdTabVTrl.class, paramMap);
+	}
+
 	/**
 	 * @param pCtx
 	 * @param adTabId
@@ -371,6 +380,13 @@ public final class POUtil {
 		return fieldVList;
 	}
 
+	public static List<AdFieldVTrl> queryFieldVTrlsByTabId(PersistContext pCtx, int adTabId, int languageId) {
+		Map<String, Object> paramMap = toMap("adTabId", adTabId);
+		paramMap.put("aDLanguageID", languageId);
+		List<AdFieldVTrl> fieldVList = selectList(pCtx, "queryFieldVTrlsByTabId", AdFieldVTrl.class, paramMap);
+		return fieldVList;
+	}
+
 	/**
 	 * @return
 	 */
@@ -378,7 +394,13 @@ public final class POUtil {
 		List<ADMenu> menuList = selectList(pCtx, "queryMainMenuNodes", ADMenu.class);
 		return menuList;
 	}
-	
+
+	public static List<ADMenuVTrl> queryMainMenuByLanguage(PersistContext pCtx, int languageID) {
+		Map<String, Object> paramMap = toMap("aDLanguageID", languageID);
+		List<ADMenuVTrl> menuList = selectList(pCtx, "queryMainMenuByLanguage", ADMenuVTrl.class, paramMap);
+		return menuList;
+	}
+
 	public static <T extends ADTreeNode> List<T> queryRootNodes(PersistContext pCtx, Class<T> clazz, int adTreeId, int adUserId) {
 		Map<String, Object> paramMap = toMap("adTreeId", adTreeId);
 		paramMap.put("adUserId", adUserId);
@@ -400,19 +422,21 @@ public final class POUtil {
 		return process;
 	}
 
-	/**
-	 * @param formId
-	 * @return
-	 */
-	public static ADForm queryFormByFormId(PersistContext pCtx, Integer formId) {
-		Map<String, Object> paramMap = toMap("adFormId", formId);
-		ADForm form = selectOne(pCtx, "queryFormByFormId", ADForm.class, paramMap);
-		return form;
+	public static ADProcessVTrl queryProcessTrlWithParamsByProcessId(PersistContext pCtx, Integer processId, int languageId) {
+		Map<String, Object> paramMap = toMap("adProcessId", processId);
+		paramMap.put("aDLanguageID", languageId);
+		return selectOne(pCtx, "queryProcessTrlWithParamsByProcessId", ADProcessVTrl.class, paramMap);
 	}
 
 	public static ADAttachment getAttachment(int tableId, long pFormatId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public static ADFormVTrl queryFormByLanguage(PersistContext pCtx, Integer formId, int languageId) {
+		Map<String, Object> paramMap = toMap("adFormId", formId);
+		paramMap.put("aDLanguageID", languageId);
+		return selectOne(pCtx, "queryFormByLanguage", ADFormVTrl.class, paramMap);
 	}
 
 }

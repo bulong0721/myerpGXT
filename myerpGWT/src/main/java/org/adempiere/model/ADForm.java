@@ -8,6 +8,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="ad_form")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class ADForm extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aDClientID;

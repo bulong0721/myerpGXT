@@ -12,7 +12,7 @@ import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
 import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADResultPair;
-import org.adempiere.web.client.model.ADResultWithError;
+import org.adempiere.web.client.model.ADFeedback;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.model.IsTreeNode;
@@ -31,7 +31,7 @@ public interface AdempiereService extends RemoteService {
 	
 	List<ADSequenceModel> getSequences(ADLoadConfig loadCfg);
 	
-	ADResultWithError updateSequences(List<ADSequenceModel> seqList, String tableName);
+	ADFeedback updateSequences(List<ADSequenceModel> seqList, String tableName);
 
 	ADWindowModel getADWindowModel(Integer windowId);
 	
@@ -43,13 +43,13 @@ public interface AdempiereService extends RemoteService {
 
 	ADJSONData getWindowTabData(ADLoadConfig loadCfg);
 
-	ADResultWithError deleteData(List<ADModelKey> keyList, String tableName);
+	ADFeedback deleteData(List<ADModelKey> keyList, String tableName);
 
-	ADResultWithError selectData(List<ADModelKey> keyList, String tableName);
+	ADFeedback selectData(List<ADModelKey> keyList, String tableName);
 
 //	AdResultWithError addNewData(AdTab tabModel);
 	
-	ADResultWithError updateData(String json, String tableName);
+	ADFeedback updateData(String json, String tableName);
 
 	ADUserContext getADUserContext();
 	

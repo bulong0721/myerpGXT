@@ -9,6 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="ad_workflow")
+@Inheritance(strategy=InheritanceType.JOINED)
 public class ADWorkflow extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aDClientID;

@@ -6,11 +6,16 @@ import java.util.List;
 import org.adempiere.model.ADField;
 import org.adempiere.model.ADForm;
 import org.adempiere.model.ADMenu;
+import org.adempiere.model.ADMenuVTrl;
 import org.adempiere.model.ADProcess;
 import org.adempiere.model.ADProcessPara;
+import org.adempiere.model.ADProcessParaVTrl;
+import org.adempiere.model.ADProcessVTrl;
 import org.adempiere.model.ADTab;
 import org.adempiere.model.AdFieldV;
+import org.adempiere.model.AdFieldVTrl;
 import org.adempiere.model.AdTabV;
+import org.adempiere.model.AdTabVTrl;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADMenuModel;
@@ -19,7 +24,41 @@ import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADTabModel;
 
 public final class DTOUtil {
+	
 	public static ADFieldModel toFieldModel(AdFieldV entity) {
+		ADFieldModel model = new ADFieldModel();
+		model.setADFieldID(entity.getADFieldID());
+		model.setADProcessID(entity.getADProcessID());
+		model.setADReferenceID(entity.getADReferenceID());
+		model.setADReferenceValueID(entity.getADReferenceValueID());
+		model.setCallout(entity.getCallout());
+		model.setPropertyName(entity.getPropertyName());
+		model.setDefaultValue(entity.getDefaultValue());
+		model.setFieldGroup(entity.getFieldGroup());
+		model.setFieldGroupType(entity.getFieldGroupType());
+		model.setFieldLength(entity.getFieldLength());
+		model.setDisplayed(entity.isDisplayed());
+		model.setEncryptedColumn(entity.isEncryptedColumn());
+		model.setEncryptedField(entity.isEncryptedField());
+		model.setFieldonly(entity.isFieldOnly());
+		model.setKey(entity.isKey());
+		model.setMandatory(entity.isMandatory());
+		model.setParent(entity.isParent());
+		model.setReadonly(entity.isReadOnly());
+		model.setSelectionColumn(entity.isSelectionColumn());
+		model.setName(entity.getName());
+		model.setReadonlyLogic(entity.getReadOnlyLogic());
+		model.setSeqNo(entity.getSeqNo());
+		model.setSortNo(entity.getSortNo());
+		model.setTableName(entity.getTableName());
+		model.setValidationCode(entity.getValidationCode());
+		model.setValueMax(entity.getValueMax());
+		model.setValueMin(entity.getValueMin());
+		model.setVFormat(entity.getVFormat());
+		return model;
+	}
+	
+	public static ADFieldModel toFieldModel(AdFieldVTrl entity) {
 		ADFieldModel model = new ADFieldModel();
 		model.setADFieldID(entity.getADFieldID());
 		model.setADProcessID(entity.getADProcessID());
@@ -62,8 +101,36 @@ public final class DTOUtil {
 		}
 		return resultList;
 	}
+	
+	public static List<ADFieldModel> toFieldTrlModels(List<AdFieldVTrl> fieldList) {
+		int size = null == fieldList ? 0 : fieldList.size();
+		List<ADFieldModel> resultList = new ArrayList<ADFieldModel>(size);
+		if (null != fieldList) {
+			for (AdFieldVTrl fieldEntity : fieldList) {
+				resultList.add(toFieldModel(fieldEntity));
+			}
+		}
+		return resultList;
+	}
 
 	public static ADMenuModel toMenuModel(ADMenu entity) {
+		ADMenuModel model = new ADMenuModel();
+		model.setIsactive(entity.isActive());
+		model.setAdMenuId(entity.getNodeID());
+		model.setParentId(entity.getParentID());
+		model.setSeqno(entity.getSeqNo());
+		model.setName(entity.getName());
+		model.setAdFormId(entity.getADFormID());
+		model.setAdProcessId(entity.getADProcessID());
+		model.setAdTaskId(entity.getADTaskID());
+		model.setAdWindowId(entity.getADWindowID());
+		model.setAdWorkbenchId(entity.getADWorkbenchID());
+		model.setAdWorkflowId(entity.getADWorkflowID());
+		model.setAction(entity.getAction());
+		return model;
+	}
+	
+	public static ADMenuModel toMenuModel(ADMenuVTrl entity) {
 		ADMenuModel model = new ADMenuModel();
 		model.setIsactive(entity.isActive());
 		model.setAdMenuId(entity.getNodeID());
@@ -115,6 +182,31 @@ public final class DTOUtil {
 		}
 		return model;
 	}
+	
+	public static ADProcessModel toProcessTrlModel(ADProcessVTrl entity) {
+		ADProcessModel model = new ADProcessModel();
+		model.setAdProcessId(entity.getADProcessID());
+		model.setAdFormId(entity.getADFormID());
+		model.setAdPrintformatId(entity.getADPrintFormatID());
+		model.setAdReportviewId(entity.getADReportViewID());
+		model.setAdWorkflowId(entity.getADWorkflowID());
+		model.setClassname(entity.getClassname());
+		model.setCopyfromprocess(entity.isCopyFromProcess());
+		model.setIsactive(entity.isActive());
+		model.setIsdirectprint(entity.isDirectPrint());
+		model.setIsreport(entity.isReport());
+		model.setIsserverprocess(entity.isServerProcess());
+		model.setJasperreport(entity.getJasperReport());
+		model.setName(entity.getName());
+		model.setDescription(entity.getDescription());
+		model.setProcedurename(entity.getProcedureName());
+		model.setValue(entity.getValue());
+		model.setWorkflowvalue(entity.getWorkflowValue());
+		if (null != entity.getADProcessParaTrls()) {
+			model.setParamList(toProcessParameterTrls(entity.getADProcessParaTrls()));
+		}
+		return model;
+	}
 
 	public static List<ADProcessModel> toProcessModels(List<ADProcess> list) {
 		int size = null == list ? 0 : list.size();
@@ -159,6 +251,37 @@ public final class DTOUtil {
 		}
 		return resultList;
 	}
+	
+	public static List<ADProcessArgModel> toProcessParameterTrls(List<ADProcessParaVTrl> list) {
+		int size = null == list ? 0 : list.size();
+		List<ADProcessArgModel> resultList = new ArrayList<ADProcessArgModel>(size);
+		if (null != list) {
+			for (ADProcessPara entity : list) {
+				resultList.add(toProcessParameter(entity));
+			}
+		}
+		return resultList;
+	}
+	
+	public static ADTabModel toTabModel(AdTabVTrl entity) {
+		ADTabModel model = new ADTabModel();
+		model.setAdTabId(entity.getADTabID());
+		model.setAdColumnId(entity.getADColumnID());
+		model.setAdTableId(entity.getADTableID());
+		model.setParentColumnId(entity.getParentColumnID());
+		model.setSeqno(entity.getSeqNo());
+		model.setTablevel(entity.getTabLevel());
+		model.setIsinfotab(entity.isInfoTab());
+		model.setIsreadonly(entity.isReadOnly());
+		model.setIssinglerow(entity.isSingleRow());
+		model.setName(entity.getName());
+		model.setReadonlylogic(entity.getReadOnlyLogic());
+		model.setTablename(entity.getTableName());
+		model.setHasTree(entity.isHasTree());
+		model.setIsSortTab(entity.isSortTab());
+		model.setIsHighVolume(entity.isHighVolume());
+		return model;
+	}
 
 	public static ADTabModel toTabModel(AdTabV entity) {
 		ADTabModel model = new ADTabModel();
@@ -185,6 +308,17 @@ public final class DTOUtil {
 		List<ADTabModel> resultList = new ArrayList<ADTabModel>(size);
 		if (null != tabList) {
 			for (AdTabV tabEntity : tabList) {
+				resultList.add(toTabModel(tabEntity));
+			}
+		}
+		return resultList;
+	}
+	
+	public static List<ADTabModel> toTabTrlModels(List<AdTabVTrl> tabList) {
+		int size = null == tabList ? 0 : tabList.size();
+		List<ADTabModel> resultList = new ArrayList<ADTabModel>(size);
+		if (null != tabList) {
+			for (AdTabVTrl tabEntity : tabList) {
 				resultList.add(toTabModel(tabEntity));
 			}
 		}

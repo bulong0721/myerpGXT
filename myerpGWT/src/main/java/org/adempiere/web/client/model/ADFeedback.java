@@ -1,25 +1,25 @@
 package org.adempiere.web.client.model;
 
-public class ADResultWithError implements IsADRPCModel {
+public class ADFeedback implements IsADRPCModel {
 	private boolean	isSuccess;
 	private String	errorMessage;
 	
-	public ADResultWithError() {
+	public ADFeedback() {
 	}
 
-	public ADResultWithError(boolean isSuccess, String errorMessage) {
+	public ADFeedback(boolean isSuccess, String errorMessage) {
 		this.isSuccess = isSuccess;
 		this.errorMessage = errorMessage;
 	}
 
-	public static ADResultWithError newSuccess() {
-		ADResultWithError rs = new ADResultWithError();
+	public static ADFeedback newSuccess() {
+		ADFeedback rs = new ADFeedback();
 		rs.isSuccess = true;
 		return rs;
 	}
 
-	public static ADResultWithError newError(String error) {
-		ADResultWithError rs = new ADResultWithError();
+	public static ADFeedback newError(String error) {
+		ADFeedback rs = new ADFeedback();
 		rs.errorMessage = error;
 		rs.isSuccess = false;
 		return rs;

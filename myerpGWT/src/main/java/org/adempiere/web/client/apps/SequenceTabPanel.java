@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.model.ADLoadConfig;
-import org.adempiere.web.client.model.ADResultWithError;
+import org.adempiere.web.client.model.ADFeedback;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.widget.CWindowToolBar;
@@ -105,9 +105,9 @@ public class SequenceTabPanel extends AbstractTabPanel {
 
 	@Override
 	public void saveOrUpdateRecord() {
-		AsyncCallback<ADResultWithError> callback = new AsyncSuccessCallback<ADResultWithError>() {
+		AsyncCallback<ADFeedback> callback = new AsyncSuccessCallback<ADFeedback>() {
 			@Override
-			public void onSuccess(ADResultWithError result) {
+			public void onSuccess(ADFeedback result) {
 				if (result.isSuccess()) {
 					SequenceTabPanel.this.commitChanges();
 					SequenceTabPanel.this.refreshToolBar();

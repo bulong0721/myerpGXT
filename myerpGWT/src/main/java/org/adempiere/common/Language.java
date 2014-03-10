@@ -21,4 +21,9 @@ public enum Language {
 		return null;
 	}
 
+	public boolean isBaseLanguage() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -10,13 +10,12 @@ import javax.persistence.*;
 @Table(name="ad_treenode")
 @IdClass(org.adempiere.model.ADTreeNodePK.class)
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "AD_TREE_ID", discriminatorType = DiscriminatorType.INTEGER)
 public class ADTreeNode extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aDClientID;
 	private Integer aDOrgID;
 	private Integer aDTreeID;
-	private String active;
+	private Boolean active;
 	private String created;
 	private Integer createdBy;
 	private Integer nodeID;
@@ -65,11 +64,11 @@ public class ADTreeNode extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(name="ISACTIVE", nullable=false, length=1)
-	public String getActive() {
+	public Boolean isActive() {
 		return active;
 	}
 
-	public void setActive(String active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
