@@ -8,8 +8,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="ad_tab_vt")
-@IdClass(org.adempiere.model.AdTabVTrlPK.class)
-public class AdTabVTrl extends org.adempiere.common.ADEntityBase {
+@IdClass(org.adempiere.model.AdTabVtPK.class)
+public class AdTabVt extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aDColumnID;
 	private Integer aDColumnSortOrderID;
@@ -49,10 +49,10 @@ public class AdTabVTrl extends org.adempiere.common.ADEntityBase {
 	private Boolean view;
 	private String whereClause;
 
-	public AdTabVTrl() {
+	public AdTabVt() {
 	}
 
-	public AdTabVTrl(Integer aDLanguageID, Integer aDTabID) {
+	public AdTabVt(Integer aDLanguageID, Integer aDTabID) {
 		this.aDLanguageID = aDLanguageID;
 		this.aDTabID = aDTabID;
 	}

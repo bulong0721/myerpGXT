@@ -56,20 +56,21 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		// "{\"adWindowId\":53110,\"classname\":\"org.adempiere.process.WindowCopy\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
 		// String rowJson = "{\"adWindowId\":53110}";
 		//
-		// ADProcessModel pModel = JSON.parseObject(json, ADProcessModel.class);
-		// ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson,
-		// "{\"adWindowId\":103}");
-		// ProcessResult pInfo = new ProcessResult();
-		// try {
-		// ProcessUtil.process(ctx, pInfo);
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-		AdempiereServiceImpl service = new AdempiereServiceImpl();
-		// List<IsTreeNode> nodes = service.getTreeNodes(10, null);
-		// System.out.println(nodes.size());
-		List<IsTreeNode> list = service.getAdMenuModels();
-		System.out.println(list.size());
+		String json = "{\"classname\":\"org.adempiere.process.LanguageMaintenance\"}";
+		String rowJson = "";
+		ADProcessModel pModel = JSON.parseObject(json, ADProcessModel.class);
+		ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson, "{\"adWindowId\":103}");
+		ProcessResult pInfo = new ProcessResult();
+		try {
+			ProcessUtil.process(ctx, pInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+//		AdempiereServiceImpl service = new AdempiereServiceImpl();
+//		// List<IsTreeNode> nodes = service.getTreeNodes(10, null);
+//		// System.out.println(nodes.size());
+//		List<IsTreeNode> list = service.getAdMenuModels();
+//		System.out.println(list.size());
 	}
 
 	static class ServiceUtil {
@@ -231,7 +232,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	private int getLanguage() {
-		return 0;
+		return 187;
 	}
 
 	@Override

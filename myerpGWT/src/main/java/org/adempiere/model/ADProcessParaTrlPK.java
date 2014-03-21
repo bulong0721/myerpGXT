@@ -16,7 +16,7 @@ public class ADProcessParaTrlPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public String aDLanguage;
+	public Integer aDLanguageID;
 	public Integer aDProcessParaID;
 
 	public ADProcessParaTrlPK() {
@@ -26,12 +26,12 @@ public class ADProcessParaTrlPK implements Serializable {
 		fromString(str);
 	}
 
-	public String getADLanguage() {
-		return aDLanguage;
+	public Integer getADLanguageID() {
+		return aDLanguageID;
 	}
 
-	public void setADLanguage(String aDLanguage) {
-		this.aDLanguage = aDLanguage;
+	public void setADLanguageID(Integer aDLanguageID) {
+		this.aDLanguageID = aDLanguageID;
 	}
 
 	public Integer getADProcessParaID() {
@@ -43,13 +43,13 @@ public class ADProcessParaTrlPK implements Serializable {
 	}
 
 	public String toString() {
-		return aDLanguage
+		return aDLanguageID
 			+ "::" + String.valueOf(aDProcessParaID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((aDLanguage == null) ? 0 : aDLanguage.hashCode());
+		rs = rs * 37 + ((aDLanguageID == null) ? 0 : aDLanguageID.hashCode());
 		rs = rs * 37 + ((aDProcessParaID == null) ? 0 : aDProcessParaID.hashCode());
 		return rs;
 	}
@@ -61,8 +61,8 @@ public class ADProcessParaTrlPK implements Serializable {
 			return false;
 
 		ADProcessParaTrlPK other = (ADProcessParaTrlPK) obj;
-		return ((aDLanguage == null && other.aDLanguage == null)
-			|| (aDLanguage != null && aDLanguage.equals(other.aDLanguage)))
+		return ((aDLanguageID == null && other.aDLanguageID == null)
+			|| (aDLanguageID != null && aDLanguageID.equals(other.aDLanguageID)))
 			&& ((aDProcessParaID == null && other.aDProcessParaID == null)
 			|| (aDProcessParaID != null && aDProcessParaID.equals(other.aDProcessParaID)));
 	}
@@ -71,9 +71,9 @@ public class ADProcessParaTrlPK implements Serializable {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			aDLanguage = null;
+			aDLanguageID = null;
 		else
-			aDLanguage = str;
+			aDLanguageID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
 			aDProcessParaID = null;

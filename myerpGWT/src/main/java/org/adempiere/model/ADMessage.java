@@ -8,7 +8,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="ad_message")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class ADMessage extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aDClientID;

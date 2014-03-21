@@ -88,7 +88,7 @@ public class StringUtil {
 		return text;
 	}
 
-	private static String convertToCamel(String colName) {
+	public static String convertToCamel(String colName) {
 		if (null == colName || 0 == colName.length()) {
 			return colName;
 		}
@@ -99,7 +99,7 @@ public class StringUtil {
 		}
 	}
 
-	private static String convertToPascal(String tableName) {
+	static String convertToPascal(String tableName) {
 		if (null == tableName || 0 == tableName.length()) {
 			return tableName;
 		}

@@ -1,8 +1,9 @@
 package org.adempiere.util;
 
 import java.math.BigDecimal;
+import java.util.Properties;
 
-public final class Env {
+public final class EnvUtil {
 
 	public static final BigDecimal	ZERO	= new BigDecimal(0);
 
@@ -23,6 +24,20 @@ public final class Env {
 	public static String currentTimestamp() {
 		// TODO Auto-generated method stub
 		return "2014-02-11 10:29:45";
+	}
+
+	public static boolean isBaseLanguage(String aD_Language) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static int getLanguageID(String languageName) {
+		return 187;
+	}
+
+	public static Properties getCtx() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

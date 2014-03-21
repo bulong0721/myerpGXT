@@ -53,7 +53,7 @@ public class ADMenuTrl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_MENU_ID", columnDefinition="INT")
+	@Column(name="NODE_ID", columnDefinition="INT")
 	public Integer getADMenuID() {
 		return aDMenuID;
 	}

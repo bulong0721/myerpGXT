@@ -5,15 +5,15 @@ import java.util.Collections;
 import java.util.List;
 
 import org.adempiere.model.ADForm;
-import org.adempiere.model.ADFormVTrl;
+import org.adempiere.model.ADFormVt;
 import org.adempiere.model.ADMenu;
-import org.adempiere.model.ADMenuVTrl;
+import org.adempiere.model.ADMenuVt;
 import org.adempiere.model.ADProcess;
-import org.adempiere.model.ADProcessVTrl;
+import org.adempiere.model.ADProcessVt;
 import org.adempiere.model.AdFieldV;
-import org.adempiere.model.AdFieldVTrl;
+import org.adempiere.model.AdFieldVt;
 import org.adempiere.model.AdTabV;
-import org.adempiere.model.AdTabVTrl;
+import org.adempiere.model.AdTabVt;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
@@ -55,11 +55,11 @@ public final class CoreModelFetch {
 		ADWindowModel windowModel = new ADWindowModel();
 		try {
 			windowModel.setAdWindowId(windowId);
-			List<AdTabVTrl> tabVList = POUtil.queryTabVTrlsByWindowId(pCtx, windowId, languageId);
+			List<AdTabVt> tabVList = POUtil.queryTabVTrlsByWindowId(pCtx, windowId, languageId);
 			List<ADTabModel> tabList = DTOUtil.toTabTrlModels(tabVList);
 			windowModel.setTabList(tabList);
 			for (ADTabModel tabModel : tabList) {
-				List<AdFieldVTrl> fieldVList = POUtil.queryFieldVTrlsByTabId(pCtx, tabModel.getAdTabId(), languageId);
+				List<AdFieldVt> fieldVList = POUtil.queryFieldVTrlsByTabId(pCtx, tabModel.getAdTabId(), languageId);
 				List<ADFieldModel> fieldList = DTOUtil.toFieldTrlModels(fieldVList);
 				tabModel.setFieldList(fieldList);
 			}
@@ -86,7 +86,7 @@ public final class CoreModelFetch {
 		}
 		ADProcessModel processModel = null;
 		try {
-			ADProcessVTrl process = POUtil.queryProcessTrlWithParamsByProcessId(pCtx, processId, languageId);
+			ADProcessVt process = POUtil.queryProcessTrlWithParamsByProcessId(pCtx, processId, languageId);
 			processModel = DTOUtil.toProcessTrlModel(process);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -111,8 +111,8 @@ public final class CoreModelFetch {
 		}
 		ADFormModel formModel = null;
 		try {
-			ADFormVTrl form = POUtil.queryFormByLanguage(pCtx, formId, languageId);
-			formModel = DTOUtil.toFormModel(form);
+			ADFormVt form = POUtil.queryFormByLanguage(pCtx, formId, languageId);
+			formModel = DTOUtil.toFormVTrlModel(form);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -138,9 +138,9 @@ public final class CoreModelFetch {
 			return getADMenuList4BaseLanguage(pCtx);
 		}
 		try {
-			List<ADMenuVTrl> menuList = POUtil.queryMainMenuByLanguage(pCtx, languageId);
+			List<ADMenuVt> menuList = POUtil.queryMainMenuByLanguage(pCtx, languageId);
 			List<IsTreeNode> resultList = new ArrayList<IsTreeNode>(menuList.size());
-			for (ADMenuVTrl nodeMM : menuList) {
+			for (ADMenuVt nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
 			return resultList;

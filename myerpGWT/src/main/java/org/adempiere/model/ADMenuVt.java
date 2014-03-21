@@ -9,7 +9,7 @@ import org.adempiere.common.ADEntityBase;
  */
 @Entity
 @Table(name = "ad_menu_vt")
-public class ADMenuVTrl extends ADEntityBase {
+public class ADMenuVt extends ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aDClientID;
 	private Integer aDFormID;

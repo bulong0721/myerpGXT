@@ -8,8 +8,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="ad_window_v_trl")
-@IdClass(org.adempiere.model.AdWindowVTrlPK.class)
-public class AdWindowVTrl extends org.adempiere.common.ADEntityBase {
+@IdClass(org.adempiere.model.AdWindowVtPK.class)
+public class AdWindowVt extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aDColorID;
 	private Integer aDImageID;
@@ -24,10 +24,10 @@ public class AdWindowVTrl extends org.adempiere.common.ADEntityBase {
 	private Integer winWidth;
 	private String windowType;
 
-	public AdWindowVTrl() {
+	public AdWindowVt() {
 	}
 
-	public AdWindowVTrl(Integer aDLanguageID, Integer aDWindowID) {
+	public AdWindowVt(Integer aDLanguageID, Integer aDWindowID) {
 		this.aDLanguageID = aDLanguageID;
 		this.aDWindowID = aDWindowID;
 	}

@@ -44,6 +44,11 @@ public class ADTable extends org.adempiere.common.ADEntityBase {
 	public ADTable(Integer aDTableID) {
 		this.aDTableID = aDTableID;
 	}
+	
+	public ADTable(Integer aDTableID, String tableName) {
+		this.aDTableID = aDTableID;
+		this.tableName = tableName;
+	}
 
 	@Basic
 	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)

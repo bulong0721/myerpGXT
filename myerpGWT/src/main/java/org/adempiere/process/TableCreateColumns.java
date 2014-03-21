@@ -10,7 +10,7 @@ import org.adempiere.common.DisplayType;
 import org.adempiere.model.ADColumn;
 import org.adempiere.model.ADElement;
 import org.adempiere.model.ADTable;
-import org.adempiere.util.Env;
+import org.adempiere.util.EnvUtil;
 import org.adempiere.util.POUtil;
 
 public class TableCreateColumns extends ServerProcess {
@@ -198,16 +198,16 @@ public class TableCreateColumns extends ServerProcess {
 
 	private ADElement createElement(ADColumn column) {
 		ADElement element = new ADElement();
-		element.setAdClientId(column.getADClientID());
-		element.setAdOrgId(column.getADOrgID());
+		element.setADClientID(column.getADClientID());
+		element.setADOrgID(column.getADOrgID());
 		element.setEntityType("D");
 		return element;
 	}
 
 	private ADColumn createColumn(ADTable table) {
 		ADColumn column = new ADColumn();
-		column.setAdClientId(table.getADClientID());
-		column.setAdOrgId(table.getADOrgID());
+		column.setADClientID(table.getADClientID());
+		column.setADOrgID(table.getADOrgID());
 		column.setADTableID(table.getADTableID());
 		column.setEntityType(table.getEntityType());
 
@@ -221,7 +221,7 @@ public class TableCreateColumns extends ServerProcess {
 		column.setSelectionColumn(false);
 		column.setTranslated(false);
 		column.setAlwaysUpdateable(true); // Y
-		column.setVersion(Env.ZERO);
+		column.setVersion(EnvUtil.ZERO);
 		return column;
 	}
 

@@ -5,29 +5,29 @@ import java.io.Serializable;
 public abstract class ADEntityBase implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 
-	public void setAdOrgId(Integer adOrgId) {
+	public void setADOrgID(Integer adOrgId) {
 	}
 
-	public void setAdClientId(Integer adClientId) {
+	public void setADClientID(Integer adClientId) {
 	}
 
 	public void setCreated(String created) {
 	}
 
-	public Integer getCreatedby() {
+	public Integer getCreatedBy() {
 		return null;
 	}
 
-	public void setCreatedby(Integer createdby) {
+	public void setCreatedBy(Integer createdby) {
 	}
 
 	public void setUpdated(String updated) {
 	}
 
-	public void setUpdatedby(Integer updatedby) {
+	public void setUpdatedBy(Integer updatedby) {
 	}
 
-	public void setIsactive(Boolean isactive) {
+	public void setActive(Boolean isactive) {
 	}
 
 }

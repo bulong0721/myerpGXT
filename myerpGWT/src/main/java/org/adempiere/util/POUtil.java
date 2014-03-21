@@ -1,5 +1,7 @@
 package org.adempiere.util;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceUnitUtil;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.adempiere.common.ADEntityBase;
@@ -16,18 +19,18 @@ import org.adempiere.model.ADAttachment;
 import org.adempiere.model.ADColumn;
 import org.adempiere.model.ADElement;
 import org.adempiere.model.ADField;
-import org.adempiere.model.ADFormVTrl;
+import org.adempiere.model.ADFormVt;
 import org.adempiere.model.ADMenu;
-import org.adempiere.model.ADMenuVTrl;
+import org.adempiere.model.ADMenuVt;
 import org.adempiere.model.ADProcess;
-import org.adempiere.model.ADProcessVTrl;
+import org.adempiere.model.ADProcessVt;
 import org.adempiere.model.ADTab;
 import org.adempiere.model.ADTable;
 import org.adempiere.model.ADTreeNode;
 import org.adempiere.model.AdFieldV;
-import org.adempiere.model.AdFieldVTrl;
+import org.adempiere.model.AdFieldVt;
 import org.adempiere.model.AdTabV;
-import org.adempiere.model.AdTabVTrl;
+import org.adempiere.model.AdTabVt;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.util.StringUtil;
@@ -63,7 +66,7 @@ public final class POUtil {
 			return null;
 		}
 		Map<String, Object> paramMap = toMap("tablename", tableName);
-		return selectOne(pCtx, "queryTableByTableName", ADTable.class, paramMap);
+		return selectOneByNamedQuery(pCtx, "queryTableByTableName", ADTable.class, paramMap);
 	}
 
 	/**
@@ -76,7 +79,7 @@ public final class POUtil {
 			return null;
 		}
 		Map<String, Object> paramMap = toMap("columnname", column);
-		return selectOne(pCtx, "queryElementByColumn", ADElement.class, paramMap);
+		return selectOneByNamedQuery(pCtx, "queryElementByColumn", ADElement.class, paramMap);
 	}
 
 	/**
@@ -94,7 +97,7 @@ public final class POUtil {
 	 * @param pValue
 	 * @return
 	 */
-	private static Map<String, Object> toMap(String pName, Object pValue) {
+	public static Map<String, Object> toMap(String pName, Object pValue) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put(pName, pValue);
 		return paramMap;
@@ -107,8 +110,8 @@ public final class POUtil {
 	 * @return
 	 */
 	@SuppressWarnings("unused")
-	private static <T> T selectOne(PersistContext pCtx, String queryName, Class<T> clazz) {
-		return selectOne(pCtx, queryName, clazz, null);
+	private static <T> T selectOneByNamedQuery(PersistContext pCtx, String queryName, Class<T> clazz) {
+		return selectOneByNamedQuery(pCtx, queryName, clazz, null);
 	}
 
 	/**
@@ -118,7 +121,7 @@ public final class POUtil {
 	 * @param paramMap
 	 * @return
 	 */
-	private static <T> T selectOne(PersistContext pCtx, String queryName, Class<T> clazz, Map<String, Object> paramMap) {
+	private static <T> T selectOneByNamedQuery(PersistContext pCtx, String queryName, Class<T> clazz, Map<String, Object> paramMap) {
 		EntityManager em = pCtx.begin();
 		try {
 			TypedQuery<T> query = em.createNamedQuery(queryName, clazz);
@@ -142,8 +145,8 @@ public final class POUtil {
 	 * @param clazz
 	 * @return
 	 */
-	private static <T> List<T> selectList(PersistContext pCtx, String queryName, Class<T> clazz) {
-		return selectList(pCtx, queryName, clazz, null);
+	private static <T> List<T> selectListByNamedQuery(PersistContext pCtx, String queryName, Class<T> clazz) {
+		return selectListByNamedQuery(pCtx, queryName, clazz, null);
 	}
 
 	/**
@@ -153,7 +156,7 @@ public final class POUtil {
 	 * @param paramMap
 	 * @return
 	 */
-	private static <T> List<T> selectList(PersistContext pCtx, String queryName, Class<T> clazz, Map<String, Object> paramMap) {
+	private static <T> List<T> selectListByNamedQuery(PersistContext pCtx, String queryName, Class<T> clazz, Map<String, Object> paramMap) {
 		EntityManager em = pCtx.begin();
 		try {
 			TypedQuery<T> query = em.createNamedQuery(queryName, clazz);
@@ -178,7 +181,7 @@ public final class POUtil {
 	 */
 	public static RefCriteria queryRefTable(PersistContext pCtx, long adRefId) {
 		Map<String, Object> paramMap = toMap("adReferenceId", adRefId);
-		return selectOne(pCtx, "queryRefTable", RefCriteria.class, paramMap);
+		return selectOneByNamedQuery(pCtx, "queryRefTable", RefCriteria.class, paramMap);
 
 	}
 
@@ -189,7 +192,7 @@ public final class POUtil {
 	 */
 	public static List<ADColumn> queryColumnsByTable(PersistContext pCtx, int tableId) {
 		Map<String, Object> paramMap = toMap("adTableId", tableId);
-		return selectList(pCtx, "queryColumnsByTable", ADColumn.class, paramMap);
+		return selectListByNamedQuery(pCtx, "queryColumnsByTable", ADColumn.class, paramMap);
 	}
 
 	/**
@@ -201,7 +204,7 @@ public final class POUtil {
 	public static List<ADColumn> queryUnMappedColumns(PersistContext pCtx, int tableId, int tabId) {
 		Map<String, Object> paramMap = toMap("adTableId", tableId);
 		paramMap.put("adTabId", tabId);
-		return selectList(pCtx, "queryUnMappedColumns", ADColumn.class, paramMap);
+		return selectListByNamedQuery(pCtx, "queryUnMappedColumns", ADColumn.class, paramMap);
 	}
 
 	/**
@@ -211,7 +214,7 @@ public final class POUtil {
 	 */
 	public static List<ADTab> queryTabsByWindow(PersistContext pCtx, int windowId) {
 		Map<String, Object> paramMap = toMap("adWindowId", windowId);
-		return selectList(pCtx, "queryTabsByWindowId", ADTab.class, paramMap);
+		return selectListByNamedQuery(pCtx, "queryTabsByWindowId", ADTab.class, paramMap);
 	}
 
 	/**
@@ -221,7 +224,7 @@ public final class POUtil {
 	 */
 	public static List<ADField> queryFieldsByTabId(PersistContext pCtx, int tabId) {
 		Map<String, Object> paramMap = toMap("adTabId", tabId);
-		return selectList(pCtx, "queryFieldsByTabId", ADField.class, paramMap);
+		return selectListByNamedQuery(pCtx, "queryFieldsByTabId", ADField.class, paramMap);
 	}
 
 	/**
@@ -231,7 +234,7 @@ public final class POUtil {
 	 */
 	public static List<ADSequenceModel> querySeqByTabId(PersistContext pCtx, int tabId) {
 		Map<String, Object> paramMap = toMap("adTabId", tabId);
-		return selectList(pCtx, "querySeqByTabId", ADSequenceModel.class, paramMap);
+		return selectListByNamedQuery(pCtx, "querySeqByTabId", ADSequenceModel.class, paramMap);
 	}
 
 	public static boolean updateFieldSequece(PersistContext pCtx, List<ADSequenceModel> seqList) {
@@ -342,13 +345,13 @@ public final class POUtil {
 	public static void initADEntity(Object entity) {
 		if (entity instanceof ADEntityBase) {
 			ADEntityBase adEntity = (ADEntityBase) entity;
-			if (null == adEntity.getCreatedby()) {
-				adEntity.setCreatedby(Env.getUser());
-				adEntity.setCreated(Env.currentTimestamp());
-				adEntity.setIsactive(true);
+			if (null == adEntity.getCreatedBy()) {
+				adEntity.setCreatedBy(EnvUtil.getUser());
+				adEntity.setCreated(EnvUtil.currentTimestamp());
+				adEntity.setActive(true);
 			}
-			adEntity.setUpdatedby(Env.getUser());
-			adEntity.setUpdated(Env.currentTimestamp());
+			adEntity.setUpdatedBy(EnvUtil.getUser());
+			adEntity.setUpdated(EnvUtil.currentTimestamp());
 		}
 	}
 
@@ -359,14 +362,14 @@ public final class POUtil {
 	 */
 	public static List<AdTabV> queryTabvsByWindowId(PersistContext pCtx, Integer windowId) {
 		Map<String, Object> paramMap = toMap("adWindowId", windowId);
-		List<AdTabV> tabVList = selectList(pCtx, "queryTabvsByWindowId", AdTabV.class, paramMap);
+		List<AdTabV> tabVList = selectListByNamedQuery(pCtx, "queryTabvsByWindowId", AdTabV.class, paramMap);
 		return tabVList;
 	}
 
-	public static List<AdTabVTrl> queryTabVTrlsByWindowId(PersistContext pCtx, Integer windowId, int languageId) {
+	public static List<AdTabVt> queryTabVTrlsByWindowId(PersistContext pCtx, Integer windowId, int languageId) {
 		Map<String, Object> paramMap = toMap("adWindowId", windowId);
 		paramMap.put("aDLanguageID", languageId);
-		return selectList(pCtx, "queryTabVTrlsByWindowId", AdTabVTrl.class, paramMap);
+		return selectListByNamedQuery(pCtx, "queryTabVTrlsByWindowId", AdTabVt.class, paramMap);
 	}
 
 	/**
@@ -376,14 +379,14 @@ public final class POUtil {
 	 */
 	public static List<AdFieldV> queryFieldvsByTabId(PersistContext pCtx, int adTabId) {
 		Map<String, Object> paramMap = toMap("adTabId", adTabId);
-		List<AdFieldV> fieldVList = selectList(pCtx, "queryFieldvsByTabId", AdFieldV.class, paramMap);
+		List<AdFieldV> fieldVList = selectListByNamedQuery(pCtx, "queryFieldvsByTabId", AdFieldV.class, paramMap);
 		return fieldVList;
 	}
 
-	public static List<AdFieldVTrl> queryFieldVTrlsByTabId(PersistContext pCtx, int adTabId, int languageId) {
+	public static List<AdFieldVt> queryFieldVTrlsByTabId(PersistContext pCtx, int adTabId, int languageId) {
 		Map<String, Object> paramMap = toMap("adTabId", adTabId);
 		paramMap.put("aDLanguageID", languageId);
-		List<AdFieldVTrl> fieldVList = selectList(pCtx, "queryFieldVTrlsByTabId", AdFieldVTrl.class, paramMap);
+		List<AdFieldVt> fieldVList = selectListByNamedQuery(pCtx, "queryFieldVTrlsByTabId", AdFieldVt.class, paramMap);
 		return fieldVList;
 	}
 
@@ -391,25 +394,25 @@ public final class POUtil {
 	 * @return
 	 */
 	public static List<ADMenu> queryMainMenuNodes(PersistContext pCtx) {
-		List<ADMenu> menuList = selectList(pCtx, "queryMainMenuNodes", ADMenu.class);
+		List<ADMenu> menuList = selectListByNamedQuery(pCtx, "queryMainMenuNodes", ADMenu.class);
 		return menuList;
 	}
 
-	public static List<ADMenuVTrl> queryMainMenuByLanguage(PersistContext pCtx, int languageID) {
+	public static List<ADMenuVt> queryMainMenuByLanguage(PersistContext pCtx, int languageID) {
 		Map<String, Object> paramMap = toMap("aDLanguageID", languageID);
-		List<ADMenuVTrl> menuList = selectList(pCtx, "queryMainMenuByLanguage", ADMenuVTrl.class, paramMap);
+		List<ADMenuVt> menuList = selectListByNamedQuery(pCtx, "queryMainMenuByLanguage", ADMenuVt.class, paramMap);
 		return menuList;
 	}
 
 	public static <T extends ADTreeNode> List<T> queryRootNodes(PersistContext pCtx, Class<T> clazz, int adTreeId, int adUserId) {
 		Map<String, Object> paramMap = toMap("adTreeId", adTreeId);
 		paramMap.put("adUserId", adUserId);
-		return selectList(pCtx, "queryRootNodes", clazz, paramMap);
+		return selectListByNamedQuery(pCtx, "queryRootNodes", clazz, paramMap);
 	}
 
 	public static <T extends ADTreeNode> List<T> querySubNodes(PersistContext pCtx, Class<T> clazz, int parentId) {
 		Map<String, Object> paramMap = toMap("parentId", parentId);
-		return selectList(pCtx, "queryRootNodes", clazz, paramMap);
+		return selectListByNamedQuery(pCtx, "queryRootNodes", clazz, paramMap);
 	}
 
 	/**
@@ -418,14 +421,14 @@ public final class POUtil {
 	 */
 	public static ADProcess queryProcessWithParamsByProcessId(PersistContext pCtx, Integer processId) {
 		Map<String, Object> paramMap = toMap("adProcessId", processId);
-		ADProcess process = selectOne(pCtx, "queryProcessWithParamsByProcessId", ADProcess.class, paramMap);
+		ADProcess process = selectOneByNamedQuery(pCtx, "queryProcessWithParamsByProcessId", ADProcess.class, paramMap);
 		return process;
 	}
 
-	public static ADProcessVTrl queryProcessTrlWithParamsByProcessId(PersistContext pCtx, Integer processId, int languageId) {
-		Map<String, Object> paramMap = toMap("adProcessId", processId);
+	public static ADProcessVt queryProcessTrlWithParamsByProcessId(PersistContext pCtx, Integer processId, int languageId) {
+		Map<String, Object> paramMap = toMap("aDProcessId", processId);
 		paramMap.put("aDLanguageID", languageId);
-		return selectOne(pCtx, "queryProcessTrlWithParamsByProcessId", ADProcessVTrl.class, paramMap);
+		return selectOneByNamedQuery(pCtx, "queryProcessTrlWithParamsByProcessId", ADProcessVt.class, paramMap);
 	}
 
 	public static ADAttachment getAttachment(int tableId, long pFormatId) {
@@ -433,10 +436,68 @@ public final class POUtil {
 		return null;
 	}
 
-	public static ADFormVTrl queryFormByLanguage(PersistContext pCtx, Integer formId, int languageId) {
+	public static ADFormVt queryFormByLanguage(PersistContext pCtx, Integer formId, int languageId) {
 		Map<String, Object> paramMap = toMap("adFormId", formId);
 		paramMap.put("aDLanguageID", languageId);
-		return selectOne(pCtx, "queryFormByLanguage", ADFormVTrl.class, paramMap);
+		return selectOneByNamedQuery(pCtx, "queryFormByLanguage", ADFormVt.class, paramMap);
+	}
+
+	/**
+	 * @param pCtx
+	 * @return
+	 */
+	public static List<ADTable> queryTranslateTable(PersistContext pCtx) {
+		return selectListByNamedQuery(pCtx, "queryTranslateTable", ADTable.class);
+	}
+
+	public static int executeNativeQuery(PersistContext pCtx, String sql, Map<String, Object> paramMap) {
+		EntityManager em = pCtx.begin();
+		try {
+			Query query = em.createNativeQuery(sql);
+			if (null != paramMap) {
+				for (Entry<String, Object> pEntry : paramMap.entrySet()) {
+					query.setParameter(pEntry.getKey(), pEntry.getValue());
+				}
+			}
+			int count = query.executeUpdate();
+			pCtx.commit();
+			return count;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return -1;
+		}
+	}
+
+	public static int executeQuery(PersistContext pCtx, String sql, Map<String, Object> paramMap) {
+		EntityManager em = pCtx.begin();
+		try {
+			Query query = em.createQuery(sql);
+			if (null != paramMap) {
+				for (Entry<String, Object> pEntry : paramMap.entrySet()) {
+					query.setParameter(pEntry.getKey(), pEntry.getValue());
+				}
+			}
+			int count = query.executeUpdate();
+			pCtx.commit();
+			return count;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return -1;
+		}
+	}
+
+	private static SimpleDateFormat	dateFormat	= new SimpleDateFormat("yyyy-MM-dd");
+	private static SimpleDateFormat	fullFormat	= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+	public static String toString(Timestamp time, boolean dayOnly) {
+		if (null == time) {
+			return "";
+		}
+		if (dayOnly) {
+			return dateFormat.format(time);
+		} else {
+			return fullFormat.format(time);
+		}
 	}
 
 }

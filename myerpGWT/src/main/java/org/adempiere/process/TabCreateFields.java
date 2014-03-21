@@ -38,8 +38,8 @@ public class TabCreateFields extends ServerProcess {
 	
 	private ADField createField(ADColumn column) {
 		ADField field = new ADField();
-		field.setAdClientId(column.getADClientID());
-		field.setAdOrgId(column.getADOrgID());
+		field.setADClientID(column.getADClientID());
+		field.setADOrgID(column.getADOrgID());
 		field.setADTabID(adTabId);
 		field.setADColumnID(column.getADColumnID());
 		field.setName(column.getName());

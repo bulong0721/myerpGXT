@@ -16,7 +16,7 @@ public class URoleMenu extends org.adempiere.common.ADEntityBase {
 	private Integer aDRoleID;
 	private Boolean active;
 	private String created;
-	private BigDecimal createdBy;
+	private Integer createdBy;
 	private Integer uRoleMenuID;
 	private Integer uWebMenuID;
 	private String updated;
@@ -81,11 +81,11 @@ public class URoleMenu extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCreatedBy() {
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(BigDecimal createdBy) {
+	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
 

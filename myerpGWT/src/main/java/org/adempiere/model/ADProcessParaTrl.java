@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class ADProcessParaTrl extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aDClientID;
-	private String aDLanguage;
+	private Integer aDLanguageID;
 	private Integer aDOrgID;
 	private Integer aDProcessParaID;
 	private Boolean active;
@@ -28,8 +28,8 @@ public class ADProcessParaTrl extends org.adempiere.common.ADEntityBase {
 	public ADProcessParaTrl() {
 	}
 
-	public ADProcessParaTrl(String aDLanguage, Integer aDProcessParaID) {
-		this.aDLanguage = aDLanguage;
+	public ADProcessParaTrl(Integer aDLanguage, Integer aDProcessParaID) {
+		this.aDLanguageID = aDLanguage;
 		this.aDProcessParaID = aDProcessParaID;
 	}
 
@@ -44,13 +44,13 @@ public class ADProcessParaTrl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_LANGUAGE", length=6)
-	public String getADLanguage() {
-		return aDLanguage;
+	@Column(name="AD_LANGUAGE_ID")
+	public Integer getADLanguageID() {
+		return aDLanguageID;
 	}
 
-	public void setADLanguage(String aDLanguage) {
-		this.aDLanguage = aDLanguage;
+	public void setADLanguageID(Integer aDLanguage) {
+		this.aDLanguageID = aDLanguage;
 	}
 
 	@Basic

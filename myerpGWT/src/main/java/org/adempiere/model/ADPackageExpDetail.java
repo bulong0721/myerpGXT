@@ -35,7 +35,7 @@ public class ADPackageExpDetail extends org.adempiere.common.ADEntityBase {
 	private Integer aDWorkflowID;
 	private Boolean active;
 	private String created;
-	private BigDecimal createdBy;
+	private Integer createdBy;
 	private String dBType;
 	private String description;
 	private String destinationDirectory;
@@ -304,11 +304,11 @@ public class ADPackageExpDetail extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCreatedBy() {
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(BigDecimal createdBy) {
+	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
 

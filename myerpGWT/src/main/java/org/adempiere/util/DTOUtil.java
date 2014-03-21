@@ -5,17 +5,18 @@ import java.util.List;
 
 import org.adempiere.model.ADField;
 import org.adempiere.model.ADForm;
+import org.adempiere.model.ADFormVt;
 import org.adempiere.model.ADMenu;
-import org.adempiere.model.ADMenuVTrl;
+import org.adempiere.model.ADMenuVt;
 import org.adempiere.model.ADProcess;
 import org.adempiere.model.ADProcessPara;
-import org.adempiere.model.ADProcessParaVTrl;
-import org.adempiere.model.ADProcessVTrl;
+import org.adempiere.model.ADProcessParaVt;
+import org.adempiere.model.ADProcessVt;
 import org.adempiere.model.ADTab;
 import org.adempiere.model.AdFieldV;
-import org.adempiere.model.AdFieldVTrl;
+import org.adempiere.model.AdFieldVt;
 import org.adempiere.model.AdTabV;
-import org.adempiere.model.AdTabVTrl;
+import org.adempiere.model.AdTabVt;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADMenuModel;
@@ -24,7 +25,7 @@ import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADTabModel;
 
 public final class DTOUtil {
-	
+
 	public static ADFieldModel toFieldModel(AdFieldV entity) {
 		ADFieldModel model = new ADFieldModel();
 		model.setADFieldID(entity.getADFieldID());
@@ -57,8 +58,8 @@ public final class DTOUtil {
 		model.setVFormat(entity.getVFormat());
 		return model;
 	}
-	
-	public static ADFieldModel toFieldModel(AdFieldVTrl entity) {
+
+	public static ADFieldModel toFieldModel(AdFieldVt entity) {
 		ADFieldModel model = new ADFieldModel();
 		model.setADFieldID(entity.getADFieldID());
 		model.setADProcessID(entity.getADProcessID());
@@ -101,12 +102,12 @@ public final class DTOUtil {
 		}
 		return resultList;
 	}
-	
-	public static List<ADFieldModel> toFieldTrlModels(List<AdFieldVTrl> fieldList) {
+
+	public static List<ADFieldModel> toFieldTrlModels(List<AdFieldVt> fieldList) {
 		int size = null == fieldList ? 0 : fieldList.size();
 		List<ADFieldModel> resultList = new ArrayList<ADFieldModel>(size);
 		if (null != fieldList) {
-			for (AdFieldVTrl fieldEntity : fieldList) {
+			for (AdFieldVt fieldEntity : fieldList) {
 				resultList.add(toFieldModel(fieldEntity));
 			}
 		}
@@ -129,8 +130,8 @@ public final class DTOUtil {
 		model.setAction(entity.getAction());
 		return model;
 	}
-	
-	public static ADMenuModel toMenuModel(ADMenuVTrl entity) {
+
+	public static ADMenuModel toMenuModel(ADMenuVt entity) {
 		ADMenuModel model = new ADMenuModel();
 		model.setIsactive(entity.isActive());
 		model.setAdMenuId(entity.getNodeID());
@@ -146,7 +147,7 @@ public final class DTOUtil {
 		model.setAction(entity.getAction());
 		return model;
 	}
-	
+
 	public static List<ADMenuModel> toMenuModels(List<ADMenu> list) {
 		int size = null == list ? 0 : list.size();
 		List<ADMenuModel> resultList = new ArrayList<ADMenuModel>(size);
@@ -182,8 +183,8 @@ public final class DTOUtil {
 		}
 		return model;
 	}
-	
-	public static ADProcessModel toProcessTrlModel(ADProcessVTrl entity) {
+
+	public static ADProcessModel toProcessTrlModel(ADProcessVt entity) {
 		ADProcessModel model = new ADProcessModel();
 		model.setAdProcessId(entity.getADProcessID());
 		model.setAdFormId(entity.getADFormID());
@@ -202,8 +203,8 @@ public final class DTOUtil {
 		model.setProcedurename(entity.getProcedureName());
 		model.setValue(entity.getValue());
 		model.setWorkflowvalue(entity.getWorkflowValue());
-		if (null != entity.getADProcessParaTrls()) {
-			model.setParamList(toProcessParameterTrls(entity.getADProcessParaTrls()));
+		if (null != entity.getADProcessParaVts()) {
+			model.setParamList(toProcessParameterTrls(entity.getADProcessParaVts()));
 		}
 		return model;
 	}
@@ -240,6 +241,28 @@ public final class DTOUtil {
 		model.setVFormat(entity.getVFormat());
 		return model;
 	}
+	
+	public static ADProcessArgModel toProcessParameter(ADProcessParaVt entity) {
+		ADProcessArgModel model = new ADProcessArgModel();
+		model.setADProcessParaID(entity.getADProcessParaID());
+		model.setADReferenceID(entity.getADReferenceID());
+		model.setADReferenceValueID(entity.getADReferenceValueID());
+		model.setADValRuleID(entity.getADValRuleID());
+		model.setPropertyName(entity.getColumnName());
+		model.setDefaultValue(entity.getDefaultValue());
+		model.setDisplayLogic(entity.getDisplayLogic());
+		model.setFieldLength(entity.getFieldLength());
+		model.setActive(entity.isActive());
+		model.setCentrallyMaintained(entity.isCentrallyMaintained());
+		model.setMandatory(entity.isMandatory());
+		model.setName(entity.getName());
+		model.setReadonlyLogic(entity.getReadOnlyLogic());
+		model.setSeqNo(entity.getSeqNo());
+		model.setValueMax(entity.getValueMax());
+		model.setValueMin(entity.getValueMin());
+		model.setVFormat(entity.getVFormat());
+		return model;
+	}
 
 	public static List<ADProcessArgModel> toProcessParameters(List<ADProcessPara> list) {
 		int size = null == list ? 0 : list.size();
@@ -251,19 +274,19 @@ public final class DTOUtil {
 		}
 		return resultList;
 	}
-	
-	public static List<ADProcessArgModel> toProcessParameterTrls(List<ADProcessParaVTrl> list) {
+
+	public static List<ADProcessArgModel> toProcessParameterTrls(List<ADProcessParaVt> list) {
 		int size = null == list ? 0 : list.size();
 		List<ADProcessArgModel> resultList = new ArrayList<ADProcessArgModel>(size);
 		if (null != list) {
-			for (ADProcessPara entity : list) {
+			for (ADProcessParaVt entity : list) {
 				resultList.add(toProcessParameter(entity));
 			}
 		}
 		return resultList;
 	}
-	
-	public static ADTabModel toTabModel(AdTabVTrl entity) {
+
+	public static ADTabModel toTabModel(AdTabVt entity) {
 		ADTabModel model = new ADTabModel();
 		model.setAdTabId(entity.getADTabID());
 		model.setAdColumnId(entity.getADColumnID());
@@ -313,12 +336,12 @@ public final class DTOUtil {
 		}
 		return resultList;
 	}
-	
-	public static List<ADTabModel> toTabTrlModels(List<AdTabVTrl> tabList) {
+
+	public static List<ADTabModel> toTabTrlModels(List<AdTabVt> tabList) {
 		int size = null == tabList ? 0 : tabList.size();
 		List<ADTabModel> resultList = new ArrayList<ADTabModel>(size);
 		if (null != tabList) {
-			for (AdTabVTrl tabEntity : tabList) {
+			for (AdTabVt tabEntity : tabList) {
 				resultList.add(toTabModel(tabEntity));
 			}
 		}
@@ -354,19 +377,19 @@ public final class DTOUtil {
 
 	public static ADTab copyTab(ADTab tab, Integer windowId) {
 		ADTab newTab = new ADTab();
-		newTab.setAdClientId(tab.getADClientID());
+		newTab.setADClientID(tab.getADClientID());
 		newTab.setADColumnID(tab.getADColumnID());
 		newTab.setADColumnSortOrderID(tab.getADColumnSortOrderID());
 		newTab.setADColumnSortYesNoID(tab.getADColumnSortYesNoID());
 		newTab.setADImageID(tab.getADImageID());
-		newTab.setAdOrgId(tab.getADOrgID());
+		newTab.setADOrgID(tab.getADOrgID());
 		newTab.setADProcessID(tab.getADProcessID());
 		newTab.setADTabID(tab.getADTabID());
 		newTab.setADTableID(tab.getADTableID());
 		newTab.setADWindowID(windowId);
 		newTab.setCommitWarning(tab.getCommitWarning());
 		newTab.setCreated(tab.getCreated());
-		newTab.setCreatedby(tab.getCreatedby());
+		newTab.setCreatedBy(tab.getCreatedBy());
 		newTab.setDescription(tab.getDescription());
 		newTab.setDisplayLogic(tab.getDisplayLogic());
 		newTab.setEntityType(tab.getEntityType());
@@ -374,7 +397,7 @@ public final class DTOUtil {
 		newTab.setHelp(tab.getHelp());
 		newTab.setImportFields(tab.isImportFields());
 		newTab.setIncludedTabID(tab.getIncludedTabID());
-		newTab.setIsactive(tab.isActive());
+		newTab.setActive(tab.isActive());
 		newTab.setAdvancedTab(tab.isAdvancedTab());
 		newTab.setInfoTab(tab.isInfoTab());
 		newTab.setInsertRecord(tab.isInsertRecord());
@@ -390,24 +413,24 @@ public final class DTOUtil {
 		newTab.setSeqNo(tab.getSeqNo());
 		newTab.setTabLevel(tab.getTabLevel());
 		newTab.setUpdated(tab.getUpdated());
-		newTab.setUpdatedby(tab.getUpdatedBy());
+		newTab.setUpdatedBy(tab.getUpdatedBy());
 		newTab.setWhereClause(tab.getWhereClause());
 		return newTab;
 	}
 
 	public static ADField copyField(ADField field, Integer tabId) {
 		ADField newField = new ADField();
-		newField.setAdClientId(field.getADClientID());
+		newField.setADClientID(field.getADClientID());
 		newField.setADColumnID(field.getADColumnID());
 		newField.setADFieldID(field.getADFieldID());
 		newField.setADFieldGroupID(field.getADFieldGroupID());
-		newField.setAdOrgId(field.getADOrgID());
+		newField.setADOrgID(field.getADOrgID());
 		newField.setADReferenceID(field.getADReferenceID());
 		newField.setADReferenceValueID(field.getADReferenceValueID());
 		newField.setADTabID(tabId);
 		newField.setADValRuleID(field.getADValRuleID());
 		newField.setCreated(field.getCreated());
-		newField.setCreatedby(field.getCreatedby());
+		newField.setCreatedBy(field.getCreatedBy());
 		newField.setDefaultValue(field.getDefaultValue());
 		newField.setDescription(field.getDescription());
 		newField.setDisplayLength(field.getDisplayLength());
@@ -416,7 +439,7 @@ public final class DTOUtil {
 		newField.setHelp(field.getHelp());
 		newField.setIncludedTabID(field.getIncludedTabID());
 		newField.setInfoFactoryClass(field.getInfoFactoryClass());
-		newField.setIsactive(field.isActive());
+		newField.setActive(field.isActive());
 		newField.setCentrallyMaintained(field.isCentrallyMaintained());
 		newField.setDisplayed(field.isDisplayed());
 		newField.setEncrypted(field.isEncrypted());
@@ -430,8 +453,24 @@ public final class DTOUtil {
 		newField.setSeqNo(field.getSortNo());
 		newField.setSortNo(field.getSortNo());
 		newField.setUpdated(field.getUpdated());
-		newField.setUpdatedby(field.getUpdatedBy());
+		newField.setUpdatedBy(field.getUpdatedBy());
 
 		return newField;
+	}
+
+	public static ADFormModel toFormVTrlModel(ADFormVt entity) {
+		ADFormModel model = new ADFormModel();
+		model.setAdFormId(entity.getADFormID());
+		model.setAccesslevel(entity.getAccessLevel());
+		model.setAdClientId(entity.getADClientID());
+		model.setAdOrgId(entity.getADOrgID());
+		model.setClassname(entity.getClassname());
+		model.setDescription(entity.getDescription());
+		model.setHelp(entity.getHelp());
+		model.setIsActive(entity.isActive());
+		model.setIsBetafunctionality(entity.isBetaFunctionality());
+		model.setJspurl(entity.getJSPURL());
+		model.setName(entity.getName());
+		return model;
 	}
 }

@@ -31,7 +31,7 @@ import org.adempiere.model.ADAttachment;
 import org.adempiere.process.ClientProcess;
 import org.adempiere.process.ProcessCall;
 import org.adempiere.process.ProcessContext;
-import org.adempiere.util.Env;
+import org.adempiere.util.EnvUtil;
 import org.adempiere.web.client.util.StringUtil;
 import org.adempiere.web.server.ReportDistributeServlet;
 
@@ -45,7 +45,7 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 		String reportPath = System.getProperty("org.adempiere.report.path");
 		if (reportPath == null) {
 			// TODO
-			REPORT_HOME = new File(Env.getAdempiereHome() + File.separator + "reports");
+			REPORT_HOME = new File(EnvUtil.getAdempiereHome() + File.separator + "reports");
 		} else {
 			REPORT_HOME = new File(reportPath);
 		}
@@ -168,7 +168,7 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 				conn = ctx.getConnection();
 				jasperPrint = JasperFillManager.fillReport(jasperReport, params, conn);
 				try {
-					File rptFile = new File(Env.getReportPath("form.pdf"));
+					File rptFile = new File(EnvUtil.getReportPath("form.pdf"));
 					rptFile.createNewFile();
 					JasperExportManager.exportReportToPdfFile(jasperPrint, rptFile.getAbsolutePath());
 					pInfo.setPDFReport(ReportDistributeServlet.toDistributionURL("form.pdf"));

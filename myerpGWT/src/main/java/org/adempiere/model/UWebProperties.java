@@ -15,12 +15,12 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 	private Integer aDOrgID;
 	private Boolean active;
 	private String created;
-	private BigDecimal createdBy;
+	private Integer createdBy;
 	private String uKey;
 	private String uValue;
 	private Integer uWebPropertiesID;
 	private String updated;
-	private BigDecimal updatedBy;
+	private Integer updatedBy;
 
 	public UWebProperties() {
 	}
@@ -71,11 +71,11 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getCreatedBy() {
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(BigDecimal createdBy) {
+	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
 
@@ -123,11 +123,11 @@ public class UWebProperties extends org.adempiere.common.ADEntityBase {
 
 	@Basic
 	@Column(nullable=false)
-	public BigDecimal getUpdatedBy() {
+	public Integer getUpdatedBy() {
 		return updatedBy;
 	}
 
-	public void setUpdatedBy(BigDecimal updatedBy) {
+	public void setUpdatedBy(Integer updatedBy) {
 		this.updatedBy = updatedBy;
 	}
 }

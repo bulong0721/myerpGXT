@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.adempiere.util.Env;
+import org.adempiere.util.EnvUtil;
 import org.adempiere.web.client.util.StringUtil;
 
 public class ReportDistributeServlet extends HttpServlet {
@@ -23,7 +23,7 @@ public class ReportDistributeServlet extends HttpServlet {
 			resp.getWriter().write("request url invaild.");
 			return;
 		}
-		String rptPath = Env.getReportPath(report);
+		String rptPath = EnvUtil.getReportPath(report);
 		File rptFile = new File(rptPath);
 		if (!rptFile.exists()) {
 			resp.getWriter().write("report does not exists.");

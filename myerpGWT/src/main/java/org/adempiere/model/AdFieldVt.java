@@ -12,8 +12,8 @@ import org.adempiere.common.ADEntityBase;
  */
 @Entity
 @Table(name = "ad_field_vt")
-@IdClass(org.adempiere.model.AdFieldVTrlPK.class)
-public class AdFieldVTrl extends ADEntityBase implements Serializable {
+@IdClass(org.adempiere.model.AdFieldVtPK.class)
+public class AdFieldVt extends ADEntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer aDLanguageID;
 	private Integer aDColumnID;

@@ -14,22 +14,22 @@
 		<query>SELECT t FROM AdTabV t WHERE t.aDWindowID = :adWindowId ORDER BY t.seqNo</query>
 	</named-query>
 	<named-query name="queryFormByLanguage">
-		<query>SELECT f FROM ADFormVTrl f WHERE f.aDLanguageID = :aDLanguageID AND t.aDFormID = :adFormId</query>
+		<query>SELECT f FROM ADFormVt f WHERE f.aDLanguageID = :aDLanguageID AND t.aDFormID = :adFormId</query>
 	</named-query>
 	<named-query name="queryTabVTrlsByWindowId">
-		<query>SELECT t FROM AdTabVTrl t WHERE t.aDLanguageID = :aDLanguageID AND t.aDWindowID = :adWindowId ORDER BY t.seqNo</query>
+		<query>SELECT t FROM AdTabVt t WHERE t.aDLanguageID = :aDLanguageID AND t.aDWindowID = :adWindowId ORDER BY t.seqNo</query>
 	</named-query>
 	<named-query name="queryFieldvsByTabId">
 		<query>SELECT f FROM AdFieldV f WHERE f.aDTabID = :adTabId ORDER BY f.seqNo</query>
 	</named-query>
 	<named-query name="queryFieldVTrlsByTabId">
-		<query>SELECT f FROM AdFieldVTrl f WHERE f.aDTabID = :adTabId AND f.aDLanguageID = :aDLanguageID ORDER BY f.seqNo</query>
+		<query>SELECT f FROM AdFieldVt f WHERE f.aDTabID = :adTabId AND f.aDLanguageID = :aDLanguageID ORDER BY f.seqNo</query>
 	</named-query>
 	<named-query name="queryMainMenuNodes">
 		<query>SELECT m FROM ADMenu m ORDER BY m.parentID, m.seqNo</query>
 	</named-query>
 	<named-query name="queryMainMenuByLanguage">
-		<query>SELECT m FROM ADMenuVTrl m WHERE m.aDLanguageID = :aDLanguageID ORDER BY m.parentID, m.seqNo</query>
+		<query>SELECT m FROM ADMenuVt m WHERE m.aDLanguageID = :aDLanguageID ORDER BY m.parentID, m.seqNo</query>
 	</named-query>
 	<named-query name="queryRefList">
 		<query>SELECT NEW org.adempiere.common.LookupValue(r.name, r.value) FROM ADRefList r WHERE r.aDReferenceID = :adReferenceId</query>
@@ -41,7 +41,7 @@
 		<query>SELECT p FROM ADProcess p LEFT JOIN FETCH p.aDProcessParas WHERE p.aDProcessID = :adProcessId</query>
 	</named-query>
 	<named-query name="queryProcessTrlWithParamsByProcessId">
-		<query>SELECT p FROM ADProcessVTrl p LEFT JOIN FETCH p.aDProcessParaTrls WHERE p.aDProcessID = :adProcessId</query>
+		<query>SELECT p FROM ADProcessVt p LEFT JOIN FETCH p.aDProcessParaVts WHERE p.aDLanguageID = :aDLanguageID AND p.aDProcessID = :aDProcessId</query>
 	</named-query>
 	<named-query name="queryTableByTableName">
 		<query>SELECT t FROM ADTable t WHERE t.tableName = :tablename</query>
@@ -51,6 +51,9 @@
 	</named-query>
 	<named-query name="queryColumnsByTable">
 		<query>SELECT c FROM ADColumn c WHERE c.aDTableID = :adTableId</query>
+	</named-query>
+	<named-query name="queryTranslateTable">
+		<query>SELECT DISTINCT NEW org.adempiere.model.ADTable(f.aDTableID, f.tableName) FROM AdFieldV f WHERE f.translated=true</query>
 	</named-query>
 	<named-query name="queryUnMappedColumns">
 		<query>SELECT c FROM ADColumn c WHERE c.aDTableID = :adTableId AND c.active = true
