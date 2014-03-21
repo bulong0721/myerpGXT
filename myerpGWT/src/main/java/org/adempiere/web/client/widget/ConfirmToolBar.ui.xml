@@ -1,10 +1,11 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar"
 	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+	<ui:with field="i18n" type="org.adempiere.web.client.Messages" />
 	<toolbar:ToolBar horizontalSpacing="1">
-		<button:IconButton ui:field="btnHelp" />
+		<button:IconButton ui:field="btnHelp" title="{i18n.confirmBar_Help}" />
 		<toolbar:FillToolItem />
-		<button:IconButton ui:field="btnOK" />
-		<button:IconButton ui:field="btnCancel" />
+		<button:IconButton ui:field="btnOK" title="{i18n.confirmBar_OK}" />
+		<button:IconButton ui:field="btnCancel" title="{i18n.confirmBar_Cancel}" />
 	</toolbar:ToolBar>
 </ui:UiBinder> 

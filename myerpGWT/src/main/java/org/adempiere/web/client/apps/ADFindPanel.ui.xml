@@ -4,6 +4,8 @@
 	xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.treegrid" xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar"
 	xmlns:component="urn:import:org.adempiere.web.client.component" xmlns:widget="urn:import:org.adempiere.web.client.widget" xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
 	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+	
+	<ui:with field="i18n" type="org.adempiere.web.client.Messages" />
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="marginsAdvance">
 		<ui:attributes top="4" right="4" bottom="4" left="4" />
 	</ui:with>
@@ -26,10 +28,10 @@
 		<ui:attributes height="-1" width="1" margins="{marginsSimple}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="simpleConfig">
-		<ui:attributes text="Simple" />
+		<ui:attributes text="{i18n.findPanel_Simple}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="advanceConfig">
-		<ui:attributes text="Advanced" />
+		<ui:attributes text="{i18n.findPanel_Advanced}" />
 	</ui:with>
 
 	<gxt:Window ui:field="window" pixelSize="640, 480" modal="true">
@@ -44,11 +46,11 @@
 							<container:child layoutData="{topLayout}">
 								<toolbar:ToolBar ui:field="advToolBar" horizontalSpacing="1">
 									<form:ComboBox ui:field="cmbFields" width="135" allowBlank="true" forceSelection="true" />
-									<button:IconButton ui:field="btnAdd" toolTip="Add Expression" />
-									<button:IconButton ui:field="btnDelete" toolTip="Delete Expression" />
+									<button:IconButton ui:field="btnAdd" toolTip="{i18n.findPanel_Add}" />
+									<button:IconButton ui:field="btnDelete" toolTip="{i18n.findPanel_Delete}" />
 									<toolbar:SeparatorToolItem />
 									<form:ComboBox ui:field="cmbProfiles" width="165" allowBlank="true" />
-									<button:IconButton ui:field="btnSave" toolTip="Save Profile" />
+									<button:IconButton ui:field="btnSave" toolTip="{i18n.findPanel_Save}" />
 								</toolbar:ToolBar>
 							</container:child>
 							<container:child layoutData="{simpleLayout}">

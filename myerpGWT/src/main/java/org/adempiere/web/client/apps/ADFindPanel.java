@@ -9,6 +9,7 @@ import org.adempiere.common.LookupValue;
 import org.adempiere.common.ADExpression.ADPredicate;
 import org.adempiere.common.ADExpression.BooleanOperator;
 import org.adempiere.common.ADExpression.FieldOperator;
+import org.adempiere.web.client.Messages;
 import org.adempiere.web.client.component.ADFieldBuilder;
 import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.ADModalDialog;
@@ -56,6 +57,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 	private static final String			OPERATOR_BOOL_OR	= "**Or**";
 	private static final String			OPERATOR_BOOL_AND	= "**And**";
 	private static FindPanelUiBinder	uiBinder			= GWT.create(FindPanelUiBinder.class);
+	private static Messages				i18n				= GWT.create(Messages.class);
 
 	interface FindPanelUiBinder extends UiBinder<Widget, ADFindPanel> {
 	}
@@ -92,7 +94,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 	public Widget asWidget() {
 		if (null == widget) {
 			widget = uiBinder.createAndBindUi(this);
-			window.setHeadingText("Lookup Record:" + tabModel.getName());
+			window.setHeadingText(i18n.findPanel_Title(tabModel.getName()));
 			toolBar.setToolbarListener(this);
 		}
 		return widget;
@@ -106,7 +108,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 	void onAddSelected(SelectEvent event) {
 		ADExpression item = grid.getSelectionModel().getSelectedItem();
 		if (null == item || !item.isParent()) {
-			AlertMessageBox dialog = new AlertMessageBox("Adempiere", "Please select a container to add!");
+			AlertMessageBox dialog = new AlertMessageBox(i18n.adempiere_System(), i18n.findPanel_MsgAdd());
 			dialog.show();
 			return;
 		}
@@ -133,13 +135,13 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 	void onDeleteSelected(SelectEvent event) {
 		ADExpression childNode = grid.getSelectionModel().getSelectedItem();
 		if (null == childNode) {
-			AlertMessageBox dialog = new AlertMessageBox("Adempiere", "Please select a node to Delete!");
+			AlertMessageBox dialog = new AlertMessageBox(i18n.adempiere_System(), i18n.findPanel_MsgDel());
 			dialog.show();
 			return;
 		}
 		ADPredicate parentNode = (ADPredicate) store.getParent(childNode);
 		if (null == parentNode) {
-			AlertMessageBox mbox = new AlertMessageBox("Adempiere", "Root node cannot be delete.");
+			AlertMessageBox mbox = new AlertMessageBox(i18n.adempiere_System(), i18n.findPanel_MsgCannotDel());
 			mbox.show();
 			return;
 		}
@@ -167,14 +169,14 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 
 		store = new TreeStore<ADExpression>(new XKeyProvider());
 		ColumnConfig<ADExpression, String> nameColumn = new ColumnConfig<ADExpression, String>(new XValueProvider<String>("columnName"));
-		nameColumn.setHeader("Column");
+		nameColumn.setHeader(i18n.findPanel_ColColumn());
 		ColumnConfig<ADExpression, FieldOperator> operatorColumn = new ColumnConfig<ADExpression, FieldOperator>(
 				new XValueProvider<FieldOperator>("fieldOperator"));
-		operatorColumn.setHeader("Operator");
+		operatorColumn.setHeader(i18n.findPanel_ColOperator());
 		final ColumnConfig<ADExpression, ?> value1Column = new ColumnConfig<ADExpression, Object>(new XValueProvider<Object>("value1"));
-		value1Column.setHeader("Value1");
+		value1Column.setHeader(i18n.findPanel_ColValue1());
 		final ColumnConfig<ADExpression, ?> value2Column = new ColumnConfig<ADExpression, Object>(new XValueProvider<Object>("value2"));
-		value2Column.setHeader("Value2");
+		value2Column.setHeader(i18n.findPanel_ColValue2());
 		List<ColumnConfig<ADExpression, ?>> columns = new ArrayList<ColumnConfig<ADExpression, ?>>();
 		columns.add(nameColumn);
 		columns.add(operatorColumn);
@@ -260,8 +262,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 		List<ADFieldModel> fieldList = new ArrayList<ADFieldModel>(5);
 		if (null != tabModel && null != tabModel.getFieldList()) {
 			for (ADFieldModel fieldModel : tabModel.getFieldList()) {
-				if (fieldModel.isSelectionColumn() || fieldModel.isKey()
-						|| LOOKUP_FIELDS.contains(fieldModel.getName().toLowerCase())) {
+				if (fieldModel.isSelectionColumn() || fieldModel.isKey() || LOOKUP_FIELDS.contains(fieldModel.getName().toLowerCase())) {
 					fieldList.add(fieldModel);
 				}
 			}

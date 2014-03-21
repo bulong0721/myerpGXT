@@ -2,9 +2,10 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
 
+	<ui:with field="i18n" type="org.adempiere.web.client.Messages" />
 	<ui:with type="org.adempiere.web.client.resources.Images" field="images" />
 	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="shortTextTabConfig">
-		<ui:attributes text="Default" />
+		<ui:attributes text="{i18n.contentView_Default}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins_4">
 		<ui:attributes top="2" right="4" bottom="2" left="0" />
@@ -22,16 +23,16 @@
 			<gxt:child config="{shortTextTabConfig}">
 				<container:PortalLayoutContainer numColumns="2" styleName="{style.background}">
 					<container:portlet column="0">
-						<gxt:Portlet headingText="Atvities" width="350" height="125" collapsible="true" animCollapse="false">
+						<gxt:Portlet headingText="{i18n.contentView_Atvities}" width="350" height="125" collapsible="true" animCollapse="false">
 							<container:VBoxLayoutContainer>
 								<container:child layoutData="{barLayoutData}">
-									<button:TextButton text="Notice:0" icon="{images.eMailSupport16}" ui:field="noticeButton" />
+									<button:TextButton text="{i18n.contentView_Notice}" icon="{images.eMailSupport16}" ui:field="noticeButton" />
 								</container:child>
 								<container:child layoutData="{barLayoutData}">
-									<button:TextButton text="Request:0" icon="{images.request16}" ui:field="requestButton" />
+									<button:TextButton text="{i18n.contentView_Request}" icon="{images.request16}" ui:field="requestButton" />
 								</container:child>
 								<container:child layoutData="{barLayoutData}">
-									<button:TextButton text="Workflow Activities:0" icon="{images.workFlow16}" ui:field="workflowButton" />
+									<button:TextButton text="{i18n.contentView_Workflow_Activities}" icon="{images.workFlow16}" ui:field="workflowButton" />
 								</container:child>
 							</container:VBoxLayoutContainer>
 						</gxt:Portlet>

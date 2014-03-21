@@ -2,7 +2,8 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
 	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client" xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar"
 	xmlns:widget="urn:import:org.adempiere.web.client.widget" xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form" xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
-
+	
+	<ui:with field="i18n" type="org.adempiere.web.client.Messages" />
 	<ui:with type="org.adempiere.web.client.resources.Images" field="images" />
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins4">
 		<ui:attributes top="4" right="4" bottom="4" left="4" />
@@ -26,10 +27,10 @@
 		<ui:attributes height="-1" width="1" margins="{margins4}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="connectionConfig">
-		<ui:attributes text="Connection" />
+		<ui:attributes text="{i18n.loginView_Connection}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="defaultConfig">
-		<ui:attributes text="Default" />
+		<ui:attributes text="{i18n.loginView_Default}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="verticalLayoutData">
 		<ui:attributes width="1" height="-1" margins="{marginsf}" />
@@ -41,7 +42,7 @@
 	</ui:style>
 	<container:Viewport>
 		<container:CenterLayoutContainer>
-			<gxt:ContentPanel ui:field="panel" headingText="Login" pixelSize="375,330">
+			<gxt:ContentPanel ui:field="panel" headingText="{i18n.loginView_Login}" pixelSize="375,330">
 				<container:VerticalLayoutContainer>
 					<container:child layoutData="{tabmarginData}">
 						<tabs:TabPanel borders="false" layoutData="{marginData}">
@@ -51,73 +52,73 @@
 										<g:Image pixelSize="90, 80" url="images/AdempiereLogo.png" />
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">
-										<g:Label styleName="{style.label}" text="Smart Suite ERP,CRM and SRM" />
+										<g:Label styleName="{style.label}" text="{i18n.loginView_Product}" />
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="User ID" labelWidth="65">
+										<form:FieldLabel text="{i18n.loginView_UserID}" labelWidth="65">
 											<form:widget>
 												<form:TextField ui:field="userId" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="Password" labelWidth="65">
+										<form:FieldLabel text="{i18n.loginView_Password}" labelWidth="65">
 											<form:widget>
 												<form:PasswordField ui:field="password" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="Language" labelWidth="65">
+										<form:FieldLabel text="{i18n.loginView_Language}" labelWidth="65">
 											<form:widget>
 												<form:ComboBox ui:field="langCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
 									<container:child layoutData="{copyrightLayoutData}">
-										<g:Label styleName="{style.label}" text="@Adempiere 1999 - 2008®" />
+										<g:Label styleName="{style.label}" text="{i18n.loginView_CopyRight}" />
 									</container:child>
 								</container:VerticalLayoutContainer>
 							</tabs:child>
 							<tabs:child config="{defaultConfig}">
 								<container:VerticalLayoutContainer>
 									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="Role">
+										<form:FieldLabel text="{i18n.loginView_Role}">
 											<form:widget>
 												<form:ComboBox ui:field="roleCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="Client">
+										<form:FieldLabel text="{i18n.loginView_Client}">
 											<form:widget>
 												<form:ComboBox ui:field="clientCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="Organization">
+										<form:FieldLabel text="{i18n.loginView_Org}">
 											<form:widget>
 												<form:ComboBox ui:field="orgCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="Warehouse">
+										<form:FieldLabel text="{i18n.loginView_Warehouse}">
 											<form:widget>
 												<form:ComboBox ui:field="warehouseCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="Date">
+										<form:FieldLabel text="{i18n.loginView_Date}">
 											<form:widget>
 												<form:DateField ui:field="time" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="Printer">
+										<form:FieldLabel text="{i18n.loginView_Printer}">
 											<form:widget>
 												<form:ComboBox ui:field="printerCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>

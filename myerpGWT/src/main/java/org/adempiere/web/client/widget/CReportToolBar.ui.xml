@@ -2,18 +2,19 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar" xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
 	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button" xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
+	<ui:with field="i18n" type="org.adempiere.web.client.Messages" />
 	<toolbar:ToolBar ui:field="toolBar" horizontalSpacing="1">
 		<form:ComboBox ui:field="cmbReportType" width="85" allowBlank="true" forceSelection="true" />
 		<toolbar:SeparatorToolItem />
 		<form:ComboBox ui:field="cmbFormat" width="125" allowBlank="true" forceSelection="true" />
 		<toolbar:SeparatorToolItem />
-		<form:CheckBox ui:field="chkSummary" boxLabel="Summary" />
+		<form:CheckBox ui:field="chkSummary" boxLabel="{i18n.rptBar_Summary}" />
 		<toolbar:SeparatorToolItem />
-		<button:IconButton ui:field="btnCustomize" toolTip="Customize Report" />
-		<button:IconButton ui:field="btnLookup" toolTip="Lookup Record" />
-		<button:IconButton ui:field="btnSendMail" toolTip="Send Mail" />
-		<button:IconButton ui:field="btnAttachment" toolTip="Attachment" />
-		<button:IconButton ui:field="btnExport" toolTip="Export Report" />
-		<button:IconButton ui:field="btnRefresh" toolTip="Refresh" />
+		<button:IconButton ui:field="btnCustomize" toolTip="{i18n.rptBar_Customize}" />
+		<button:IconButton ui:field="btnLookup" toolTip="{i18n.rptBar_Lookup}" />
+		<button:IconButton ui:field="btnSendMail" toolTip="{i18n.rptBar_SendMail}" />
+		<button:IconButton ui:field="btnAttachment" toolTip="{i18n.rptBar_Attachment}" />
+		<button:IconButton ui:field="btnExport" toolTip="{i18n.rptBar_Export}" />
+		<button:IconButton ui:field="btnRefresh" toolTip="{i18n.rptBar_Refresh}" />
 	</toolbar:ToolBar>
 </ui:UiBinder> 

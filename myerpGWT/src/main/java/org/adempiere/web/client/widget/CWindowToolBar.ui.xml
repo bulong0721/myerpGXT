@@ -1,34 +1,34 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar" xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
 	xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button" xmlns:g="urn:import:com.google.gwt.user.client.ui">
-
+	<ui:with field="i18n" type="org.adempiere.web.client.Messages" />
 	<toolbar:ToolBar ui:field="toolBar" horizontalSpacing="1">
-		<button:IconButton ui:field="btnUndoChange" toolTip="Undo Changes" />
-		<button:IconButton ui:field="btnHelp" toolTip="Help" />
+		<button:IconButton ui:field="btnUndoChange" toolTip="{i18n.winBar_UndoChange}" />
+		<button:IconButton ui:field="btnHelp" toolTip="{i18n.winBar_Help}" />
 		<toolbar:SeparatorToolItem />
-		<button:IconButton ui:field="btnNew" toolTip="New Record" />
-		<button:IconButton ui:field="btnCopy" toolTip="Copy Record" />
-		<button:IconButton ui:field="btnDelete" toolTip="Delete Record" />
-		<button:IconButton ui:field="btnDeleteSelection" toolTip="Delete Items" />
-		<button:IconButton ui:field="btnSave" toolTip="Save Record" />
-		<button:IconButton ui:field="btnRefresh" toolTip="Refresh Record" />
-		<button:IconButton ui:field="btnFind" toolTip="Find Record" />
-		<button:IconButton ui:field="btnAttachment" toolTip="Attachment" />
-		<button:IconButton ui:field="btnChat" toolTip="Parent" />
-		<button:IconButton ui:field="btnGridToggle" toolTip="Layout" />
-		<button:IconButton ui:field="btnHistoryRecords" toolTip="History" />
+		<button:IconButton ui:field="btnNew" toolTip="{i18n.winBar_New}" />
+		<button:IconButton ui:field="btnCopy" toolTip="{i18n.winBar_Copy}" />
+		<button:IconButton ui:field="btnDelete" toolTip="{i18n.winBar_Delete}" />
+		<button:IconButton ui:field="btnDeleteSelection" toolTip="{i18n.winBar_Delete}" />
+		<button:IconButton ui:field="btnSave" toolTip="{i18n.winBar_Save}" />
+		<button:IconButton ui:field="btnRefresh" toolTip="{i18n.winBar_Refresh}" />
+		<button:IconButton ui:field="btnFind" toolTip="{i18n.winBar_Find}" />
+		<button:IconButton ui:field="btnAttachment" toolTip="{i18n.winBar_Attachment}" />
+		<button:IconButton ui:field="btnChat" toolTip="{i18n.winBar_Chat}" />
+		<button:IconButton ui:field="btnGridToggle" toolTip="{i18n.winBar_GridToggle}" />
+		<button:IconButton ui:field="btnHistoryRecords" toolTip="{i18n.winBar_HistoryRecords}" />
 		<toolbar:SeparatorToolItem />
-		<button:IconButton ui:field="btnParentRecord" toolTip="Parent" />
-		<button:IconButton ui:field="btnDetailRecord" toolTip="Details" />
-		<button:IconButton ui:field="btnFirst" toolTip="First Record" />
-		<button:IconButton ui:field="btnPrevious" toolTip="Previous Record" />
-		<button:IconButton ui:field="btnNext" toolTip="Next Record" />
-		<button:IconButton ui:field="btnLast" toolTip="Last Record" />
+		<button:IconButton ui:field="btnParentRecord" toolTip="{i18n.winBar_ParentRecord}" />
+		<button:IconButton ui:field="btnDetailRecord" toolTip="{i18n.winBar_DetailRecord}" />
+		<button:IconButton ui:field="btnFirst" toolTip="{i18n.winBar_First}" />
+		<button:IconButton ui:field="btnPrevious" toolTip="{i18n.winBar_Previous}" />
+		<button:IconButton ui:field="btnNext" toolTip="{i18n.winBar_Next}" />
+		<button:IconButton ui:field="btnLast" toolTip="{i18n.winBar_Last}" />
 		<toolbar:SeparatorToolItem />
-		<button:IconButton ui:field="btnReport" toolTip="Report" />
-		<button:IconButton ui:field="btnPrintView" toolTip="PrintView" />
-		<button:IconButton ui:field="btnPrint" toolTip="Print" />
-		<button:IconButton ui:field="btnActiveWorkflows" toolTip="Workflow" />
-		<button:IconButton ui:field="btnRequests" toolTip="Request" />
+		<button:IconButton ui:field="btnReport" toolTip="{i18n.winBar_Report}" />
+		<button:IconButton ui:field="btnPrintView" toolTip="{i18n.winBar_PrintView}" />
+		<button:IconButton ui:field="btnPrint" toolTip="{i18n.winBar_Print}" />
+		<button:IconButton ui:field="btnActiveWorkflows" toolTip="{i18n.winBar_ActiveWorkflows}" />
+		<button:IconButton ui:field="btnRequests" toolTip="{i18n.winBar_Requests}" />
 	</toolbar:ToolBar>
 </ui:UiBinder> 

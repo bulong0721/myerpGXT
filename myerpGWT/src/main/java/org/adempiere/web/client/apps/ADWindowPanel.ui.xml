@@ -3,7 +3,8 @@
 	xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container" xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
 	xmlns:toolbar="urn:import:com.sencha.gxt.widget.core.client.toolbar" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:tabs="urn:import:com.sencha.gxt.widget.core.client"
 	xmlns:component="urn:import:org.adempiere.web.client.component" xmlns:ad="urn:import:org.adempiere.web.client.widget">
-
+	
+	<ui:with field="i18n" type="org.adempiere.web.client.Messages" />
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins4">
 		<ui:attributes top="2" right="4" bottom="2" left="4" />
 	</ui:with>
@@ -35,10 +36,10 @@
 		</container:child>
 		<container:child layoutData="{toolLayoutData}">
 			<toolbar:ToolBar>
-				<gxt:Status ui:field="status" text="Navigate or Update record" width="200" />
+				<gxt:Status ui:field="status" text="{i18n.winPanel_StatusLeft}" width="200" />
 				<toolbar:FillToolItem />
 				<toolbar:SeparatorToolItem />
-				<gxt:Status ui:field="wordCount" text="1 / 5" width="45" styleName="{statusStyle.statusPanel}" />
+				<gxt:Status ui:field="wordCount" text="{i18n.winPanel_StatusRight}" width="45" styleName="{statusStyle.statusPanel}" />
 			</toolbar:ToolBar>
 		</container:child>
 	</container:VerticalLayoutContainer>
