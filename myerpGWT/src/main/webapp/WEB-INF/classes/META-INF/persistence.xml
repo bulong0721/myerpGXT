@@ -733,7 +733,7 @@
 			<property name="javax.persistence.jdbc.user" value="adempiere" />
 			<property name="javax.persistence.jdbc.password" value="adempiere" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE" />
+			<!-- <property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE" /> -->
 			<!-- <property name="openjpa.RuntimeUnenhancedClasses" value="supported" /> -->
 			<!-- <property name="openjpa.MaxFetchDepth" value="1"/> -->
 		</properties>

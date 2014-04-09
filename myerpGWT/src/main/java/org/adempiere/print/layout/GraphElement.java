@@ -2,7 +2,6 @@ package org.adempiere.print.layout;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
-import java.util.Properties;
 
 public class GraphElement extends PrintElement {
 	/**
@@ -31,7 +30,7 @@ public class GraphElement extends PrintElement {
 	 * @param ctx context
 	 * @param isView true if online view (IDs are links)
 	 */
-	public void paint(Graphics2D g2D, int pageNo, Point2D pageStart, Properties ctx, boolean isView) {
+	public void paint(Graphics2D g2D, int pageNo, Point2D pageStart, boolean isView) {
 
 	} // paint
 

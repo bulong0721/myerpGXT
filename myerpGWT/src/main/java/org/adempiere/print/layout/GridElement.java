@@ -9,7 +9,6 @@ import java.awt.font.TextLayout;
 import java.awt.geom.Point2D;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
-import java.util.Properties;
 
 public class GridElement extends PrintElement {
 	/**
@@ -154,7 +153,7 @@ public class GridElement extends PrintElement {
 	 * @param ctx print context
 	 * @param isView true if online view (IDs are links)
 	 */
-	public void paint(Graphics2D g2D, int pageNo, Point2D pageStart, Properties ctx, boolean isView) {
+	public void paint(Graphics2D g2D, int pageNo, Point2D pageStart, boolean isView) {
 		Point2D.Double location = getAbsoluteLocation(pageStart);
 		float y = (float) location.y;
 		//

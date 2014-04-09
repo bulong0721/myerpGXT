@@ -105,6 +105,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 			}
 		}
 		tabSet.setActiveIndex(0);
+		tabSet.trimWhenSingleTab();
 		if (currentTab.getTabModel().getIsHighVolume()) {
 			onFind();
 		} else {

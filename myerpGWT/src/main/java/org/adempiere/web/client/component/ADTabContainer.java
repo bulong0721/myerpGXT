@@ -211,4 +211,10 @@ public class ADTabContainer extends Composite implements HasValueChangeHandlers<
 	public int getWidgetCount() {
 		return bodyContainer.getWidgetCount();
 	}
+	
+	public void trimWhenSingleTab() {
+		if (1 == getWidgetCount()) {
+			container.remove(tabContainer);
+		}
+	}
 }

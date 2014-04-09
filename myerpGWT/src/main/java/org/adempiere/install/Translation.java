@@ -67,7 +67,7 @@ public class Translation {
 	public static final String	XML_VALUE_ATTRIBUTE_ORIGINAL	= "original";
 
 	/** Logger */
-	private CLogger				log								= CLogger.getCLogger(getClass());
+	private static CLogger		log								= CLogger.getCLogger(Translation.class);
 	/** Properties */
 	private Properties			m_ctx							= null;
 	private PersistContext		pCtx;
@@ -108,11 +108,11 @@ public class Translation {
 			return e.toString();
 		}
 	} // importTrl
-	
+
 	public static void main(String[] args) {
 		PersistContext pCtx = new PersistContext();
 		Translation trl = new Translation(null, pCtx);
-		trl.importTrl("f:/zh_CN (2012翻译-Jerry)4.20", 0, "zh_CN", "AD_Process_Para_Trl");
+		trl.importTrl("f:/zh_CN (2012翻译-Jerry)4.20", 0, "zh_CN", "AD_Element_Trl");
 	}
 
 	public String exportTrl(String directory, int AD_Client_ID, String AD_Language, String Trl_Table) {

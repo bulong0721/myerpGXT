@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.adempiere.common.ADModelKey;
+import org.adempiere.web.client.Messages;
 import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.ADModelDriver;
 import org.adempiere.web.client.component.ADModelReader;
@@ -71,7 +72,7 @@ import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent.Selecti
 import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
 
 public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
-
+	private static Messages									i18n		= GWT.create(Messages.class);
 	private static SimpleTabPanelUiBinder					uiBinder	= GWT.create(SimpleTabPanelUiBinder.class);
 	PagingLoader<ADLoadConfig, PagingLoadResult<ADMapData>>	loader		= null;
 
@@ -121,7 +122,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 		createForm();
 		createGrid();
 	}
-	
+
 	@Override
 	protected ButtonStates computeToolBarState() {
 		ButtonStates btnStates = toolBar.getButtonStates();
@@ -225,7 +226,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 		treeContainer = new ContentPanel();
 		if (tabModel.getHasTree()) {
 			treeContainer.setBodyBorder(true);
-			treeContainer.setHeadingText("Tree");
+			treeContainer.setHeadingText(i18n.tabPanel_Tree());
 			treeLayoutData = new HorizontalLayoutData(220d, 1d);
 			treePanel = new ADTreePanel(ADMenuModel.TREE_ID);
 			treePanel.enableDnD();

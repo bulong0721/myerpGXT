@@ -3,7 +3,6 @@ package org.adempiere.print.layout;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
-import java.util.Properties;
 
 public class HTMLElement extends PrintElement {
 	/**
@@ -62,7 +61,7 @@ public class HTMLElement extends PrintElement {
 	 * @param ctx print context
 	 * @param isView true if online view (IDs are links)
 	 */
-	public void paint(Graphics2D g2D, int pageNo, Point2D pageStart, Properties ctx, boolean isView) {
+	public void paint(Graphics2D g2D, int pageNo, Point2D pageStart, boolean isView) {
 		// 36.0/137.015625,
 		// Clip=java.awt.Rectangle[x=0,y=0,p_width=639,p_height=804],
 		// Translate=1.0/56.0, Scale=1.0/1.0, Shear=0.0/0.0

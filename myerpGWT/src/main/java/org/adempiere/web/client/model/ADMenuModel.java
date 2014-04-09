@@ -152,7 +152,7 @@ public class ADMenuModel implements IsADRPCModel, IsTreeNode {
 				if (null == model) {
 					return null;
 				}
-				Images images = ResourcesFactory.createImages();
+				Images images = ResourcesFactory.getImages();
 				if (ACTION_Form.equalsIgnoreCase(model.getAction())) {
 					return images.application16();
 				}

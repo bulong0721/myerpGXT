@@ -22,5 +22,7 @@
 	<set-property name="compiler.useSourceMaps" value="false" />
 	<set-property name="ClientBundle.enableInlining" value="false" />
 	<extend-property name="locale" values="en,zh_CN"/>
-	<set-configuration-property name="locale.usemeta" value="Y"/>
+	<set-property-fallback name="locale" value="zh_CN"/>
+	<set-configuration-property name="locale.searchorder" value="cookie,useragent" />
+	<set-configuration-property name="locale.cookie" value="lang" />
 </module>

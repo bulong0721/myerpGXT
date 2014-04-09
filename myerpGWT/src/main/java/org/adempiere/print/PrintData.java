@@ -50,4 +50,14 @@ public class PrintData implements Serializable {
 		return null;
 	}
 
+	public void dumpHeader() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void dumpCurrentRow() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

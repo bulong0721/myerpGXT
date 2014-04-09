@@ -187,7 +187,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 		store.add(advanceCondition);
 
 		ColumnModel<ADExpression> cm = new ColumnModel<ADExpression>(columns);
-		Images imgs = ResourcesFactory.createImages();
+		Images imgs = ResourcesFactory.getImages();
 		grid = new TreeGrid<ADExpression>(store, cm, nameColumn);
 		grid.getStyle().setNodeOpenIcon(imgs.mOpen());
 		grid.getStyle().setNodeCloseIcon(imgs.mClosed());

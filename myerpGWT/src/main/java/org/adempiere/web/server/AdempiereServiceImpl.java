@@ -11,6 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpSession;
 
 import org.adempiere.common.ADExpression;
 import org.adempiere.common.ADExpression.ADPredicate;
@@ -23,6 +24,7 @@ import org.adempiere.common.RefCriteria;
 import org.adempiere.model.ADMenu;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.process.ProcessContext;
+import org.adempiere.util.CLogger;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
 import org.adempiere.util.ProcessUtil;
@@ -40,11 +42,11 @@ import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.util.StringUtil;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings({ "serial", "rawtypes", "unchecked" })
 public class AdempiereServiceImpl extends RemoteServiceServlet implements AdempiereService {
+	private static CLogger	log		= CLogger.getCLogger(AdempiereServiceImpl.class);
 	private PersistContext	pCtx	= new PersistContext();
 
 	public static void main(String[] args) {
@@ -66,11 +68,11 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		AdempiereServiceImpl service = new AdempiereServiceImpl();
-//		// List<IsTreeNode> nodes = service.getTreeNodes(10, null);
-//		// System.out.println(nodes.size());
-//		List<IsTreeNode> list = service.getAdMenuModels();
-//		System.out.println(list.size());
+		// AdempiereServiceImpl service = new AdempiereServiceImpl();
+		// // List<IsTreeNode> nodes = service.getTreeNodes(10, null);
+		// // System.out.println(nodes.size());
+		// List<IsTreeNode> list = service.getAdMenuModels();
+		// System.out.println(list.size());
 	}
 
 	static class ServiceUtil {
@@ -233,6 +235,10 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 
 	private int getLanguage() {
 		return 187;
+	}
+
+	private HttpSession getSession() {
+		return getThreadLocalRequest().getSession();
 	}
 
 	@Override
@@ -406,7 +412,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 				dataQuery.setFirstResult(loadCfg.getOffset());
 				dataQuery.setMaxResults(loadCfg.getLimit());
 				List oldList = dataQuery.getResultList();
-				data = JSON.toJSONString(oldList, SerializerFeature.WriteClassName);
+				data = JSON.toJSONString(oldList);
 			}
 			pCtx.commit();
 		} catch (Exception e) {
@@ -415,14 +421,20 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		}
 		ADJSONData jsonData = new ADJSONData(data);
 		jsonData.setTotalCount(totalCount);
-		System.out.println("count:" + totalCount + "=>data:" + data);
+		System.out.println("count:" + totalCount/* + "=>data:" + data */);
 		return jsonData;
 	}
 
 	@Override
 	public Boolean logout() {
-		// TODO Auto-generated method stub
-		return true;
+		try {
+			HttpSession session = getSession();
+			session.invalidate();
+			return true;
+		} catch (Exception e) {
+			log.warning("Error in logout method");
+			return false;
+		}
 	}
 
 	@Override

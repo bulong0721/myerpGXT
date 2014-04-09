@@ -8,6 +8,9 @@
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins4">
 		<ui:attributes top="4" right="4" bottom="4" left="4" />
 	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins10">
+		<ui:attributes top="8" right="20" bottom="8" left="15" />
+	</ui:with>
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins60">
 		<ui:attributes top="4" right="4" bottom="4" left="80" />
 	</ui:with>
@@ -30,10 +33,13 @@
 		<ui:attributes text="{i18n.loginView_Connection}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="defaultConfig">
-		<ui:attributes text="{i18n.loginView_Default}" />
+		<ui:attributes text="{i18n.loginView_Default}" enabled="false" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="verticalLayoutData">
 		<ui:attributes width="1" height="-1" margins="{marginsf}" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="settingLayoutData">
+		<ui:attributes width="1" height="-1" margins="{margins10}" />
 	</ui:with>
 	<ui:style>
 		.label {
@@ -45,7 +51,7 @@
 			<gxt:ContentPanel ui:field="panel" headingText="{i18n.loginView_Login}" pixelSize="375,330">
 				<container:VerticalLayoutContainer>
 					<container:child layoutData="{tabmarginData}">
-						<tabs:TabPanel borders="false" layoutData="{marginData}">
+						<tabs:TabPanel ui:field="tabContainer" borders="false" layoutData="{marginData}">
 							<tabs:child config="{connectionConfig}">
 								<container:VerticalLayoutContainer>
 									<container:child>
@@ -82,42 +88,35 @@
 							</tabs:child>
 							<tabs:child config="{defaultConfig}">
 								<container:VerticalLayoutContainer>
-									<container:child layoutData="{verticalLayoutData}">
+									<container:child layoutData="{settingLayoutData}">
 										<form:FieldLabel text="{i18n.loginView_Role}">
 											<form:widget>
 												<form:ComboBox ui:field="roleCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
-									<container:child layoutData="{verticalLayoutData}">
+									<container:child layoutData="{settingLayoutData}">
 										<form:FieldLabel text="{i18n.loginView_Client}">
 											<form:widget>
 												<form:ComboBox ui:field="clientCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
-									<container:child layoutData="{verticalLayoutData}">
+									<container:child layoutData="{settingLayoutData}">
 										<form:FieldLabel text="{i18n.loginView_Org}">
 											<form:widget>
 												<form:ComboBox ui:field="orgCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
-									<container:child layoutData="{verticalLayoutData}">
+									<container:child layoutData="{settingLayoutData}">
 										<form:FieldLabel text="{i18n.loginView_Warehouse}">
 											<form:widget>
 												<form:ComboBox ui:field="warehouseCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
-									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="{i18n.loginView_Date}">
-											<form:widget>
-												<form:DateField ui:field="time" />
-											</form:widget>
-										</form:FieldLabel>
-									</container:child>
-									<container:child layoutData="{verticalLayoutData}">
+									<container:child layoutData="{settingLayoutData}">
 										<form:FieldLabel text="{i18n.loginView_Printer}">
 											<form:widget>
 												<form:ComboBox ui:field="printerCombo" allowBlank="true" forceSelection="true" />

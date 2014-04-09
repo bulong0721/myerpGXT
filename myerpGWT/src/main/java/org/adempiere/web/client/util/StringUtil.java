@@ -176,4 +176,11 @@ public class StringUtil {
 	public static Number toNumber(String value) {
 		return new BigDecimal(value);
 	}
+
+	public static boolean equals(String lhs, String rhs) {
+		if (null == lhs) {
+			return (null == rhs);
+		}
+		return lhs.equals(rhs);
+	}
 }

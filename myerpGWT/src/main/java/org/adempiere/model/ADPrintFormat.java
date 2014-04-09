@@ -1,5 +1,7 @@
 package org.adempiere.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -37,6 +39,7 @@ public class ADPrintFormat extends org.adempiere.common.ADEntityBase {
 	private Boolean tableBased;
 	private String updated;
 	private Integer updatedBy;
+	private List<ADPrintFormatItem> printFormatItems;
 
 	public ADPrintFormat() {
 	}
@@ -314,4 +317,28 @@ public class ADPrintFormat extends org.adempiere.common.ADEntityBase {
 	public void setUpdatedBy(Integer updatedBy) {
 		this.updatedBy = updatedBy;
 	}
+	
+	// bi-directional many-to-one association to AdProcessPara
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "printFormat")
+		public List<ADPrintFormatItem> getPrintFormatItems() {
+			return this.printFormatItems;
+		}
+
+		public void setPrintFormatItems(List<ADPrintFormatItem> printFormatItems) {
+			this.printFormatItems = printFormatItems;
+		}
+
+		public ADPrintFormatItem addPrintFormatItem(ADPrintFormatItem printFormatItem) {
+			getPrintFormatItems().add(printFormatItem);
+			printFormatItem.setPrintFormat(this);
+
+			return printFormatItem;
+		}
+
+		public ADPrintFormatItem removePrintFormatItem(ADPrintFormatItem printFormatItem) {
+			getPrintFormatItems().remove(printFormatItem);
+			printFormatItem.setPrintFormat(null);
+
+			return printFormatItem;
+		}
 }

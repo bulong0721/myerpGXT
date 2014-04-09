@@ -68,7 +68,8 @@ public class ADFieldBuilder {
 		fieldType = field.getFieldType();
 		ADModelValueProvider<?> valueProvider = null;
 		String propertyName = field.getPropertyName();
-//		LoggingUtil.info("column2property:" + field.getColumnname() + "=>" + propertyName);
+		// LoggingUtil.info("column2property:" + field.getColumnname() + "=>" +
+		// propertyName);
 		if (fieldType.isID() || fieldType.isInteger()) {
 			valueProvider = new ADModelValueProvider<Integer>(propertyName, fieldType);
 			if (fieldType.isLookup()) {
@@ -221,7 +222,7 @@ public class ADFieldBuilder {
 		}
 
 		public static OptionStore getOptionStore(String columnname, Integer displayType, Integer adRefId) {
-			if (optionStoreMap.containsKey(adRefId)) {
+			if (optionStoreMap.containsKey(columnname + adRefId)) {
 				return optionStoreMap.get(columnname + adRefId);
 			}
 			OptionStore store = createOptionStore(columnname, displayType, adRefId);

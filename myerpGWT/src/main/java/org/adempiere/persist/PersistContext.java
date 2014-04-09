@@ -9,14 +9,14 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContextType;
 
 public class PersistContext implements Serializable {
-	private static final long					serialVersionUID	= 1L;
-	private final EntityManagerFactory			emf;
-	private final String						unitName;
-	private final boolean						isManaged;
-	private final PersistenceContextType		scope;
+	private static final long				serialVersionUID	= 1L;
+	private final EntityManagerFactory		emf;
+	private final String					unitName;
+	private final boolean					isManaged;
+	private final PersistenceContextType	scope;
 
-	static ThreadLocal<EntityManager>	thread				= new ThreadLocal<EntityManager>();
-	private ReentrantLock						lock				= new ReentrantLock();
+	static ThreadLocal<EntityManager>		thread				= new ThreadLocal<EntityManager>();
+	private ReentrantLock					lock				= new ReentrantLock();
 
 	public PersistContext() {
 		this.unitName = "adempiere";

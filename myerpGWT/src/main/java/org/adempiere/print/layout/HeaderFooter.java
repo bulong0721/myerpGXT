@@ -5,21 +5,19 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class HeaderFooter {
 	private List<PrintElement>	elementList	= new ArrayList<PrintElement>();
 	private PrintElement[]		elements	= null;
 
-	public HeaderFooter(Properties m_printCtx) {
-		// TODO Auto-generated constructor stub
+	public HeaderFooter() {
 	}
 
 	public void paint(Graphics2D g2D, Rectangle bounds, boolean isView) {
 		Point pageStart = new Point(bounds.getLocation());
 		getElements();
 		for (int i = 0; i < elements.length; i++)
-			elements[i].paint(g2D, 0, pageStart, null, isView);
+			elements[i].paint(g2D, 0, pageStart, isView);
 	}
 
 	public void addElement(PrintElement element) {

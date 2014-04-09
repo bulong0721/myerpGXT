@@ -10,12 +10,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
-import org.adempiere.model.ADAttachment;
 import org.adempiere.model.ADImage;
-import org.adempiere.print.PrintContants;
 import org.adempiere.print.PrintDataElement;
+import org.adempiere.print.PrintUtil;
+import org.adempiere.print.model.PrintAttachment;
+import org.adempiere.print.model.PrintFormatItem;
 import org.adempiere.util.POUtil;
 
 public class ImageElement extends PrintElement {
@@ -59,7 +59,7 @@ public class ImageElement extends PrintElement {
 	 * @param AD_PrintFormatItem_ID record id
 	 * @return image element
 	 */
-	public static ImageElement get(long AD_PrintFormatItem_ID) {
+	public static ImageElement get(int AD_PrintFormatItem_ID) {
 		Object key = new Long(AD_PrintFormatItem_ID);
 		ImageElement image = (ImageElement) s_cache.get(key);
 		if (image == null) {
@@ -131,7 +131,7 @@ public class ImageElement extends PrintElement {
 	 * 
 	 * @param AD_PrintFormatItem_ID record id
 	 */
-	private ImageElement(long AD_PrintFormatItem_ID) {
+	private ImageElement(int AD_PrintFormatItem_ID) {
 		loadAttachment(AD_PrintFormatItem_ID);
 	} // ImageElement
 
@@ -184,7 +184,7 @@ public class ImageElement extends PrintElement {
 	 * @param record_ID record id
 	 */
 	private void loadFromDB(int record_ID) {
-		//TODO
+		// TODO
 		ADImage mimage = POUtil.find(null, ADImage.class, record_ID);
 		if (mimage == null) {
 			return;
@@ -200,8 +200,8 @@ public class ImageElement extends PrintElement {
 	 * 
 	 * @param AD_PrintFormatItem_ID record id
 	 */
-	private void loadAttachment(long AD_PrintFormatItem_ID) {
-		ADAttachment attachment = POUtil.getAttachment(Format_Table_ID, AD_PrintFormatItem_ID);
+	private void loadAttachment(int AD_PrintFormatItem_ID) {
+		PrintAttachment attachment = PrintUtil.getPrintAttachment(Format_Table_ID, AD_PrintFormatItem_ID);
 		if (attachment == null) {
 			return;
 		}
@@ -292,16 +292,16 @@ public class ImageElement extends PrintElement {
 	 * @param ctx print context
 	 * @param isView true if online view (IDs are links)
 	 */
-	public void paint(Graphics2D g2D, int pageNo, Point2D pageStart, Properties ctx, boolean isView) {
+	public void paint(Graphics2D g2D, int pageNo, Point2D pageStart,boolean isView) {
 		if (m_image == null)
 			return;
 
 		// Position
 		Point2D.Double location = getAbsoluteLocation(pageStart);
 		int x = (int) location.x;
-		if (PrintContants.FIELDALIGNMENTTYPE_TrailingRight.equals(fieldAlignmentType))
+		if (PrintFormatItem.FIELDALIGNMENTTYPE_TrailingRight.equals(fieldAlignmentType))
 			x += p_maxWidth - p_width;
-		else if (PrintContants.FIELDALIGNMENTTYPE_Center.equals(fieldAlignmentType))
+		else if (PrintFormatItem.FIELDALIGNMENTTYPE_Center.equals(fieldAlignmentType))
 			x += (p_maxWidth - p_width) / 2;
 		int y = (int) location.y;
 

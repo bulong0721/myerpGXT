@@ -137,7 +137,7 @@ public class TabbedDesktop implements IDesktop {
 	}
 
 	protected ImageResource getIcon(MenuActionType action) {
-		Images images = ResourcesFactory.createImages();
+		Images images = ResourcesFactory.getImages();
 		if (action.isForm()) {
 			return images.application16();
 		} else if (action.isProcess()) {

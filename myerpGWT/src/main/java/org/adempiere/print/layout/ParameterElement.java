@@ -1,9 +1,7 @@
 package org.adempiere.print.layout;
 
-import java.util.Properties;
-
 import org.adempiere.common.ADExpression;
-import org.adempiere.model.ADPrintTableFormat;
+import org.adempiere.print.model.PrintTableFormat;
 
 public class ParameterElement extends GridElement {
 	/**
@@ -17,9 +15,9 @@ public class ParameterElement extends GridElement {
 	 * @param ctx context
 	 * @param tFormat Table Format
 	 */
-	public ParameterElement(ADExpression query, Properties ctx, ADPrintTableFormat tFormat) {
+	public ParameterElement(ADExpression query, PrintTableFormat tFormat) {
 		super(0, 4);
-//		setData(0, 0, "Parameter:", tFormat.getPageHeader_Font(), tFormat.getPageHeaderFG_Color());
+		setData(0, 0, "Parameter:", tFormat.getPageHeader_Font(), tFormat.getPageHeaderFG_Color());
 //		for (int r = 0; r < query.getRestrictionCount(); r++) {
 //			setData(r, 1, query.getInfoName(r), tFormat.getParameter_Font(), tFormat.getParameter_Color());
 //			setData(r, 2, query.getInfoOperator(r), tFormat.getParameter_Font(), tFormat.getParameter_Color());

@@ -31,7 +31,7 @@ public class RemindView extends BaseReverseView<IRemindPresenter> implements IRe
 	@UiField(provided = true)
 	TextButton	workflowButton	= new TextButton();
 	@UiField(provided = true)
-	Images		images			= ResourcesFactory.createImages();
+	Images		images			= ResourcesFactory.getImages();
 
 	@Override
 	public TextButton getNoticeButton() {

@@ -8,17 +8,25 @@ import org.adempiere.web.client.presenter.interfaces.ILoginView.ILoginPresenter;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.util.CommonUtil;
+import org.adempiere.web.client.util.StringUtil;
 import org.adempiere.web.client.widget.ConfirmToolBar;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Cookies;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Singleton;
 import com.mvp4g.client.presenter.BasePresenter;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.widget.core.client.TabItemConfig;
+import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
+import com.sencha.gxt.widget.core.client.form.PasswordField;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
 @Singleton
@@ -34,11 +42,17 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
 	@UiField(provided = true)
 	ComboBox<LookupValue>	warehouseCombo, printerCombo, langCombo;
 	@UiField(provided = true)
-	Images					images	= ResourcesFactory.createImages();
+	Images					images	= ResourcesFactory.getImages();
 	@UiField
-	ConfirmToolBar			toolBar;
+	TabItemConfig			connectionConfig, defaultConfig;
+	@UiField
+	TabPanel				tabContainer;
 	@UiField
 	TextField				userId;
+	@UiField
+	PasswordField			password;
+	@UiField
+	ConfirmToolBar			toolBar;
 
 	public LoginView() {
 		initWidgets();
@@ -53,7 +67,11 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
 		orgCombo = createComboBox(orgStore, labelProvider);
 
 		ListStore<LookupValue> langStore = CommonUtil.createDataSource();
+		langStore.add(new LookupValue("English", "en"));
+		langStore.add(new LookupValue("简体中文 (CN)", "zh_CN"));	
 		langCombo = createComboBox(langStore, labelProvider);
+		LookupValue initValue = langStore.findModelWithKey(Cookies.getCookie("lang"));
+		langCombo.setValue(initValue, false);
 
 		ListStore<LookupValue> clientStore = CommonUtil.createDataSource();
 		clientCombo = createComboBox(clientStore, labelProvider);
@@ -78,20 +96,46 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
 		return widget;
 	}
 
+	@UiHandler({ "langCombo" })
+	void onLangChanged(SelectionEvent<LookupValue> event) {
+		String curValue = Cookies.getCookie("lang");
+		String selValue = event.getSelectedItem().getValue();
+		if (!StringUtil.equals(curValue, selValue)) {
+			Cookies.setCookie("lang", selValue);
+			Window.Location.reload();
+		}
+	}
+
 	@Override
 	public void onHelp() {
-		
+
 	}
 
 	@Override
 	public void onOK() {
-		BasePresenter<ILoginView, MyerpEventBus> presenter = getBasePresenter();
-		presenter.getEventBus().goApplication();
+		if (connectionConfig.isEnabled() && login()) {
+			connectionConfig.setEnabled(false);
+			defaultConfig.setEnabled(true);
+			Widget defaultTab = tabContainer.getWidget(1);
+			tabContainer.update(defaultTab, defaultConfig);
+			tabContainer.setActiveWidget(defaultTab);
+		} else if (defaultConfig.isEnabled()) {
+			BasePresenter<ILoginView, MyerpEventBus> presenter = getBasePresenter();
+			presenter.getEventBus().goApplication();
+		}
+	}
+
+	boolean login() {
+		return true;
+	}
+
+	void updateContext() {
+
 	}
 
 	@Override
 	public void onCancel() {
-		
+
 	}
 
 }

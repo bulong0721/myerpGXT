@@ -101,7 +101,7 @@ public class ADTreePanel implements IsWidget {
 		IconProvider<IsTreeNode> iconProvider = createIconProvider(treeId);
 		tree.setIconProvider(iconProvider);
 		tree.setLoader(loader);
-		Images images = ResourcesFactory.createImages();
+		Images images = ResourcesFactory.getImages();
 		tree.getStyle().setNodeOpenIcon(images.mOpen());
 		tree.getStyle().setNodeCloseIcon(images.mClosed());
 		filter.bind(store);

@@ -7,9 +7,8 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.geom.Point2D;
 import java.awt.image.ImageObserver;
-import java.util.Properties;
 
-import org.adempiere.print.PrintContants;
+import org.adempiere.print.model.PrintFormatItem;
 
 public abstract class PrintElement implements ImageObserver {
 	public static final Color	LINK_COLOR			= Color.blue;
@@ -29,7 +28,7 @@ public abstract class PrintElement implements ImageObserver {
 		return imageNotLoaded;
 	}
 
-	public abstract void paint(Graphics2D g2D, int pageNo, Point2D pageStart, Properties ctx, boolean isView);
+	public abstract void paint(Graphics2D g2D, int pageNo, Point2D pageStart, boolean isView);
 
 	protected abstract boolean calculateSize();
 
@@ -58,8 +57,7 @@ public abstract class PrintElement implements ImageObserver {
 	/**
 	 * Get Calculated Height on page
 	 * 
-	 * @param pageNo
-	 *            page number
+	 * @param pageNo page number
 	 * @return Height
 	 */
 	public float getHeight(int pageNo) {
@@ -73,8 +71,7 @@ public abstract class PrintElement implements ImageObserver {
 	/**
 	 * Set Maximum Width
 	 * 
-	 * @param p_maxWidth
-	 *            maximum p_width (0) is no limit
+	 * @param p_maxWidth maximum p_width (0) is no limit
 	 */
 	public void setMaxWidth(float maxWidth) {
 		this.p_maxWidth = maxWidth;
@@ -84,11 +81,10 @@ public abstract class PrintElement implements ImageObserver {
 	 * Set Location within page. Called from LayoutEngine.layoutForm(),
 	 * lauout(), createStandardFooterHeader()
 	 * 
-	 * @param pageLocation
-	 *            location within page
+	 * @param pageLocation location within page
 	 */
 	public void setLocation(Point2D pageLocation) {
-		pageLocation = new Point2D.Double(pageLocation.getX(), pageLocation.getY());
+		this.pageLocation = new Point2D.Double(pageLocation.getX(), pageLocation.getY());
 	} // setLocation
 
 	/**
@@ -145,8 +141,8 @@ public abstract class PrintElement implements ImageObserver {
 		this.p_maxWidth = maxWidth;
 		//
 		fieldAlignmentType = FieldAlignmentType;
-		if (fieldAlignmentType == null || fieldAlignmentType.equals(PrintContants.FIELDALIGNMENTTYPE_Default))
-			fieldAlignmentType = PrintContants.FIELDALIGNMENTTYPE_LeadingLeft;
+		if (fieldAlignmentType == null || fieldAlignmentType.equals(PrintFormatItem.FIELDALIGNMENTTYPE_Default))
+			fieldAlignmentType = PrintFormatItem.FIELDALIGNMENTTYPE_LeadingLeft;
 		//
 		p_sizeCalculated = calculateSize();
 	}
@@ -157,7 +153,7 @@ public abstract class PrintElement implements ImageObserver {
 		return new Rectangle((int) pageLocation.x, (int) pageLocation.y, (int) p_width, (int) p_height);
 	}
 
-	public void translate(Properties ctx) {
+	public void translate() {
 		// noop
 	} // translate
 
