@@ -141,7 +141,7 @@ public class ADExpression implements Serializable {
 			LookupValue[] array = new LookupValue[BooleanOperator.values().length];
 			int index = 0;
 			for (BooleanOperator item : BooleanOperator.values()) {
-				array[index] = new LookupValue(item.getSymbol(), item.name());
+				array[index] = new LookupValue(item.name(), item.getSymbol());
 			}
 			return array;
 		}
@@ -164,7 +164,7 @@ public class ADExpression implements Serializable {
 			LookupValue[] array = new LookupValue[FieldOperator.values().length];
 			int index = 0;
 			for (FieldOperator item : FieldOperator.values()) {
-				array[index] = new LookupValue(item.getSymbol(), item.name());
+				array[index] = new LookupValue(item.name(), item.getSymbol());
 			}
 			return array;
 		}

@@ -3,6 +3,7 @@ package org.adempiere.util;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,9 +12,11 @@ import java.util.Map.Entry;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceUnitUtil;
 import javax.persistence.Query;
+import javax.persistence.Table;
 import javax.persistence.TypedQuery;
 
 import org.adempiere.common.ADEntityBase;
+import org.adempiere.common.IdentifierColumn;
 import org.adempiere.common.RefCriteria;
 import org.adempiere.model.ADAttachment;
 import org.adempiere.model.ADColumn;
@@ -390,6 +393,20 @@ public final class POUtil {
 		return fieldVList;
 	}
 
+	public static List<IdentifierColumn> queryIdColumnsByClass(PersistContext pCtx, Class<?> entityClass) {
+		String tableName = POUtil.getTableFromEntity(entityClass);
+		if (null == tableName) {
+			return Collections.emptyList();
+		}
+		return queryIdColumnsByTable(pCtx, tableName);
+	}
+
+	public static List<IdentifierColumn> queryIdColumnsByTable(PersistContext pCtx, String table) {
+		Map<String, Object> paramMap = toMap("tableName", table);
+		List<IdentifierColumn> resultList = selectListByNamedQuery(pCtx, "queryIdColumnsByTable", IdentifierColumn.class, paramMap);
+		return resultList;
+	}
+
 	/**
 	 * @return
 	 */
@@ -498,6 +515,11 @@ public final class POUtil {
 		} else {
 			return fullFormat.format(time);
 		}
+	}
+
+	public static String getTableFromEntity(Class<?> entityClass) {
+		Table table = entityClass.getAnnotation(Table.class);
+		return (null != table) ? table.name() : null;
 	}
 
 }

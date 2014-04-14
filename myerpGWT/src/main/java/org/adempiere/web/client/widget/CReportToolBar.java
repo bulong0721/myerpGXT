@@ -93,9 +93,9 @@ public class CReportToolBar implements IsWidget {
 
 		LabelProvider<LookupValue> labelProvider = CommonUtil.createLabelProvider();
 		List<LookupValue> reportTypes = new ArrayList<LookupValue>();
-		reportTypes.add(new LookupValue("PDF", 0));
-		reportTypes.add(new LookupValue("HTML", 1));
-		reportTypes.add(new LookupValue("Excel", 2));
+		reportTypes.add(new LookupValue(0, "PDF"));
+		reportTypes.add(new LookupValue(1, "HTML"));
+		reportTypes.add(new LookupValue(2, "Excel"));
 		ListStore<LookupValue> reportTypeStore = CommonUtil.createDataSource(reportTypes);
 		cmbReportType = createComboBox(reportTypeStore, labelProvider);
 		cmbReportType.setValue(reportTypes.get(0));

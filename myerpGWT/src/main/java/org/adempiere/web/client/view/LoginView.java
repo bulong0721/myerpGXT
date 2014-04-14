@@ -67,8 +67,8 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
 		orgCombo = createComboBox(orgStore, labelProvider);
 
 		ListStore<LookupValue> langStore = CommonUtil.createDataSource();
-		langStore.add(new LookupValue("English", "en"));
-		langStore.add(new LookupValue("简体中文 (CN)", "zh_CN"));	
+		langStore.add(new LookupValue("en", "English"));
+		langStore.add(new LookupValue("zh_CN", "简体中文 (CN)"));
 		langCombo = createComboBox(langStore, labelProvider);
 		LookupValue initValue = langStore.findModelWithKey(Cookies.getCookie("lang"));
 		langCombo.setValue(initValue, false);

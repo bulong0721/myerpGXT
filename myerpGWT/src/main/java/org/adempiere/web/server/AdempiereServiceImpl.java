@@ -11,6 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Selection;
 import javax.servlet.http.HttpSession;
 
 import org.adempiere.common.ADExpression;
@@ -18,6 +19,7 @@ import org.adempiere.common.ADExpression.ADPredicate;
 import org.adempiere.common.ADModelKey;
 import org.adempiere.common.ADUserContext;
 import org.adempiere.common.DisplayType;
+import org.adempiere.common.IdentifierColumn;
 import org.adempiere.common.LookupValue;
 import org.adempiere.common.ProcessResult;
 import org.adempiere.common.RefCriteria;
@@ -147,12 +149,17 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 			return null;
 		}
 
-		public static Class<?> getEntityClass(String tableName) throws ClassNotFoundException {
+		public static Class<?> getEntityClassByTable(String tableName) throws ClassNotFoundException {
 			return AdempiereServiceImpl.ServiceUtil.toClass(ServiceUtil.getEntityClassNameByTable(tableName));
+		}
+
+		public static Class<?> getEntityClassByProperty(String propertyName) throws ClassNotFoundException {
+			return AdempiereServiceImpl.ServiceUtil.toClass(ServiceUtil.getEntityClassNameByProperty(propertyName));
 		}
 
 		public static String getEntityClassNameByProperty(String propertyName) {
 			StringBuffer buffer = new StringBuffer("org.adempiere.model.");
+			// propertyName = propertyName.replace("_", "");
 			buffer.append(propertyName.substring(0, 1).toUpperCase());
 			buffer.append(propertyName, 1, propertyName.length() - 2);
 			return buffer.toString();
@@ -264,13 +271,12 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 
 	@Override
 	public List<LookupValue> getOptions(String propertyName, int type, Integer adRefId) {
+		System.out.println("propertyName=>" + propertyName + ";type=>" + type + ";adRefId=>" + adRefId);
 		if (type == DisplayType.List.getValue()) {
 			return getOptionsFromList(adRefId);
-		}
-		if (type == DisplayType.Table.getValue()) {
+		} else if (type == DisplayType.Table.getValue() || (null != adRefId && type == DisplayType.Search.getValue())) {
 			return getOptionsFromTable(adRefId);
-		}
-		if (type == DisplayType.TableDir.getValue()) {
+		} else if (type == DisplayType.TableDir.getValue() || type == DisplayType.Search.getValue()) {
 			return getOptionsFromTableDir(propertyName);
 		}
 		return Collections.emptyList();
@@ -302,7 +308,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 			CriteriaQuery<LookupValue> cq = cb.createQuery(LookupValue.class);
 			Class<?> entityClazz = ServiceUtil.toClass(tableName);
 			Root<?> root = cq.from(entityClazz);
-			cq.select(cb.construct(LookupValue.class, root.get(disColumn), root.get(keyColumn)));
+			cq.select(cb.construct(LookupValue.class, root.get(keyColumn), root.get(disColumn)));
 			TypedQuery<LookupValue> tq = em.createQuery(cq);
 			List<LookupValue> resultList = ServiceUtil.wrapper(tq.getResultList());
 			pCtx.commit();
@@ -319,13 +325,13 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 			return Collections.emptyList();
 		}
 		try {
+			Class<?> entityClazz = ServiceUtil.getEntityClassByProperty(propertyName);
+			List<IdentifierColumn> idCols = POUtil.queryIdColumnsByClass(pCtx, entityClazz);
 			EntityManager em = pCtx.begin();
 			CriteriaBuilder cb = em.getCriteriaBuilder();
-			Class<?> entityClazz = ServiceUtil.toClass(ServiceUtil.getEntityClassNameByProperty(propertyName));
 			CriteriaQuery cq = cb.createQuery(entityClazz);
 			Root<?> root = cq.from(entityClazz);
-			String keyColumn = propertyName;
-			cq.select(cb.construct(LookupValue.class, root.get("name"), root.get(keyColumn)));
+			cq.select(cb.construct(LookupValue.class, getSelectList(root, propertyName, idCols)));
 			TypedQuery tq = em.createQuery(cq);
 			List<LookupValue> resultList = ServiceUtil.wrapper(tq.getResultList());
 			pCtx.commit();
@@ -335,6 +341,20 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 			pCtx.rollback();
 		}
 		return Collections.emptyList();
+	}
+
+	private Selection[] getSelectList(Root<?> root, String keyColumn, List<IdentifierColumn> idCols) {
+		List<Selection> resultList = new ArrayList<Selection>();
+		resultList.add(root.get(keyColumn));
+		if (idCols.isEmpty()) {
+			resultList.add(root.get("name"));
+		} else {
+			for (IdentifierColumn idCol : idCols) {
+				resultList.add(root.get(idCol.getPropertyName()));
+			}
+		}
+		Selection[] result = new Selection[resultList.size()];
+		return resultList.toArray(result);
 	}
 
 	@Override
@@ -455,7 +475,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		System.out.println(text);
 		try {
 			EntityManager em = pCtx.begin();
-			Class<?> clazz = ServiceUtil.getEntityClass(tableName);
+			Class<?> clazz = ServiceUtil.getEntityClassByTable(tableName);
 			List<?> array = JSON.parseArray(text, clazz);
 			for (Object entity : array) {
 				System.out.println(entity.getClass());

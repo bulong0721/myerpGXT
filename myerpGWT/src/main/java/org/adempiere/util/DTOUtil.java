@@ -226,7 +226,7 @@ public final class DTOUtil {
 		model.setADReferenceID(entity.getADReferenceID());
 		model.setADReferenceValueID(entity.getADReferenceValueID());
 		model.setADValRuleID(entity.getADValRuleID());
-		model.setPropertyName(entity.getColumnName());
+		model.setPropertyName(entity.getPropertyName());
 		model.setDefaultValue(entity.getDefaultValue());
 		model.setDisplayLogic(entity.getDisplayLogic());
 		model.setFieldLength(entity.getFieldLength());
@@ -248,7 +248,7 @@ public final class DTOUtil {
 		model.setADReferenceID(entity.getADReferenceID());
 		model.setADReferenceValueID(entity.getADReferenceValueID());
 		model.setADValRuleID(entity.getADValRuleID());
-		model.setPropertyName(entity.getColumnName());
+		model.setPropertyName(entity.getPropertyName());
 		model.setDefaultValue(entity.getDefaultValue());
 		model.setDisplayLogic(entity.getDisplayLogic());
 		model.setFieldLength(entity.getFieldLength());

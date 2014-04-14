@@ -49,7 +49,7 @@ public class CommonUtil {
 	public static List<LookupValue> toLookups(Map<String, String> lookupMap) {
 		List<LookupValue> lookups = new ArrayList<LookupValue>(lookupMap.size());
 		for (Map.Entry<String, String> entry : lookupMap.entrySet()) {
-			lookups.add(new LookupValue(entry.getKey(), entry.getValue()));
+			lookups.add(new LookupValue(entry.getValue(), entry.getKey()));
 		}
 		return lookups;
 	}

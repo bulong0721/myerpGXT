@@ -32,7 +32,7 @@
 		<query>SELECT m FROM ADMenuVt m WHERE m.aDLanguageID = :aDLanguageID ORDER BY m.parentID, m.seqNo</query>
 	</named-query>
 	<named-query name="queryRefList">
-		<query>SELECT NEW org.adempiere.common.LookupValue(r.name, r.value) FROM ADRefList r WHERE r.aDReferenceID = :adReferenceId</query>
+		<query>SELECT NEW org.adempiere.common.LookupValue(r.value, r.name) FROM ADRefList r WHERE r.aDReferenceID = :adReferenceId</query>
 	</named-query>
 	<named-query name="queryRefTable">
 		<query>SELECT NEW org.adempiere.common.RefCriteria(r.aDTable.tableName, r.keyColumn.propertyName, r.displayColumn.propertyName, r.valueDisplayed, r.orderByClause, r.whereClause) FROM ADRefTable r WHERE r.aDReferenceID = :adReferenceId</query>
@@ -68,5 +68,8 @@
 	</named-query>
 	<named-query name="querySubNodes">
 		<query>SELECT n FROM ADTreeNode n WHERE n.parentID = :parentId ORDER BY n.parentID, n.seqNo</query>
+	</named-query>
+	<named-query name="queryIdColumnsByTable">
+		<query>SELECT DISTINCT NEW org.adempiere.common.IdentifierColumn(f.aDColumnID, f.columnName, f.propertyName) FROM AdFieldV f WHERE f.identifier=true AND LOWER(f.tableName)=:tableName ORDER BY f.aDColumnID</query>
 	</named-query>
 </entity-mappings>
