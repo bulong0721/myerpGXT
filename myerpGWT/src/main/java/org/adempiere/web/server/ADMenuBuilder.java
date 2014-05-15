@@ -2,7 +2,7 @@ package org.adempiere.web.server;
 
 import org.adempiere.model.ADMenu;
 import org.adempiere.util.DTOUtil;
-import org.adempiere.web.client.model.IsTreeNode;
+import org.adempiere.web.client.model.ADNodeModel;
 
 public class ADMenuBuilder extends ADTreeBuilder<ADMenu> {
 
@@ -11,7 +11,7 @@ public class ADMenuBuilder extends ADTreeBuilder<ADMenu> {
 	}
 
 	@Override
-	public IsTreeNode toModel(ADMenu entity) {
+	public ADNodeModel toModel(ADMenu entity) {
 		return DTOUtil.toMenuModel(entity);
 	}
 

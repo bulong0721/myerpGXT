@@ -2,7 +2,7 @@ package org.adempiere.web.client.model;
 
 import java.util.List;
 
-public class ADWindowModel implements IsADRPCModel {
+public class ADWindowModel implements ADExchangeModel {
 	private List<ADTabModel>	tabList;
 	private long				activeTabId;
 	private long				adWindowId;

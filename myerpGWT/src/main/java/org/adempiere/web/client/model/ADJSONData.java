@@ -1,7 +1,7 @@
 package org.adempiere.web.client.model;
 
 
-public class ADJSONData implements IsADRPCModel {
+public class ADJSONData implements ADExchangeModel {
 	private String				data;
 	private long				totalCount;
 	private int					offset;

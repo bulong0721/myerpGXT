@@ -2,7 +2,7 @@ package org.adempiere.web.client.model;
 
 import java.util.List;
 
-public class ADProcessModel implements IsADRPCModel {
+public class ADProcessModel implements ADExchangeModel {
 	private Integer					adProcessId;
 	private Integer					adFormId;
 	private Integer					adPrintformatId;
@@ -21,6 +21,15 @@ public class ADProcessModel implements IsADRPCModel {
 	private String					value;
 	private String					workflowvalue;
 	private List<ADProcessArgModel>	paramList;
+	private ADFormModel				formModel;
+
+	public ADFormModel getFormModel() {
+		return formModel;
+	}
+
+	public void setFormModel(ADFormModel formModel) {
+		this.formModel = formModel;
+	}
 
 	public Integer getAdProcessId() {
 		return adProcessId;

@@ -22,7 +22,7 @@ import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.model.ADWindowModel;
-import org.adempiere.web.client.model.IsTreeNode;
+import org.adempiere.web.client.model.ADNodeModel;
 
 public final class CoreModelFetch {
 	
@@ -119,10 +119,10 @@ public final class CoreModelFetch {
 		return formModel;
 	}
 
-	public static List<IsTreeNode> getADMenuList4BaseLanguage(PersistContext pCtx) {
+	public static List<ADNodeModel> getADMenuList4BaseLanguage(PersistContext pCtx, int parentID) {
 		try {
-			List<ADMenu> menuList = POUtil.queryMainMenuNodes(pCtx);
-			List<IsTreeNode> resultList = new ArrayList<IsTreeNode>(menuList.size());
+			List<ADMenu> menuList = POUtil.queryMainMenuNodes(pCtx, parentID);
+			List<ADNodeModel> resultList = new ArrayList<ADNodeModel>(menuList.size());
 			for (ADMenu nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
@@ -133,13 +133,13 @@ public final class CoreModelFetch {
 		}
 	}
 
-	public static List<IsTreeNode> getADMenuListByLanguage(PersistContext pCtx, int languageId) {
+	public static List<ADNodeModel> getADMenuListByLanguage(PersistContext pCtx, int languageId, int parentID) {
 		if (isBaseLanguage(languageId)) {
-			return getADMenuList4BaseLanguage(pCtx);
+			return getADMenuList4BaseLanguage(pCtx, parentID);
 		}
 		try {
-			List<ADMenuVt> menuList = POUtil.queryMainMenuByLanguage(pCtx, languageId);
-			List<IsTreeNode> resultList = new ArrayList<IsTreeNode>(menuList.size());
+			List<ADMenuVt> menuList = POUtil.queryMainMenuByLanguage(pCtx, languageId, parentID);
+			List<ADNodeModel> resultList = new ArrayList<ADNodeModel>(menuList.size());
 			for (ADMenuVt nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}

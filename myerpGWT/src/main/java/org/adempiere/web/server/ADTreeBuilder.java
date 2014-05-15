@@ -8,7 +8,7 @@ import java.util.List;
 import org.adempiere.model.ADTreeNode;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.util.POUtil;
-import org.adempiere.web.client.model.IsTreeNode;
+import org.adempiere.web.client.model.ADNodeModel;
 
 public abstract class ADTreeBuilder<T extends ADTreeNode> {
 	public static final int	TREE_MENU	= 10;
@@ -34,10 +34,10 @@ public abstract class ADTreeBuilder<T extends ADTreeNode> {
 		return POUtil.querySubNodes(pCtx, getEntityClass(), parentId);
 	}
 
-	public abstract IsTreeNode toModel(T entity);
+	public abstract ADNodeModel toModel(T entity);
 
-	public List<IsTreeNode> toModels(List<T> entityList) {
-		List<IsTreeNode> resultList = new ArrayList<IsTreeNode>(entityList.size());
+	public List<ADNodeModel> toModels(List<T> entityList) {
+		List<ADNodeModel> resultList = new ArrayList<ADNodeModel>(entityList.size());
 		for (T entity : entityList) {
 			resultList.add(toModel(entity));
 		}

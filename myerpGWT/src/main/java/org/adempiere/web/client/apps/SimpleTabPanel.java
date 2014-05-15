@@ -22,8 +22,6 @@ import org.adempiere.web.client.model.ADMapData.ADModelKeyProvider;
 import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.model.ADModelData;
 import org.adempiere.web.client.model.ADProcessModel;
-import org.adempiere.web.client.model.ADResultPair;
-import org.adempiere.web.client.model.ADFeedback;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.util.ClassUtil;
 import org.adempiere.web.client.util.ContextUtil;
@@ -284,17 +282,13 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	public void saveOrUpdateRecord() {
-		AsyncCallback<ADFeedback> callback = new AsyncSuccessCallback<ADFeedback>() {
+		AsyncCallback<Void> callback = new AsyncSuccessCallback<Void>() {
 			@Override
-			public void onSuccess(ADFeedback result) {
-				if (result.isSuccess()) {
-					store.commitChanges();
-					SimpleTabPanel.this.newRecord = null;
-					SimpleTabPanel.this.refreshToolBar();
-					Info.display("adempiere", "Update Success.");
-				} else {
-					Info.display("adempiere", "Update Failed:" + result.getErrorMessage());
-				}
+			public void onSuccess(Void result) {
+				store.commitChanges();
+				SimpleTabPanel.this.newRecord = null;
+				SimpleTabPanel.this.refreshToolBar();
+				Info.display("adempiere", "Update Success.");
 			}
 		};
 		this.mergeFormChanges();
@@ -331,9 +325,9 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 			return;
 		}
 		List<ADModelKey> keys = keyProvider.getKeys(selectedData);
-		adempiereService.deleteData(keys, tabModel.getTablename(), new AsyncSuccessCallback<ADFeedback>() {
+		adempiereService.deleteData(keys, tabModel.getTablename(), new AsyncSuccessCallback<Void>() {
 			@Override
-			public void onSuccess(ADFeedback result) {
+			public void onSuccess(Void result) {
 				store.remove(selectedData);
 				store.commitChanges();
 				grid.getSelectionModel().select(0, false);
@@ -465,20 +459,19 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 				if (0 == field.getADProcessID()) {
 					return;
 				}
-				AsyncCallback<ADResultPair<ADProcessModel, ADFormModel>> callback = new AsyncSuccessCallback<ADResultPair<ADProcessModel, ADFormModel>>() {
+				AsyncCallback<ADProcessModel> callback = new AsyncSuccessCallback<ADProcessModel>() {
 					@Override
-					public void onSuccess(ADResultPair<ADProcessModel, ADFormModel> pair) {
-						ADProcessModel processModel = pair.getOne();
-						ADFormModel formModel = pair.getTwo();
+					public void onSuccess(ADProcessModel pair) {
+						ADFormModel formModel = pair.getFormModel();
 						if (null != formModel) {
 							AbstractForm form = ClassUtil.newInstance(formModel.getClassname());
 							if (null != form) {
-								form.setProcessInfo(processModel);
+								form.setProcessInfo(pair);
 								form.setWindow(WidgetUtil.createWindow(formModel.getName(), 600, 400));
 								form.show();
 							}
 						} else {
-							ADProcessPanel processPanel = new ADProcessPanel(pair.getOne());
+							ADProcessPanel processPanel = new ADProcessPanel(pair);
 							ADMapData row = grid.getSelectionModel().getSelectedItem();
 							processPanel.setRowJSONString(row.toString());
 							processPanel.setWindow(WidgetUtil.createWindow("", 600, 400));

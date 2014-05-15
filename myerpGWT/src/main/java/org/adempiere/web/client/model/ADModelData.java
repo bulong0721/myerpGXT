@@ -5,7 +5,7 @@ import org.adempiere.web.client.util.JSOUtil;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class ADModelData implements IsADRPCModel, ADMapData {
+public class ADModelData implements ADExchangeModel, ADMapData {
 	private JavaScriptObject	jso;
 
 	public ADModelData() {

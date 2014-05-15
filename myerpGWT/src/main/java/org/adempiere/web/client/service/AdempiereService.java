@@ -10,12 +10,11 @@ import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.ADLoginModel;
+import org.adempiere.web.client.model.ADNodeModel;
 import org.adempiere.web.client.model.ADProcessModel;
-import org.adempiere.web.client.model.ADResultPair;
-import org.adempiere.web.client.model.ADFeedback;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.model.ADWindowModel;
-import org.adempiere.web.client.model.IsTreeNode;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -23,39 +22,44 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("adempiere")
 public interface AdempiereService extends RemoteService {
 
-	List<IsTreeNode> getAdMenuModels();
-	
-	List<IsTreeNode> getTreeNodes(int adTreeId, IsTreeNode loadCfg);
+	List<ADNodeModel> getMenuNodes(int parentID);
+
+	List<ADNodeModel> getTreeNodes(int adTreeId, ADNodeModel loadCfg);
 
 	List<LookupValue> getOptions(String columnName, int type, Integer adRefId);
-	
+
 	List<ADSequenceModel> getSequences(ADLoadConfig loadCfg);
-	
-	ADFeedback updateSequences(List<ADSequenceModel> seqList, String tableName);
+
+	void updateSequences(List<ADSequenceModel> seqList, String tableName);
 
 	ADWindowModel getADWindowModel(Integer windowId);
-	
+
 	ADFormModel getADFormModel(Integer formId);
 
 	ADProcessModel getADProcessModel(Integer processId);
-	
-	ADResultPair<ADProcessModel, ADFormModel> getProcessWithFormModel(Integer processId);
 
+	ADProcessModel getProcessWithFormModel(Integer processId);
+
+	// acl
 	ADJSONData getWindowTabData(ADLoadConfig loadCfg);
 
-	ADFeedback deleteData(List<ADModelKey> keyList, String tableName);
+	// acl
+	void deleteData(List<ADModelKey> keyList, String tableName);
 
-	ADFeedback selectData(List<ADModelKey> keyList, String tableName);
+	void selectData(List<ADModelKey> keyList, String tableName);
 
-//	AdResultWithError addNewData(AdTab tabModel);
-	
-	ADFeedback updateData(String json, String tableName);
+	// acl
+	void updateData(String json, String tableName);
 
 	ADUserContext getADUserContext();
-	
+
+	// acl
 	String processCallout(ADFieldModel field, String rowJson);
-	
+
+	// acl
 	ProcessResult executeProcess(ADProcessModel pModel, String rowJson, String paramJson);
 
 	Boolean logout();
+
+	Boolean login(ADLoginModel loginModel);
 }

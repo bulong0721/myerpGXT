@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.adempiere.web.client.model.ADMenuModel;
-import org.adempiere.web.client.model.IsTreeNode;
+import org.adempiere.web.client.model.ADNodeModel;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.service.AdempiereService;
@@ -43,19 +43,19 @@ public class ADTreePanel implements IsWidget {
 	}
 
 	@UiField(provided = true)
-	StoreFilterField<IsTreeNode>		filter;
+	StoreFilterField<ADNodeModel>		filter;
 	@UiField(provided = true)
-	Tree<IsTreeNode, String>			tree;
+	Tree<ADNodeModel, String>			tree;
 	@UiField
 	CheckBox							chkExpandAll;
-	private TreeStore<IsTreeNode>		store;
+	private TreeStore<ADNodeModel>		store;
 	private AdempiereServiceAsync		adempiereService	= GWT.create(AdempiereService.class);
-	private TreeLoader<IsTreeNode>		loader;
+	private TreeLoader<ADNodeModel>		loader;
 	private Widget						widget;
 	private int							treeId;
-	private TreeDragSource<IsTreeNode>	dragSource;
-	private TreeDropTarget<IsTreeNode>	dropTarget;
-	private Set<IsTreeNode>				changes;
+	private TreeDragSource<ADNodeModel>	dragSource;
+	private TreeDropTarget<ADNodeModel>	dropTarget;
+	private Set<ADNodeModel>				changes;
 
 	public ADTreePanel(int treeId) {
 		super();
@@ -65,7 +65,7 @@ public class ADTreePanel implements IsWidget {
 	@Override
 	public Widget asWidget() {
 		if (null == widget) {
-			this.filter = new IsTreeNode.NameFilterField();
+			this.filter = new ADNodeModel.NameFilterField();
 			this.createTree();
 			this.widget = uiBinder.createAndBindUi(this);
 		}
@@ -82,23 +82,24 @@ public class ADTreePanel implements IsWidget {
 	}
 
 	private void createTree() {
-		RpcProxy<IsTreeNode, List<IsTreeNode>> proxy = new RpcProxy<IsTreeNode, List<IsTreeNode>>() {
+		RpcProxy<ADNodeModel, List<ADNodeModel>> proxy = new RpcProxy<ADNodeModel, List<ADNodeModel>>() {
 			@Override
-			public void load(IsTreeNode loadConfig, AsyncCallback<List<IsTreeNode>> callback) {
-				adempiereService.getAdMenuModels(callback);
+			public void load(ADNodeModel loadConfig, AsyncCallback<List<ADNodeModel>> callback) {
+				int parentID = null == loadConfig ? 0 : loadConfig.getID();
+				adempiereService.getMenuNodes(parentID, callback);
 			}
 		};
 		store = CommonUtil.createTreeStore();
-		loader = new TreeLoader<IsTreeNode>(proxy) {
+		loader = new TreeLoader<ADNodeModel>(proxy) {
 			@Override
-			public boolean hasChildren(IsTreeNode parent) {
+			public boolean hasChildren(ADNodeModel parent) {
 				return parent.hasChildren();
 			}
 		};
-		loader.addLoadHandler(new IsTreeNode.TreeStoreBinding(store));
-		ValueProvider<IsTreeNode, String> valueProvider = new IsTreeNode.TreeValueProvider();
-		tree = new Tree<IsTreeNode, String>(store, valueProvider);
-		IconProvider<IsTreeNode> iconProvider = createIconProvider(treeId);
+		loader.addLoadHandler(new ADNodeModel.TreeStoreBinding(store));
+		ValueProvider<ADNodeModel, String> valueProvider = new ADNodeModel.TreeValueProvider();
+		tree = new Tree<ADNodeModel, String>(store, valueProvider);
+		IconProvider<ADNodeModel> iconProvider = createIconProvider(treeId);
 		tree.setIconProvider(iconProvider);
 		tree.setLoader(loader);
 		Images images = ResourcesFactory.getImages();
@@ -111,31 +112,31 @@ public class ADTreePanel implements IsWidget {
 		this.loader.load();
 	}
 
-	private IconProvider<IsTreeNode> createIconProvider(int adTreeId) {
+	private IconProvider<ADNodeModel> createIconProvider(int adTreeId) {
 		return ADMenuModel.createIconProvider();
 	}
 
-	public Tree<IsTreeNode, String> getTree() {
+	public Tree<ADNodeModel, String> getTree() {
 		return tree;
 	}
 
 	public void enableDnD() {
 		this.asWidget();
 		if (null == dragSource) {
-			dragSource = new TreeDragSource<IsTreeNode>(tree);
-			dropTarget = new TreeDropTarget<IsTreeNode>(tree);
+			dragSource = new TreeDragSource<ADNodeModel>(tree);
+			dropTarget = new TreeDropTarget<ADNodeModel>(tree);
 			dropTarget.setAllowSelfAsSource(true);
 			dropTarget.setFeedback(Feedback.BOTH);
 			dropTarget.addDropHandler(new DndDropHandler() {
 				@Override
 				public void onDrop(DndDropEvent event) {
 					@SuppressWarnings("unchecked")
-					List<TreeNode<IsTreeNode>> selectedNodes = (List<TreeNode<IsTreeNode>>) event.getData();
+					List<TreeNode<ADNodeModel>> selectedNodes = (List<TreeNode<ADNodeModel>>) event.getData();
 					if (null != selectedNodes) {
-						TreeNode<IsTreeNode> node = selectedNodes.get(0);
-						IsTreeNode parent = tree.getStore().getParent(node.getData());
-						for (TreeNode<IsTreeNode> selectNode : selectedNodes) {
-							IsTreeNode selectData = selectNode.getData();
+						TreeNode<ADNodeModel> node = selectedNodes.get(0);
+						ADNodeModel parent = tree.getStore().getParent(node.getData());
+						for (TreeNode<ADNodeModel> selectNode : selectedNodes) {
+							ADNodeModel selectData = selectNode.getData();
 							selectData.setParentID(parent.getID());
 							getChanges().add(selectData);
 						}
@@ -147,9 +148,9 @@ public class ADTreePanel implements IsWidget {
 		dropTarget.enable();
 	}
 
-	public Set<IsTreeNode> getChanges() {
+	public Set<ADNodeModel> getChanges() {
 		if (null == changes) {
-			changes = new HashSet<IsTreeNode>();
+			changes = new HashSet<ADNodeModel>();
 		}
 		return changes;
 	}

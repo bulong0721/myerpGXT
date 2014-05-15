@@ -2,7 +2,7 @@ package org.adempiere.web.client.model;
 
 import org.adempiere.common.DisplayType;
 
-public class ADFieldModel implements IsADRPCModel, ADFormField {
+public class ADFieldModel implements ADExchangeModel, ADFormField {
 	private Integer	ADProcessID;
 	private Integer	ADReferenceID;
 	private Integer	ADReferenceValueID;

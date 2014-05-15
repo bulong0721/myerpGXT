@@ -9,7 +9,7 @@ import org.adempiere.common.DisplayType;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
-public interface ADMapData extends IsADRPCModel {
+public interface ADMapData extends ADExchangeModel {
 
 	public abstract void setValue(String path, Object value);
 

@@ -1,6 +1,6 @@
 package org.adempiere.web.client.model;
 
-public class ADFormModel implements IsADRPCModel {
+public class ADFormModel implements ADExchangeModel {
 	private Integer	adFormId;
 	private String	accesslevel;
 	private Integer	adClientId;

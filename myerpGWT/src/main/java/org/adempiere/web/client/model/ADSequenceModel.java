@@ -1,6 +1,6 @@
 package org.adempiere.web.client.model;
 
-public class ADSequenceModel implements IsADRPCModel {
+public class ADSequenceModel implements ADExchangeModel {
 	private String	name;
 	private Integer	seqNo;
 	private Integer	seqID;

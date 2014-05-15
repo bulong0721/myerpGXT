@@ -30,16 +30,16 @@ import org.adempiere.util.CLogger;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
 import org.adempiere.util.ProcessUtil;
-import org.adempiere.web.client.model.ADFeedback;
+import org.adempiere.web.client.exception.BusinessException;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.ADLoginModel;
+import org.adempiere.web.client.model.ADNodeModel;
 import org.adempiere.web.client.model.ADProcessModel;
-import org.adempiere.web.client.model.ADResultPair;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.model.ADWindowModel;
-import org.adempiere.web.client.model.IsTreeNode;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.util.StringUtil;
 
@@ -215,9 +215,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public ADFeedback deleteData(List<ADModelKey> keyList, String tableName) {
-		// TODO Auto-generated method stub
-		return ADFeedback.newSuccess();
+	public void deleteData(List<ADModelKey> keyList, String tableName) {
 	}
 
 	@Override
@@ -249,8 +247,8 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public List<IsTreeNode> getAdMenuModels() {
-		return CoreModelFetch.getADMenuListByLanguage(pCtx, getLanguage());
+	public List<ADNodeModel> getMenuNodes(int parentID) {
+		return CoreModelFetch.getADMenuListByLanguage(pCtx, getLanguage(), parentID);
 	}
 
 	@Override
@@ -358,19 +356,20 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public ADResultPair<ADProcessModel, ADFormModel> getProcessWithFormModel(Integer processId) {
+	public ADProcessModel getProcessWithFormModel(Integer processId) {
 		ADProcessModel processModel = getADProcessModel(processId);
 		ADFormModel formModel = null;
 		if (null != processModel.getAdFormId()) {
 			formModel = getADFormModel(processModel.getAdFormId());
+			processModel.setFormModel(formModel);
 		}
-		return new ADResultPair(processModel, formModel);
+		return processModel;
 	}
 
-	public List<IsTreeNode> getRootNodes(int adTreeId) {
+	public List<ADNodeModel> getRootNodes(int adTreeId) {
 		try {
-			List<ADMenu> menuList = POUtil.queryMainMenuNodes(pCtx);
-			List<IsTreeNode> resultList = new ArrayList<IsTreeNode>(menuList.size());
+			List<ADMenu> menuList = POUtil.queryMainMenuNodes(pCtx, 0);
+			List<ADNodeModel> resultList = new ArrayList<ADNodeModel>(menuList.size());
 			for (ADMenu nodeMM : menuList) {
 				resultList.add(DTOUtil.toMenuModel(nodeMM));
 			}
@@ -391,9 +390,9 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public List<IsTreeNode> getTreeNodes(int adTreeId, IsTreeNode loadCfg) {
+	public List<ADNodeModel> getTreeNodes(int adTreeId, ADNodeModel loadCfg) {
 		ADTreeBuilder treeBuilder = ADTreeBuilder.createTreeBuilder(adTreeId);
-		List<IsTreeNode> entityList;
+		List<ADNodeModel> entityList;
 		if (null == loadCfg) {
 			entityList = treeBuilder.getRootNodes(pCtx, 100);
 		} else {
@@ -465,13 +464,12 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public ADFeedback selectData(List<ADModelKey> keyList, String tableName) {
+	public void selectData(List<ADModelKey> keyList, String tableName) {
 		// TODO Auto-generated method stub
-		return ADFeedback.newSuccess();
 	}
 
 	@Override
-	public ADFeedback updateData(String text, String tableName) {
+	public void updateData(String text, String tableName) {
 		System.out.println(text);
 		try {
 			EntityManager em = pCtx.begin();
@@ -483,21 +481,26 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 				em.merge(entity);
 			}
 			pCtx.commit();
-			return ADFeedback.newSuccess();
 		} catch (Exception e) {
 			e.printStackTrace();
 			pCtx.rollback();
-			return ADFeedback.newError(e.getMessage());
 		}
 	}
 
 	@Override
-	public ADFeedback updateSequences(List<ADSequenceModel> seqList, String tableName) {
+	public void updateSequences(List<ADSequenceModel> seqList, String tableName) {
 		if ("ad_field".equalsIgnoreCase(tableName)) {
 			boolean isSusscess = POUtil.updateFieldSequece(pCtx, seqList);
-			return new ADFeedback(isSusscess, "");
+			if (!isSusscess) {
+				throw new BusinessException("");
+			}
 		}
-		return ADFeedback.newSuccess();
+	}
+
+	@Override
+	public Boolean login(ADLoginModel loginModel) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -30,6 +30,7 @@ import org.adempiere.model.ADProcessVt;
 import org.adempiere.model.ADTab;
 import org.adempiere.model.ADTable;
 import org.adempiere.model.ADTreeNode;
+import org.adempiere.model.ADUser;
 import org.adempiere.model.AdFieldV;
 import org.adempiere.model.AdFieldVt;
 import org.adempiere.model.AdTabV;
@@ -410,13 +411,15 @@ public final class POUtil {
 	/**
 	 * @return
 	 */
-	public static List<ADMenu> queryMainMenuNodes(PersistContext pCtx) {
-		List<ADMenu> menuList = selectListByNamedQuery(pCtx, "queryMainMenuNodes", ADMenu.class);
+	public static List<ADMenu> queryMainMenuNodes(PersistContext pCtx, int parentID) {
+		Map<String, Object> paramMap = toMap("parentID", parentID);
+		List<ADMenu> menuList = selectListByNamedQuery(pCtx, "queryMainMenuNodes", ADMenu.class, paramMap);
 		return menuList;
 	}
 
-	public static List<ADMenuVt> queryMainMenuByLanguage(PersistContext pCtx, int languageID) {
+	public static List<ADMenuVt> queryMainMenuByLanguage(PersistContext pCtx, int languageID, int parentID) {
 		Map<String, Object> paramMap = toMap("aDLanguageID", languageID);
+		paramMap.put("parentID", parentID);
 		List<ADMenuVt> menuList = selectListByNamedQuery(pCtx, "queryMainMenuByLanguage", ADMenuVt.class, paramMap);
 		return menuList;
 	}
@@ -430,6 +433,12 @@ public final class POUtil {
 	public static <T extends ADTreeNode> List<T> querySubNodes(PersistContext pCtx, Class<T> clazz, int parentId) {
 		Map<String, Object> paramMap = toMap("parentId", parentId);
 		return selectListByNamedQuery(pCtx, "queryRootNodes", clazz, paramMap);
+	}
+
+	public static ADUser queryUserByName(PersistContext pCtx, String name) {
+		Map<String, Object> paramMap = toMap("name", name);
+		ADUser user = selectOneByNamedQuery(pCtx, "queryUserByName", ADUser.class, paramMap);
+		return user;
 	}
 
 	/**

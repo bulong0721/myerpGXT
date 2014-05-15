@@ -16,7 +16,7 @@ import com.sencha.gxt.data.shared.loader.LoadEvent;
 import com.sencha.gxt.data.shared.loader.LoadHandler;
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 
-public interface IsTreeNode extends IsADRPCModel {
+public interface ADNodeModel extends ADExchangeModel {
 
 	String getName();
 
@@ -28,20 +28,20 @@ public interface IsTreeNode extends IsADRPCModel {
 
 	boolean hasChildren();
 
-	public static class TreeStoreBinding implements LoadHandler<IsTreeNode, List<IsTreeNode>> {
-		private final TreeStore<IsTreeNode>		store;
-		private Map<Integer, IsTreeNode>		parentMap;
-		private Map<Integer, List<IsTreeNode>>	leafMap;
+	public static class TreeStoreBinding implements LoadHandler<ADNodeModel, List<ADNodeModel>> {
+		private final TreeStore<ADNodeModel>		store;
+		private Map<Integer, ADNodeModel>		parentMap;
+		private Map<Integer, List<ADNodeModel>>	leafMap;
 
-		public TreeStoreBinding(TreeStore<IsTreeNode> store) {
+		public TreeStoreBinding(TreeStore<ADNodeModel> store) {
 			this.store = store;
 		}
 
 		@Override
-		public void onLoad(LoadEvent<IsTreeNode, List<IsTreeNode>> event) {
-			IsTreeNode parent = event.getLoadConfig();
-			List<IsTreeNode> loadResult = event.getLoadResult();
-			List<IsTreeNode> children = getChildren(parent, loadResult);
+		public void onLoad(LoadEvent<ADNodeModel, List<ADNodeModel>> event) {
+			ADNodeModel parent = event.getLoadConfig();
+			List<ADNodeModel> loadResult = event.getLoadResult();
+			List<ADNodeModel> children = getChildren(parent, loadResult);
 			if (null == parent) {
 				// TODO 当前只计算了一层结构，需要遍历到最后一层
 				store.add(children);
@@ -52,13 +52,13 @@ public interface IsTreeNode extends IsADRPCModel {
 		}
 
 		@SuppressWarnings("unused")
-		private void buildTree(List<IsTreeNode> resultList) {
-			parentMap = new HashMap<Integer, IsTreeNode>();
-			leafMap = new HashMap<Integer, List<IsTreeNode>>();
-			for (IsTreeNode node : resultList) {
-				List<IsTreeNode> nodeList = leafMap.get(node.getParentID());
+		private void buildTree(List<ADNodeModel> resultList) {
+			parentMap = new HashMap<Integer, ADNodeModel>();
+			leafMap = new HashMap<Integer, List<ADNodeModel>>();
+			for (ADNodeModel node : resultList) {
+				List<ADNodeModel> nodeList = leafMap.get(node.getParentID());
 				if (null == nodeList) {
-					nodeList = new ArrayList<IsTreeNode>();
+					nodeList = new ArrayList<ADNodeModel>();
 					leafMap.put(node.getParentID(), nodeList);
 				}
 				nodeList.add(node);
@@ -67,7 +67,7 @@ public interface IsTreeNode extends IsADRPCModel {
 				}
 			}
 			Set<Integer> attachSet = new HashSet<Integer>();
-			for (Entry<Integer, IsTreeNode> entry : parentMap.entrySet()) {
+			for (Entry<Integer, ADNodeModel> entry : parentMap.entrySet()) {
 				if (attachSet.contains(entry.getKey())) {
 					continue;
 				}
@@ -79,7 +79,7 @@ public interface IsTreeNode extends IsADRPCModel {
 			if (attachSet.contains(nodeId)) {
 				return;
 			}
-			IsTreeNode node = parentMap.get(nodeId);
+			ADNodeModel node = parentMap.get(nodeId);
 			if (node.getParentID() != 0) {
 				addChild(node.getParentID(), attachSet);
 			} else {
@@ -89,10 +89,10 @@ public interface IsTreeNode extends IsADRPCModel {
 			attachSet.add(nodeId);
 		}
 
-		protected List<IsTreeNode> getChildren(IsTreeNode parent, List<IsTreeNode> loadResult) {
-			List<IsTreeNode> children = new ArrayList<IsTreeNode>();
+		protected List<ADNodeModel> getChildren(ADNodeModel parent, List<ADNodeModel> loadResult) {
+			List<ADNodeModel> children = new ArrayList<ADNodeModel>();
 			Integer parentId = null == parent ? 0 : parent.getID();
-			for (IsTreeNode model : loadResult) {
+			for (ADNodeModel model : loadResult) {
 				if (parentId.equals(model.getParentID())) {
 					children.add(model);
 				}
@@ -102,9 +102,9 @@ public interface IsTreeNode extends IsADRPCModel {
 
 	}
 
-	public static class NameFilterField extends StoreFilterField<IsTreeNode> {
+	public static class NameFilterField extends StoreFilterField<ADNodeModel> {
 		@Override
-		protected boolean doSelect(Store<IsTreeNode> store, IsTreeNode parent, IsTreeNode item, String filter) {
+		protected boolean doSelect(Store<ADNodeModel> store, ADNodeModel parent, ADNodeModel item, String filter) {
 			if (null != parent && null != filter) {
 				String itemName = parent.getName().toLowerCase();
 				return itemName.contains(filter.toLowerCase());
@@ -117,22 +117,22 @@ public interface IsTreeNode extends IsADRPCModel {
 		}
 	}
 
-	public static class TreeKeyProvider implements ModelKeyProvider<IsTreeNode> {
+	public static class TreeKeyProvider implements ModelKeyProvider<ADNodeModel> {
 		@Override
-		public String getKey(IsTreeNode item) {
+		public String getKey(ADNodeModel item) {
 			return String.valueOf(item.getID());
 		}
 	}
 
-	public static class TreeValueProvider implements ValueProvider<IsTreeNode, String> {
+	public static class TreeValueProvider implements ValueProvider<ADNodeModel, String> {
 
 		@Override
-		public String getValue(IsTreeNode model) {
+		public String getValue(ADNodeModel model) {
 			return model.getName();
 		}
 
 		@Override
-		public void setValue(IsTreeNode object, String value) {
+		public void setValue(ADNodeModel object, String value) {
 		}
 
 		@Override

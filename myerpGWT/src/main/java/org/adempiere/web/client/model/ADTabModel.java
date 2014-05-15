@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.adempiere.web.client.util.StringUtil;
 
-public class ADTabModel implements IsADRPCModel {
+public class ADTabModel implements ADExchangeModel {
 	private List<ADFieldModel>	fieldList;
 	private Integer				adTabId;
 	private Integer				adColumnId;

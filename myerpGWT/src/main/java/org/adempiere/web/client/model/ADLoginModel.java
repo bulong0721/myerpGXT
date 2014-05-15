@@ -1,6 +1,6 @@
 package org.adempiere.web.client.model;
 
-public class ADLoginModel implements IsADRPCModel {
+public class ADLoginModel implements ADExchangeModel {
 	private String	username;
 	private String	password;
 	private String	language;
