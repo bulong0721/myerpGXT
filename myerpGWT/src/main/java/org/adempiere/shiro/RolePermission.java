@@ -1,4 +1,4 @@
-package org.adempiere.acl;
+package org.adempiere.shiro;
 
 import java.util.Map;
 

@@ -63,14 +63,14 @@
 									<container:child layoutData="{verticalLayoutData}">
 										<form:FieldLabel text="{i18n.loginView_UserID}" labelWidth="65">
 											<form:widget>
-												<form:TextField ui:field="userId" />
+												<form:TextField ui:field="userId" allowBlank="false" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">
 										<form:FieldLabel text="{i18n.loginView_Password}" labelWidth="65">
 											<form:widget>
-												<form:PasswordField ui:field="password" />
+												<form:PasswordField ui:field="password" allowBlank="false" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>

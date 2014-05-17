@@ -1,4 +1,4 @@
-package org.adempiere.acl;
+package org.adempiere.shiro;
 
 import org.adempiere.model.ADUser;
 import org.adempiere.persist.PersistContext;
@@ -15,13 +15,13 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 public class ADUserRealm extends AuthorizingRealm {
-	private PersistContext	pCtx;
+	private PersistContext	pCtx	= new PersistContext();
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		String username = (String) principals.getPrimaryPrincipal();
+//		String username = (String) principals.getPrimaryPrincipal();
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-		
+
 		return authorizationInfo;
 	}
 

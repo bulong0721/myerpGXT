@@ -10,7 +10,6 @@ import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
-import org.adempiere.web.client.model.ADLoginModel;
 import org.adempiere.web.client.model.ADNodeModel;
 import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADSequenceModel;
@@ -22,44 +21,44 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("adempiere")
 public interface AdempiereService extends RemoteService {
 
-	List<ADNodeModel> getMenuNodes(int parentID);
+	List<ADNodeModel> getMenuNodes(int parentID) throws RuntimeException;
 
-	List<ADNodeModel> getTreeNodes(int adTreeId, ADNodeModel loadCfg);
+	List<ADNodeModel> getTreeNodes(int adTreeId, ADNodeModel loadCfg) throws RuntimeException;
 
-	List<LookupValue> getOptions(String columnName, int type, Integer adRefId);
+	List<LookupValue> getOptions(String columnName, int type, Integer adRefId) throws RuntimeException;
 
-	List<ADSequenceModel> getSequences(ADLoadConfig loadCfg);
+	List<ADSequenceModel> getSequences(ADLoadConfig loadCfg) throws RuntimeException;
 
-	void updateSequences(List<ADSequenceModel> seqList, String tableName);
+	void updateSequences(List<ADSequenceModel> seqList, String tableName) throws RuntimeException;
 
-	ADWindowModel getADWindowModel(Integer windowId);
+	ADWindowModel getADWindowModel(Integer windowId) throws RuntimeException;
 
-	ADFormModel getADFormModel(Integer formId);
+	ADFormModel getADFormModel(Integer formId) throws RuntimeException;
 
-	ADProcessModel getADProcessModel(Integer processId);
+	ADProcessModel getADProcessModel(Integer processId) throws RuntimeException;
 
-	ADProcessModel getProcessWithFormModel(Integer processId);
-
-	// acl
-	ADJSONData getWindowTabData(ADLoadConfig loadCfg);
+	ADProcessModel getProcessWithFormModel(Integer processId) throws RuntimeException;
 
 	// acl
-	void deleteData(List<ADModelKey> keyList, String tableName);
-
-	void selectData(List<ADModelKey> keyList, String tableName);
+	ADJSONData getWindowTabData(ADLoadConfig loadCfg) throws RuntimeException;
 
 	// acl
-	void updateData(String json, String tableName);
+	void deleteData(List<ADModelKey> keyList, String tableName) throws RuntimeException;
 
-	ADUserContext getADUserContext();
-
-	// acl
-	String processCallout(ADFieldModel field, String rowJson);
+	void selectData(List<ADModelKey> keyList, String tableName) throws RuntimeException;
 
 	// acl
-	ProcessResult executeProcess(ADProcessModel pModel, String rowJson, String paramJson);
+	void updateData(String json, String tableName) throws RuntimeException;
 
-	Boolean logout();
+	ADUserContext getADUserContext() throws RuntimeException;
 
-	Boolean login(ADLoginModel loginModel);
+	// acl
+	String processCallout(ADFieldModel field, String rowJson) throws RuntimeException;
+
+	// acl
+	ProcessResult executeProcess(ADProcessModel pModel, String rowJson, String paramJson) throws RuntimeException;
+
+	Boolean logout() throws RuntimeException;
+
+	ADUserContext login(String username, String password) throws RuntimeException;
 }

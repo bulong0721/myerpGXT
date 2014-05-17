@@ -29,19 +29,22 @@ import org.adempiere.process.ProcessContext;
 import org.adempiere.util.CLogger;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
+import org.adempiere.util.PermissionUtil;
 import org.adempiere.util.ProcessUtil;
-import org.adempiere.web.client.exception.BusinessException;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
-import org.adempiere.web.client.model.ADLoginModel;
 import org.adempiere.web.client.model.ADNodeModel;
 import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.model.ADWindowModel;
 import org.adempiere.web.client.service.AdempiereService;
+import org.adempiere.web.client.util.ExceptionUtil;
 import org.adempiere.web.client.util.StringUtil;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 
 import com.alibaba.fastjson.JSON;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -215,11 +218,11 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public void deleteData(List<ADModelKey> keyList, String tableName) {
+	public void deleteData(List<ADModelKey> keyList, String tableName) throws RuntimeException {
 	}
 
 	@Override
-	public ProcessResult executeProcess(ADProcessModel pModel, String rowJson, String paramJson) {
+	public ProcessResult executeProcess(ADProcessModel pModel, String rowJson, String paramJson) throws RuntimeException {
 		System.out.println("row parameter:" + rowJson);
 		System.out.println("process parameter:" + paramJson);
 		System.out.println("process class:" + pModel.getClassname());
@@ -234,7 +237,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public ADFormModel getADFormModel(Integer formId) {
+	public ADFormModel getADFormModel(Integer formId) throws RuntimeException {
 		return CoreModelFetch.getADFormByLanguage(pCtx, formId, getLanguage());
 	}
 
@@ -247,28 +250,28 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public List<ADNodeModel> getMenuNodes(int parentID) {
+	public List<ADNodeModel> getMenuNodes(int parentID) throws RuntimeException {
 		return CoreModelFetch.getADMenuListByLanguage(pCtx, getLanguage(), parentID);
 	}
 
 	@Override
-	public ADProcessModel getADProcessModel(Integer processId) {
+	public ADProcessModel getADProcessModel(Integer processId) throws RuntimeException {
 		return CoreModelFetch.getADProcessByLanguage(pCtx, processId, getLanguage());
 	}
 
 	@Override
-	public ADUserContext getADUserContext() {
+	public ADUserContext getADUserContext() throws RuntimeException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ADWindowModel getADWindowModel(Integer windowId) {
+	public ADWindowModel getADWindowModel(Integer windowId) throws RuntimeException {
 		return CoreModelFetch.getADWindowByLanguage(pCtx, windowId, getLanguage());
 	}
 
 	@Override
-	public List<LookupValue> getOptions(String propertyName, int type, Integer adRefId) {
+	public List<LookupValue> getOptions(String propertyName, int type, Integer adRefId) throws RuntimeException {
 		System.out.println("propertyName=>" + propertyName + ";type=>" + type + ";adRefId=>" + adRefId);
 		if (type == DisplayType.List.getValue()) {
 			return getOptionsFromList(adRefId);
@@ -356,7 +359,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public ADProcessModel getProcessWithFormModel(Integer processId) {
+	public ADProcessModel getProcessWithFormModel(Integer processId) throws RuntimeException {
 		ADProcessModel processModel = getADProcessModel(processId);
 		ADFormModel formModel = null;
 		if (null != processModel.getAdFormId()) {
@@ -380,7 +383,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public List<ADSequenceModel> getSequences(ADLoadConfig loadCfg) {
+	public List<ADSequenceModel> getSequences(ADLoadConfig loadCfg) throws RuntimeException {
 		if ("ad_field".equalsIgnoreCase(loadCfg.getTableName())) {
 			int adTabId = loadCfg.getParentKey().getKeyValue();
 			List<ADSequenceModel> resultList = POUtil.querySeqByTabId(pCtx, adTabId);
@@ -390,7 +393,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public List<ADNodeModel> getTreeNodes(int adTreeId, ADNodeModel loadCfg) {
+	public List<ADNodeModel> getTreeNodes(int adTreeId, ADNodeModel loadCfg) throws RuntimeException {
 		ADTreeBuilder treeBuilder = ADTreeBuilder.createTreeBuilder(adTreeId);
 		List<ADNodeModel> entityList;
 		if (null == loadCfg) {
@@ -403,7 +406,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public ADJSONData getWindowTabData(ADLoadConfig loadCfg) {
+	public ADJSONData getWindowTabData(ADLoadConfig loadCfg) throws RuntimeException {
 		String entityClass = ServiceUtil.getEntityClassNameByTable(loadCfg.getTableName());
 		System.out.println("fetchByClass1:" + entityClass);
 		StringBuffer buffer = new StringBuffer();
@@ -445,7 +448,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public Boolean logout() {
+	public Boolean logout() throws RuntimeException {
 		try {
 			HttpSession session = getSession();
 			session.invalidate();
@@ -457,19 +460,19 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public String processCallout(ADFieldModel field, String rowJson) {
+	public String processCallout(ADFieldModel field, String rowJson) throws RuntimeException {
 		// TODO Auto-generated method stub
 		System.out.println("callout parameter:" + rowJson);
 		return StringUtil.EMPTY;
 	}
 
 	@Override
-	public void selectData(List<ADModelKey> keyList, String tableName) {
+	public void selectData(List<ADModelKey> keyList, String tableName) throws RuntimeException {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void updateData(String text, String tableName) {
+	public void updateData(String text, String tableName) throws RuntimeException {
 		System.out.println(text);
 		try {
 			EntityManager em = pCtx.begin();
@@ -488,19 +491,28 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 	}
 
 	@Override
-	public void updateSequences(List<ADSequenceModel> seqList, String tableName) {
+	public void updateSequences(List<ADSequenceModel> seqList, String tableName) throws RuntimeException {
 		if ("ad_field".equalsIgnoreCase(tableName)) {
 			boolean isSusscess = POUtil.updateFieldSequece(pCtx, seqList);
 			if (!isSusscess) {
-				throw new BusinessException("");
+				throw ExceptionUtil.encodeBusinessException("");
 			}
 		}
 	}
 
 	@Override
-	public Boolean login(ADLoginModel loginModel) {
-		// TODO Auto-generated method stub
-		return null;
+	public ADUserContext login(String username, String password) throws RuntimeException {
+		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+		try {
+			Subject subject = PermissionUtil.getSubject();
+			subject.login(token);
+			return getADUserContext();
+		} catch (AuthenticationException e) {
+			throw ExceptionUtil.encodeBusinessException(e);
+		} catch (Throwable e) {
+			e.printStackTrace();
+			throw ExceptionUtil.encodeSystemException(e);
+		}
 	}
 
 }

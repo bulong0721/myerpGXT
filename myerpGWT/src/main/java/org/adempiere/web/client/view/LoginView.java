@@ -1,12 +1,16 @@
 package org.adempiere.web.client.view;
 
+import org.adempiere.common.ADUserContext;
 import org.adempiere.common.LookupValue;
 import org.adempiere.web.client.MyerpEventBus;
+import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.presenter.interfaces.ILoginView;
 import org.adempiere.web.client.presenter.interfaces.ILoginView.ILoginPresenter;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
+import org.adempiere.web.client.service.AdempiereService;
+import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
 import org.adempiere.web.client.util.StringUtil;
 import org.adempiere.web.client.widget.ConfirmToolBar;
@@ -32,7 +36,8 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 @Singleton
 public class LoginView extends BaseReverseView<ILoginPresenter> implements ILoginView, ConfirmToolListener {
 
-	private static LoginViewUiBinder	uiBinder	= GWT.create(LoginViewUiBinder.class);
+	private static LoginViewUiBinder	uiBinder			= GWT.create(LoginViewUiBinder.class);
+	protected AdempiereServiceAsync		adempiereService	= GWT.create(AdempiereService.class);
 
 	interface LoginViewUiBinder extends UiBinder<Widget, LoginView> {
 	}
@@ -113,20 +118,38 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
 
 	@Override
 	public void onOK() {
-		if (connectionConfig.isEnabled() && login()) {
-			connectionConfig.setEnabled(false);
-			defaultConfig.setEnabled(true);
-			Widget defaultTab = tabContainer.getWidget(1);
-			tabContainer.update(defaultTab, defaultConfig);
-			tabContainer.setActiveWidget(defaultTab);
+		if (connectionConfig.isEnabled()) {
+			if (vaildate()) {
+				login();	
+			}
 		} else if (defaultConfig.isEnabled()) {
 			BasePresenter<ILoginView, MyerpEventBus> presenter = getBasePresenter();
 			presenter.getEventBus().goApplication();
 		}
 	}
+	
+	boolean vaildate() {
+		return userId.validate() && password.validate();
+	}
+	
+	void goDefaultCfg(ADUserContext userContext) {
+		connectionConfig.setEnabled(false);
+		defaultConfig.setEnabled(true);
+		Widget defaultTab = tabContainer.getWidget(1);
+		tabContainer.update(defaultTab, defaultConfig);
+		tabContainer.setActiveWidget(defaultTab);
+	}
 
-	boolean login() {
-		return true;
+	void login() {
+		String username = this.userId.getValue();
+		String password = this.password.getValue();
+		AsyncSuccessCallback<ADUserContext> callback = new AsyncSuccessCallback<ADUserContext>() {
+			@Override
+			public void onSuccess(ADUserContext result) {
+				goDefaultCfg(result);
+			}
+		};
+		adempiereService.login(username, password, callback);
 	}
 
 	void updateContext() {

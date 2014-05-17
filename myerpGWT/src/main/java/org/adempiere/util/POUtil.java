@@ -39,6 +39,8 @@ import org.adempiere.persist.PersistContext;
 import org.adempiere.web.client.model.ADSequenceModel;
 import org.adempiere.web.client.util.StringUtil;
 
+import com.google.common.collect.Iterables;
+
 public final class POUtil {
 
 	/**
@@ -134,7 +136,9 @@ public final class POUtil {
 					query.setParameter(pEntry.getKey(), pEntry.getValue());
 				}
 			}
-			T entity = query.getSingleResult();
+			query.setMaxResults(1);
+			List<T> resultList = query.getResultList();
+			T entity = Iterables.getFirst(resultList, null);
 			pCtx.commit();
 			return entity;
 		} catch (Exception ex) {
