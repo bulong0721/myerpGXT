@@ -1,4 +1,4 @@
-package org.adempiere.shiro;
+package org.adempiere.security;
 
 import org.adempiere.model.ADProcessAccess;
 
@@ -8,7 +8,7 @@ public class ProcessAccess extends RolePermission<ADProcessAccess> {
 		super(roleID, provider);
 	}
 
-	public ProcessAccess(int roleID, long resourceId) {
+	public ProcessAccess(int roleID, int resourceId) {
 		super(roleID, resourceId, 0);
 	}
 

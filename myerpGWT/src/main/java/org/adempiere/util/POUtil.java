@@ -22,15 +22,19 @@ import org.adempiere.model.ADAttachment;
 import org.adempiere.model.ADColumn;
 import org.adempiere.model.ADElement;
 import org.adempiere.model.ADField;
+import org.adempiere.model.ADFormAccess;
 import org.adempiere.model.ADFormVt;
 import org.adempiere.model.ADMenu;
 import org.adempiere.model.ADMenuVt;
 import org.adempiere.model.ADProcess;
+import org.adempiere.model.ADProcessAccess;
 import org.adempiere.model.ADProcessVt;
 import org.adempiere.model.ADTab;
 import org.adempiere.model.ADTable;
 import org.adempiere.model.ADTreeNode;
 import org.adempiere.model.ADUser;
+import org.adempiere.model.ADWindowAccess;
+import org.adempiere.model.ADWorkflowAccess;
 import org.adempiere.model.AdFieldV;
 import org.adempiere.model.AdFieldVt;
 import org.adempiere.model.AdTabV;
@@ -415,16 +419,14 @@ public final class POUtil {
 	/**
 	 * @return
 	 */
-	public static List<ADMenu> queryMainMenuNodes(PersistContext pCtx, int parentID) {
-		Map<String, Object> paramMap = toMap("parentID", parentID);
-		List<ADMenu> menuList = selectListByNamedQuery(pCtx, "queryMainMenuNodes", ADMenu.class, paramMap);
+	public static List<ADMenu> queryMenuNodes(PersistContext pCtx) {
+		List<ADMenu> menuList = selectListByNamedQuery(pCtx, "queryMenuNodes", ADMenu.class, null);
 		return menuList;
 	}
 
-	public static List<ADMenuVt> queryMainMenuByLanguage(PersistContext pCtx, int languageID, int parentID) {
+	public static List<ADMenuVt> queryMenuByLanguage(PersistContext pCtx, int languageID) {
 		Map<String, Object> paramMap = toMap("aDLanguageID", languageID);
-		paramMap.put("parentID", parentID);
-		List<ADMenuVt> menuList = selectListByNamedQuery(pCtx, "queryMainMenuByLanguage", ADMenuVt.class, paramMap);
+		List<ADMenuVt> menuList = selectListByNamedQuery(pCtx, "queryMenuByLanguage", ADMenuVt.class, paramMap);
 		return menuList;
 	}
 
@@ -443,6 +445,26 @@ public final class POUtil {
 		Map<String, Object> paramMap = toMap("name", name);
 		ADUser user = selectOneByNamedQuery(pCtx, "queryUserByName", ADUser.class, paramMap);
 		return user;
+	}
+
+	public static List<ADFormAccess> queryFormAccessByRole(PersistContext pCtx, int aDRoleID) {
+		Map<String, Object> paramMap = toMap("aDRoleID", aDRoleID);
+		return selectListByNamedQuery(pCtx, "queryFormAccessByRole", ADFormAccess.class, paramMap);
+	}
+
+	public static List<ADProcessAccess> queryProcessAccessByRole(PersistContext pCtx, int aDRoleID) {
+		Map<String, Object> paramMap = toMap("aDRoleID", aDRoleID);
+		return selectListByNamedQuery(pCtx, "queryProcessAccessByRole", ADProcessAccess.class, paramMap);
+	}
+
+	public static List<ADWindowAccess> queryWindowAccessByRole(PersistContext pCtx, int aDRoleID) {
+		Map<String, Object> paramMap = toMap("aDRoleID", aDRoleID);
+		return selectListByNamedQuery(pCtx, "queryWindowAccessByRole", ADWindowAccess.class, paramMap);
+	}
+	
+	public static List<ADWorkflowAccess> queryWorkflowAccessByRole(PersistContext pCtx, int roleID) {
+		Map<String, Object> paramMap = toMap("aDRoleID", roleID);
+		return selectListByNamedQuery(pCtx, "queryWorkflowAccessByRole", ADWorkflowAccess.class, paramMap);
 	}
 
 	/**
@@ -534,5 +556,7 @@ public final class POUtil {
 		Table table = entityClass.getAnnotation(Table.class);
 		return (null != table) ? table.name() : null;
 	}
+
+	
 
 }

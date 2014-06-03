@@ -33,7 +33,7 @@ import org.adempiere.process.ProcessCall;
 import org.adempiere.process.ProcessContext;
 import org.adempiere.util.EnvUtil;
 import org.adempiere.web.client.util.StringUtil;
-import org.adempiere.web.server.ReportDistributeServlet;
+import org.adempiere.web.server.ReportServlet;
 
 public class ReportStarter implements ProcessCall, ClientProcess {
 	private static File				REPORT_HOME	= null;
@@ -171,7 +171,7 @@ public class ReportStarter implements ProcessCall, ClientProcess {
 					File rptFile = new File(EnvUtil.getReportPath("form.pdf"));
 					rptFile.createNewFile();
 					JasperExportManager.exportReportToPdfFile(jasperPrint, rptFile.getAbsolutePath());
-					pInfo.setPDFReport(ReportDistributeServlet.toDistributionURL("form.pdf"));
+					pInfo.setPDFReport(ReportServlet.toDistributionURL("form.pdf"));
 				} catch (IOException e) {
 				}
 			} catch (JRException e) {

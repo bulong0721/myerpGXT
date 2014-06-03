@@ -12,7 +12,6 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
-import javax.servlet.http.HttpSession;
 
 import org.adempiere.common.ADExpression;
 import org.adempiere.common.ADExpression.ADPredicate;
@@ -23,11 +22,8 @@ import org.adempiere.common.IdentifierColumn;
 import org.adempiere.common.LookupValue;
 import org.adempiere.common.ProcessResult;
 import org.adempiere.common.RefCriteria;
-import org.adempiere.model.ADMenu;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.process.ProcessContext;
-import org.adempiere.util.CLogger;
-import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
 import org.adempiere.util.PermissionUtil;
 import org.adempiere.util.ProcessUtil;
@@ -48,11 +44,19 @@ import org.apache.shiro.subject.Subject;
 
 import com.alibaba.fastjson.JSON;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import com.google.inject.name.Named;
 
+@Singleton
 @SuppressWarnings({ "serial", "rawtypes", "unchecked" })
-public class AdempiereServiceImpl extends RemoteServiceServlet implements AdempiereService {
-	private static CLogger	log		= CLogger.getCLogger(AdempiereServiceImpl.class);
+public class AdempiereServlet extends RemoteServiceServlet implements AdempiereService {
+	// private static CLogger log =
+	// CLogger.getCLogger(AdempiereServiceImpl.class);
 	private PersistContext	pCtx	= new PersistContext();
+	@Inject
+	@Named("systemName")
+	private String name;
 
 	public static void main(String[] args) {
 		// String json =
@@ -63,21 +67,27 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		// "{\"adWindowId\":53110,\"classname\":\"org.adempiere.process.WindowCopy\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
 		// String rowJson = "{\"adWindowId\":53110}";
 		//
-		String json = "{\"classname\":\"org.adempiere.process.LanguageMaintenance\"}";
-		String rowJson = "";
-		ADProcessModel pModel = JSON.parseObject(json, ADProcessModel.class);
-		ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson, "{\"adWindowId\":103}");
-		ProcessResult pInfo = new ProcessResult();
-		try {
-			ProcessUtil.process(ctx, pInfo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		// String json =
+		// "{\"classname\":\"org.adempiere.process.LanguageMaintenance\"}";
+		// String rowJson = "";
+		// ADProcessModel pModel = JSON.parseObject(json, ADProcessModel.class);
+		// ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson,
+		// "{\"adWindowId\":103}");
+		// ProcessResult pInfo = new ProcessResult();
+		// try {
+		// ProcessUtil.process(ctx, pInfo);
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
 		// AdempiereServiceImpl service = new AdempiereServiceImpl();
 		// // List<IsTreeNode> nodes = service.getTreeNodes(10, null);
 		// // System.out.println(nodes.size());
 		// List<IsTreeNode> list = service.getAdMenuModels();
 		// System.out.println(list.size());
+		// PersistContext pCtx = new PersistContext();
+		// ADUser user = POUtil.queryUserByName(pCtx, "System");
+		// List<ADUserRoles> roleList = user.getADUserRoles();
+		// System.out.println(JSON.toJSONString(user));
 	}
 
 	static class ServiceUtil {
@@ -153,11 +163,11 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		}
 
 		public static Class<?> getEntityClassByTable(String tableName) throws ClassNotFoundException {
-			return AdempiereServiceImpl.ServiceUtil.toClass(ServiceUtil.getEntityClassNameByTable(tableName));
+			return AdempiereServlet.ServiceUtil.toClass(ServiceUtil.getEntityClassNameByTable(tableName));
 		}
 
 		public static Class<?> getEntityClassByProperty(String propertyName) throws ClassNotFoundException {
-			return AdempiereServiceImpl.ServiceUtil.toClass(ServiceUtil.getEntityClassNameByProperty(propertyName));
+			return AdempiereServlet.ServiceUtil.toClass(ServiceUtil.getEntityClassNameByProperty(propertyName));
 		}
 
 		public static String getEntityClassNameByProperty(String propertyName) {
@@ -184,7 +194,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 				}
 			}
 			if (null != expr) {
-				Predicate pred = AdempiereServiceImpl.ServiceUtil.buildWhere(cb, root, expr);
+				Predicate pred = AdempiereServlet.ServiceUtil.buildWhere(cb, root, expr);
 				if (null != pred) {
 					predList.add(pred);
 				}
@@ -199,12 +209,12 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 			}
 			if (expr.isParent()) {
 				ADPredicate pred = (ADPredicate) expr;
-				AdempiereServiceImpl.ServiceUtil.appendTab(buffer, level).append(pred.getBooleanOperator().getSymbol()).append(" ");
+				AdempiereServlet.ServiceUtil.appendTab(buffer, level).append(pred.getBooleanOperator().getSymbol()).append(" ");
 				for (ADExpression subExpr : pred.getExpressions()) {
 					toString(subExpr, buffer, level + 1);
 				}
 			} else {
-				AdempiereServiceImpl.ServiceUtil.appendTab(buffer, level).append("(");
+				AdempiereServlet.ServiceUtil.appendTab(buffer, level).append("(");
 				buffer.append(expr.getColumnName()).append(" ").append(expr.getFieldOperator().getSymbol()).append(" ")
 						.append(expr.getValue1());
 				buffer.append(")").append("\n");
@@ -238,25 +248,21 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 
 	@Override
 	public ADFormModel getADFormModel(Integer formId) throws RuntimeException {
-		return CoreModelFetch.getADFormByLanguage(pCtx, formId, getLanguage());
+		return ADServiceI18n.getADFormByLanguage(pCtx, formId, getLanguage());
 	}
 
 	private int getLanguage() {
 		return 187;
 	}
 
-	private HttpSession getSession() {
-		return getThreadLocalRequest().getSession();
-	}
-
 	@Override
 	public List<ADNodeModel> getMenuNodes(int parentID) throws RuntimeException {
-		return CoreModelFetch.getADMenuListByLanguage(pCtx, getLanguage(), parentID);
+		return ADServiceI18n.getADMenuListByLanguage(pCtx, getLanguage(), parentID);
 	}
 
 	@Override
 	public ADProcessModel getADProcessModel(Integer processId) throws RuntimeException {
-		return CoreModelFetch.getADProcessByLanguage(pCtx, processId, getLanguage());
+		return ADServiceI18n.getADProcessByLanguage(pCtx, processId, getLanguage());
 	}
 
 	@Override
@@ -267,7 +273,7 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 
 	@Override
 	public ADWindowModel getADWindowModel(Integer windowId) throws RuntimeException {
-		return CoreModelFetch.getADWindowByLanguage(pCtx, windowId, getLanguage());
+		return ADServiceI18n.getADWindowByLanguage(pCtx, windowId, getLanguage());
 	}
 
 	@Override
@@ -369,19 +375,6 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 		return processModel;
 	}
 
-	public List<ADNodeModel> getRootNodes(int adTreeId) {
-		try {
-			List<ADMenu> menuList = POUtil.queryMainMenuNodes(pCtx, 0);
-			List<ADNodeModel> resultList = new ArrayList<ADNodeModel>(menuList.size());
-			for (ADMenu nodeMM : menuList) {
-				resultList.add(DTOUtil.toMenuModel(nodeMM));
-			}
-			return resultList;
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
 	@Override
 	public List<ADSequenceModel> getSequences(ADLoadConfig loadCfg) throws RuntimeException {
 		if ("ad_field".equalsIgnoreCase(loadCfg.getTableName())) {
@@ -407,6 +400,11 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 
 	@Override
 	public ADJSONData getWindowTabData(ADLoadConfig loadCfg) throws RuntimeException {
+//		try {
+//			PermissionUtil.checkWindowAccess((int) loadCfg.getWindowID());
+//		} catch (Exception e1) {
+//			throw ExceptionUtil.encodeBusinessException(e1);
+//		}
 		String entityClass = ServiceUtil.getEntityClassNameByTable(loadCfg.getTableName());
 		System.out.println("fetchByClass1:" + entityClass);
 		StringBuffer buffer = new StringBuffer();
@@ -449,14 +447,9 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 
 	@Override
 	public Boolean logout() throws RuntimeException {
-		try {
-			HttpSession session = getSession();
-			session.invalidate();
-			return true;
-		} catch (Exception e) {
-			log.warning("Error in logout method");
-			return false;
-		}
+		Subject subject = PermissionUtil.getSubject();
+		subject.logout();
+		return true;
 	}
 
 	@Override
@@ -502,8 +495,10 @@ public class AdempiereServiceImpl extends RemoteServiceServlet implements Adempi
 
 	@Override
 	public ADUserContext login(String username, String password) throws RuntimeException {
+		System.out.println(name);
 		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 		try {
+//			Subject subject = new WebSubject.Builder(getThreadLocalRequest(), getThreadLocalResponse()).buildWebSubject();
 			Subject subject = PermissionUtil.getSubject();
 			subject.login(token);
 			return getADUserContext();

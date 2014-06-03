@@ -7,6 +7,7 @@ import com.sencha.gxt.data.shared.loader.PagingLoadConfigBean;
 
 public class ADLoadConfig extends PagingLoadConfigBean implements ADExchangeModel {
 	private static final long	serialVersionUID	= 1L;
+	private long				windowID;
 	private String				tableName;
 	private ADModelKey			parentKey;
 	private ADExpression		expr;
@@ -37,6 +38,14 @@ public class ADLoadConfig extends PagingLoadConfigBean implements ADExchangeMode
 
 	public void setExpr(ADExpression expr) {
 		this.expr = expr;
+	}
+
+	public long getWindowID() {
+		return windowID;
+	}
+
+	public void setWindowID(long windowID) {
+		this.windowID = windowID;
 	}
 
 }

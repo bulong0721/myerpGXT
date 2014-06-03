@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum MenuActionType {
-	Window("W"), Task("T"), WorkFlow("F"), Process("P"), Report("R"), Form("X"), Workbench("B");
+	Window("W"), Task("T"), WorkFlow("F"), Process("P"), Report("R"), Form("X"), Workbench("B"), Unknow("");
 
 	private String	value;
 
@@ -76,6 +76,6 @@ public enum MenuActionType {
 		if (valueMap.containsKey(value)) {
 			return valueMap.get(value);
 		}
-		return Window;
+		return Unknow;
 	}
 }

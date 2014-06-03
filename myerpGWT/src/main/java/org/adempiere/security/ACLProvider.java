@@ -1,4 +1,4 @@
-package org.adempiere.shiro;
+package org.adempiere.security;
 
 import java.util.Map;
 

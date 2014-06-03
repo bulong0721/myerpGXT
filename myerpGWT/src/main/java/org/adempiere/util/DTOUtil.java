@@ -117,6 +117,7 @@ public final class DTOUtil {
 	public static ADMenuModel toMenuModel(ADMenu entity) {
 		ADMenuModel model = new ADMenuModel();
 		model.setIsactive(entity.isActive());
+		model.setSummary(entity.isSummary());
 		model.setAdMenuId(entity.getNodeID());
 		model.setParentId(entity.getParentID());
 		model.setSeqno(entity.getSeqNo());
@@ -134,6 +135,7 @@ public final class DTOUtil {
 	public static ADMenuModel toMenuModel(ADMenuVt entity) {
 		ADMenuModel model = new ADMenuModel();
 		model.setIsactive(entity.isActive());
+		model.setSummary(entity.isSummary());
 		model.setAdMenuId(entity.getNodeID());
 		model.setParentId(entity.getParentID());
 		model.setSeqno(entity.getSeqNo());

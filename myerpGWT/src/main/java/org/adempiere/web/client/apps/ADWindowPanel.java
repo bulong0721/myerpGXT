@@ -68,9 +68,13 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 		currentTab = tabPanel;
 		if (tabPanel.isParentSelectChanges()) {
 			tabPanel.loadData();
-		} else{
+		} else {
 			tabPanel.refreshToolBar();
 		}
+	}
+
+	public ADWindowModel getWindowModel() {
+		return windowModel;
 	}
 
 	protected ButtonStates computeButtonStates() {

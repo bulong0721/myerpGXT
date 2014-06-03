@@ -25,9 +25,11 @@ import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.util.ClassUtil;
 import org.adempiere.web.client.util.ContextUtil;
+import org.adempiere.web.client.util.ExceptionUtil;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.LoggingUtil;
 import org.adempiere.web.client.util.WidgetUtil;
+import org.adempiere.web.client.util.ExceptionUtil.RPCError;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.ButtonStates;
 
@@ -46,6 +48,8 @@ import com.sencha.gxt.data.shared.Store.Change;
 import com.sencha.gxt.data.shared.Store.Record;
 import com.sencha.gxt.data.shared.event.StoreDataChangeEvent;
 import com.sencha.gxt.data.shared.event.StoreDataChangeEvent.StoreDataChangeHandler;
+import com.sencha.gxt.data.shared.loader.LoadExceptionEvent;
+import com.sencha.gxt.data.shared.loader.LoadExceptionEvent.LoadExceptionHandler;
 import com.sencha.gxt.data.shared.loader.LoadHandler;
 import com.sencha.gxt.data.shared.loader.LoadResultListStoreBinding;
 import com.sencha.gxt.data.shared.loader.PagingLoadResult;
@@ -159,6 +163,21 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 		ADModelReader reader = new ADModelReader();
 		loader = new PagingLoader<ADLoadConfig, PagingLoadResult<ADMapData>>(proxy, reader);
 		loader.setRemoteSort(true);
+		loader.addLoadExceptionHandler(new LoadExceptionHandler<ADLoadConfig>() {
+			@Override
+			public void onLoadException(LoadExceptionEvent<ADLoadConfig> event) {
+				// TODO Auto-generated method stub
+				RPCError error = ExceptionUtil.decode(event.getException());
+				AlertMessageBox dialog = null;
+				if (error.isBusinessException()) {
+					dialog = new AlertMessageBox(i18n.adempiere_System(), error.getMessage());
+					dialog.setIcon(MessageBox.ICONS.warning());
+				} else {
+					dialog = new AlertMessageBox(i18n.adempiere_System(), error.getMessage());
+				}
+				dialog.show();
+			}
+		});
 		pageToolBar = new PagingToolBar(50);
 		pageToolBar.bind(loader);
 		keyProvider = ADModelData.createKeyProvider(tabModel);

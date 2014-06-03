@@ -20,8 +20,19 @@ public class ADUserRoles extends org.adempiere.common.ADEntityBase {
 	private Integer createdBy;
 	private String updated;
 	private Integer updatedBy;
+	private transient ADUser user;
 
 	public ADUserRoles() {
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "AD_USER_ID")
+	public ADUser getUser() {
+		return user;
+	}
+
+	public void setUser(ADUser user) {
+		this.user = user;
 	}
 
 	public ADUserRoles(Integer aDRoleID, Integer aDUserID) {

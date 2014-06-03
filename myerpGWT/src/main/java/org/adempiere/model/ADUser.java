@@ -1,5 +1,7 @@
 package org.adempiere.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -48,12 +50,36 @@ public class ADUser extends org.adempiere.common.ADEntityBase {
 	private Integer updatedBy;
 	private String userPIN;
 	private String value;
+	private List<ADUserRoles> aDUserRoles;
 
 	public ADUser() {
 	}
 
 	public ADUser(Integer aDUserID) {
 		this.aDUserID = aDUserID;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	public List<ADUserRoles> getADUserRoles() {
+		return aDUserRoles;
+	}
+
+	public void setADUserRoles(List<ADUserRoles> aDUserRoles) {
+		this.aDUserRoles = aDUserRoles;
+	}
+	
+	public ADUserRoles addADUserRole(ADUserRoles userRoles) {
+		getADUserRoles().add(userRoles);
+		userRoles.setUser(this);
+
+		return userRoles;
+	}
+
+	public ADUserRoles removeADUserRole(ADUserRoles userRoles) {
+		getADUserRoles().remove(userRoles);
+		userRoles.setUser(null);
+
+		return userRoles;
 	}
 
 	@Basic

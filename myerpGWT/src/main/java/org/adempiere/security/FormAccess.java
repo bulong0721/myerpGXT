@@ -1,4 +1,4 @@
-package org.adempiere.shiro;
+package org.adempiere.security;
 
 import org.adempiere.model.ADFormAccess;
 
@@ -8,7 +8,7 @@ public class FormAccess extends RolePermission<ADFormAccess> {
 		super(roleID, provider);
 	}
 
-	public FormAccess(int roleID, long resourceId) {
+	public FormAccess(int roleID, int resourceId) {
 		super(roleID, resourceId, 0);
 	}
 

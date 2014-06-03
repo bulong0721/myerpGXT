@@ -19,6 +19,7 @@ public class ADMenuModel implements ADExchangeModel, ADNodeModel {
 	private Integer				seqno;
 	private String				action;
 	private String				name;
+	private boolean				summary;
 
 	/** Window = W */
 	public static final String	ACTION_Window		= "W";
@@ -49,6 +50,14 @@ public class ADMenuModel implements ADExchangeModel, ADNodeModel {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isSummary() {
+		return summary;
+	}
+
+	public void setSummary(boolean summary) {
+		this.summary = summary;
 	}
 
 	public Boolean getIsactive() {
@@ -181,7 +190,7 @@ public class ADMenuModel implements ADExchangeModel, ADNodeModel {
 
 	@Override
 	public boolean hasChildren() {
-		return null == getAction() || 0 == getAction().length();
+		return isSummary();
 	}
 
 	@Override
@@ -193,4 +202,30 @@ public class ADMenuModel implements ADExchangeModel, ADNodeModel {
 	public void setParentID(int parentId) {
 		this.parentId = parentId;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((adMenuId == null) ? 0 : adMenuId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ADMenuModel other = (ADMenuModel) obj;
+		if (adMenuId == null) {
+			if (other.adMenuId != null)
+				return false;
+		} else if (!adMenuId.equals(other.adMenuId))
+			return false;
+		return true;
+	}
+
 }

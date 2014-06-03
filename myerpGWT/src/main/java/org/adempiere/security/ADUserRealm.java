@@ -1,6 +1,7 @@
-package org.adempiere.shiro;
+package org.adempiere.security;
 
 import org.adempiere.model.ADUser;
+import org.adempiere.model.ADUserRoles;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.util.POUtil;
 import org.apache.shiro.authc.AuthenticationException;
@@ -19,9 +20,15 @@ public class ADUserRealm extends AuthorizingRealm {
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-//		String username = (String) principals.getPrimaryPrincipal();
+		ADUser user = (ADUser) principals.getPrimaryPrincipal();
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-
+		if (null != user.getADUserRoles()) {
+			for (ADUserRoles role : user.getADUserRoles()) {
+				authorizationInfo.addObjectPermission(ACLProviders.createProcessAccess(role.getADRoleID()));
+				authorizationInfo.addObjectPermission(ACLProviders.createWindowAccess(role.getADRoleID()));
+				authorizationInfo.addObjectPermission(ACLProviders.createFormAccess(role.getADRoleID()));
+			}
+		}
 		return authorizationInfo;
 	}
 
@@ -30,12 +37,12 @@ public class ADUserRealm extends AuthorizingRealm {
 		String userName = (String) token.getPrincipal();
 		ADUser user = POUtil.queryUserByName(pCtx, userName);
 		if (null == user) {
-			throw new UnknownAccountException();
+			throw new UnknownAccountException("该用户不存在");
 		}
 		if (!user.isActive()) {
-			throw new LockedAccountException();
+			throw new LockedAccountException("该用户已经被锁定");
 		}
-		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(userName, user.getPassword(), getName());
+		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user, user.getPassword(), getName());
 		return authenticationInfo;
 	}
 

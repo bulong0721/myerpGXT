@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.adempiere.util.EnvUtil;
 import org.adempiere.web.client.util.StringUtil;
 
-public class ReportDistributeServlet extends HttpServlet {
+public class ReportServlet extends HttpServlet {
 	private static final long	serialVersionUID	= 1L;
 
 	@Override

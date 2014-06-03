@@ -25,11 +25,11 @@
 	<named-query name="queryFieldVTrlsByTabId">
 		<query>SELECT f FROM AdFieldVt f WHERE f.aDTabID = :adTabId AND f.aDLanguageID = :aDLanguageID ORDER BY f.seqNo</query>
 	</named-query>
-	<named-query name="queryMainMenuNodes">
-		<query>SELECT m FROM ADMenu m WHERE m.parentID=:parentID ORDER BY m.parentID, m.seqNo</query>
+	<named-query name="queryMenuNodes">
+		<query>SELECT m FROM ADMenu m WHERE ORDER BY m.parentID, m.seqNo</query>
 	</named-query>
-	<named-query name="queryMainMenuByLanguage">
-		<query>SELECT m FROM ADMenuVt m WHERE m.parentID=:parentID AND m.aDLanguageID = :aDLanguageID ORDER BY m.parentID, m.seqNo</query>
+	<named-query name="queryMenuByLanguage">
+		<query>SELECT m FROM ADMenuVt m WHERE m.aDLanguageID = :aDLanguageID ORDER BY m.parentID, m.seqNo</query>
 	</named-query>
 	<named-query name="queryRefList">
 		<query>SELECT NEW org.adempiere.common.LookupValue(r.value, r.name) FROM ADRefList r WHERE r.aDReferenceID = :adReferenceId</query>
@@ -73,6 +73,18 @@
 		<query>SELECT DISTINCT NEW org.adempiere.common.IdentifierColumn(f.aDColumnID, f.columnName, f.propertyName) FROM AdFieldV f WHERE f.identifier=true AND LOWER(f.tableName)=:tableName ORDER BY f.aDColumnID</query>
 	</named-query>
 	<named-query name="queryUserByName">
-		<query>SELECT u FROM ADUser u WHERE u.name=:name</query>
+		<query>SELECT u FROM ADUser u JOIN FETCH u.aDUserRoles WHERE u.name=:name</query>
+	</named-query>
+	<named-query name="queryFormAccessByRole">
+		<query>SELECT a FROM ADFormAccess a WHERE a.aDRoleID=:aDRoleID</query>
+	</named-query>
+	<named-query name="queryProcessAccessByRole">
+		<query>SELECT a FROM ADProcessAccess a WHERE a.aDRoleID=:aDRoleID</query>
+	</named-query>
+	<named-query name="queryWindowAccessByRole">
+		<query>SELECT a FROM ADWindowAccess a WHERE a.aDRoleID=:aDRoleID</query>
+	</named-query>
+	<named-query name="queryWorkflowAccessByRole">
+		<query>SELECT a FROM ADWorkflowAccess a WHERE a.aDRoleID=:aDRoleID</query>
 	</named-query>
 </entity-mappings>

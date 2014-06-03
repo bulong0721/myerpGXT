@@ -1,4 +1,4 @@
-package org.adempiere.shiro;
+package org.adempiere.security;
 
 import org.adempiere.model.ADWindowAccess;
 
@@ -8,7 +8,7 @@ public class WindowAccess extends RolePermission<ADWindowAccess> {
 		super(roleID, provider);
 	}
 
-	public WindowAccess(int roleID, long resourceId) {
+	public WindowAccess(int roleID, int resourceId) {
 		super(roleID, resourceId, 0);
 	}
 

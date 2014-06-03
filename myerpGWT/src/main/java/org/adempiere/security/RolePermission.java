@@ -1,4 +1,4 @@
-package org.adempiere.shiro;
+package org.adempiere.security;
 
 import java.util.Map;
 
@@ -8,10 +8,11 @@ public abstract class RolePermission<A> implements Permission {
 	protected final int		TARGET_WINDOW	= 1;
 	protected final int		TARGET_PROCESS	= 2;
 	protected final int		TARGET_FORM		= 3;
+	protected final int		TARGET_WORKFLOW	= 4;
 
 	private int				roleID;
 	private int				accessType;
-	private long			resourceId;
+	private int				resourceId;
 	private ACLProvider<A>	provider;
 
 	public RolePermission(int roleID, ACLProvider<A> provider) {
@@ -20,7 +21,7 @@ public abstract class RolePermission<A> implements Permission {
 		this.provider = provider;
 	}
 
-	public RolePermission(int roleID, long resourceId, int accessType) {
+	public RolePermission(int roleID, int resourceId, int accessType) {
 		super();
 		this.roleID = roleID;
 		this.resourceId = resourceId;
@@ -57,7 +58,7 @@ public abstract class RolePermission<A> implements Permission {
 		return accessType;
 	}
 
-	public long getResourceId() {
+	public int getResourceId() {
 		return resourceId;
 	}
 

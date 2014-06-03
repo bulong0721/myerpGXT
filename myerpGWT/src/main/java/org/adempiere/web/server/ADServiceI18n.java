@@ -15,17 +15,21 @@ import org.adempiere.model.AdFieldVt;
 import org.adempiere.model.AdTabV;
 import org.adempiere.model.AdTabVt;
 import org.adempiere.persist.PersistContext;
+import org.adempiere.security.ADMenuCache;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
 import org.adempiere.web.client.model.ADFieldModel;
 import org.adempiere.web.client.model.ADFormModel;
+import org.adempiere.web.client.model.ADMenuModel;
+import org.adempiere.web.client.model.ADNodeModel;
 import org.adempiere.web.client.model.ADProcessModel;
 import org.adempiere.web.client.model.ADTabModel;
 import org.adempiere.web.client.model.ADWindowModel;
-import org.adempiere.web.client.model.ADNodeModel;
 
-public final class CoreModelFetch {
-	
+public final class ADServiceI18n {
+	private static ADMenuCache	baseLangCache;
+	private static ADMenuCache	languageCache;
+
 	public static boolean isBaseLanguage(int languageId) {
 		return 0 == languageId;
 	}
@@ -121,12 +125,15 @@ public final class CoreModelFetch {
 
 	public static List<ADNodeModel> getADMenuList4BaseLanguage(PersistContext pCtx, int parentID) {
 		try {
-			List<ADMenu> menuList = POUtil.queryMainMenuNodes(pCtx, parentID);
-			List<ADNodeModel> resultList = new ArrayList<ADNodeModel>(menuList.size());
-			for (ADMenu nodeMM : menuList) {
-				resultList.add(DTOUtil.toMenuModel(nodeMM));
+			if (null == baseLangCache) {
+				List<ADMenu> menuList = POUtil.queryMenuNodes(pCtx);
+				List<ADMenuModel> resultList = new ArrayList<ADMenuModel>(menuList.size());
+				for (ADMenu nodeMM : menuList) {
+					resultList.add(DTOUtil.toMenuModel(nodeMM));
+				}
+				baseLangCache = new ADMenuCache(resultList);
 			}
-			return resultList;
+			return baseLangCache.getNodes(parentID);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Collections.emptyList();
@@ -138,12 +145,15 @@ public final class CoreModelFetch {
 			return getADMenuList4BaseLanguage(pCtx, parentID);
 		}
 		try {
-			List<ADMenuVt> menuList = POUtil.queryMainMenuByLanguage(pCtx, languageId, parentID);
-			List<ADNodeModel> resultList = new ArrayList<ADNodeModel>(menuList.size());
-			for (ADMenuVt nodeMM : menuList) {
-				resultList.add(DTOUtil.toMenuModel(nodeMM));
+			if (null == languageCache) {
+				List<ADMenuVt> menuList = POUtil.queryMenuByLanguage(pCtx, languageId);
+				List<ADMenuModel> resultList = new ArrayList<ADMenuModel>(menuList.size());
+				for (ADMenuVt nodeMM : menuList) {
+					resultList.add(DTOUtil.toMenuModel(nodeMM));
+				}
+				languageCache = new ADMenuCache(resultList);
 			}
-			return resultList;
+			return languageCache.getNodes(parentID);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Collections.emptyList();
