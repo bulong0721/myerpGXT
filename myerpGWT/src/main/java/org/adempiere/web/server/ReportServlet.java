@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.adempiere.util.EnvUtil;
 import org.adempiere.web.client.util.StringUtil;
 
+import com.google.inject.Singleton;
+
+@Singleton
 public class ReportServlet extends HttpServlet {
 	private static final long	serialVersionUID	= 1L;
 
