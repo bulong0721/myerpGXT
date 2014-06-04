@@ -65,17 +65,14 @@ public class ADMenuCache {
 			}
 			nodeList.add(node);
 		}
-		PreOrderItr poi = new PreOrderItr(leafMap);
+		PostOrderItr poi = new PostOrderItr(leafMap);
 		trimEmptyNodes(poi);
 		return leafMap;
 	}
 
-	private void trimEmptyNodes(PreOrderItr itr) {
+	private void trimEmptyNodes(PostOrderItr itr) {
 		while (itr.hasNext()) {
 			ADMenuModel elem = itr.next();
-			if (null == elem) {
-				continue;
-			}
 			if (elem.isSummary() && !itr.hasChildren(elem)) {
 				itr.removeFromParent(elem);
 			}
@@ -96,15 +93,38 @@ public class ADMenuCache {
 		return true;
 	}
 
-	static class PreOrderItr implements Iterator<ADMenuModel> {
+	static class PostOrderItr implements Iterator<ADMenuModel> {
 		protected Map<Integer, List<ADMenuModel>>	tree;
-		protected Stack<Iterator<ADMenuModel>>		stack;
-		protected Iterator<ADMenuModel>				it;
+		protected Stack<ADMenuModel>				stack;
 
-		public PreOrderItr(Map<Integer, List<ADMenuModel>> tree) {
+		public PostOrderItr(Map<Integer, List<ADMenuModel>> tree) {
 			this.tree = tree;
-			this.stack = new Stack<Iterator<ADMenuModel>>();
-			this.stack.push(tree.get(0).iterator());
+			this.stack = new Stack<ADMenuModel>();
+			this.pushPostOrder(tree.get(0));
+		}
+
+		public void removeFromParent(ADMenuModel elem) {
+			List<ADMenuModel> nodes = tree.get(elem.getParentID());
+			if (null != nodes) {
+				nodes.remove(elem);
+			}
+		}
+
+		public boolean hasChildren(ADMenuModel elem) {
+			List<ADMenuModel> children = tree.get(elem.getID());
+			if (null != children) {
+				return !children.isEmpty();
+			}
+			return false;
+		}
+
+		private void pushPostOrder(List<ADMenuModel> children) {
+			for (ADMenuModel node : children) {
+				this.stack.push(node);
+				if (node.isSummary() && tree.containsKey(node.getID())) {
+					pushPostOrder(tree.get(node.getID()));
+				}
+			}
 		}
 
 		@Override
@@ -114,46 +134,11 @@ public class ADMenuCache {
 
 		@Override
 		public ADMenuModel next() {
-			it = stack.peek();
-			ADMenuModel node = it.next();
-			if (!it.hasNext()) {
-				stack.pop();
-			}
-			Iterator<ADMenuModel> children = getChildren(node);
-			if (null != children) {
-				stack.push(children);
-			}
-			return node;
-		}
-
-		Iterator<ADMenuModel> getChildren(ADMenuModel node) {
-			if (null != node && tree.containsKey(node.getID())) {
-				return tree.get(node.getID()).iterator();
-			}
-			return null;
-		}
-
-		public void removeFromParent(ADMenuModel node) {
-			int parentID = node.getParentID();
-			if (tree.containsKey(parentID)) {
-				this.remove();
-			} else {
-				System.out.println(parentID);
-			}
-		}
-
-		public boolean hasChildren(ADMenuModel node) {
-			if (tree.containsKey(node.getID())) {
-				return !tree.get(node.getID()).isEmpty();
-			}
-			return false;
+			return stack.pop();
 		}
 
 		@Override
 		public void remove() {
-			if (null != it) {
-				it.remove();
-			}
 		}
 	}
 }
