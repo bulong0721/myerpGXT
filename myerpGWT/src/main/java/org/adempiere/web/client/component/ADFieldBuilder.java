@@ -68,19 +68,17 @@ public class ADFieldBuilder {
 		fieldType = field.getFieldType();
 		ADModelValueProvider<?> valueProvider = null;
 		String propertyName = field.getPropertyName();
-		// LoggingUtil.info("column2property:" + field.getColumnname() + "=>" +
-		// propertyName);
-		if (fieldType.isID() || fieldType.isInteger()) {
-			valueProvider = new ADModelValueProvider<Integer>(propertyName, fieldType);
-			if (fieldType.isLookup()) {
-				optionStore = OptionStoreManager.getOptionStore(field.getPropertyName(), field.getADReferenceID(),
-						field.getADReferenceValueID());
-				columnCell = new OptionCell(optionStore);
-				LabelProvider<LookupValue> labelProvider = CommonUtil.createLabelProvider();
-				if (formStrategy.isCreateGridEditor())
-					gridEditor = createComboBox(labelProvider);
-				if (formStrategy.isCreateFormEditor())
-					formEditor = createComboBox(labelProvider);
+		if (fieldType.isLookup()) {
+			optionStore = OptionStoreManager.getOptionStore(field.getPropertyName(), field.getADReferenceID(),
+					field.getADReferenceValueID());
+			columnCell = new OptionCell(optionStore);
+			LabelProvider<LookupValue> labelProvider = CommonUtil.createLabelProvider();
+			if (formStrategy.isCreateGridEditor())
+				gridEditor = createComboBox(labelProvider);
+			if (formStrategy.isCreateFormEditor())
+				formEditor = createComboBox(labelProvider);
+			if (fieldType.isID()) {
+				valueProvider = new ADModelValueProvider<Integer>(propertyName, fieldType);
 				converter = new Converter<Integer, LookupValue>() {
 					@Override
 					public Integer convertFieldValue(LookupValue value) {
@@ -89,19 +87,31 @@ public class ADFieldBuilder {
 						}
 						return null;
 					}
-
 					@Override
 					public LookupValue convertModelValue(Integer value) {
 						return optionStore.findModelWithKey("" + value);
 					}
 				};
 			} else {
-				NumberPropertyEditor<Integer> propertyEditor = new IntegerPropertyEditor();
-				if (formStrategy.isCreateGridEditor())
-					gridEditor = new NumberField<Integer>(propertyEditor);
-				if (formStrategy.isCreateFormEditor())
-					formEditor = new NumberField<Integer>(propertyEditor);
+				valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
+				converter = new Converter<String, LookupValue>() {
+					@Override
+					public String convertFieldValue(LookupValue value) {
+						return value.getValue();
+					}
+					@Override
+					public LookupValue convertModelValue(String value) {
+						return optionStore.findModelWithKey(value);
+					}
+				};
 			}
+		} else if (fieldType.isID() || fieldType.isInteger()) {
+			valueProvider = new ADModelValueProvider<Integer>(propertyName, fieldType);
+			NumberPropertyEditor<Integer> propertyEditor = new IntegerPropertyEditor();
+			if (formStrategy.isCreateGridEditor())
+				gridEditor = new NumberField<Integer>(propertyEditor);
+			if (formStrategy.isCreateFormEditor())
+				formEditor = new NumberField<Integer>(propertyEditor);
 		} else if (fieldType.isFloat()) {
 			valueProvider = new ADModelValueProvider<Double>(propertyName, fieldType);
 			NumberPropertyEditor<Double> propertyEditor = new DoublePropertyEditor();
