@@ -11,7 +11,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
 
 import org.adempiere.common.ADExpression;
 import org.adempiere.common.ADExpression.ADPredicate;
@@ -22,8 +21,10 @@ import org.adempiere.common.IdentifierColumn;
 import org.adempiere.common.LookupValue;
 import org.adempiere.common.ProcessResult;
 import org.adempiere.common.RefCriteria;
+import org.adempiere.model.ADUser;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.process.ProcessContext;
+import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
 import org.adempiere.util.PermissionUtil;
 import org.adempiere.util.ProcessUtil;
@@ -56,29 +57,26 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	private PersistContext	pCtx	= new PersistContext();
 	@Inject
 	@Named("systemName")
-	private String name;
+	private String			name;
 
 	public static void main(String[] args) {
-		// String json =
-		// "{\"adProcessId\":173,\"classname\":\"org.adempiere.process.TableCreateColumns\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
-		// String rowJson =
-		// "{\"accesslevel\":\"6\",\"adClientId\":0,\"adOrgId\":0,\"adTableId\":906,\"adWindowId\":113,\"entitytype\":\"D\",\"isactive\":true,\"iscentrallymaintained\":true,\"ischangelog\":false,\"isdeleteable\":true,\"ishighvolume\":false,\"issecurityenabled\":false,\"isview\":false,\"loadseq\":125,\"name\":\"Workflow\",\"replicationtype\":\"L\",\"tablename\":\"AD_Workflow\"}";
-		// String json =
-		// "{\"adWindowId\":53110,\"classname\":\"org.adempiere.process.WindowCopy\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
-		// String rowJson = "{\"adWindowId\":53110}";
-		//
-		// String json =
-		// "{\"classname\":\"org.adempiere.process.LanguageMaintenance\"}";
-		// String rowJson = "";
-		// ADProcessModel pModel = JSON.parseObject(json, ADProcessModel.class);
-		// ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson,
-		// "{\"adWindowId\":103}");
-		// ProcessResult pInfo = new ProcessResult();
-		// try {
-		// ProcessUtil.process(ctx, pInfo);
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
+		String pJson = "{\"adProcessId\":173,\"classname\":\"org.adempiere.process.TableCreateColumns\"}";
+		String rowJson = "{\"aDTableID\":906}";
+//		String json = "{\"adWindowId\":53110,\"classname\":\"org.adempiere.process.WindowCopy\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
+//		String rowJson = "{\"adWindowId\":53110}";
+//
+//		String json = "{\"classname\":\"org.adempiere.process.LanguageMaintenance\"}";
+//		String rowJson = "";
+		ADProcessModel pModel = JSON.parseObject(pJson, ADProcessModel.class);
+		ProcessContext ctx = ProcessUtil.createContext(pModel, rowJson, "{\"aDTableID\":906}");
+		ProcessResult pInfo = new ProcessResult();
+		try {
+			ProcessUtil.process(ctx, pInfo);
+			ctx.managedCommit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			ctx.managedRollback();
+		}
 		// AdempiereServiceImpl service = new AdempiereServiceImpl();
 		// // List<IsTreeNode> nodes = service.getTreeNodes(10, null);
 		// // System.out.println(nodes.size());
@@ -240,8 +238,10 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 		ProcessResult pInfo = new ProcessResult();
 		try {
 			ProcessUtil.process(ctx, pInfo);
+			ctx.managedCommit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			ctx.managedRollback();
 		}
 		return pInfo;
 	}
@@ -267,8 +267,9 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 
 	@Override
 	public ADUserContext getADUserContext() throws RuntimeException {
-		// TODO Auto-generated method stub
-		return null;
+		Subject subject = PermissionUtil.getSubject();
+		ADUser user = (ADUser) subject.getPrincipal();
+		return DTOUtil.toUerContext(user);
 	}
 
 	@Override
@@ -316,6 +317,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 			Class<?> entityClazz = ServiceUtil.toClass(tableName);
 			Root<?> root = cq.from(entityClazz);
 			cq.select(cb.construct(LookupValue.class, root.get(keyColumn), root.get(disColumn)));
+			cq.orderBy(cb.asc(root.get(disColumn)));
 			TypedQuery<LookupValue> tq = em.createQuery(cq);
 			List<LookupValue> resultList = ServiceUtil.wrapper(tq.getResultList());
 			pCtx.commit();
@@ -338,7 +340,9 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 			CriteriaBuilder cb = em.getCriteriaBuilder();
 			CriteriaQuery cq = cb.createQuery(entityClazz);
 			Root<?> root = cq.from(entityClazz);
-			cq.select(cb.construct(LookupValue.class, getSelectList(root, propertyName, idCols)));
+			Expression[] selection = getSelectList(root, propertyName, idCols);
+			cq.select(cb.construct(LookupValue.class, selection));
+			cq.orderBy(cb.asc(selection[1]));
 			TypedQuery tq = em.createQuery(cq);
 			List<LookupValue> resultList = ServiceUtil.wrapper(tq.getResultList());
 			pCtx.commit();
@@ -350,8 +354,8 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 		return Collections.emptyList();
 	}
 
-	private Selection[] getSelectList(Root<?> root, String keyColumn, List<IdentifierColumn> idCols) {
-		List<Selection> resultList = new ArrayList<Selection>();
+	private Expression[] getSelectList(Root<?> root, String keyColumn, List<IdentifierColumn> idCols) {
+		List<Expression> resultList = new ArrayList<Expression>();
 		resultList.add(root.get(keyColumn));
 		if (idCols.isEmpty()) {
 			resultList.add(root.get("name"));
@@ -360,7 +364,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 				resultList.add(root.get(idCol.getPropertyName()));
 			}
 		}
-		Selection[] result = new Selection[resultList.size()];
+		Expression[] result = new Expression[resultList.size()];
 		return resultList.toArray(result);
 	}
 
@@ -400,11 +404,11 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 
 	@Override
 	public ADJSONData getWindowTabData(ADLoadConfig loadCfg) throws RuntimeException {
-//		try {
-//			PermissionUtil.checkWindowAccess((int) loadCfg.getWindowID());
-//		} catch (Exception e1) {
-//			throw ExceptionUtil.encodeBusinessException(e1);
-//		}
+		// try {
+		// PermissionUtil.checkWindowAccess((int) loadCfg.getWindowID());
+		// } catch (Exception e1) {
+		// throw ExceptionUtil.encodeBusinessException(e1);
+		// }
 		String entityClass = ServiceUtil.getEntityClassNameByTable(loadCfg.getTableName());
 		System.out.println("fetchByClass1:" + entityClass);
 		StringBuffer buffer = new StringBuffer();
@@ -498,7 +502,6 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 		System.out.println(name);
 		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 		try {
-//			Subject subject = new WebSubject.Builder(getThreadLocalRequest(), getThreadLocalResponse()).buildWebSubject();
 			Subject subject = PermissionUtil.getSubject();
 			subject.login(token);
 			return getADUserContext();
