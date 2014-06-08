@@ -22,6 +22,12 @@ public class LookupValue implements Serializable {
 		this.display = join(' ', segment1, segment2);
 		this.value = Integer.toString(value);
 	}
+	
+	public LookupValue(Integer value, String segment1, Integer segment2) {
+		super();
+		this.display = join(' ', segment1, segment2.toString());
+		this.value = Integer.toString(value);
+	}
 
 	public LookupValue(Integer value, String segment1, String segment2, String segment3) {
 		super();

@@ -12,9 +12,9 @@ public class CMom extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aDClientID;
 	private Integer aDOrgID;
-	private String active;
+	private Boolean active;
 	private String agenda;
-	private Integer cMomId;
+	private Integer cMomID;
 	private String chairperson;
 	private String created;
 	private Integer createdBy;
@@ -31,8 +31,8 @@ public class CMom extends org.adempiere.common.ADEntityBase {
 	public CMom() {
 	}
 
-	public CMom(Integer cMomId) {
-		this.cMomId = cMomId;
+	public CMom(Integer cMomID) {
+		this.cMomID = cMomID;
 	}
 
 	@Basic
@@ -56,12 +56,12 @@ public class CMom extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="isactive", nullable=false, length=1)
-	public String getActive() {
+	@Column(name="isactive", nullable=false)
+	public Boolean isActive() {
 		return active;
 	}
 
-	public void setActive(String active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
@@ -77,12 +77,12 @@ public class CMom extends org.adempiere.common.ADEntityBase {
 
 	@Id
 	@Column(name="c_mom_id", columnDefinition="INT")
-	public Integer getCMomId() {
-		return cMomId;
+	public Integer getCMomID() {
+		return cMomID;
 	}
 
-	public void setCMomId(Integer cMomId) {
-		this.cMomId = cMomId;
+	public void setCMomID(Integer cMomID) {
+		this.cMomID = cMomID;
 	}
 
 	@Basic

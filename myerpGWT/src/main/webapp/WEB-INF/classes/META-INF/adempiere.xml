@@ -58,7 +58,7 @@
 	<named-query name="queryUnMappedColumns">
 		<query>SELECT c FROM ADColumn c WHERE c.aDTableID = :adTableId AND c.active = true
 			   AND NOT (c.name LIKE 'Created%' OR c.name LIKE 'Updated%')
-			   AND NOT EXISTS (SELECT f.ADFieldID FROM ADField f WHERE f.aDColumnID=c.aDColumnID AND f.aDTabID= :adTabId)</query>
+			   AND NOT EXISTS (SELECT f.aDFieldID FROM ADField f WHERE f.aDColumnID=c.aDColumnID AND f.aDTabID= :adTabId)</query>
 	</named-query>
 	<named-query name="querySeqByTabId">
 		<query>SELECT NEW org.adempiere.web.client.model.ADSequenceModel(f.aDFieldID, f.name, f.seqNo) FROM ADField f WHERE f.aDTabID = :adTabId ORDER BY f.seqNo</query>

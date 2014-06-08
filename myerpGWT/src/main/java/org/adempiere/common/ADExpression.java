@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class ADExpression implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 	private String				columnName;
@@ -38,6 +40,7 @@ public class ADExpression implements Serializable {
 		return false;
 	}
 
+	@JSONField(name = "var")
 	public String getColumnName() {
 		return columnName;
 	}
@@ -46,6 +49,7 @@ public class ADExpression implements Serializable {
 		this.columnName = columnName;
 	}
 
+	@JSONField(name = "fop")
 	public FieldOperator getFieldOperator() {
 		return fieldOperator;
 	}
@@ -54,6 +58,7 @@ public class ADExpression implements Serializable {
 		this.fieldOperator = fieldOperator;
 	}
 
+	@JSONField(name = "val1")
 	public String getValue1() {
 		return value1;
 	}
@@ -62,6 +67,7 @@ public class ADExpression implements Serializable {
 		this.value1 = value1;
 	}
 
+	@JSONField(name = "val2")
 	public String getValue2() {
 		return value2;
 	}
@@ -98,6 +104,7 @@ public class ADExpression implements Serializable {
 			booleanOperator = Enum.valueOf(BooleanOperator.class, value);
 		}
 
+		@JSONField(name = "lop")
 		public BooleanOperator getBooleanOperator() {
 			return booleanOperator;
 		}
@@ -106,6 +113,7 @@ public class ADExpression implements Serializable {
 			this.booleanOperator = booleanOperator;
 		}
 
+		@JSONField(name = "subexpr")
 		public List<ADExpression> getExpressions() {
 			return expressions;
 		}

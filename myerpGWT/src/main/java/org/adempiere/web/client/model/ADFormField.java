@@ -35,5 +35,9 @@ public interface ADFormField extends ADExchangeModel {
 	Boolean isKey();
 
 	Boolean isSameline();
+	
+	Boolean isReadOnly();
+	
+	Boolean isUpdatable();
 
 }

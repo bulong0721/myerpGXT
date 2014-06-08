@@ -5,6 +5,7 @@ import java.util.List;
 import org.adempiere.common.ProcessResult;
 import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.ADModalDialog;
+import org.adempiere.web.client.component.ADModelDriver;
 import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
@@ -51,6 +52,7 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 	private Widget					widget;
 	private ADProcessModel			processModel;
 	private ADMapData				paramData;
+	private ADModelDriver			adModelDriver;
 	private String					rowJSONString;
 
 	public ADProcessPanel(ADProcessModel process) {
@@ -78,11 +80,13 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 		descLabel = new Label(processModel.getDescription(), true);
 		List<ADProcessArgModel> fieldList = processModel.getParamList();
 		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
-		formStrategy.setDisableKey(false);
+//		formStrategy.setDisableKey(false);
 		formStrategy.setCreateGridEditor(false);
 		prarmEditor = new AdModelEditor(formStrategy);
 		prarmEditor.setLayoutWidth(0.52d);
-		prarmEditor.setValue(paramData);
+		adModelDriver = GWT.create(ADModelDriver.class);
+		adModelDriver.initialize(prarmEditor);
+		adModelDriver.edit(paramData);
 		reportViewer = new ADReportViewer(processModel.getAdProcessId());
 	}
 
@@ -111,7 +115,8 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 				hide();
 			}
 		};
-		adempiereService.executeProcess(processModel, rowJSONString, paramData.toString(), callback);
+		ADMapData data = adModelDriver.flush();
+		adempiereService.executeProcess(processModel, rowJSONString, data.toString(), callback);
 	}
 
 	@Override

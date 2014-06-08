@@ -16,12 +16,19 @@ public class PersistContext implements Serializable {
 	private final PersistenceContextType	scope;
 
 	static ThreadLocal<EntityManager>		thread				= new ThreadLocal<EntityManager>();
-	private ReentrantLock					lock				= new ReentrantLock();
+	protected ReentrantLock					lock				= new ReentrantLock();
 
 	public PersistContext() {
 		this.unitName = "adempiere";
 		this.emf = Persistence.createEntityManagerFactory(unitName);
 		this.isManaged = false;
+		this.scope = PersistenceContextType.TRANSACTION;
+	}
+
+	public PersistContext(boolean isManaged) {
+		this.unitName = "adempiere";
+		this.emf = Persistence.createEntityManagerFactory(unitName);
+		this.isManaged = isManaged;
 		this.scope = PersistenceContextType.TRANSACTION;
 	}
 
@@ -92,7 +99,10 @@ public class PersistContext implements Serializable {
 			lock.lock();
 			EntityManager em = getEntityManager();
 			if (isManaged) {
-				em.joinTransaction();
+//				em.joinTransaction();
+				if (!em.getTransaction().isActive()) {
+					em.getTransaction().begin();
+				}
 			} else {
 				if (!em.getTransaction().isActive()) {
 					em.getTransaction().begin();

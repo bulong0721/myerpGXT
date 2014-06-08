@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.util.Collections;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+
 import org.adempiere.persist.PersistContext;
 import org.adempiere.web.client.model.ADProcessModel;
 
@@ -18,9 +20,32 @@ public class ProcessContext extends PersistContext {
 	}
 
 	public ProcessContext(ADProcessModel pModel, Map<String, Object> rowMap, Map<String, Object> paramMap) {
+		super(true);
 		this.processModel = pModel;
 		this.paramMap = paramMap;
 		this.rowMap = rowMap;
+	}
+
+	public void managedRollback() {
+		try {
+			lock.lock();
+			EntityManager em = getEntityManager();
+			assertActive();
+			em.getTransaction().rollback();
+		} finally {
+			lock.unlock();
+		}
+	}
+
+	public void managedCommit() {
+		try {
+			lock.lock();
+			EntityManager em = getEntityManager();
+			assertActive();
+			em.getTransaction().commit();
+		} finally {
+			lock.unlock();
+		}
 	}
 
 	public Connection getConnection() {

@@ -12,6 +12,7 @@ import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
+import org.adempiere.web.client.util.ContextUtil;
 import org.adempiere.web.client.util.StringUtil;
 import org.adempiere.web.client.widget.ConfirmToolBar;
 
@@ -133,6 +134,7 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
 	}
 	
 	void goDefaultCfg(ADUserContext userContext) {
+		ContextUtil.setUserContext(userContext);
 		connectionConfig.setEnabled(false);
 		defaultConfig.setEnabled(true);
 		Widget defaultTab = tabContainer.getWidget(1);

@@ -228,6 +228,18 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 		return null;
 	}
 
+	public ADMapData getParentData() {
+		SimpleTabPanel parentTab = windowPanel.getParentTab(this);
+		if (null != parentTab) {
+			return parentTab.getCurrentData();
+		}
+		return null;
+	}
+
+	public ADMapData getCurrentData() {
+		return grid.getSelectionModel().getSelectedItem();
+	}
+
 	public boolean isGridMode() {
 		Widget activeWidget = layoutContainer.getActiveWidget();
 		int index = layoutContainer.getWidgetIndex(activeWidget);
@@ -373,12 +385,15 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 
 	public void newRecord() {
 		newRecord = new ADModelData();
+		ADMapData parentData = getParentData();
 		for (ADFieldModel field : tabModel.getFieldList()) {
-			if (null == field.getDefaultValue()) {
-				continue;
-			}
 			String fieldName = field.getPropertyName();
-			newRecord.setValue(fieldName, ContextUtil.getDefaultValue(field));
+			if (null != field.getDefaultValue()) {
+				newRecord.setValue(fieldName, ContextUtil.getDefaultValue(field));
+			} else if (null != parentData && field.isParent()) {
+				Object parentValue = parentData.getValue(fieldName, field.getFieldType());
+				newRecord.setValue(fieldName, parentValue);
+			}
 		}
 		LoggingUtil.info("xxxxxxxxxxxxxxNewRecord:" + newRecord.toString());
 		store.add(newRecord);

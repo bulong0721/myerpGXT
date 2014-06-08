@@ -60,8 +60,12 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	private String			name;
 
 	public static void main(String[] args) {
-		String pJson = "{\"adProcessId\":173,\"classname\":\"org.adempiere.process.TableCreateColumns\"}";
-		String rowJson = "{\"aDTableID\":906}";
+		
+//		String pJson = "{\"adProcessId\":173,\"classname\":\"org.adempiere.process.TableCreateColumns\"}";
+//		String rowJson = "{\"aDTableID\":906}";
+		
+		String pJson = "{\"adProcessId\":174,\"classname\":\"org.adempiere.process.TabCreateFields\"}";
+		String rowJson = "{\"aDTableID\":906,\"aDTabID\":53312}";
 //		String json = "{\"adWindowId\":53110,\"classname\":\"org.adempiere.process.WindowCopy\",\"description\":\"Create Dictionary Columns of Table not existing as a Column but in the Database\",\"isactive\":true,\"isdirectprint\":false,\"isreport\":false,\"isserverprocess\":false,\"name\":\"Create Columns from DB\",\"paramList\":[{\"adProcessParaId\":630,\"adReferenceId\":18,\"adReferenceValueId\":389,\"columnname\":\"EntityType\",\"defaultvalue\":\"U\",\"fieldType\":\"Table\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Entity Type\",\"seqno\":10},{\"adProcessParaId\":631,\"adReferenceId\":20,\"columnname\":\"AllTables\",\"defaultvalue\":false,\"fieldType\":\"YesNo\",\"fieldlength\":0,\"isactive\":true,\"iscentrallymaintained\":true,\"isdisplayed\":true,\"isencryptedfield\":false,\"iskey\":false,\"ismandatory\":true,\"issameline\":false,\"name\":\"Check all DB Tables\",\"seqno\":20}],\"value\":\"AD_Table_CreateColumns\"}";
 //		String rowJson = "{\"adWindowId\":53110}";
 //

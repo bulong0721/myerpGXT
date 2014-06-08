@@ -2,10 +2,24 @@ package org.adempiere.web.client.util;
 
 import java.math.BigDecimal;
 
+import org.adempiere.common.ADUserContext;
 import org.adempiere.common.DisplayType;
 import org.adempiere.web.client.model.ADFieldModel;
 
 public final class ContextUtil {
+
+	private static ADUserContext	userContext;
+
+	private ContextUtil() {
+	}
+
+	public static ADUserContext getUserContext() {
+		return userContext;
+	}
+
+	public static void setUserContext(ADUserContext userContext) {
+		ContextUtil.userContext = userContext;
+	}
 
 	/**
 	 * @param field
@@ -33,15 +47,15 @@ public final class ContextUtil {
 
 	public static Object getVariable(String varName) {
 		if ("AD_Client_ID".equalsIgnoreCase(varName)) {
-			return 1;
+			return getUserContext().getADClientID();
 		} else if ("AD_Client_Name".equalsIgnoreCase(varName)) {
 			return "System";
 		} else if ("AD_Org_ID".equalsIgnoreCase(varName)) {
-			return 1;
+			return getUserContext().getADOrgID();
 		} else if ("AD_User_ID".equalsIgnoreCase(varName)) {
-			return 100;
+			return getUserContext().getADUserID();
 		} else if ("AD_User_Name".equalsIgnoreCase(varName)) {
-			return "SuperUser";
+			return getUserContext().getName();
 		}
 		LoggingUtil.info("xxxxxxxxxxxxxxVariable is null:" + varName);
 		return null;

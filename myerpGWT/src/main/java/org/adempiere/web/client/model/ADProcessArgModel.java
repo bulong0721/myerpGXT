@@ -187,4 +187,14 @@ public class ADProcessArgModel implements ADExchangeModel, ADFormField {
 		return false;
 	}
 
+	@Override
+	public Boolean isReadOnly() {
+		return false;
+	}
+
+	@Override
+	public Boolean isUpdatable() {
+		return true;
+	}
+
 }

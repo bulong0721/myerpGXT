@@ -20,6 +20,7 @@ public class ADFieldModel implements ADExchangeModel, ADFormField {
 	private Boolean	mandatory;
 	private Boolean	parent;
 	private Boolean	readonly;
+	private Boolean updatable;
 	private Boolean	sameline;
 	private Boolean	selectionColumn;
 	private String	name;
@@ -32,6 +33,14 @@ public class ADFieldModel implements ADExchangeModel, ADFormField {
 	private String	valueMin;
 	private String	vFormat;
 	private Integer	ADFieldID;
+	
+	public Boolean isUpdatable() {
+		return updatable;
+	}
+
+	public void setUpdatable(Boolean updatable) {
+		this.updatable = updatable;
+	}
 
 	public Integer getADProcessID() {
 		return ADProcessID;
@@ -161,11 +170,11 @@ public class ADFieldModel implements ADExchangeModel, ADFormField {
 		this.parent = parent;
 	}
 
-	public Boolean isReadonly() {
+	public Boolean isReadOnly() {
 		return readonly;
 	}
 
-	public void setReadonly(Boolean readonly) {
+	public void setReadOnly(Boolean readonly) {
 		this.readonly = readonly;
 	}
 

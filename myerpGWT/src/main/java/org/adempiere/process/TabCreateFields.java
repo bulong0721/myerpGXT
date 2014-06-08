@@ -14,8 +14,8 @@ public class TabCreateFields extends ServerProcess {
 
 	@Override
 	protected void preProcess(ProcessContext ctx) {
-		adTableId = (Integer) ctx.getRowMap().get("adTableId");
-		adTabId = (Integer) ctx.getRowMap().get("adTabId");
+		adTableId = (Integer) ctx.getRowMap().get("aDTableID");
+		adTabId = (Integer) ctx.getRowMap().get("aDTabID");
 	}
 
 	@Override

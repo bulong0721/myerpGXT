@@ -22,6 +22,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
+import com.sencha.gxt.core.client.resources.CommonStyles;
 import com.sencha.gxt.data.shared.Converter;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
@@ -68,6 +69,7 @@ public class ADFieldBuilder {
 		fieldType = field.getFieldType();
 		ADModelValueProvider<?> valueProvider = null;
 		String propertyName = field.getPropertyName();
+		// LoggingUtil.info(propertyName + "=>" + fieldType);
 		if (fieldType.isLookup()) {
 			optionStore = OptionStoreManager.getOptionStore(field.getPropertyName(), field.getADReferenceID(),
 					field.getADReferenceValueID());
@@ -87,6 +89,7 @@ public class ADFieldBuilder {
 						}
 						return null;
 					}
+
 					@Override
 					public LookupValue convertModelValue(Integer value) {
 						return optionStore.findModelWithKey("" + value);
@@ -99,6 +102,7 @@ public class ADFieldBuilder {
 					public String convertFieldValue(LookupValue value) {
 						return value.getValue();
 					}
+
 					@Override
 					public LookupValue convertModelValue(String value) {
 						return optionStore.findModelWithKey(value);
@@ -176,11 +180,18 @@ public class ADFieldBuilder {
 		columnCfg = new ColumnConfig(valueProvider, 100);
 		columnCfg.setHeader(field.getName());
 		columnCfg.setCell((Cell) columnCell);
-		if (formStrategy.isDisableKey() && field.isKey()) {
+		if (field.isReadOnly() || !field.isUpdatable()) {
 			if (formStrategy.isCreateGridEditor())
-				gridEditor.setReadOnly(true);
+				disableEditor(gridEditor);
 			if (formStrategy.isCreateFormEditor())
-				formEditor.setReadOnly(true);
+				disableEditor(formEditor);
+		}
+	}
+
+	private void disableEditor(Field<?> editor) {
+		if (null != editor) {
+			editor.addStyleName(CommonStyles.get().disabled());
+			editor.setReadOnly(true);
 		}
 	}
 

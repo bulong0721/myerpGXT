@@ -162,7 +162,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 		List<? extends ADFormField> fieldList = pickSimpleFields(tabModel);
 		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
 		formStrategy.setCreateGridEditor(false);
-		formStrategy.setDisableKey(false);
+//		formStrategy.setDisableKey(false);
 		simpleEditor = new AdModelEditor(formStrategy);
 		simpleEditor.setLabelWidth(85);
 		simpleEditor.setLayoutWidth(0.62d);
@@ -204,7 +204,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 		editing.addEditor(operatorColumn, opComboBox);
 
 		final ADFormBuilder gridStrategy = new ADFormBuilder(tabModel.getFieldList());
-		gridStrategy.setDisableKey(false);
+//		gridStrategy.setDisableKey(false);
 		editing.addBeforeStartEditHandler(new BeforeStartEditHandler<ADExpression>() {
 			@SuppressWarnings({ "rawtypes", "unchecked" })
 			@Override

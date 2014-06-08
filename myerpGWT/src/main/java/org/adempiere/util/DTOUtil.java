@@ -3,6 +3,7 @@ package org.adempiere.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adempiere.common.ADUserContext;
 import org.adempiere.model.ADField;
 import org.adempiere.model.ADForm;
 import org.adempiere.model.ADFormVt;
@@ -13,6 +14,7 @@ import org.adempiere.model.ADProcessPara;
 import org.adempiere.model.ADProcessParaVt;
 import org.adempiere.model.ADProcessVt;
 import org.adempiere.model.ADTab;
+import org.adempiere.model.ADUser;
 import org.adempiere.model.AdFieldV;
 import org.adempiere.model.AdFieldVt;
 import org.adempiere.model.AdTabV;
@@ -45,7 +47,8 @@ public final class DTOUtil {
 		model.setKey(entity.isKey());
 		model.setMandatory(entity.isMandatory());
 		model.setParent(entity.isParent());
-		model.setReadonly(entity.isReadOnly());
+		model.setReadOnly(entity.isReadOnly());
+		model.setUpdatable(entity.isUpdateable());
 		model.setSelectionColumn(entity.isSelectionColumn());
 		model.setName(entity.getName());
 		model.setReadonlyLogic(entity.getReadOnlyLogic());
@@ -78,7 +81,8 @@ public final class DTOUtil {
 		model.setKey(entity.isKey());
 		model.setMandatory(entity.isMandatory());
 		model.setParent(entity.isParent());
-		model.setReadonly(entity.isReadOnly());
+		model.setReadOnly(entity.isReadOnly());
+		model.setUpdatable(entity.isUpdateable());
 		model.setSelectionColumn(entity.isSelectionColumn());
 		model.setName(entity.getName());
 		model.setReadonlyLogic(entity.getReadOnlyLogic());
@@ -243,7 +247,7 @@ public final class DTOUtil {
 		model.setVFormat(entity.getVFormat());
 		return model;
 	}
-	
+
 	public static ADProcessArgModel toProcessParameter(ADProcessParaVt entity) {
 		ADProcessArgModel model = new ADProcessArgModel();
 		model.setADProcessParaID(entity.getADProcessParaID());
@@ -474,5 +478,19 @@ public final class DTOUtil {
 		model.setJspurl(entity.getJSPURL());
 		model.setName(entity.getName());
 		return model;
+	}
+
+	public static ADUserContext toUerContext(ADUser user) {
+		ADUserContext context = new ADUserContext();
+		context.setADClientID(user.getADClientID());
+		context.setADOrgID(user.getADOrgID());
+		context.setADUserID(user.getADUserID());
+		context.setBirthday(user.getBirthday());
+		context.setEMail(user.getEMail());
+		context.setName(user.getName());
+		context.setNotificationType(user.getNotificationType());
+		context.setPhone(user.getPhone());
+		context.setPhone2(user.getPhone2());
+		return context;
 	}
 }

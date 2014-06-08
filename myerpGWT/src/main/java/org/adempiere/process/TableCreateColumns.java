@@ -20,7 +20,7 @@ public class TableCreateColumns extends ServerProcess {
 
 	@Override
 	protected void preProcess(ProcessContext ctx) {
-		tableId = (Integer) ctx.getRowMap().get("adTableId");
+		tableId = (Integer) ctx.getRowMap().get("aDTableID");
 	}
 
 	@Override
@@ -103,12 +103,13 @@ public class TableCreateColumns extends ServerProcess {
 			String typeName = rs.getString("TYPE_NAME");
 			int size = rs.getInt("COLUMN_SIZE");
 			//
-			column = createColumn(table);
+			column = createColumn(table, columnName);
 			column.setEntityType("D");
 			//
 			ADElement element = POUtil.findElementByColumn(context, columnName);
 			if (element == null) {
 				element = createElement(column);
+
 				if (columnName.equalsIgnoreCase(table.getTableName() + "_ID")) {
 					element.setColumnName(table.getTableName() + "_ID");
 					element.setName(table.getName());
@@ -118,6 +119,7 @@ public class TableCreateColumns extends ServerProcess {
 				POUtil.persist(context, element);
 			}
 			column.setColumnName(element.getColumnName());
+			column.setPropertyName(element.getColumnName());
 			column.setName(element.getName());
 			column.setDescription(element.getDescription());
 			column.setHelp(element.getHelp());
@@ -179,12 +181,7 @@ public class TableCreateColumns extends ServerProcess {
 			} else
 				column.setADReferenceID(DisplayType.String);
 			column.setFieldLength(size);
-			if (/*
-				 * column.getIsupdateable() &&
-				 */(/*
-					 * table.getIsview() ||
-					 */
-			columnName.equalsIgnoreCase("AD_Client_ID") || columnName.equalsIgnoreCase("AD_Org_ID")
+			if ((columnName.equalsIgnoreCase("AD_Client_ID") || columnName.equalsIgnoreCase("AD_Org_ID")
 					|| columnName.toUpperCase().startsWith("CREATED") || columnName.toUpperCase().equals("UPDATED"))) {
 				column.setAlwaysUpdateable(false);
 			}
@@ -198,19 +195,25 @@ public class TableCreateColumns extends ServerProcess {
 
 	private ADElement createElement(ADColumn column) {
 		ADElement element = new ADElement();
+		element.setName(column.getName());
+		element.setPrintName(column.getName());
+		element.setColumnName(column.getColumnName());
 		element.setADClientID(column.getADClientID());
 		element.setADOrgID(column.getADOrgID());
 		element.setEntityType("D");
 		return element;
 	}
 
-	private ADColumn createColumn(ADTable table) {
+	private ADColumn createColumn(ADTable table, String columnName) {
 		ADColumn column = new ADColumn();
 		column.setADClientID(table.getADClientID());
 		column.setADOrgID(table.getADOrgID());
 		column.setADTableID(table.getADTableID());
 		column.setEntityType(table.getEntityType());
+		column.setColumnName(columnName);
+		column.setName(columnName);
 
+		column.setUpdateable(true);
 		column.setAlwaysUpdateable(false); // N
 		column.setAutocomplete(false);
 		column.setEncrypted(false);

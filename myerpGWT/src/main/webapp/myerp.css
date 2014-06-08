@@ -125,3 +125,7 @@ h1 {
 .fieldGroup {
 	margin: 2px 0px 2px 0px !important;
 }
+
+.readonlyField {
+	background-color: #E0E0E0 !important;
+}

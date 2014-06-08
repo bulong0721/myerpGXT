@@ -516,8 +516,7 @@ public class ADColumn extends org.adempiere.common.ADEntityBase {
 		this.version = version;
 	}
 
-	public void setADReferenceID(DisplayType amount) {
-		// TODO Auto-generated method stub
-		
+	public void setADReferenceID(DisplayType type) {
+		setADReferenceID(type.getValue());
 	}
 }

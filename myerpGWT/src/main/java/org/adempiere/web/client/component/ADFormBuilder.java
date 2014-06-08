@@ -20,7 +20,7 @@ import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 public class ADFormBuilder {
 	private List<? extends ADFormField>	fieldList;
 	private List<ADFieldBuilder>		fieldStrategies;
-	private boolean						disableKey			= true;
+//	private boolean						disableKey			= true;
 	private boolean						createFormEditor	= true;
 	private boolean						createGridEditor	= true;
 	private ActionListener				fieldButtonListener;
@@ -46,9 +46,9 @@ public class ADFormBuilder {
 		isCreated = true;
 	}
 
-	public boolean isDisableKey() {
-		return disableKey;
-	}
+//	public boolean isDisableKey() {
+//		return disableKey;
+//	}
 
 	public boolean isCreateFormEditor() {
 		return createFormEditor;
@@ -58,9 +58,9 @@ public class ADFormBuilder {
 		return createGridEditor;
 	}
 
-	public void setDisableKey(boolean disableKey) {
-		this.disableKey = disableKey;
-	}
+//	public void setDisableKey(boolean disableKey) {
+//		this.disableKey = disableKey;
+//	}
 
 	public void setCreateFormEditor(boolean createFormEditor) {
 		this.createFormEditor = createFormEditor;
