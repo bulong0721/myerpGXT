@@ -63,7 +63,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 	@UiHandler("tabSet")
 	void onTabSelection(ValueChangeEvent<Object> event) {
 		AbstractTabPanel tabPanel = (AbstractTabPanel) tabSet.getActiveTag();
-		windowModel.setActiveTabId(tabPanel.getTabModel().getAdTabId());
+		windowModel.setActiveTabId(tabPanel.getTabModel().getADTabID());
 		toolBar.refreshStates(computeButtonStates());
 		currentTab = tabPanel;
 		if (tabPanel.isParentSelectChanges()) {
@@ -91,8 +91,8 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 	private int getMaxLevel(List<ADTabModel> tabs) {
 		int level = 0;
 		for (ADTabModel tabModel : tabs) {
-			if (tabModel.getTablevel() > level) {
-				level = tabModel.getTablevel();
+			if (tabModel.getTabLevel() > level) {
+				level = tabModel.getTabLevel();
 			}
 		}
 		return level;
@@ -102,7 +102,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 		tabSet.setMaxLevel(getMaxLevel(windowModel.getTabList()));
 		for (ADTabModel tabModel : windowModel.getTabList()) {
 			AbstractTabPanel tabPanel = createTabPanel(tabModel);
-			TabItemConfig itemCfg = new TabItemConfig(tabModel.getName(), tabPanel, tabModel.getTablevel());
+			TabItemConfig itemCfg = new TabItemConfig(tabModel.getName(), tabPanel, tabModel.getTabLevel());
 			tabSet.add(tabPanel, itemCfg);
 			if (null == currentTab) {
 				currentTab = tabPanel;
@@ -110,7 +110,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 		}
 		tabSet.setActiveIndex(0);
 		tabSet.trimWhenSingleTab();
-		if (currentTab.getTabModel().getIsHighVolume()) {
+		if (currentTab.getTabModel().isHighVolume()) {
 			onFind();
 		} else {
 			currentTab.loadData();
@@ -122,7 +122,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 	 * @return
 	 */
 	private AbstractTabPanel createTabPanel(ADTabModel tabModel) {
-		if (tabModel.getIsSortTab()) {
+		if (tabModel.isSortTab()) {
 			return new SequenceTabPanel(ADWindowPanel.this, tabModel, toolBar);
 		} else {
 			return new SimpleTabPanel(ADWindowPanel.this, tabModel, toolBar);
@@ -131,12 +131,12 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 
 	public SimpleTabPanel getParentTab(AbstractTabPanel tabPanel) {
 		int index = tabSet.getIndex(Widget.asWidgetOrNull(tabPanel));
-		int level = tabPanel.getTabModel().getTablevel();
+		int level = tabPanel.getTabModel().getTabLevel();
 		if (0 >= index || 0 >= level) {
 			return null;
 		}
 		for (int i = index - 1; i >= 0; i--) {
-			int rhs = windowModel.getTabList().get(i).getTablevel();
+			int rhs = windowModel.getTabList().get(i).getTabLevel();
 			Object tabpanel = tabSet.getTagByIndex(i);
 			if (rhs == level - 1 && tabpanel instanceof SimpleTabPanel) {
 				return (SimpleTabPanel) tabpanel;

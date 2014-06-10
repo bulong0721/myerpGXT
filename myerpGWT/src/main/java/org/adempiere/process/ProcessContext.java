@@ -66,18 +66,18 @@ public class ProcessContext extends PersistContext {
 
 	public String getClassName() {
 		if (null != processModel) {
-			return processModel.getClassname();
+			return processModel.getClassName();
 		}
 		return null;
 	}
 
 	public void setClassName(String jasperStarterClass) {
 		if (null != processModel) {
-			processModel.setClassname(jasperStarterClass);
+			processModel.setClassName(jasperStarterClass);
 		}
 	}
 
-	public void setAdPinstanceId(Integer adPinstanceId) {
+	public void setADPinstanceID(Integer adPinstanceId) {
 		// TODO Auto-generated method stub
 
 	}

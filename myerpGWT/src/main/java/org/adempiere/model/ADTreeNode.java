@@ -12,17 +12,17 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class ADTreeNode extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
-	private Integer aDClientID;
-	private Integer aDOrgID;
-	private Integer aDTreeID;
-	private Boolean active;
-	private String created;
-	private Integer createdBy;
-	private Integer nodeID;
-	private Integer parentID;
-	private Integer seqNo;
-	private String updated;
-	private Integer updatedBy;
+	protected Integer aDClientID;
+	protected Integer aDOrgID;
+	protected Integer aDTreeID;
+	protected Boolean active;
+	protected String created;
+	protected Integer createdBy;
+	protected Integer nodeID;
+	protected Integer parentID;
+	protected Integer seqNo;
+	protected String updated;
+	protected Integer updatedBy;
 
 	public ADTreeNode() {
 	}

@@ -55,7 +55,7 @@ public class ADTreePanel implements IsWidget {
 	private int							treeId;
 	private TreeDragSource<ADNodeModel>	dragSource;
 	private TreeDropTarget<ADNodeModel>	dropTarget;
-	private Set<ADNodeModel>				changes;
+	private Set<ADNodeModel>			changes;
 
 	public ADTreePanel(int treeId) {
 		super();

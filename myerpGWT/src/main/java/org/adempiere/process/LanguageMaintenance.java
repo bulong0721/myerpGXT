@@ -1,11 +1,14 @@
 package org.adempiere.process;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.model.ADColumn;
 import org.adempiere.model.ADLanguage;
 import org.adempiere.model.ADTable;
 import org.adempiere.util.POUtil;
+
+import com.google.common.collect.Lists;
 
 public class LanguageMaintenance extends ServerProcess {
 	/** Maintenance Mode */
@@ -18,15 +21,35 @@ public class LanguageMaintenance extends ServerProcess {
 	public static String	MAINTENANCEMODE_ReCreate	= "R";
 	/** The Language */
 	private ADLanguage		language					= null;
+	private List<ADTable>	targetTables				= null;
 
 	@Override
 	protected void preProcess(ProcessContext ctx) {
-		// TODO Auto-generated method stub
+		targetTables = prepareTargetTable();
 		maintenanceMode = MAINTENANCEMODE_Add;
 		language = new ADLanguage(187);
 		language.setBaseLanguage(false);
 		language.setSystemLanguage(true);
-		language.setActive(true);
+	}
+
+	ArrayList<ADTable> prepareTargetTable() {
+		ArrayList<ADTable> ADTables = Lists.newArrayList();
+		ADTables.add(new ADTable(101, "AD_Column"));
+		ADTables.add(new ADTable(276, "AD_Element"));
+		ADTables.add(new ADTable(107, "AD_Field"));
+		ADTables.add(new ADTable(414, "AD_FieldGroup"));
+		ADTables.add(new ADTable(376, "AD_Form"));
+		ADTables.add(new ADTable(116, "AD_Menu"));
+		ADTables.add(new ADTable(109, "AD_Message"));
+		ADTables.add(new ADTable(284, "AD_Process"));
+		ADTables.add(new ADTable(285, "AD_Process_Para"));
+		ADTables.add(new ADTable(104, "AD_Ref_List"));
+		ADTables.add(new ADTable(106, "AD_Tab"));
+		ADTables.add(new ADTable(100, "AD_Table"));
+		ADTables.add(new ADTable(118, "AD_Task"));
+		ADTables.add(new ADTable(105, "AD_Window"));
+		ADTables.add(new ADTable(117, "AD_Workflow"));
+		return ADTables;
 	}
 
 	@Override
@@ -56,8 +79,7 @@ public class LanguageMaintenance extends ServerProcess {
 	}
 
 	int maintain(ADLanguage language, boolean add) {
-		List<ADTable> trlTables = POUtil.queryTranslateTable(context);
-		for (ADTable adTable : trlTables) {
+		for (ADTable adTable : targetTables) {
 			if (add) {
 				addByLanguage(adTable, language);
 			} else {
@@ -81,6 +103,9 @@ public class LanguageMaintenance extends ServerProcess {
 		String srcTable = table.getTableName();
 		String desTable = srcTable + "_Trl";
 		String keyColumn = srcTable + "_ID";
+		if ("AD_Menu".equalsIgnoreCase(srcTable)) {
+			keyColumn = "Node_ID";
+		}
 		insertBuffer.append("INSERT INTO ").append(desTable).append(" (");
 		StringBuffer selectBuffer = new StringBuffer();
 		selectBuffer.append("SELECT ");
@@ -100,6 +125,6 @@ public class LanguageMaintenance extends ServerProcess {
 
 		insertBuffer.append(selectBuffer).append(";");
 		System.out.println(insertBuffer.toString());
-		// POUtil.executeNativeQuery(context, insertBuffer.toString(), null);
+		POUtil.executeNativeQuery(context, insertBuffer.toString(), null);
 	}
 }

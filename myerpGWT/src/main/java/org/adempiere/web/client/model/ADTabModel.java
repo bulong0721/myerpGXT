@@ -6,22 +6,22 @@ import org.adempiere.web.client.util.StringUtil;
 
 public class ADTabModel implements ADExchangeModel {
 	private List<ADFieldModel>	fieldList;
-	private Integer				adTabId;
-	private Integer				adColumnId;
-	private Integer				adTableId;
-	private Integer				parentColumnId;
-	private Integer				seqno;
-	private Integer				tablevel;
-	private Boolean				isinfotab;
-	private Boolean				isinsertrecord;
-	private Boolean				isreadonly;
-	private Boolean				issinglerow;
-	private Boolean				isSortTab;
+	private Integer				aDTabID;
+	private Integer				aDColumnID;
+	private Integer				aDTableID;
+	private Integer				parentColumnID;
+	private Integer				seqNo;
+	private Integer				tabLevel;
+	private Boolean				infoTab;
+	private Boolean				insertRecord;
+	private Boolean				readOnly;
+	private Boolean				singleRow;
+	private Boolean				sortTab;
 	private Boolean				hasTree;
-	private Boolean				isHighVolume;
+	private Boolean				highVolume;
 	private String				name;
-	private String				readonlylogic;
-	private String				tablename;
+	private String				readOnlyLogic;
+	private String				tableName;
 
 	public List<ADFieldModel> getFieldList() {
 		return fieldList;
@@ -31,7 +31,7 @@ public class ADTabModel implements ADExchangeModel {
 		this.fieldList = fieldList;
 	}
 
-	public Boolean getHasTree() {
+	public Boolean isHasTree() {
 		return hasTree;
 	}
 
@@ -39,100 +39,100 @@ public class ADTabModel implements ADExchangeModel {
 		this.hasTree = hasTree;
 	}
 
-	public Boolean getIsSortTab() {
-		return isSortTab;
+	public Boolean isSortTab() {
+		return sortTab;
 	}
 
-	public void setIsSortTab(Boolean isSortTab) {
-		this.isSortTab = isSortTab;
+	public void setSortTab(Boolean isSortTab) {
+		this.sortTab = isSortTab;
 	}
 
-	public String getTablename() {
-		return tablename;
+	public String getTableName() {
+		return tableName;
 	}
 
-	public void setTablename(String tablename) {
-		this.tablename = tablename;
+	public void setTableName(String tablename) {
+		this.tableName = tablename;
 	}
 
-	public Integer getAdTabId() {
-		return adTabId;
+	public Integer getADTabID() {
+		return aDTabID;
 	}
 
-	public void setAdTabId(Integer adTabId) {
-		this.adTabId = adTabId;
+	public void setADTabID(Integer adTabId) {
+		this.aDTabID = adTabId;
 	}
 
-	public Integer getAdColumnId() {
-		return adColumnId;
+	public Integer getADColumnID() {
+		return aDColumnID;
 	}
 
-	public void setAdColumnId(Integer adColumnId) {
-		this.adColumnId = adColumnId;
+	public void setADColumnID(Integer adColumnId) {
+		this.aDColumnID = adColumnId;
 	}
 
-	public Integer getAdTableId() {
-		return adTableId;
+	public Integer getADTableID() {
+		return aDTableID;
 	}
 
-	public void setAdTableId(Integer adTableId) {
-		this.adTableId = adTableId;
+	public void setADTableID(Integer adTableId) {
+		this.aDTableID = adTableId;
 	}
 
-	public Integer getParentColumnId() {
-		return parentColumnId;
+	public Integer getParentColumnID() {
+		return parentColumnID;
 	}
 
-	public void setParentColumnId(Integer parentColumnId) {
-		this.parentColumnId = parentColumnId;
+	public void setParentColumnID(Integer parentColumnId) {
+		this.parentColumnID = parentColumnId;
 	}
 
-	public Integer getSeqno() {
-		return seqno;
+	public Integer getSeqNo() {
+		return seqNo;
 	}
 
-	public void setSeqno(Integer seqno) {
-		this.seqno = seqno;
+	public void setSeqNo(Integer seqno) {
+		this.seqNo = seqno;
 	}
 
-	public Integer getTablevel() {
-		return tablevel;
+	public Integer getTabLevel() {
+		return tabLevel;
 	}
 
-	public void setTablevel(Integer tablevel) {
-		this.tablevel = tablevel;
+	public void setTabLevel(Integer tablevel) {
+		this.tabLevel = tablevel;
 	}
 
-	public Boolean getIsinfotab() {
-		return isinfotab;
+	public Boolean IsInfoTab() {
+		return infoTab;
 	}
 
-	public void setIsinfotab(Boolean isinfotab) {
-		this.isinfotab = isinfotab;
+	public void setInfoTab(Boolean isinfotab) {
+		this.infoTab = isinfotab;
 	}
 
-	public Boolean getIsinsertrecord() {
-		return isinsertrecord;
+	public Boolean IsInsertRecord() {
+		return insertRecord;
 	}
 
-	public void setIsinsertrecord(Boolean isinsertrecord) {
-		this.isinsertrecord = isinsertrecord;
+	public void setInsertRecord(Boolean isinsertrecord) {
+		this.insertRecord = isinsertrecord;
 	}
 
-	public Boolean getIsreadonly() {
-		return isreadonly;
+	public Boolean isReadOnly() {
+		return readOnly;
 	}
 
-	public void setIsreadonly(Boolean isreadonly) {
-		this.isreadonly = isreadonly;
+	public void setReadOnly(Boolean isreadonly) {
+		this.readOnly = isreadonly;
 	}
 
-	public Boolean getIssinglerow() {
-		return issinglerow;
+	public Boolean isSingleRow() {
+		return singleRow;
 	}
 
-	public void setIssinglerow(Boolean issinglerow) {
-		this.issinglerow = issinglerow;
+	public void setSingleRow(Boolean issinglerow) {
+		this.singleRow = issinglerow;
 	}
 
 	public String getName() {
@@ -143,20 +143,20 @@ public class ADTabModel implements ADExchangeModel {
 		this.name = name;
 	}
 
-	public String getReadonlylogic() {
-		return readonlylogic;
+	public String getReadOnlyLogic() {
+		return readOnlyLogic;
 	}
 
-	public void setReadonlylogic(String readonlylogic) {
-		this.readonlylogic = readonlylogic;
+	public void setReadOnlyLogic(String readonlylogic) {
+		this.readOnlyLogic = readonlylogic;
 	}
 
-	public Boolean getIsHighVolume() {
-		return isHighVolume;
+	public Boolean isHighVolume() {
+		return highVolume;
 	}
 
-	public void setIsHighVolume(Boolean isHighVolume) {
-		this.isHighVolume = isHighVolume;
+	public void setHighVolume(Boolean isHighVolume) {
+		this.highVolume = isHighVolume;
 	}
 
 	public ADFieldModel getFieldByName(String value) {

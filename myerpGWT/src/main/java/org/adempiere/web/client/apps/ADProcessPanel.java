@@ -80,14 +80,13 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 		descLabel = new Label(processModel.getDescription(), true);
 		List<ADProcessArgModel> fieldList = processModel.getParamList();
 		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
-//		formStrategy.setDisableKey(false);
 		formStrategy.setCreateGridEditor(false);
 		prarmEditor = new AdModelEditor(formStrategy);
 		prarmEditor.setLayoutWidth(0.52d);
 		adModelDriver = GWT.create(ADModelDriver.class);
 		adModelDriver.initialize(prarmEditor);
 		adModelDriver.edit(paramData);
-		reportViewer = new ADReportViewer(processModel.getAdProcessId());
+		reportViewer = new ADReportViewer(processModel.getADProcessID());
 	}
 
 	@Override
@@ -107,7 +106,7 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 			@Override
 			public void onSuccess(ProcessResult result) {
 				WidgetUtil.unmask(widget);
-				if (processModel.getIsreport()) {
+				if (processModel.isReport()) {
 					layoutContainer.setActiveWidget(reportViewer);
 					LoggingUtil.info(result.getPDFReport());
 					reportViewer.setReportURL(result.getPDFReport());

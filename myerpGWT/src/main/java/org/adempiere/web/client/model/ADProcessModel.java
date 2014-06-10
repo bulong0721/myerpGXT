@@ -3,23 +3,23 @@ package org.adempiere.web.client.model;
 import java.util.List;
 
 public class ADProcessModel implements ADExchangeModel {
-	private Integer					adProcessId;
-	private Integer					adFormId;
-	private Integer					adPrintformatId;
-	private Integer					adReportviewId;
-	private Integer					adWorkflowId;
-	private String					classname;
-	private Boolean					copyfromprocess;
-	private Boolean					isactive;
-	private Boolean					isdirectprint;
-	private Boolean					isreport;
-	private Boolean					isserverprocess;
-	private String					jasperreport;
+	private Integer					aDProcessID;
+	private Integer					aDFormID;
+	private Integer					aDPrintFormatID;
+	private Integer					aDReportViewID;
+	private Integer					aDWorkFlowID;
+	private String					className;
+	private Boolean					copyFromProcess;
+	private Boolean					active;
+	private Boolean					directPrint;
+	private Boolean					report;
+	private Boolean					serverProcess;
+	private String					jasperReport;
 	private String					name;
 	private String					description;
-	private String					procedurename;
+	private String					procedureName;
 	private String					value;
-	private String					workflowvalue;
+	private String					workflowValue;
 	private List<ADProcessArgModel>	paramList;
 	private ADFormModel				formModel;
 
@@ -31,100 +31,100 @@ public class ADProcessModel implements ADExchangeModel {
 		this.formModel = formModel;
 	}
 
-	public Integer getAdProcessId() {
-		return adProcessId;
+	public Integer getADProcessID() {
+		return aDProcessID;
 	}
 
-	public void setAdProcessId(Integer adProcessId) {
-		this.adProcessId = adProcessId;
+	public void setADProcessID(Integer adProcessId) {
+		this.aDProcessID = adProcessId;
 	}
 
-	public Integer getAdFormId() {
-		return adFormId;
+	public Integer getADFormID() {
+		return aDFormID;
 	}
 
-	public void setAdFormId(Integer adFormId) {
-		this.adFormId = adFormId;
+	public void setADFormID(Integer adFormId) {
+		this.aDFormID = adFormId;
 	}
 
-	public Integer getAdPrintformatId() {
-		return adPrintformatId;
+	public Integer getADPrintformatID() {
+		return aDPrintFormatID;
 	}
 
-	public Boolean getIsactive() {
-		return isactive;
+	public Boolean isActive() {
+		return active;
 	}
 
-	public void setIsactive(Boolean isactive) {
-		this.isactive = isactive;
+	public void setActive(Boolean isactive) {
+		this.active = isactive;
 	}
 
-	public Boolean getIsdirectprint() {
-		return isdirectprint;
+	public Boolean isDirectPrint() {
+		return directPrint;
 	}
 
-	public void setIsdirectprint(Boolean isdirectprint) {
-		this.isdirectprint = isdirectprint;
+	public void setDirectPrint(Boolean isdirectprint) {
+		this.directPrint = isdirectprint;
 	}
 
-	public Boolean getIsreport() {
-		return isreport;
+	public Boolean isReport() {
+		return report;
 	}
 
-	public void setIsreport(Boolean isreport) {
-		this.isreport = isreport;
+	public void setReport(Boolean isreport) {
+		this.report = isreport;
 	}
 
-	public Boolean getIsserverprocess() {
-		return isserverprocess;
+	public Boolean isServerProcess() {
+		return serverProcess;
 	}
 
-	public void setIsserverprocess(Boolean isserverprocess) {
-		this.isserverprocess = isserverprocess;
+	public void setServerProcess(Boolean isserverprocess) {
+		this.serverProcess = isserverprocess;
 	}
 
-	public void setAdPrintformatId(Integer adPrintformatId) {
-		this.adPrintformatId = adPrintformatId;
+	public void setADPrintFormatID(Integer adPrintformatId) {
+		this.aDPrintFormatID = adPrintformatId;
 	}
 
-	public Integer getAdReportviewId() {
-		return adReportviewId;
+	public Integer getADReportViewID() {
+		return aDReportViewID;
 	}
 
-	public void setAdReportviewId(Integer adReportviewId) {
-		this.adReportviewId = adReportviewId;
+	public void setADReportViewID(Integer adReportviewId) {
+		this.aDReportViewID = adReportviewId;
 	}
 
-	public Integer getAdWorkflowId() {
-		return adWorkflowId;
+	public Integer getADWorkFlowID() {
+		return aDWorkFlowID;
 	}
 
-	public void setAdWorkflowId(Integer adWorkflowId) {
-		this.adWorkflowId = adWorkflowId;
+	public void setADWorkFlowID(Integer adWorkflowId) {
+		this.aDWorkFlowID = adWorkflowId;
 	}
 
-	public String getClassname() {
-		return classname;
+	public String getClassName() {
+		return className;
 	}
 
-	public void setClassname(String classname) {
-		this.classname = classname;
+	public void setClassName(String classname) {
+		this.className = classname;
 	}
 
-	public Boolean getCopyfromprocess() {
-		return copyfromprocess;
+	public Boolean isCopyFromProcess() {
+		return copyFromProcess;
 	}
 
-	public void setCopyfromprocess(Boolean copyfromprocess) {
-		this.copyfromprocess = copyfromprocess;
+	public void setCopyFromProcess(Boolean copyfromprocess) {
+		this.copyFromProcess = copyfromprocess;
 	}
 
-	public String getJasperreport() {
-		return jasperreport;
+	public String getJasperReport() {
+		return jasperReport;
 	}
 
-	public void setJasperreport(String jasperreport) {
-		this.jasperreport = jasperreport;
+	public void setJasperReport(String jasperreport) {
+		this.jasperReport = jasperreport;
 	}
 
 	public String getName() {
@@ -143,12 +143,12 @@ public class ADProcessModel implements ADExchangeModel {
 		this.description = description;
 	}
 
-	public String getProcedurename() {
-		return procedurename;
+	public String getProcedureName() {
+		return procedureName;
 	}
 
-	public void setProcedurename(String procedurename) {
-		this.procedurename = procedurename;
+	public void setProcedureName(String procedurename) {
+		this.procedureName = procedurename;
 	}
 
 	public String getValue() {
@@ -159,12 +159,12 @@ public class ADProcessModel implements ADExchangeModel {
 		this.value = value;
 	}
 
-	public String getWorkflowvalue() {
-		return workflowvalue;
+	public String getWorkflowValue() {
+		return workflowValue;
 	}
 
-	public void setWorkflowvalue(String workflowvalue) {
-		this.workflowvalue = workflowvalue;
+	public void setWorkflowValue(String workflowvalue) {
+		this.workflowValue = workflowvalue;
 	}
 
 	public List<ADProcessArgModel> getParamList() {

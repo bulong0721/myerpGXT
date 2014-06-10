@@ -113,7 +113,7 @@ public class SequenceTabPanel extends AbstractTabPanel {
 			}
 
 		};
-		adempiereService.updateSequences(getResult(), tabModel.getTablename(), callback);
+		adempiereService.updateSequences(getResult(), tabModel.getTableName(), callback);
 	}
 
 	/**
@@ -173,8 +173,8 @@ public class SequenceTabPanel extends AbstractTabPanel {
 
 	@Override
 	public void loadData(final ADLoadConfig loadCfg) {
-		loadCfg.setTableName(tabModel.getTablename());
-		if (0 != tabModel.getTablevel() && null == loadCfg.getParentKey()) {
+		loadCfg.setTableName(tabModel.getTableName());
+		if (0 != tabModel.getTabLevel() && null == loadCfg.getParentKey()) {
 			loadCfg.setParentKey(windowPanel.getParentTab(this).getSelectedKey());
 		}
 		parentModelKey = loadCfg.getParentKey();

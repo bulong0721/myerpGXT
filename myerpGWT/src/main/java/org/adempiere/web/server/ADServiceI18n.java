@@ -42,7 +42,7 @@ public final class ADServiceI18n {
 			List<ADTabModel> tabList = DTOUtil.toTabModels(tabVList);
 			windowModel.setTabList(tabList);
 			for (ADTabModel tabModel : tabList) {
-				List<AdFieldV> fieldVList = POUtil.queryFieldvsByTabId(pCtx, tabModel.getAdTabId());
+				List<AdFieldV> fieldVList = POUtil.queryFieldvsByTabId(pCtx, tabModel.getADTabID());
 				List<ADFieldModel> fieldList = DTOUtil.toFieldModels(fieldVList);
 				tabModel.setFieldList(fieldList);
 			}
@@ -63,7 +63,7 @@ public final class ADServiceI18n {
 			List<ADTabModel> tabList = DTOUtil.toTabTrlModels(tabVList);
 			windowModel.setTabList(tabList);
 			for (ADTabModel tabModel : tabList) {
-				List<AdFieldVt> fieldVList = POUtil.queryFieldVTrlsByTabId(pCtx, tabModel.getAdTabId(), languageId);
+				List<AdFieldVt> fieldVList = POUtil.queryFieldVTrlsByTabId(pCtx, tabModel.getADTabID(), languageId);
 				List<ADFieldModel> fieldList = DTOUtil.toFieldTrlModels(fieldVList);
 				tabModel.setFieldList(fieldList);
 			}

@@ -13,6 +13,7 @@ public class AdMenuListener extends AdEntityListener<ADMenu> {
 		entity.setADTreeID(10);
 		entity.setParentID(0);
 		entity.setSeqNo(99);
+		entity.setEntityType("D");
 	}
 
 	@PostRemove

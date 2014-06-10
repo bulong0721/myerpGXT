@@ -34,6 +34,7 @@ public class ADLanguage extends org.adempiere.common.ADEntityBase {
 
 	public ADLanguage(Integer aDLanguageID) {
 		this.aDLanguageID = aDLanguageID;
+		this.active = true;
 	}
 
 	@Basic

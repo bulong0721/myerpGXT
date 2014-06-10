@@ -140,7 +140,7 @@ public final class POUtil {
 					query.setParameter(pEntry.getKey(), pEntry.getValue());
 				}
 			}
-			query.setMaxResults(1);
+//			query.setMaxResults(1);
 			List<T> resultList = query.getResultList();
 			T entity = Iterables.getFirst(resultList, null);
 			pCtx.commit();

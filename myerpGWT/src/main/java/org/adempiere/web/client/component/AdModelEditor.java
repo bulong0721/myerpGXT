@@ -24,7 +24,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<Object>>, IsWidget {
 	private ADFormBuilder						tabStrategy;
-	private EditorChain<Object, Field<Object>>	chain;
+//	private EditorChain<Object, Field<Object>>	chain;
 	private List<ADFieldBuilder>				fieldList;
 	private ADMapData							model;
 	private CssFloatLayoutContainer				container;
@@ -97,7 +97,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 		for (ADFieldBuilder fieldStrategy : fieldList) {
 			Field formEditor = fieldStrategy.getFormEditor();
 			Converter converter = fieldStrategy.getConverter();
-			Object value = chain.getValue(formEditor);
+			Object value = formEditor.getValue();
 			if (null != converter) {
 				value = converter.convertFieldValue(value);
 			}
@@ -128,7 +128,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 			if (null != converter) {
 				value = converter.convertModelValue(value);
 			}
-			chain.attach(value, formEditor);
+			formEditor.setValue(value);
 		}
 	}
 
@@ -149,7 +149,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 
 	@Override
 	public void setEditorChain(EditorChain<Object, Field<Object>> chain) {
-		this.chain = chain;
+//		this.chain = chain;
 	}
 
 	public List<ADFieldBuilder> getFieldList() {

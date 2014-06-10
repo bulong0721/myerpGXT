@@ -2,6 +2,7 @@ package org.adempiere.web.client.apps;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.adempiere.common.ADModelKey;
 import org.adempiere.web.client.Messages;
@@ -18,6 +19,7 @@ import org.adempiere.web.client.model.ADFormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
 import org.adempiere.web.client.model.ADMapData;
+import org.adempiere.web.client.model.ADNodeModel;
 import org.adempiere.web.client.model.ADMapData.ADModelKeyProvider;
 import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.model.ADModelData;
@@ -253,7 +255,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 
 	private void createTree() {
 		treeContainer = new ContentPanel();
-		if (tabModel.getHasTree()) {
+		if (tabModel.isHasTree()) {
 			treeContainer.setBodyBorder(true);
 			treeContainer.setHeadingText(i18n.tabPanel_Tree());
 			treeLayoutData = new HorizontalLayoutData(220d, 1d);
@@ -313,6 +315,10 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	public void saveOrUpdateRecord() {
+		if (tabModel.isHasTree()) {
+			Set<ADNodeModel> changes = treePanel.getChanges();
+			LoggingUtil.info("Changes:" + changes.size());
+		}
 		AsyncCallback<Void> callback = new AsyncSuccessCallback<Void>() {
 			@Override
 			public void onSuccess(Void result) {
@@ -324,7 +330,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 		};
 		this.mergeFormChanges();
 		String json = getModifyRecords();
-		adempiereService.updateData(json, tabModel.getTablename(), callback);
+		adempiereService.updateData(json, tabModel.getTableName(), callback);
 	}
 
 	private String getModifyRecords() {
@@ -356,7 +362,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 			return;
 		}
 		List<ADModelKey> keys = keyProvider.getKeys(selectedData);
-		adempiereService.deleteData(keys, tabModel.getTablename(), new AsyncSuccessCallback<Void>() {
+		adempiereService.deleteData(keys, tabModel.getTableName(), new AsyncSuccessCallback<Void>() {
 			@Override
 			public void onSuccess(Void result) {
 				store.remove(selectedData);
@@ -432,7 +438,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 			return;
 		}
 		newRecord = (ADMapData) selectedData.deepClone();
-		keyProvider.resetKeys(newRecord, tabModel.getTablename());
+		keyProvider.resetKeys(newRecord, tabModel.getTableName());
 		store.add(newRecord);
 		refreshToolBar();
 	}
@@ -443,8 +449,8 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 
 	@Override
 	public void loadData(ADLoadConfig loadCfg) {
-		loadCfg.setTableName(tabModel.getTablename());
-		if (0 != tabModel.getTablevel() && null == loadCfg.getParentKey()) {
+		loadCfg.setTableName(tabModel.getTableName());
+		if (0 != tabModel.getTabLevel() && null == loadCfg.getParentKey()) {
 			loadCfg.setParentKey(windowPanel.getParentTab(this).getSelectedKey());
 		}
 		parentModelKey = loadCfg.getParentKey();

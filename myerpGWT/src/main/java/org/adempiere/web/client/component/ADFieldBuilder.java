@@ -71,8 +71,7 @@ public class ADFieldBuilder {
 		String propertyName = field.getPropertyName();
 		// LoggingUtil.info(propertyName + "=>" + fieldType);
 		if (fieldType.isLookup()) {
-			optionStore = OptionStoreManager.getOptionStore(field.getPropertyName(), field.getADReferenceID(),
-					field.getADReferenceValueID());
+			optionStore = OptionStoreManager.getOptionStore(field);
 			columnCell = new OptionCell(optionStore);
 			LabelProvider<LookupValue> labelProvider = CommonUtil.createLabelProvider();
 			if (formStrategy.isCreateGridEditor())
@@ -100,6 +99,9 @@ public class ADFieldBuilder {
 				converter = new Converter<String, LookupValue>() {
 					@Override
 					public String convertFieldValue(LookupValue value) {
+						if (null == value) {
+							return null;
+						}
 						return value.getValue();
 					}
 
@@ -174,8 +176,6 @@ public class ADFieldBuilder {
 		}
 		if (null != formEditor) {
 			formEditor.setName(propertyName);
-			// LoggingUtil.info(field.getName() + " : " + fieldType.toString() +
-			// " : " + gridEditor.getClass());
 		}
 		columnCfg = new ColumnConfig(valueProvider, 100);
 		columnCfg.setHeader(field.getName());
@@ -242,11 +242,14 @@ public class ADFieldBuilder {
 			return store;
 		}
 
-		public static OptionStore getOptionStore(String columnname, Integer displayType, Integer adRefId) {
+		public static OptionStore getOptionStore(ADFormField field) {
+			String columnname = field.getPropertyName();
+			Integer display = field.getADReferenceID();
+			Integer adRefId = field.getADReferenceValueID();
 			if (optionStoreMap.containsKey(columnname + adRefId)) {
 				return optionStoreMap.get(columnname + adRefId);
 			}
-			OptionStore store = createOptionStore(columnname, displayType, adRefId);
+			OptionStore store = createOptionStore(columnname, display, adRefId);
 			if (null != store) {
 				optionStoreMap.put(columnname + adRefId, store);
 			}

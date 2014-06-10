@@ -57,7 +57,7 @@ public final class ProcessUtil {
 //			pi.setHasError(true);
 //			return;
 //		}
-		ctx.setAdPinstanceId(instance.getADPInstanceID());
+		ctx.setADPinstanceID(instance.getADPInstanceID());
 		ProcessUtil.startProcess(ctx, pi);
 	}
 
@@ -70,26 +70,26 @@ public final class ProcessUtil {
 	private static void startProcess(ProcessContext ctx, ProcessResult pi) {
 		ADProcessModel pModel = ctx.getProcessModel();
 
-		String procedureName = pModel.getProcedurename();
+		String procedureName = pModel.getProcedureName();
 		/**********************************************************************
 		 * Workflow
 		 */
-		if (null != pModel.getAdWorkflowId() && pModel.getAdWorkflowId() > 0) {
+		if (null != pModel.getADWorkFlowID() && pModel.getADWorkFlowID() > 0) {
 			startWorkflow(ctx, pi);
 			return;
 		}
 
 		// Clear Jasper Report class if default - to be executed later
 		boolean isJasper = false;
-		boolean isReport = is(pModel.getIsreport(), false);
-		if (!StringUtil.isNullOrEmpty(pModel.getJasperreport())) {
+		boolean isReport = is(pModel.isReport(), false);
+		if (!StringUtil.isNullOrEmpty(pModel.getJasperReport())) {
 			isJasper = true;
 		}
 
 		/**********************************************************************
 		 * Start Optional Class
 		 */
-		if (pModel.getClassname() != null) {
+		if (pModel.getClassName() != null) {
 			if (isJasper) {
 				ctx.setReportingProcess(true);
 			}
@@ -102,7 +102,7 @@ public final class ProcessUtil {
 				return;
 			}
 			// No Optional Report ... done
-			if (isReport && pModel.getAdReportviewId() == 0 && !isJasper) {
+			if (isReport && pModel.getADReportViewID() == 0 && !isJasper) {
 				return;
 			}
 		}
@@ -175,7 +175,7 @@ public final class ProcessUtil {
 		String className = ctx.getClassName();
 		if (className == null) {
 			ADProcessModel pModel = ctx.getProcessModel();
-			if (pModel.getJasperreport() != null)
+			if (pModel.getJasperReport() != null)
 				className = JASPER_STARTER_CLASS;
 		}
 		// Get Class

@@ -7,7 +7,6 @@ public class ADProcessArgModel implements ADExchangeModel, ADFormField {
 	private Integer	ADReferenceID;
 	private Integer	ADReferenceValueID;
 	private Integer	ADValRuleID;
-	private String	columnName;
 	private String	defaultValue;
 	private String	displayLogic;
 	private Integer	fieldLength;
@@ -20,6 +19,7 @@ public class ADProcessArgModel implements ADExchangeModel, ADFormField {
 	private String	valueMax;
 	private String	valueMin;
 	private String	VFormat;
+	private String	propertyName;
 
 	public Integer getADProcessParaID() {
 		return ADProcessParaID;
@@ -54,11 +54,11 @@ public class ADProcessArgModel implements ADExchangeModel, ADFormField {
 	}
 
 	public String getPropertyName() {
-		return columnName;
+		return propertyName;
 	}
 
-	public void setPropertyName(String columnName) {
-		this.columnName = columnName;
+	public void setPropertyName(String propertyName) {
+		this.propertyName = propertyName;
 	}
 
 	public String getDefaultValue() {
@@ -196,5 +196,7 @@ public class ADProcessArgModel implements ADExchangeModel, ADFormField {
 	public Boolean isUpdatable() {
 		return true;
 	}
+	
+	
 
 }

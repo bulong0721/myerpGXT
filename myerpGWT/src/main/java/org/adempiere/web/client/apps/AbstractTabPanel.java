@@ -31,7 +31,7 @@ public abstract class AbstractTabPanel implements IsWidget {
 	}
 
 	public boolean isParentSelectChanges() {
-		if (0 == tabModel.getTablevel()) {
+		if (0 == tabModel.getTabLevel()) {
 			return false;
 		}
 		ADModelKey parentKey = windowPanel.getParentTab(this).getSelectedKey();

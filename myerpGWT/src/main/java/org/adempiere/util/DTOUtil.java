@@ -167,23 +167,23 @@ public final class DTOUtil {
 
 	public static ADProcessModel toProcessModel(ADProcess entity) {
 		ADProcessModel model = new ADProcessModel();
-		model.setAdProcessId(entity.getADProcessID());
-		model.setAdFormId(entity.getADFormID());
-		model.setAdPrintformatId(entity.getADPrintFormatID());
-		model.setAdReportviewId(entity.getADReportViewID());
-		model.setAdWorkflowId(entity.getADWorkflowID());
-		model.setClassname(entity.getClassname());
-		model.setCopyfromprocess(entity.isCopyFromProcess());
-		model.setIsactive(entity.isActive());
-		model.setIsdirectprint(entity.isDirectPrint());
-		model.setIsreport(entity.isReport());
-		model.setIsserverprocess(entity.isServerProcess());
-		model.setJasperreport(entity.getJasperReport());
+		model.setADProcessID(entity.getADProcessID());
+		model.setADFormID(entity.getADFormID());
+		model.setADPrintFormatID(entity.getADPrintFormatID());
+		model.setADReportViewID(entity.getADReportViewID());
+		model.setADWorkFlowID(entity.getADWorkflowID());
+		model.setClassName(entity.getClassname());
+		model.setCopyFromProcess(entity.isCopyFromProcess());
+		model.setActive(entity.isActive());
+		model.setDirectPrint(entity.isDirectPrint());
+		model.setReport(entity.isReport());
+		model.setServerProcess(entity.isServerProcess());
+		model.setJasperReport(entity.getJasperReport());
 		model.setName(entity.getName());
 		model.setDescription(entity.getDescription());
-		model.setProcedurename(entity.getProcedureName());
+		model.setProcedureName(entity.getProcedureName());
 		model.setValue(entity.getValue());
-		model.setWorkflowvalue(entity.getWorkflowValue());
+		model.setWorkflowValue(entity.getWorkflowValue());
 		if (null != entity.getADProcessParas()) {
 			model.setParamList(toProcessParameters(entity.getADProcessParas()));
 		}
@@ -192,23 +192,23 @@ public final class DTOUtil {
 
 	public static ADProcessModel toProcessTrlModel(ADProcessVt entity) {
 		ADProcessModel model = new ADProcessModel();
-		model.setAdProcessId(entity.getADProcessID());
-		model.setAdFormId(entity.getADFormID());
-		model.setAdPrintformatId(entity.getADPrintFormatID());
-		model.setAdReportviewId(entity.getADReportViewID());
-		model.setAdWorkflowId(entity.getADWorkflowID());
-		model.setClassname(entity.getClassname());
-		model.setCopyfromprocess(entity.isCopyFromProcess());
-		model.setIsactive(entity.isActive());
-		model.setIsdirectprint(entity.isDirectPrint());
-		model.setIsreport(entity.isReport());
-		model.setIsserverprocess(entity.isServerProcess());
-		model.setJasperreport(entity.getJasperReport());
+		model.setADProcessID(entity.getADProcessID());
+		model.setADFormID(entity.getADFormID());
+		model.setADPrintFormatID(entity.getADPrintFormatID());
+		model.setADReportViewID(entity.getADReportViewID());
+		model.setADWorkFlowID(entity.getADWorkflowID());
+		model.setClassName(entity.getClassname());
+		model.setCopyFromProcess(entity.isCopyFromProcess());
+		model.setActive(entity.isActive());
+		model.setDirectPrint(entity.isDirectPrint());
+		model.setReport(entity.isReport());
+		model.setServerProcess(entity.isServerProcess());
+		model.setJasperReport(entity.getJasperReport());
 		model.setName(entity.getName());
 		model.setDescription(entity.getDescription());
-		model.setProcedurename(entity.getProcedureName());
+		model.setProcedureName(entity.getProcedureName());
 		model.setValue(entity.getValue());
-		model.setWorkflowvalue(entity.getWorkflowValue());
+		model.setWorkflowValue(entity.getWorkflowValue());
 		if (null != entity.getADProcessParaVts()) {
 			model.setParamList(toProcessParameterTrls(entity.getADProcessParaVts()));
 		}
@@ -294,41 +294,41 @@ public final class DTOUtil {
 
 	public static ADTabModel toTabModel(AdTabVt entity) {
 		ADTabModel model = new ADTabModel();
-		model.setAdTabId(entity.getADTabID());
-		model.setAdColumnId(entity.getADColumnID());
-		model.setAdTableId(entity.getADTableID());
-		model.setParentColumnId(entity.getParentColumnID());
-		model.setSeqno(entity.getSeqNo());
-		model.setTablevel(entity.getTabLevel());
-		model.setIsinfotab(entity.isInfoTab());
-		model.setIsreadonly(entity.isReadOnly());
-		model.setIssinglerow(entity.isSingleRow());
+		model.setADTabID(entity.getADTabID());
+		model.setADColumnID(entity.getADColumnID());
+		model.setADTableID(entity.getADTableID());
+		model.setParentColumnID(entity.getParentColumnID());
+		model.setSeqNo(entity.getSeqNo());
+		model.setTabLevel(entity.getTabLevel());
+		model.setInfoTab(entity.isInfoTab());
+		model.setReadOnly(entity.isReadOnly());
+		model.setSingleRow(entity.isSingleRow());
 		model.setName(entity.getName());
-		model.setReadonlylogic(entity.getReadOnlyLogic());
-		model.setTablename(entity.getTableName());
+		model.setReadOnlyLogic(entity.getReadOnlyLogic());
+		model.setTableName(entity.getTableName());
 		model.setHasTree(entity.isHasTree());
-		model.setIsSortTab(entity.isSortTab());
-		model.setIsHighVolume(entity.isHighVolume());
+		model.setSortTab(entity.isSortTab());
+		model.setHighVolume(entity.isHighVolume());
 		return model;
 	}
 
 	public static ADTabModel toTabModel(AdTabV entity) {
 		ADTabModel model = new ADTabModel();
-		model.setAdTabId(entity.getADTabID());
-		model.setAdColumnId(entity.getADColumnID());
-		model.setAdTableId(entity.getADTableID());
-		model.setParentColumnId(entity.getParentColumnID());
-		model.setSeqno(entity.getSeqNo());
-		model.setTablevel(entity.getTabLevel());
-		model.setIsinfotab(entity.isInfoTab());
-		model.setIsreadonly(entity.isReadOnly());
-		model.setIssinglerow(entity.isSingleRow());
+		model.setADTabID(entity.getADTabID());
+		model.setADColumnID(entity.getADColumnID());
+		model.setADTableID(entity.getADTableID());
+		model.setParentColumnID(entity.getParentColumnID());
+		model.setSeqNo(entity.getSeqNo());
+		model.setTabLevel(entity.getTabLevel());
+		model.setInfoTab(entity.isInfoTab());
+		model.setReadOnly(entity.isReadOnly());
+		model.setSingleRow(entity.isSingleRow());
 		model.setName(entity.getName());
-		model.setReadonlylogic(entity.getReadOnlyLogic());
-		model.setTablename(entity.getTableName());
+		model.setReadOnlyLogic(entity.getReadOnlyLogic());
+		model.setTableName(entity.getTableName());
 		model.setHasTree(entity.isHasTree());
-		model.setIsSortTab(entity.isSortTab());
-		model.setIsHighVolume(entity.isHighVolume());
+		model.setSortTab(entity.isSortTab());
+		model.setHighVolume(entity.isHighVolume());
 		return model;
 	}
 
