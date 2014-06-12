@@ -46,7 +46,7 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
 	@UiField(provided = true)
 	ComboBox<LookupValue>	roleCombo, orgCombo, clientCombo;
 	@UiField(provided = true)
-	ComboBox<LookupValue>	warehouseCombo, printerCombo, langCombo;
+	ComboBox<LookupValue>	warehouseCombo, langCombo;
 	@UiField(provided = true)
 	Images					images	= ResourcesFactory.getImages();
 	@UiField
@@ -84,9 +84,6 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
 
 		ListStore<LookupValue> warehouseStore = CommonUtil.createDataSource();
 		warehouseCombo = createComboBox(warehouseStore, labelProvider);
-
-		ListStore<LookupValue> printerStore = CommonUtil.createDataSource();
-		printerCombo = createComboBox(printerStore, labelProvider);
 	}
 
 	<T> ComboBox<T> createComboBox(ListStore<T> listStore, LabelProvider<T> labelProvider) {

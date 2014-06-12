@@ -124,7 +124,7 @@ public class LanguageMaintenance extends ServerProcess {
 		selectBuffer.append(" AND ").append(keyColumn).append("=").append(srcTable).append(".").append(keyColumn).append(")");
 
 		insertBuffer.append(selectBuffer).append(";");
-		System.out.println(insertBuffer.toString());
+		// System.out.println(insertBuffer.toString());
 		POUtil.executeNativeQuery(context, insertBuffer.toString(), null);
 	}
 }

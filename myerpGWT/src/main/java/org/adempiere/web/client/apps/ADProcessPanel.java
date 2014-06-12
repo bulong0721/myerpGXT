@@ -38,7 +38,7 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 
 	private AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
 	@UiField(provided = true)
-	Styles							themeStyles			= ThemeStyles.getStyle();
+	Styles							themeStyles			= ThemeStyles.get().style();
 	@UiField(provided = true)
 	ADReportViewer					reportViewer;
 	@UiField(provided = true)

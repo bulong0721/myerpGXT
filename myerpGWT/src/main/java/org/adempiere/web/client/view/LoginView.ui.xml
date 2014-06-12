@@ -9,13 +9,13 @@
 		<ui:attributes top="4" right="4" bottom="4" left="4" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins10">
-		<ui:attributes top="8" right="20" bottom="8" left="15" />
+		<ui:attributes top="5" right="20" bottom="5" left="15" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins60">
 		<ui:attributes top="4" right="4" bottom="4" left="80" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="marginsf">
-		<ui:attributes top="5" right="30" bottom="5" left="10" />
+		<ui:attributes top="2" right="30" bottom="0" left="10" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="marginData">
 		<ui:attributes margins="{margins4}" />
@@ -24,7 +24,7 @@
 		<ui:attributes margins="{margins60}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="tabmarginData">
-		<ui:attributes height="270" margins="{margins4}" />
+		<ui:attributes height="270" width="1" margins="{margins4}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="vmarginData">
 		<ui:attributes height="-1" width="1" margins="{margins4}" />
@@ -48,7 +48,7 @@
 	</ui:style>
 	<container:Viewport>
 		<container:CenterLayoutContainer>
-			<gxt:ContentPanel ui:field="panel" headingText="{i18n.loginView_Login}" pixelSize="375,330">
+			<gxt:ContentPanel ui:field="panel" headingText="{i18n.loginView_Login}" pixelSize="370,330">
 				<container:VerticalLayoutContainer>
 					<container:child layoutData="{tabmarginData}">
 						<tabs:TabPanel ui:field="tabContainer" borders="false" layoutData="{marginData}">
@@ -113,13 +113,6 @@
 										<form:FieldLabel text="{i18n.loginView_Warehouse}">
 											<form:widget>
 												<form:ComboBox ui:field="warehouseCombo" allowBlank="true" forceSelection="true" />
-											</form:widget>
-										</form:FieldLabel>
-									</container:child>
-									<container:child layoutData="{settingLayoutData}">
-										<form:FieldLabel text="{i18n.loginView_Printer}">
-											<form:widget>
-												<form:ComboBox ui:field="printerCombo" allowBlank="true" forceSelection="true" />
 											</form:widget>
 										</form:FieldLabel>
 									</container:child>

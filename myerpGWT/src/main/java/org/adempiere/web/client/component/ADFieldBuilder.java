@@ -22,7 +22,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
-import com.sencha.gxt.core.client.resources.CommonStyles;
+import com.sencha.gxt.core.client.resources.ThemeStyles;
 import com.sencha.gxt.data.shared.Converter;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
@@ -32,6 +32,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.DateField;
+import com.sencha.gxt.widget.core.client.form.DateTimePropertyEditor;
 import com.sencha.gxt.widget.core.client.form.Field;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.NumberField;
@@ -69,7 +70,6 @@ public class ADFieldBuilder {
 		fieldType = field.getFieldType();
 		ADModelValueProvider<?> valueProvider = null;
 		String propertyName = field.getPropertyName();
-		// LoggingUtil.info(propertyName + "=>" + fieldType);
 		if (fieldType.isLookup()) {
 			optionStore = OptionStoreManager.getOptionStore(field);
 			columnCell = new OptionCell(optionStore);
@@ -127,20 +127,26 @@ public class ADFieldBuilder {
 				formEditor = new NumberField<Double>(propertyEditor);
 		} else if (fieldType.isDate()) {
 			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
+			final DateTimeFormat format = getDTFormat(fieldType);
 			if (formStrategy.isCreateGridEditor())
-				gridEditor = new DateField();
+				gridEditor = new DateField(new DateTimePropertyEditor(format));
 			if (formStrategy.isCreateFormEditor())
-				formEditor = new DateField();
+				formEditor = new DateField(new DateTimePropertyEditor(format));
 			converter = new Converter<String, Date>() {
-				DateTimeFormat	format	= DateTimeFormat.getFormat("yyyy-MM-dd HH:mm:ss.S");
 
 				@Override
 				public String convertFieldValue(Date value) {
+					if (null == value) {
+						return null;
+					}
 					return format.format(value);
 				}
 
 				@Override
 				public Date convertModelValue(String value) {
+					if (null == value) {
+						return null;
+					}
 					return format.parse(value);
 				}
 			};
@@ -188,9 +194,18 @@ public class ADFieldBuilder {
 		}
 	}
 
+	DateTimeFormat getDTFormat(DisplayType fieldType) {
+		if (DisplayType.Date == fieldType) {
+			return DateTimeFormat.getFormat("yyyy-MM-dd");
+		} else if (DisplayType.Time == fieldType) {
+			return DateTimeFormat.getFormat("HH:mm:ss.S");
+		}
+		return DateTimeFormat.getFormat("yyyy-MM-dd HH:mm:ss.S");
+	}
+
 	private void disableEditor(Field<?> editor) {
-		if (null != editor) {
-			editor.addStyleName(CommonStyles.get().disabled());
+		if (null != editor && formStrategy.canReadOnly()) {
+			editor.addStyleName(ThemeStyles.get().style().disabled());
 			editor.setReadOnly(true);
 		}
 	}

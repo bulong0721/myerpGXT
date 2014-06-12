@@ -8,8 +8,8 @@
 	<inherits name="com.google.gwt.logging.Logging" />
 	<inherits name="com.sencha.gxt.ui.GXT" />
 	<inherits name="com.sencha.gxt.theme.gray.Gray" />
-	<inherits name="com.mvp4g.Mvp4gModule" />
 	<inherits name="org.adempiere.Model" />
+	<inherits name="com.mvp4g.Mvp4gModule" />
 	<source path="client" />
 	<source path="shared" />
 	<entry-point class='com.mvp4g.client.Mvp4gEntryPoint' />

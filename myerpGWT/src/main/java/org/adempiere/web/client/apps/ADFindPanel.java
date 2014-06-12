@@ -162,7 +162,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 		List<? extends ADFormField> fieldList = pickSimpleFields(tabModel);
 		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
 		formStrategy.setCreateGridEditor(false);
-//		formStrategy.setDisableKey(false);
+		formStrategy.setCanReadOnly(false);
 		simpleEditor = new AdModelEditor(formStrategy);
 		simpleEditor.setLabelWidth(85);
 		simpleEditor.setLayoutWidth(0.62d);

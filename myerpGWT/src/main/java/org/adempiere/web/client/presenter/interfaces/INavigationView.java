@@ -11,9 +11,5 @@ public interface INavigationView extends ReverseViewInterface<INavigationView.IN
 
 	}
 
-	// Tree<IAdTreeNode, String> getMenuTree();
-	//
-	// TreeStore<AdMenuModel> getTreeStore();
-
 	ADTreePanel getTreePanel();
 }

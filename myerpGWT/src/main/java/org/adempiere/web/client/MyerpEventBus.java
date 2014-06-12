@@ -1,12 +1,10 @@
 package org.adempiere.web.client;
 
-import org.adempiere.web.client.desktop.IDesktopHolder;
 import org.adempiere.web.client.model.ADMenuModel;
 import org.adempiere.web.client.presenter.ApplicationPresenter;
 import org.adempiere.web.client.presenter.ContentPresenter;
 import org.adempiere.web.client.presenter.LoginPresenter;
 import org.adempiere.web.client.presenter.NavigationPresenter;
-import org.adempiere.web.client.presenter.RemindPresenter;
 import org.adempiere.web.client.presenter.RootPresenter;
 
 import com.google.gwt.user.client.ui.IsWidget;
@@ -19,7 +17,7 @@ import com.mvp4g.client.event.EventBus;
 public interface MyerpEventBus extends EventBus {
 
 	@Start
-	@Event(handlers = { RootPresenter.class }, bind = { LoginPresenter.class, RemindPresenter.class })
+	@Event(handlers = { RootPresenter.class })
 	void start();
 
 	@Event(handlers = { ApplicationPresenter.class })
@@ -33,10 +31,7 @@ public interface MyerpEventBus extends EventBus {
 
 	@Event(handlers = { ContentPresenter.class })
 	void showPage(ADMenuModel model);
-
-	@Event(handlers = { ContentPresenter.class })
-	void injectDesktop(IDesktopHolder desktopHolder);
-
+	
 	@Event(handlers = { NavigationPresenter.class })
-	void loadMenu();
+	void loadNavigation();
 }
