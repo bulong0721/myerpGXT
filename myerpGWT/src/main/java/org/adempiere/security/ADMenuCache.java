@@ -42,7 +42,10 @@ public class ADMenuCache {
 					roleMap.put(userRole, menuMap);
 				}
 			}
-			nodeSet.addAll(menuMap.get(parentID));
+			List<ADMenuModel> children = menuMap.get(parentID);
+			if (null != children) {
+				nodeSet.addAll(children);
+			}
 		}
 		return Lists.newArrayList(Collections2.transform(nodeSet, new Function<ADMenuModel, ADNodeModel>() {
 			@Override
