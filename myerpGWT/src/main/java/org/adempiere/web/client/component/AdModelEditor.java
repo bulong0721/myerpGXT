@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.adempiere.common.DisplayType;
 import org.adempiere.web.client.model.FormField;
-import org.adempiere.web.client.model.ADMapData;
+import org.adempiere.web.client.model.MapEntry;
 import org.adempiere.web.client.util.StringUtil;
 
 import com.google.gwt.editor.client.CompositeEditor;
@@ -22,11 +22,11 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<Object>>, IsWidget {
+public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Object>>, IsWidget {
 	private ADFormBuilder						tabStrategy;
 //	private EditorChain<Object, Field<Object>>	chain;
 	private List<ADFieldBuilder>				fieldList;
-	private ADMapData							model;
+	private MapEntry							model;
 	private CssFloatLayoutContainer				container;
 	private double								layoutWidth	= 0.485d;
 	private int									labelWidth	= 130;
@@ -115,7 +115,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 	}
 
 	@Override
-	public void setValue(ADMapData model) {
+	public void setValue(MapEntry model) {
 		if (null == fieldList || null == model) {
 			return;
 		}
@@ -133,7 +133,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 	}
 
 	@Override
-	public void setDelegate(EditorDelegate<ADMapData> delegate) {
+	public void setDelegate(EditorDelegate<MapEntry> delegate) {
 	}
 
 	@Override

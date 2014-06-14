@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.web.client.component.AsyncSuccessCallback;
-import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.PageRequest;
 import org.adempiere.web.client.model.SequenceModel;
 import org.adempiere.web.client.model.TabModel;
 import org.adempiere.web.client.widget.CWindowToolBar;
@@ -172,7 +172,7 @@ public class SequenceTabPanel extends AbstractTabPanel {
 	}
 
 	@Override
-	public void loadData(final ADLoadConfig loadCfg) {
+	public void loadData(final PageRequest loadCfg) {
 		loadCfg.setTableName(tabModel.getTableName());
 		if (0 != tabModel.getTabLevel() && null == loadCfg.getParentKey()) {
 			loadCfg.setParentKey(windowPanel.getParentTab(this).getSelectedKey());

@@ -9,15 +9,15 @@ import org.adempiere.common.DisplayType;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
-public interface ADMapData extends ExchangeModel {
+public interface MapEntry extends GwtSerializable {
 
 	public abstract void setValue(String path, Object value);
 
 	public abstract Object getValue(String path, DisplayType fieldType);
 
-	public abstract ADMapData deepClone();
+	public abstract MapEntry deepClone();
 
-	public static class ADModelKeyProvider implements ModelKeyProvider<ADMapData> {
+	public static class ADModelKeyProvider implements ModelKeyProvider<MapEntry> {
 		private List<String>	keyFields;
 		private DisplayType		fieldType;
 
@@ -33,7 +33,7 @@ public interface ADMapData extends ExchangeModel {
 		}
 
 		@Override
-		public String getKey(ADMapData item) {
+		public String getKey(MapEntry item) {
 			String result = "";
 			if (null != item) {
 				for (String keyField : keyFields) {
@@ -43,7 +43,7 @@ public interface ADMapData extends ExchangeModel {
 			return result;
 		}
 
-		public List<ADModelKey> getKeys(ADMapData item) {
+		public List<ADModelKey> getKeys(MapEntry item) {
 			ArrayList<ADModelKey> result = new ArrayList<ADModelKey>();
 			for (String keyField : keyFields) {
 				Object value = item.getValue(keyField, fieldType);
@@ -53,7 +53,7 @@ public interface ADMapData extends ExchangeModel {
 			return result;
 		}
 
-		public void resetKeys(ADMapData item, String table) {
+		public void resetKeys(MapEntry item, String table) {
 			if (1 == keyFields.size()) {
 				item.setValue(keyFields.get(0), null);
 			} else {
@@ -66,7 +66,7 @@ public interface ADMapData extends ExchangeModel {
 		}
 	}
 
-	public static class ADModelValueProvider<T> implements ValueProvider<ADMapData, T> {
+	public static class ADModelValueProvider<T> implements ValueProvider<MapEntry, T> {
 		private String		path;
 		private DisplayType	fieldType;
 
@@ -77,12 +77,12 @@ public interface ADMapData extends ExchangeModel {
 
 		@SuppressWarnings("unchecked")
 		@Override
-		public T getValue(ADMapData data) {
+		public T getValue(MapEntry data) {
 			return (T) data.getValue(path, fieldType);
 		}
 
 		@Override
-		public void setValue(ADMapData data, T value) {
+		public void setValue(MapEntry data, T value) {
 			data.setValue(path, value);
 		}
 

@@ -8,8 +8,8 @@ import org.adempiere.common.LookupValue;
 import org.adempiere.common.ProcessResult;
 import org.adempiere.web.client.model.FieldModel;
 import org.adempiere.web.client.model.FormModel;
-import org.adempiere.web.client.model.ADJSONData;
-import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.JsonResult;
+import org.adempiere.web.client.model.PageRequest;
 import org.adempiere.web.client.model.NodeModel;
 import org.adempiere.web.client.model.ProcessModel;
 import org.adempiere.web.client.model.SequenceModel;
@@ -27,7 +27,7 @@ public interface AdempiereService extends RemoteService {
 
 	List<LookupValue> getOptions(String columnName, int type, Integer adRefId) throws RuntimeException;
 
-	List<SequenceModel> getSequences(ADLoadConfig loadCfg) throws RuntimeException;
+	List<SequenceModel> getSequences(PageRequest loadCfg) throws RuntimeException;
 
 	void updateSequences(List<SequenceModel> seqList, String tableName) throws RuntimeException;
 
@@ -40,7 +40,7 @@ public interface AdempiereService extends RemoteService {
 	ProcessModel getProcessWithFormModel(Integer processId) throws RuntimeException;
 
 	// acl
-	ADJSONData getWindowTabData(ADLoadConfig loadCfg) throws RuntimeException;
+	JsonResult getWindowTabData(PageRequest loadCfg) throws RuntimeException;
 
 	// acl
 	void deleteData(List<ADModelKey> keyList, String tableName) throws RuntimeException;

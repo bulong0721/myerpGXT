@@ -1,15 +1,14 @@
 package org.adempiere.web.client.model;
 
+public class JsonResult implements GwtSerializable {
+	private String	data;
+	private long	totalCount;
+	private int		offset;
 
-public class ADJSONData implements ExchangeModel {
-	private String				data;
-	private long				totalCount;
-	private int					offset;
-
-	public ADJSONData() {
+	public JsonResult() {
 	}
 
-	public ADJSONData(String data) {
+	public JsonResult(String data) {
 		super();
 		this.data = data;
 	}

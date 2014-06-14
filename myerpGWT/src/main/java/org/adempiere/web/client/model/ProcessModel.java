@@ -2,7 +2,7 @@ package org.adempiere.web.client.model;
 
 import java.util.List;
 
-public class ProcessModel implements ExchangeModel {
+public class ProcessModel implements GwtSerializable {
 	private Integer					aDProcessID;
 	private Integer					aDFormID;
 	private Integer					aDPrintFormatID;

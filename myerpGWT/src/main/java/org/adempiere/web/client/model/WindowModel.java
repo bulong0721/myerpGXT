@@ -2,7 +2,7 @@ package org.adempiere.web.client.model;
 
 import java.util.List;
 
-public class WindowModel implements ExchangeModel {
+public class WindowModel implements GwtSerializable {
 	private List<TabModel>	tabList;
 	private long				activeTabId;
 	private long				adWindowId;

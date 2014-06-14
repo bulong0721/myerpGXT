@@ -30,8 +30,8 @@ import org.adempiere.util.PermissionUtil;
 import org.adempiere.util.ProcessUtil;
 import org.adempiere.web.client.model.FieldModel;
 import org.adempiere.web.client.model.FormModel;
-import org.adempiere.web.client.model.ADJSONData;
-import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.JsonResult;
+import org.adempiere.web.client.model.PageRequest;
 import org.adempiere.web.client.model.NodeModel;
 import org.adempiere.web.client.model.ProcessModel;
 import org.adempiere.web.client.model.SequenceModel;
@@ -390,7 +390,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public List<SequenceModel> getSequences(ADLoadConfig loadCfg) throws RuntimeException {
+	public List<SequenceModel> getSequences(PageRequest loadCfg) throws RuntimeException {
 		if ("ad_field".equalsIgnoreCase(loadCfg.getTableName())) {
 			int adTabId = loadCfg.getParentKey().getKeyValue();
 			List<SequenceModel> resultList = POUtil.querySeqByTabId(pCtx, adTabId);
@@ -413,7 +413,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public ADJSONData getWindowTabData(ADLoadConfig loadCfg) throws RuntimeException {
+	public JsonResult getWindowTabData(PageRequest loadCfg) throws RuntimeException {
 		// try {
 		// PermissionUtil.checkWindowAccess((int) loadCfg.getWindowID());
 		// } catch (Exception e1) {
@@ -453,7 +453,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 			e.printStackTrace();
 			pCtx.rollback();
 		}
-		ADJSONData jsonData = new ADJSONData(data);
+		JsonResult jsonData = new JsonResult(data);
 		jsonData.setTotalCount(totalCount);
 		System.out.println("count:" + totalCount/* + "=>data:" + data */);
 		return jsonData;

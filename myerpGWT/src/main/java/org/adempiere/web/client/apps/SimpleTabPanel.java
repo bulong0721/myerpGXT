@@ -16,13 +16,13 @@ import org.adempiere.web.client.event.ActionListener;
 import org.adempiere.web.client.form.AbstractForm;
 import org.adempiere.web.client.model.FieldModel;
 import org.adempiere.web.client.model.FormModel;
-import org.adempiere.web.client.model.ADJSONData;
-import org.adempiere.web.client.model.ADLoadConfig;
-import org.adempiere.web.client.model.ADMapData;
+import org.adempiere.web.client.model.JsonResult;
+import org.adempiere.web.client.model.PageRequest;
+import org.adempiere.web.client.model.MapEntry;
 import org.adempiere.web.client.model.NodeModel;
-import org.adempiere.web.client.model.ADMapData.ADModelKeyProvider;
+import org.adempiere.web.client.model.MapEntry.ADModelKeyProvider;
 import org.adempiere.web.client.model.MenuModel;
-import org.adempiere.web.client.model.ADModelData;
+import org.adempiere.web.client.model.JSOEntry;
 import org.adempiere.web.client.model.ProcessModel;
 import org.adempiere.web.client.model.TabModel;
 import org.adempiere.web.client.util.ClassUtil;
@@ -78,22 +78,22 @@ import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
 public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	private static Messages									i18n		= GWT.create(Messages.class);
 	private static SimpleTabPanelUiBinder					uiBinder	= GWT.create(SimpleTabPanelUiBinder.class);
-	PagingLoader<ADLoadConfig, PagingLoadResult<ADMapData>>	loader		= null;
+	PagingLoader<PageRequest, PagingLoadResult<MapEntry>>	loader		= null;
 
 	interface SimpleTabPanelUiBinder extends UiBinder<Widget, SimpleTabPanel> {
 	}
 
-	private ADMapData				newRecord;
-	private ADMapData				editRecord;
-	private ColumnModel<ADMapData>	cm;
-	private ListStore<ADMapData>	store;
+	private MapEntry				newRecord;
+	private MapEntry				editRecord;
+	private ColumnModel<MapEntry>	cm;
+	private ListStore<MapEntry>	store;
 	private ADFormBuilder			tabStrategy;
-	private GridEditing<ADMapData>	gridEditing;
+	private GridEditing<MapEntry>	gridEditing;
 	private ADModelDriver			adModelDriver;
 	private ADModelKeyProvider		keyProvider;
 	private ADTreePanel				treePanel;
 	@UiField(provided = true)
-	Grid<ADMapData>					grid;
+	Grid<MapEntry>					grid;
 	@UiField(provided = true)
 	PagingToolBar					pageToolBar;
 	@UiField(provided = true)
@@ -156,18 +156,18 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	private void createGrid() {
-		RpcProxy<ADLoadConfig, ADJSONData> proxy = new RpcProxy<ADLoadConfig, ADJSONData>() {
+		RpcProxy<PageRequest, JsonResult> proxy = new RpcProxy<PageRequest, JsonResult>() {
 			@Override
-			public void load(ADLoadConfig loadConfig, AsyncCallback<ADJSONData> callback) {
+			public void load(PageRequest loadConfig, AsyncCallback<JsonResult> callback) {
 				adempiereService.getWindowTabData(loadConfig, callback);
 			}
 		};
 		ADModelReader reader = new ADModelReader();
-		loader = new PagingLoader<ADLoadConfig, PagingLoadResult<ADMapData>>(proxy, reader);
+		loader = new PagingLoader<PageRequest, PagingLoadResult<MapEntry>>(proxy, reader);
 		loader.setRemoteSort(true);
-		loader.addLoadExceptionHandler(new LoadExceptionHandler<ADLoadConfig>() {
+		loader.addLoadExceptionHandler(new LoadExceptionHandler<PageRequest>() {
 			@Override
-			public void onLoadException(LoadExceptionEvent<ADLoadConfig> event) {
+			public void onLoadException(LoadExceptionEvent<PageRequest> event) {
 				// TODO Auto-generated method stub
 				RPCError error = ExceptionUtil.decode(event.getException());
 				AlertMessageBox dialog = null;
@@ -182,55 +182,55 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 		});
 		pageToolBar = new PagingToolBar(50);
 		pageToolBar.bind(loader);
-		keyProvider = ADModelData.createKeyProvider(tabModel);
-		store = new ListStore<ADMapData>(keyProvider);
-		store.addStoreDataChangeHandler(new StoreDataChangeHandler<ADMapData>() {
+		keyProvider = JSOEntry.createKeyProvider(tabModel);
+		store = new ListStore<MapEntry>(keyProvider);
+		store.addStoreDataChangeHandler(new StoreDataChangeHandler<MapEntry>() {
 			@Override
-			public void onDataChange(StoreDataChangeEvent<ADMapData> event) {
+			public void onDataChange(StoreDataChangeEvent<MapEntry> event) {
 				grid.getSelectionModel().select(0, false);
 				SimpleTabPanel.this.refreshToolBar();
 				grid.setLoadMask(true);
 			}
 		});
-		final LoadHandler<ADLoadConfig, PagingLoadResult<ADMapData>> loadHandler;
-		loadHandler = new LoadResultListStoreBinding<ADLoadConfig, ADMapData, PagingLoadResult<ADMapData>>(store);
-		CheckBoxSelectionModel<ADMapData> selectModel = new CheckBoxSelectionModel<ADMapData>();
+		final LoadHandler<PageRequest, PagingLoadResult<MapEntry>> loadHandler;
+		loadHandler = new LoadResultListStoreBinding<PageRequest, MapEntry, PagingLoadResult<MapEntry>>(store);
+		CheckBoxSelectionModel<MapEntry> selectModel = new CheckBoxSelectionModel<MapEntry>();
 		selectModel.setSelectionMode(SelectionMode.MULTI);
-		selectModel.addSelectionChangedHandler(new SelectionChangedHandler<ADMapData>() {
+		selectModel.addSelectionChangedHandler(new SelectionChangedHandler<MapEntry>() {
 			@Override
-			public void onSelectionChanged(SelectionChangedEvent<ADMapData> event) {
+			public void onSelectionChanged(SelectionChangedEvent<MapEntry> event) {
 				// TODO Auto-generated method stub
 			}
 		});
 		loader.addLoadHandler(loadHandler);
 		cm = tabStrategy.createColumnModel(selectModel);
-		grid = new Grid<ADMapData>(store, cm);
+		grid = new Grid<MapEntry>(store, cm);
 		grid.setLoader(loader);
 		grid.setSelectionModel(selectModel);
 		gridEditing = tabStrategy.createGridEditing(grid);
-		gridEditing.addCompleteEditHandler(new CompleteEditHandler<ADMapData>() {
+		gridEditing.addCompleteEditHandler(new CompleteEditHandler<MapEntry>() {
 			@Override
-			public void onCompleteEdit(CompleteEditEvent<ADMapData> event) {
+			public void onCompleteEdit(CompleteEditEvent<MapEntry> event) {
 				SimpleTabPanel.this.refreshToolBar();
 			}
 		});
-		gridEditing.addCancelEditHandler(new CancelEditHandler<ADMapData>() {
+		gridEditing.addCancelEditHandler(new CancelEditHandler<MapEntry>() {
 			@Override
-			public void onCancelEdit(CancelEditEvent<ADMapData> event) {
+			public void onCancelEdit(CancelEditEvent<MapEntry> event) {
 				SimpleTabPanel.this.refreshToolBar();
 			}
 		});
 	}
 
 	public ADModelKey getSelectedKey() {
-		ADMapData item = grid.getSelectionModel().getSelectedItem();
+		MapEntry item = grid.getSelectionModel().getSelectedItem();
 		if (null != item) {
 			return keyProvider.getKeys(item).get(0);
 		}
 		return null;
 	}
 
-	public ADMapData getParentData() {
+	public MapEntry getParentData() {
 		SimpleTabPanel parentTab = windowPanel.getParentTab(this);
 		if (null != parentTab) {
 			return parentTab.getCurrentData();
@@ -238,7 +238,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 		return null;
 	}
 
-	public ADMapData getCurrentData() {
+	public MapEntry getCurrentData() {
 		return grid.getSelectionModel().getSelectedItem();
 	}
 
@@ -292,9 +292,9 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	private void mergeGridChanges() {
-		ADMapData cloneData = editRecord.deepClone();
-		Collection<Change<ADMapData, ?>> changes = store.getRecord(editRecord).getChanges();
-		for (Change<ADMapData, ?> change : changes) {
+		MapEntry cloneData = editRecord.deepClone();
+		Collection<Change<MapEntry, ?>> changes = store.getRecord(editRecord).getChanges();
+		for (Change<MapEntry, ?> change : changes) {
 			change.modify(cloneData);
 		}
 		adModelDriver.edit(cloneData);
@@ -303,10 +303,10 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void mergeFormChanges() {
 		if (null != editRecord) {
-			ADMapData data = adModelDriver.flush();
+			MapEntry data = adModelDriver.flush();
 			Record record = store.getRecord(editRecord);
-			for (ColumnConfig<ADMapData, ?> cfg : cm.getColumns()) {
-				ValueProvider<? super ADMapData, ?> vp = cfg.getValueProvider();
+			for (ColumnConfig<MapEntry, ?> cfg : cm.getColumns()) {
+				ValueProvider<? super MapEntry, ?> vp = cfg.getValueProvider();
 				record.addChange(vp, vp.getValue(data));
 			}
 			grid.getView().refresh(false);
@@ -336,17 +336,17 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	private String getModifyRecords() {
 		JavaScriptObject array = JavaScriptObject.createArray();
 		int index = 0;
-		for (Store<ADMapData>.Record record : store.getModifiedRecords()) {
-			JSOUtil.arraySet(array, index, ((ADModelData) copyWithChange(record)).getJso());
+		for (Store<MapEntry>.Record record : store.getModifiedRecords()) {
+			JSOUtil.arraySet(array, index, ((JSOEntry) copyWithChange(record)).getJso());
 			index++;
 		}
 		return JSOUtil.toString(array);
 	}
 
-	private ADMapData copyWithChange(Store<ADMapData>.Record record) {
-		ADMapData copy = record.getModel().deepClone();
+	private MapEntry copyWithChange(Store<MapEntry>.Record record) {
+		MapEntry copy = record.getModel().deepClone();
 		if (record.isDirty()) {
-			for (Change<ADMapData, ?> c : record.getChanges()) {
+			for (Change<MapEntry, ?> c : record.getChanges()) {
 				c.modify(copy);
 			}
 		}
@@ -354,7 +354,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	public void deleteRecord() {
-		final ADMapData selectedData = grid.getSelectionModel().getSelectedItem();
+		final MapEntry selectedData = grid.getSelectionModel().getSelectedItem();
 		final MessageBox box = new MessageBox("Error");
 		if (null == selectedData) {
 			box.setMessage("Select the row you want to delete");
@@ -390,8 +390,8 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	public void newRecord() {
-		newRecord = new ADModelData();
-		ADMapData parentData = getParentData();
+		newRecord = new JSOEntry();
+		MapEntry parentData = getParentData();
 		for (FieldModel field : tabModel.getFieldList()) {
 			String fieldName = field.getPropertyName();
 			if (null != field.getDefaultValue()) {
@@ -430,14 +430,14 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	public void copyRecord() {
-		final ADMapData selectedData = grid.getSelectionModel().getSelectedItem();
+		final MapEntry selectedData = grid.getSelectionModel().getSelectedItem();
 		final MessageBox box = new MessageBox("Error");
 		if (null == selectedData) {
 			box.setMessage("Select the row you want to copy");
 			box.show();
 			return;
 		}
-		newRecord = (ADMapData) selectedData.deepClone();
+		newRecord = (MapEntry) selectedData.deepClone();
 		keyProvider.resetKeys(newRecord, tabModel.getTableName());
 		store.add(newRecord);
 		refreshToolBar();
@@ -448,7 +448,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	@Override
-	public void loadData(ADLoadConfig loadCfg) {
+	public void loadData(PageRequest loadCfg) {
 		loadCfg.setTableName(tabModel.getTableName());
 		if (0 != tabModel.getTabLevel() && null == loadCfg.getParentKey()) {
 			loadCfg.setParentKey(windowPanel.getParentTab(this).getSelectedKey());
@@ -474,7 +474,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 
 	@Override
 	public int getCurrentIndex() {
-		ADMapData data = grid.getSelectionModel().getSelectedItem();
+		MapEntry data = grid.getSelectionModel().getSelectedItem();
 		if (null != data) {
 			return store.indexOf(data);
 		}
@@ -512,7 +512,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 							}
 						} else {
 							ADProcessPanel processPanel = new ADProcessPanel(pair);
-							ADMapData row = grid.getSelectionModel().getSelectedItem();
+							MapEntry row = grid.getSelectionModel().getSelectedItem();
 							processPanel.setRowJSONString(row.toString());
 							processPanel.setWindow(WidgetUtil.createWindow("", 600, 400));
 							processPanel.show();
@@ -535,7 +535,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 				}
 			}
 		};
-		ADMapData row = grid.getSelectionModel().getSelectedItem();
+		MapEntry row = grid.getSelectionModel().getSelectedItem();
 		adempiereService.processCallout(field, row.toString(), callback);
 	}
 

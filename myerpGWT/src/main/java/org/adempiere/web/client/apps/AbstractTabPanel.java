@@ -1,7 +1,7 @@
 package org.adempiere.web.client.apps;
 
 import org.adempiere.common.ADModelKey;
-import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.PageRequest;
 import org.adempiere.web.client.model.TabModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
@@ -63,7 +63,7 @@ public abstract class AbstractTabPanel implements IsWidget {
 	}
 
 	public void loadData() {
-		ADLoadConfig loadCfg = new ADLoadConfig();
+		PageRequest loadCfg = new PageRequest();
 		loadData(loadCfg);
 	}
 
@@ -105,7 +105,7 @@ public abstract class AbstractTabPanel implements IsWidget {
 
 	}
 
-	public abstract void loadData(ADLoadConfig loadCfg);
+	public abstract void loadData(PageRequest loadCfg);
 
 	public abstract void saveOrUpdateRecord();
 

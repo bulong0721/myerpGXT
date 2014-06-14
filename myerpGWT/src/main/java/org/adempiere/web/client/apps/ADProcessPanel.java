@@ -9,8 +9,8 @@ import org.adempiere.web.client.component.ADModelDriver;
 import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
-import org.adempiere.web.client.model.ADMapData;
-import org.adempiere.web.client.model.ADModelData;
+import org.adempiere.web.client.model.MapEntry;
+import org.adempiere.web.client.model.JSOEntry;
 import org.adempiere.web.client.model.ProcessArgModel;
 import org.adempiere.web.client.model.ProcessModel;
 import org.adempiere.web.client.service.AdempiereService;
@@ -51,14 +51,14 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 	CardLayoutContainer				layoutContainer;
 	private Widget					widget;
 	private ProcessModel			processModel;
-	private ADMapData				paramData;
+	private MapEntry				paramData;
 	private ADModelDriver			adModelDriver;
 	private String					rowJSONString;
 
 	public ADProcessPanel(ProcessModel process) {
 		super();
 		this.processModel = process;
-		this.paramData = new ADModelData();
+		this.paramData = new JSOEntry();
 	}
 
 	public ProcessModel getProcessModel() {
@@ -114,7 +114,7 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 				hide();
 			}
 		};
-		ADMapData data = adModelDriver.flush();
+		MapEntry data = adModelDriver.flush();
 		adempiereService.executeProcess(processModel, rowJSONString, data.toString(), callback);
 	}
 

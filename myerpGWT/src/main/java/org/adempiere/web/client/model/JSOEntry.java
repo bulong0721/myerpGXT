@@ -5,14 +5,14 @@ import org.adempiere.web.client.util.JSOUtil;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class ADModelData implements ExchangeModel, ADMapData {
+public class JSOEntry implements GwtSerializable, MapEntry {
 	private JavaScriptObject	jso;
 
-	public ADModelData() {
+	public JSOEntry() {
 		jso = JavaScriptObject.createObject();
 	}
 
-	public ADModelData(JavaScriptObject jso) {
+	public JSOEntry(JavaScriptObject jso) {
 		this.jso = jso;
 	}
 
@@ -64,9 +64,9 @@ public class ADModelData implements ExchangeModel, ADMapData {
 	 * @see org.adempiere.web.client.model.MapAccessable#deepClone()
 	 */
 	@Override
-	public ADModelData deepClone() {
+	public JSOEntry deepClone() {
 		JavaScriptObject newJso = JSOUtil.deepClone(jso);
-		return new ADModelData(newJso);
+		return new JSOEntry(newJso);
 	}
 
 	public static ADModelKeyProvider createKeyProvider(TabModel tabModel) {

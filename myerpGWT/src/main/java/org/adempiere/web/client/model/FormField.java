@@ -2,7 +2,7 @@ package org.adempiere.web.client.model;
 
 import org.adempiere.common.DisplayType;
 
-public interface FormField extends ExchangeModel {
+public interface FormField extends GwtSerializable {
 
 	Integer getADReferenceID();
 

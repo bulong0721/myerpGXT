@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.adempiere.web.client.event.ActionListener;
 import org.adempiere.web.client.model.FormField;
-import org.adempiere.web.client.model.ADMapData;
+import org.adempiere.web.client.model.MapEntry;
 import org.adempiere.web.client.util.StringUtil;
 
 import com.sencha.gxt.data.shared.Converter;
@@ -95,22 +95,22 @@ public class ADFormBuilder {
 		this.fieldButtonListener = fieldButtonListener;
 	}
 
-	public ColumnModel<ADMapData> createColumnModel(CheckBoxSelectionModel<ADMapData> chkSm) {
-		List<ColumnConfig<ADMapData, ?>> columnList = new ArrayList<ColumnConfig<ADMapData, ?>>();
+	public ColumnModel<MapEntry> createColumnModel(CheckBoxSelectionModel<MapEntry> chkSm) {
+		List<ColumnConfig<MapEntry, ?>> columnList = new ArrayList<ColumnConfig<MapEntry, ?>>();
 		if (null != chkSm) {
 			columnList.add(chkSm.getColumn());
 		}
 		for (ADFieldBuilder strategy : getFieldStrategies()) {
 			columnList.add(strategy.getColumnCfg());
 		}
-		return new ColumnModel<ADMapData>(columnList);
+		return new ColumnModel<MapEntry>(columnList);
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public GridEditing<ADMapData> createGridEditing(Grid<ADMapData> editableGrid) {
-		GridInlineEditing<ADMapData> editing = new GridInlineEditing<ADMapData>(editableGrid);
+	public GridEditing<MapEntry> createGridEditing(Grid<MapEntry> editableGrid) {
+		GridInlineEditing<MapEntry> editing = new GridInlineEditing<MapEntry>(editableGrid);
 		for (ADFieldBuilder strategy : getFieldStrategies()) {
-			ColumnConfig<ADMapData, ?> columnConfig = strategy.getColumnCfg();
+			ColumnConfig<MapEntry, ?> columnConfig = strategy.getColumnCfg();
 			Field editor = strategy.getGridEditor();
 			Converter converter = strategy.getConverter();
 			if (null != editor) {

@@ -1,6 +1,6 @@
 package org.adempiere.web.client.model;
 
-public class SequenceModel implements ExchangeModel {
+public class SequenceModel implements GwtSerializable {
 	private String	name;
 	private Integer	seqNo;
 	private Integer	seqID;

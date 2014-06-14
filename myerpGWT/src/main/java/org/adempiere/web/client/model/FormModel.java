@@ -1,6 +1,6 @@
 package org.adempiere.web.client.model;
 
-public class FormModel implements ExchangeModel {
+public class FormModel implements GwtSerializable {
 	private Integer	adFormId;
 	private String	accesslevel;
 	private Integer	adClientId;

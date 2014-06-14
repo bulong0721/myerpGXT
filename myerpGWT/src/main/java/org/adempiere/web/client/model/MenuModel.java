@@ -6,7 +6,7 @@ import org.adempiere.web.client.resources.ResourcesFactory;
 import com.google.gwt.resources.client.ImageResource;
 import com.sencha.gxt.data.shared.IconProvider;
 
-public class MenuModel implements ExchangeModel, NodeModel {
+public class MenuModel implements GwtSerializable, NodeModel {
 	private Boolean				isactive;
 	private Integer				adMenuId;
 	private Integer				parentId;

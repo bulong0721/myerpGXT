@@ -10,8 +10,8 @@ import org.adempiere.common.LookupValue;
 import org.adempiere.web.client.event.ActionEvent;
 import org.adempiere.web.client.event.ActionListener;
 import org.adempiere.web.client.model.FormField;
-import org.adempiere.web.client.model.ADMapData;
-import org.adempiere.web.client.model.ADMapData.ADModelValueProvider;
+import org.adempiere.web.client.model.MapEntry;
+import org.adempiere.web.client.model.MapEntry.ADModelValueProvider;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
@@ -46,7 +46,7 @@ import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class ADFieldBuilder {
 	private FormField					field;
-	private ColumnConfig<ADMapData, ?>	columnCfg;
+	private ColumnConfig<MapEntry, ?>	columnCfg;
 	private Cell<?>						columnCell;
 	private Field<?>					gridEditor;
 	private Field<?>					formEditor;
@@ -292,7 +292,7 @@ public class ADFieldBuilder {
 		return field;
 	}
 
-	public ColumnConfig<ADMapData, ?> getColumnCfg() {
+	public ColumnConfig<MapEntry, ?> getColumnCfg() {
 		return columnCfg;
 	}
 

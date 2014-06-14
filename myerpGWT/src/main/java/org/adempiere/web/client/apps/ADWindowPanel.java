@@ -8,7 +8,7 @@ import org.adempiere.web.client.component.ADTabContainer;
 import org.adempiere.web.client.component.ADTabContainer.TabItemConfig;
 import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.event.WindowToolListener;
-import org.adempiere.web.client.model.ADLoadConfig;
+import org.adempiere.web.client.model.PageRequest;
 import org.adempiere.web.client.model.TabModel;
 import org.adempiere.web.client.model.WindowModel;
 import org.adempiere.web.client.presenter.interfaces.IContentView.IContentPresenter;
@@ -262,7 +262,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 			public void onHide(HideEvent event) {
 				ADExpression expr = findPanel.getCondition();
 				if (null != expr) {
-					ADLoadConfig loadCfg = new ADLoadConfig();
+					PageRequest loadCfg = new PageRequest();
 					loadCfg.setExpr(expr);
 					currentTab.loadData(loadCfg);
 				}
@@ -285,7 +285,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 			public void onHide(HideEvent event) {
 				History result = window.getHistory();
 				if (null != result) {
-					ADLoadConfig loadCfg = new ADLoadConfig();
+					PageRequest loadCfg = new PageRequest();
 					currentTab.loadData(loadCfg);
 				}
 			}

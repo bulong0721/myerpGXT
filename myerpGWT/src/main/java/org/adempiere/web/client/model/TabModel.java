@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.adempiere.web.client.util.StringUtil;
 
-public class TabModel implements ExchangeModel {
+public class TabModel implements GwtSerializable {
 	private List<FieldModel>	fieldList;
 	private Integer				aDTabID;
 	private Integer				aDColumnID;

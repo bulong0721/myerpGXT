@@ -2,7 +2,7 @@ package org.adempiere.web.client.model;
 
 import org.adempiere.common.DisplayType;
 
-public class FieldModel implements ExchangeModel, FormField {
+public class FieldModel implements GwtSerializable, FormField {
 	private Integer	ADProcessID;
 	private Integer	ADReferenceID;
 	private Integer	ADReferenceValueID;

@@ -5,14 +5,14 @@ import org.adempiere.common.ADModelKey;
 
 import com.sencha.gxt.data.shared.loader.PagingLoadConfigBean;
 
-public class ADLoadConfig extends PagingLoadConfigBean implements ExchangeModel {
+public class PageRequest extends PagingLoadConfigBean implements GwtSerializable {
 	private static final long	serialVersionUID	= 1L;
 	private long				windowID;
 	private String				tableName;
 	private ADModelKey			parentKey;
 	private ADExpression		expr;
 
-	public ADLoadConfig() {
+	public PageRequest() {
 		super(0, 50);
 	}
 

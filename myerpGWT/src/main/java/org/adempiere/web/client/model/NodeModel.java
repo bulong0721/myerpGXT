@@ -16,7 +16,7 @@ import com.sencha.gxt.data.shared.loader.LoadEvent;
 import com.sencha.gxt.data.shared.loader.LoadHandler;
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 
-public interface NodeModel extends ExchangeModel {
+public interface NodeModel extends GwtSerializable {
 
 	String getName();
 

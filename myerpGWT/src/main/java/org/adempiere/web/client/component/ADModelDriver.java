@@ -1,13 +1,13 @@
 package org.adempiere.web.client.component;
 
-import org.adempiere.web.client.model.ADMapData;
+import org.adempiere.web.client.model.MapEntry;
 
 import com.google.gwt.editor.client.EditorContext;
 import com.google.gwt.editor.client.EditorDelegate;
 import com.google.gwt.editor.client.EditorVisitor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 
-public interface ADModelDriver extends SimpleBeanEditorDriver<ADMapData, AdModelEditor> {
+public interface ADModelDriver extends SimpleBeanEditorDriver<MapEntry, AdModelEditor> {
 	public static class ChangesAcceptor extends EditorVisitor {
 
 		@Override
