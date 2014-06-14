@@ -19,6 +19,7 @@
 	<set-property name="user.agent" value="safari" />
 	<add-linker name="xsiframe" />
 	<set-configuration-property name="devModeRedirectEnabled" value="true" />
+	<set-configuration-property name="xsiframe.failIfScriptTag" value="false" />
 	<set-property name="compiler.useSourceMaps" value="false" />
 	<set-property name="ClientBundle.enableInlining" value="false" />
 	<extend-property name="locale" values="en,zh_CN" />

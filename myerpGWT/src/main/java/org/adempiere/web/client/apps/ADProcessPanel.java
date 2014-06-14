@@ -9,13 +9,12 @@ import org.adempiere.web.client.component.ADModelDriver;
 import org.adempiere.web.client.component.ADReportViewer;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
-import org.adempiere.web.client.model.MapEntry;
 import org.adempiere.web.client.model.JSOEntry;
+import org.adempiere.web.client.model.MapEntry;
 import org.adempiere.web.client.model.ProcessArgModel;
 import org.adempiere.web.client.model.ProcessModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
-import org.adempiere.web.client.util.LoggingUtil;
 import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.ConfirmToolBar;
 
@@ -108,7 +107,6 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 				WidgetUtil.unmask(widget);
 				if (processModel.isReport()) {
 					layoutContainer.setActiveWidget(reportViewer);
-					LoggingUtil.info(result.getPDFReport());
 					reportViewer.setReportURL(result.getPDFReport());
 				}
 				hide();

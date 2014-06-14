@@ -17,6 +17,9 @@
 	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="marginsf">
 		<ui:attributes top="2" right="30" bottom="0" left="10" />
 	</ui:with>
+	<ui:with type="com.sencha.gxt.core.client.util.Margins" field="marginsp">
+		<ui:attributes top="2" right="30" bottom="10" left="10" />
+	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="marginData">
 		<ui:attributes margins="{margins4}" />
 	</ui:with>
@@ -38,6 +41,9 @@
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="verticalLayoutData">
 		<ui:attributes width="1" height="-1" margins="{marginsf}" />
 	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="productLayoutData">
+		<ui:attributes width="1" height="-1" margins="{marginsp}" />
+	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="settingLayoutData">
 		<ui:attributes width="1" height="-1" margins="{margins10}" />
 	</ui:with>
@@ -57,7 +63,7 @@
 									<container:child>
 										<g:Image pixelSize="90, 80" url="images/AdempiereLogo.png" />
 									</container:child>
-									<container:child layoutData="{verticalLayoutData}">
+									<container:child layoutData="{productLayoutData}">
 										<g:Label styleName="{style.label}" text="{i18n.loginView_Product}" />
 									</container:child>
 									<container:child layoutData="{verticalLayoutData}">

@@ -16,22 +16,22 @@ import org.adempiere.web.client.event.ActionListener;
 import org.adempiere.web.client.form.AbstractForm;
 import org.adempiere.web.client.model.FieldModel;
 import org.adempiere.web.client.model.FormModel;
+import org.adempiere.web.client.model.JSOEntry;
 import org.adempiere.web.client.model.JsonResult;
-import org.adempiere.web.client.model.PageRequest;
 import org.adempiere.web.client.model.MapEntry;
-import org.adempiere.web.client.model.NodeModel;
 import org.adempiere.web.client.model.MapEntry.ADModelKeyProvider;
 import org.adempiere.web.client.model.MenuModel;
-import org.adempiere.web.client.model.JSOEntry;
+import org.adempiere.web.client.model.NodeModel;
+import org.adempiere.web.client.model.PageRequest;
 import org.adempiere.web.client.model.ProcessModel;
 import org.adempiere.web.client.model.TabModel;
 import org.adempiere.web.client.util.ClassUtil;
 import org.adempiere.web.client.util.ContextUtil;
 import org.adempiere.web.client.util.ExceptionUtil;
+import org.adempiere.web.client.util.ExceptionUtil.RPCError;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.LoggingUtil;
 import org.adempiere.web.client.util.WidgetUtil;
-import org.adempiere.web.client.util.ExceptionUtil.RPCError;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.ButtonStates;
 
@@ -317,7 +317,6 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	public void saveOrUpdateRecord() {
 		if (tabModel.isHasTree()) {
 			Set<NodeModel> changes = treePanel.getChanges();
-			LoggingUtil.info("Changes:" + changes.size());
 		}
 		AsyncCallback<Void> callback = new AsyncSuccessCallback<Void>() {
 			@Override
@@ -401,7 +400,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 				newRecord.setValue(fieldName, parentValue);
 			}
 		}
-		LoggingUtil.info("xxxxxxxxxxxxxxNewRecord:" + newRecord.toString());
+		LoggingUtil.info("NewRecord:" + newRecord.toString());
 		store.add(newRecord);
 		if (!isGridMode()) {
 			adModelDriver.edit(newRecord);
@@ -519,7 +518,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 						}
 					}
 				};
-				LoggingUtil.info("xxxxxxxxxProcessId:" + field.getADProcessID());
+				LoggingUtil.info("ProcessId:" + field.getADProcessID());
 				adempiereService.getProcessWithFormModel(field.getADProcessID(), callback);
 			}
 		};
