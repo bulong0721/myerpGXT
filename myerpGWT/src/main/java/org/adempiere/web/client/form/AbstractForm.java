@@ -1,12 +1,12 @@
 package org.adempiere.web.client.form;
 
 import org.adempiere.web.client.component.ADModalDialog;
-import org.adempiere.web.client.model.ADProcessModel;
+import org.adempiere.web.client.model.ProcessModel;
 
 import com.google.gwt.user.client.ui.Widget;
 
 public abstract class AbstractForm extends ADModalDialog {
-	protected ADProcessModel	processInfo;
+	protected ProcessModel	processInfo;
 	protected int				adFormId;
 	protected int				windowNo;
 	protected String			name;
@@ -28,11 +28,11 @@ public abstract class AbstractForm extends ADModalDialog {
 
 	protected abstract Widget initForm();
 
-	public ADProcessModel getProcessInfo() {
+	public ProcessModel getProcessInfo() {
 		return processInfo;
 	}
 
-	public void setProcessInfo(ADProcessModel processInfo) {
+	public void setProcessInfo(ProcessModel processInfo) {
 		this.processInfo = processInfo;
 	}
 

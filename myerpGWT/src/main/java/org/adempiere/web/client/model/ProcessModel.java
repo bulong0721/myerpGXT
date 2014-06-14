@@ -2,7 +2,7 @@ package org.adempiere.web.client.model;
 
 import java.util.List;
 
-public class ADProcessModel implements ADExchangeModel {
+public class ProcessModel implements ExchangeModel {
 	private Integer					aDProcessID;
 	private Integer					aDFormID;
 	private Integer					aDPrintFormatID;
@@ -20,14 +20,14 @@ public class ADProcessModel implements ADExchangeModel {
 	private String					procedureName;
 	private String					value;
 	private String					workflowValue;
-	private List<ADProcessArgModel>	paramList;
-	private ADFormModel				formModel;
+	private List<ProcessArgModel>	paramList;
+	private FormModel				formModel;
 
-	public ADFormModel getFormModel() {
+	public FormModel getFormModel() {
 		return formModel;
 	}
 
-	public void setFormModel(ADFormModel formModel) {
+	public void setFormModel(FormModel formModel) {
 		this.formModel = formModel;
 	}
 
@@ -167,11 +167,11 @@ public class ADProcessModel implements ADExchangeModel {
 		this.workflowValue = workflowvalue;
 	}
 
-	public List<ADProcessArgModel> getParamList() {
+	public List<ProcessArgModel> getParamList() {
 		return paramList;
 	}
 
-	public void setParamList(List<ADProcessArgModel> paramList) {
+	public void setParamList(List<ProcessArgModel> paramList) {
 		this.paramList = paramList;
 	}
 

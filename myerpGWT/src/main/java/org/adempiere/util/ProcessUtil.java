@@ -7,7 +7,7 @@ import org.adempiere.common.ProcessResult;
 import org.adempiere.model.ADPInstance;
 import org.adempiere.process.ProcessCall;
 import org.adempiere.process.ProcessContext;
-import org.adempiere.web.client.model.ADProcessModel;
+import org.adempiere.web.client.model.ProcessModel;
 import org.adempiere.web.client.util.StringUtil;
 
 import com.alibaba.fastjson.JSON;
@@ -33,7 +33,7 @@ public final class ProcessUtil {
 		return JSON.parseObject(json, MAP_TYPERE_FERENCE);
 	}
 
-	public static ProcessContext createContext(ADProcessModel pModel, String rowJson, String paramJson) {
+	public static ProcessContext createContext(ProcessModel pModel, String rowJson, String paramJson) {
 		Map<String, Object> paramMap = toMap(paramJson);
 		Map<String, Object> rowMap = toMap(rowJson);
 		return new ProcessContext(pModel, rowMap, paramMap);
@@ -68,7 +68,7 @@ public final class ProcessUtil {
 	}
 
 	private static void startProcess(ProcessContext ctx, ProcessResult pi) {
-		ADProcessModel pModel = ctx.getProcessModel();
+		ProcessModel pModel = ctx.getProcessModel();
 
 		String procedureName = pModel.getProcedureName();
 		/**********************************************************************
@@ -174,7 +174,7 @@ public final class ProcessUtil {
 	public static boolean startJavaProcess(ProcessContext ctx, final ProcessResult pi) {
 		String className = ctx.getClassName();
 		if (className == null) {
-			ADProcessModel pModel = ctx.getProcessModel();
+			ProcessModel pModel = ctx.getProcessModel();
 			if (pModel.getJasperReport() != null)
 				className = JASPER_STARTER_CLASS;
 		}

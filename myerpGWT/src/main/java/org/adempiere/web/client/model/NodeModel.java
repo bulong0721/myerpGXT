@@ -16,7 +16,7 @@ import com.sencha.gxt.data.shared.loader.LoadEvent;
 import com.sencha.gxt.data.shared.loader.LoadHandler;
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 
-public interface ADNodeModel extends ADExchangeModel {
+public interface NodeModel extends ExchangeModel {
 
 	String getName();
 
@@ -28,20 +28,20 @@ public interface ADNodeModel extends ADExchangeModel {
 
 	boolean hasChildren();
 
-	public static class TreeStoreBinding implements LoadHandler<ADNodeModel, List<ADNodeModel>> {
-		private final TreeStore<ADNodeModel>		store;
-		private Map<Integer, ADNodeModel>		parentMap;
-		private Map<Integer, List<ADNodeModel>>	leafMap;
+	public static class TreeStoreBinding implements LoadHandler<NodeModel, List<NodeModel>> {
+		private final TreeStore<NodeModel>		store;
+		private Map<Integer, NodeModel>		parentMap;
+		private Map<Integer, List<NodeModel>>	leafMap;
 
-		public TreeStoreBinding(TreeStore<ADNodeModel> store) {
+		public TreeStoreBinding(TreeStore<NodeModel> store) {
 			this.store = store;
 		}
 
 		@Override
-		public void onLoad(LoadEvent<ADNodeModel, List<ADNodeModel>> event) {
-			ADNodeModel parent = event.getLoadConfig();
-			List<ADNodeModel> loadResult = event.getLoadResult();
-			List<ADNodeModel> children = getChildren(parent, loadResult);
+		public void onLoad(LoadEvent<NodeModel, List<NodeModel>> event) {
+			NodeModel parent = event.getLoadConfig();
+			List<NodeModel> loadResult = event.getLoadResult();
+			List<NodeModel> children = getChildren(parent, loadResult);
 			if (null == parent) {
 				// TODO 当前只计算了一层结构，需要遍历到最后一层
 				store.add(children);
@@ -52,13 +52,13 @@ public interface ADNodeModel extends ADExchangeModel {
 		}
 
 		@SuppressWarnings("unused")
-		private void buildTree(List<ADNodeModel> resultList) {
-			parentMap = new HashMap<Integer, ADNodeModel>();
-			leafMap = new HashMap<Integer, List<ADNodeModel>>();
-			for (ADNodeModel node : resultList) {
-				List<ADNodeModel> nodeList = leafMap.get(node.getParentID());
+		private void buildTree(List<NodeModel> resultList) {
+			parentMap = new HashMap<Integer, NodeModel>();
+			leafMap = new HashMap<Integer, List<NodeModel>>();
+			for (NodeModel node : resultList) {
+				List<NodeModel> nodeList = leafMap.get(node.getParentID());
 				if (null == nodeList) {
-					nodeList = new ArrayList<ADNodeModel>();
+					nodeList = new ArrayList<NodeModel>();
 					leafMap.put(node.getParentID(), nodeList);
 				}
 				nodeList.add(node);
@@ -67,7 +67,7 @@ public interface ADNodeModel extends ADExchangeModel {
 				}
 			}
 			Set<Integer> attachSet = new HashSet<Integer>();
-			for (Entry<Integer, ADNodeModel> entry : parentMap.entrySet()) {
+			for (Entry<Integer, NodeModel> entry : parentMap.entrySet()) {
 				if (attachSet.contains(entry.getKey())) {
 					continue;
 				}
@@ -79,7 +79,7 @@ public interface ADNodeModel extends ADExchangeModel {
 			if (attachSet.contains(nodeId)) {
 				return;
 			}
-			ADNodeModel node = parentMap.get(nodeId);
+			NodeModel node = parentMap.get(nodeId);
 			if (node.getParentID() != 0) {
 				addChild(node.getParentID(), attachSet);
 			} else {
@@ -89,10 +89,10 @@ public interface ADNodeModel extends ADExchangeModel {
 			attachSet.add(nodeId);
 		}
 
-		protected List<ADNodeModel> getChildren(ADNodeModel parent, List<ADNodeModel> loadResult) {
-			List<ADNodeModel> children = new ArrayList<ADNodeModel>();
+		protected List<NodeModel> getChildren(NodeModel parent, List<NodeModel> loadResult) {
+			List<NodeModel> children = new ArrayList<NodeModel>();
 			Integer parentId = null == parent ? 0 : parent.getID();
-			for (ADNodeModel model : loadResult) {
+			for (NodeModel model : loadResult) {
 				if (parentId.equals(model.getParentID())) {
 					children.add(model);
 				}
@@ -102,9 +102,9 @@ public interface ADNodeModel extends ADExchangeModel {
 
 	}
 
-	public static class NameFilterField extends StoreFilterField<ADNodeModel> {
+	public static class NameFilterField extends StoreFilterField<NodeModel> {
 		@Override
-		protected boolean doSelect(Store<ADNodeModel> store, ADNodeModel parent, ADNodeModel item, String filter) {
+		protected boolean doSelect(Store<NodeModel> store, NodeModel parent, NodeModel item, String filter) {
 			if (null != parent && null != filter) {
 				String itemName = parent.getName().toLowerCase();
 				return itemName.contains(filter.toLowerCase());
@@ -117,22 +117,22 @@ public interface ADNodeModel extends ADExchangeModel {
 		}
 	}
 
-	public static class TreeKeyProvider implements ModelKeyProvider<ADNodeModel> {
+	public static class TreeKeyProvider implements ModelKeyProvider<NodeModel> {
 		@Override
-		public String getKey(ADNodeModel item) {
+		public String getKey(NodeModel item) {
 			return String.valueOf(item.getID());
 		}
 	}
 
-	public static class TreeValueProvider implements ValueProvider<ADNodeModel, String> {
+	public static class TreeValueProvider implements ValueProvider<NodeModel, String> {
 
 		@Override
-		public String getValue(ADNodeModel model) {
+		public String getValue(NodeModel model) {
 			return model.getName();
 		}
 
 		@Override
-		public void setValue(ADNodeModel object, String value) {
+		public void setValue(NodeModel object, String value) {
 		}
 
 		@Override

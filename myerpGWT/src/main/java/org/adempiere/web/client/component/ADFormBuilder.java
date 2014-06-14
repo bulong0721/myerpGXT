@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.web.client.event.ActionListener;
-import org.adempiere.web.client.model.ADFormField;
+import org.adempiere.web.client.model.FormField;
 import org.adempiere.web.client.model.ADMapData;
 import org.adempiere.web.client.util.StringUtil;
 
@@ -18,7 +18,7 @@ import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 
 public class ADFormBuilder {
-	private List<? extends ADFormField>	fieldList;
+	private List<? extends FormField>	fieldList;
 	private List<ADFieldBuilder>		fieldStrategies;
 	private boolean						canReadOnly			= true;
 	private boolean						createFormEditor	= true;
@@ -26,7 +26,7 @@ public class ADFormBuilder {
 	private ActionListener				fieldButtonListener;
 	private boolean						isCreated;
 
-	public ADFormBuilder(List<? extends ADFormField> fieldList) {
+	public ADFormBuilder(List<? extends FormField> fieldList) {
 		super();
 		this.fieldList = fieldList;
 	}
@@ -37,7 +37,7 @@ public class ADFormBuilder {
 		}
 		int size = fieldList.size();
 		fieldStrategies = new ArrayList<ADFieldBuilder>(size);
-		for (ADFormField field : fieldList) {
+		for (FormField field : fieldList) {
 			if (field.isDisplayed() || field.isKey()) {
 				ADFieldBuilder fieldStrategy = new ADFieldBuilder(this, field);
 				fieldStrategies.add(fieldStrategy);

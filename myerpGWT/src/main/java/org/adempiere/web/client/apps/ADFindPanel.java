@@ -15,9 +15,9 @@ import org.adempiere.web.client.component.ADFormBuilder;
 import org.adempiere.web.client.component.ADModalDialog;
 import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
-import org.adempiere.web.client.model.ADFieldModel;
-import org.adempiere.web.client.model.ADFormField;
-import org.adempiere.web.client.model.ADTabModel;
+import org.adempiere.web.client.model.FieldModel;
+import org.adempiere.web.client.model.FormField;
+import org.adempiere.web.client.model.TabModel;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.util.StringUtil;
@@ -79,12 +79,12 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 	private static final List<String>	LOOKUP_FIELDS	= Arrays.asList("name", "description");
 	private Widget						widget			= null;
 	private TreeStore<ADExpression>		store;
-	private ADTabModel					tabModel;
+	private TabModel					tabModel;
 	private ADPredicate					advanceCondition;
 	private ADPredicate					simpleConditon;
 	private boolean						usingCondition	= false;
 
-	public ADFindPanel(ADTabModel tabModel) {
+	public ADFindPanel(TabModel tabModel) {
 		this.tabModel = tabModel;
 		this.initWidget(tabModel);
 		this.asWidget();
@@ -158,8 +158,8 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 	void onProfileSelected(SelectionEvent<LookupValue> event) {
 	}
 
-	private void initWidget(final ADTabModel tabModel) {
-		List<? extends ADFormField> fieldList = pickSimpleFields(tabModel);
+	private void initWidget(final TabModel tabModel) {
+		List<? extends FormField> fieldList = pickSimpleFields(tabModel);
 		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
 		formStrategy.setCreateGridEditor(false);
 		formStrategy.setCanReadOnly(false);
@@ -235,7 +235,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 		cmbFields = new SimpleComboBox<String>(labelProvider);
 		cmbFields.add(OPERATOR_BOOL_AND);
 		cmbFields.add(OPERATOR_BOOL_OR);
-		for (ADFieldModel field : tabModel.getFieldList()) {
+		for (FieldModel field : tabModel.getFieldList()) {
 			cmbFields.add(field.getName());
 		}
 		cmbFields.setForceSelection(true);
@@ -258,10 +258,10 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 		return comboBox;
 	}
 
-	List<? extends ADFormField> pickSimpleFields(ADTabModel tabModel) {
-		List<ADFieldModel> fieldList = new ArrayList<ADFieldModel>(5);
+	List<? extends FormField> pickSimpleFields(TabModel tabModel) {
+		List<FieldModel> fieldList = new ArrayList<FieldModel>(5);
 		if (null != tabModel && null != tabModel.getFieldList()) {
-			for (ADFieldModel fieldModel : tabModel.getFieldList()) {
+			for (FieldModel fieldModel : tabModel.getFieldList()) {
 				if (fieldModel.isSelectionColumn() || fieldModel.isKey() || LOOKUP_FIELDS.contains(fieldModel.getName().toLowerCase())) {
 					fieldList.add(fieldModel);
 				}

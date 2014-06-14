@@ -40,7 +40,7 @@ import org.adempiere.model.AdFieldVt;
 import org.adempiere.model.AdTabV;
 import org.adempiere.model.AdTabVt;
 import org.adempiere.persist.PersistContext;
-import org.adempiere.web.client.model.ADSequenceModel;
+import org.adempiere.web.client.model.SequenceModel;
 import org.adempiere.web.client.util.StringUtil;
 
 import com.google.common.collect.Iterables;
@@ -244,15 +244,15 @@ public final class POUtil {
 	 * @param tabId
 	 * @return
 	 */
-	public static List<ADSequenceModel> querySeqByTabId(PersistContext pCtx, int tabId) {
+	public static List<SequenceModel> querySeqByTabId(PersistContext pCtx, int tabId) {
 		Map<String, Object> paramMap = toMap("adTabId", tabId);
-		return selectListByNamedQuery(pCtx, "querySeqByTabId", ADSequenceModel.class, paramMap);
+		return selectListByNamedQuery(pCtx, "querySeqByTabId", SequenceModel.class, paramMap);
 	}
 
-	public static boolean updateFieldSequece(PersistContext pCtx, List<ADSequenceModel> seqList) {
+	public static boolean updateFieldSequece(PersistContext pCtx, List<SequenceModel> seqList) {
 		try {
 			List<ADField> fieldList = new ArrayList<ADField>(seqList.size());
-			for (ADSequenceModel seqModel : seqList) {
+			for (SequenceModel seqModel : seqList) {
 				ADField field = find(pCtx, ADField.class, seqModel.getSeqID());
 				if (0 == seqModel.getSeqNo()) {
 					field.setDisplayed(false);

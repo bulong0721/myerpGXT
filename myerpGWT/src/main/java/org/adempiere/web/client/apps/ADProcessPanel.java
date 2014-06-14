@@ -11,8 +11,8 @@ import org.adempiere.web.client.component.AdModelEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.model.ADMapData;
 import org.adempiere.web.client.model.ADModelData;
-import org.adempiere.web.client.model.ADProcessArgModel;
-import org.adempiere.web.client.model.ADProcessModel;
+import org.adempiere.web.client.model.ProcessArgModel;
+import org.adempiere.web.client.model.ProcessModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.LoggingUtil;
@@ -50,18 +50,18 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 	@UiField
 	CardLayoutContainer				layoutContainer;
 	private Widget					widget;
-	private ADProcessModel			processModel;
+	private ProcessModel			processModel;
 	private ADMapData				paramData;
 	private ADModelDriver			adModelDriver;
 	private String					rowJSONString;
 
-	public ADProcessPanel(ADProcessModel process) {
+	public ADProcessPanel(ProcessModel process) {
 		super();
 		this.processModel = process;
 		this.paramData = new ADModelData();
 	}
 
-	public ADProcessModel getProcessModel() {
+	public ProcessModel getProcessModel() {
 		return processModel;
 	}
 
@@ -75,10 +75,10 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 		return widget;
 	}
 
-	private void initWindow(ADProcessModel processModel) {
+	private void initWindow(ProcessModel processModel) {
 		nameLabel = new Label(processModel.getName());
 		descLabel = new Label(processModel.getDescription(), true);
-		List<ADProcessArgModel> fieldList = processModel.getParamList();
+		List<ProcessArgModel> fieldList = processModel.getParamList();
 		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
 		formStrategy.setCreateGridEditor(false);
 		prarmEditor = new AdModelEditor(formStrategy);

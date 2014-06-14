@@ -28,14 +28,14 @@ import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
 import org.adempiere.util.PermissionUtil;
 import org.adempiere.util.ProcessUtil;
-import org.adempiere.web.client.model.ADFieldModel;
-import org.adempiere.web.client.model.ADFormModel;
+import org.adempiere.web.client.model.FieldModel;
+import org.adempiere.web.client.model.FormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
-import org.adempiere.web.client.model.ADNodeModel;
-import org.adempiere.web.client.model.ADProcessModel;
-import org.adempiere.web.client.model.ADSequenceModel;
-import org.adempiere.web.client.model.ADWindowModel;
+import org.adempiere.web.client.model.NodeModel;
+import org.adempiere.web.client.model.ProcessModel;
+import org.adempiere.web.client.model.SequenceModel;
+import org.adempiere.web.client.model.WindowModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.util.ExceptionUtil;
 import org.adempiere.web.client.util.StringUtil;
@@ -240,7 +240,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public ProcessResult executeProcess(ADProcessModel pModel, String rowJson, String paramJson) throws RuntimeException {
+	public ProcessResult executeProcess(ProcessModel pModel, String rowJson, String paramJson) throws RuntimeException {
 		System.out.println("row parameter:" + rowJson);
 		System.out.println("process parameter:" + paramJson);
 		System.out.println("process class:" + pModel.getClassName());
@@ -257,7 +257,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public ADFormModel getADFormModel(Integer formId) throws RuntimeException {
+	public FormModel getADFormModel(Integer formId) throws RuntimeException {
 		return ADServiceI18n.getADFormByLanguage(pCtx, formId, getLanguage());
 	}
 
@@ -266,12 +266,12 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public List<ADNodeModel> getMenuNodes(int parentID) throws RuntimeException {
+	public List<NodeModel> getMenuNodes(int parentID) throws RuntimeException {
 		return ADServiceI18n.getADMenuListByLanguage(pCtx, getLanguage(), parentID);
 	}
 
 	@Override
-	public ADProcessModel getADProcessModel(Integer processId) throws RuntimeException {
+	public ProcessModel getADProcessModel(Integer processId) throws RuntimeException {
 		return ADServiceI18n.getADProcessByLanguage(pCtx, processId, getLanguage());
 	}
 
@@ -283,7 +283,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public ADWindowModel getADWindowModel(Integer windowId) throws RuntimeException {
+	public WindowModel getADWindowModel(Integer windowId) throws RuntimeException {
 		return ADServiceI18n.getADWindowByLanguage(pCtx, windowId, getLanguage());
 	}
 
@@ -379,9 +379,9 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public ADProcessModel getProcessWithFormModel(Integer processId) throws RuntimeException {
-		ADProcessModel processModel = getADProcessModel(processId);
-		ADFormModel formModel = null;
+	public ProcessModel getProcessWithFormModel(Integer processId) throws RuntimeException {
+		ProcessModel processModel = getADProcessModel(processId);
+		FormModel formModel = null;
 		if (null != processModel.getADFormID()) {
 			formModel = getADFormModel(processModel.getADFormID());
 			processModel.setFormModel(formModel);
@@ -390,19 +390,19 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public List<ADSequenceModel> getSequences(ADLoadConfig loadCfg) throws RuntimeException {
+	public List<SequenceModel> getSequences(ADLoadConfig loadCfg) throws RuntimeException {
 		if ("ad_field".equalsIgnoreCase(loadCfg.getTableName())) {
 			int adTabId = loadCfg.getParentKey().getKeyValue();
-			List<ADSequenceModel> resultList = POUtil.querySeqByTabId(pCtx, adTabId);
-			return new ArrayList<ADSequenceModel>(resultList);
+			List<SequenceModel> resultList = POUtil.querySeqByTabId(pCtx, adTabId);
+			return new ArrayList<SequenceModel>(resultList);
 		}
 		return Collections.EMPTY_LIST;
 	}
 
 	@Override
-	public List<ADNodeModel> getTreeNodes(int adTreeId, ADNodeModel loadCfg) throws RuntimeException {
+	public List<NodeModel> getTreeNodes(int adTreeId, NodeModel loadCfg) throws RuntimeException {
 		ADTreeBuilder treeBuilder = ADTreeBuilder.createTreeBuilder(adTreeId);
-		List<ADNodeModel> entityList;
+		List<NodeModel> entityList;
 		if (null == loadCfg) {
 			entityList = treeBuilder.getRootNodes(pCtx, 100);
 		} else {
@@ -467,7 +467,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public String processCallout(ADFieldModel field, String rowJson) throws RuntimeException {
+	public String processCallout(FieldModel field, String rowJson) throws RuntimeException {
 		// TODO Auto-generated method stub
 		System.out.println("callout parameter:" + rowJson);
 		return StringUtil.EMPTY;
@@ -498,7 +498,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public void updateSequences(List<ADSequenceModel> seqList, String tableName) throws RuntimeException {
+	public void updateSequences(List<SequenceModel> seqList, String tableName) throws RuntimeException {
 		if ("ad_field".equalsIgnoreCase(tableName)) {
 			boolean isSusscess = POUtil.updateFieldSequece(pCtx, seqList);
 			if (!isSusscess) {

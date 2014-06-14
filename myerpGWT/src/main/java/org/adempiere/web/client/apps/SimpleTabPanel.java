@@ -14,17 +14,17 @@ import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.event.ActionEvent;
 import org.adempiere.web.client.event.ActionListener;
 import org.adempiere.web.client.form.AbstractForm;
-import org.adempiere.web.client.model.ADFieldModel;
-import org.adempiere.web.client.model.ADFormModel;
+import org.adempiere.web.client.model.FieldModel;
+import org.adempiere.web.client.model.FormModel;
 import org.adempiere.web.client.model.ADJSONData;
 import org.adempiere.web.client.model.ADLoadConfig;
 import org.adempiere.web.client.model.ADMapData;
-import org.adempiere.web.client.model.ADNodeModel;
+import org.adempiere.web.client.model.NodeModel;
 import org.adempiere.web.client.model.ADMapData.ADModelKeyProvider;
-import org.adempiere.web.client.model.ADMenuModel;
+import org.adempiere.web.client.model.MenuModel;
 import org.adempiere.web.client.model.ADModelData;
-import org.adempiere.web.client.model.ADProcessModel;
-import org.adempiere.web.client.model.ADTabModel;
+import org.adempiere.web.client.model.ProcessModel;
+import org.adempiere.web.client.model.TabModel;
 import org.adempiere.web.client.util.ClassUtil;
 import org.adempiere.web.client.util.ContextUtil;
 import org.adempiere.web.client.util.ExceptionUtil;
@@ -105,7 +105,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	@UiField(provided = true)
 	HorizontalLayoutData			treeLayoutData;
 
-	public SimpleTabPanel(ADWindowPanel windowPanel, ADTabModel tabModel, CWindowToolBar toolBar) {
+	public SimpleTabPanel(ADWindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar) {
 		super(windowPanel, tabModel, toolBar);
 		this.tabStrategy = new ADFormBuilder(tabModel.getFieldList());
 		this.tabStrategy.setFieldButtonListener(this);
@@ -259,7 +259,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 			treeContainer.setBodyBorder(true);
 			treeContainer.setHeadingText(i18n.tabPanel_Tree());
 			treeLayoutData = new HorizontalLayoutData(220d, 1d);
-			treePanel = new ADTreePanel(ADMenuModel.TREE_ID);
+			treePanel = new ADTreePanel(MenuModel.TREE_ID);
 			treePanel.enableDnD();
 			treeContainer.add(treePanel);
 		} else {
@@ -316,7 +316,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 
 	public void saveOrUpdateRecord() {
 		if (tabModel.isHasTree()) {
-			Set<ADNodeModel> changes = treePanel.getChanges();
+			Set<NodeModel> changes = treePanel.getChanges();
 			LoggingUtil.info("Changes:" + changes.size());
 		}
 		AsyncCallback<Void> callback = new AsyncSuccessCallback<Void>() {
@@ -392,7 +392,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	public void newRecord() {
 		newRecord = new ADModelData();
 		ADMapData parentData = getParentData();
-		for (ADFieldModel field : tabModel.getFieldList()) {
+		for (FieldModel field : tabModel.getFieldList()) {
 			String fieldName = field.getPropertyName();
 			if (null != field.getDefaultValue()) {
 				newRecord.setValue(fieldName, ContextUtil.getDefaultValue(field));
@@ -487,10 +487,10 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		ADFieldModel fieldModel = (ADFieldModel) event.getSource();
-		AsyncCallback<ADFieldModel> callback = new AsyncSuccessCallback<ADFieldModel>() {
+		FieldModel fieldModel = (FieldModel) event.getSource();
+		AsyncCallback<FieldModel> callback = new AsyncSuccessCallback<FieldModel>() {
 			@Override
-			public void onSuccess(ADFieldModel field) {
+			public void onSuccess(FieldModel field) {
 				if (hasChanges()) {
 					AlertMessageBox dialog = new AlertMessageBox("Adempiere", "Data has changes, please reload data!");
 					dialog.show();
@@ -499,10 +499,10 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 				if (0 == field.getADProcessID()) {
 					return;
 				}
-				AsyncCallback<ADProcessModel> callback = new AsyncSuccessCallback<ADProcessModel>() {
+				AsyncCallback<ProcessModel> callback = new AsyncSuccessCallback<ProcessModel>() {
 					@Override
-					public void onSuccess(ADProcessModel pair) {
-						ADFormModel formModel = pair.getFormModel();
+					public void onSuccess(ProcessModel pair) {
+						FormModel formModel = pair.getFormModel();
 						if (null != formModel) {
 							AbstractForm form = ClassUtil.newInstance(formModel.getClassname());
 							if (null != form) {
@@ -526,7 +526,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 		processCallout(fieldModel, callback);
 	}
 
-	private void processCallout(final ADFieldModel field, final AsyncCallback<ADFieldModel> procCallback) {
+	private void processCallout(final FieldModel field, final AsyncCallback<FieldModel> procCallback) {
 		AsyncCallback<String> callback = new AsyncSuccessCallback<String>() {
 			@Override
 			public void onSuccess(String result) {

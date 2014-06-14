@@ -9,7 +9,7 @@ import org.adempiere.common.DisplayType;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
-public interface ADMapData extends ADExchangeModel {
+public interface ADMapData extends ExchangeModel {
 
 	public abstract void setValue(String path, Object value);
 
@@ -21,9 +21,9 @@ public interface ADMapData extends ADExchangeModel {
 		private List<String>	keyFields;
 		private DisplayType		fieldType;
 
-		public ADModelKeyProvider(ADTabModel tabModel) {
+		public ADModelKeyProvider(TabModel tabModel) {
 			keyFields = new ArrayList<String>();
-			for (ADFormField field : tabModel.getFieldList()) {
+			for (FormField field : tabModel.getFieldList()) {
 				if (field.isKey()) {
 					fieldType = field.getFieldType();
 					String propertyName = field.getPropertyName();

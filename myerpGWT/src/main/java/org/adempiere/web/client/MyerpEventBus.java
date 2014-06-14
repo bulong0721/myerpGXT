@@ -1,6 +1,6 @@
 package org.adempiere.web.client;
 
-import org.adempiere.web.client.model.ADMenuModel;
+import org.adempiere.web.client.model.MenuModel;
 import org.adempiere.web.client.presenter.ApplicationPresenter;
 import org.adempiere.web.client.presenter.ContentPresenter;
 import org.adempiere.web.client.presenter.LoginPresenter;
@@ -30,7 +30,7 @@ public interface MyerpEventBus extends EventBus {
 	void setBody(IsWidget widget);
 
 	@Event(handlers = { ContentPresenter.class })
-	void showPage(ADMenuModel model);
+	void showPage(MenuModel model);
 	
 	@Event(handlers = { NavigationPresenter.class })
 	void loadNavigation();

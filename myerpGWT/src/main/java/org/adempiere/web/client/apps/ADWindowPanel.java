@@ -9,8 +9,8 @@ import org.adempiere.web.client.component.ADTabContainer.TabItemConfig;
 import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.event.WindowToolListener;
 import org.adempiere.web.client.model.ADLoadConfig;
-import org.adempiere.web.client.model.ADTabModel;
-import org.adempiere.web.client.model.ADWindowModel;
+import org.adempiere.web.client.model.TabModel;
+import org.adempiere.web.client.model.WindowModel;
 import org.adempiere.web.client.presenter.interfaces.IContentView.IContentPresenter;
 import org.adempiere.web.client.widget.CHistoryWindow;
 import org.adempiere.web.client.widget.CHistoryWindow.History;
@@ -34,13 +34,13 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 	interface ADWindowPanelUiBinder extends UiBinder<Widget, ADWindowPanel> {
 	}
 
-	public ADWindowPanel(ADWindowModel windowModel) {
+	public ADWindowPanel(WindowModel windowModel) {
 		this.windowModel = windowModel;
 	}
 
 	private IContentPresenter	contentPresenter;
 	private Widget				widget;
-	private ADWindowModel		windowModel;
+	private WindowModel		windowModel;
 	private AbstractTabPanel	currentTab;
 	private IDesktop			desktop;
 	@UiField
@@ -73,7 +73,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 		}
 	}
 
-	public ADWindowModel getWindowModel() {
+	public WindowModel getWindowModel() {
 		return windowModel;
 	}
 
@@ -88,9 +88,9 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 		return btnStates;
 	}
 
-	private int getMaxLevel(List<ADTabModel> tabs) {
+	private int getMaxLevel(List<TabModel> tabs) {
 		int level = 0;
-		for (ADTabModel tabModel : tabs) {
+		for (TabModel tabModel : tabs) {
 			if (tabModel.getTabLevel() > level) {
 				level = tabModel.getTabLevel();
 			}
@@ -100,7 +100,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 
 	private void initWindow() {
 		tabSet.setMaxLevel(getMaxLevel(windowModel.getTabList()));
-		for (ADTabModel tabModel : windowModel.getTabList()) {
+		for (TabModel tabModel : windowModel.getTabList()) {
 			AbstractTabPanel tabPanel = createTabPanel(tabModel);
 			TabItemConfig itemCfg = new TabItemConfig(tabModel.getName(), tabPanel, tabModel.getTabLevel());
 			tabSet.add(tabPanel, itemCfg);
@@ -121,7 +121,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 	 * @param tabModel
 	 * @return
 	 */
-	private AbstractTabPanel createTabPanel(ADTabModel tabModel) {
+	private AbstractTabPanel createTabPanel(TabModel tabModel) {
 		if (tabModel.isSortTab()) {
 			return new SequenceTabPanel(ADWindowPanel.this, tabModel, toolBar);
 		} else {

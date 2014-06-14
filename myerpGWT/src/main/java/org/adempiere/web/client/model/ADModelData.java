@@ -5,7 +5,7 @@ import org.adempiere.web.client.util.JSOUtil;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class ADModelData implements ADExchangeModel, ADMapData {
+public class ADModelData implements ExchangeModel, ADMapData {
 	private JavaScriptObject	jso;
 
 	public ADModelData() {
@@ -69,7 +69,7 @@ public class ADModelData implements ADExchangeModel, ADMapData {
 		return new ADModelData(newJso);
 	}
 
-	public static ADModelKeyProvider createKeyProvider(ADTabModel tabModel) {
+	public static ADModelKeyProvider createKeyProvider(TabModel tabModel) {
 		return new ADModelKeyProvider(tabModel);
 	}
 }

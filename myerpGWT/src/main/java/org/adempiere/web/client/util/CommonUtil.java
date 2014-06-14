@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.adempiere.common.LookupValue;
-import org.adempiere.web.client.model.ADNodeModel;
-import org.adempiere.web.client.model.ADNodeModel.TreeKeyProvider;
+import org.adempiere.web.client.model.NodeModel;
+import org.adempiere.web.client.model.NodeModel.TreeKeyProvider;
 
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
@@ -65,9 +65,9 @@ public class CommonUtil {
 		return createDataSource(Arrays.asList(items));
 	}
 	
-	public static TreeStore<ADNodeModel> createTreeStore() {
-		ModelKeyProvider<ADNodeModel> keyProvider = new TreeKeyProvider();
-		TreeStore<ADNodeModel> store = new TreeStore<ADNodeModel>(keyProvider);
+	public static TreeStore<NodeModel> createTreeStore() {
+		ModelKeyProvider<NodeModel> keyProvider = new TreeKeyProvider();
+		TreeStore<NodeModel> store = new TreeStore<NodeModel>(keyProvider);
 		return store;
 	}
 }

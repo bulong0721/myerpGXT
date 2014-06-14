@@ -5,9 +5,9 @@ import org.adempiere.web.client.apps.ADProcessPanel;
 import org.adempiere.web.client.apps.ADWindowPanel;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.form.AbstractForm;
-import org.adempiere.web.client.model.ADFormModel;
-import org.adempiere.web.client.model.ADProcessModel;
-import org.adempiere.web.client.model.ADWindowModel;
+import org.adempiere.web.client.model.FormModel;
+import org.adempiere.web.client.model.ProcessModel;
+import org.adempiere.web.client.model.WindowModel;
 import org.adempiere.web.client.resources.Images;
 import org.adempiere.web.client.resources.ResourcesFactory;
 import org.adempiere.web.client.service.AdempiereService;
@@ -48,9 +48,9 @@ public class TabbedDesktop implements IDesktop {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
-		AsyncCallback<ADProcessModel> callback = new AsyncSuccessCallback<ADProcessModel>() {
+		AsyncCallback<ProcessModel> callback = new AsyncSuccessCallback<ProcessModel>() {
 			@Override
-			public void onSuccess(ADProcessModel result) {
+			public void onSuccess(ProcessModel result) {
 				ADProcessPanel panel = new ADProcessPanel(result);
 				TabItemConfig config = new TabItemConfig(name, true);
 				config.setIcon(getIcon(MenuActionType.Process));
@@ -66,9 +66,9 @@ public class TabbedDesktop implements IDesktop {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
-		AsyncCallback<ADFormModel> callback = new AsyncSuccessCallback<ADFormModel>() {
+		AsyncCallback<FormModel> callback = new AsyncSuccessCallback<FormModel>() {
 			@Override
-			public void onSuccess(ADFormModel model) {
+			public void onSuccess(FormModel model) {
 				String modelClass = model.getClassname();
 				AbstractForm form = ClassUtil.newInstance(modelClass);
 				if (null != form) {
@@ -100,9 +100,9 @@ public class TabbedDesktop implements IDesktop {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
-		AsyncCallback<ADProcessModel> callback = new AsyncSuccessCallback<ADProcessModel>() {
+		AsyncCallback<ProcessModel> callback = new AsyncSuccessCallback<ProcessModel>() {
 			@Override
-			public void onSuccess(ADProcessModel result) {
+			public void onSuccess(ProcessModel result) {
 				ADProcessPanel panel = new ADProcessPanel(result);
 				TabItemConfig config = new TabItemConfig(name, true);
 				config.setIcon(getIcon(MenuActionType.Report));
@@ -123,9 +123,9 @@ public class TabbedDesktop implements IDesktop {
 		if (isAlreadyOpen(name)) {
 			return;
 		}
-		AsyncCallback<ADWindowModel> callback = new AsyncSuccessCallback<ADWindowModel>() {
+		AsyncCallback<WindowModel> callback = new AsyncSuccessCallback<WindowModel>() {
 			@Override
-			public void onSuccess(ADWindowModel windowModel) {
+			public void onSuccess(WindowModel windowModel) {
 				ADWindowPanel windowPanel = new ADWindowPanel(windowModel);
 				TabItemConfig config = new TabItemConfig(name, true);
 				config.setIcon(getIcon(MenuActionType.Window));

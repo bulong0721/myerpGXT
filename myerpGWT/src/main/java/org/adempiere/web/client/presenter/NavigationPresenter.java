@@ -3,8 +3,8 @@ package org.adempiere.web.client.presenter;
 import java.util.List;
 
 import org.adempiere.web.client.MyerpEventBus;
-import org.adempiere.web.client.model.ADMenuModel;
-import org.adempiere.web.client.model.ADNodeModel;
+import org.adempiere.web.client.model.MenuModel;
+import org.adempiere.web.client.model.NodeModel;
 import org.adempiere.web.client.presenter.interfaces.INavigationView;
 import org.adempiere.web.client.presenter.interfaces.INavigationView.INavigationPresenter;
 import org.adempiere.web.client.util.StringUtil;
@@ -21,13 +21,13 @@ import com.sencha.gxt.widget.core.client.tree.Tree;
 public class NavigationPresenter extends BasePresenter<INavigationView, MyerpEventBus> implements INavigationPresenter {
 
 	public void onLoadNavigation() {
-		Tree<ADNodeModel, String> tree = view.getTreePanel().getTree();
-		SelectionChangedHandler<ADNodeModel> selectHandler = new SelectionChangedHandler<ADNodeModel>() {
+		Tree<NodeModel, String> tree = view.getTreePanel().getTree();
+		SelectionChangedHandler<NodeModel> selectHandler = new SelectionChangedHandler<NodeModel>() {
 			@Override
-			public void onSelectionChanged(SelectionChangedEvent<ADNodeModel> event) {
-				List<ADNodeModel> sels = event.getSelection();
+			public void onSelectionChanged(SelectionChangedEvent<NodeModel> event) {
+				List<NodeModel> sels = event.getSelection();
 				if (sels.size() > 0) {
-					ADMenuModel m = (ADMenuModel) sels.get(0);
+					MenuModel m = (MenuModel) sels.get(0);
 					if (!StringUtil.isNullOrEmpty(m.getAction())) {
 						getEventBus().showPage(m);
 					}

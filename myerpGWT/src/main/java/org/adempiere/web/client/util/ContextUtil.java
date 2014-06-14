@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import org.adempiere.common.ADUserContext;
 import org.adempiere.common.DisplayType;
-import org.adempiere.web.client.model.ADFieldModel;
+import org.adempiere.web.client.model.FieldModel;
 
 public final class ContextUtil {
 
@@ -25,7 +25,7 @@ public final class ContextUtil {
 	 * @param field
 	 * @return
 	 */
-	public static Object getDefaultValue(ADFieldModel field) {
+	public static Object getDefaultValue(FieldModel field) {
 		// TODO undone
 		String defaultString = field.getDefaultValue();
 		if (defaultString.startsWith("@")) {

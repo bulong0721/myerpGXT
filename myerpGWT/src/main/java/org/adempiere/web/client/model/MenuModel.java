@@ -6,7 +6,7 @@ import org.adempiere.web.client.resources.ResourcesFactory;
 import com.google.gwt.resources.client.ImageResource;
 import com.sencha.gxt.data.shared.IconProvider;
 
-public class ADMenuModel implements ADExchangeModel, ADNodeModel {
+public class MenuModel implements ExchangeModel, NodeModel {
 	private Boolean				isactive;
 	private Integer				adMenuId;
 	private Integer				parentId;
@@ -153,11 +153,11 @@ public class ADMenuModel implements ADExchangeModel, ADNodeModel {
 		return adMenuId;
 	}
 
-	public static IconProvider<ADNodeModel> createIconProvider() {
-		return new IconProvider<ADNodeModel>() {
+	public static IconProvider<NodeModel> createIconProvider() {
+		return new IconProvider<NodeModel>() {
 			@Override
-			public ImageResource getIcon(ADNodeModel node) {
-				ADMenuModel model = (ADMenuModel) node;
+			public ImageResource getIcon(NodeModel node) {
+				MenuModel model = (MenuModel) node;
 				if (null == model) {
 					return null;
 				}
@@ -219,7 +219,7 @@ public class ADMenuModel implements ADExchangeModel, ADNodeModel {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ADMenuModel other = (ADMenuModel) obj;
+		MenuModel other = (MenuModel) obj;
 		if (adMenuId == null) {
 			if (other.adMenuId != null)
 				return false;

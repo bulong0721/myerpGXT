@@ -2,7 +2,7 @@ package org.adempiere.web.client.apps;
 
 import org.adempiere.common.ADModelKey;
 import org.adempiere.web.client.model.ADLoadConfig;
-import org.adempiere.web.client.model.ADTabModel;
+import org.adempiere.web.client.model.TabModel;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.widget.CWindowToolBar;
@@ -15,12 +15,12 @@ import com.google.gwt.user.client.ui.Widget;
 public abstract class AbstractTabPanel implements IsWidget {
 	protected AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
 	protected Widget				widget;
-	protected ADTabModel			tabModel;
+	protected TabModel			tabModel;
 	protected ADWindowPanel			windowPanel;
 	protected CWindowToolBar		toolBar;
 	protected ADModelKey			parentModelKey;
 
-	public AbstractTabPanel(ADWindowPanel windowPanel, ADTabModel tabModel, CWindowToolBar toolBar) {
+	public AbstractTabPanel(ADWindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar) {
 		this.tabModel = tabModel;
 		this.windowPanel = windowPanel;
 		this.toolBar = toolBar;
@@ -58,7 +58,7 @@ public abstract class AbstractTabPanel implements IsWidget {
 		return 0;
 	}
 
-	public ADTabModel getTabModel() {
+	public TabModel getTabModel() {
 		return tabModel;
 	}
 

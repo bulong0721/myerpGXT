@@ -7,11 +7,11 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 
 import org.adempiere.persist.PersistContext;
-import org.adempiere.web.client.model.ADProcessModel;
+import org.adempiere.web.client.model.ProcessModel;
 
 @SuppressWarnings("serial")
 public class ProcessContext extends PersistContext {
-	private ADProcessModel		processModel;
+	private ProcessModel		processModel;
 	private Map<String, Object>	paramMap;
 	private Map<String, Object>	rowMap;
 
@@ -19,7 +19,7 @@ public class ProcessContext extends PersistContext {
 		this(null, Collections.<String, Object> emptyMap(), Collections.<String, Object> emptyMap());
 	}
 
-	public ProcessContext(ADProcessModel pModel, Map<String, Object> rowMap, Map<String, Object> paramMap) {
+	public ProcessContext(ProcessModel pModel, Map<String, Object> rowMap, Map<String, Object> paramMap) {
 		super(true);
 		this.processModel = pModel;
 		this.paramMap = paramMap;
@@ -52,7 +52,7 @@ public class ProcessContext extends PersistContext {
 		return getEntityManager().unwrap(Connection.class);
 	}
 
-	public ADProcessModel getProcessModel() {
+	public ProcessModel getProcessModel() {
 		return processModel;
 	}
 

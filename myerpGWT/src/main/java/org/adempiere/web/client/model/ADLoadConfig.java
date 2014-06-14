@@ -5,7 +5,7 @@ import org.adempiere.common.ADModelKey;
 
 import com.sencha.gxt.data.shared.loader.PagingLoadConfigBean;
 
-public class ADLoadConfig extends PagingLoadConfigBean implements ADExchangeModel {
+public class ADLoadConfig extends PagingLoadConfigBean implements ExchangeModel {
 	private static final long	serialVersionUID	= 1L;
 	private long				windowID;
 	private String				tableName;

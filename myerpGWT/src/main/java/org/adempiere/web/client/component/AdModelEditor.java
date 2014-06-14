@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.common.DisplayType;
-import org.adempiere.web.client.model.ADFormField;
+import org.adempiere.web.client.model.FormField;
 import org.adempiere.web.client.model.ADMapData;
 import org.adempiere.web.client.util.StringUtil;
 
@@ -56,7 +56,7 @@ public class AdModelEditor implements CompositeEditor<ADMapData, Object, Field<O
 		CssFloatLayoutContainer groupContainer = null;
 		String oldFieldGroup = null;
 		for (ADFieldBuilder fieldStrategy : tabStrategy.getFieldStrategies()) {
-			ADFormField field = fieldStrategy.getField();
+			FormField field = fieldStrategy.getField();
 			String fieldGroup = field.getFieldGroup();
 			if (!StringUtil.isNullOrEmpty(fieldGroup)) {
 				if (!fieldGroup.equals(oldFieldGroup)) {

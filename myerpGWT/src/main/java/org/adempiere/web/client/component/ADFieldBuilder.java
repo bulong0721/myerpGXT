@@ -9,7 +9,7 @@ import org.adempiere.common.DisplayType;
 import org.adempiere.common.LookupValue;
 import org.adempiere.web.client.event.ActionEvent;
 import org.adempiere.web.client.event.ActionListener;
-import org.adempiere.web.client.model.ADFormField;
+import org.adempiere.web.client.model.FormField;
 import org.adempiere.web.client.model.ADMapData;
 import org.adempiere.web.client.model.ADMapData.ADModelValueProvider;
 import org.adempiere.web.client.service.AdempiereService;
@@ -45,7 +45,7 @@ import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class ADFieldBuilder {
-	private ADFormField					field;
+	private FormField					field;
 	private ColumnConfig<ADMapData, ?>	columnCfg;
 	private Cell<?>						columnCell;
 	private Field<?>					gridEditor;
@@ -56,7 +56,7 @@ public class ADFieldBuilder {
 	private DisplayType					fieldType;
 	private ADFormBuilder				formStrategy;
 
-	public ADFieldBuilder(ADFormBuilder formStrategy, ADFormField field) {
+	public ADFieldBuilder(ADFormBuilder formStrategy, FormField field) {
 		this.formStrategy = formStrategy;
 		this.field = field;
 		this.init();
@@ -257,7 +257,7 @@ public class ADFieldBuilder {
 			return store;
 		}
 
-		public static OptionStore getOptionStore(ADFormField field) {
+		public static OptionStore getOptionStore(FormField field) {
 			String columnname = field.getPropertyName();
 			Integer display = field.getADReferenceID();
 			Integer adRefId = field.getADReferenceValueID();
@@ -288,7 +288,7 @@ public class ADFieldBuilder {
 		}
 	}
 
-	public ADFormField getField() {
+	public FormField getField() {
 		return field;
 	}
 

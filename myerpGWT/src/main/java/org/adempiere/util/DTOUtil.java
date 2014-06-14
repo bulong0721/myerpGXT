@@ -19,17 +19,17 @@ import org.adempiere.model.AdFieldV;
 import org.adempiere.model.AdFieldVt;
 import org.adempiere.model.AdTabV;
 import org.adempiere.model.AdTabVt;
-import org.adempiere.web.client.model.ADFieldModel;
-import org.adempiere.web.client.model.ADFormModel;
-import org.adempiere.web.client.model.ADMenuModel;
-import org.adempiere.web.client.model.ADProcessArgModel;
-import org.adempiere.web.client.model.ADProcessModel;
-import org.adempiere.web.client.model.ADTabModel;
+import org.adempiere.web.client.model.FieldModel;
+import org.adempiere.web.client.model.FormModel;
+import org.adempiere.web.client.model.MenuModel;
+import org.adempiere.web.client.model.ProcessArgModel;
+import org.adempiere.web.client.model.ProcessModel;
+import org.adempiere.web.client.model.TabModel;
 
 public final class DTOUtil {
 
-	public static ADFieldModel toFieldModel(AdFieldV entity) {
-		ADFieldModel model = new ADFieldModel();
+	public static FieldModel toFieldModel(AdFieldV entity) {
+		FieldModel model = new FieldModel();
 		model.setADFieldID(entity.getADFieldID());
 		model.setADProcessID(entity.getADProcessID());
 		model.setADReferenceID(entity.getADReferenceID());
@@ -62,8 +62,8 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static ADFieldModel toFieldModel(AdFieldVt entity) {
-		ADFieldModel model = new ADFieldModel();
+	public static FieldModel toFieldModel(AdFieldVt entity) {
+		FieldModel model = new FieldModel();
 		model.setADFieldID(entity.getADFieldID());
 		model.setADProcessID(entity.getADProcessID());
 		model.setADReferenceID(entity.getADReferenceID());
@@ -96,9 +96,9 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static List<ADFieldModel> toFieldModels(List<AdFieldV> fieldList) {
+	public static List<FieldModel> toFieldModels(List<AdFieldV> fieldList) {
 		int size = null == fieldList ? 0 : fieldList.size();
-		List<ADFieldModel> resultList = new ArrayList<ADFieldModel>(size);
+		List<FieldModel> resultList = new ArrayList<FieldModel>(size);
 		if (null != fieldList) {
 			for (AdFieldV fieldEntity : fieldList) {
 				resultList.add(toFieldModel(fieldEntity));
@@ -107,9 +107,9 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static List<ADFieldModel> toFieldTrlModels(List<AdFieldVt> fieldList) {
+	public static List<FieldModel> toFieldTrlModels(List<AdFieldVt> fieldList) {
 		int size = null == fieldList ? 0 : fieldList.size();
-		List<ADFieldModel> resultList = new ArrayList<ADFieldModel>(size);
+		List<FieldModel> resultList = new ArrayList<FieldModel>(size);
 		if (null != fieldList) {
 			for (AdFieldVt fieldEntity : fieldList) {
 				resultList.add(toFieldModel(fieldEntity));
@@ -118,8 +118,8 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static ADMenuModel toMenuModel(ADMenu entity) {
-		ADMenuModel model = new ADMenuModel();
+	public static MenuModel toMenuModel(ADMenu entity) {
+		MenuModel model = new MenuModel();
 		model.setIsactive(entity.isActive());
 		model.setSummary(entity.isSummary());
 		model.setAdMenuId(entity.getNodeID());
@@ -136,8 +136,8 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static ADMenuModel toMenuModel(ADMenuVt entity) {
-		ADMenuModel model = new ADMenuModel();
+	public static MenuModel toMenuModel(ADMenuVt entity) {
+		MenuModel model = new MenuModel();
 		model.setIsactive(entity.isActive());
 		model.setSummary(entity.isSummary());
 		model.setAdMenuId(entity.getNodeID());
@@ -154,9 +154,9 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static List<ADMenuModel> toMenuModels(List<ADMenu> list) {
+	public static List<MenuModel> toMenuModels(List<ADMenu> list) {
 		int size = null == list ? 0 : list.size();
-		List<ADMenuModel> resultList = new ArrayList<ADMenuModel>(size);
+		List<MenuModel> resultList = new ArrayList<MenuModel>(size);
 		if (null != list) {
 			for (ADMenu entity : list) {
 				resultList.add(toMenuModel(entity));
@@ -165,8 +165,8 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static ADProcessModel toProcessModel(ADProcess entity) {
-		ADProcessModel model = new ADProcessModel();
+	public static ProcessModel toProcessModel(ADProcess entity) {
+		ProcessModel model = new ProcessModel();
 		model.setADProcessID(entity.getADProcessID());
 		model.setADFormID(entity.getADFormID());
 		model.setADPrintFormatID(entity.getADPrintFormatID());
@@ -190,8 +190,8 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static ADProcessModel toProcessTrlModel(ADProcessVt entity) {
-		ADProcessModel model = new ADProcessModel();
+	public static ProcessModel toProcessTrlModel(ADProcessVt entity) {
+		ProcessModel model = new ProcessModel();
 		model.setADProcessID(entity.getADProcessID());
 		model.setADFormID(entity.getADFormID());
 		model.setADPrintFormatID(entity.getADPrintFormatID());
@@ -215,9 +215,9 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static List<ADProcessModel> toProcessModels(List<ADProcess> list) {
+	public static List<ProcessModel> toProcessModels(List<ADProcess> list) {
 		int size = null == list ? 0 : list.size();
-		List<ADProcessModel> resultList = new ArrayList<ADProcessModel>(size);
+		List<ProcessModel> resultList = new ArrayList<ProcessModel>(size);
 		if (null != list) {
 			for (ADProcess entity : list) {
 				resultList.add(toProcessModel(entity));
@@ -226,8 +226,8 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static ADProcessArgModel toProcessParameter(ADProcessPara entity) {
-		ADProcessArgModel model = new ADProcessArgModel();
+	public static ProcessArgModel toProcessParameter(ADProcessPara entity) {
+		ProcessArgModel model = new ProcessArgModel();
 		model.setADProcessParaID(entity.getADProcessParaID());
 		model.setADReferenceID(entity.getADReferenceID());
 		model.setADReferenceValueID(entity.getADReferenceValueID());
@@ -248,8 +248,8 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static ADProcessArgModel toProcessParameter(ADProcessParaVt entity) {
-		ADProcessArgModel model = new ADProcessArgModel();
+	public static ProcessArgModel toProcessParameter(ADProcessParaVt entity) {
+		ProcessArgModel model = new ProcessArgModel();
 		model.setADProcessParaID(entity.getADProcessParaID());
 		model.setADReferenceID(entity.getADReferenceID());
 		model.setADReferenceValueID(entity.getADReferenceValueID());
@@ -270,9 +270,9 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static List<ADProcessArgModel> toProcessParameters(List<ADProcessPara> list) {
+	public static List<ProcessArgModel> toProcessParameters(List<ADProcessPara> list) {
 		int size = null == list ? 0 : list.size();
-		List<ADProcessArgModel> resultList = new ArrayList<ADProcessArgModel>(size);
+		List<ProcessArgModel> resultList = new ArrayList<ProcessArgModel>(size);
 		if (null != list) {
 			for (ADProcessPara entity : list) {
 				resultList.add(toProcessParameter(entity));
@@ -281,9 +281,9 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static List<ADProcessArgModel> toProcessParameterTrls(List<ADProcessParaVt> list) {
+	public static List<ProcessArgModel> toProcessParameterTrls(List<ADProcessParaVt> list) {
 		int size = null == list ? 0 : list.size();
-		List<ADProcessArgModel> resultList = new ArrayList<ADProcessArgModel>(size);
+		List<ProcessArgModel> resultList = new ArrayList<ProcessArgModel>(size);
 		if (null != list) {
 			for (ADProcessParaVt entity : list) {
 				resultList.add(toProcessParameter(entity));
@@ -292,8 +292,8 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static ADTabModel toTabModel(AdTabVt entity) {
-		ADTabModel model = new ADTabModel();
+	public static TabModel toTabModel(AdTabVt entity) {
+		TabModel model = new TabModel();
 		model.setADTabID(entity.getADTabID());
 		model.setADColumnID(entity.getADColumnID());
 		model.setADTableID(entity.getADTableID());
@@ -312,8 +312,8 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static ADTabModel toTabModel(AdTabV entity) {
-		ADTabModel model = new ADTabModel();
+	public static TabModel toTabModel(AdTabV entity) {
+		TabModel model = new TabModel();
 		model.setADTabID(entity.getADTabID());
 		model.setADColumnID(entity.getADColumnID());
 		model.setADTableID(entity.getADTableID());
@@ -332,9 +332,9 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static List<ADTabModel> toTabModels(List<AdTabV> tabList) {
+	public static List<TabModel> toTabModels(List<AdTabV> tabList) {
 		int size = null == tabList ? 0 : tabList.size();
-		List<ADTabModel> resultList = new ArrayList<ADTabModel>(size);
+		List<TabModel> resultList = new ArrayList<TabModel>(size);
 		if (null != tabList) {
 			for (AdTabV tabEntity : tabList) {
 				resultList.add(toTabModel(tabEntity));
@@ -343,9 +343,9 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static List<ADTabModel> toTabTrlModels(List<AdTabVt> tabList) {
+	public static List<TabModel> toTabTrlModels(List<AdTabVt> tabList) {
 		int size = null == tabList ? 0 : tabList.size();
-		List<ADTabModel> resultList = new ArrayList<ADTabModel>(size);
+		List<TabModel> resultList = new ArrayList<TabModel>(size);
 		if (null != tabList) {
 			for (AdTabVt tabEntity : tabList) {
 				resultList.add(toTabModel(tabEntity));
@@ -354,8 +354,8 @@ public final class DTOUtil {
 		return resultList;
 	}
 
-	public static ADFormModel toFormModel(ADForm entity) {
-		ADFormModel model = new ADFormModel();
+	public static FormModel toFormModel(ADForm entity) {
+		FormModel model = new FormModel();
 		model.setAdFormId(entity.getADFormID());
 		model.setAccesslevel(entity.getAccessLevel());
 		model.setAdClientId(entity.getADClientID());
@@ -370,9 +370,9 @@ public final class DTOUtil {
 		return model;
 	}
 
-	public static List<ADFormModel> toFormModels(List<ADForm> formList) {
+	public static List<FormModel> toFormModels(List<ADForm> formList) {
 		int size = null == formList ? 0 : formList.size();
-		List<ADFormModel> resultList = new ArrayList<ADFormModel>(size);
+		List<FormModel> resultList = new ArrayList<FormModel>(size);
 		if (null != formList) {
 			for (ADForm formEntity : formList) {
 				resultList.add(toFormModel(formEntity));
@@ -464,8 +464,8 @@ public final class DTOUtil {
 		return newField;
 	}
 
-	public static ADFormModel toFormVTrlModel(ADFormVt entity) {
-		ADFormModel model = new ADFormModel();
+	public static FormModel toFormVTrlModel(ADFormVt entity) {
+		FormModel model = new FormModel();
 		model.setAdFormId(entity.getADFormID());
 		model.setAccesslevel(entity.getAccessLevel());
 		model.setAdClientId(entity.getADClientID());

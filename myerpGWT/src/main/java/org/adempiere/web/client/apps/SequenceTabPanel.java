@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.model.ADLoadConfig;
-import org.adempiere.web.client.model.ADSequenceModel;
-import org.adempiere.web.client.model.ADTabModel;
+import org.adempiere.web.client.model.SequenceModel;
+import org.adempiere.web.client.model.TabModel;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.ButtonStates;
 
@@ -30,16 +30,16 @@ public class SequenceTabPanel extends AbstractTabPanel {
 
 	private static SequenceTabPanelUiBinder	uiBinder		= GWT.create(SequenceTabPanelUiBinder.class);
 	@UiField(provided = true)
-	DualListField<ADSequenceModel, String>	seqField;
-	private ListStore<ADSequenceModel>		fromStore		= null;
-	private ListStore<ADSequenceModel>		toStore			= null;
+	DualListField<SequenceModel, String>	seqField;
+	private ListStore<SequenceModel>		fromStore		= null;
+	private ListStore<SequenceModel>		toStore			= null;
 	private boolean							observeChanges	= false;
 	private String							leftString, rightString;
 
 	interface SequenceTabPanelUiBinder extends UiBinder<Widget, SequenceTabPanel> {
 	}
 
-	public SequenceTabPanel(ADWindowPanel windowPanel, ADTabModel tabModel, CWindowToolBar toolBar) {
+	public SequenceTabPanel(ADWindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar) {
 		super(windowPanel, tabModel, toolBar);
 	}
 
@@ -52,16 +52,16 @@ public class SequenceTabPanel extends AbstractTabPanel {
 		return widget;
 	}
 
-	static class SequenceValueProvider implements ValueProvider<ADSequenceModel, String> {
+	static class SequenceValueProvider implements ValueProvider<SequenceModel, String> {
 		private static final String	PATH_NAME	= "name";
 
 		@Override
-		public String getValue(ADSequenceModel model) {
+		public String getValue(SequenceModel model) {
 			return model.getName();
 		}
 
 		@Override
-		public void setValue(ADSequenceModel model, String value) {
+		public void setValue(SequenceModel model, String value) {
 			model.setName(value);
 		}
 
@@ -71,16 +71,16 @@ public class SequenceTabPanel extends AbstractTabPanel {
 		}
 	}
 
-	static class SequenceKeyProvider implements ModelKeyProvider<ADSequenceModel> {
+	static class SequenceKeyProvider implements ModelKeyProvider<SequenceModel> {
 		@Override
-		public String getKey(ADSequenceModel model) {
+		public String getKey(SequenceModel model) {
 			return model.getName();
 		}
 	}
 
-	class DataAddHandler implements StoreAddHandler<ADSequenceModel> {
+	class DataAddHandler implements StoreAddHandler<SequenceModel> {
 		@Override
-		public void onAdd(StoreAddEvent<ADSequenceModel> event) {
+		public void onAdd(StoreAddEvent<SequenceModel> event) {
 			if (observeChanges) {
 				refreshToolBar();
 			}
@@ -88,16 +88,16 @@ public class SequenceTabPanel extends AbstractTabPanel {
 	}
 
 	private void createDualListField() {
-		ModelKeyProvider<? super ADSequenceModel> keyProvider = new SequenceKeyProvider();
+		ModelKeyProvider<? super SequenceModel> keyProvider = new SequenceKeyProvider();
 		DataAddHandler dcHandler = new DataAddHandler();
-		fromStore = new ListStore<ADSequenceModel>(keyProvider);
+		fromStore = new ListStore<SequenceModel>(keyProvider);
 		fromStore.addStoreAddHandler(dcHandler);
-		toStore = new ListStore<ADSequenceModel>(keyProvider);
+		toStore = new ListStore<SequenceModel>(keyProvider);
 		toStore.addStoreAddHandler(dcHandler);
 
-		ValueProvider<ADSequenceModel, String> valueProvider = new SequenceValueProvider();
+		ValueProvider<SequenceModel, String> valueProvider = new SequenceValueProvider();
 		Cell<String> cell = new TextCell();
-		seqField = new DualListField<ADSequenceModel, String>(fromStore, toStore, valueProvider, cell);
+		seqField = new DualListField<SequenceModel, String>(fromStore, toStore, valueProvider, cell);
 		seqField.setMode(Mode.INSERT);
 		seqField.setEnableDnd(true);
 	}
@@ -129,15 +129,15 @@ public class SequenceTabPanel extends AbstractTabPanel {
 	/**
 	 * @return
 	 */
-	public List<ADSequenceModel> getResult() {
-		List<ADSequenceModel> seqList = new ArrayList<ADSequenceModel>();
+	public List<SequenceModel> getResult() {
+		List<SequenceModel> seqList = new ArrayList<SequenceModel>();
 		for (int i = 0; i < fromStore.size(); i++) {
-			ADSequenceModel seqModel = fromStore.get(i);
+			SequenceModel seqModel = fromStore.get(i);
 			seqModel.setSeqNo(0);
 			seqList.add(seqModel);
 		}
 		for (int i = 0; i < toStore.size(); i++) {
-			ADSequenceModel seqModel = toStore.get(i);
+			SequenceModel seqModel = toStore.get(i);
 			seqModel.setSeqNo((i + 1) * 10);
 			seqList.add(seqModel);
 		}
@@ -179,14 +179,14 @@ public class SequenceTabPanel extends AbstractTabPanel {
 		}
 		parentModelKey = loadCfg.getParentKey();
 		observeChanges = false;
-		AsyncCallback<List<ADSequenceModel>> callback = new AsyncSuccessCallback<List<ADSequenceModel>>() {
+		AsyncCallback<List<SequenceModel>> callback = new AsyncSuccessCallback<List<SequenceModel>>() {
 			@Override
-			public void onSuccess(List<ADSequenceModel> result) {
+			public void onSuccess(List<SequenceModel> result) {
 				fromStore.clear();
 				toStore.clear();
 				leftString = "";
 				rightString = "";
-				for (ADSequenceModel seqModel : result) {
+				for (SequenceModel seqModel : result) {
 					if (null == seqModel.getSeqNo() || 0 == seqModel.getSeqNo()) {
 						leftString += seqModel.getSeqID() + ",";
 						fromStore.add(seqModel);
@@ -220,7 +220,7 @@ public class SequenceTabPanel extends AbstractTabPanel {
 		return false;
 	}
 
-	private String getSeqString(ListStore<ADSequenceModel> store) {
+	private String getSeqString(ListStore<SequenceModel> store) {
 		String seqString = "";
 		for (int i = 0; i < store.size(); i++) {
 			seqString += store.get(i).getSeqID() + ",";

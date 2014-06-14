@@ -2,19 +2,19 @@ package org.adempiere.web.client.model;
 
 import java.util.List;
 
-public class ADWindowModel implements ADExchangeModel {
-	private List<ADTabModel>	tabList;
+public class WindowModel implements ExchangeModel {
+	private List<TabModel>	tabList;
 	private long				activeTabId;
 	private long				adWindowId;
 	private String				name;
 	private String				processing;
 	private String				windowtype;
 
-	public List<ADTabModel> getTabList() {
+	public List<TabModel> getTabList() {
 		return tabList;
 	}
 
-	public void setTabList(List<ADTabModel> tabList) {
+	public void setTabList(List<TabModel> tabList) {
 		this.tabList = tabList;
 	}
 

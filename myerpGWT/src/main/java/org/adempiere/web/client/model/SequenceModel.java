@@ -1,14 +1,14 @@
 package org.adempiere.web.client.model;
 
-public class ADSequenceModel implements ADExchangeModel {
+public class SequenceModel implements ExchangeModel {
 	private String	name;
 	private Integer	seqNo;
 	private Integer	seqID;
 
-	public ADSequenceModel() {
+	public SequenceModel() {
 	}
 
-	public ADSequenceModel(Integer seqID, String name, Integer seqNo) {
+	public SequenceModel(Integer seqID, String name, Integer seqNo) {
 		this.seqID = seqID;
 		this.name = name;
 		this.seqNo = seqNo;

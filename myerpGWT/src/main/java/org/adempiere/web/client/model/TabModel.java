@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.adempiere.web.client.util.StringUtil;
 
-public class ADTabModel implements ADExchangeModel {
-	private List<ADFieldModel>	fieldList;
+public class TabModel implements ExchangeModel {
+	private List<FieldModel>	fieldList;
 	private Integer				aDTabID;
 	private Integer				aDColumnID;
 	private Integer				aDTableID;
@@ -23,11 +23,11 @@ public class ADTabModel implements ADExchangeModel {
 	private String				readOnlyLogic;
 	private String				tableName;
 
-	public List<ADFieldModel> getFieldList() {
+	public List<FieldModel> getFieldList() {
 		return fieldList;
 	}
 
-	public void setFieldList(List<ADFieldModel> fieldList) {
+	public void setFieldList(List<FieldModel> fieldList) {
 		this.fieldList = fieldList;
 	}
 
@@ -159,11 +159,11 @@ public class ADTabModel implements ADExchangeModel {
 		this.highVolume = isHighVolume;
 	}
 
-	public ADFieldModel getFieldByName(String value) {
+	public FieldModel getFieldByName(String value) {
 		if (StringUtil.isNullOrEmpty(value)) {
 			return null;
 		}
-		for (ADFieldModel fieldModel : fieldList) {
+		for (FieldModel fieldModel : fieldList) {
 			if (value.equalsIgnoreCase(fieldModel.getName())) {
 				return fieldModel;
 			}

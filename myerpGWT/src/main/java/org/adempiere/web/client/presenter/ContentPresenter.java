@@ -5,7 +5,7 @@ import org.adempiere.web.client.MyerpEventBus;
 import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.desktop.IDesktopHolder;
 import org.adempiere.web.client.desktop.TabbedDesktop;
-import org.adempiere.web.client.model.ADMenuModel;
+import org.adempiere.web.client.model.MenuModel;
 import org.adempiere.web.client.presenter.interfaces.IContentView;
 import org.adempiere.web.client.presenter.interfaces.IContentView.IContentPresenter;
 import org.adempiere.web.client.view.ContentView;
@@ -28,7 +28,7 @@ public class ContentPresenter extends BasePresenter<IContentView, MyerpEventBus>
 		desktopHolder.setDesktop(getDesktop());
 	}
 
-	public void onShowPage(ADMenuModel node) {
+	public void onShowPage(MenuModel node) {
 		MenuActionType action = MenuActionType.fromString(node.getAction());
 		if (action.isWindow()) {
 			getDesktop().openWindow(node.getName(), node.getAdWindowId());
