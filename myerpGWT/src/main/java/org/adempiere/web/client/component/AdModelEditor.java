@@ -23,13 +23,13 @@ import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Object>>, IsWidget {
-	private ADFormBuilder						tabStrategy;
-//	private EditorChain<Object, Field<Object>>	chain;
-	private List<ADFieldBuilder>				fieldList;
-	private MapEntry							model;
-	private CssFloatLayoutContainer				container;
-	private double								layoutWidth	= 0.485d;
-	private int									labelWidth	= 130;
+	private ADFormBuilder			tabStrategy;
+	// private EditorChain<Object, Field<Object>> chain;
+	private List<ADFieldBuilder>	fieldList;
+	private MapEntry				model;
+	private CssFloatLayoutContainer	container;
+	private double					layoutWidth	= 0.485d;
+	private int						labelWidth	= 130;
 
 	@UiConstructor
 	public AdModelEditor(ADFormBuilder tabStrategy) {
@@ -51,31 +51,30 @@ public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Ob
 
 	@Override
 	public Widget asWidget() {
-		// if (null == container) {
-		container = new CssFloatLayoutContainer();
-		CssFloatLayoutContainer groupContainer = null;
-		String oldFieldGroup = null;
-		for (ADFieldBuilder fieldStrategy : tabStrategy.getFieldStrategies()) {
-			FormField field = fieldStrategy.getField();
-			String fieldGroup = field.getFieldGroup();
-			if (!StringUtil.isNullOrEmpty(fieldGroup)) {
-				if (!fieldGroup.equals(oldFieldGroup)) {
-					ContentPanel groupPanel = new ContentPanel();
-					groupPanel.setStyleName("fieldGroup", true);
-					groupPanel.setHeadingText(fieldGroup);
-					groupPanel.setCollapsible(true);
-					oldFieldGroup = fieldGroup;
-					groupContainer = new CssFloatLayoutContainer();
-					groupPanel.add(groupContainer);
-					container.add(groupPanel, new CssFloatData(1));
+		if (null == container) {
+			container = new CssFloatLayoutContainer();
+			CssFloatLayoutContainer groupContainer = null;
+			String oldFieldGroup = null;
+			for (ADFieldBuilder fieldStrategy : tabStrategy.getFieldStrategies()) {
+				FormField field = fieldStrategy.getField();
+				String fieldGroup = field.getFieldGroup();
+				if (!StringUtil.isNullOrEmpty(fieldGroup)) {
+					if (!fieldGroup.equals(oldFieldGroup)) {
+						ContentPanel groupPanel = new ContentPanel();
+						groupPanel.setStyleName("fieldGroup", true);
+						groupPanel.setHeadingText(fieldGroup);
+						groupPanel.setCollapsible(true);
+						oldFieldGroup = fieldGroup;
+						groupContainer = new CssFloatLayoutContainer();
+						groupPanel.add(groupContainer);
+						container.add(groupPanel, new CssFloatData(1));
+					}
+					layoutFiled(groupContainer, fieldStrategy);
+				} else {
+					layoutFiled(container, fieldStrategy);
 				}
-				layoutFiled(groupContainer, fieldStrategy);
-			} else {
-				layoutFiled(container, fieldStrategy);
 			}
 		}
-		// LoggingUtil.info("xxxxxxxxxxxxxxxxxxx:" + tabStrategy);
-		// }
 		return container;
 	}
 
@@ -149,7 +148,7 @@ public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Ob
 
 	@Override
 	public void setEditorChain(EditorChain<Object, Field<Object>> chain) {
-//		this.chain = chain;
+		// this.chain = chain;
 	}
 
 	public List<ADFieldBuilder> getFieldList() {
