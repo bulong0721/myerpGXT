@@ -129,3 +129,7 @@ h1 {
 .readonlyField {
 	background-color: #E0E0E0 !important;
 }
+
+.modelEditor {
+	overflow: visible !important;
+}

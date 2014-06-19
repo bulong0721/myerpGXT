@@ -9,7 +9,7 @@
 		<button:IconButton ui:field="btnNew" toolTip="{i18n.winBar_New}" />
 		<button:IconButton ui:field="btnCopy" toolTip="{i18n.winBar_Copy}" />
 		<button:IconButton ui:field="btnDelete" toolTip="{i18n.winBar_Delete}" />
-		<button:IconButton ui:field="btnDeleteSelection" toolTip="{i18n.winBar_Delete}" />
+		<toolbar:SeparatorToolItem />
 		<button:IconButton ui:field="btnSave" toolTip="{i18n.winBar_Save}" />
 		<button:IconButton ui:field="btnRefresh" toolTip="{i18n.winBar_Refresh}" />
 		<button:IconButton ui:field="btnFind" toolTip="{i18n.winBar_Find}" />
@@ -26,7 +26,6 @@
 		<button:IconButton ui:field="btnLast" toolTip="{i18n.winBar_Last}" />
 		<toolbar:SeparatorToolItem />
 		<button:IconButton ui:field="btnReport" toolTip="{i18n.winBar_Report}" />
-		<button:IconButton ui:field="btnPrintView" toolTip="{i18n.winBar_PrintView}" />
 		<button:IconButton ui:field="btnPrint" toolTip="{i18n.winBar_Print}" />
 		<button:IconButton ui:field="btnActiveWorkflows" toolTip="{i18n.winBar_ActiveWorkflows}" />
 		<button:IconButton ui:field="btnRequests" toolTip="{i18n.winBar_Requests}" />

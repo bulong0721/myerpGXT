@@ -25,7 +25,7 @@ public class CWindowToolBar implements IsWidget {
 	@UiField(provided = true)
 	IconButton					btnUndoChange;
 	@UiField(provided = true)
-	IconButton					btnHelp, btnNew, btnCopy, btnDelete, btnDeleteSelection, btnSave;
+	IconButton					btnHelp, btnNew, btnCopy, btnDelete, btnSave;
 	@UiField(provided = true)
 	IconButton					btnRefresh, btnFind, btnChat, btnAttachment;
 	@UiField(provided = true)
@@ -35,7 +35,7 @@ public class CWindowToolBar implements IsWidget {
 	@UiField(provided = true)
 	IconButton					btnFirst, btnPrevious, btnNext, btnLast;
 	@UiField(provided = true)
-	IconButton					btnReport, btnPrintView, btnPrint;
+	IconButton					btnReport, btnPrint;
 	@UiField(provided = true)
 	IconButton					btnActiveWorkflows, btnRequests;
 
@@ -58,7 +58,7 @@ public class CWindowToolBar implements IsWidget {
 		listener.onHelp();
 	}
 
-	@UiHandler({ "btnUndoChange", "btnNew", "btnCopy", "btnDelete", "btnDeleteSelection", "btnSave" })
+	@UiHandler({ "btnUndoChange", "btnNew", "btnCopy", "btnDelete", "btnSave" })
 	void onEditSelected(SelectEvent event) {
 		checkListener();
 		if (btnUndoChange == event.getSource()) {
@@ -69,8 +69,6 @@ public class CWindowToolBar implements IsWidget {
 			listener.onCopy();
 		} else if (btnDelete == event.getSource()) {
 			listener.onDelete();
-		} else if (btnDeleteSelection == event.getSource()) {
-			listener.onDeleteSelection();
 		} else if (btnSave == event.getSource()) {
 			listener.onSave();
 		}
@@ -122,13 +120,11 @@ public class CWindowToolBar implements IsWidget {
 		}
 	}
 
-	@UiHandler({ "btnReport", "btnPrintView", "btnPrint" })
+	@UiHandler({ "btnReport", "btnPrint" })
 	void onReportSelected(SelectEvent event) {
 		checkListener();
 		if (btnReport == event.getSource()) {
 			listener.onReport();
-		} else if (btnPrintView == event.getSource()) {
-			listener.onPrint();
 		} else if (btnPrint == event.getSource()) {
 			listener.onPrint();
 		}
@@ -159,7 +155,6 @@ public class CWindowToolBar implements IsWidget {
 		btnNew = WidgetUtil.createIconButton("images/icons/New24.png");
 		btnCopy = WidgetUtil.createIconButton("images/icons/Copy24.png");
 		btnDelete = WidgetUtil.createIconButton("images/icons/Delete24.png");
-		btnDeleteSelection = WidgetUtil.createIconButton("images/icons/DeleteSelection24.png");
 		btnSave = WidgetUtil.createIconButton("images/icons/Save24.png");
 		btnRefresh = WidgetUtil.createIconButton("images/icons/Refresh24.png");
 		btnFind = WidgetUtil.createIconButton("images/icons/Find24.png");
@@ -174,7 +169,6 @@ public class CWindowToolBar implements IsWidget {
 		btnNext = WidgetUtil.createIconButton("images/icons/Next24.png");
 		btnLast = WidgetUtil.createIconButton("images/icons/Last24.png");
 		btnReport = WidgetUtil.createIconButton("images/icons/Report24.png");
-		btnPrintView = WidgetUtil.createIconButton("images/icons/PrintPreview24.gif");
 		btnPrint = WidgetUtil.createIconButton("images/icons/Print24.png");
 		btnActiveWorkflows = WidgetUtil.createIconButton("images/icons/WorkFlow24.png");
 		btnRequests = WidgetUtil.createIconButton("images/icons/Request24.png");
@@ -187,7 +181,6 @@ public class CWindowToolBar implements IsWidget {
 		btnStates.enableNew = btnNew.isEnabled();
 		btnStates.enableCopy = btnCopy.isEnabled();
 		btnStates.enableDelete = btnDelete.isEnabled();
-		btnStates.enableDeleteSelection = btnDeleteSelection.isEnabled();
 		btnStates.enableSave = btnSave.isEnabled();
 		btnStates.enableRefresh = btnRefresh.isEnabled();
 		btnStates.enableFind = btnFind.isEnabled();
@@ -202,7 +195,6 @@ public class CWindowToolBar implements IsWidget {
 		btnStates.enableNext = btnNext.isEnabled();
 		btnStates.enableLast = btnLast.isEnabled();
 		btnStates.enableReport = btnReport.isEnabled();
-		btnStates.enablePrintView = btnPrintView.isEnabled();
 		btnStates.enablePrint = btnPrint.isEnabled();
 		btnStates.enableActiveWorkflows = btnActiveWorkflows.isEnabled();
 		btnStates.enableRequests = btnRequests.isEnabled();
@@ -215,7 +207,6 @@ public class CWindowToolBar implements IsWidget {
 		btnNew.setEnabled(btnStates.enableNew);
 		btnCopy.setEnabled(btnStates.enableCopy);
 		btnDelete.setEnabled(btnStates.enableDelete);
-		btnDeleteSelection.setEnabled(btnStates.enableDeleteSelection);
 		btnSave.setEnabled(btnStates.enableSave);
 		btnRefresh.setEnabled(btnStates.enableRefresh);
 		btnFind.setEnabled(btnStates.enableFind);
@@ -230,7 +221,6 @@ public class CWindowToolBar implements IsWidget {
 		btnNext.setEnabled(btnStates.enableNext);
 		btnLast.setEnabled(btnStates.enableLast);
 		btnReport.setEnabled(btnStates.enableReport);
-		btnPrintView.setEnabled(btnStates.enablePrintView);
 		btnPrint.setEnabled(btnStates.enablePrint);
 		btnActiveWorkflows.setEnabled(btnStates.enableActiveWorkflows);
 		btnRequests.setEnabled(btnStates.enableRequests);

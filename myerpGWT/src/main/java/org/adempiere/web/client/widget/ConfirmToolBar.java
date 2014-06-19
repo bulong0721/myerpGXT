@@ -18,14 +18,17 @@ public class ConfirmToolBar implements IsWidget {
 
 	interface ConfirmToolBarUiBinder extends UiBinder<Widget, ConfirmToolBar> {
 	}
+	
+	public ConfirmToolBar() {
+	}
 
 	@UiField(provided = true)
-	IconButton						btnOK;
+	IconButton					btnOK;
 	@UiField(provided = true)
-	IconButton						btnHelp;
+	IconButton					btnHelp;
 	@UiField(provided = true)
-	IconButton						btnCancel;
-	private Widget					widget;
+	IconButton					btnCancel;
+	private Widget				widget;
 	private ConfirmToolListener	listener;
 
 	@Override

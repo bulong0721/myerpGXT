@@ -54,7 +54,7 @@
 	</ui:style>
 	<container:Viewport>
 		<container:CenterLayoutContainer>
-			<gxt:ContentPanel ui:field="panel" headingText="{i18n.loginView_Login}" pixelSize="370,330">
+			<gxt:ContentPanel ui:field="panel" headingText="{i18n.loginView_Login}" pixelSize="370,336">
 				<container:VerticalLayoutContainer>
 					<container:child layoutData="{tabmarginData}">
 						<tabs:TabPanel ui:field="tabContainer" borders="false" layoutData="{marginData}">

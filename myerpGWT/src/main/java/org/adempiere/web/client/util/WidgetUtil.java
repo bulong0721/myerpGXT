@@ -5,6 +5,7 @@ import org.adempiere.web.client.component.ImageButtonAppearance;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.cell.core.client.ButtonCell.IconAlign;
 import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.button.IconButton;
@@ -20,8 +21,9 @@ public final class WidgetUtil {
 		return new IconButton(appearance, config);
 	}
 
-	public static TextButton createTextButton(ImageResource icon, String text) {
+	public static TextButton createTextButton(ImageResource icon, String text, IconAlign iconAlign) {
 		TextButton button = new TextButton(text);
+		button.setIconAlign(iconAlign);
 		button.setIcon(icon);
 		return button;
 	}

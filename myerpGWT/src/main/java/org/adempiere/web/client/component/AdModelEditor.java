@@ -52,7 +52,9 @@ public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Ob
 	@Override
 	public Widget asWidget() {
 		if (null == container) {
-			container = new CssFloatLayoutContainer();
+			container = new CssFloatLayoutContainer();			
+			container.addStyleName("modelEditor");
+			container.setAdjustForScroll(true);
 			CssFloatLayoutContainer groupContainer = null;
 			String oldFieldGroup = null;
 			for (ADFieldBuilder fieldStrategy : tabStrategy.getFieldStrategies()) {
@@ -84,6 +86,7 @@ public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Ob
 		if (widget instanceof Field) {
 			fieldList.add(fieldStrategy);
 		}
+		// widget.getElement().getStyle().setOverflow(Overflow.AUTO);
 		CssFloatData layoutData = new CssFloatData(layoutWidth);
 		container.add(fieldLabel, layoutData);
 	}
