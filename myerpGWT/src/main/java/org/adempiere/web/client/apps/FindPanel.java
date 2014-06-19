@@ -52,14 +52,14 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 import com.sencha.gxt.widget.core.client.treegrid.TreeGrid;
 
-public class ADFindPanel extends ModalDialog implements ConfirmToolListener {
+public class FindPanel extends ModalDialog implements ConfirmToolListener {
 
 	private static final String			OPERATOR_BOOL_OR	= "**Or**";
 	private static final String			OPERATOR_BOOL_AND	= "**And**";
 	private static FindPanelUiBinder	uiBinder			= GWT.create(FindPanelUiBinder.class);
 	private static Messages				i18n				= GWT.create(Messages.class);
 
-	interface FindPanelUiBinder extends UiBinder<Widget, ADFindPanel> {
+	interface FindPanelUiBinder extends UiBinder<Widget, FindPanel> {
 	}
 
 	@UiField
@@ -84,7 +84,7 @@ public class ADFindPanel extends ModalDialog implements ConfirmToolListener {
 	private ADPredicate					simpleConditon;
 	private boolean						usingCondition	= false;
 
-	public ADFindPanel(TabModel tabModel) {
+	public FindPanel(TabModel tabModel) {
 		this.tabModel = tabModel;
 		this.initWidget(tabModel);
 		this.asWidget();

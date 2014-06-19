@@ -86,7 +86,6 @@ public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object
 		if (widget instanceof Field) {
 			fieldList.add(fieldStrategy);
 		}
-		// widget.getElement().getStyle().setOverflow(Overflow.AUTO);
 		CssFloatData layoutData = new CssFloatData(layoutWidth);
 		container.add(fieldLabel, layoutData);
 	}

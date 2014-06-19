@@ -6,7 +6,7 @@
 	</ui:with>
 	<container:VerticalLayoutContainer>
 		<container:child layoutData="{mainLayoutData}">
-			<app:ADTreePanel ui:field="treepanel" />
+			<app:TreePanel ui:field="treepanel" />
 		</container:child>
 	</container:VerticalLayoutContainer>
 </ui:UiBinder> 

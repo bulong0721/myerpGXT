@@ -27,14 +27,14 @@ import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.event.HideEvent;
 import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 
-public class ADWindowPanel extends ModalDialog implements WindowToolListener {
+public class WindowPanel extends ModalDialog implements WindowToolListener {
 
-	private static ADWindowPanelUiBinder	uiBinder	= GWT.create(ADWindowPanelUiBinder.class);
+	private static WindowPanelUiBinder	uiBinder	= GWT.create(WindowPanelUiBinder.class);
 
-	interface ADWindowPanelUiBinder extends UiBinder<Widget, ADWindowPanel> {
+	interface WindowPanelUiBinder extends UiBinder<Widget, WindowPanel> {
 	}
 
-	public ADWindowPanel(WindowModel windowModel) {
+	public WindowPanel(WindowModel windowModel) {
 		this.windowModel = windowModel;
 	}
 
@@ -123,9 +123,9 @@ public class ADWindowPanel extends ModalDialog implements WindowToolListener {
 	 */
 	private AbstractTabPanel createTabPanel(TabModel tabModel) {
 		if (tabModel.isSortTab()) {
-			return new SequenceTabPanel(ADWindowPanel.this, tabModel, toolBar);
+			return new SequenceTabPanel(WindowPanel.this, tabModel, toolBar);
 		} else {
-			return new SimpleTabPanel(ADWindowPanel.this, tabModel, toolBar);
+			return new SimpleTabPanel(WindowPanel.this, tabModel, toolBar);
 		}
 	}
 
@@ -256,7 +256,7 @@ public class ADWindowPanel extends ModalDialog implements WindowToolListener {
 
 	@Override
 	public void onFind() {
-		final ADFindPanel findPanel = new ADFindPanel(currentTab.getTabModel());
+		final FindPanel findPanel = new FindPanel(currentTab.getTabModel());
 		findPanel.addHideHandler(new HideHandler() {
 			@Override
 			public void onHide(HideEvent event) {

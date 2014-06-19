@@ -39,7 +39,7 @@ public class SequenceTabPanel extends AbstractTabPanel {
 	interface SequenceTabPanelUiBinder extends UiBinder<Widget, SequenceTabPanel> {
 	}
 
-	public SequenceTabPanel(ADWindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar) {
+	public SequenceTabPanel(WindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar) {
 		super(windowPanel, tabModel, toolBar);
 	}
 

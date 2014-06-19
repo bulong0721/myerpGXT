@@ -35,11 +35,11 @@ import com.sencha.gxt.widget.core.client.form.CheckBox;
 import com.sencha.gxt.widget.core.client.form.StoreFilterField;
 import com.sencha.gxt.widget.core.client.tree.Tree;
 
-public class ADTreePanel implements IsWidget {
+public class TreePanel implements IsWidget {
 
 	private static ADTreePanelUiBinder	uiBinder	= GWT.create(ADTreePanelUiBinder.class);
 
-	interface ADTreePanelUiBinder extends UiBinder<Widget, ADTreePanel> {
+	interface ADTreePanelUiBinder extends UiBinder<Widget, TreePanel> {
 	}
 
 	@UiField(provided = true)
@@ -57,7 +57,7 @@ public class ADTreePanel implements IsWidget {
 	private TreeDropTarget<NodeModel>	dropTarget;
 	private Set<NodeModel>			changes;
 
-	public ADTreePanel(int treeId) {
+	public TreePanel(int treeId) {
 		super();
 		this.treeId = treeId;
 	}

@@ -19,7 +19,7 @@ import org.adempiere.web.client.model.FormModel;
 import org.adempiere.web.client.model.JSOEntry;
 import org.adempiere.web.client.model.JsonResult;
 import org.adempiere.web.client.model.MapEntry;
-import org.adempiere.web.client.model.MapEntry.ADModelKeyProvider;
+import org.adempiere.web.client.model.MapEntry.EntryKeyProvider;
 import org.adempiere.web.client.model.MenuModel;
 import org.adempiere.web.client.model.NodeModel;
 import org.adempiere.web.client.model.PageRequest;
@@ -90,8 +90,8 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	private TabBuilder			tabStrategy;
 	private GridEditing<MapEntry>	gridEditing;
 	private TabDriver			adModelDriver;
-	private ADModelKeyProvider		keyProvider;
-	private ADTreePanel				treePanel;
+	private EntryKeyProvider		keyProvider;
+	private TreePanel				treePanel;
 	@UiField(provided = true)
 	Grid<MapEntry>					grid;
 	@UiField(provided = true)
@@ -105,7 +105,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	@UiField(provided = true)
 	HorizontalLayoutData			treeLayoutData;
 
-	public SimpleTabPanel(ADWindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar) {
+	public SimpleTabPanel(WindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar) {
 		super(windowPanel, tabModel, toolBar);
 		this.tabStrategy = new TabBuilder(tabModel.getFieldList());
 		this.tabStrategy.setFieldButtonListener(this);
@@ -259,7 +259,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 			treeContainer.setBodyBorder(true);
 			treeContainer.setHeadingText(i18n.tabPanel_Tree());
 			treeLayoutData = new HorizontalLayoutData(220d, 1d);
-			treePanel = new ADTreePanel(MenuModel.TREE_ID);
+			treePanel = new TreePanel(MenuModel.TREE_ID);
 			treePanel.enableDnD();
 			treeContainer.add(treePanel);
 		} else {
@@ -510,7 +510,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 								form.show();
 							}
 						} else {
-							ADProcessPanel processPanel = new ADProcessPanel(pair);
+							ProcessPanel processPanel = new ProcessPanel(pair);
 							MapEntry row = grid.getSelectionModel().getSelectedItem();
 							processPanel.setRowJSONString(row.toString());
 							processPanel.setWindow(WidgetUtil.createWindow("", 600, 400));

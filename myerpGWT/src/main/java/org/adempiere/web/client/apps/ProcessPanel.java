@@ -28,11 +28,11 @@ import com.sencha.gxt.core.client.resources.ThemeStyles;
 import com.sencha.gxt.core.client.resources.ThemeStyles.Styles;
 import com.sencha.gxt.widget.core.client.container.CardLayoutContainer;
 
-public class ADProcessPanel extends ModalDialog implements ConfirmToolListener {
+public class ProcessPanel extends ModalDialog implements ConfirmToolListener {
 
 	private static ADProcessPanelUiBinder	uiBinder	= GWT.create(ADProcessPanelUiBinder.class);
 
-	interface ADProcessPanelUiBinder extends UiBinder<Widget, ADProcessPanel> {
+	interface ADProcessPanelUiBinder extends UiBinder<Widget, ProcessPanel> {
 	}
 
 	private AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
@@ -54,7 +54,7 @@ public class ADProcessPanel extends ModalDialog implements ConfirmToolListener {
 	private TabDriver			adModelDriver;
 	private String					rowJSONString;
 
-	public ADProcessPanel(ProcessModel process) {
+	public ProcessPanel(ProcessModel process) {
 		super();
 		this.processModel = process;
 		this.paramData = new JSOEntry();

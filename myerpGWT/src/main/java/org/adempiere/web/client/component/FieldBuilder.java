@@ -11,7 +11,7 @@ import org.adempiere.web.client.event.ActionEvent;
 import org.adempiere.web.client.event.ActionListener;
 import org.adempiere.web.client.model.FormField;
 import org.adempiere.web.client.model.MapEntry;
-import org.adempiere.web.client.model.MapEntry.ADModelValueProvider;
+import org.adempiere.web.client.model.MapEntry.EntryValueProvider;
 import org.adempiere.web.client.service.AdempiereService;
 import org.adempiere.web.client.service.AdempiereServiceAsync;
 import org.adempiere.web.client.util.CommonUtil;
@@ -54,10 +54,10 @@ public class FieldBuilder {
 	private boolean						showLabel	= true;
 	private Converter					converter;
 	private DisplayType					fieldType;
-	private TabBuilder				formStrategy;
+	private TabBuilder					tabBuilder;
 
 	public FieldBuilder(TabBuilder formStrategy, FormField field) {
-		this.formStrategy = formStrategy;
+		this.tabBuilder = formStrategy;
 		this.field = field;
 		this.init();
 	}
@@ -68,18 +68,18 @@ public class FieldBuilder {
 
 	private void init() {
 		fieldType = field.getFieldType();
-		ADModelValueProvider<?> valueProvider = null;
+		EntryValueProvider<?> valueProvider = null;
 		String propertyName = field.getPropertyName();
 		if (fieldType.isLookup()) {
 			optionStore = OptionStoreManager.getOptionStore(field);
 			columnCell = new OptionCell(optionStore);
 			LabelProvider<LookupValue> labelProvider = CommonUtil.createLabelProvider();
-			if (formStrategy.isCreateGridEditor())
+			if (tabBuilder.isCreateGridEditor())
 				gridEditor = createComboBox(labelProvider);
-			if (formStrategy.isCreateFormEditor())
+			if (tabBuilder.isCreateFormEditor())
 				formEditor = createComboBox(labelProvider);
 			if (fieldType.isID()) {
-				valueProvider = new ADModelValueProvider<Integer>(propertyName, fieldType);
+				valueProvider = new EntryValueProvider<Integer>(propertyName, fieldType);
 				converter = new Converter<Integer, LookupValue>() {
 					@Override
 					public Integer convertFieldValue(LookupValue value) {
@@ -95,7 +95,7 @@ public class FieldBuilder {
 					}
 				};
 			} else {
-				valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
+				valueProvider = new EntryValueProvider<String>(propertyName, fieldType);
 				converter = new Converter<String, LookupValue>() {
 					@Override
 					public String convertFieldValue(LookupValue value) {
@@ -112,25 +112,25 @@ public class FieldBuilder {
 				};
 			}
 		} else if (fieldType.isID() || fieldType.isInteger()) {
-			valueProvider = new ADModelValueProvider<Integer>(propertyName, fieldType);
+			valueProvider = new EntryValueProvider<Integer>(propertyName, fieldType);
 			NumberPropertyEditor<Integer> propertyEditor = new IntegerPropertyEditor();
-			if (formStrategy.isCreateGridEditor())
+			if (tabBuilder.isCreateGridEditor())
 				gridEditor = new NumberField<Integer>(propertyEditor);
-			if (formStrategy.isCreateFormEditor())
+			if (tabBuilder.isCreateFormEditor())
 				formEditor = new NumberField<Integer>(propertyEditor);
 		} else if (fieldType.isFloat()) {
-			valueProvider = new ADModelValueProvider<Double>(propertyName, fieldType);
+			valueProvider = new EntryValueProvider<Double>(propertyName, fieldType);
 			NumberPropertyEditor<Double> propertyEditor = new DoublePropertyEditor();
-			if (formStrategy.isCreateGridEditor())
+			if (tabBuilder.isCreateGridEditor())
 				gridEditor = new NumberField<Double>(propertyEditor);
-			if (formStrategy.isCreateFormEditor())
+			if (tabBuilder.isCreateFormEditor())
 				formEditor = new NumberField<Double>(propertyEditor);
 		} else if (fieldType.isDate()) {
-			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
+			valueProvider = new EntryValueProvider<String>(propertyName, fieldType);
 			final DateTimeFormat format = getDTFormat(fieldType);
-			if (formStrategy.isCreateGridEditor())
+			if (tabBuilder.isCreateGridEditor())
 				gridEditor = new DateField(new DateTimePropertyEditor(format));
-			if (formStrategy.isCreateFormEditor())
+			if (tabBuilder.isCreateFormEditor())
 				formEditor = new DateField(new DateTimePropertyEditor(format));
 			converter = new Converter<String, Date>() {
 
@@ -151,33 +151,33 @@ public class FieldBuilder {
 				}
 			};
 		} else if (fieldType.isButton()) {
-			valueProvider = new ADModelValueProvider<Boolean>(propertyName, fieldType);
+			valueProvider = new EntryValueProvider<Boolean>(propertyName, fieldType);
 			showLabel = false;
 		} else if (fieldType.isText()) {
-			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
+			valueProvider = new EntryValueProvider<String>(propertyName, fieldType);
 			if (field.isEncryptedField()) {
-				if (formStrategy.isCreateGridEditor())
+				if (tabBuilder.isCreateGridEditor())
 					gridEditor = new PasswordField();
-				if (formStrategy.isCreateFormEditor())
+				if (tabBuilder.isCreateFormEditor())
 					formEditor = new PasswordField();
 			} else {
-				if (formStrategy.isCreateGridEditor())
+				if (tabBuilder.isCreateGridEditor())
 					gridEditor = new TextField();
-				if (formStrategy.isCreateFormEditor())
+				if (tabBuilder.isCreateFormEditor())
 					formEditor = new TextField();
 			}
 		} else if (fieldType.isBoolean()) {
-			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
-			if (formStrategy.isCreateGridEditor())
+			valueProvider = new EntryValueProvider<String>(propertyName, fieldType);
+			if (tabBuilder.isCreateGridEditor())
 				gridEditor = createCheckBox(false);
-			if (formStrategy.isCreateFormEditor())
+			if (tabBuilder.isCreateFormEditor())
 				formEditor = createCheckBox(true);
 			showLabel = false;
 		} else {
-			valueProvider = new ADModelValueProvider<String>(propertyName, fieldType);
-			if (formStrategy.isCreateGridEditor())
+			valueProvider = new EntryValueProvider<String>(propertyName, fieldType);
+			if (tabBuilder.isCreateGridEditor())
 				gridEditor = new TextField();
-			if (formStrategy.isCreateFormEditor())
+			if (tabBuilder.isCreateFormEditor())
 				formEditor = new TextField();
 		}
 		if (null != formEditor) {
@@ -187,9 +187,9 @@ public class FieldBuilder {
 		columnCfg.setHeader(field.getName());
 		columnCfg.setCell((Cell) columnCell);
 		if (field.isReadOnly() || !field.isUpdatable()) {
-			if (formStrategy.isCreateGridEditor())
+			if (tabBuilder.isCreateGridEditor())
 				disableEditor(gridEditor);
-			if (formStrategy.isCreateFormEditor())
+			if (tabBuilder.isCreateFormEditor())
 				disableEditor(formEditor);
 		}
 	}
@@ -204,7 +204,7 @@ public class FieldBuilder {
 	}
 
 	private void disableEditor(Field<?> editor) {
-		if (null != editor && formStrategy.canReadOnly()) {
+		if (null != editor && tabBuilder.canReadOnly()) {
 			editor.addStyleName(ThemeStyles.get().style().disabled());
 			editor.setReadOnly(true);
 		}
@@ -324,7 +324,7 @@ public class FieldBuilder {
 		fieldLabel.setWidget(formEditor);
 		if (field.getFieldType().isButton()) {
 			TextButton button = new TextButton(field.getName());
-			final ActionListener listener = formStrategy.getFieldButtonListener();
+			final ActionListener listener = tabBuilder.getFieldButtonListener();
 			if (null != listener) {
 				button.addSelectHandler(new SelectHandler() {
 					@Override

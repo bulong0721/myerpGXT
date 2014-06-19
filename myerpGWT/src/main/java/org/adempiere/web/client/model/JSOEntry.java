@@ -16,16 +16,24 @@ public class JSOEntry implements GwtSerializable, MapEntry {
 		this.jso = jso;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.adempiere.web.client.model.MapAccessable#setValue(java.lang.String, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.adempiere.web.client.model.MapAccessable#setValue(java.lang.String,
+	 * java.lang.Object)
 	 */
 	@Override
 	public void setValue(String path, Object value) {
 		JSOUtil.setAttribute(jso, path, value);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.adempiere.web.client.model.MapAccessable#getValue(java.lang.String, org.adempiere.model.common.DisplayType)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.adempiere.web.client.model.MapAccessable#getValue(java.lang.String,
+	 * org.adempiere.model.common.DisplayType)
 	 */
 	@Override
 	public Object getValue(String path, DisplayType fieldType) {
@@ -54,13 +62,15 @@ public class JSOEntry implements GwtSerializable, MapEntry {
 	public JavaScriptObject getJso() {
 		return jso;
 	}
-	
+
 	@Override
 	public String toString() {
 		return JSOUtil.toString(jso);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.adempiere.web.client.model.MapAccessable#deepClone()
 	 */
 	@Override
@@ -69,7 +79,7 @@ public class JSOEntry implements GwtSerializable, MapEntry {
 		return new JSOEntry(newJso);
 	}
 
-	public static ADModelKeyProvider createKeyProvider(TabModel tabModel) {
-		return new ADModelKeyProvider(tabModel);
+	public static EntryKeyProvider createKeyProvider(TabModel tabModel) {
+		return new EntryKeyProvider(tabModel);
 	}
 }

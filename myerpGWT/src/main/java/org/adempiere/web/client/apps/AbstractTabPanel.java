@@ -16,11 +16,11 @@ public abstract class AbstractTabPanel implements IsWidget {
 	protected AdempiereServiceAsync	adempiereService	= GWT.create(AdempiereService.class);
 	protected Widget				widget;
 	protected TabModel			tabModel;
-	protected ADWindowPanel			windowPanel;
+	protected WindowPanel			windowPanel;
 	protected CWindowToolBar		toolBar;
 	protected ADModelKey			parentModelKey;
 
-	public AbstractTabPanel(ADWindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar) {
+	public AbstractTabPanel(WindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar) {
 		this.tabModel = tabModel;
 		this.windowPanel = windowPanel;
 		this.toolBar = toolBar;

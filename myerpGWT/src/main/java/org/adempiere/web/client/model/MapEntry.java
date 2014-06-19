@@ -17,11 +17,11 @@ public interface MapEntry extends GwtSerializable {
 
 	public abstract MapEntry deepClone();
 
-	public static class ADModelKeyProvider implements ModelKeyProvider<MapEntry> {
+	public static class EntryKeyProvider implements ModelKeyProvider<MapEntry> {
 		private List<String>	keyFields;
 		private DisplayType		fieldType;
 
-		public ADModelKeyProvider(TabModel tabModel) {
+		public EntryKeyProvider(TabModel tabModel) {
 			keyFields = new ArrayList<String>();
 			for (FormField field : tabModel.getFieldList()) {
 				if (field.isKey()) {
@@ -66,11 +66,11 @@ public interface MapEntry extends GwtSerializable {
 		}
 	}
 
-	public static class ADModelValueProvider<T> implements ValueProvider<MapEntry, T> {
+	public static class EntryValueProvider<T> implements ValueProvider<MapEntry, T> {
 		private String		path;
 		private DisplayType	fieldType;
 
-		public ADModelValueProvider(String path, DisplayType fieldType) {
+		public EntryValueProvider(String path, DisplayType fieldType) {
 			this.fieldType = fieldType;
 			this.path = path;
 		}

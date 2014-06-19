@@ -1,8 +1,8 @@
 package org.adempiere.web.client.desktop;
 
 import org.adempiere.common.MenuActionType;
-import org.adempiere.web.client.apps.ADProcessPanel;
-import org.adempiere.web.client.apps.ADWindowPanel;
+import org.adempiere.web.client.apps.ProcessPanel;
+import org.adempiere.web.client.apps.WindowPanel;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.form.AbstractForm;
 import org.adempiere.web.client.model.FormModel;
@@ -51,7 +51,7 @@ public class TabbedDesktop implements IDesktop {
 		AsyncCallback<ProcessModel> callback = new AsyncSuccessCallback<ProcessModel>() {
 			@Override
 			public void onSuccess(ProcessModel result) {
-				ADProcessPanel panel = new ADProcessPanel(result);
+				ProcessPanel panel = new ProcessPanel(result);
 				TabItemConfig config = new TabItemConfig(name, true);
 				config.setIcon(getIcon(MenuActionType.Process));
 				tabPanel.add(panel, config);
@@ -103,7 +103,7 @@ public class TabbedDesktop implements IDesktop {
 		AsyncCallback<ProcessModel> callback = new AsyncSuccessCallback<ProcessModel>() {
 			@Override
 			public void onSuccess(ProcessModel result) {
-				ADProcessPanel panel = new ADProcessPanel(result);
+				ProcessPanel panel = new ProcessPanel(result);
 				TabItemConfig config = new TabItemConfig(name, true);
 				config.setIcon(getIcon(MenuActionType.Report));
 				tabPanel.add(panel, config);
@@ -126,7 +126,7 @@ public class TabbedDesktop implements IDesktop {
 		AsyncCallback<WindowModel> callback = new AsyncSuccessCallback<WindowModel>() {
 			@Override
 			public void onSuccess(WindowModel windowModel) {
-				ADWindowPanel windowPanel = new ADWindowPanel(windowModel);
+				WindowPanel windowPanel = new WindowPanel(windowModel);
 				TabItemConfig config = new TabItemConfig(name, true);
 				config.setIcon(getIcon(MenuActionType.Window));
 				tabPanel.add(windowPanel, config);
