@@ -1,11 +1,11 @@
 package org.adempiere.web.client.form;
 
-import org.adempiere.web.client.component.ADModalDialog;
+import org.adempiere.web.client.component.ModalDialog;
 import org.adempiere.web.client.model.ProcessModel;
 
 import com.google.gwt.user.client.ui.Widget;
 
-public abstract class AbstractForm extends ADModalDialog {
+public abstract class AbstractForm extends ModalDialog {
 	protected ProcessModel	processInfo;
 	protected int				adFormId;
 	protected int				windowNo;

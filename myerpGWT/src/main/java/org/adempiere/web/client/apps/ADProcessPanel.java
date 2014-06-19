@@ -3,11 +3,11 @@ package org.adempiere.web.client.apps;
 import java.util.List;
 
 import org.adempiere.common.ProcessResult;
-import org.adempiere.web.client.component.ADFormBuilder;
-import org.adempiere.web.client.component.ADModalDialog;
-import org.adempiere.web.client.component.ADModelDriver;
-import org.adempiere.web.client.component.ADReportViewer;
-import org.adempiere.web.client.component.AdModelEditor;
+import org.adempiere.web.client.component.TabBuilder;
+import org.adempiere.web.client.component.ModalDialog;
+import org.adempiere.web.client.component.TabDriver;
+import org.adempiere.web.client.component.ReportViewer;
+import org.adempiere.web.client.component.TabEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.model.JSOEntry;
 import org.adempiere.web.client.model.MapEntry;
@@ -28,7 +28,7 @@ import com.sencha.gxt.core.client.resources.ThemeStyles;
 import com.sencha.gxt.core.client.resources.ThemeStyles.Styles;
 import com.sencha.gxt.widget.core.client.container.CardLayoutContainer;
 
-public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener {
+public class ADProcessPanel extends ModalDialog implements ConfirmToolListener {
 
 	private static ADProcessPanelUiBinder	uiBinder	= GWT.create(ADProcessPanelUiBinder.class);
 
@@ -39,11 +39,11 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 	@UiField(provided = true)
 	Styles							themeStyles			= ThemeStyles.get().style();
 	@UiField(provided = true)
-	ADReportViewer					reportViewer;
+	ReportViewer					reportViewer;
 	@UiField(provided = true)
 	Label							nameLabel, descLabel;
 	@UiField(provided = true)
-	AdModelEditor					prarmEditor;
+	TabEditor					prarmEditor;
 	@UiField
 	ConfirmToolBar					toolBar;
 	@UiField
@@ -51,7 +51,7 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 	private Widget					widget;
 	private ProcessModel			processModel;
 	private MapEntry				paramData;
-	private ADModelDriver			adModelDriver;
+	private TabDriver			adModelDriver;
 	private String					rowJSONString;
 
 	public ADProcessPanel(ProcessModel process) {
@@ -78,14 +78,14 @@ public class ADProcessPanel extends ADModalDialog implements ConfirmToolListener
 		nameLabel = new Label(processModel.getName());
 		descLabel = new Label(processModel.getDescription(), true);
 		List<ProcessArgModel> fieldList = processModel.getParamList();
-		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
+		TabBuilder formStrategy = new TabBuilder(fieldList);
 		formStrategy.setCreateGridEditor(false);
-		prarmEditor = new AdModelEditor(formStrategy);
+		prarmEditor = new TabEditor(formStrategy);
 		prarmEditor.setLayoutWidth(0.52d);
-		adModelDriver = GWT.create(ADModelDriver.class);
+		adModelDriver = GWT.create(TabDriver.class);
 		adModelDriver.initialize(prarmEditor);
 		adModelDriver.edit(paramData);
-		reportViewer = new ADReportViewer(processModel.getADProcessID());
+		reportViewer = new ReportViewer(processModel.getADProcessID());
 	}
 
 	@Override

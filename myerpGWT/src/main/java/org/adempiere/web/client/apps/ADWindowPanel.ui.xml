@@ -31,8 +31,7 @@
 			<widgets:CWindowToolBar ui:field="toolBar" />
 		</container:child>
 		<container:child layoutData="{centerLayoutData}">
-			<component:ADTabContainer ui:field="tabSet">
-			</component:ADTabContainer>
+			<component:TabContainer ui:field="tabSet" />
 		</container:child>
 		<container:child layoutData="{toolLayoutData}">
 			<toolbar:ToolBar>

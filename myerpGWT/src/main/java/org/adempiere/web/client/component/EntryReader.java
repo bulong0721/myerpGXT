@@ -14,7 +14,7 @@ import com.sencha.gxt.data.shared.loader.DataReader;
 import com.sencha.gxt.data.shared.loader.PagingLoadResult;
 import com.sencha.gxt.data.shared.loader.PagingLoadResultBean;
 
-public class ADModelReader implements DataReader<PagingLoadResult<MapEntry>, JsonResult> {
+public class EntryReader implements DataReader<PagingLoadResult<MapEntry>, JsonResult> {
 
 	@Override
 	public PagingLoadResult<MapEntry> read(Object loadConfig, JsonResult data) {

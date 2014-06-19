@@ -7,7 +7,7 @@ import com.sencha.gxt.core.client.XTemplates;
 import com.sencha.gxt.core.client.dom.XElement;
 import com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance;
 
-public class ImageButtonAppearance implements IconButtonAppearance {
+public class ImgButtonAppearance implements IconButtonAppearance {
 
 	public interface Template extends XTemplates {
 		@XTemplate(value = "<img src=\"{url}\" height=\"22\" width=\"22\" />")
@@ -17,7 +17,7 @@ public class ImageButtonAppearance implements IconButtonAppearance {
 	private final Template	template;
 	private String			imageUrl;
 
-	public ImageButtonAppearance(String imageUrl) {
+	public ImgButtonAppearance(String imageUrl) {
 		super();
 		this.template = GWT.create(Template.class);
 		this.imageUrl = imageUrl;

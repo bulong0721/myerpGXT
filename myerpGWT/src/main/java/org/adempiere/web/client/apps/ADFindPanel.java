@@ -10,10 +10,10 @@ import org.adempiere.common.ADExpression.ADPredicate;
 import org.adempiere.common.ADExpression.BooleanOperator;
 import org.adempiere.common.ADExpression.FieldOperator;
 import org.adempiere.web.client.Messages;
-import org.adempiere.web.client.component.ADFieldBuilder;
-import org.adempiere.web.client.component.ADFormBuilder;
-import org.adempiere.web.client.component.ADModalDialog;
-import org.adempiere.web.client.component.AdModelEditor;
+import org.adempiere.web.client.component.FieldBuilder;
+import org.adempiere.web.client.component.TabBuilder;
+import org.adempiere.web.client.component.ModalDialog;
+import org.adempiere.web.client.component.TabEditor;
 import org.adempiere.web.client.event.ConfirmToolListener;
 import org.adempiere.web.client.model.FieldModel;
 import org.adempiere.web.client.model.FormField;
@@ -52,7 +52,7 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 import com.sencha.gxt.widget.core.client.treegrid.TreeGrid;
 
-public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
+public class ADFindPanel extends ModalDialog implements ConfirmToolListener {
 
 	private static final String			OPERATOR_BOOL_OR	= "**Or**";
 	private static final String			OPERATOR_BOOL_AND	= "**And**";
@@ -65,7 +65,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 	@UiField
 	TabPanel							tabContainer;
 	@UiField(provided = true)
-	AdModelEditor						simpleEditor;
+	TabEditor						simpleEditor;
 	@UiField
 	ConfirmToolBar						toolBar;
 	@UiField
@@ -160,10 +160,10 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 
 	private void initWidget(final TabModel tabModel) {
 		List<? extends FormField> fieldList = pickSimpleFields(tabModel);
-		ADFormBuilder formStrategy = new ADFormBuilder(fieldList);
+		TabBuilder formStrategy = new TabBuilder(fieldList);
 		formStrategy.setCreateGridEditor(false);
 		formStrategy.setCanReadOnly(false);
-		simpleEditor = new AdModelEditor(formStrategy);
+		simpleEditor = new TabEditor(formStrategy);
 		simpleEditor.setLabelWidth(85);
 		simpleEditor.setLayoutWidth(0.62d);
 
@@ -203,7 +203,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 		opComboBox.setEditable(false);
 		editing.addEditor(operatorColumn, opComboBox);
 
-		final ADFormBuilder gridStrategy = new ADFormBuilder(tabModel.getFieldList());
+		final TabBuilder gridStrategy = new TabBuilder(tabModel.getFieldList());
 //		gridStrategy.setDisableKey(false);
 		editing.addBeforeStartEditHandler(new BeforeStartEditHandler<ADExpression>() {
 			@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -214,7 +214,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 					event.setCancelled(true);
 					return;
 				}
-				ADFieldBuilder fieldStrategy = gridStrategy.getFieldStrategy(item.getColumnName());
+				FieldBuilder fieldStrategy = gridStrategy.getFieldStrategy(item.getColumnName());
 				if (null != fieldStrategy) {
 					Field value1Editor = fieldStrategy.getGridEditor();
 					editing.addEditor(value1Column, fieldStrategy.getConverter(), value1Editor);
@@ -302,7 +302,7 @@ public class ADFindPanel extends ADModalDialog implements ConfirmToolListener {
 
 	private void createSimpleConditon() {
 		simpleConditon = new ADPredicate(BooleanOperator.Or);
-		for (ADFieldBuilder fieldStrategy : simpleEditor.getFieldList()) {
+		for (FieldBuilder fieldStrategy : simpleEditor.getFieldList()) {
 			String columnName = fieldStrategy.getField().getPropertyName();
 			String value = StringUtil.toString(fieldStrategy.getFormEditor().getValue());
 			if (StringUtil.isNullOrEmpty(value)) {

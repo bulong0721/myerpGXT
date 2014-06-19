@@ -22,23 +22,23 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Object>>, IsWidget {
-	private ADFormBuilder			tabStrategy;
+public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object>>, IsWidget {
+	private TabBuilder			tabStrategy;
 	// private EditorChain<Object, Field<Object>> chain;
-	private List<ADFieldBuilder>	fieldList;
+	private List<FieldBuilder>	fieldList;
 	private MapEntry				model;
 	private CssFloatLayoutContainer	container;
 	private double					layoutWidth	= 0.485d;
 	private int						labelWidth	= 130;
 
 	@UiConstructor
-	public AdModelEditor(ADFormBuilder tabStrategy) {
+	public TabEditor(TabBuilder tabStrategy) {
 		super();
 		this.tabStrategy = tabStrategy;
-		this.fieldList = new ArrayList<ADFieldBuilder>();
+		this.fieldList = new ArrayList<FieldBuilder>();
 	}
 
-	public AdModelEditor() {
+	public TabEditor() {
 	}
 
 	public void setLayoutWidth(double layoutWidth) {
@@ -57,7 +57,7 @@ public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Ob
 			container.setAdjustForScroll(true);
 			CssFloatLayoutContainer groupContainer = null;
 			String oldFieldGroup = null;
-			for (ADFieldBuilder fieldStrategy : tabStrategy.getFieldStrategies()) {
+			for (FieldBuilder fieldStrategy : tabStrategy.getFieldStrategies()) {
 				FormField field = fieldStrategy.getField();
 				String fieldGroup = field.getFieldGroup();
 				if (!StringUtil.isNullOrEmpty(fieldGroup)) {
@@ -80,7 +80,7 @@ public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Ob
 		return container;
 	}
 
-	private void layoutFiled(CssFloatLayoutContainer container, ADFieldBuilder fieldStrategy) {
+	private void layoutFiled(CssFloatLayoutContainer container, FieldBuilder fieldStrategy) {
 		FieldLabel fieldLabel = fieldStrategy.getFieldLabel(labelWidth);
 		Widget widget = fieldLabel.getWidget();
 		if (widget instanceof Field) {
@@ -96,7 +96,7 @@ public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Ob
 		if (null == fieldList || null == model) {
 			return;
 		}
-		for (ADFieldBuilder fieldStrategy : fieldList) {
+		for (FieldBuilder fieldStrategy : fieldList) {
 			Field formEditor = fieldStrategy.getFormEditor();
 			Converter converter = fieldStrategy.getConverter();
 			Object value = formEditor.getValue();
@@ -122,7 +122,7 @@ public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Ob
 			return;
 		}
 		this.model = model;
-		for (ADFieldBuilder fieldStrategy : fieldList) {
+		for (FieldBuilder fieldStrategy : fieldList) {
 			Converter converter = fieldStrategy.getConverter();
 			Field formEditor = fieldStrategy.getFormEditor();
 			DisplayType fieldType = fieldStrategy.getField().getFieldType();
@@ -154,7 +154,7 @@ public class AdModelEditor implements CompositeEditor<MapEntry, Object, Field<Ob
 		// this.chain = chain;
 	}
 
-	public List<ADFieldBuilder> getFieldList() {
+	public List<FieldBuilder> getFieldList() {
 		return fieldList;
 	}
 

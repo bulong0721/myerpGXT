@@ -6,10 +6,10 @@ import java.util.Set;
 
 import org.adempiere.common.ADModelKey;
 import org.adempiere.web.client.Messages;
-import org.adempiere.web.client.component.ADFormBuilder;
-import org.adempiere.web.client.component.ADModelDriver;
-import org.adempiere.web.client.component.ADModelReader;
-import org.adempiere.web.client.component.AdModelEditor;
+import org.adempiere.web.client.component.TabBuilder;
+import org.adempiere.web.client.component.TabDriver;
+import org.adempiere.web.client.component.EntryReader;
+import org.adempiere.web.client.component.TabEditor;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
 import org.adempiere.web.client.event.ActionEvent;
 import org.adempiere.web.client.event.ActionListener;
@@ -87,9 +87,9 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	private MapEntry				editRecord;
 	private ColumnModel<MapEntry>	cm;
 	private ListStore<MapEntry>	store;
-	private ADFormBuilder			tabStrategy;
+	private TabBuilder			tabStrategy;
 	private GridEditing<MapEntry>	gridEditing;
-	private ADModelDriver			adModelDriver;
+	private TabDriver			adModelDriver;
 	private ADModelKeyProvider		keyProvider;
 	private ADTreePanel				treePanel;
 	@UiField(provided = true)
@@ -97,7 +97,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	@UiField(provided = true)
 	PagingToolBar					pageToolBar;
 	@UiField(provided = true)
-	AdModelEditor					formEditing;
+	TabEditor					formEditing;
 	@UiField
 	CardLayoutContainer				layoutContainer;
 	@UiField(provided = true)
@@ -107,7 +107,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 
 	public SimpleTabPanel(ADWindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar) {
 		super(windowPanel, tabModel, toolBar);
-		this.tabStrategy = new ADFormBuilder(tabModel.getFieldList());
+		this.tabStrategy = new TabBuilder(tabModel.getFieldList());
 		this.tabStrategy.setFieldButtonListener(this);
 	}
 
@@ -162,7 +162,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 				adempiereService.getWindowTabData(loadConfig, callback);
 			}
 		};
-		ADModelReader reader = new ADModelReader();
+		EntryReader reader = new EntryReader();
 		loader = new PagingLoader<PageRequest, PagingLoadResult<MapEntry>>(proxy, reader);
 		loader.setRemoteSort(true);
 		loader.addLoadExceptionHandler(new LoadExceptionHandler<PageRequest>() {
@@ -249,7 +249,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	private void createForm() {
-		formEditing = new AdModelEditor(tabStrategy);
+		formEditing = new TabEditor(tabStrategy);
 		formEditing.asWidget();
 	}
 
@@ -274,7 +274,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 		Widget nextWidget = layoutContainer.getWidget(nextIndex);
 		layoutContainer.setActiveWidget(nextWidget);
 		if (null == adModelDriver) {
-			adModelDriver = GWT.create(ADModelDriver.class);
+			adModelDriver = GWT.create(TabDriver.class);
 			adModelDriver.initialize(formEditing);
 		}
 		if (isGridMode()) {

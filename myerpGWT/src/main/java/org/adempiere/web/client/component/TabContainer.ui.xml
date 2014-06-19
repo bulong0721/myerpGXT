@@ -15,7 +15,7 @@
 	<ui:with type="com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData" field="barLayoutData">
 		<ui:attributes margins="{margins_4}" />
 	</ui:with>
-	<ui:style type="org.adempiere.web.client.component.ADTabContainer.ADTabpanelStyle" field="panelStyle">
+	<ui:style type="org.adempiere.web.client.component.TabContainer.ADTabpanelStyle" field="panelStyle">
 		.pushButton td div {
 			text-align: left !important;
 		}

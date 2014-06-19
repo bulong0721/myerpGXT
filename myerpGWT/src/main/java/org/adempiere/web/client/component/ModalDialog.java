@@ -5,7 +5,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 
-public abstract class ADModalDialog implements IsWidget {
+public abstract class ModalDialog implements IsWidget {
 	private Window	modalwindow;
 
 	public Window getWindow() {

@@ -43,7 +43,7 @@
 						<gxt:ContentPanel ui:field="treeContainer" />
 					</container:child>
 					<container:child layoutData="{dataFormLayoutData}">
-						<component:AdModelEditor ui:field="formEditing" />
+						<component:TabEditor ui:field="formEditing" />
 					</container:child>
 				</container:HorizontalLayoutContainer>
 			</container:child>

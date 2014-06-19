@@ -1,6 +1,6 @@
 package org.adempiere.web.client.util;
 
-import org.adempiere.web.client.component.ImageButtonAppearance;
+import org.adempiere.web.client.component.ImgButtonAppearance;
 
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -16,7 +16,7 @@ import com.sencha.gxt.widget.core.client.container.HasLayout;
 public final class WidgetUtil {
 
 	public static IconButton createIconButton(String imageUrl) {
-		ImageButtonAppearance appearance = new ImageButtonAppearance(imageUrl);
+		ImgButtonAppearance appearance = new ImgButtonAppearance(imageUrl);
 		IconConfig config = new IconConfig("iconButton");
 		return new IconButton(appearance, config);
 	}

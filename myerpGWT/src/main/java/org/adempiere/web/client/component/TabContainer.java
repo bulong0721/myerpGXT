@@ -24,9 +24,9 @@ import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData;
 import com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer;
 
-public class ADTabContainer extends Composite implements HasValueChangeHandlers<Object> {
+public class TabContainer extends Composite implements HasValueChangeHandlers<Object> {
 
-	private static ADTabpanelUiBinder	uiBinder	= GWT.create(ADTabpanelUiBinder.class);
+	private static TabpanelUiBinder	uiBinder	= GWT.create(TabpanelUiBinder.class);
 
 	private final class TabChangetHandler implements ValueChangeHandler<HasValue<Boolean>> {
 		@Override
@@ -35,11 +35,11 @@ public class ADTabContainer extends Composite implements HasValueChangeHandlers<
 			int index = tabContainer.getWidgetIndex(widget);
 			Widget content = bodyContainer.getWidget(index);
 			bodyContainer.setActiveWidget(content);
-			ValueChangeEvent.fire(ADTabContainer.this, getActiveTag());
+			ValueChangeEvent.fire(TabContainer.this, getActiveTag());
 		}
 	}
 
-	interface ADTabpanelUiBinder extends UiBinder<Widget, ADTabContainer> {
+	interface TabpanelUiBinder extends UiBinder<Widget, TabContainer> {
 	}
 
 	interface ADTabpanelStyle extends CssResource {
@@ -131,7 +131,7 @@ public class ADTabContainer extends Composite implements HasValueChangeHandlers<
 	private static final int			INIT_SIZE	= 100;
 	private int							maxLevel;
 
-	public ADTabContainer() {
+	public TabContainer() {
 		initWidget(uiBinder.createAndBindUi(this));
 		tabGroup.addValueChangeHandler(handler);
 	}

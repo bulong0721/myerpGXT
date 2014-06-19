@@ -3,9 +3,9 @@ package org.adempiere.web.client.apps;
 import java.util.List;
 
 import org.adempiere.common.ADExpression;
-import org.adempiere.web.client.component.ADModalDialog;
-import org.adempiere.web.client.component.ADTabContainer;
-import org.adempiere.web.client.component.ADTabContainer.TabItemConfig;
+import org.adempiere.web.client.component.ModalDialog;
+import org.adempiere.web.client.component.TabContainer;
+import org.adempiere.web.client.component.TabContainer.TabItemConfig;
 import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.event.WindowToolListener;
 import org.adempiere.web.client.model.PageRequest;
@@ -27,7 +27,7 @@ import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.event.HideEvent;
 import com.sencha.gxt.widget.core.client.event.HideEvent.HideHandler;
 
-public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
+public class ADWindowPanel extends ModalDialog implements WindowToolListener {
 
 	private static ADWindowPanelUiBinder	uiBinder	= GWT.create(ADWindowPanelUiBinder.class);
 
@@ -46,7 +46,7 @@ public class ADWindowPanel extends ADModalDialog implements WindowToolListener {
 	@UiField
 	CWindowToolBar				toolBar;
 	@UiField
-	ADTabContainer				tabSet;
+	TabContainer				tabSet;
 
 	@Override
 	public Widget asWidget() {

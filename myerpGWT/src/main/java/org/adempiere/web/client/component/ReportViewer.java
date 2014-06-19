@@ -10,11 +10,11 @@ import com.google.gwt.user.client.ui.Frame;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ADReportViewer implements IsWidget, ReportToolListener {
+public class ReportViewer implements IsWidget, ReportToolListener {
 
-	private static ADReportViewerUiBinder	uiBinder	= GWT.create(ADReportViewerUiBinder.class);
+	private static ReportViewerUiBinder	uiBinder	= GWT.create(ReportViewerUiBinder.class);
 
-	interface ADReportViewerUiBinder extends UiBinder<Widget, ADReportViewer> {
+	interface ReportViewerUiBinder extends UiBinder<Widget, ReportViewer> {
 	}
 
 	@UiField
@@ -25,11 +25,11 @@ public class ADReportViewer implements IsWidget, ReportToolListener {
 	private Widget	widget	= null;
 	private Integer	processId;
 
-	public ADReportViewer() {
+	public ReportViewer() {
 
 	}
 
-	public ADReportViewer(Integer iProcessId) {
+	public ReportViewer(Integer iProcessId) {
 		super();
 		this.processId = iProcessId;
 	}

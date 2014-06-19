@@ -39,7 +39,7 @@
 			<container:child layoutData="{simpleLayout}">
 				<tabs:TabPanel borders="false" layoutData="{simpleLayout}" ui:field="tabContainer">
 					<tabs:child config="{simpleConfig}">
-						<component:AdModelEditor ui:field="simpleEditor" />
+						<component:TabEditor ui:field="simpleEditor" />
 					</tabs:child>
 					<tabs:child config="{advanceConfig}">
 						<container:VerticalLayoutContainer>

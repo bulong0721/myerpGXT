@@ -17,16 +17,16 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 
-public class ADFormBuilder {
+public class TabBuilder {
 	private List<? extends FormField>	fieldList;
-	private List<ADFieldBuilder>		fieldStrategies;
+	private List<FieldBuilder>		fieldStrategies;
 	private boolean						canReadOnly			= true;
 	private boolean						createFormEditor	= true;
 	private boolean						createGridEditor	= true;
 	private ActionListener				fieldButtonListener;
 	private boolean						isCreated;
 
-	public ADFormBuilder(List<? extends FormField> fieldList) {
+	public TabBuilder(List<? extends FormField> fieldList) {
 		super();
 		this.fieldList = fieldList;
 	}
@@ -36,10 +36,10 @@ public class ADFormBuilder {
 			return;
 		}
 		int size = fieldList.size();
-		fieldStrategies = new ArrayList<ADFieldBuilder>(size);
+		fieldStrategies = new ArrayList<FieldBuilder>(size);
 		for (FormField field : fieldList) {
 			if (field.isDisplayed() || field.isKey()) {
-				ADFieldBuilder fieldStrategy = new ADFieldBuilder(this, field);
+				FieldBuilder fieldStrategy = new FieldBuilder(this, field);
 				fieldStrategies.add(fieldStrategy);
 			}
 		}
@@ -70,16 +70,16 @@ public class ADFormBuilder {
 		this.createGridEditor = createGridEditor;
 	}
 
-	public List<ADFieldBuilder> getFieldStrategies() {
+	public List<FieldBuilder> getFieldStrategies() {
 		this.initialize();
 		return fieldStrategies;
 	}
 
-	public ADFieldBuilder getFieldStrategy(String column) {
+	public FieldBuilder getFieldStrategy(String column) {
 		if (StringUtil.isNullOrEmpty(column)) {
 			return null;
 		}
-		for (ADFieldBuilder fieldStrategy : getFieldStrategies()) {
+		for (FieldBuilder fieldStrategy : getFieldStrategies()) {
 			if (column.equalsIgnoreCase(fieldStrategy.getField().getPropertyName())) {
 				return fieldStrategy;
 			}
@@ -100,7 +100,7 @@ public class ADFormBuilder {
 		if (null != chkSm) {
 			columnList.add(chkSm.getColumn());
 		}
-		for (ADFieldBuilder strategy : getFieldStrategies()) {
+		for (FieldBuilder strategy : getFieldStrategies()) {
 			columnList.add(strategy.getColumnCfg());
 		}
 		return new ColumnModel<MapEntry>(columnList);
@@ -109,7 +109,7 @@ public class ADFormBuilder {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public GridEditing<MapEntry> createGridEditing(Grid<MapEntry> editableGrid) {
 		GridInlineEditing<MapEntry> editing = new GridInlineEditing<MapEntry>(editableGrid);
-		for (ADFieldBuilder strategy : getFieldStrategies()) {
+		for (FieldBuilder strategy : getFieldStrategies()) {
 			ColumnConfig<MapEntry, ?> columnConfig = strategy.getColumnCfg();
 			Field editor = strategy.getGridEditor();
 			Converter converter = strategy.getConverter();

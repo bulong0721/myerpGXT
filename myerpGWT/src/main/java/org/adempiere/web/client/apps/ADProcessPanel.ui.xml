@@ -57,7 +57,7 @@
 				<container:SimpleContainer styleName="{themeStyles.border}">
 					<container:VerticalLayoutContainer scrollMode="AUTO">
 						<container:child>
-							<component:AdModelEditor ui:field="prarmEditor" />
+							<component:TabEditor ui:field="prarmEditor" />
 						</container:child>
 					</container:VerticalLayoutContainer>
 				</container:SimpleContainer>
@@ -66,6 +66,6 @@
 				<widget:ConfirmToolBar ui:field="toolBar" />
 			</container:child>
 		</container:VerticalLayoutContainer>
-		<component:ADReportViewer ui:field="reportViewer" />
+		<component:ReportViewer ui:field="reportViewer" />
 	</container:CardLayoutContainer>
 </ui:UiBinder> 
