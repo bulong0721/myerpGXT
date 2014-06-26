@@ -5,9 +5,9 @@ import java.util.List;
 
 public class ProcessResult implements Serializable {
 	private static final long	serialVersionUID	= 1L;
+	private boolean				success				= true;
 	private String				title;
 	private String				pdfUrl;
-	private boolean				hasError;
 	private List<String>		logs;
 	private String				summary;
 
@@ -23,8 +23,8 @@ public class ProcessResult implements Serializable {
 		return pdfUrl;
 	}
 
-	public boolean hasError() {
-		return hasError;
+	public boolean isSuccess() {
+		return success;
 	}
 
 	public void setLogs(List<String> logs) {
@@ -39,8 +39,8 @@ public class ProcessResult implements Serializable {
 		return null;
 	}
 
-	public void setHasError(boolean hasError) {
-		this.hasError = hasError;
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 
 	public void setSummary(String summary) {
@@ -60,11 +60,11 @@ public class ProcessResult implements Serializable {
 	 * Method setSummary
 	 * 
 	 * @param translatedSummary String
-	 * @param error  boolean
+	 * @param error boolean
 	 */
 	public void setSummary(String translatedSummary, boolean error) {
 		setSummary(translatedSummary);
-		setHasError(error);
+		setSuccess(error);
 	} // setSummary
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.adempiere.common.ADModelKey;
 import org.adempiere.common.ADUserContext;
+import org.adempiere.common.CalloutResult;
 import org.adempiere.common.LookupValue;
 import org.adempiere.common.ProcessResult;
 import org.adempiere.web.client.model.FieldModel;
@@ -45,15 +46,13 @@ public interface AdempiereService extends RemoteService {
 	// acl
 	void deleteData(List<ADModelKey> keyList, String tableName) throws RuntimeException;
 
-	void selectData(List<ADModelKey> keyList, String tableName) throws RuntimeException;
-
 	// acl
 	void updateData(String json, String tableName) throws RuntimeException;
 
 	ADUserContext getADUserContext() throws RuntimeException;
 
 	// acl
-	String processCallout(FieldModel field, String rowJson) throws RuntimeException;
+	CalloutResult processCallout(FieldModel field, String rowJson) throws RuntimeException;
 
 	// acl
 	ProcessResult executeProcess(ProcessModel pModel, String rowJson, String paramJson) throws RuntimeException;

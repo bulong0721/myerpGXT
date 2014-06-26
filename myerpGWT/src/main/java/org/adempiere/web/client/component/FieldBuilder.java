@@ -7,8 +7,9 @@ import java.util.Map;
 
 import org.adempiere.common.DisplayType;
 import org.adempiere.common.LookupValue;
-import org.adempiere.web.client.event.ActionEvent;
+import org.adempiere.web.client.event.FieldEvent;
 import org.adempiere.web.client.event.ActionListener;
+import org.adempiere.web.client.event.FieldEvent.FieldAction;
 import org.adempiere.web.client.model.FormField;
 import org.adempiere.web.client.model.MapEntry;
 import org.adempiere.web.client.model.MapEntry.EntryValueProvider;
@@ -19,6 +20,8 @@ import org.adempiere.web.client.util.CommonUtil;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.Cell;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
@@ -323,19 +326,31 @@ public class FieldBuilder {
 		}
 		fieldLabel.setWidget(formEditor);
 		if (field.getFieldType().isButton()) {
-			TextButton button = new TextButton(field.getName());
+			final TextButton button = new TextButton(field.getName());
 			final ActionListener listener = tabBuilder.getFieldButtonListener();
 			if (null != listener) {
 				button.addSelectHandler(new SelectHandler() {
 					@Override
 					public void onSelect(SelectEvent event) {
-						listener.actionPerformed(new ActionEvent(field));
+						listener.actionPerformed(new FieldEvent(FieldAction.ButtionClick, field));
 					}
 				});
 			}
 			fieldLabel.setWidget(button);
+		} else {
+			handleValueChanged(formEditor);
 		}
 		return fieldLabel;
+	}
+
+	private void handleValueChanged(final Field editor) {
+		final ActionListener listener = tabBuilder.getFieldButtonListener();
+		editor.addValueChangeHandler(new ValueChangeHandler<Object>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<Object> event) {
+				listener.actionPerformed(new FieldEvent(FieldAction.ValueChange, field, editor));
+			}
+		});
 	}
 
 	public ListStore<LookupValue> getOptionStore() {

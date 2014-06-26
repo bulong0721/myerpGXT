@@ -48,6 +48,7 @@ public final class DTOUtil {
 		model.setMandatory(entity.isMandatory());
 		model.setParent(entity.isParent());
 		model.setReadOnly(entity.isReadOnly());
+		model.setAlwaysUpdateable(entity.isAlwaysUpdateable());
 		model.setUpdatable(entity.isUpdateable());
 		model.setSelectionColumn(entity.isSelectionColumn());
 		model.setName(entity.getName());
@@ -82,6 +83,7 @@ public final class DTOUtil {
 		model.setMandatory(entity.isMandatory());
 		model.setParent(entity.isParent());
 		model.setReadOnly(entity.isReadOnly());
+		model.setAlwaysUpdateable(entity.isAlwaysUpdateable());
 		model.setUpdatable(entity.isUpdateable());
 		model.setSelectionColumn(entity.isSelectionColumn());
 		model.setName(entity.getName());

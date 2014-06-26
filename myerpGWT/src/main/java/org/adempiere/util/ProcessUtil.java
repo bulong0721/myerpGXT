@@ -45,11 +45,11 @@ public final class ProcessUtil {
 			instance = createPInstance();
 		} catch (Exception e) {
 			pi.setSummary(e.getLocalizedMessage());
-			pi.setHasError(true);
+			pi.setSuccess(false);
 			return;
 		} catch (Error e) {
 			pi.setSummary(e.getLocalizedMessage());
-			pi.setHasError(true);
+			pi.setSuccess(false);
 			return;
 		}
 //		if (!POUtil.save(ctx.getEntityManager(), instance)) {

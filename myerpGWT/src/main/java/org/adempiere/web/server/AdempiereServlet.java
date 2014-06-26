@@ -16,6 +16,7 @@ import org.adempiere.common.ADExpression;
 import org.adempiere.common.ADExpression.ADPredicate;
 import org.adempiere.common.ADModelKey;
 import org.adempiere.common.ADUserContext;
+import org.adempiere.common.CalloutResult;
 import org.adempiere.common.DisplayType;
 import org.adempiere.common.IdentifierColumn;
 import org.adempiere.common.LookupValue;
@@ -24,6 +25,7 @@ import org.adempiere.common.RefCriteria;
 import org.adempiere.model.ADUser;
 import org.adempiere.persist.PersistContext;
 import org.adempiere.process.ProcessContext;
+import org.adempiere.util.CalloutUtil;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
 import org.adempiere.util.PermissionUtil;
@@ -467,15 +469,9 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 	}
 
 	@Override
-	public String processCallout(FieldModel field, String rowJson) throws RuntimeException {
-		// TODO Auto-generated method stub
+	public CalloutResult processCallout(FieldModel field, String rowJson) throws RuntimeException {
 		System.out.println("callout parameter:" + rowJson);
-		return StringUtil.EMPTY;
-	}
-
-	@Override
-	public void selectData(List<ADModelKey> keyList, String tableName) throws RuntimeException {
-		// TODO Auto-generated method stub
+		return CalloutUtil.processCallout(pCtx, field, rowJson);
 	}
 
 	@Override

@@ -5,13 +5,14 @@ import java.util.List;
 import java.util.Set;
 
 import org.adempiere.common.ADModelKey;
+import org.adempiere.common.CalloutResult;
 import org.adempiere.web.client.Messages;
 import org.adempiere.web.client.component.TabBuilder;
 import org.adempiere.web.client.component.TabDriver;
 import org.adempiere.web.client.component.EntryReader;
 import org.adempiere.web.client.component.TabEditor;
 import org.adempiere.web.client.component.AsyncSuccessCallback;
-import org.adempiere.web.client.event.ActionEvent;
+import org.adempiere.web.client.event.FieldEvent;
 import org.adempiere.web.client.event.ActionListener;
 import org.adempiere.web.client.form.AbstractForm;
 import org.adempiere.web.client.model.FieldModel;
@@ -31,6 +32,7 @@ import org.adempiere.web.client.util.ExceptionUtil;
 import org.adempiere.web.client.util.ExceptionUtil.RPCError;
 import org.adempiere.web.client.util.JSOUtil;
 import org.adempiere.web.client.util.LoggingUtil;
+import org.adempiere.web.client.util.StringUtil;
 import org.adempiere.web.client.util.WidgetUtil;
 import org.adempiere.web.client.widget.CWindowToolBar;
 import org.adempiere.web.client.widget.CWindowToolBar.ButtonStates;
@@ -86,10 +88,10 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	private MapEntry				newRecord;
 	private MapEntry				editRecord;
 	private ColumnModel<MapEntry>	cm;
-	private ListStore<MapEntry>	store;
-	private TabBuilder			tabStrategy;
+	private ListStore<MapEntry>		store;
+	private TabBuilder				tabStrategy;
 	private GridEditing<MapEntry>	gridEditing;
-	private TabDriver			adModelDriver;
+	private TabDriver				adModelDriver;
 	private EntryKeyProvider		keyProvider;
 	private TreePanel				treePanel;
 	@UiField(provided = true)
@@ -97,7 +99,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	@UiField(provided = true)
 	PagingToolBar					pageToolBar;
 	@UiField(provided = true)
-	TabEditor					formEditing;
+	TabEditor						formEditing;
 	@UiField
 	CardLayoutContainer				layoutContainer;
 	@UiField(provided = true)
@@ -485,52 +487,53 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent event) {
-		FieldModel fieldModel = (FieldModel) event.getSource();
-		AsyncCallback<FieldModel> callback = new AsyncSuccessCallback<FieldModel>() {
-			@Override
-			public void onSuccess(FieldModel field) {
-				if (hasChanges()) {
-					AlertMessageBox dialog = new AlertMessageBox("Adempiere", "Data has changes, please reload data!");
-					dialog.show();
-					return;
-				}
-				if (0 == field.getADProcessID()) {
-					return;
-				}
-				AsyncCallback<ProcessModel> callback = new AsyncSuccessCallback<ProcessModel>() {
-					@Override
-					public void onSuccess(ProcessModel pair) {
-						FormModel formModel = pair.getFormModel();
-						if (null != formModel) {
-							AbstractForm form = ClassUtil.newInstance(formModel.getClassname());
-							if (null != form) {
-								form.setProcessInfo(pair);
-								form.setWindow(WidgetUtil.createWindow(formModel.getName(), 600, 400));
-								form.show();
-							}
-						} else {
-							ProcessPanel processPanel = new ProcessPanel(pair);
-							MapEntry row = grid.getSelectionModel().getSelectedItem();
-							processPanel.setRowJSONString(row.toString());
-							processPanel.setWindow(WidgetUtil.createWindow("", 600, 400));
-							processPanel.show();
-						}
-					}
-				};
-				LoggingUtil.info("ProcessId:" + field.getADProcessID());
-				adempiereService.getProcessWithFormModel(field.getADProcessID(), callback);
+	public void actionPerformed(FieldEvent event) {
+		FieldModel field = (FieldModel) event.getField();
+		if (event.getAction().isButtionClick() && 0 != field.getADProcessID()) {
+			if (hasChanges()) {
+				WidgetUtil.showMessageBox("Adempiere", "Data has changes, please reload data!");
+				return;
 			}
-		};
-		processCallout(fieldModel, callback);
+			AsyncCallback<ProcessModel> callback = new AsyncSuccessCallback<ProcessModel>() {
+				@Override
+				public void onSuccess(ProcessModel pair) {
+					FormModel formModel = pair.getFormModel();
+					if (null != formModel) {
+						AbstractForm form = ClassUtil.newInstance(formModel.getClassname());
+						if (null != form) {
+							form.setProcessInfo(pair);
+							form.setWindow(WidgetUtil.createWindow(formModel.getName(), 600, 400));
+							form.show();
+						}
+					} else {
+						ProcessPanel processPanel = new ProcessPanel(pair);
+						MapEntry row = grid.getSelectionModel().getSelectedItem();
+						processPanel.setRowJSONString(row.toString());
+						processPanel.setWindow(WidgetUtil.createWindow("", 600, 400));
+						processPanel.show();
+					}
+				}
+			};
+			adempiereService.getProcessWithFormModel(field.getADProcessID(), callback);
+		} else if (event.getAction().isValueChange()) {
+			if (null != field.getCallout() && !formEditing.isFilling()) {
+				processCallout(field);
+			}
+		}
+
 	}
 
-	private void processCallout(final FieldModel field, final AsyncCallback<FieldModel> procCallback) {
-		AsyncCallback<String> callback = new AsyncSuccessCallback<String>() {
+	private void processCallout(final FieldModel field) {
+		AsyncCallback<CalloutResult> callback = new AsyncSuccessCallback<CalloutResult>() {
 			@Override
-			public void onSuccess(String result) {
-				if (null != procCallback) {
-					procCallback.onSuccess(field);
+			public void onSuccess(CalloutResult result) {
+				if (!result.isSuccess()) {
+					return;
+				}
+				String json = result.getOverWriteData();
+				if (!StringUtil.isNullOrEmpty(json)) {
+					JavaScriptObject jso = JSOUtil.eval(json);
+					formEditing.overWrite(jso);
 				}
 			}
 		};

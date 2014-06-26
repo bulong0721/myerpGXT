@@ -214,7 +214,7 @@ public class FindPanel extends ModalDialog implements ConfirmToolListener {
 					event.setCancelled(true);
 					return;
 				}
-				FieldBuilder fieldStrategy = gridStrategy.getFieldStrategy(item.getColumnName());
+				FieldBuilder fieldStrategy = gridStrategy.getFieldBuilder(item.getColumnName());
 				if (null != fieldStrategy) {
 					Field value1Editor = fieldStrategy.getGridEditor();
 					editing.addEditor(value1Column, fieldStrategy.getConverter(), value1Editor);

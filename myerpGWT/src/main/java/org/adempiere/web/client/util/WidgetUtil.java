@@ -8,12 +8,18 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.ButtonCell.IconAlign;
 import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.Window;
+import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
 import com.sencha.gxt.widget.core.client.button.IconButton;
 import com.sencha.gxt.widget.core.client.button.IconButton.IconConfig;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HasLayout;
 
 public final class WidgetUtil {
+
+	public static void showMessageBox(String title, String message) {
+		AlertMessageBox dialog = new AlertMessageBox(title, message);
+		dialog.show();
+	}
 
 	public static IconButton createIconButton(String imageUrl) {
 		ImgButtonAppearance appearance = new ImgButtonAppearance(imageUrl);
@@ -34,7 +40,7 @@ public final class WidgetUtil {
 			layout.forceLayout();
 		}
 	}
-	
+
 	public static void syncSize(Widget widget) {
 		Component component = (Component) widget;
 		if (null != component) {

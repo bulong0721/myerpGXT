@@ -40,6 +40,21 @@ public class JSOUtil {
 		}
 	}
 
+	public static String[] getKeys(String json) {
+		JavaScriptObject jsObject = JSOUtil.eval(json);
+		return JSOUtil.getKeys(jsObject);
+	}
+
+	public static native String[] getKeys(JavaScriptObject jsObject) /*-{
+		var i = 0;
+		for ( var key in jsObject) {
+			if (jsObject.hasOwnProperty(key)) {
+				result[i++] = key;
+			}
+		}
+		return result;
+	}-*/;
+
 	public static void setAttribute(JavaScriptObject elem, String attr, Boolean value) {
 		if (value == null) {
 			setNullAttribute(elem, attr);
@@ -188,21 +203,21 @@ public class JSOUtil {
 		String jsonString = toString(jso);
 		return JSOUtil.eval(jsonString);
 	};
-	
+
 	public static native int arrayLength(JavaScriptObject array) /*-{
-    	return array.length;
+		return array.length;
 	}-*/;
 
 	public static native Object arrayGet(JavaScriptObject array, int index) /*-{
-	    return array[index];
+		return array[index];
 	}-*/;
 
 	public static native void arraySet(JavaScriptObject array, int index, Object value) /*-{
-	    array[index] = value;
+		array[index] = value;
 	}-*/;
-	
+
 	public static native void arraySet(JavaScriptObject array, int index, JavaScriptObject value) /*-{
-	    array[index] = value;
+		array[index] = value;
 	}-*/;
 
 }

@@ -6,8 +6,11 @@ import java.util.List;
 import org.adempiere.common.DisplayType;
 import org.adempiere.web.client.model.FormField;
 import org.adempiere.web.client.model.MapEntry;
+import org.adempiere.web.client.util.JSOUtil;
+import org.adempiere.web.client.util.LoggingUtil;
 import org.adempiere.web.client.util.StringUtil;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.editor.client.CompositeEditor;
 import com.google.gwt.editor.client.EditorDelegate;
 import com.google.gwt.uibinder.client.UiConstructor;
@@ -23,18 +26,18 @@ import com.sencha.gxt.widget.core.client.info.Info;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object>>, IsWidget {
-	private TabBuilder			tabStrategy;
-	// private EditorChain<Object, Field<Object>> chain;
-	private List<FieldBuilder>	fieldList;
+	private TabBuilder				tabBuilder;
+	private List<FieldBuilder>		fieldList;
 	private MapEntry				model;
 	private CssFloatLayoutContainer	container;
 	private double					layoutWidth	= 0.485d;
 	private int						labelWidth	= 130;
+	private boolean					filling;
 
 	@UiConstructor
 	public TabEditor(TabBuilder tabStrategy) {
 		super();
-		this.tabStrategy = tabStrategy;
+		this.tabBuilder = tabStrategy;
 		this.fieldList = new ArrayList<FieldBuilder>();
 	}
 
@@ -49,15 +52,19 @@ public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object
 		this.labelWidth = labelWidth;
 	}
 
+	public boolean isFilling() {
+		return filling;
+	}
+
 	@Override
 	public Widget asWidget() {
 		if (null == container) {
-			container = new CssFloatLayoutContainer();			
+			container = new CssFloatLayoutContainer();
 			container.addStyleName("modelEditor");
 			container.setAdjustForScroll(true);
 			CssFloatLayoutContainer groupContainer = null;
 			String oldFieldGroup = null;
-			for (FieldBuilder fieldStrategy : tabStrategy.getFieldStrategies()) {
+			for (FieldBuilder fieldStrategy : tabBuilder.getFieldBuilders()) {
 				FormField field = fieldStrategy.getField();
 				String fieldGroup = field.getFieldGroup();
 				if (!StringUtil.isNullOrEmpty(fieldGroup)) {
@@ -121,6 +128,7 @@ public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object
 			return;
 		}
 		this.model = model;
+		this.filling = true;
 		for (FieldBuilder fieldStrategy : fieldList) {
 			Converter converter = fieldStrategy.getConverter();
 			Field formEditor = fieldStrategy.getFormEditor();
@@ -131,6 +139,27 @@ public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object
 			}
 			formEditor.setValue(value);
 		}
+		this.filling = false;
+		LoggingUtil.info("TabEditor set value...");
+	}
+
+	public void overWrite(JavaScriptObject jso) {
+		if (null == fieldList) {
+			return;
+		}
+		this.filling = true;
+		for (String key : JSOUtil.getKeys(jso)) {
+			FieldBuilder builder = getFieldBuilder(key);
+			Converter converter = builder.getConverter();
+			Field formEditor = builder.getFormEditor();
+			DisplayType fieldType = builder.getField().getFieldType();
+			Object value = model.getValue(formEditor.getName(), fieldType);
+			if (null != converter) {
+				value = converter.convertModelValue(value);
+			}
+			formEditor.setValue(value);
+		}
+		this.filling = false;
 	}
 
 	@Override
@@ -150,11 +179,18 @@ public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object
 
 	@Override
 	public void setEditorChain(EditorChain<Object, Field<Object>> chain) {
-		// this.chain = chain;
 	}
 
 	public List<FieldBuilder> getFieldList() {
 		return fieldList;
 	}
 
+	public FieldBuilder getFieldBuilder(String propertyName) {
+		for (FieldBuilder builder : fieldList) {
+			if (StringUtil.equals(propertyName, builder.getField().getPropertyName())) {
+				return builder;
+			}
+		}
+		return null;
+	}
 }

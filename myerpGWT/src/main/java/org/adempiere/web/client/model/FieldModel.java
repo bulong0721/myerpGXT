@@ -20,9 +20,10 @@ public class FieldModel implements GwtSerializable, FormField {
 	private Boolean	mandatory;
 	private Boolean	parent;
 	private Boolean	readonly;
-	private Boolean updatable;
+	private Boolean	updatable;
 	private Boolean	sameline;
 	private Boolean	selectionColumn;
+	private Boolean	alwaysUpdateable;
 	private String	name;
 	private String	readonlyLogic;
 	private Integer	seqNo;
@@ -33,7 +34,15 @@ public class FieldModel implements GwtSerializable, FormField {
 	private String	valueMin;
 	private String	vFormat;
 	private Integer	ADFieldID;
-	
+
+	public Boolean isAlwaysUpdateable() {
+		return alwaysUpdateable;
+	}
+
+	public void setAlwaysUpdateable(Boolean alwaysUpdateable) {
+		this.alwaysUpdateable = alwaysUpdateable;
+	}
+
 	public Boolean isUpdatable() {
 		return updatable;
 	}
@@ -269,7 +278,7 @@ public class FieldModel implements GwtSerializable, FormField {
 	public Integer getADFieldID() {
 		return ADFieldID;
 	}
-	
+
 	public DisplayType getFieldType() {
 		return DisplayType.fromInteger(ADReferenceID);
 	}

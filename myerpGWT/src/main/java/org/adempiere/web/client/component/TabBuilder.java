@@ -19,7 +19,7 @@ import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 
 public class TabBuilder {
 	private List<? extends FormField>	fieldList;
-	private List<FieldBuilder>		fieldStrategies;
+	private List<FieldBuilder>			fieldBuilders;
 	private boolean						canReadOnly			= true;
 	private boolean						createFormEditor	= true;
 	private boolean						createGridEditor	= true;
@@ -36,11 +36,11 @@ public class TabBuilder {
 			return;
 		}
 		int size = fieldList.size();
-		fieldStrategies = new ArrayList<FieldBuilder>(size);
+		fieldBuilders = new ArrayList<FieldBuilder>(size);
 		for (FormField field : fieldList) {
 			if (field.isDisplayed() || field.isKey()) {
 				FieldBuilder fieldStrategy = new FieldBuilder(this, field);
-				fieldStrategies.add(fieldStrategy);
+				fieldBuilders.add(fieldStrategy);
 			}
 		}
 		isCreated = true;
@@ -70,16 +70,16 @@ public class TabBuilder {
 		this.createGridEditor = createGridEditor;
 	}
 
-	public List<FieldBuilder> getFieldStrategies() {
+	public List<FieldBuilder> getFieldBuilders() {
 		this.initialize();
-		return fieldStrategies;
+		return fieldBuilders;
 	}
 
-	public FieldBuilder getFieldStrategy(String column) {
+	public FieldBuilder getFieldBuilder(String column) {
 		if (StringUtil.isNullOrEmpty(column)) {
 			return null;
 		}
-		for (FieldBuilder fieldStrategy : getFieldStrategies()) {
+		for (FieldBuilder fieldStrategy : getFieldBuilders()) {
 			if (column.equalsIgnoreCase(fieldStrategy.getField().getPropertyName())) {
 				return fieldStrategy;
 			}
@@ -100,8 +100,8 @@ public class TabBuilder {
 		if (null != chkSm) {
 			columnList.add(chkSm.getColumn());
 		}
-		for (FieldBuilder strategy : getFieldStrategies()) {
-			columnList.add(strategy.getColumnCfg());
+		for (FieldBuilder builder : getFieldBuilders()) {
+			columnList.add(builder.getColumnCfg());
 		}
 		return new ColumnModel<MapEntry>(columnList);
 	}
@@ -109,7 +109,7 @@ public class TabBuilder {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public GridEditing<MapEntry> createGridEditing(Grid<MapEntry> editableGrid) {
 		GridInlineEditing<MapEntry> editing = new GridInlineEditing<MapEntry>(editableGrid);
-		for (FieldBuilder strategy : getFieldStrategies()) {
+		for (FieldBuilder strategy : getFieldBuilders()) {
 			ColumnConfig<MapEntry, ?> columnConfig = strategy.getColumnCfg();
 			Field editor = strategy.getGridEditor();
 			Converter converter = strategy.getConverter();

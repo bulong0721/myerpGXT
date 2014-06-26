@@ -12,8 +12,8 @@ public abstract class ServerProcess implements ProcessCall {
 		if (process(ctx)) {
 		}
 		unlock();
-		postProcess(!pInfo.hasError());
-		return !pInfo.hasError();
+		postProcess(!pInfo.isSuccess());
+		return !pInfo.isSuccess();
 	}
 
 	private void unlock() {
