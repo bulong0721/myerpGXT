@@ -9,244 +9,247 @@ import org.adempiere.persist.AdMenuListener;
  */
 @Entity
 @Table(name = "ad_menu")
+//@DiscriminatorValue("10")
 @EntityListeners({ AdMenuListener.class })
 public class ADMenu extends ADTreeNode {
-	private static final long	serialVersionUID	= 1L;
-	private Integer				aDFormID;
-	private Integer				aDProcessID;
-	private Integer				aDTaskID;
-	private Integer				aDWindowID;
-	private Integer				aDWorkbenchID;
-	private Integer				aDWorkflowID;
-	private String				action;
-	private Boolean				active;
-	private Boolean				centrallyMaintained;
-	private String				description;
-	private String				entityType;
-	private String				name;
-	private Boolean				readOnly;
-	private Boolean				sOTrx;
-	private Boolean				summary;
 
-	public ADMenu() {
-	}
+    private static final long serialVersionUID = 1L;
+    private Integer           aDFormID;
+    private Integer           aDProcessID;
+    private Integer           aDTaskID;
+    private Integer           aDWindowID;
+    private Integer           aDWorkbenchID;
+    private Integer           aDWorkflowID;
+    private String            action;
+    private Boolean           active;
+    private Boolean           centrallyMaintained;
+    private String            description;
+    private String            entityType;
+    private String            name;
+    private Boolean           readOnly;
+    private Boolean           sOTrx;
+    private Boolean           summary;
 
-	@Basic
-	@Column(name = "NODE_ID", columnDefinition = "INT", nullable = false)
-	public Integer getADMenuID() {
-		return getNodeID();
-	}
+    public ADMenu(){
+    }
 
-	public void setADMenuID(Integer adMenuId) {
-		// setNodeId(adMenuId);
-	}
+    @Basic
+    @Column(name = "NODE_ID", columnDefinition = "INT", nullable = false)
+    public Integer getADMenuID() {
+        return getNodeID();
+    }
 
-	@Basic
-	@Column(name = "AD_FORM_ID", columnDefinition = "INT")
-	public Integer getADFormID() {
-		return aDFormID;
-	}
+    public void setADMenuID(Integer adMenuId) {
+        // setNodeId(adMenuId);
+    }
 
-	public void setADFormID(Integer aDFormID) {
-		this.aDFormID = aDFormID;
-	}
+    @Basic
+    @Column(name = "AD_FORM_ID", columnDefinition = "INT")
+    public Integer getADFormID() {
+        return aDFormID;
+    }
 
-	@Basic
-	@Column(name = "AD_PROCESS_ID", columnDefinition = "INT")
-	public Integer getADProcessID() {
-		return aDProcessID;
-	}
+    public void setADFormID(Integer aDFormID) {
+        this.aDFormID = aDFormID;
+    }
 
-	public void setADProcessID(Integer aDProcessID) {
-		this.aDProcessID = aDProcessID;
-	}
+    @Basic
+    @Column(name = "AD_PROCESS_ID", columnDefinition = "INT")
+    public Integer getADProcessID() {
+        return aDProcessID;
+    }
 
-	@Basic
-	@Column(name = "AD_TASK_ID", columnDefinition = "INT")
-	public Integer getADTaskID() {
-		return aDTaskID;
-	}
+    public void setADProcessID(Integer aDProcessID) {
+        this.aDProcessID = aDProcessID;
+    }
 
-	public void setADTaskID(Integer aDTaskID) {
-		this.aDTaskID = aDTaskID;
-	}
+    @Basic
+    @Column(name = "AD_TASK_ID", columnDefinition = "INT")
+    public Integer getADTaskID() {
+        return aDTaskID;
+    }
 
-	@Basic
-	@Column(name = "AD_WINDOW_ID", columnDefinition = "INT")
-	public Integer getADWindowID() {
-		return aDWindowID;
-	}
+    public void setADTaskID(Integer aDTaskID) {
+        this.aDTaskID = aDTaskID;
+    }
 
-	public void setADWindowID(Integer aDWindowID) {
-		this.aDWindowID = aDWindowID;
-	}
+    @Basic
+    @Column(name = "AD_WINDOW_ID", columnDefinition = "INT")
+    public Integer getADWindowID() {
+        return aDWindowID;
+    }
 
-	@Basic
-	@Column(name = "AD_WORKBENCH_ID", columnDefinition = "INT")
-	public Integer getADWorkbenchID() {
-		return aDWorkbenchID;
-	}
+    public void setADWindowID(Integer aDWindowID) {
+        this.aDWindowID = aDWindowID;
+    }
 
-	public void setADWorkbenchID(Integer aDWorkbenchID) {
-		this.aDWorkbenchID = aDWorkbenchID;
-	}
+    @Basic
+    @Column(name = "AD_WORKBENCH_ID", columnDefinition = "INT")
+    public Integer getADWorkbenchID() {
+        return aDWorkbenchID;
+    }
 
-	@Basic
-	@Column(name = "AD_WORKFLOW_ID", columnDefinition = "INT")
-	public Integer getADWorkflowID() {
-		return aDWorkflowID;
-	}
+    public void setADWorkbenchID(Integer aDWorkbenchID) {
+        this.aDWorkbenchID = aDWorkbenchID;
+    }
 
-	public void setADWorkflowID(Integer aDWorkflowID) {
-		this.aDWorkflowID = aDWorkflowID;
-	}
+    @Basic
+    @Column(name = "AD_WORKFLOW_ID", columnDefinition = "INT")
+    public Integer getADWorkflowID() {
+        return aDWorkflowID;
+    }
 
-	@Basic
-	@Column(length = 1)
-	public String getAction() {
-		return action;
-	}
+    public void setADWorkflowID(Integer aDWorkflowID) {
+        this.aDWorkflowID = aDWorkflowID;
+    }
 
-	public void setAction(String action) {
-		this.action = action;
-	}
+    @Basic
+    @Column(length = 1)
+    public String getAction() {
+        return action;
+    }
 
-	@Basic
-	@Column(name = "ISACTIVE", nullable = false)
-	public Boolean isActive() {
-		return active;
-	}
+    public void setAction(String action) {
+        this.action = action;
+    }
 
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
+    @Basic
+    @Column(name = "ISACTIVE", nullable = false)
+    public Boolean isActive() {
+        return active;
+    }
 
-	@Basic
-	@Column(name = "ISCENTRALLYMAINTAINED")
-	public Boolean isCentrallyMaintained() {
-		return centrallyMaintained;
-	}
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 
-	public void setCentrallyMaintained(Boolean centrallyMaintained) {
-		this.centrallyMaintained = centrallyMaintained;
-	}
+    @Basic
+    @Column(name = "ISCENTRALLYMAINTAINED")
+    public Boolean isCentrallyMaintained() {
+        return centrallyMaintained;
+    }
 
-	@Basic
-	public String getDescription() {
-		return description;
-	}
+    public void setCentrallyMaintained(Boolean centrallyMaintained) {
+        this.centrallyMaintained = centrallyMaintained;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    @Basic
+    public String getDescription() {
+        return description;
+    }
 
-	@Basic
-	@Column(nullable = false, length = 40)
-	public String getEntityType() {
-		return entityType;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setEntityType(String entityType) {
-		this.entityType = entityType;
-	}
+    @Basic
+    @Column(nullable = false, length = 40)
+    public String getEntityType() {
+        return entityType;
+    }
 
-	@Basic
-	@Column(nullable = false, length = 60)
-	public String getName() {
-		return name;
-	}
+    public void setEntityType(String entityType) {
+        this.entityType = entityType;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Basic
+    @Column(nullable = false, length = 60)
+    public String getName() {
+        return name;
+    }
 
-	@Basic
-	@Column(name = "ISREADONLY", nullable = false)
-	public Boolean isReadOnly() {
-		return readOnly;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setReadOnly(Boolean readOnly) {
-		this.readOnly = readOnly;
-	}
+    @Basic
+    @Column(name = "ISREADONLY", nullable = false)
+    public Boolean isReadOnly() {
+        return readOnly;
+    }
 
-	@Basic
-	@Column(name = "ISSOTRX", nullable = false)
-	public Boolean isSOTrx() {
-		return sOTrx;
-	}
+    public void setReadOnly(Boolean readOnly) {
+        this.readOnly = readOnly;
+    }
 
-	public void setSOTrx(Boolean sOTrx) {
-		this.sOTrx = sOTrx;
-	}
+    @Basic
+    @Column(name = "ISSOTRX", nullable = false)
+    public Boolean isSOTrx() {
+        return sOTrx;
+    }
 
-	@Basic
-	@Column(name = "ISSUMMARY", nullable = false)
-	public Boolean isSummary() {
-		return summary;
-	}
+    public void setSOTrx(Boolean sOTrx) {
+        this.sOTrx = sOTrx;
+    }
 
-	public void setSummary(Boolean summary) {
-		this.summary = summary;
-	}
-	
-	@Basic
-	@Column(name="AD_CLIENT_ID", columnDefinition="INT", nullable=false)
-	public Integer getADClientID() {
-		return aDClientID;
-	}
+    @Basic
+    @Column(name = "ISSUMMARY", nullable = false)
+    public Boolean isSummary() {
+        return summary;
+    }
 
-	public void setADClientID(Integer aDClientID) {
-		this.aDClientID = aDClientID;
-	}
+    public void setSummary(Boolean summary) {
+        this.summary = summary;
+    }
 
-	@Basic
-	@Column(name="AD_ORG_ID", columnDefinition="INT", nullable=false)
-	public Integer getADOrgID() {
-		return aDOrgID;
-	}
+    @Basic
+    @Column(name = "AD_CLIENT_ID", columnDefinition = "INT", nullable = false)
+    public Integer getADClientID() {
+        return aDClientID;
+    }
 
-	public void setADOrgID(Integer aDOrgID) {
-		this.aDOrgID = aDOrgID;
-	}
-	
-	@Basic
-	@Column(columnDefinition="TIMESTAMP", nullable=false)
-	public String getCreated() {
-		return created;
-	}
+    public void setADClientID(Integer aDClientID) {
+        this.aDClientID = aDClientID;
+    }
 
-	public void setCreated(String created) {
-		this.created = created;
-	}
+    @Basic
+    @Column(name = "AD_ORG_ID", columnDefinition = "INT", nullable = false)
+    public Integer getADOrgID() {
+        return aDOrgID;
+    }
 
-	@Basic
-	@Column(columnDefinition="INT", nullable=false)
-	public Integer getCreatedBy() {
-		return createdBy;
-	}
+    public void setADOrgID(Integer aDOrgID) {
+        this.aDOrgID = aDOrgID;
+    }
 
-	public void setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
-	}
-	@Basic
-	@Column(columnDefinition="TIMESTAMP", nullable=false)
-	public String getUpdated() {
-		return updated;
-	}
+    @Basic
+    @Column(columnDefinition = "TIMESTAMP", nullable = false)
+    public String getCreated() {
+        return created;
+    }
 
-	public void setUpdated(String updated) {
-		this.updated = updated;
-	}
+    public void setCreated(String created) {
+        this.created = created;
+    }
 
-	@Basic
-	@Column(columnDefinition="INT", nullable=false)
-	public Integer getUpdatedBy() {
-		return updatedBy;
-	}
+    @Basic
+    @Column(columnDefinition = "INT", nullable = false)
+    public Integer getCreatedBy() {
+        return createdBy;
+    }
 
-	public void setUpdatedBy(Integer updatedBy) {
-		this.updatedBy = updatedBy;
-	}
+    public void setCreatedBy(Integer createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    @Basic
+    @Column(columnDefinition = "TIMESTAMP", nullable = false)
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
+
+    @Basic
+    @Column(columnDefinition = "INT", nullable = false)
+    public Integer getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(Integer updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 
 }

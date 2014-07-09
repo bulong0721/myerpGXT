@@ -32,7 +32,7 @@ public class ADTable extends org.adempiere.common.ADEntityBase {
 	private String name;
 	private Integer pOWindowID;
 	private String replicationType;
-	private Boolean securityEnabled;
+	private Boolean securityEnabled = false;
 	private String tableName;
 	private String updated;
 	private Integer updatedBy;
@@ -270,7 +270,7 @@ public class ADTable extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Basic
-	@Column(name="ISSECURITYENABLED", nullable=false)
+	@Column(name="ISSECURITYENABLED", nullable=true)
 	public Boolean isSecurityEnabled() {
 		return securityEnabled;
 	}

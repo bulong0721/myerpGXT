@@ -17,29 +17,12 @@
 	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="bottomLayoutData">
 		<ui:attributes margins="{margins4}" width="1" />
 	</ui:with>
-	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="toolLayoutData">
-		<ui:attributes width="1" height="-1" />
-	</ui:with>
-	<ui:style field="statusStyle">
-		.statusPanel {
-			text-align: right !important;
-			font: 11px arial, tahoma, helvetica, sans-serif;
-		}
-	</ui:style>
 	<container:VerticalLayoutContainer>
 		<container:child layoutData="{topLayoutData}">
 			<widgets:CWindowToolBar ui:field="toolBar" />
 		</container:child>
 		<container:child layoutData="{centerLayoutData}">
 			<component:TabContainer ui:field="tabSet" />
-		</container:child>
-		<container:child layoutData="{toolLayoutData}">
-			<toolbar:ToolBar>
-				<gxt:Status ui:field="status" text="{i18n.winPanel_StatusLeft}" width="200" />
-				<toolbar:FillToolItem />
-				<toolbar:SeparatorToolItem />
-				<gxt:Status ui:field="wordCount" text="{i18n.winPanel_StatusRight}" width="45" styleName="{statusStyle.statusPanel}" />
-			</toolbar:ToolBar>
 		</container:child>
 	</container:VerticalLayoutContainer>
 </ui:UiBinder> 

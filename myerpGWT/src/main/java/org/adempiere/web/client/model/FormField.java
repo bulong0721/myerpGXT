@@ -39,5 +39,7 @@ public interface FormField extends GwtSerializable {
 	Boolean isReadOnly();
 	
 	Boolean isUpdatable();
+	
+	Boolean isMandatory();
 
 }

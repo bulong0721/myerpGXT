@@ -17,7 +17,7 @@
 		<ui:attributes margins="{margins4}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData" field="southData">
-		<ui:attributes size="35" margins="{margins4}" />
+		<ui:attributes size="32" margins="{margins4}" />
 	</ui:with>
 
 	<container:Viewport>
@@ -35,11 +35,11 @@
 			<container:center layoutData="{centerData}">
 				<view:ContentView ui:field="contentView" />
 			</container:center>
-<!-- 			<container:south layoutData="{southData}">
+			<container:south layoutData="{southData}">
 				<g:SimplePanel>
 					<view:RemindView ui:field="remindView" />
 				</g:SimplePanel>
-			</container:south> -->
+			</container:south>
 		</container:BorderLayoutContainer>
 	</container:Viewport>
 </ui:UiBinder> 

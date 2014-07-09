@@ -1,13 +1,17 @@
 package org.adempiere.util;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
+
+import org.adempiere.model.ADUser;
 
 public final class EnvUtil {
 
-	public static final BigDecimal	ZERO	= new BigDecimal(0);
-	public static final BigDecimal	ONE		= new BigDecimal(1);
-	public static final String	LANGUAGE	= "Language";
+	public static final BigDecimal ZERO = new BigDecimal(0);
+	public static final BigDecimal ONE = new BigDecimal(1);
+	public static final String LANGUAGE = "Language";
 
 	public static String getAdempiereHome() {
 		// TODO Auto-generated method stub
@@ -19,13 +23,18 @@ public final class EnvUtil {
 	}
 
 	public static Integer getUser() {
-		// TODO Auto-generated method stub
-		return 100;
+		ADUser user = PermissionUtil.getCurrentUser();
+		if (null != user) {
+			return user.getADUserID();
+		}
+		return 0;
 	}
 
+	static SimpleDateFormat fullFormat = new SimpleDateFormat(
+			"yyyy-MM-dd HH:mm:ss");
+
 	public static String currentTimestamp() {
-		// TODO Auto-generated method stub
-		return "2014-02-11 10:29:45";
+		return fullFormat.format(new Date());
 	}
 
 	public static boolean isBaseLanguage(String aD_Language) {
@@ -38,7 +47,10 @@ public final class EnvUtil {
 	}
 
 	public static int getADClientID() {
-		// TODO Auto-generated method stub
+		ADUser user = PermissionUtil.getCurrentUser();
+		if (null != user) {
+			return user.getADClientID();
+		}
 		return 0;
 	}
 
@@ -47,7 +59,7 @@ public final class EnvUtil {
 		return null;
 	}
 
-	private static Properties	context;
+	private static Properties context;
 
 	public static Properties getCtx() {
 		if (null == context) {
@@ -58,7 +70,7 @@ public final class EnvUtil {
 
 	public static void setContext(Properties ctxt, String key, String value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public static String getHeader(Properties m_printCtx, int i) {

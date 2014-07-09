@@ -305,6 +305,7 @@ public final class DTOUtil {
 		model.setInfoTab(entity.isInfoTab());
 		model.setReadOnly(entity.isReadOnly());
 		model.setSingleRow(entity.isSingleRow());
+		model.setInsertRecord(entity.isInsertRecord());
 		model.setName(entity.getName());
 		model.setReadOnlyLogic(entity.getReadOnlyLogic());
 		model.setTableName(entity.getTableName());
@@ -325,6 +326,7 @@ public final class DTOUtil {
 		model.setInfoTab(entity.isInfoTab());
 		model.setReadOnly(entity.isReadOnly());
 		model.setSingleRow(entity.isSingleRow());
+		model.setInsertRecord(entity.isInsertRecord());
 		model.setName(entity.getName());
 		model.setReadOnlyLogic(entity.getReadOnlyLogic());
 		model.setTableName(entity.getTableName());

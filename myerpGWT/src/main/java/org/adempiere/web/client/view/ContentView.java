@@ -2,6 +2,7 @@ package org.adempiere.web.client.view;
 
 import org.adempiere.web.client.presenter.interfaces.IContentView;
 import org.adempiere.web.client.presenter.interfaces.IContentView.IContentPresenter;
+import org.adempiere.web.client.util.WidgetUtil;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -26,6 +27,7 @@ public class ContentView extends BaseReverseView<IContentPresenter> implements I
 	public Widget asWidget() {
 		if (null == widget) {
 			widget = uiBinder.createAndBindUi(this);
+			WidgetUtil.getDesktop().setTabPanel(tabPanel);
 		}
 		return widget;
 	}

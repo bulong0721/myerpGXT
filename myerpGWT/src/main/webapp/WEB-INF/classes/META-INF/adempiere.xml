@@ -26,7 +26,7 @@
 		<query>SELECT f FROM AdFieldVt f WHERE f.aDTabID = :adTabId AND f.aDLanguageID = :aDLanguageID ORDER BY f.seqNo</query>
 	</named-query>
 	<named-query name="queryMenuNodes">
-		<query>SELECT m FROM ADMenu m WHERE ORDER BY m.parentID, m.seqNo</query>
+		<query>SELECT m FROM ADMenu m ORDER BY m.parentID, m.seqNo</query>
 	</named-query>
 	<named-query name="queryMenuByLanguage">
 		<query>SELECT m FROM ADMenuVt m WHERE m.aDLanguageID = :aDLanguageID ORDER BY m.parentID, m.seqNo</query>

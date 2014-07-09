@@ -25,17 +25,22 @@ public class PermissionUtil {
 		return subject;
 	}
 
+	public static ADUser getCurrentUser() {
+		return (ADUser) getSubject().getPrincipal();
+	}
+
 	public static List<Integer> getCurrentRoles() {
 		ADUser user = (ADUser) getSubject().getPrincipal();
 		if (null == user || null == user.getADUserRoles()) {
 			return Collections.emptyList();
 		}
-		return ImmutableList.copyOf(Collections2.transform(user.getADUserRoles(), new Function<ADUserRoles, Integer>() {
-			@Override
-			public Integer apply(ADUserRoles input) {
-				return input.getADRoleID();
-			}
-		}));
+		return ImmutableList.copyOf(Collections2.transform(
+				user.getADUserRoles(), new Function<ADUserRoles, Integer>() {
+					@Override
+					public Integer apply(ADUserRoles input) {
+						return input.getADRoleID();
+					}
+				}));
 	}
 
 	public static boolean isPermittedForm(int resourceID) {
@@ -48,9 +53,11 @@ public class PermissionUtil {
 		return false;
 	}
 
-	public static void checkFormAccess(int resourceID) throws AuthorizationException {
+	public static void checkFormAccess(int resourceID)
+			throws AuthorizationException {
 		if (!isPermittedForm(resourceID)) {
-			throw new AuthorizationException("Not authorized to access the form");
+			throw new AuthorizationException(
+					"Not authorized to access the form");
 		}
 	}
 
@@ -64,9 +71,11 @@ public class PermissionUtil {
 		return false;
 	}
 
-	public static void checkWindowAccess(int resourceID) throws AuthorizationException {
+	public static void checkWindowAccess(int resourceID)
+			throws AuthorizationException {
 		if (!isPermittedWindow(resourceID)) {
-			throw new AuthorizationException("Not authorized to access the window");
+			throw new AuthorizationException(
+					"Not authorized to access the window");
 		}
 	}
 
@@ -80,9 +89,11 @@ public class PermissionUtil {
 		return false;
 	}
 
-	public static void checkProcessAccess(int resourceID) throws AuthorizationException {
+	public static void checkProcessAccess(int resourceID)
+			throws AuthorizationException {
 		if (!isPermittedProcess(resourceID)) {
-			throw new AuthorizationException("Not authorized to access the window");
+			throw new AuthorizationException(
+					"Not authorized to access the window");
 		}
 	}
 }

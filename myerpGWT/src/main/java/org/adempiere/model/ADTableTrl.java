@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class ADTableTrl extends org.adempiere.common.ADEntityBase {
 	private static final long serialVersionUID = 1L;
 	private Integer aDClientID;
-	private String aDLanguage;
+	private Integer aDLanguageID;
 	private Integer aDOrgID;
 	private Integer aDTableID;
 	private Boolean active;
@@ -26,8 +26,8 @@ public class ADTableTrl extends org.adempiere.common.ADEntityBase {
 	public ADTableTrl() {
 	}
 
-	public ADTableTrl(String aDLanguage, Integer aDTableID) {
-		this.aDLanguage = aDLanguage;
+	public ADTableTrl(Integer aDLanguage, Integer aDTableID) {
+		this.aDLanguageID = aDLanguage;
 		this.aDTableID = aDTableID;
 	}
 
@@ -42,13 +42,13 @@ public class ADTableTrl extends org.adempiere.common.ADEntityBase {
 	}
 
 	@Id
-	@Column(name="AD_LANGUAGE", length=6)
-	public String getADLanguage() {
-		return aDLanguage;
+	@Column(name="AD_LANGUAGE_ID", columnDefinition="INT")
+	public Integer getADLanguageID() {
+		return aDLanguageID;
 	}
 
-	public void setADLanguage(String aDLanguage) {
-		this.aDLanguage = aDLanguage;
+	public void setADLanguageID(Integer aDLanguage) {
+		this.aDLanguageID = aDLanguage;
 	}
 
 	@Basic

@@ -16,7 +16,7 @@ public class ADTableTrlPK implements Serializable {
 		catch(Exception e) {}
 	}
 
-	public String aDLanguage;
+	public Integer aDLanguageID;
 	public Integer aDTableID;
 
 	public ADTableTrlPK() {
@@ -26,12 +26,12 @@ public class ADTableTrlPK implements Serializable {
 		fromString(str);
 	}
 
-	public String getADLanguage() {
-		return aDLanguage;
+	public Integer getADLanguageID() {
+		return aDLanguageID;
 	}
 
-	public void setADLanguage(String aDLanguage) {
-		this.aDLanguage = aDLanguage;
+	public void setADLanguageID(Integer aDLanguage) {
+		this.aDLanguageID = aDLanguage;
 	}
 
 	public Integer getADTableID() {
@@ -43,13 +43,13 @@ public class ADTableTrlPK implements Serializable {
 	}
 
 	public String toString() {
-		return aDLanguage
+		return aDLanguageID
 			+ "::" + String.valueOf(aDTableID);
 	}
 
 	public int hashCode() {
 		int rs = 17;
-		rs = rs * 37 + ((aDLanguage == null) ? 0 : aDLanguage.hashCode());
+		rs = rs * 37 + ((aDLanguageID == null) ? 0 : aDLanguageID.hashCode());
 		rs = rs * 37 + ((aDTableID == null) ? 0 : aDTableID.hashCode());
 		return rs;
 	}
@@ -61,8 +61,8 @@ public class ADTableTrlPK implements Serializable {
 			return false;
 
 		ADTableTrlPK other = (ADTableTrlPK) obj;
-		return ((aDLanguage == null && other.aDLanguage == null)
-			|| (aDLanguage != null && aDLanguage.equals(other.aDLanguage)))
+		return ((aDLanguageID == null && other.aDLanguageID == null)
+			|| (aDLanguageID != null && aDLanguageID.equals(other.aDLanguageID)))
 			&& ((aDTableID == null && other.aDTableID == null)
 			|| (aDTableID != null && aDTableID.equals(other.aDTableID)));
 	}
@@ -71,9 +71,9 @@ public class ADTableTrlPK implements Serializable {
 		Tokenizer toke = new Tokenizer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
-			aDLanguage = null;
+			aDLanguageID = null;
 		else
-			aDLanguage = str;
+			aDLanguageID = new Integer(str);
 		str = toke.nextToken();
 		if("null".equals(str))
 			aDTableID = null;

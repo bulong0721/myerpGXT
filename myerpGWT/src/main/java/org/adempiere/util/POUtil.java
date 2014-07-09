@@ -334,8 +334,9 @@ public final class POUtil {
 	 * @param pCtx
 	 * @param list
 	 * @return
+	 * @throws Exception 
 	 */
-	public static boolean mergeAll(PersistContext pCtx, List<?> list) {
+	public static boolean mergeAll(PersistContext pCtx, List<?> list) throws Exception {
 		try {
 			EntityManager em = pCtx.begin();
 			for (Object entity : list) {
@@ -345,9 +346,9 @@ public final class POUtil {
 			pCtx.commit();
 			return true;
 		} catch (Exception e) {
-			pCtx.rollback();
 			e.printStackTrace();
-			return false;
+			pCtx.rollback();
+			throw e;
 		}
 	}
 

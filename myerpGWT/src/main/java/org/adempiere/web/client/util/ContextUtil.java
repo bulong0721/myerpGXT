@@ -57,7 +57,6 @@ public final class ContextUtil {
 		} else if ("AD_User_Name".equalsIgnoreCase(varName)) {
 			return getUserContext().getName();
 		}
-		LoggingUtil.info("Variable is null:" + varName);
 		return null;
 	}
 

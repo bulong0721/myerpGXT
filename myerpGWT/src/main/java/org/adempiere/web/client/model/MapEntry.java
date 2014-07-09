@@ -18,8 +18,10 @@ public interface MapEntry extends GwtSerializable {
 	public abstract MapEntry deepClone();
 
 	public static class EntryKeyProvider implements ModelKeyProvider<MapEntry> {
-		private List<String>	keyFields;
-		private DisplayType		fieldType;
+		private static String PKName = "$dummyKey";
+		private static int PKSeed = -1;
+		private List<String> keyFields;
+		private DisplayType fieldType;
 
 		public EntryKeyProvider(TabModel tabModel) {
 			keyFields = new ArrayList<String>();
@@ -34,13 +36,30 @@ public interface MapEntry extends GwtSerializable {
 
 		@Override
 		public String getKey(MapEntry item) {
-			String result = "";
-			if (null != item) {
+			if (null == item) {
+				return "";
+			}
+			Object dummyKey = item.getValue(PKName, DisplayType.String);
+			if (null == dummyKey) {
+				String result = "";
 				for (String keyField : keyFields) {
 					result += item.getValue(keyField, fieldType) + "_";
 				}
+				item.setValue(PKName, result);
+				return result;
 			}
-			return result;
+			return (String) dummyKey;
+		}
+
+		public void setDummyKey(MapEntry item) {
+			if (null == item) {
+				return;
+			}
+			Object dummyKey = item.getValue(PKName, DisplayType.String);
+			if (null == dummyKey) {
+				EntryKeyProvider.PKSeed -= 1;
+				item.setValue(PKName, PKName + PKSeed);
+			}
 		}
 
 		public List<ADModelKey> getKeys(MapEntry item) {
@@ -60,15 +79,17 @@ public interface MapEntry extends GwtSerializable {
 				for (String keyField : keyFields) {
 					if (keyField.equalsIgnoreCase(table + "_ID")) {
 						item.setValue(keyField, null);
+						break;
 					}
 				}
 			}
 		}
 	}
 
-	public static class EntryValueProvider<T> implements ValueProvider<MapEntry, T> {
-		private String		path;
-		private DisplayType	fieldType;
+	public static class EntryValueProvider<T> implements
+			ValueProvider<MapEntry, T> {
+		private String path;
+		private DisplayType fieldType;
 
 		public EntryValueProvider(String path, DisplayType fieldType) {
 			this.fieldType = fieldType;
