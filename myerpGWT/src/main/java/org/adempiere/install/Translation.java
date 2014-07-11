@@ -25,7 +25,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.adempiere.common.ADEntityBase;
-import org.adempiere.persist.PersistContext;
+import org.adempiere.service.PersistContext;
 import org.adempiere.util.CLogger;
 import org.adempiere.util.Msg;
 import org.adempiere.util.POUtil;

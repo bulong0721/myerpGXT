@@ -1,4 +1,4 @@
-package org.adempiere.persist;
+package org.adempiere.service;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 import org.adempiere.common.ADEntityBase;
 
-public abstract class AdEntityListener<T extends ADEntityBase> {
+public abstract class EntityListener<T extends ADEntityBase> {
 	private ReentrantLock	lock	= new ReentrantLock();
 
 	protected EntityManager getEntityManager() {

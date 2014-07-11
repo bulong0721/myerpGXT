@@ -2,7 +2,7 @@ package org.adempiere.security;
 
 import org.adempiere.model.ADUser;
 import org.adempiere.model.ADUserRoles;
-import org.adempiere.persist.PersistContext;
+import org.adempiere.service.PersistContext;
 import org.adempiere.util.POUtil;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -15,7 +15,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-public class ADUserRealm extends AuthorizingRealm {
+public class UserRealm extends AuthorizingRealm {
 	private PersistContext	pCtx	= new PersistContext();
 
 	@Override

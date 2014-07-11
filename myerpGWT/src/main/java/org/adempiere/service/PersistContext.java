@@ -1,4 +1,4 @@
-package org.adempiere.persist;
+package org.adempiere.service;
 
 import java.io.Serializable;
 import java.util.concurrent.locks.ReentrantLock;

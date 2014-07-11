@@ -39,7 +39,7 @@ import org.adempiere.model.AdFieldV;
 import org.adempiere.model.AdFieldVt;
 import org.adempiere.model.AdTabV;
 import org.adempiere.model.AdTabVt;
-import org.adempiere.persist.PersistContext;
+import org.adempiere.service.PersistContext;
 import org.adempiere.web.client.model.SequenceModel;
 import org.adempiere.web.client.util.StringUtil;
 

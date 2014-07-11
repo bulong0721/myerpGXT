@@ -6,16 +6,16 @@ import org.apache.shiro.guice.web.ShiroWebModule;
 
 import com.google.inject.Inject;
 
-public class ADShiroModule extends ShiroWebModule {
+public class ShiroModule extends ShiroWebModule {
 
 	@Inject
-	public ADShiroModule(ServletContext servletContext) {
+	public ShiroModule(ServletContext servletContext) {
 		super(servletContext);
 	}
 
 	@Override
 	protected void configureShiroWeb() {
-		bindRealm().to(ADUserRealm.class).asEagerSingleton();
+		bindRealm().to(UserRealm.class).asEagerSingleton();
 	}
 
 }

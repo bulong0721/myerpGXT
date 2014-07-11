@@ -495,6 +495,7 @@ public final class DTOUtil {
 		context.setNotificationType(user.getNotificationType());
 		context.setPhone(user.getPhone());
 		context.setPhone2(user.getPhone2());
+		context.setADRoleID(user.getADUserRoles().get(0).getADRoleID());
 		return context;
 	}
 }

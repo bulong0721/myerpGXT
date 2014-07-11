@@ -5,8 +5,6 @@ import org.adempiere.web.client.desktop.IDesktop;
 import org.adempiere.web.client.desktop.TabbedDesktop;
 
 import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.safehtml.shared.SafeHtml;
-import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.ButtonCell.IconAlign;
@@ -32,6 +30,10 @@ public final class WidgetUtil {
             return "<font color=\"red\">" + text + "</font>";
         }
         return text;
+    }
+    
+    public static void debug(String text) {
+        desktop.setMajorStatusHtml(buildHtml("debug:" + text, true));
     }
 
     public static void setStatusLine(String text, boolean error) {

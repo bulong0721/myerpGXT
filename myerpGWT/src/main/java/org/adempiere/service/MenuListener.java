@@ -1,11 +1,11 @@
-package org.adempiere.persist;
+package org.adempiere.service;
 
 import javax.persistence.PostRemove;
 import javax.persistence.PrePersist;
 
 import org.adempiere.model.ADMenu;
 
-public class AdMenuListener extends AdEntityListener<ADMenu> {
+public class MenuListener extends EntityListener<ADMenu> {
 
 	@PrePersist
 	public void onPrePersist(ADMenu entity) {

@@ -1,5 +1,7 @@
 package org.adempiere.process;
 
+import org.adempiere.common.ProcessResult;
+
 public class CopyReportProcess extends ServerProcess {
 
 	@Override
@@ -9,9 +11,9 @@ public class CopyReportProcess extends ServerProcess {
 	}
 
 	@Override
-	protected String doIt() throws Exception {
+	protected boolean doIt(ProcessResult pResult) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return true;
 	}
 
 }

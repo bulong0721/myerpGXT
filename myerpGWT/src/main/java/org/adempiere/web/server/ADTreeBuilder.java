@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adempiere.model.ADTreeNode;
-import org.adempiere.persist.PersistContext;
+import org.adempiere.service.PersistContext;
 import org.adempiere.util.POUtil;
 import org.adempiere.web.client.model.NodeModel;
 

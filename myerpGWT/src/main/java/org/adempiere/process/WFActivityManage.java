@@ -1,7 +1,6 @@
-package org.adempiere.wf;
+package org.adempiere.process;
 
-import org.adempiere.process.ProcessContext;
-import org.adempiere.process.ServerProcess;
+import org.adempiere.common.ProcessResult;
 
 public class WFActivityManage extends ServerProcess {
 
@@ -12,9 +11,9 @@ public class WFActivityManage extends ServerProcess {
 	}
 
 	@Override
-	protected String doIt() throws Exception {
+	protected boolean doIt(ProcessResult pResult) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return true;
 	}
 
 }

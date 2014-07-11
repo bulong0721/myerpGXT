@@ -396,6 +396,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
         store.rejectChanges();
         if (null != newRecord) {
             store.remove(newRecord);
+            formEditing.setValue(null);
             newRecord = null;
         }
         refreshToolBar();

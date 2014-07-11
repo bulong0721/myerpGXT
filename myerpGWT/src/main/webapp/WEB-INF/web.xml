@@ -3,7 +3,7 @@
 <web-app>
 	<!-- Guice -->
 	<listener>
-		<listener-class>org.adempiere.web.inject.ADServletInjector</listener-class>
+		<listener-class>org.adempiere.web.inject.ServletInjector</listener-class>
 	</listener>
 	<filter>
 		<filter-name>guiceFilter</filter-name>

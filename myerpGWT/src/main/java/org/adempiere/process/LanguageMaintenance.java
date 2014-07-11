@@ -3,6 +3,7 @@ package org.adempiere.process;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.adempiere.common.ProcessResult;
 import org.adempiere.model.ADColumn;
 import org.adempiere.model.ADLanguage;
 import org.adempiere.model.ADTable;
@@ -53,7 +54,7 @@ public class LanguageMaintenance extends ServerProcess {
 	}
 
 	@Override
-	protected String doIt() throws Exception {
+	protected boolean doIt(ProcessResult pResult) throws Exception {
 		if (language.isBaseLanguage())
 			throw new Exception("Base Language has no Translations");
 		int deleteNo = 0;
@@ -75,7 +76,8 @@ public class LanguageMaintenance extends ServerProcess {
 				language.setSystemLanguage(false);
 			}
 		}
-		return "@Deleted@=" + deleteNo + " - @Inserted@=" + insertNo;
+		pResult.addLog("@Deleted@=" + deleteNo + " - @Inserted@=" + insertNo);
+		return true;
 	}
 
 	int maintain(ADLanguage language, boolean add) {

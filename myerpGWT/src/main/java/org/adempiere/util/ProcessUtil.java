@@ -14,218 +14,217 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 
 public final class ProcessUtil {
-	public static final String								SCRIPT_PREFIX	= "@script:";
-	public static final String								JASPER_STARTER_CLASS;
-	private static final TypeReference<Map<String, Object>>	MAP_TYPERE_FERENCE;
-	private static final Map<String, Object>				EMPTY_MAP;
 
-	static {
-		JASPER_STARTER_CLASS = "org.adempiere.report.ReportStarter";
-		MAP_TYPERE_FERENCE = new TypeReference<Map<String, Object>>() {
-		};
-		EMPTY_MAP = Collections.<String, Object> emptyMap();
-	}
+    public static final String                              SCRIPT_PREFIX = "@script:";
+    public static final String                              JASPER_STARTER_CLASS;
+    private static final TypeReference<Map<String, Object>> MAP_TYPERE_FERENCE;
+    private static final Map<String, Object>                EMPTY_MAP;
 
-	public static Map<String, Object> toMap(String json) {
-		if (StringUtil.isNullOrEmpty(json)) {
-			return EMPTY_MAP;
-		}
-		return JSON.parseObject(json, MAP_TYPERE_FERENCE);
-	}
+    static {
+        JASPER_STARTER_CLASS = "org.adempiere.report.ReportStarter";
+        MAP_TYPERE_FERENCE = new TypeReference<Map<String, Object>>() {
+        };
+        EMPTY_MAP = Collections.<String, Object> emptyMap();
+    }
 
-	public static ProcessContext createContext(ProcessModel pModel, String rowJson, String paramJson) {
-		Map<String, Object> paramMap = toMap(paramJson);
-		Map<String, Object> rowMap = toMap(rowJson);
-		return new ProcessContext(pModel, rowMap, paramMap);
-	}
+    public static Map<String, Object> toMap(String json) {
+        if (StringUtil.isNullOrEmpty(json)) {
+            return EMPTY_MAP;
+        }
+        return JSON.parseObject(json, MAP_TYPERE_FERENCE);
+    }
 
-	public static void process(ProcessContext ctx, ProcessResult pi) {
-		ADPInstance instance = null;
-		try {
-			instance = createPInstance();
-		} catch (Exception e) {
-			pi.setSummary(e.getLocalizedMessage());
-			pi.setSuccess(false);
-			return;
-		} catch (Error e) {
-			pi.setSummary(e.getLocalizedMessage());
-			pi.setSuccess(false);
-			return;
-		}
-//		if (!POUtil.save(ctx.getEntityManager(), instance)) {
-//			pi.setSummary("ProcessNoInstance");
-//			pi.setHasError(true);
-//			return;
-//		}
-		ctx.setADPinstanceID(instance.getADPInstanceID());
-		ProcessUtil.startProcess(ctx, pi);
-	}
+    public static ProcessContext createContext(ProcessModel pModel, String rowJson, String paramJson) {
+        Map<String, Object> paramMap = toMap(paramJson);
+        Map<String, Object> rowMap = toMap(rowJson);
+        return new ProcessContext(pModel, rowMap, paramMap);
+    }
 
-	private static ADPInstance createPInstance() {
-		//TODO
-		ADPInstance pInstance = new ADPInstance();
-		return pInstance;
-	}
+    public static void process(ProcessContext ctx, ProcessResult pi) {
+        ADPInstance instance = null;
+        try {
+            instance = createPInstance();
+        } catch (Exception e) {
+            pi.addLog(e.getLocalizedMessage());
+            pi.setSuccess(false);
+            return;
+        } catch (Error e) {
+            pi.addLog(e.getLocalizedMessage());
+            pi.setSuccess(false);
+            return;
+        }
+        // if (!POUtil.save(ctx.getEntityManager(), instance)) {
+        // pi.setSummary("ProcessNoInstance");
+        // pi.setHasError(true);
+        // return;
+        // }
+        ctx.setADPinstanceID(instance.getADPInstanceID());
+        ProcessUtil.startProcess(ctx, pi);
+    }
 
-	private static void startProcess(ProcessContext ctx, ProcessResult pi) {
-		ProcessModel pModel = ctx.getProcessModel();
+    private static ADPInstance createPInstance() {
+        // TODO
+        ADPInstance pInstance = new ADPInstance();
+        return pInstance;
+    }
 
-		String procedureName = pModel.getProcedureName();
-		/**********************************************************************
-		 * Workflow
-		 */
-		if (null != pModel.getADWorkFlowID() && pModel.getADWorkFlowID() > 0) {
-			startWorkflow(ctx, pi);
-			return;
-		}
+    private static void startProcess(ProcessContext ctx, ProcessResult pi) {
+        ProcessModel pModel = ctx.getProcessModel();
 
-		// Clear Jasper Report class if default - to be executed later
-		boolean isJasper = false;
-		boolean isReport = is(pModel.isReport(), false);
-		if (!StringUtil.isNullOrEmpty(pModel.getJasperReport())) {
-			isJasper = true;
-		}
+        String procedureName = pModel.getProcedureName();
+        /**********************************************************************
+         * Workflow
+         */
+        if (null != pModel.getADWorkFlowID() && pModel.getADWorkFlowID() > 0) {
+            startWorkflow(ctx, pi);
+            return;
+        }
 
-		/**********************************************************************
-		 * Start Optional Class
-		 */
-		if (pModel.getClassName() != null) {
-			if (isJasper) {
-				ctx.setReportingProcess(true);
-			}
-			// Run Class
-			if (!ProcessUtil.runProcess(ctx, pi)) {
-				return;
-			}
-			// No Optional SQL procedure ... done
-			if (!isReport && StringUtil.isNullOrEmpty(procedureName)) {
-				return;
-			}
-			// No Optional Report ... done
-			if (isReport && pModel.getADReportViewID() == 0 && !isJasper) {
-				return;
-			}
-		}
+        // Clear Jasper Report class if default - to be executed later
+        boolean isJasper = false;
+        boolean isReport = is(pModel.isReport(), false);
+        if (!StringUtil.isNullOrEmpty(pModel.getJasperReport())) {
+            isJasper = true;
+        }
 
-		/**********************************************************************
-		 * Report submission
-		 */
-		// Optional Pre-Report Process
-		if (isReport && !StringUtil.isNullOrEmpty(procedureName)) {
-			ctx.setReportingProcess(true);
-			if (!startDBProcess(procedureName)) {
-				return;
-			}
-		} // Pre-Report
+        /**********************************************************************
+         * Start Optional Class
+         */
+        if (pModel.getClassName() != null) {
+            if (isJasper) {
+                ctx.setReportingProcess(true);
+            }
+            // Run Class
+            if (!ProcessUtil.runProcess(ctx, pi)) {
+                return;
+            }
+            // No Optional SQL procedure ... done
+            if (!isReport && StringUtil.isNullOrEmpty(procedureName)) {
+                return;
+            }
+            // No Optional Report ... done
+            if (isReport && pModel.getADReportViewID() == 0 && !isJasper) {
+                return;
+            }
+        }
 
-		if (isJasper) {
-			ctx.setReportingProcess(true);
-			ctx.setClassName(ProcessUtil.JASPER_STARTER_CLASS);
-			ProcessUtil.runProcess(ctx, pi);
-			return;
-		}
+        /**********************************************************************
+         * Report submission
+         */
+        // Optional Pre-Report Process
+        if (isReport && !StringUtil.isNullOrEmpty(procedureName)) {
+            ctx.setReportingProcess(true);
+            if (!startDBProcess(procedureName)) {
+                return;
+            }
+        } // Pre-Report
 
-		if (isReport) {
-			ctx.setReportingProcess(true);
-			// Start Report -----------------------------------------------
-			boolean ok = ProcessUtil.startReport(ctx, pi);
-			pi.setSummary("Report", !ok);
-		}
-		/**********************************************************************
-		 * Process submission
-		 */
-		else {
-			if (!startDBProcess(procedureName)) {
-				return;
-			}
-		} // *** Process submission ***
-	}
-	
-	static boolean is(Boolean value, boolean nullValue) {
-		if (null != value) {
-			return value.booleanValue();
-		}
-		return nullValue;
-	}
+        if (isJasper) {
+            ctx.setReportingProcess(true);
+            ctx.setClassName(ProcessUtil.JASPER_STARTER_CLASS);
+            ProcessUtil.runProcess(ctx, pi);
+            return;
+        }
 
-	private static boolean runProcess(ProcessContext ctx, ProcessResult pi) {
-		if (ctx.getClassName().toLowerCase().startsWith(SCRIPT_PREFIX)) {
-			return ProcessUtil.startScriptProcess(ctx, pi);
-		} else {
-			return ProcessUtil.startJavaProcess(ctx, pi);
-		}
-	}
+        if (isReport) {
+            ctx.setReportingProcess(true);
+            // Start Report -----------------------------------------------
+            ProcessUtil.startReport(ctx, pi);
+            pi.addLog("Report");
+        }
+        /**********************************************************************
+         * Process submission
+         */
+        else {
+            if (!startDBProcess(procedureName)) {
+                return;
+            }
+        } // *** Process submission ***
+    }
 
-	public static boolean startReport(ProcessContext ctx, ProcessResult pi) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    static boolean is(Boolean value, boolean nullValue) {
+        if (null != value) {
+            return value.booleanValue();
+        }
+        return nullValue;
+    }
 
-	private static boolean startDBProcess(String procedureName) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    private static boolean runProcess(ProcessContext ctx, ProcessResult pi) {
+        if (ctx.getClassName().toLowerCase().startsWith(SCRIPT_PREFIX)) {
+            return ProcessUtil.startScriptProcess(ctx, pi);
+        } else {
+            return ProcessUtil.startJavaProcess(ctx, pi);
+        }
+    }
 
-	/**
-	 * @param ctx
-	 * @param result
-	 * @return
-	 */
-	public static boolean startJavaProcess(ProcessContext ctx, final ProcessResult pi) {
-		String className = ctx.getClassName();
-		if (className == null) {
-			ProcessModel pModel = ctx.getProcessModel();
-			if (pModel.getJasperReport() != null)
-				className = JASPER_STARTER_CLASS;
-		}
-		// Get Class
-		Class<?> processClass = null;
-		// use context classloader if available
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		if (classLoader == null)
-			classLoader = ProcessUtil.class.getClassLoader();
-		try {
-			processClass = classLoader.loadClass(className);
-		} catch (ClassNotFoundException ex) {
-			return false;
-		}
+    public static boolean startReport(ProcessContext ctx, ProcessResult pi) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-		// Get Process
-		ProcessCall process = null;
-		try {
-			process = (ProcessCall) processClass.newInstance();
-		} catch (Exception ex) {
-			pi.setSummary("InstanceError", true);
-			return false;
-		}
+    private static boolean startDBProcess(String procedureName) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-		boolean success = false;
-		try {
-			success = process.startProcess(ctx, pi);
-		} catch (Exception e) {
-			pi.setSummary("ProcessError " + e.getLocalizedMessage(), true);
-			return false;
-		}
-		return success;
-	}
+    /**
+     * @param ctx
+     * @param result
+     * @return
+     */
+    public static boolean startJavaProcess(ProcessContext ctx, final ProcessResult pi) {
+        String className = ctx.getClassName();
+        if (className == null) {
+            ProcessModel pModel = ctx.getProcessModel();
+            if (pModel.getJasperReport() != null) className = JASPER_STARTER_CLASS;
+        }
+        // Get Class
+        Class<?> processClass = null;
+        // use context classloader if available
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        if (classLoader == null) classLoader = ProcessUtil.class.getClassLoader();
+        try {
+            processClass = classLoader.loadClass(className);
+        } catch (ClassNotFoundException ex) {
+            return false;
+        }
 
-	/**
-	 * @param ctx
-	 * @param result
-	 * @return
-	 */
-	public static boolean startScriptProcess(ProcessContext ctx, final ProcessResult result) {
-		// TODO
-		return false;
-	}
+        // Get Process
+        ProcessCall process = null;
+        try {
+            process = (ProcessCall) processClass.newInstance();
+        } catch (Exception ex) {
+            pi.addLog("InstanceError");
+            return false;
+        }
 
-	/**
-	 * @param ctx
-	 * @param result
-	 * @return
-	 */
-	public static boolean startWorkflow(ProcessContext ctx, final ProcessResult result) {
-		// TODO
-		return false;
-	}
+        boolean success = false;
+        try {
+            success = process.startProcess(ctx, pi);
+        } catch (Exception e) {
+            pi.addLog("ProcessError " + e.getLocalizedMessage());
+            return false;
+        }
+        return success;
+    }
+
+    /**
+     * @param ctx
+     * @param result
+     * @return
+     */
+    public static boolean startScriptProcess(ProcessContext ctx, final ProcessResult result) {
+        // TODO
+        return false;
+    }
+
+    /**
+     * @param ctx
+     * @param result
+     * @return
+     */
+    public static boolean startWorkflow(ProcessContext ctx, final ProcessResult result) {
+        // TODO
+        return false;
+    }
 }

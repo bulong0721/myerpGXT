@@ -1,5 +1,7 @@
 package org.adempiere.process;
 
+import org.adempiere.common.ProcessResult;
+
 
 /**
  * 从AdColumn表中进行验证数据表是否存在，并创建该字段（暂不实装）
@@ -15,7 +17,7 @@ public class ColumnSync extends ServerProcess {
 	}
 
 	@Override
-	protected String doIt() throws Exception {
+	protected boolean doIt(ProcessResult pResult) throws Exception {
 //		Connection conn = null;
 //		try {
 //			conn = context.getConnection();
@@ -24,7 +26,7 @@ public class ColumnSync extends ServerProcess {
 //			String schema = null;
 //			AdColumn column = POUtil.find(context, AdColumn.class, adColumnId);
 //
-			return getSusscess();
+			return true;
 //		} finally {
 //			if (conn != null) {
 //				try {

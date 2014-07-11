@@ -3,6 +3,7 @@ package org.adempiere.web.server;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -24,8 +25,11 @@ import org.adempiere.common.ProcessResult;
 import org.adempiere.common.RefCriteria;
 import org.adempiere.model.ADMenu;
 import org.adempiere.model.ADUser;
-import org.adempiere.persist.PersistContext;
 import org.adempiere.process.ProcessContext;
+import org.adempiere.service.CacheManager;
+import org.adempiere.service.CacheManager.CacheClass;
+import org.adempiere.service.MenuLoader;
+import org.adempiere.service.PersistContext;
 import org.adempiere.util.CalloutUtil;
 import org.adempiere.util.DTOUtil;
 import org.adempiere.util.POUtil;
@@ -34,8 +38,9 @@ import org.adempiere.util.ProcessUtil;
 import org.adempiere.web.client.model.FieldModel;
 import org.adempiere.web.client.model.FormModel;
 import org.adempiere.web.client.model.JsonResult;
-import org.adempiere.web.client.model.PageRequest;
+import org.adempiere.web.client.model.MenuModel;
 import org.adempiere.web.client.model.NodeModel;
+import org.adempiere.web.client.model.PageRequest;
 import org.adempiere.web.client.model.ProcessModel;
 import org.adempiere.web.client.model.SequenceModel;
 import org.adempiere.web.client.model.WindowModel;
@@ -47,6 +52,10 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.base.Function;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.Lists;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -62,12 +71,6 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
     @Inject
     @Named("systemName")
     private String         name;
-
-    static class User {
-
-        public String name;
-        public String messge = "11111";
-    }
 
     public static void main(String[] args) {
         PersistContext pCtx = new PersistContext();
@@ -291,7 +294,22 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 
     @Override
     public List<NodeModel> getMenuNodes(int parentID) throws RuntimeException {
-        return ADServiceI18n.getADMenuListByLanguage(pCtx, getLanguage(), parentID);
+        try {
+            MenuLoader loader = new MenuLoader(pCtx, getLanguage());
+            int roleID = getADUserContext().getADRoleID();
+            LoadingCache<Integer, Map<Integer, List<MenuModel>>> cache = CacheManager.buildCache(CacheClass.Menu, loader);
+            List<MenuModel> menuList = cache.get(roleID).get(parentID);
+            return Lists.newArrayList(Collections2.transform(menuList, new Function<MenuModel, NodeModel>() {
+
+                @Override
+                public NodeModel apply(MenuModel input) {
+                    return input;
+                }
+            }));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
     }
 
     @Override
@@ -303,7 +321,12 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
     public ADUserContext getADUserContext() throws RuntimeException {
         Subject subject = PermissionUtil.getSubject();
         ADUser user = (ADUser) subject.getPrincipal();
-        return DTOUtil.toUerContext(user);
+        Object context = subject.getSession().getAttribute("UserContext");
+        if (null == context) {
+            context = DTOUtil.toUerContext(user);
+            subject.getSession().setAttribute("UserContext", context);
+        }
+        return (ADUserContext) context;
     }
 
     @Override

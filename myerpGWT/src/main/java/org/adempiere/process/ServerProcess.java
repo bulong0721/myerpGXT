@@ -3,59 +3,47 @@ package org.adempiere.process;
 import org.adempiere.common.ProcessResult;
 
 public abstract class ServerProcess implements ProcessCall {
-	protected ProcessContext	context;
 
-	@Override
-	public boolean startProcess(ProcessContext ctx, ProcessResult pInfo) {
-		lock();
-		this.context = ctx;
-		if (process(ctx)) {
-		}
-		unlock();
-		postProcess(!pInfo.isSuccess());
-		return !pInfo.isSuccess();
-	}
+    protected ProcessContext context;
 
-	private void unlock() {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public boolean startProcess(ProcessContext ctx, ProcessResult pInfo) {
+        lock();
+        this.context = ctx;
+        if (process(ctx, pInfo)) {
+        }
+        unlock();
+        postProcess(!pInfo.isSuccess());
+        return !pInfo.isSuccess();
+    }
 
-	private void lock() {
-		// TODO Auto-generated method stub
+    private void unlock() {
+        // TODO Auto-generated method stub
+    }
 
-	}
+    private void lock() {
+        // TODO Auto-generated method stub
 
-	private boolean process(ProcessContext ctx) {
-		String msg = null;
-		boolean success = true;
-		try {
-			preProcess(ctx);
-			msg = doIt();
-		} catch (Throwable e) {
-			success = false;
-			e.printStackTrace();
-//			throw new AdempiereUserError(e.getMessage());
-		}
+    }
 
-		// transaction should rollback if there are error in process
-		if (null != msg && msg.startsWith("@Error@"))
-			success = false;
+    private boolean process(ProcessContext ctx, ProcessResult pResult) {
+        boolean success = true;
+        try {
+            preProcess(ctx);
+            success = doIt(null);
+        } catch (Throwable e) {
+            success = false;
+            e.printStackTrace();
+            // throw new AdempiereUserError(e.getMessage());
+        }
 
-		return success;
-	}
+        return success;
+    }
 
-	protected String getSusscess() {
-		return "";
-	}
+    protected abstract void preProcess(ProcessContext ctx);
 
-	protected String getError(String error) {
-		return error;
-	}
+    protected abstract boolean doIt(ProcessResult pResult) throws Exception;
 
-	protected abstract void preProcess(ProcessContext ctx);
-
-	protected abstract String doIt() throws Exception;
-
-	protected void postProcess(boolean success) {
-	}
+    protected void postProcess(boolean success) {
+    }
 }

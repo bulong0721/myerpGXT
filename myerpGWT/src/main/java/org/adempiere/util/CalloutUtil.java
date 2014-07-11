@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 import org.adempiere.callout.Callout;
 import org.adempiere.callout.CalloutContext;
 import org.adempiere.common.CalloutResult;
-import org.adempiere.persist.PersistContext;
+import org.adempiere.service.PersistContext;
 import org.adempiere.web.client.model.FieldModel;
 import org.adempiere.web.client.util.StringUtil;
 

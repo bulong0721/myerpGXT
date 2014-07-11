@@ -7,7 +7,7 @@ import org.adempiere.model.ADFormAccess;
 import org.adempiere.model.ADProcessAccess;
 import org.adempiere.model.ADWindowAccess;
 import org.adempiere.model.ADWorkflowAccess;
-import org.adempiere.persist.PersistContext;
+import org.adempiere.service.PersistContext;
 import org.adempiere.util.POUtil;
 
 import com.google.common.cache.Cache;

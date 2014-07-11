@@ -3,13 +3,13 @@ package org.adempiere.web.inject;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 
-import org.adempiere.security.ADShiroModule;
+import org.adempiere.security.ShiroModule;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
 
-public class ADServletInjector extends GuiceServletContextListener {
+public class ServletInjector extends GuiceServletContextListener {
 	private ServletContext	servletContext;
 
 	@Override
@@ -22,7 +22,7 @@ public class ADServletInjector extends GuiceServletContextListener {
 
 	@Override
 	protected Injector getInjector() {
-		return Guice.createInjector(new ADShiroModule(servletContext), new ADServletModule());
+		return Guice.createInjector(new ShiroModule(servletContext), new ADServletModule());
 	}
 
 }

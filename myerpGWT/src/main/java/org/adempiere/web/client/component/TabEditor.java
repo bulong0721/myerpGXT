@@ -128,10 +128,10 @@ public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object
 
     @Override
     public void setValue(MapEntry model) {
+        this.model = model;
         if (null == fieldList || null == model) {
             return;
         }
-        this.model = model;
         this.filling = true;
         for (FieldBuilder fieldStrategy : fieldList) {
             Converter converter = fieldStrategy.getConverter();

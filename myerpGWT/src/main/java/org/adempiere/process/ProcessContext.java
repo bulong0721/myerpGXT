@@ -6,7 +6,7 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 
-import org.adempiere.persist.PersistContext;
+import org.adempiere.service.PersistContext;
 import org.adempiere.web.client.model.ProcessModel;
 
 @SuppressWarnings("serial")

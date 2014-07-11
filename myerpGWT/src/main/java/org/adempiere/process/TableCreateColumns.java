@@ -7,6 +7,7 @@ import java.sql.Types;
 import java.util.List;
 
 import org.adempiere.common.DisplayType;
+import org.adempiere.common.ProcessResult;
 import org.adempiere.model.ADColumn;
 import org.adempiere.model.ADElement;
 import org.adempiere.model.ADTable;
@@ -25,7 +26,7 @@ public class TableCreateColumns extends ServerProcess {
     }
 
     @Override
-    protected String doIt() throws Exception {
+    protected boolean doIt(ProcessResult pResult) throws Exception {
         Connection conn = null;
         try {
             conn = context.getConnection();
@@ -41,7 +42,8 @@ public class TableCreateColumns extends ServerProcess {
                 addTableColumn(rs, table);
             }
 
-            return "#" + count;
+            pResult.addLog("#" + count);
+            return true;
         } finally {
             if (conn != null) {
                 try {
@@ -116,7 +118,7 @@ public class TableCreateColumns extends ServerProcess {
                 POUtil.persist(context, element);
             }
             column.setColumnName(element.getColumnName());
-            column.setPropertyName(element.getColumnName());
+            column.setPropertyName(getPropertyName(element.getColumnName()));
             column.setName(element.getName());
             column.setDescription(element.getDescription());
             column.setHelp(element.getHelp());
@@ -146,7 +148,7 @@ public class TableCreateColumns extends ServerProcess {
             else if (dataType == Types.BLOB) column.setADReferenceID(DisplayType.Binary);
             else if (columnName.toUpperCase().indexOf("AMT") != -1) column.setADReferenceID(DisplayType.Amount);
             else if (columnName.toUpperCase().indexOf("QTY") != -1) column.setADReferenceID(DisplayType.Quantity);
-            else if (size == 1 && (columnName.toUpperCase().startsWith("IS") || dataType == Types.CHAR)) column.setADReferenceID(DisplayType.YesNo);
+            else if (size == 1 && (columnName.toUpperCase().startsWith("IS") || dataType == Types.BIT)) column.setADReferenceID(DisplayType.YesNo);
             else if (size < 4 && dataType == Types.CHAR) column.setADReferenceID(DisplayType.List);
             else if (columnName.equalsIgnoreCase("Name") || columnName.equals("DocumentNo")) {
                 column.setADReferenceID(DisplayType.String);
@@ -174,6 +176,20 @@ public class TableCreateColumns extends ServerProcess {
         } // while columns
 
     } // addTableColumn
+
+    private String getPropertyName(String columnName) {
+        if (null != columnName) {
+            String propertyName = columnName.replaceAll("_", "");
+            if (propertyName.startsWith("Is")) {
+                propertyName = propertyName.substring(2);
+            }
+            if (propertyName.length() > 1) {
+                propertyName = propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1);
+            }
+            return propertyName;
+        }
+        return columnName;
+    }
 
     private ADElement createElement(ADColumn column) {
         ADElement element = new ADElement();

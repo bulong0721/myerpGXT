@@ -13,7 +13,6 @@ import org.adempiere.model.ADPrintFormat;
 import org.adempiere.model.ADPrintPaper;
 import org.adempiere.model.ADPrintTableFormat;
 import org.adempiere.model.CLocation;
-import org.adempiere.persist.PersistContext;
 import org.adempiere.print.model.PrintAttachment;
 import org.adempiere.print.model.PrintColor;
 import org.adempiere.print.model.PrintFont;
@@ -22,6 +21,7 @@ import org.adempiere.print.model.PrintImage;
 import org.adempiere.print.model.PrintLocation;
 import org.adempiere.print.model.PrintPaper;
 import org.adempiere.print.model.PrintTableFormat;
+import org.adempiere.service.PersistContext;
 import org.adempiere.util.POUtil;
 
 public class PrintUtil {
