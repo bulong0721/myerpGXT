@@ -297,7 +297,8 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
         try {
             MenuLoader loader = new MenuLoader(pCtx, getLanguage());
             int roleID = getADUserContext().getADRoleID();
-            LoadingCache<Integer, Map<Integer, List<MenuModel>>> cache = CacheManager.buildCache(CacheClass.Menu, loader);
+            LoadingCache<Integer, Map<Integer, List<MenuModel>>> cache = CacheManager.buildCache(CacheClass.Menu,
+                                                                                                 loader);
             List<MenuModel> menuList = cache.get(roleID).get(parentID);
             return Lists.newArrayList(Collections2.transform(menuList, new Function<MenuModel, NodeModel>() {
 
@@ -320,6 +321,9 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
     @Override
     public ADUserContext getADUserContext() throws RuntimeException {
         Subject subject = PermissionUtil.getSubject();
+        if (null == subject || null == subject.getPrincipal()) {
+            return null;
+        }
         ADUser user = (ADUser) subject.getPrincipal();
         Object context = subject.getSession().getAttribute("UserContext");
         if (null == context) {

@@ -76,7 +76,7 @@ public class LanguageMaintenance extends ServerProcess {
 				language.setSystemLanguage(false);
 			}
 		}
-		pResult.addLog("@Deleted@=" + deleteNo + " - @Inserted@=" + insertNo);
+		pResult.setSummary("@Deleted@=" + deleteNo + " - @Inserted@=" + insertNo);
 		return true;
 	}
 

@@ -34,7 +34,7 @@ public class TabCopy extends ServerProcess {
                 throw new AdempiereUserError("@Error@ @AD_Field_ID@");
             }
         }
-        pResult.addLog("@Copied@ #" + count);
+        pResult.setSummary("@Copied@ #" + count);
         return true;
     }
 

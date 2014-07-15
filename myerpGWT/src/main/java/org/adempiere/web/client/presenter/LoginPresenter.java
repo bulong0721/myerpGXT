@@ -13,5 +13,6 @@ public class LoginPresenter extends BasePresenter<ILoginView, MyerpEventBus> imp
 
 	public void onGoLogin() {
 		getEventBus().setBody(getView());
+		getView().validateLogged();
 	}
 }

@@ -7,9 +7,9 @@ public class RefCriteria implements Serializable {
 	private String				adTable;
 	private String				keyColumn;
 	private String				displayColumn;
-	private Boolean				isvaluedisplayed;
-	private String				orderbyclause;
-	private String				whereclause;
+	private Boolean				valueDisplayed;
+	private String				orderByClause;
+	private String				whereClause;
 
 	public RefCriteria(String adTable, String keyColumn, String displayColumn, Boolean isvaluedisplayed,
 			String orderbyclause, String whereclause) {
@@ -17,9 +17,9 @@ public class RefCriteria implements Serializable {
 		this.adTable = adTable;
 		this.keyColumn = keyColumn;
 		this.displayColumn = displayColumn;
-		this.isvaluedisplayed = isvaluedisplayed;
-		this.orderbyclause = orderbyclause;
-		this.whereclause = whereclause;
+		this.valueDisplayed = isvaluedisplayed;
+		this.orderByClause = orderbyclause;
+		this.whereClause = whereclause;
 	}
 
 	public String getAdTable() {
@@ -47,27 +47,27 @@ public class RefCriteria implements Serializable {
 	}
 
 	public Boolean getIsvaluedisplayed() {
-		return isvaluedisplayed;
+		return valueDisplayed;
 	}
 
 	public void setIsvaluedisplayed(Boolean isvaluedisplayed) {
-		this.isvaluedisplayed = isvaluedisplayed;
+		this.valueDisplayed = isvaluedisplayed;
 	}
 
 	public String getOrderbyclause() {
-		return orderbyclause;
+		return orderByClause;
 	}
 
 	public void setOrderbyclause(String orderbyclause) {
-		this.orderbyclause = orderbyclause;
+		this.orderByClause = orderbyclause;
 	}
 
 	public String getWhereclause() {
-		return whereclause;
+		return whereClause;
 	}
 
 	public void setWhereclause(String whereclause) {
-		this.whereclause = whereclause;
+		this.whereClause = whereclause;
 	}
 
 }

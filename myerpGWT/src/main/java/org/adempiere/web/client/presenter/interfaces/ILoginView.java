@@ -5,7 +5,9 @@ import com.mvp4g.client.view.ReverseViewInterface;
 
 public interface ILoginView extends ReverseViewInterface<ILoginView.ILoginPresenter>, IsWidget {
 
-	public interface ILoginPresenter {
+    public interface ILoginPresenter {
 
-	}
+    }
+
+    void validateLogged();
 }

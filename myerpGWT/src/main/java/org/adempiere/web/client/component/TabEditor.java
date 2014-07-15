@@ -121,7 +121,7 @@ public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object
     public void cancelEditing() {
         setValue(model);
     }
-    
+
     public MapEntry getValue() {
         return model;
     }
@@ -132,6 +132,7 @@ public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object
         if (null == fieldList || null == model) {
             return;
         }
+        this.clearInvalid();
         this.filling = true;
         for (FieldBuilder fieldStrategy : fieldList) {
             Converter converter = fieldStrategy.getConverter();
@@ -196,12 +197,18 @@ public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object
         }
         return null;
     }
-    
+
     public boolean validate() {
         boolean isValid = true;
         for (FieldBuilder builder : fieldList) {
             isValid &= builder.getFormEditor().validate();
         }
         return isValid;
+    }
+
+    public void clearInvalid() {
+        for (FieldBuilder builder : fieldList) {
+            builder.getFormEditor().clearInvalid();
+        }
     }
 }

@@ -21,6 +21,8 @@ public interface FormField extends GwtSerializable {
 	String getReadonlyLogic();
 
 	Integer getSeqNo();
+	
+	String getValidationCode();
 
 	String getValueMax();
 
@@ -41,5 +43,9 @@ public interface FormField extends GwtSerializable {
 	Boolean isUpdatable();
 	
 	Boolean isMandatory();
+	
+	Boolean isFieldOnly();
+	
+	Boolean isIdentifier();
 
 }

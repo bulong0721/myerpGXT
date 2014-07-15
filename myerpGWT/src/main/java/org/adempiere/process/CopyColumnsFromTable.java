@@ -10,14 +10,14 @@ public class CopyColumnsFromTable extends ServerProcess {
 
     @Override
     protected void preProcess(ProcessContext ctx) {
-        srcTableId = (Integer) ctx.getRowMap().get("adTableId");
-        desTableId = (Integer) ctx.getParamMap().get("adTableId");
+        srcTableId = (Integer) ctx.getRowMap().get("aDTableID");
+        desTableId = (Integer) ctx.getParamMap().get("aDTableID");
     }
 
     @Override
     protected boolean doIt(ProcessResult pResult) throws Exception {
         // TODO Auto-generated method stub
-        pResult.addLog("#" + count);
+        pResult.setSummary("#" + count);
         return true;
     }
 

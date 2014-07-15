@@ -174,10 +174,12 @@ public class FieldBuilder {
         if (null != formEditor) {
             formEditor.setName(propertyName);
         }
-        columnCfg = new ColumnConfig(valueProvider, 100);
-        columnCfg.setHeader(field.getName());
-        columnCfg.setCell((Cell) columnCell);
-        if (field.isReadOnly() || !field.isUpdatable()) {
+        if (tabBuilder.isCreateGridEditor()) {
+            columnCfg = new ColumnConfig(valueProvider, 100);
+            columnCfg.setHeader(field.getName());
+            columnCfg.setCell((Cell) columnCell);
+        }
+        if (field.isReadOnly() || !field.isUpdatable() || field.isFieldOnly()) {
             if (tabBuilder.isCreateGridEditor()) disableEditor(gridEditor);
             if (tabBuilder.isCreateFormEditor()) disableEditor(formEditor);
         } else if (field.isMandatory()) {
@@ -211,7 +213,6 @@ public class FieldBuilder {
 
     private ComboBox<LookupValue> createComboBox(LabelProvider<LookupValue> labelProvider) {
         ComboBox<LookupValue> toReturn = new ComboBox<LookupValue>(optionStore, labelProvider);
-        // toReturn.setAllowBlank(false);
         toReturn.setForceSelection(true);
         toReturn.setTriggerAction(TriggerAction.ALL);
         toReturn.setEditable(false);

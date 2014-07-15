@@ -45,11 +45,11 @@ public final class ProcessUtil {
         try {
             instance = createPInstance();
         } catch (Exception e) {
-            pi.addLog(e.getLocalizedMessage());
+            pi.setSummary(e.getLocalizedMessage());
             pi.setSuccess(false);
             return;
         } catch (Error e) {
-            pi.addLog(e.getLocalizedMessage());
+            pi.setSummary(e.getLocalizedMessage());
             pi.setSuccess(false);
             return;
         }
@@ -130,7 +130,7 @@ public final class ProcessUtil {
             ctx.setReportingProcess(true);
             // Start Report -----------------------------------------------
             ProcessUtil.startReport(ctx, pi);
-            pi.addLog("Report");
+            pi.setSummary("Report");
         }
         /**********************************************************************
          * Process submission
@@ -194,7 +194,7 @@ public final class ProcessUtil {
         try {
             process = (ProcessCall) processClass.newInstance();
         } catch (Exception ex) {
-            pi.addLog("InstanceError");
+            pi.setSummary("InstanceError");
             return false;
         }
 
@@ -202,7 +202,7 @@ public final class ProcessUtil {
         try {
             success = process.startProcess(ctx, pi);
         } catch (Exception e) {
-            pi.addLog("ProcessError " + e.getLocalizedMessage());
+            pi.setSummary("ProcessError " + e.getLocalizedMessage());
             return false;
         }
         return success;

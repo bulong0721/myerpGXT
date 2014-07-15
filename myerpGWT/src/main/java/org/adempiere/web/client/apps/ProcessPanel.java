@@ -106,12 +106,14 @@ public class ProcessPanel extends ModalDialog implements ConfirmToolListener {
 
             @Override
             public void onFailure(Throwable caught) {
+                WidgetUtil.setStatusLine(caught.getLocalizedMessage(), true);
                 WidgetUtil.unmask(widget);
             }
 
             @Override
             public void onSuccess(ProcessResult result) {
                 WidgetUtil.unmask(widget);
+                WidgetUtil.setStatusLine(result.getSummary(), false);
                 if (processModel.isReport()) {
                     layoutContainer.setActiveWidget(reportViewer);
                     reportViewer.setReportURL(result.getPDFReport());

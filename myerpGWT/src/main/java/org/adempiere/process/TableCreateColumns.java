@@ -42,7 +42,7 @@ public class TableCreateColumns extends ServerProcess {
                 addTableColumn(rs, table);
             }
 
-            pResult.addLog("#" + count);
+            pResult.setSummary("#" + count);
             return true;
         } finally {
             if (conn != null) {

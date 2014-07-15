@@ -32,7 +32,7 @@ public class TabCreateFields extends ServerProcess {
                 count++;
             }
         }
-        pResult.addLog("@Created@ #" + count);
+        pResult.setSummary("@Created@ #" + count);
         return true;
     }
 

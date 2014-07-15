@@ -43,7 +43,7 @@ public final class DTOUtil {
 		model.setDisplayed(entity.isDisplayed());
 		model.setEncryptedColumn(entity.isEncryptedColumn());
 		model.setEncryptedField(entity.isEncryptedField());
-		model.setFieldonly(entity.isFieldOnly());
+		model.setFieldOnly(entity.isFieldOnly());
 		model.setKey(entity.isKey());
 		model.setMandatory(entity.isMandatory());
 		model.setParent(entity.isParent());
@@ -60,6 +60,7 @@ public final class DTOUtil {
 		model.setValueMax(entity.getValueMax());
 		model.setValueMin(entity.getValueMin());
 		model.setVFormat(entity.getVFormat());
+		model.setIdentifier(entity.isIdentifier());
 		return model;
 	}
 
@@ -78,7 +79,7 @@ public final class DTOUtil {
 		model.setDisplayed(entity.isDisplayed());
 		model.setEncryptedColumn(entity.isEncryptedColumn());
 		model.setEncryptedField(entity.isEncryptedField());
-		model.setFieldonly(entity.isFieldOnly());
+		model.setFieldOnly(entity.isFieldOnly());
 		model.setKey(entity.isKey());
 		model.setMandatory(entity.isMandatory());
 		model.setParent(entity.isParent());
@@ -95,6 +96,7 @@ public final class DTOUtil {
 		model.setValueMax(entity.getValueMax());
 		model.setValueMin(entity.getValueMin());
 		model.setVFormat(entity.getVFormat());
+		model.setIdentifier(entity.isIdentifier());
 		return model;
 	}
 

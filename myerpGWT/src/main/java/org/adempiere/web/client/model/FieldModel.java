@@ -15,7 +15,7 @@ public class FieldModel implements GwtSerializable, FormField {
 	private Boolean	displayed;
 	private Boolean	encryptedColumn;
 	private Boolean	encryptedField;
-	private Boolean	fieldonly;
+	private Boolean	fieldOnly;
 	private Boolean	key;
 	private Boolean	mandatory;
 	private Boolean	parent;
@@ -24,6 +24,7 @@ public class FieldModel implements GwtSerializable, FormField {
 	private Boolean	sameline;
 	private Boolean	selectionColumn;
 	private Boolean	alwaysUpdateable;
+	private Boolean identifier;
 	private String	name;
 	private String	readonlyLogic;
 	private Integer	seqNo;
@@ -41,6 +42,14 @@ public class FieldModel implements GwtSerializable, FormField {
 
 	public void setAlwaysUpdateable(Boolean alwaysUpdateable) {
 		this.alwaysUpdateable = alwaysUpdateable;
+	}
+	
+	public Boolean isIdentifier() {
+	    return identifier;
+	}
+	
+	public void setIdentifier(Boolean identifier) {
+	    this.identifier = identifier;
 	}
 
 	public Boolean isUpdatable() {
@@ -147,12 +156,12 @@ public class FieldModel implements GwtSerializable, FormField {
 		this.encryptedField = encryptedField;
 	}
 
-	public Boolean isFieldonly() {
-		return fieldonly;
+	public Boolean isFieldOnly() {
+		return fieldOnly;
 	}
 
-	public void setFieldonly(Boolean fieldonly) {
-		this.fieldonly = fieldonly;
+	public void setFieldOnly(Boolean fieldOnly) {
+		this.fieldOnly = fieldOnly;
 	}
 
 	public Boolean isKey() {

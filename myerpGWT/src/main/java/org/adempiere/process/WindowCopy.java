@@ -45,7 +45,7 @@ public class WindowCopy extends ServerProcess {
                 }
             }
         }
-        pResult.addLog("@Copied@ #" + tabCount + "/" + fieldCount);
+        pResult.setSummary("@Copied@ #" + tabCount + "/" + fieldCount);
         return true;
     }
 

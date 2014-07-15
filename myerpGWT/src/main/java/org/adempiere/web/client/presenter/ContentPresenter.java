@@ -2,8 +2,6 @@ package org.adempiere.web.client.presenter;
 
 import org.adempiere.common.MenuActionType;
 import org.adempiere.web.client.MyerpEventBus;
-import org.adempiere.web.client.desktop.IDesktop;
-import org.adempiere.web.client.desktop.TabbedDesktop;
 import org.adempiere.web.client.model.MenuModel;
 import org.adempiere.web.client.presenter.interfaces.IContentView;
 import org.adempiere.web.client.presenter.interfaces.IContentView.IContentPresenter;
