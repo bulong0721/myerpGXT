@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.adempiere.common.DisplayType;
 import org.adempiere.common.LookupValue;
-import org.adempiere.web.client.event.FieldEvent;
 import org.adempiere.web.client.event.ActionListener;
+import org.adempiere.web.client.event.FieldEvent;
 import org.adempiere.web.client.event.FieldEvent.FieldAction;
 import org.adempiere.web.client.model.FormField;
 import org.adempiere.web.client.model.MapEntry;
@@ -81,7 +81,7 @@ public class FieldBuilder {
             LabelProvider<LookupValue> labelProvider = CommonUtil.createLabelProvider();
             if (tabBuilder.isCreateGridEditor()) gridEditor = createComboBox(labelProvider);
             if (tabBuilder.isCreateFormEditor()) formEditor = createComboBox(labelProvider);
-            if (fieldType.isID()) {
+            if (fieldType.isID() && !propertyName.equals("entityType")) {
                 valueProvider = new EntryValueProvider<Integer>(propertyName, fieldType);
                 converter = new Converter<Integer, LookupValue>() {
 
@@ -186,6 +186,11 @@ public class FieldBuilder {
             if (tabBuilder.isCreateGridEditor()) notNullable(gridEditor);
             if (tabBuilder.isCreateFormEditor()) notNullable(formEditor);
         }
+
+        if (field.getFieldType().isNumeric()) {
+            if (tabBuilder.isCreateGridEditor()) numberFormat(gridEditor);
+            if (tabBuilder.isCreateFormEditor()) numberFormat(formEditor);
+        }
     }
 
     DateTimeFormat getDTFormat(DisplayType fieldType) {
@@ -204,6 +209,10 @@ public class FieldBuilder {
         }
     }
 
+    private void numberFormat(Field<?> editor) {
+        editor.setStyleName("numberField", true);
+    }
+
     private void disableEditor(Field<?> editor) {
         if (null != editor && tabBuilder.canReadOnly()) {
             editor.addStyleName(ThemeStyles.get().style().disabled());
@@ -215,7 +224,7 @@ public class FieldBuilder {
         ComboBox<LookupValue> toReturn = new ComboBox<LookupValue>(optionStore, labelProvider);
         toReturn.setForceSelection(true);
         toReturn.setTriggerAction(TriggerAction.ALL);
-        toReturn.setEditable(false);
+        // toReturn.setEditable(false);
         return toReturn;
     }
 
@@ -264,12 +273,13 @@ public class FieldBuilder {
             String columnname = field.getPropertyName();
             Integer display = field.getADReferenceID();
             Integer adRefId = field.getADReferenceValueID();
-            if (optionStoreMap.containsKey(columnname + adRefId)) {
-                return optionStoreMap.get(columnname + adRefId);
+            String storeKey = null == adRefId ? columnname : field.getFieldType().name() + adRefId;
+            if (optionStoreMap.containsKey(storeKey)) {
+                return optionStoreMap.get(storeKey);
             }
             OptionStore store = createOptionStore(columnname, display, adRefId);
             if (null != store) {
-                optionStoreMap.put(columnname + adRefId, store);
+                optionStoreMap.put(storeKey, store);
             }
             return store;
         }
@@ -316,19 +326,23 @@ public class FieldBuilder {
         FieldLabel fieldLabel = new FieldLabel();
         fieldLabel.setStyleName("formField", true);
         fieldLabel.setLabelWidth(labelWidth);
+        fieldLabel.setLabelSeparator("");
         if (!field.getFieldType().isButton()) {
             fieldLabel.setHeight(24);
         }
         if (showLabel) {
-            fieldLabel.setText(field.getName());
+            if (field.isMandatory()) {
+                fieldLabel.setHTML("<font color=\"red\">*</font>" + field.getName());
+            } else {
+                fieldLabel.setText(field.getName());
+            }
         } else {
             fieldLabel.setText("");
-            fieldLabel.setLabelSeparator("");
         }
         fieldLabel.setWidget(formEditor);
         if (field.getFieldType().isButton()) {
             final TextButton button = new TextButton(field.getName());
-            final ActionListener listener = tabBuilder.getFieldButtonListener();
+            final ActionListener listener = tabBuilder.getFieldListener();
             if (null != listener) {
                 button.addSelectHandler(new SelectHandler() {
 
@@ -346,7 +360,10 @@ public class FieldBuilder {
     }
 
     private void handleValueChanged(final Field editor) {
-        final ActionListener listener = tabBuilder.getFieldButtonListener();
+        final ActionListener listener = tabBuilder.getFieldListener();
+        if (null == listener) {
+            return;
+        }
         editor.addValueChangeHandler(new ValueChangeHandler<Object>() {
 
             @Override

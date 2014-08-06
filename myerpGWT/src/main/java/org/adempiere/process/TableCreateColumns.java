@@ -101,6 +101,7 @@ public class TableCreateColumns extends ServerProcess {
             if (column != null) continue;
             int dataType = rs.getInt("DATA_TYPE");
             String typeName = rs.getString("TYPE_NAME");
+            String nullable = rs.getString("IS_NULLABLE");
             int size = rs.getInt("COLUMN_SIZE");
             //
             column = createColumn(table, columnName);
@@ -123,7 +124,12 @@ public class TableCreateColumns extends ServerProcess {
             column.setDescription(element.getDescription());
             column.setHelp(element.getHelp());
             column.setADElementID(element.getADElementID());
-            column.setMandatory(false);
+            if ("no".equalsIgnoreCase(nullable)) {
+                column.setMandatory(true);
+            } else {
+                column.setMandatory(false);
+            }
+
             if (columnName.equalsIgnoreCase(tableName + "_ID")) {
                 column.setKey(true);
                 column.setADReferenceID(DisplayType.ID);

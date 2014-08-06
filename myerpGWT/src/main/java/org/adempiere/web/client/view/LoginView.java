@@ -39,7 +39,7 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 public class LoginView extends BaseReverseView<ILoginPresenter> implements ILoginView, ConfirmToolListener {
 
     private static LoginViewUiBinder uiBinder         = GWT.create(LoginViewUiBinder.class);
-    protected AdempiereServiceAsync  adempiereService = GWT.create(AdempiereService.class);
+    private AdempiereServiceAsync    adempiereService = GWT.create(AdempiereService.class);
 
     interface LoginViewUiBinder extends UiBinder<Widget, LoginView> {
     }
@@ -63,7 +63,7 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
     @UiField
     ConfirmToolBar           toolBar;
 
-    public LoginView() {
+    public LoginView(){
         initWidgets();
     }
 
@@ -145,14 +145,23 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
         tabContainer.setActiveWidget(defaultTab);
     }
 
+    void goLoginCfg() {
+        connectionConfig.setEnabled(true);
+        defaultConfig.setEnabled(false);
+        Widget loginTab = tabContainer.getWidget(0);
+        tabContainer.update(loginTab, connectionConfig);
+        tabContainer.setActiveWidget(loginTab);
+    }
+
     void login() {
         String username = this.userId.getValue();
         String password = this.password.getValue();
         AsyncSuccessCallback<ADUserContext> callback = new AsyncSuccessCallback<ADUserContext>() {
 
             @Override
-            public void onSuccess(ADUserContext result) {
+            public void onSuccess(ADUserContext result) {                
                 goDefaultCfg(result);
+                LoginView.this.password.clear();
             }
         };
         adempiereService.login(username, password, callback);
@@ -166,6 +175,8 @@ public class LoginView extends BaseReverseView<ILoginPresenter> implements ILogi
             public void onSuccess(ADUserContext result) {
                 if (null != result) {
                     goDefaultCfg(result);
+                } else {
+                    goLoginCfg();
                 }
             }
         };

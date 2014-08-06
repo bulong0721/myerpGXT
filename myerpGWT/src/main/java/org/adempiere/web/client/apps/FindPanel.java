@@ -163,8 +163,8 @@ public class FindPanel extends ModalDialog implements ConfirmToolListener {
         formStrategy.setCreateGridEditor(false);
         formStrategy.setCanReadOnly(false);
         simpleEditor = new TabEditor(formStrategy);
-        simpleEditor.setLabelWidth(85);
-        simpleEditor.setLayoutWidth(0.62d);
+        simpleEditor.setLabelWidth(135);
+        simpleEditor.setLayoutWidth(0.80d);
 
         store = new TreeStore<ADExpression>(new XKeyProvider());
         ColumnConfig<ADExpression, String> nameColumn = new ColumnConfig<ADExpression, String>(
@@ -285,8 +285,7 @@ public class FindPanel extends ModalDialog implements ConfirmToolListener {
         if (!usingCondition) {
             return null;
         }
-        Widget widget = tabContainer.getActiveWidget();
-        if (0 == tabContainer.getWidgetIndex(widget)) {
+        if (0 == WidgetUtil.getActiveIndex(tabContainer)) {
             createSimpleConditon();
             return simpleConditon;
         } else {

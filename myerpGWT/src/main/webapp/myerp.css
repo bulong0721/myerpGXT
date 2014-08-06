@@ -120,6 +120,11 @@ h1 {
 
 .formField {
 	margin: 2px 4px 2px 4px !important;
+	text-align: right;
+}
+
+.numberField {
+	text-align: right;
 }
 
 .fieldGroup {

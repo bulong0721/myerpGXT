@@ -30,7 +30,7 @@ public abstract class ServerProcess implements ProcessCall {
         boolean success = true;
         try {
             preProcess(ctx);
-            success = doIt(null);
+            success = doIt(pResult);
         } catch (Throwable e) {
             success = false;
             e.printStackTrace();

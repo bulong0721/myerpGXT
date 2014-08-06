@@ -4,14 +4,14 @@ import org.adempiere.common.ProcessResult;
 
 public class CopyColumnsFromTable extends ServerProcess {
 
-    private Integer srcTableId;
-    private Integer desTableId;
+    // private Integer srcTableId;
+    // private Integer desTableId;
     private int     count;
 
     @Override
     protected void preProcess(ProcessContext ctx) {
-        srcTableId = (Integer) ctx.getRowMap().get("aDTableID");
-        desTableId = (Integer) ctx.getParamMap().get("aDTableID");
+//        srcTableId = (Integer) ctx.getRowMap().get("aDTableID");
+//        desTableId = (Integer) ctx.getParamMap().get("aDTableID");
     }
 
     @Override

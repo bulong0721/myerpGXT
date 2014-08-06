@@ -208,7 +208,6 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
 
         public static String getEntityClassNameByProperty(String propertyName) {
             StringBuffer buffer = new StringBuffer("org.adempiere.model.");
-            // propertyName = propertyName.replace("_", "");
             buffer.append(propertyName.substring(0, 1).toUpperCase());
             buffer.append(propertyName, 1, propertyName.length() - 2);
             return buffer.toString();
@@ -263,7 +262,15 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
     }
 
     @Override
-    public void deleteData(List<ADModelKey> keyList, String tableName) throws RuntimeException {
+    public void deleteData(String text, String tableName) throws RuntimeException {
+        try {
+            System.out.println("record json:" + text);
+            Class<?> clazz = ServiceUtil.getEntityClassByTable(tableName);
+            List<?> array = JSON.parseArray(text, clazz);
+            POUtil.removeAll(pCtx, array);
+        } catch (Exception e) {
+            throw ExceptionUtil.encodeBusinessException(e);
+        }
     }
 
     @Override
@@ -289,6 +296,7 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
     }
 
     private int getLanguage() {
+        // HttpServletRequest req = getThreadLocalRequest();
         return 0;
     }
 
@@ -511,10 +519,9 @@ public class AdempiereServlet extends RemoteServiceServlet implements AdempiereS
     }
 
     @Override
-    public Boolean logout() throws RuntimeException {
+    public void logout() throws RuntimeException {
         Subject subject = PermissionUtil.getSubject();
         subject.logout();
-        return true;
     }
 
     @Override

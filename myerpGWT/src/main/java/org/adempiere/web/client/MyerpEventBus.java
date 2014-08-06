@@ -2,6 +2,7 @@ package org.adempiere.web.client;
 
 import org.adempiere.web.client.model.MenuModel;
 import org.adempiere.web.client.presenter.ApplicationPresenter;
+import org.adempiere.web.client.presenter.BannerPresenter;
 import org.adempiere.web.client.presenter.ContentPresenter;
 import org.adempiere.web.client.presenter.LoginPresenter;
 import org.adempiere.web.client.presenter.NavigationPresenter;
@@ -34,4 +35,7 @@ public interface MyerpEventBus extends EventBus {
 	
 	@Event(handlers = { NavigationPresenter.class })
 	void loadNavigation();
+	
+	@Event(handlers = { BannerPresenter.class })
+    void splashScreen();
 }

@@ -23,9 +23,7 @@
 	<container:Viewport>
 		<container:BorderLayoutContainer ui:field="borderLayout" borders="true">
 			<container:north layoutData="{northData}">
-				<g:SimplePanel>
-					<view:BannerView ui:field="bannerView" />
-				</g:SimplePanel>
+				<view:BannerView ui:field="bannerView" />
 			</container:north>
 			<container:west layoutData="{westData}">
 				<gxt:ContentPanel headingText="{i18n.appView_Navigation}">
@@ -36,9 +34,7 @@
 				<view:ContentView ui:field="contentView" />
 			</container:center>
 			<container:south layoutData="{southData}">
-				<g:SimplePanel>
-					<view:RemindView ui:field="remindView" />
-				</g:SimplePanel>
+				<view:RemindView ui:field="remindView" />
 			</container:south>
 		</container:BorderLayoutContainer>
 	</container:Viewport>

@@ -5,7 +5,6 @@
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="javax.validation.Validation" />
 	<inherits name="com.google.gwt.editor.Editor" />
-	<inherits name="com.sencha.gxt.ui.GXT" />
 	<inherits name="com.sencha.gxt.theme.gray.Gray" />
 	<inherits name="org.adempiere.Model" />
 	<inherits name="com.mvp4g.Mvp4gModule" />
@@ -19,10 +18,8 @@
 	<add-linker name="xsiframe" />
 	<set-configuration-property name="devModeRedirectEnabled" value="true" />
 	<set-configuration-property name="xsiframe.failIfScriptTag" value="false" />
-	<set-property name="compiler.useSourceMaps" value="false" />
-	<set-property name="ClientBundle.enableInlining" value="false" />
+	<set-property name="compiler.useSourceMaps" value="true" />
 	<extend-property name="locale" values="en,zh_CN" />
-	<set-property-fallback name="locale" value="zh_CN" />
 	<set-configuration-property name="locale.searchorder" value="cookie,useragent" />
 	<set-configuration-property name="locale.cookie" value="lang" />
 </module>

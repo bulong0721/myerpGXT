@@ -61,7 +61,7 @@
 			   AND NOT EXISTS (SELECT f.aDFieldID FROM ADField f WHERE f.aDColumnID=c.aDColumnID AND f.aDTabID= :adTabId)</query>
 	</named-query>
 	<named-query name="querySeqByTabId">
-		<query>SELECT NEW org.adempiere.web.client.model.ADSequenceModel(f.aDFieldID, f.name, f.seqNo) FROM ADField f WHERE f.aDTabID = :adTabId ORDER BY f.seqNo</query>
+		<query>SELECT NEW org.adempiere.web.client.model.SequenceModel(f.aDFieldID, f.name, f.seqNo) FROM ADField f WHERE f.aDTabID = :adTabId ORDER BY f.seqNo</query>
 	</named-query>
 	<named-query name="queryRootNodes">
 		<query>SELECT n FROM ADTreeBar b JOIN b.nodes n WHERE b.aDTreeID = :adTreeId AND b.aDUserID = :adUserId</query>

@@ -24,7 +24,7 @@
 	<container:VerticalLayoutContainer>
 		<container:child layoutData="{toolLayoutData}">
 			<toolbar:ToolBar>
-				<gxt:Status ui:field="majorLabel" text="{i18n.winPanel_StatusLeft}" width="300" />
+				<gxt:Status ui:field="majorLabel" text="{i18n.winPanel_StatusLeft}" width="80%" />
 				<toolbar:FillToolItem />
 				<toolbar:SeparatorToolItem />
 				<gxt:Status ui:field="minorLabel" text="{i18n.winPanel_StatusRight}"

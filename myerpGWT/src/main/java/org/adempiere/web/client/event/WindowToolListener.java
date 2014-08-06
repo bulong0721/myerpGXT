@@ -1,114 +1,115 @@
 package org.adempiere.web.client.event;
 
 public interface WindowToolListener {
-	/**
-	 * Ignore user changes
-	 */
-	public void onIgnore();
 
-	/**
-	 * Create new record
-	 */
-	public void onNew();
+    /**
+     * Ignore user changes
+     */
+    public void onIgnore();
 
-	/**
-	 * Navigate to first record
-	 */
-	public void onFirst();
+    /**
+     * Create new record
+     */
+    public void onNew();
 
-	/**
-	 * Navigate to last record
-	 */
-	public void onLast();
+    /**
+     * Navigate to first record
+     */
+    public void onFirst();
 
-	/**
-	 * Navigate to next record
-	 */
-	public void onNext();
+    /**
+     * Navigate to last record
+     */
+    public void onLast();
 
-	/**
-	 * Navigate to previous record
-	 */
-	public void onPrevious();
+    /**
+     * Navigate to next record
+     */
+    public void onNext();
 
-	/**
-	 * Navigate to parent record, i.e previous tab
-	 */
-	public void onParentRecord();
+    /**
+     * Navigate to previous record
+     */
+    public void onPrevious();
 
-	/**
-	 * Navigate to detail record, i.e next tab
-	 */
-	public void onDetailRecord();
+    /**
+     * Navigate to parent record, i.e previous tab
+     */
+    public void onParentRecord();
 
-	/**
-	 * Refresh current record
-	 */
-	public void onRefresh();
+    /**
+     * Navigate to detail record, i.e next tab
+     */
+    public void onDetailRecord();
 
-	/**
-	 * Print document
-	 */
-	public void onPrint();
+    /**
+     * Refresh current record
+     */
+    public void onRefresh();
 
-	/**
-	 * View available report for current tab
-	 */
-	public void onReport();
+    /**
+     * Print document
+     */
+    public void onPrint();
 
-	/**
-	 * Toggle record presentation between free form and tabular
-	 */
-	public void onToggle();
+    /**
+     * View available report for current tab
+     */
+    public void onReport();
 
-	/**
-	 * Open the help window
-	 */
-	public void onHelp();
+    /**
+     * Toggle record presentation between free form and tabular
+     */
+    public void onToggle();
 
-	/**
-	 * Delete current record
-	 */
-	public void onDelete();
+    /**
+     * Open the help window
+     */
+    public void onHelp();
 
-	/**
-	 * Delete current record
-	 */
-	public void onDeleteSelection();
+    /**
+     * Delete current record
+     */
+    public void onDelete();
 
-	/**
-	 * Copy current record
-	 */
-	public void onCopy();
+    /**
+     * Delete current record
+     */
+    public void onDeleteSelection();
 
-	/**
-	 * Save current record
-	 */
-	public void onSave();
+    /**
+     * Copy current record
+     */
+    public void onCopy();
 
-	/**
-	 * Open the find/search dialog
-	 */
-	public void onFind();
+    /**
+     * Save current record
+     */
+    public void onSave();
 
-	/**
-	 * Open the attachment dialog
-	 */
-	public void onAttachment();
+    /**
+     * Open the find/search dialog
+     */
+    public void onFind();
 
-	/**
-	 * Open the history dialog
-	 */
-	public void onHistoryRecords();
+    /**
+     * Open the attachment dialog
+     */
+    public void onAttachment();
 
-	/**
-	 * Show active workflow for current record
-	 */
-	public void onActiveWorkflows();
+    /**
+     * Open the history dialog
+     */
+    public void onHistoryRecords();
 
-	/**
-	 * Open the request menu where user can view available request or create a
-	 * new request
-	 */
-	public void onRequests();
+    /**
+     * Show active workflow for current record
+     */
+    public void onActiveWorkflows();
+
+    /**
+     * Open the request menu where user can view available request or create a new request
+     */
+    public void onRequests();
+
 }

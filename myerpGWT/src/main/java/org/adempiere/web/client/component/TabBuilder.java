@@ -23,7 +23,7 @@ public class TabBuilder {
 	private boolean						canReadOnly			= true;
 	private boolean						createFormEditor	= true;
 	private boolean						createGridEditor	= true;
-	private ActionListener				fieldButtonListener;
+	private ActionListener				fieldListener;
 	private boolean						isCreated;
 
 	public TabBuilder(List<? extends FormField> fieldList) {
@@ -87,12 +87,12 @@ public class TabBuilder {
 		return null;
 	}
 
-	public ActionListener getFieldButtonListener() {
-		return fieldButtonListener;
+	public ActionListener getFieldListener() {
+		return fieldListener;
 	}
 
-	public void setFieldButtonListener(ActionListener fieldButtonListener) {
-		this.fieldButtonListener = fieldButtonListener;
+	public void setFieldListener(ActionListener fieldListener) {
+		this.fieldListener = fieldListener;
 	}
 
 	public ColumnModel<MapEntry> createColumnModel(CheckBoxSelectionModel<MapEntry> chkSm) {

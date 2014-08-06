@@ -83,7 +83,8 @@ public class ProcessPanel extends ModalDialog implements ConfirmToolListener {
         TabBuilder formStrategy = new TabBuilder(fieldList);
         formStrategy.setCreateGridEditor(false);
         prarmEditor = new TabEditor(formStrategy);
-        prarmEditor.setLayoutWidth(0.52d);
+        prarmEditor.setLabelWidth(155);
+        prarmEditor.setLayoutWidth(0.72d);
         adModelDriver = GWT.create(TabDriver.class);
         adModelDriver.initialize(prarmEditor);
         adModelDriver.edit(paramData);

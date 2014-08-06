@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.ButtonCell.IconAlign;
 import com.sencha.gxt.widget.core.client.Component;
+import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
 import com.sencha.gxt.widget.core.client.button.IconButton;
@@ -114,5 +115,10 @@ public final class WidgetUtil {
             component.unmask();
         }
 
+    }
+    
+    public static int getActiveIndex(TabPanel tabPanel) {
+        Widget widget = tabPanel.getActiveWidget();
+        return tabPanel.getWidgetIndex(widget); 
     }
 }

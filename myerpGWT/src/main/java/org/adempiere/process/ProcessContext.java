@@ -11,80 +11,87 @@ import org.adempiere.web.client.model.ProcessModel;
 
 @SuppressWarnings("serial")
 public class ProcessContext extends PersistContext {
-	private ProcessModel		processModel;
-	private Map<String, Object>	paramMap;
-	private Map<String, Object>	rowMap;
 
-	public ProcessContext() {
-		this(null, Collections.<String, Object> emptyMap(), Collections.<String, Object> emptyMap());
-	}
+    private ProcessModel        processModel;
+    private Map<String, Object> paramMap;
+    private Map<String, Object> rowMap;
 
-	public ProcessContext(ProcessModel pModel, Map<String, Object> rowMap, Map<String, Object> paramMap) {
-		super(true);
-		this.processModel = pModel;
-		this.paramMap = paramMap;
-		this.rowMap = rowMap;
-	}
+    public ProcessContext(){
+        this(null, Collections.<String, Object> emptyMap(), Collections.<String, Object> emptyMap());
+    }
 
-	public void managedRollback() {
-		try {
-			lock.lock();
-			EntityManager em = getEntityManager();
-			assertActive();
-			em.getTransaction().rollback();
-		} finally {
-			lock.unlock();
-		}
-	}
+    public ProcessContext(ProcessModel pModel, Map<String, Object> rowMap, Map<String, Object> paramMap){
+        super(true);
+        this.processModel = pModel;
+        this.paramMap = paramMap;
+        this.rowMap = rowMap;
+    }
 
-	public void managedCommit() {
-		try {
-			lock.lock();
-			EntityManager em = getEntityManager();
-			assertActive();
-			em.getTransaction().commit();
-		} finally {
-			lock.unlock();
-		}
-	}
+    private boolean isActive(EntityManager em) {
+        return null != em && em.isOpen();
+    }
 
-	public Connection getConnection() {
-		return getEntityManager().unwrap(Connection.class);
-	}
+    public void managedRollback() {
+        try {
+            lock.lock();
+            EntityManager em = thread.get();
+            if (isActive(em)) {
+                em.getTransaction().rollback();
+            }
+        } finally {
+            lock.unlock();
+        }
+    }
 
-	public ProcessModel getProcessModel() {
-		return processModel;
-	}
+    public void managedCommit() {
+        try {
+            lock.lock();
+            EntityManager em = thread.get();
+            if (isActive(em)) {
+                em.getTransaction().commit();
+            }
+        } finally {
+            lock.unlock();
+        }
+    }
 
-	public Map<String, Object> getParamMap() {
-		return paramMap;
-	}
+    public Connection getConnection() {
+        return getEntityManager().unwrap(Connection.class);
+    }
 
-	public Map<String, Object> getRowMap() {
-		return rowMap;
-	}
+    public ProcessModel getProcessModel() {
+        return processModel;
+    }
 
-	public String getClassName() {
-		if (null != processModel) {
-			return processModel.getClassName();
-		}
-		return null;
-	}
+    public Map<String, Object> getParamMap() {
+        return paramMap;
+    }
 
-	public void setClassName(String jasperStarterClass) {
-		if (null != processModel) {
-			processModel.setClassName(jasperStarterClass);
-		}
-	}
+    public Map<String, Object> getRowMap() {
+        return rowMap;
+    }
 
-	public void setADPinstanceID(Integer adPinstanceId) {
-		// TODO Auto-generated method stub
+    public String getClassName() {
+        if (null != processModel) {
+            return processModel.getClassName();
+        }
+        return null;
+    }
 
-	}
+    public void setClassName(String jasperStarterClass) {
+        if (null != processModel) {
+            processModel.setClassName(jasperStarterClass);
+        }
+    }
 
-	public void setReportingProcess(boolean b) {
-		// TODO Auto-generated method stub
+    public void setADPinstanceID(Integer adPinstanceId) {
+        // TODO Auto-generated method stub
 
-	}
+    }
+
+    public void setReportingProcess(boolean b) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

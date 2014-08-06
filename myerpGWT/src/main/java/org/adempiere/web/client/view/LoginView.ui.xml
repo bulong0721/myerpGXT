@@ -25,13 +25,16 @@
 	<ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="marginData">
 		<ui:attributes margins="{margins4}" />
 	</ui:with>
-	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="copyrightLayoutData">
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="copyrightLayoutData">
 		<ui:attributes margins="{margins60}" />
 	</ui:with>
-	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="tabmarginData">
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="tabmarginData">
 		<ui:attributes height="270" width="1" margins="{margins4}" />
 	</ui:with>
-	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="vmarginData">
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="vmarginData">
 		<ui:attributes height="-1" width="1" margins="{margins4}" />
 	</ui:with>
 	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="connectionConfig">
@@ -40,13 +43,16 @@
 	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="defaultConfig">
 		<ui:attributes text="{i18n.loginView_Default}" enabled="false" />
 	</ui:with>
-	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="verticalLayoutData">
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="verticalLayoutData">
 		<ui:attributes width="1" height="-1" margins="{marginsf}" />
 	</ui:with>
-	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="productLayoutData">
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="productLayoutData">
 		<ui:attributes width="1" height="-1" margins="{marginsp}" />
 	</ui:with>
-	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData" field="settingLayoutData">
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="settingLayoutData">
 		<ui:attributes width="1" height="-1" margins="{margins10}" />
 	</ui:with>
 	<ui:style>
@@ -54,92 +60,90 @@
 		font: 12px tahoma, arial, verdana, sans-serif;
 		}
 	</ui:style>
-	<container:Viewport>
-		<container:CenterLayoutContainer>
-			<gxt:ContentPanel ui:field="panel" headingText="{i18n.loginView_Login}" pixelSize="370,336">
-				<container:VerticalLayoutContainer>
-					<container:child layoutData="{tabmarginData}">
-						<tabs:TabPanel ui:field="tabContainer" borders="false" layoutData="{marginData}">
-							<tabs:child config="{connectionConfig}">
-								<container:VerticalLayoutContainer>
-									<container:child>
-										<g:Image pixelSize="90, 80" url="images/AdempiereLogo.png" />
-									</container:child>
-									<container:child layoutData="{productLayoutData}">
-										<g:Label styleName="{style.label}" text="{i18n.loginView_Product}" />
-									</container:child>
-									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="{i18n.loginView_UserID}" labelWidth="65">
-											<form:widget>
-												<form:TextField ui:field="userId" allowBlank="false" />
-											</form:widget>
-										</form:FieldLabel>
-									</container:child>
-									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="{i18n.loginView_Password}" labelWidth="65">
-											<form:widget>
-												<form:PasswordField ui:field="password" allowBlank="false" />
-											</form:widget>
-										</form:FieldLabel>
-									</container:child>
-									<container:child layoutData="{verticalLayoutData}">
-										<form:FieldLabel text="{i18n.loginView_Language}" labelWidth="65">
-											<form:widget>
-												<form:ComboBox ui:field="langCombo" allowBlank="true" forceSelection="true" />
-											</form:widget>
-										</form:FieldLabel>
-									</container:child>
-									<container:child layoutData="{copyrightLayoutData}">
-										<g:Label styleName="{style.label}" text="{i18n.loginView_CopyRight}" />
-									</container:child>
-								</container:VerticalLayoutContainer>
-							</tabs:child>
-							<tabs:child config="{defaultConfig}">
-								<container:VerticalLayoutContainer>
-									<container:child layoutData="{settingLayoutData}">
-										<form:FieldLabel text="{i18n.loginView_Role}">
-											<form:widget>
-												<form:ComboBox ui:field="roleCombo" allowBlank="true" forceSelection="true" />
-											</form:widget>
-										</form:FieldLabel>
-									</container:child>
-									<container:child layoutData="{settingLayoutData}">
-										<form:FieldLabel text="{i18n.loginView_Client}">
-											<form:widget>
-												<form:ComboBox ui:field="clientCombo" allowBlank="true" forceSelection="true" />
-											</form:widget>
-										</form:FieldLabel>
-									</container:child>
-									<container:child layoutData="{settingLayoutData}">
-										<form:FieldLabel text="{i18n.loginView_Org}">
-											<form:widget>
-												<form:ComboBox ui:field="orgCombo" allowBlank="true" forceSelection="true" />
-											</form:widget>
-										</form:FieldLabel>
-									</container:child>
-									<container:child layoutData="{settingLayoutData}">
-										<form:FieldLabel text="{i18n.loginView_Warehouse}">
-											<form:widget>
-												<form:ComboBox ui:field="warehouseCombo" allowBlank="true" forceSelection="true" />
-											</form:widget>
-										</form:FieldLabel>
-									</container:child>
-									<container:child layoutData="{settingLayoutData}">
-										<form:FieldLabel text="{i18n.loginView_Warehouse}">
-											<form:widget>
-												<component:LookupField ui:field="lookupCombo" />
-											</form:widget>
-										</form:FieldLabel>
-									</container:child>
-								</container:VerticalLayoutContainer>
-							</tabs:child>
-						</tabs:TabPanel>
-					</container:child>
-					<container:child layoutData="{vmarginData}">
-						<widget:ConfirmToolBar ui:field="toolBar" />
-					</container:child>
-				</container:VerticalLayoutContainer>
-			</gxt:ContentPanel>
-		</container:CenterLayoutContainer>
-	</container:Viewport>
+	<container:CenterLayoutContainer>
+		<gxt:ContentPanel ui:field="panel" headingText="{i18n.loginView_Login}" pixelSize="370,336">
+			<container:VerticalLayoutContainer>
+				<container:child layoutData="{tabmarginData}">
+					<tabs:TabPanel ui:field="tabContainer" borders="false" layoutData="{marginData}">
+						<tabs:child config="{connectionConfig}">
+							<container:VerticalLayoutContainer>
+								<container:child>
+									<g:Image pixelSize="90, 80" url="images/AdempiereLogo.png" />
+								</container:child>
+								<container:child layoutData="{productLayoutData}">
+									<g:Label styleName="{style.label}" text="{i18n.loginView_Product}" />
+								</container:child>
+								<container:child layoutData="{verticalLayoutData}">
+									<form:FieldLabel text="{i18n.loginView_UserID}" labelWidth="65">
+										<form:widget>
+											<form:TextField ui:field="userId" allowBlank="false" />
+										</form:widget>
+									</form:FieldLabel>
+								</container:child>
+								<container:child layoutData="{verticalLayoutData}">
+									<form:FieldLabel text="{i18n.loginView_Password}" labelWidth="65">
+										<form:widget>
+											<form:PasswordField ui:field="password" allowBlank="false" />
+										</form:widget>
+									</form:FieldLabel>
+								</container:child>
+								<container:child layoutData="{verticalLayoutData}">
+									<form:FieldLabel text="{i18n.loginView_Language}" labelWidth="65">
+										<form:widget>
+											<form:ComboBox ui:field="langCombo" allowBlank="true" forceSelection="true" />
+										</form:widget>
+									</form:FieldLabel>
+								</container:child>
+								<container:child layoutData="{copyrightLayoutData}">
+									<g:Label styleName="{style.label}" text="{i18n.loginView_CopyRight}" />
+								</container:child>
+							</container:VerticalLayoutContainer>
+						</tabs:child>
+						<tabs:child config="{defaultConfig}">
+							<container:VerticalLayoutContainer>
+								<container:child layoutData="{settingLayoutData}">
+									<form:FieldLabel text="{i18n.loginView_Role}">
+										<form:widget>
+											<form:ComboBox ui:field="roleCombo" allowBlank="true" forceSelection="true" />
+										</form:widget>
+									</form:FieldLabel>
+								</container:child>
+								<container:child layoutData="{settingLayoutData}">
+									<form:FieldLabel text="{i18n.loginView_Client}">
+										<form:widget>
+											<form:ComboBox ui:field="clientCombo" allowBlank="true" forceSelection="true" />
+										</form:widget>
+									</form:FieldLabel>
+								</container:child>
+								<container:child layoutData="{settingLayoutData}">
+									<form:FieldLabel text="{i18n.loginView_Org}">
+										<form:widget>
+											<form:ComboBox ui:field="orgCombo" allowBlank="true" forceSelection="true" />
+										</form:widget>
+									</form:FieldLabel>
+								</container:child>
+								<container:child layoutData="{settingLayoutData}">
+									<form:FieldLabel text="{i18n.loginView_Warehouse}">
+										<form:widget>
+											<form:ComboBox ui:field="warehouseCombo" allowBlank="true" forceSelection="true" />
+										</form:widget>
+									</form:FieldLabel>
+								</container:child>
+								<container:child layoutData="{settingLayoutData}">
+									<form:FieldLabel text="{i18n.loginView_Warehouse}">
+										<form:widget>
+											<component:LookupField ui:field="lookupCombo" />
+										</form:widget>
+									</form:FieldLabel>
+								</container:child>
+							</container:VerticalLayoutContainer>
+						</tabs:child>
+					</tabs:TabPanel>
+				</container:child>
+				<container:child layoutData="{vmarginData}">
+					<widget:ConfirmToolBar ui:field="toolBar" />
+				</container:child>
+			</container:VerticalLayoutContainer>
+		</gxt:ContentPanel>
+	</container:CenterLayoutContainer>
 </ui:UiBinder> 

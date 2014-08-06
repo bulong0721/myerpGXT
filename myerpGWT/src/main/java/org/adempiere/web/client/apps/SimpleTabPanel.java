@@ -49,6 +49,7 @@ import com.sencha.gxt.data.shared.Store.Change;
 import com.sencha.gxt.data.shared.Store.Record;
 import com.sencha.gxt.data.shared.event.StoreDataChangeEvent;
 import com.sencha.gxt.data.shared.event.StoreDataChangeEvent.StoreDataChangeHandler;
+import com.sencha.gxt.data.shared.loader.LoadEvent;
 import com.sencha.gxt.data.shared.loader.LoadExceptionEvent;
 import com.sencha.gxt.data.shared.loader.LoadExceptionEvent.LoadExceptionHandler;
 import com.sencha.gxt.data.shared.loader.LoadHandler;
@@ -83,7 +84,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
     private MapEntry              newRecord;
     private ColumnModel<MapEntry> cm;
     private ListStore<MapEntry>   store;
-    private TabBuilder            tabStrategy;
+    private TabBuilder            tabBuilder;
     private GridEditing<MapEntry> gridEditing;
     private TabDriver             adModelDriver;
     private EntryKeyProvider      keyProvider;
@@ -103,8 +104,8 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
 
     public SimpleTabPanel(WindowPanel windowPanel, TabModel tabModel, CWindowToolBar toolBar){
         super(windowPanel, tabModel, toolBar);
-        this.tabStrategy = new TabBuilder(tabModel.getFieldList());
-        this.tabStrategy.setFieldButtonListener(this);
+        this.tabBuilder = new TabBuilder(tabModel.getFieldList());
+        this.tabBuilder.setFieldListener(this);
     }
 
     @Override
@@ -161,7 +162,6 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
         };
         EntryReader reader = new EntryReader();
         loader = new PagingLoader<PageRequest, PagingLoadResult<MapEntry>>(proxy, reader);
-        loader.setRemoteSort(true);
         loader.addLoadExceptionHandler(new LoadExceptionHandler<PageRequest>() {
 
             @Override
@@ -175,6 +175,13 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
                     dialog = new AlertMessageBox(i18n.adempiere_System(), error.getMessage());
                 }
                 dialog.show();
+            }
+        });
+        loader.addLoadHandler(new LoadHandler<PageRequest, PagingLoadResult<MapEntry>>() {
+
+            @Override
+            public void onLoad(LoadEvent<PageRequest, PagingLoadResult<MapEntry>> event) {
+                grid.getView().getHeader().refresh();
             }
         });
         pageToolBar = new PagingToolBar(50);
@@ -195,11 +202,12 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
         CheckBoxSelectionModel<MapEntry> selectModel = new CheckBoxSelectionModel<MapEntry>();
         selectModel.setSelectionMode(SelectionMode.MULTI);
         loader.addLoadHandler(loadHandler);
-        cm = tabStrategy.createColumnModel(selectModel);
+        cm = tabBuilder.createColumnModel(selectModel);
         grid = new Grid<MapEntry>(store, cm);
         grid.setLoader(loader);
         grid.setSelectionModel(selectModel);
-        gridEditing = tabStrategy.createGridEditing(grid);
+
+        gridEditing = tabBuilder.createGridEditing(grid);
         gridEditing.addCompleteEditHandler(new CompleteEditHandler<MapEntry>() {
 
             @Override
@@ -247,7 +255,7 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
     }
 
     private void createForm() {
-        formEditing = new TabEditor(tabStrategy);
+        formEditing = new TabEditor(tabBuilder);
         formEditing.asWidget();
     }
 
@@ -367,19 +375,26 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
     }
 
     public void deleteRecord() {
-        final MapEntry selectedData = grid.getSelectionModel().getSelectedItem();
-        final MessageBox box = new MessageBox("Error");
-        if (null == selectedData) {
-            box.setMessage("Select the row you want to delete");
-            box.show();
+        final List<MapEntry> items = grid.getSelectionModel().getSelectedItems();
+        if (null == items || items.isEmpty()) {
+            WidgetUtil.setStatusLine("Select the row you want to delete", true);
             return;
         }
-        List<ADModelKey> keys = keyProvider.getKeys(selectedData);
-        adempiereService.deleteData(keys, tabModel.getTableName(), new AsyncSuccessCallback<Void>() {
+
+        JavaScriptObject array = JavaScriptObject.createArray();
+        int index = 0;
+        for (MapEntry item : items) {
+            JSOUtil.arraySet(array, index, ((JSOEntry) item).getJso());
+            index++;
+        }
+        String json = JSOUtil.toString(array);
+        adempiereService.deleteData(json, tabModel.getTableName(), new AsyncSuccessCallback<Void>() {
 
             @Override
             public void onSuccess(Void result) {
-                store.remove(selectedData);
+                for (MapEntry item : items) {
+                    store.remove(item);
+                }
                 store.commitChanges();
                 grid.getSelectionModel().select(0, false);
                 grid.getView().refresh(false);

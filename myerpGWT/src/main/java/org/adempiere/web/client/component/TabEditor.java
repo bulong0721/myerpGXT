@@ -31,7 +31,7 @@ public class TabEditor implements CompositeEditor<MapEntry, Object, Field<Object
     private MapEntry                model;
     private CssFloatLayoutContainer container;
     private double                  layoutWidth = 0.485d;
-    private int                     labelWidth  = 130;
+    private int                     labelWidth  = 135;
     private boolean                 filling;
 
     @UiConstructor

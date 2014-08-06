@@ -14,5 +14,6 @@ public class ApplicationPresenter extends BasePresenter<IApplicationView, MyerpE
 	public void onGoApplication() {
 		getEventBus().setBody(getView());
 		getEventBus().loadNavigation();
+		getEventBus().splashScreen();
 	}
 }

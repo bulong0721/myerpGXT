@@ -21,7 +21,6 @@ public class TabCreateFields extends ServerProcess {
 
     @Override
     protected boolean doIt(ProcessResult pResult) throws Exception {
-        // TODO Auto-generated method stub
         if (null == adTableId) throw new AdempiereUserError("@NotFound@ (table->) @AD_Window_ID@");
         if (null == adTabId) throw new AdempiereUserError("@NotFound@ (tab<-) @AD_Window_ID@");
         int count = 0;

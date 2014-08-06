@@ -2,7 +2,6 @@ package org.adempiere.web.client.service;
 
 import java.util.List;
 
-import org.adempiere.common.ADModelKey;
 import org.adempiere.common.ADUserContext;
 import org.adempiere.common.CalloutResult;
 import org.adempiere.common.LookupValue;
@@ -10,8 +9,8 @@ import org.adempiere.common.ProcessResult;
 import org.adempiere.web.client.model.FieldModel;
 import org.adempiere.web.client.model.FormModel;
 import org.adempiere.web.client.model.JsonResult;
-import org.adempiere.web.client.model.PageRequest;
 import org.adempiere.web.client.model.NodeModel;
+import org.adempiere.web.client.model.PageRequest;
 import org.adempiere.web.client.model.ProcessModel;
 import org.adempiere.web.client.model.SequenceModel;
 import org.adempiere.web.client.model.WindowModel;
@@ -44,7 +43,7 @@ public interface AdempiereService extends RemoteService {
 	JsonResult getWindowTabData(PageRequest loadCfg) throws RuntimeException;
 
 	// acl
-	void deleteData(List<ADModelKey> keyList, String tableName) throws RuntimeException;
+	void deleteData(String text, String tableName) throws RuntimeException;
 
 	// acl
 	void updateData(String json, String tableName) throws RuntimeException;
@@ -57,7 +56,7 @@ public interface AdempiereService extends RemoteService {
 	// acl
 	ProcessResult executeProcess(ProcessModel pModel, String rowJson, String paramJson) throws RuntimeException;
 
-	Boolean logout() throws RuntimeException;
+	void logout() throws RuntimeException;
 
 	ADUserContext login(String username, String password) throws RuntimeException;
 }
