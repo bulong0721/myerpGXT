@@ -170,7 +170,7 @@ public class ReportEngine implements PrintServiceAttributeListener {
 			prats.add(new Copies(1));
 		else
 			prats.add(new Copies(printInfo.getCopies()));
-		Locale locale = Language.getLoginLanguage().getLocale();
+		Locale locale = PrintUtil.getLocale(Language.getLoginLanguage());
 		prats.add(new JobName(printFormat.getName(), locale));
 		prats.add(PrintUtil.getJobPriority(layoutEngine.getNumberOfPages(), printInfo.getCopies(), true));
 

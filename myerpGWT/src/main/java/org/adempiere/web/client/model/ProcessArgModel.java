@@ -213,4 +213,9 @@ public class ProcessArgModel implements GwtSerializable, FormField {
         return false;
     }
 
+    @Override
+    public Integer getDisplayLength() {
+        return fieldLength;
+    }
+
 }

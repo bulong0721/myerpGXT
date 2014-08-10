@@ -206,7 +206,9 @@ public class SimpleTabPanel extends AbstractTabPanel implements ActionListener {
         grid = new Grid<MapEntry>(store, cm);
         grid.setLoader(loader);
         grid.setSelectionModel(selectModel);
-
+        grid.getView().setStripeRows(true);
+        grid.getView().setColumnLines(true);
+        
         gridEditing = tabBuilder.createGridEditing(grid);
         gridEditing.addCompleteEditHandler(new CompleteEditHandler<MapEntry>() {
 

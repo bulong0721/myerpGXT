@@ -15,6 +15,7 @@ import sun.security.provider.Sun;
  * @author Michael Judd BF [ 2736817 ] - remove deprecated BASE64Encoder classes
  * 
  */
+@SuppressWarnings("restriction")
 public class DigestOfFile {
 	/**
 	 * @param mode

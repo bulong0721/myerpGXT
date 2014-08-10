@@ -48,4 +48,6 @@ public interface FormField extends GwtSerializable {
 	
 	Boolean isIdentifier();
 
+    Integer getDisplayLength();
+
 }

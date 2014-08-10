@@ -185,25 +185,6 @@
 		<class>org.adempiere.model.ADWorkflowProcessor</class>
 		<class>org.adempiere.model.ADWorkflowProcessorLog</class>
 		<class>org.adempiere.model.ADWorkflowTrl</class>
-		<class>org.adempiere.model.EXPFormat</class>
-		<class>org.adempiere.model.EXPFormatLine</class>
-		<class>org.adempiere.model.EXPProcessor</class>
-		<class>org.adempiere.model.EXPProcessorParameter</class>
-		<class>org.adempiere.model.EXPProcessorType</class>
-		<class>org.adempiere.model.FactAcct</class>
-		<class>org.adempiere.model.IReportLine</class>
-		<class>org.adempiere.model.PAReport</class>
-		<class>org.adempiere.model.PAReportColumn</class>
-		<class>org.adempiere.model.PAReportColumnSet</class>
-		<class>org.adempiere.model.PAReportCube</class>
-		<class>org.adempiere.model.PAReportLine</class>
-		<class>org.adempiere.model.PAReportLineSet</class>
-		<class>org.adempiere.model.PAReportSource</class>
-		<class>org.adempiere.model.RInterestArea</class>
-		<class>org.adempiere.model.RMailText</class>
-		<class>org.adempiere.model.RMailTextTrl</class>
-		<class>org.adempiere.model.WMailMsg</class>
-		<class>org.adempiere.model.WMailMsgTrl</class>
 		<class>org.adempiere.model.AdTabV</class>
 		<class>org.adempiere.model.AdFieldV</class>
 		<class>org.adempiere.model.AdUserRolesV</class>
@@ -217,11 +198,60 @@
 		<class>org.adempiere.model.ADProcessVt</class>
 		<class>org.adempiere.model.ADTaskVt</class>
 		<class>org.adempiere.model.ADWorkflowVt</class>
+		<class>org.adempiere.model.CBPartner</class>
+		<class>org.adempiere.model.CBPartnerLocation</class>
+		<class>org.adempiere.model.CBPGroup</class>
+		<class>org.adempiere.model.CBPRelation</class>
 		<class>org.adempiere.model.CCity</class>
 		<class>org.adempiere.model.CCountry</class>
 		<class>org.adempiere.model.CCountryTrl</class>
+		<class>org.adempiere.model.CCurrency</class>
+		<class>org.adempiere.model.CCurrencyTrl</class>
+		<class>org.adempiere.model.CDocType</class>
+		<class>org.adempiere.model.CElement</class>
+		<class>org.adempiere.model.CInvoice</class>
+		<class>org.adempiere.model.CInvoiceBatch</class>
+		<class>org.adempiere.model.CInvoiceBatchLine</class>
+		<class>org.adempiere.model.CInvoiceLine</class>
 		<class>org.adempiere.model.CLocation</class>
+		<class>org.adempiere.model.CNonBusinessDay</class>
+		<class>org.adempiere.model.COrder</class>
+		<class>org.adempiere.model.COrderLine</class>
+		<class>org.adempiere.model.COrderSource</class>
+		<class>org.adempiere.model.COrgAssignment</class>
+		<class>org.adempiere.model.CPeriod</class>
+		<class>org.adempiere.model.CPeriodControl</class>
+		<class>org.adempiere.model.CPhase</class>
 		<class>org.adempiere.model.CRegion</class>
+		<class>org.adempiere.model.CSalesRegion</class>
+		<class>org.adempiere.model.CUOM</class>
+		<class>org.adempiere.model.CUOMConversion</class>
+		<class>org.adempiere.model.CUOMTrl</class>
+		<class>org.adempiere.model.CYear</class>
+		<class>org.adempiere.model.HRDepartment</class>
+		<class>org.adempiere.model.HREmployee</class>
+		<class>org.adempiere.model.MAttribute</class>
+		<class>org.adempiere.model.MFreight</class>
+		<class>org.adempiere.model.MFreightCategory</class>
+		<class>org.adempiere.model.MInOut</class>
+		<class>org.adempiere.model.MInOutConfirm</class>
+		<class>org.adempiere.model.MInOutLine</class>
+		<class>org.adempiere.model.MInOutLineConfirm</class>
+		<class>org.adempiere.model.MInventory</class>
+		<class>org.adempiere.model.MInventoryLine</class>
+		<class>org.adempiere.model.MLocator</class>
+		<class>org.adempiere.model.MMovement</class>
+		<class>org.adempiere.model.MMovementConfirm</class>
+		<class>org.adempiere.model.MMovementLine</class>
+		<class>org.adempiere.model.MMovementLineConfirm</class>
+		<class>org.adempiere.model.MPriceList</class>
+		<class>org.adempiere.model.MPriceListVersion</class>
+		<class>org.adempiere.model.MProduct</class>
+		<class>org.adempiere.model.MProductCategory</class>
+		<class>org.adempiere.model.MProductPrice</class>
+		<class>org.adempiere.model.MShipper</class>
+		<class>org.adempiere.model.MStorage</class>
+		<class>org.adempiere.model.MWarehouse</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/myerp" />
 			<property name="javax.persistence.jdbc.user" value="adempiere" />

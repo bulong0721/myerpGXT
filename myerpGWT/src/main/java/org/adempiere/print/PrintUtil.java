@@ -1,10 +1,13 @@
 package org.adempiere.print;
 
 import java.awt.print.PrinterJob;
+import java.util.Locale;
 
 import javax.print.attribute.Attribute;
 import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.MediaSize;
 
+import org.adempiere.common.Language;
 import org.adempiere.model.ADClientInfo;
 import org.adempiere.model.ADImage;
 import org.adempiere.model.ADPrintColor;
@@ -25,60 +28,69 @@ import org.adempiere.service.PersistContext;
 import org.adempiere.util.POUtil;
 
 public class PrintUtil {
-	private static PersistContext	context	= new PersistContext();
 
-	public static PrintImage getPrintImage(Integer imageID) {
-		ADImage entity = POUtil.find(context, ADImage.class, imageID);
-		return new PrintImage(entity);
-	}
+    private static PersistContext context = new PersistContext();
 
-	public static PrintFont getPrintFont(int fontID) {
-		ADPrintFont entity = POUtil.find(context, ADPrintFont.class, fontID);
-		return new PrintFont(entity);
-	}
+    public static PrintImage getPrintImage(Integer imageID) {
+        ADImage entity = POUtil.find(context, ADImage.class, imageID);
+        return new PrintImage(entity);
+    }
 
-	public static PrintFormat getPrintFormat(int formatID) {
-		ADPrintFormat entity = POUtil.find(context, ADPrintFormat.class, formatID);
-		return new PrintFormat(entity);
-	}
+    public static PrintFont getPrintFont(int fontID) {
+        ADPrintFont entity = POUtil.find(context, ADPrintFont.class, fontID);
+        return new PrintFont(entity);
+    }
 
-	public static PrintTableFormat getPrintTableFormat(int tableFormatID) {
-		ADPrintTableFormat entity = POUtil.find(context, ADPrintTableFormat.class, tableFormatID);
-		return new PrintTableFormat(entity);
-	}
+    public static PrintFormat getPrintFormat(int formatID) {
+        ADPrintFormat entity = POUtil.find(context, ADPrintFormat.class, formatID);
+        return new PrintFormat(entity);
+    }
 
-	public static PrintColor getPrintColor(int colorID) {
-		ADPrintColor entity = POUtil.find(context, ADPrintColor.class, colorID);
-		return new PrintColor(entity);
-	}
+    public static PrintTableFormat getPrintTableFormat(int tableFormatID) {
+        ADPrintTableFormat entity = POUtil.find(context, ADPrintTableFormat.class, tableFormatID);
+        return new PrintTableFormat(entity);
+    }
 
-	public static PrintAttachment getPrintAttachment(int tableID, int recordID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public static PrintColor getPrintColor(int colorID) {
+        ADPrintColor entity = POUtil.find(context, ADPrintColor.class, colorID);
+        return new PrintColor(entity);
+    }
 
-	public static PrintLocation getPrintLocation(int LocationID) {
-		CLocation entity = POUtil.find(context, CLocation.class, LocationID);
-		return new PrintLocation(entity);
-	}
+    public static PrintAttachment getPrintAttachment(int tableID, int recordID) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public static void print(PrinterJob job, PrintRequestAttributeSet prats, boolean b, boolean printCopy) {
-		// TODO Auto-generated method stub
+    public static PrintLocation getPrintLocation(int LocationID) {
+        CLocation entity = POUtil.find(context, CLocation.class, LocationID);
+        return new PrintLocation(entity);
+    }
 
-	}
+    public static void print(PrinterJob job, PrintRequestAttributeSet prats, boolean b, boolean printCopy) {
+        // TODO Auto-generated method stub
 
-	public static Attribute getJobPriority(int numberOfPages, int copies, boolean b) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	public static ADClientInfo getClientInfo() {
-		return POUtil.find(context, ADClientInfo.class, 0);
-	}
+    public static Attribute getJobPriority(int numberOfPages, int copies, boolean b) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public static PrintPaper getPrintPaper(Integer paperID) {
-		ADPrintPaper entity = POUtil.find(context, ADPrintPaper.class, paperID);
-		return new PrintPaper(entity);
-	}
+    public static ADClientInfo getClientInfo() {
+        return POUtil.find(context, ADClientInfo.class, 0);
+    }
+
+    public static PrintPaper getPrintPaper(Integer paperID) {
+        ADPrintPaper entity = POUtil.find(context, ADPrintPaper.class, paperID);
+        return new PrintPaper(entity);
+    }
+
+    public static MediaSize getMediaSize(Language language) {
+        return MediaSize.ISO.A4;
+    }
+
+    public static Locale getLocale(Language language) {
+        return Locale.US;
+    }
 
 }

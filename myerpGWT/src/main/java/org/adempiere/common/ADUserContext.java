@@ -3,7 +3,9 @@ package org.adempiere.common;
 import java.io.Serializable;
 import java.util.List;
 
-public class ADUserContext implements Serializable {
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+public class ADUserContext implements Serializable, IsSerializable {
 	private static final long	serialVersionUID	= 1L;
 	private Integer				aDClientID;
 	private Integer				aDOrgID;

@@ -61,6 +61,7 @@ public final class DTOUtil {
 		model.setValueMin(entity.getValueMin());
 		model.setVFormat(entity.getVFormat());
 		model.setIdentifier(entity.isIdentifier());
+		model.setDisplayLength(entity.getDisplayLength());
 		return model;
 	}
 
@@ -97,6 +98,7 @@ public final class DTOUtil {
 		model.setValueMin(entity.getValueMin());
 		model.setVFormat(entity.getVFormat());
 		model.setIdentifier(entity.isIdentifier());
+		model.setDisplayLength(entity.getDisplayLength());
 		return model;
 	}
 

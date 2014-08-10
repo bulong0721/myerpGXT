@@ -28,7 +28,7 @@ public class ProcessContext extends PersistContext {
     }
 
     private boolean isActive(EntityManager em) {
-        return null != em && em.isOpen();
+        return null != em && em.isOpen() && em.getTransaction().isActive();
     }
 
     public void managedRollback() {

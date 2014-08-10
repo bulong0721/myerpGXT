@@ -3,59 +3,60 @@ package org.adempiere.web.client.model;
 import java.util.List;
 
 public class WindowModel implements GwtSerializable {
-	private List<TabModel>	tabList;
-	private long				activeTabId;
-	private long				adWindowId;
-	private String				name;
-	private String				processing;
-	private String				windowtype;
 
-	public List<TabModel> getTabList() {
-		return tabList;
-	}
+    private List<TabModel> tabList;
+    private long           activeTabId;
+    private long           adWindowId;
+    private String         name;
+    private String         processing;
+    private String         windowtype;
 
-	public void setTabList(List<TabModel> tabList) {
-		this.tabList = tabList;
-	}
+    public List<TabModel> getTabList() {
+        return tabList;
+    }
 
-	public long getAdWindowId() {
-		return adWindowId;
-	}
+    public void setTabList(List<TabModel> tabList) {
+        this.tabList = tabList;
+    }
 
-	public void setAdWindowId(long adWindowId) {
-		this.adWindowId = adWindowId;
-	}
+    public long getAdWindowId() {
+        return adWindowId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setAdWindowId(long adWindowId) {
+        this.adWindowId = adWindowId;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getProcessing() {
-		return processing;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setProcessing(String processing) {
-		this.processing = processing;
-	}
+    public String getProcessing() {
+        return processing;
+    }
 
-	public String getWindowtype() {
-		return windowtype;
-	}
+    public void setProcessing(String processing) {
+        this.processing = processing;
+    }
 
-	public void setWindowtype(String windowtype) {
-		this.windowtype = windowtype;
-	}
+    public String getWindowtype() {
+        return windowtype;
+    }
 
-	public long getActiveTabId() {
-		return activeTabId;
-	}
+    public void setWindowtype(String windowtype) {
+        this.windowtype = windowtype;
+    }
 
-	public void setActiveTabId(long activeTabId) {
-		this.activeTabId = activeTabId;
-	}
+    public long getActiveTabId() {
+        return activeTabId;
+    }
+
+    public void setActiveTabId(long activeTabId) {
+        this.activeTabId = activeTabId;
+    }
 
 }

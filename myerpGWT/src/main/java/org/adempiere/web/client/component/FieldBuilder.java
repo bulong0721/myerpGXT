@@ -23,7 +23,10 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.safecss.shared.SafeStyles;
+import com.google.gwt.safecss.shared.SafeStylesUtils;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.sencha.gxt.cell.core.client.form.CheckBoxCell;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
 import com.sencha.gxt.core.client.resources.ThemeStyles;
 import com.sencha.gxt.data.shared.Converter;
@@ -50,13 +53,17 @@ import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class FieldBuilder {
 
+    private static final int          MIN_COLUMN_WIDTH      = 65;
+    private static final int          MAX_COLUMN_WIDTH      = 300;
+    private static final int          MIN_COMBOBOX_WIDTH    = 125;
+    private static final int          MIN_NUMERIC_COL_WIDTH = 90;
     private FormField                 field;
     private ColumnConfig<MapEntry, ?> columnCfg;
     private Cell<?>                   columnCell;
     private Field<?>                  gridEditor;
     private Field<?>                  formEditor;
     private OptionStore               optionStore;
-    private boolean                   showLabel = true;
+    private boolean                   showLabel             = true;
     private Converter                 converter;
     private DisplayType               fieldType;
     private TabBuilder                tabBuilder;
@@ -165,6 +172,7 @@ public class FieldBuilder {
             valueProvider = new EntryValueProvider<String>(propertyName, fieldType);
             if (tabBuilder.isCreateGridEditor()) gridEditor = createCheckBox(false);
             if (tabBuilder.isCreateFormEditor()) formEditor = createCheckBox(true);
+            columnCell = new CheckBoxCell();
             showLabel = false;
         } else {
             valueProvider = new EntryValueProvider<String>(propertyName, fieldType);
@@ -175,9 +183,15 @@ public class FieldBuilder {
             formEditor.setName(propertyName);
         }
         if (tabBuilder.isCreateGridEditor()) {
-            columnCfg = new ColumnConfig(valueProvider, 100);
+            columnCfg = new ColumnConfig(valueProvider, calcColumnWidth());
             columnCfg.setHeader(field.getName());
             columnCfg.setCell((Cell) columnCell);
+            if (fieldType.isBoolean()) {
+                final int leftPadding = (columnCfg.getWidth() - 12) / 2;
+                final String styles = "padding: 3px 0px 0px " + leftPadding + "px;";
+                final SafeStyles textStyles = SafeStylesUtils.fromTrustedString(styles);
+                columnCfg.setColumnTextStyle(textStyles);
+            }
         }
         if (field.isReadOnly() || !field.isUpdatable() || field.isFieldOnly()) {
             if (tabBuilder.isCreateGridEditor()) disableEditor(gridEditor);
@@ -191,6 +205,22 @@ public class FieldBuilder {
             if (tabBuilder.isCreateGridEditor()) numberFormat(gridEditor);
             if (tabBuilder.isCreateFormEditor()) numberFormat(formEditor);
         }
+    }
+
+    int calcColumnWidth() {
+        int width = fieldType.isNumeric() ? MIN_NUMERIC_COL_WIDTH : field.getDisplayLength() * 5;
+        if (field.getName().length() * 5 > width) {
+            width = field.getName().length() * 5;
+        }
+        if (width > MAX_COLUMN_WIDTH) {
+            width = MAX_COLUMN_WIDTH;
+        } else if (width < MIN_COLUMN_WIDTH) {
+            width = MIN_COLUMN_WIDTH;
+        }
+        if (fieldType.isLookup() && width < MIN_COMBOBOX_WIDTH) {
+            width = MIN_COMBOBOX_WIDTH;
+        }
+        return width;
     }
 
     DateTimeFormat getDTFormat(DisplayType fieldType) {

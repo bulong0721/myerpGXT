@@ -18,7 +18,7 @@
 	<add-linker name="xsiframe" />
 	<set-configuration-property name="devModeRedirectEnabled" value="true" />
 	<set-configuration-property name="xsiframe.failIfScriptTag" value="false" />
-	<set-property name="compiler.useSourceMaps" value="true" />
+	<set-property name="compiler.useSourceMaps" value="false" />
 	<extend-property name="locale" values="en,zh_CN" />
 	<set-configuration-property name="locale.searchorder" value="cookie,useragent" />
 	<set-configuration-property name="locale.cookie" value="lang" />

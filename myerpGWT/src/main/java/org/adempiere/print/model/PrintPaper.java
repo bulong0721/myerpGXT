@@ -9,6 +9,7 @@ import org.adempiere.common.AdempiereException;
 import org.adempiere.common.Language;
 import org.adempiere.model.ADPrintPaper;
 import org.adempiere.print.CPaper;
+import org.adempiere.print.PrintUtil;
 import org.adempiere.util.CLogger;
 
 public class PrintPaper extends ADPrintPaper {
@@ -61,7 +62,7 @@ public class PrintPaper extends ADPrintPaper {
 	} // getUnits
 
 	public MediaSize getMediaSizeDefault() {
-		m_mediaSize = Language.getLoginLanguage().getMediaSize();
+		m_mediaSize = PrintUtil.getMediaSize(Language.getLoginLanguage());
 		if (m_mediaSize == null)
 			m_mediaSize = MediaSize.ISO.A4;
 		log.fine("Size=" + m_mediaSize);

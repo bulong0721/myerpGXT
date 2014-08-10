@@ -3,297 +3,307 @@ package org.adempiere.web.client.model;
 import org.adempiere.common.DisplayType;
 
 public class FieldModel implements GwtSerializable, FormField {
-	private Integer	ADProcessID;
-	private Integer	ADReferenceID;
-	private Integer	ADReferenceValueID;
-	private String	callout;
-	private String	columnName;
-	private String	defaultValue;
-	private String	fieldGroup;
-	private String	fieldGroupType;
-	private Integer	fieldLength;
-	private Boolean	displayed;
-	private Boolean	encryptedColumn;
-	private Boolean	encryptedField;
-	private Boolean	fieldOnly;
-	private Boolean	key;
-	private Boolean	mandatory;
-	private Boolean	parent;
-	private Boolean	readonly;
-	private Boolean	updatable;
-	private Boolean	sameline;
-	private Boolean	selectionColumn;
-	private Boolean	alwaysUpdateable;
-	private Boolean identifier;
-	private String	name;
-	private String	readonlyLogic;
-	private Integer	seqNo;
-	private Integer	sortNo;
-	private String	tableName;
-	private String	validationCode;
-	private String	valueMax;
-	private String	valueMin;
-	private String	vFormat;
-	private Integer	ADFieldID;
 
-	public Boolean isAlwaysUpdateable() {
-		return alwaysUpdateable;
-	}
+    private Integer ADProcessID;
+    private Integer ADReferenceID;
+    private Integer ADReferenceValueID;
+    private String  callout;
+    private String  columnName;
+    private String  defaultValue;
+    private String  fieldGroup;
+    private String  fieldGroupType;
+    private Integer fieldLength;
+    private Boolean displayed;
+    private Boolean encryptedColumn;
+    private Boolean encryptedField;
+    private Boolean fieldOnly;
+    private Boolean key;
+    private Boolean mandatory;
+    private Boolean parent;
+    private Boolean readonly;
+    private Boolean updatable;
+    private Boolean sameline;
+    private Boolean selectionColumn;
+    private Boolean alwaysUpdateable;
+    private Boolean identifier;
+    private String  name;
+    private String  readonlyLogic;
+    private Integer seqNo;
+    private Integer sortNo;
+    private String  tableName;
+    private String  validationCode;
+    private String  valueMax;
+    private String  valueMin;
+    private String  vFormat;
+    private Integer ADFieldID;
+    private Integer displayLength = 0;
 
-	public void setAlwaysUpdateable(Boolean alwaysUpdateable) {
-		this.alwaysUpdateable = alwaysUpdateable;
-	}
-	
-	public Boolean isIdentifier() {
-	    return identifier;
-	}
-	
-	public void setIdentifier(Boolean identifier) {
-	    this.identifier = identifier;
-	}
+    public Boolean isAlwaysUpdateable() {
+        return alwaysUpdateable;
+    }
 
-	public Boolean isUpdatable() {
-		return updatable;
-	}
+    public void setAlwaysUpdateable(Boolean alwaysUpdateable) {
+        this.alwaysUpdateable = alwaysUpdateable;
+    }
 
-	public void setUpdatable(Boolean updatable) {
-		this.updatable = updatable;
-	}
+    public Boolean isIdentifier() {
+        return identifier;
+    }
 
-	public Integer getADProcessID() {
-		return ADProcessID;
-	}
+    public void setIdentifier(Boolean identifier) {
+        this.identifier = identifier;
+    }
 
-	public void setADProcessID(Integer aDProcessID) {
-		ADProcessID = aDProcessID;
-	}
+    public Boolean isUpdatable() {
+        return updatable;
+    }
 
-	public Integer getADReferenceID() {
-		return ADReferenceID;
-	}
+    public void setUpdatable(Boolean updatable) {
+        this.updatable = updatable;
+    }
 
-	public void setADReferenceID(Integer aDReferenceID) {
-		ADReferenceID = aDReferenceID;
-	}
+    public Integer getADProcessID() {
+        return ADProcessID;
+    }
 
-	public Integer getADReferenceValueID() {
-		return ADReferenceValueID;
-	}
+    public void setADProcessID(Integer aDProcessID) {
+        ADProcessID = aDProcessID;
+    }
 
-	public void setADReferenceValueID(Integer aDReferenceValueID) {
-		ADReferenceValueID = aDReferenceValueID;
-	}
+    public Integer getADReferenceID() {
+        return ADReferenceID;
+    }
 
-	public String getCallout() {
-		return callout;
-	}
+    public void setADReferenceID(Integer aDReferenceID) {
+        ADReferenceID = aDReferenceID;
+    }
 
-	public void setCallout(String callout) {
-		this.callout = callout;
-	}
+    public Integer getADReferenceValueID() {
+        return ADReferenceValueID;
+    }
 
-	public String getPropertyName() {
-		return columnName;
-	}
+    public void setADReferenceValueID(Integer aDReferenceValueID) {
+        ADReferenceValueID = aDReferenceValueID;
+    }
 
-	public void setPropertyName(String columnName) {
-		this.columnName = columnName;
-	}
+    public String getCallout() {
+        return callout;
+    }
 
-	public String getDefaultValue() {
-		return defaultValue;
-	}
+    public void setCallout(String callout) {
+        this.callout = callout;
+    }
 
-	public void setDefaultValue(String defaultValue) {
-		this.defaultValue = defaultValue;
-	}
+    public String getPropertyName() {
+        return columnName;
+    }
 
-	public String getFieldGroup() {
-		return fieldGroup;
-	}
+    public void setPropertyName(String columnName) {
+        this.columnName = columnName;
+    }
 
-	public void setFieldGroup(String fieldGroup) {
-		this.fieldGroup = fieldGroup;
-	}
+    public String getDefaultValue() {
+        return defaultValue;
+    }
 
-	public String getFieldGroupType() {
-		return fieldGroupType;
-	}
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
 
-	public void setFieldGroupType(String fieldGroupType) {
-		this.fieldGroupType = fieldGroupType;
-	}
+    public String getFieldGroup() {
+        return fieldGroup;
+    }
 
-	public Integer getFieldLength() {
-		return fieldLength;
-	}
+    public void setFieldGroup(String fieldGroup) {
+        this.fieldGroup = fieldGroup;
+    }
 
-	public void setFieldLength(Integer fieldLength) {
-		this.fieldLength = fieldLength;
-	}
+    public String getFieldGroupType() {
+        return fieldGroupType;
+    }
 
-	public Boolean isDisplayed() {
-		return displayed;
-	}
+    public void setFieldGroupType(String fieldGroupType) {
+        this.fieldGroupType = fieldGroupType;
+    }
 
-	public void setDisplayed(Boolean displayed) {
-		this.displayed = displayed;
-	}
+    public Integer getFieldLength() {
+        return fieldLength;
+    }
 
-	public Boolean isEncryptedColumn() {
-		return encryptedColumn;
-	}
+    public void setFieldLength(Integer fieldLength) {
+        this.fieldLength = fieldLength;
+    }
 
-	public void setEncryptedColumn(Boolean encryptedColumn) {
-		this.encryptedColumn = encryptedColumn;
-	}
+    public Boolean isDisplayed() {
+        return displayed;
+    }
 
-	public Boolean isEncryptedField() {
-		return encryptedField;
-	}
+    public void setDisplayed(Boolean displayed) {
+        this.displayed = displayed;
+    }
 
-	public void setEncryptedField(Boolean encryptedField) {
-		this.encryptedField = encryptedField;
-	}
+    public Boolean isEncryptedColumn() {
+        return encryptedColumn;
+    }
 
-	public Boolean isFieldOnly() {
-		return fieldOnly;
-	}
+    public void setEncryptedColumn(Boolean encryptedColumn) {
+        this.encryptedColumn = encryptedColumn;
+    }
 
-	public void setFieldOnly(Boolean fieldOnly) {
-		this.fieldOnly = fieldOnly;
-	}
+    public Boolean isEncryptedField() {
+        return encryptedField;
+    }
 
-	public Boolean isKey() {
-		return key;
-	}
+    public void setEncryptedField(Boolean encryptedField) {
+        this.encryptedField = encryptedField;
+    }
 
-	public void setKey(Boolean key) {
-		this.key = key;
-	}
+    public Boolean isFieldOnly() {
+        return fieldOnly;
+    }
 
-	public Boolean isMandatory() {
-		return mandatory;
-	}
+    public void setFieldOnly(Boolean fieldOnly) {
+        this.fieldOnly = fieldOnly;
+    }
 
-	public void setMandatory(Boolean mandatory) {
-		this.mandatory = mandatory;
-	}
+    public Boolean isKey() {
+        return key;
+    }
 
-	public Boolean isParent() {
-		return parent;
-	}
+    public void setKey(Boolean key) {
+        this.key = key;
+    }
 
-	public void setParent(Boolean parent) {
-		this.parent = parent;
-	}
+    public Boolean isMandatory() {
+        return mandatory;
+    }
 
-	public Boolean isReadOnly() {
-		return readonly;
-	}
+    public void setMandatory(Boolean mandatory) {
+        this.mandatory = mandatory;
+    }
 
-	public void setReadOnly(Boolean readonly) {
-		this.readonly = readonly;
-	}
+    public Boolean isParent() {
+        return parent;
+    }
 
-	public Boolean isSameline() {
-		return sameline;
-	}
+    public void setParent(Boolean parent) {
+        this.parent = parent;
+    }
 
-	public void setSameline(Boolean sameline) {
-		this.sameline = sameline;
-	}
+    public Boolean isReadOnly() {
+        return readonly;
+    }
 
-	public Boolean isSelectionColumn() {
-		return selectionColumn;
-	}
+    public void setReadOnly(Boolean readonly) {
+        this.readonly = readonly;
+    }
 
-	public void setSelectionColumn(Boolean selectionColumn) {
-		this.selectionColumn = selectionColumn;
-	}
+    public Boolean isSameline() {
+        return sameline;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setSameline(Boolean sameline) {
+        this.sameline = sameline;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Boolean isSelectionColumn() {
+        return selectionColumn;
+    }
 
-	public String getReadonlyLogic() {
-		return readonlyLogic;
-	}
+    public void setSelectionColumn(Boolean selectionColumn) {
+        this.selectionColumn = selectionColumn;
+    }
 
-	public void setReadonlyLogic(String readonlyLogic) {
-		this.readonlyLogic = readonlyLogic;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Integer getSeqNo() {
-		return seqNo;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setSeqNo(Integer seqNo) {
-		this.seqNo = seqNo;
-	}
+    public String getReadonlyLogic() {
+        return readonlyLogic;
+    }
 
-	public Integer getSortNo() {
-		return sortNo;
-	}
+    public void setReadonlyLogic(String readonlyLogic) {
+        this.readonlyLogic = readonlyLogic;
+    }
 
-	public void setSortNo(Integer sortNo) {
-		this.sortNo = sortNo;
-	}
+    public Integer getSeqNo() {
+        return seqNo;
+    }
 
-	public String getTableName() {
-		return tableName;
-	}
+    public void setSeqNo(Integer seqNo) {
+        this.seqNo = seqNo;
+    }
 
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
-	}
+    public Integer getSortNo() {
+        return sortNo;
+    }
 
-	public String getValidationCode() {
-		return validationCode;
-	}
+    public void setSortNo(Integer sortNo) {
+        this.sortNo = sortNo;
+    }
 
-	public void setValidationCode(String validationCode) {
-		this.validationCode = validationCode;
-	}
+    public String getTableName() {
+        return tableName;
+    }
 
-	public String getValueMax() {
-		return valueMax;
-	}
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
 
-	public void setValueMax(String valueMax) {
-		this.valueMax = valueMax;
-	}
+    public String getValidationCode() {
+        return validationCode;
+    }
 
-	public String getValueMin() {
-		return valueMin;
-	}
+    public void setValidationCode(String validationCode) {
+        this.validationCode = validationCode;
+    }
 
-	public void setValueMin(String valueMin) {
-		this.valueMin = valueMin;
-	}
+    public String getValueMax() {
+        return valueMax;
+    }
 
-	public String getVFormat() {
-		return vFormat;
-	}
+    public void setValueMax(String valueMax) {
+        this.valueMax = valueMax;
+    }
 
-	public void setVFormat(String vFormat) {
-		this.vFormat = vFormat;
-	}
+    public String getValueMin() {
+        return valueMin;
+    }
 
-	public Integer getADFieldID() {
-		return ADFieldID;
-	}
+    public void setValueMin(String valueMin) {
+        this.valueMin = valueMin;
+    }
 
-	public DisplayType getFieldType() {
-		return DisplayType.fromInteger(ADReferenceID);
-	}
+    public String getVFormat() {
+        return vFormat;
+    }
 
-	public void setADFieldID(Integer aDFieldID) {
-		ADFieldID = aDFieldID;
-	}
+    public void setVFormat(String vFormat) {
+        this.vFormat = vFormat;
+    }
+
+    public Integer getADFieldID() {
+        return ADFieldID;
+    }
+
+    public DisplayType getFieldType() {
+        return DisplayType.fromInteger(ADReferenceID);
+    }
+
+    public void setADFieldID(Integer aDFieldID) {
+        ADFieldID = aDFieldID;
+    }
+
+    public Integer getDisplayLength() {
+        return displayLength;
+    }
+
+    public void setDisplayLength(Integer displayLength) {
+        this.displayLength = displayLength;
+    }
 
 }
